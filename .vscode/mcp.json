@@ -12,6 +12,12 @@
       "type": "promptString",
       "description": "Cloudinary API secret. Paste the value of CLOUDINARY_API_SECRET from .env.local. Stored in VS Code secret storage after first entry — you'll only be asked once per machine.",
       "password": true
+    },
+    {
+      "id": "neonApiKey",
+      "type": "promptString",
+      "description": "Neon API key. Paste the value of NEON_API_KEY from .env.local. Stored in VS Code secret storage after first entry — you'll only be asked once per machine.",
+      "password": true
     }
   ],
   "servers": {
