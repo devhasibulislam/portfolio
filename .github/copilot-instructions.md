@@ -1,4 +1,9 @@
-# Copilot instructions — devhasibulislam/portfolio
+# Agent instructions — devhasibulislam/portfolio
+
+> This file is the single source of truth for AI-agent behaviour in this repo.
+> It is mirrored at the repo root as `AGENTS.md` and `CLAUDE.md` (symlinks) so
+> that GitHub Copilot, OpenAI Codex/Cursor, and Claude Code all discover it
+> under their expected filename. Edit this file — the mirrors auto-update.
 
 **Read these two files before proposing or writing any code:**
 
@@ -25,6 +30,29 @@ Next 16 (App Router, Turbopack, Cache Components) · React 19 · TypeScript stri
 - Dashboard route is `/dashboard`. Login route is `/login` (top-level, not nested). Neither is linked from public UI.
 - Single user only: `devhasibulislam@gmail.com`. Whitelist lives in `proxy.ts` matcher + `src/app/dashboard/layout.tsx` + `src/app/login/actions.ts`.
 - Session-cookie only (dies on tab close). No 2FA, no sign-up page, no forgot-password page.
+
+## Skills library — consult BEFORE writing code
+
+Before answering any coding request, scan [`.agents/skills/`](../.agents/skills/) for a skill whose `SKILL.md` frontmatter `description` matches the topic. If one applies, read that `SKILL.md` in full (and any files it links to under `references/`, `assets/`, or `rules/`) and follow its guidance. This overrides your default knowledge if there's a conflict — these skills capture project-verified best practice.
+
+Rough map of when to reach for which family (not exhaustive — the `description` in each `SKILL.md` is authoritative):
+
+| Task involves… | Skill(s) to consult |
+| --- | --- |
+| shadcn add / registry / MCP / components.json | `shadcn/SKILL.md` |
+| Next.js App Router basics, server actions, RSC | `nextjs-app-router-fundamentals/`, `nextjs-developer/`, `nextjs-react-typescript/` |
+| `"use cache"`, cacheTag, revalidateTag, Suspense boundaries, PPR | `nextjs-cache-architecture/SKILL.md` (project-critical for §13) |
+| Metadata, JSON-LD, sitemap, robots, hreflang | `nextjs-seo/SKILL.md` |
+| Cloudinary uploads, transforms, `<CldImage>`, OG images | `cloudinary-next/`, `cloudinary-docs/`, `cloudinary-transformations/`, `cloudinary-react/` |
+| Neon connection, branches, egress, object storage, AI gateway | `neon/`, `neon-postgres/`, `neon-postgres-branches/`, `neon-postgres-egress-optimizer/`, `neon-object-storage/`, `neon-ai-gateway/`, `neon-functions/` |
+| GSAP — timelines, ScrollTrigger, React integration, perf | `gsap-core/`, `gsap-timeline/`, `gsap-scrolltrigger/`, `gsap-react/`, `gsap-performance/`, `gsap-plugins/`, `gsap-utils/`, `gsap-frameworks/` |
+| Three.js / R3F (Phase 4) — geometry, lighting, materials, shaders, postprocessing, loaders, interaction, animation, textures, fundamentals | `threejs-*` (10 skills) |
+| Vercel deploy, edge, optimization, React patterns for Vercel | `deploy-to-vercel/`, `vercel-optimize/`, `vercel-react-best-practices/` |
+| Tailwind v4 advanced layouts, subgrid, container queries | `tailwindcss-advanced-layouts/SKILL.md` |
+| Visual design taste, hero sections, typography systems | `design-taste-frontend/`, `frontend-design/`, `high-end-visual-design/`, `web-design-guidelines/`, `canvas-design/` |
+| Radix → Base UI migration references (if we ever swap primitives) | `migrate-radix-to-base/` |
+
+**Rule**: if you would have answered from generic knowledge and a matching `SKILL.md` exists, you MUST cite the skill you consulted in your response ("Consulted `.agents/skills/<name>/SKILL.md`") so the human can verify the guidance is being applied. If no skill matches, proceed with generic knowledge — do not fabricate a citation.
 
 ## When in doubt
 
