@@ -1,0 +1,1 @@
+{"nodes": [{"id": "server_no_shared_module_state_rule", "label": "Avoid Shared Module State for Request Data", "file_type": "document", "source_file": ".agents/skills/vercel-react-best-practices/rules/server-no-shared-module-state.md", "source_location": null, "source_url": null, "captured_at": null, "author": "vercel", "contributor": null}], "edges": [], "hyperedges": []}

@@ -1,0 +1,2222 @@
+{
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/assets/app-router-signature-route.ts": {
+    "mtime": 1785249730.258689,
+    "ast_hash": "5471204e6ceffcb521fc91a9cb9b1194",
+    "semantic_hash": "5471204e6ceffcb521fc91a9cb9b1194"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/assets/server-action-delete.ts": {
+    "mtime": 1785249730.2587068,
+    "ast_hash": "bd8d4b15038d85a541434a4d7946b312",
+    "semantic_hash": "bd8d4b15038d85a541434a4d7946b312"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/assets/server-action-upload.ts": {
+    "mtime": 1785249730.2587068,
+    "ast_hash": "dbe7cd8994403fe09429c061cd9eb71b",
+    "semantic_hash": "dbe7cd8994403fe09429c061cd9eb71b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/deploy-to-vercel/resources/deploy-codex.sh": {
+    "mtime": 1785253112.4987817,
+    "ast_hash": "b048868554d8c8966860dec24b10e519",
+    "semantic_hash": "b048868554d8c8966860dec24b10e519"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/deploy-to-vercel/resources/deploy.sh": {
+    "mtime": 1785253112.4990072,
+    "ast_hash": "c20b8a4b9e0ff5d191662848d6f46781",
+    "semantic_hash": "c20b8a4b9e0ff5d191662848d6f46781"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/assets/SuspenseOnSearchParams.tsx": {
+    "mtime": 1785251804.6737697,
+    "ast_hash": "ffcb5d8e911fdc1881c85b64d2e8960b",
+    "semantic_hash": "ffcb5d8e911fdc1881c85b64d2e8960b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/assets/revalidate.ts": {
+    "mtime": 1785251804.6739047,
+    "ast_hash": "6e0b720490164c193ac51828159bcf1c",
+    "semantic_hash": "6e0b720490164c193ac51828159bcf1c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/assets/tags.ts": {
+    "mtime": 1785251804.6739047,
+    "ast_hash": "6a0afe9a7a69cf56dffc8bb36c1a862f",
+    "semantic_hash": "6a0afe9a7a69cf56dffc8bb36c1a862f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/evals/evals.json": {
+    "mtime": 1785251804.6739047,
+    "ast_hash": "1ecbd1f7e0cdffb5266a084b8dee3236",
+    "semantic_hash": "1ecbd1f7e0cdffb5266a084b8dee3236"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/scripts/audit.mjs": {
+    "mtime": 1785251804.6744,
+    "ast_hash": "879f624b5ec3dad9b9ed65abed31a391",
+    "semantic_hash": "879f624b5ec3dad9b9ed65abed31a391"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/evals/evals.json": {
+    "mtime": 1785252389.2490137,
+    "ast_hash": "14eed42e07f934b2d4e6520dcbbda35b",
+    "semantic_hash": "14eed42e07f934b2d4e6520dcbbda35b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/auth-route.mjs": {
+    "mtime": 1785253171.440698,
+    "ast_hash": "78cdbc7a226b9da274748ace45b23bc6",
+    "semantic_hash": "78cdbc7a226b9da274748ace45b23bc6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/budget-summary.mjs": {
+    "mtime": 1785253171.4411802,
+    "ast_hash": "2a2842a9ff6376c473511c6c3763adc0",
+    "semantic_hash": "2a2842a9ff6376c473511c6c3763adc0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/citations.mjs": {
+    "mtime": 1785253171.4414032,
+    "ast_hash": "7edbdf850ac19ad8b0b569b5e3fd03d9",
+    "semantic_hash": "7edbdf850ac19ad8b0b569b5e3fd03d9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/cost-coverage.mjs": {
+    "mtime": 1785253171.4416173,
+    "ast_hash": "9ed214ea7982f9587a61331f0ac88327",
+    "semantic_hash": "9ed214ea7982f9587a61331f0ac88327"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/dedup-recs.mjs": {
+    "mtime": 1785253171.441783,
+    "ast_hash": "77ff166f2686617f66cfad313b389c67",
+    "semantic_hash": "77ff166f2686617f66cfad313b389c67"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/deep-dive.mjs": {
+    "mtime": 1785253171.4420114,
+    "ast_hash": "9cc73392e21340df7c41a630317e927e",
+    "semantic_hash": "9cc73392e21340df7c41a630317e927e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/display-labels.mjs": {
+    "mtime": 1785253171.4421768,
+    "ast_hash": "54b65a0880979c5e1dfe0737a74a21bb",
+    "semantic_hash": "54b65a0880979c5e1dfe0737a74a21bb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/extract-claims.mjs": {
+    "mtime": 1785253171.442337,
+    "ast_hash": "d3eac12d03968493e63e71b00e966599",
+    "semantic_hash": "d3eac12d03968493e63e71b00e966599"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/framework-support.mjs": {
+    "mtime": 1785253171.4424856,
+    "ast_hash": "104f9d1f3efe7a04ad45043abf2db5d6",
+    "semantic_hash": "104f9d1f3efe7a04ad45043abf2db5d6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/build-minutes-fanout.mjs": {
+    "mtime": 1785253171.4424856,
+    "ast_hash": "16a3fdbf56f9cdd4f6dcc6046d8c253b",
+    "semantic_hash": "16a3fdbf56f9cdd4f6dcc6046d8c253b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/cold-start.mjs": {
+    "mtime": 1785253171.4427426,
+    "ast_hash": "88e2425e26d6fd567d073b1099d0a8ba",
+    "semantic_hash": "88e2425e26d6fd567d073b1099d0a8ba"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/contract.mjs": {
+    "mtime": 1785253171.4428754,
+    "ast_hash": "d86f2b288e5ae732706def4c862ed432",
+    "semantic_hash": "d86f2b288e5ae732706def4c862ed432"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/cwv-poor.mjs": {
+    "mtime": 1785253171.4429817,
+    "ast_hash": "613d31a09490a155b20e3f252c73bdbf",
+    "semantic_hash": "613d31a09490a155b20e3f252c73bdbf"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/external-api-slow.mjs": {
+    "mtime": 1785253171.4430811,
+    "ast_hash": "0a148d6b9aa296b13a21fa466ad55996",
+    "semantic_hash": "0a148d6b9aa296b13a21fa466ad55996"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/hard-gates.mjs": {
+    "mtime": 1785253171.4431853,
+    "ast_hash": "1b2791d58914849515fe90eafe1e13c8",
+    "semantic_hash": "1b2791d58914849515fe90eafe1e13c8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/index.mjs": {
+    "mtime": 1785253171.4432855,
+    "ast_hash": "533b96a998b36cbee99f86f2709299fa",
+    "semantic_hash": "533b96a998b36cbee99f86f2709299fa"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/isr-overrevalidation.mjs": {
+    "mtime": 1785253171.4433901,
+    "ast_hash": "3a002a49db769a30af36c8526cc90b74",
+    "semantic_hash": "3a002a49db769a30af36c8526cc90b74"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/middleware-heavy.mjs": {
+    "mtime": 1785253171.4434881,
+    "ast_hash": "3d9486e794b113a8b7926411503559b2",
+    "semantic_hash": "3d9486e794b113a8b7926411503559b2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/observability-events-attribution.mjs": {
+    "mtime": 1785253171.443589,
+    "ast_hash": "3605e97d9e4ea6978ab808ea5af245f5",
+    "semantic_hash": "3605e97d9e4ea6978ab808ea5af245f5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/platform-bot-protection.mjs": {
+    "mtime": 1785253171.4436939,
+    "ast_hash": "07011b1bd7e16367e152c60e135ca7fd",
+    "semantic_hash": "07011b1bd7e16367e152c60e135ca7fd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/platform-fluid-compute.mjs": {
+    "mtime": 1785253171.4438007,
+    "ast_hash": "0de35c4dc12390edc0df8ebf65ee9f37",
+    "semantic_hash": "0de35c4dc12390edc0df8ebf65ee9f37"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/region-misconfig.mjs": {
+    "mtime": 1785253171.4439065,
+    "ast_hash": "0c318e6274284c1c7b982595632862b2",
+    "semantic_hash": "0c318e6274284c1c7b982595632862b2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/route-errors.mjs": {
+    "mtime": 1785253171.4440107,
+    "ast_hash": "f137c9122cc9a3b04b0d42fbb0c12641",
+    "semantic_hash": "f137c9122cc9a3b04b0d42fbb0c12641"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/scanner-driven.mjs": {
+    "mtime": 1785253171.4443016,
+    "ast_hash": "5b1043a88db5e853e3c004735823a508",
+    "semantic_hash": "5b1043a88db5e853e3c004735823a508"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/select-candidates.mjs": {
+    "mtime": 1785253171.4444537,
+    "ast_hash": "078a5c17c4dfe1da1381f619c15f8ad7",
+    "semantic_hash": "078a5c17c4dfe1da1381f619c15f8ad7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/slow-route.mjs": {
+    "mtime": 1785253171.444561,
+    "ast_hash": "2c33f62a826f9ef6f609c489fd492655",
+    "semantic_hash": "2c33f62a826f9ef6f609c489fd492655"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/types.d.ts": {
+    "mtime": 1785253171.444663,
+    "ast_hash": "3675d0b23e038ad038d2dd118d040f49",
+    "semantic_hash": "3675d0b23e038ad038d2dd118d040f49"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/uncached-route.mjs": {
+    "mtime": 1785253171.4447658,
+    "ast_hash": "06bf4d3038400e117eff496830c4be0c",
+    "semantic_hash": "06bf4d3038400e117eff496830c4be0c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/gates/usage-spike-triage.mjs": {
+    "mtime": 1785253171.4448786,
+    "ast_hash": "0a1dfe71ecd613775b0a86d2c8020215",
+    "semantic_hash": "0a1dfe71ecd613775b0a86d2c8020215"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/grade-recommendation.mjs": {
+    "mtime": 1785253171.4448786,
+    "ast_hash": "81b336c79af1be8b8f420aa4c6b3f3c0",
+    "semantic_hash": "81b336c79af1be8b8f420aa4c6b3f3c0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/impact-label.mjs": {
+    "mtime": 1785253171.4450948,
+    "ast_hash": "90c7d906346221e3b6a88497888f27d9",
+    "semantic_hash": "90c7d906346221e3b6a88497888f27d9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/impact-magnitude.mjs": {
+    "mtime": 1785253171.445199,
+    "ast_hash": "721ba1c4fdd66046463f44648dba77d0",
+    "semantic_hash": "721ba1c4fdd66046463f44648dba77d0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/investigation-brief.mjs": {
+    "mtime": 1785253171.445347,
+    "ast_hash": "c041803b1f962926166f4c8b130a67f5",
+    "semantic_hash": "c041803b1f962926166f4c8b130a67f5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/observation-safety.mjs": {
+    "mtime": 1785253171.445456,
+    "ast_hash": "f76b563b7914a849dc978e95fea4286c",
+    "semantic_hash": "f76b563b7914a849dc978e95fea4286c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/project-facts.mjs": {
+    "mtime": 1785253171.445571,
+    "ast_hash": "02791b20eeae4b1951af06def8d306ec",
+    "semantic_hash": "02791b20eeae4b1951af06def8d306ec"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/queries.mjs": {
+    "mtime": 1785253171.4456897,
+    "ast_hash": "39d4ad0f5805707d81427bee74969328",
+    "semantic_hash": "39d4ad0f5805707d81427bee74969328"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/reconcile-candidates.mjs": {
+    "mtime": 1785253171.4457986,
+    "ast_hash": "b671c1352680e5014f4cb53926dcbe11",
+    "semantic_hash": "b671c1352680e5014f4cb53926dcbe11"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/render-report.mjs": {
+    "mtime": 1785253171.445966,
+    "ast_hash": "5c12e95ac489d2f905f38867b56598d2",
+    "semantic_hash": "5c12e95ac489d2f905f38867b56598d2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/repo-root.mjs": {
+    "mtime": 1785253171.4460852,
+    "ast_hash": "60c8b364dfc2fec7ad34ba29ad491564",
+    "semantic_hash": "60c8b364dfc2fec7ad34ba29ad491564"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/route-normalize.mjs": {
+    "mtime": 1785253171.4462028,
+    "ast_hash": "ea3d1fba63bc3e383b5764df8a3fbe95",
+    "semantic_hash": "ea3d1fba63bc3e383b5764df8a3fbe95"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/bot-protection-certainty.mjs": {
+    "mtime": 1785253171.4462028,
+    "ast_hash": "394bd5042e31472b9443841f071d1329",
+    "semantic_hash": "394bd5042e31472b9443841f071d1329"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/cache-tag-invalidation-certainty.mjs": {
+    "mtime": 1785253171.4464536,
+    "ast_hash": "dfb82ddae8e417a1624a95340cd04f96",
+    "semantic_hash": "dfb82ddae8e417a1624a95340cd04f96"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/count-correct.mjs": {
+    "mtime": 1785253171.4465892,
+    "ast_hash": "38243897ba6b475f4e08ad1a7dcdfb90",
+    "semantic_hash": "38243897ba6b475f4e08ad1a7dcdfb90"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/function-duration-invocations.mjs": {
+    "mtime": 1785253171.4467034,
+    "ast_hash": "3dd8526ef8dc313cab7ceb9542bda1c0",
+    "semantic_hash": "3dd8526ef8dc313cab7ceb9542bda1c0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/index.mjs": {
+    "mtime": 1785253171.4467995,
+    "ast_hash": "a11776f94f283a4ef1d86a7f30633aeb",
+    "semantic_hash": "a11776f94f283a4ef1d86a7f30633aeb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/middleware-conflict.mjs": {
+    "mtime": 1785253171.4469082,
+    "ast_hash": "1530758ddb12b7b9f71a371fa2b8ff36",
+    "semantic_hash": "1530758ddb12b7b9f71a371fa2b8ff36"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/missing-citation.mjs": {
+    "mtime": 1785253171.447006,
+    "ast_hash": "3e8d685a5ee62f125d8a1d71cb3c060b",
+    "semantic_hash": "3e8d685a5ee62f125d8a1d71cb3c060b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/pre-release.mjs": {
+    "mtime": 1785253171.4471245,
+    "ast_hash": "546d43b449ceefafbdf9773d2531a0ec",
+    "semantic_hash": "546d43b449ceefafbdf9773d2531a0ec"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/rate-limit.mjs": {
+    "mtime": 1785253171.4472284,
+    "ast_hash": "10da5507e8e847f62c07f411de55b127",
+    "semantic_hash": "10da5507e8e847f62c07f411de55b127"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/rendering-mode-mislabel.mjs": {
+    "mtime": 1785253171.4473305,
+    "ast_hash": "0249a788a556251284e30adc45e0c501",
+    "semantic_hash": "0249a788a556251284e30adc45e0c501"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/undeclared-dep.mjs": {
+    "mtime": 1785253171.4474287,
+    "ast_hash": "2b128a19e8e3483c647edc9829655767",
+    "semantic_hash": "2b128a19e8e3483c647edc9829655767"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/vercel-directive-strip.mjs": {
+    "mtime": 1785253171.447526,
+    "ast_hash": "c1b0e8a613c0e79b4c8f4f07bba88267",
+    "semantic_hash": "c1b0e8a613c0e79b4c8f4f07bba88267"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/sanitizers/window-units.mjs": {
+    "mtime": 1785253171.447623,
+    "ast_hash": "f8fa0ff330864f2ae44158ab60beb3a2",
+    "semantic_hash": "f8fa0ff330864f2ae44158ab60beb3a2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/cache-components-suspense-dedupe.mjs": {
+    "mtime": 1785253171.447623,
+    "ast_hash": "15f95c3594740dcf476a6510fc53d22c",
+    "semantic_hash": "15f95c3594740dcf476a6510fc53d22c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/edge-heavy-import.mjs": {
+    "mtime": 1785253171.447698,
+    "ast_hash": "633620834149e6a63ff8e16ab172c780",
+    "semantic_hash": "633620834149e6a63ff8e16ab172c780"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/force-dynamic.mjs": {
+    "mtime": 1785253171.4479432,
+    "ast_hash": "2cd6beda0d49786f601e2458a8a5c5b4",
+    "semantic_hash": "2cd6beda0d49786f601e2458a8a5c5b4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/headers-in-page.mjs": {
+    "mtime": 1785253171.4480383,
+    "ast_hash": "300828055cc429057cb18aa344f7fc3d",
+    "semantic_hash": "300828055cc429057cb18aa344f7fc3d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/index.mjs": {
+    "mtime": 1785253171.4481366,
+    "ast_hash": "9284e4ff9aed9cf623b1aee0be316bdc",
+    "semantic_hash": "9284e4ff9aed9cf623b1aee0be316bdc"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/large-static-asset.mjs": {
+    "mtime": 1785253171.4482348,
+    "ast_hash": "617d7ac9be8b697f117afea4c77945fe",
+    "semantic_hash": "617d7ac9be8b697f117afea4c77945fe"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/max-age-without-s-maxage.mjs": {
+    "mtime": 1785253171.4483287,
+    "ast_hash": "9c1e0394512e914cc3a4403fdfd11b5d",
+    "semantic_hash": "9c1e0394512e914cc3a4403fdfd11b5d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/middleware-broad-matcher.mjs": {
+    "mtime": 1785253171.448426,
+    "ast_hash": "7e2c8ef92840dc2836da837dad68e3c0",
+    "semantic_hash": "7e2c8ef92840dc2836da837dad68e3c0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/missing-cache-headers.mjs": {
+    "mtime": 1785253171.4485261,
+    "ast_hash": "39d7132d2386e47ef76ec8b09d1fc1b3",
+    "semantic_hash": "39d7132d2386e47ef76ec8b09d1fc1b3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/prisma-include-tree.mjs": {
+    "mtime": 1785253171.448623,
+    "ast_hash": "a8665d784f7e6272b064a9c4429803a0",
+    "semantic_hash": "a8665d784f7e6272b064a9c4429803a0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/region-pin-in-config.mjs": {
+    "mtime": 1785253171.4487221,
+    "ast_hash": "7560feeed1f82e6690c6a689b9571b67",
+    "semantic_hash": "7560feeed1f82e6690c6a689b9571b67"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/source-maps-production.mjs": {
+    "mtime": 1785253171.4488215,
+    "ast_hash": "7d4439ca5c03c20e0ecca42e3abef718",
+    "semantic_hash": "7d4439ca5c03c20e0ecca42e3abef718"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/sveltekit-prerender-missing.mjs": {
+    "mtime": 1785253171.4489222,
+    "ast_hash": "1cb3a6759bf30fa07b3bb4bac648838f",
+    "semantic_hash": "1cb3a6759bf30fa07b3bb4bac648838f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/turbo-force-bypass.mjs": {
+    "mtime": 1785253171.4490225,
+    "ast_hash": "c6c40516726ccb8cc698a487cd6b8a42",
+    "semantic_hash": "c6c40516726ccb8cc698a487cd6b8a42"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/unoptimized-image.mjs": {
+    "mtime": 1785253171.4491282,
+    "ast_hash": "676516e0724bc2da16216f92349663b2",
+    "semantic_hash": "676516e0724bc2da16216f92349663b2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/scanners/use-cache-date-stamp.mjs": {
+    "mtime": 1785253171.4492354,
+    "ast_hash": "343197740e83344ba6001ed45c9fda87",
+    "semantic_hash": "343197740e83344ba6001ed45c9fda87"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/support-topics.mjs": {
+    "mtime": 1785253171.4492354,
+    "ast_hash": "3d78376e165ff6f46c97bff4d14df02b",
+    "semantic_hash": "3d78376e165ff6f46c97bff4d14df02b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/throttle.mjs": {
+    "mtime": 1785253171.4494505,
+    "ast_hash": "25b47cfb7aa5b0ad869712b5c75adac4",
+    "semantic_hash": "25b47cfb7aa5b0ad869712b5c75adac4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/util.mjs": {
+    "mtime": 1785253171.4495502,
+    "ast_hash": "c3f274e07a2dfda1b1ad8a7881a4b36f",
+    "semantic_hash": "c3f274e07a2dfda1b1ad8a7881a4b36f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/vercel.mjs": {
+    "mtime": 1785253171.4496882,
+    "ast_hash": "366ce02c49803242703d467b29815575",
+    "semantic_hash": "366ce02c49803242703d467b29815575"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/verify-claim.mjs": {
+    "mtime": 1785253171.4496982,
+    "ast_hash": "14bfa477526dcf0ba14c78b06622413e",
+    "semantic_hash": "14bfa477526dcf0ba14c78b06622413e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/lib/workspace-resolver.mjs": {
+    "mtime": 1785253171.450033,
+    "ast_hash": "03cf55034b85c6c60e21ab2a17cf6788",
+    "semantic_hash": "03cf55034b85c6c60e21ab2a17cf6788"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/metadata.json": {
+    "mtime": 1785253171.450033,
+    "ast_hash": "19a5bc8e678e4b878aaed277773d1d85",
+    "semantic_hash": "19a5bc8e678e4b878aaed277773d1d85"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/docs-library.json": {
+    "mtime": 1785253171.4505763,
+    "ast_hash": "289afe73523f5d9b44b7f873b909b050",
+    "semantic_hash": "289afe73523f5d9b44b7f873b909b050"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/budget-summary.mjs": {
+    "mtime": 1785253171.4569695,
+    "ast_hash": "0e76296fa235c31e4fbf1d58299a2bfe",
+    "semantic_hash": "0e76296fa235c31e4fbf1d58299a2bfe"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/build-docs.mjs": {
+    "mtime": 1785253171.4571953,
+    "ast_hash": "19f6462b607c6c93accdd1fdd22098f7",
+    "semantic_hash": "19f6462b607c6c93accdd1fdd22098f7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/check-citations.mjs": {
+    "mtime": 1785253171.457309,
+    "ast_hash": "aaeff7c5aa6f635cefd810d7b2aa2753",
+    "semantic_hash": "aaeff7c5aa6f635cefd810d7b2aa2753"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/check-docs-fresh.mjs": {
+    "mtime": 1785253171.4574203,
+    "ast_hash": "e86c603e49af933f0408357aef8844cd",
+    "semantic_hash": "e86c603e49af933f0408357aef8844cd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/collect-signals.mjs": {
+    "mtime": 1785253171.4575527,
+    "ast_hash": "ecb3a1b378b91b05745ea8118cc92f7d",
+    "semantic_hash": "ecb3a1b378b91b05745ea8118cc92f7d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/collect-sub-agent-outputs.mjs": {
+    "mtime": 1785253171.4576771,
+    "ast_hash": "138160a89f9df94ac246fbd0812a482d",
+    "semantic_hash": "138160a89f9df94ac246fbd0812a482d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/deep-dive.mjs": {
+    "mtime": 1785253171.4578006,
+    "ast_hash": "1baf1a582ae27e0fdcc7be05ac26278e",
+    "semantic_hash": "1baf1a582ae27e0fdcc7be05ac26278e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/gate-investigations.mjs": {
+    "mtime": 1785253171.457927,
+    "ast_hash": "51d1d6f03ed6fffc9887a4ae527ba134",
+    "semantic_hash": "51d1d6f03ed6fffc9887a4ae527ba134"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/merge-signals.mjs": {
+    "mtime": 1785253171.4580355,
+    "ast_hash": "c93b4298464e923f843e88e0fb327415",
+    "semantic_hash": "c93b4298464e923f843e88e0fb327415"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/prepare-investigation-brief.mjs": {
+    "mtime": 1785253171.45815,
+    "ast_hash": "879505a13d8bebfbd52377cd1af73d50",
+    "semantic_hash": "879505a13d8bebfbd52377cd1af73d50"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/reconcile-candidates.mjs": {
+    "mtime": 1785253171.458253,
+    "ast_hash": "bd6b7aa98e3c486b80d7b930f9e6fada",
+    "semantic_hash": "bd6b7aa98e3c486b80d7b930f9e6fada"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/render-report.mjs": {
+    "mtime": 1785253171.4583764,
+    "ast_hash": "24d42646872200cac6b05968a1b27e23",
+    "semantic_hash": "24d42646872200cac6b05968a1b27e23"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/scan-codebase.mjs": {
+    "mtime": 1785253171.4584987,
+    "ast_hash": "db9a0362514377710c4c0595a4650aa8",
+    "semantic_hash": "db9a0362514377710c4c0595a4650aa8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/verify-and-regen.mjs": {
+    "mtime": 1785253171.458623,
+    "ast_hash": "d31c72c70524cc88d097f3c4be2336a1",
+    "semantic_hash": "d31c72c70524cc88d097f3c4be2336a1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/scripts/verify-finding.mjs": {
+    "mtime": 1785253171.458731,
+    "ast_hash": "50ef4240d5ed73d139843f240729030a",
+    "semantic_hash": "50ef4240d5ed73d139843f240729030a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/metadata.json": {
+    "mtime": 1785253082.5043051,
+    "ast_hash": "5cd9ae4fc688353236c3b92e8f06dfcc",
+    "semantic_hash": "5cd9ae4fc688353236c3b92e8f06dfcc"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.vscode/mcp.json": {
+    "mtime": 1785254301.923446,
+    "ast_hash": "5ca3b5e49aba10104541aa5c1289345c",
+    "semantic_hash": "5ca3b5e49aba10104541aa5c1289345c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.vscode/settings.json": {
+    "mtime": 1785250801.7214694,
+    "ast_hash": "9b4b0b97b5804f6670b8cba8177c34cb",
+    "semantic_hash": "9b4b0b97b5804f6670b8cba8177c34cb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/components.json": {
+    "mtime": 1785250801.1453602,
+    "ast_hash": "20fafc48e5083e35e414097ff4983a63",
+    "semantic_hash": "20fafc48e5083e35e414097ff4983a63"
+  },
+  "/home/prokken-inc/Desktop/portfolio/drizzle.config.ts": {
+    "mtime": 1785250801.0583205,
+    "ast_hash": "9ee6cde3f25196a347ad7b7ecb33d81a",
+    "semantic_hash": "9ee6cde3f25196a347ad7b7ecb33d81a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/eslint.config.mjs": {
+    "mtime": 1785251896.9004467,
+    "ast_hash": "28976f8a97483dae108e507dd132e98d",
+    "semantic_hash": "28976f8a97483dae108e507dd132e98d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/messages/ar.json": {
+    "mtime": 1785250799.0037084,
+    "ast_hash": "f77abb2225eb46719a304c96cfb88d91",
+    "semantic_hash": "f77abb2225eb46719a304c96cfb88d91"
+  },
+  "/home/prokken-inc/Desktop/portfolio/messages/bn.json": {
+    "mtime": 1785250799.4682271,
+    "ast_hash": "197e6eb6b0284db8060643597b83c749",
+    "semantic_hash": "197e6eb6b0284db8060643597b83c749"
+  },
+  "/home/prokken-inc/Desktop/portfolio/messages/en.json": {
+    "mtime": 1785250799.40175,
+    "ast_hash": "5043412823e6a940910780a312af6b12",
+    "semantic_hash": "5043412823e6a940910780a312af6b12"
+  },
+  "/home/prokken-inc/Desktop/portfolio/messages/he.json": {
+    "mtime": 1785250799.6784852,
+    "ast_hash": "735bd02aea3058c82486a2cae9ba14af",
+    "semantic_hash": "735bd02aea3058c82486a2cae9ba14af"
+  },
+  "/home/prokken-inc/Desktop/portfolio/messages/ur.json": {
+    "mtime": 1785250799.559381,
+    "ast_hash": "c22b5ac107726b34c979d179b52b9276",
+    "semantic_hash": "c22b5ac107726b34c979d179b52b9276"
+  },
+  "/home/prokken-inc/Desktop/portfolio/next.config.ts": {
+    "mtime": 1785251804.677146,
+    "ast_hash": "6239d9e5b138d23992396e8bf771ed89",
+    "semantic_hash": "6239d9e5b138d23992396e8bf771ed89"
+  },
+  "/home/prokken-inc/Desktop/portfolio/package.json": {
+    "mtime": 1785251896.8884654,
+    "ast_hash": "9c5fb43f115e9b06fd03f0c1fc3ed849",
+    "semantic_hash": "9c5fb43f115e9b06fd03f0c1fc3ed849"
+  },
+  "/home/prokken-inc/Desktop/portfolio/postcss.config.mjs": {
+    "mtime": 1785249276.2304854,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": "239f3ebf717465dc636818a1a619398d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/proxy.ts": {
+    "mtime": 1785251804.6786652,
+    "ast_hash": "7ad9c3f925064f1b2bfe0b69ca041e1b",
+    "semantic_hash": "7ad9c3f925064f1b2bfe0b69ca041e1b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/scripts/seed-user.ts": {
+    "mtime": 1785251804.6787395,
+    "ast_hash": "937706a67851dce06686d73c7de0a99a",
+    "semantic_hash": "937706a67851dce06686d73c7de0a99a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/skills-lock.json": {
+    "mtime": 1785253171.4596982,
+    "ast_hash": "891f73d6c07beef0adb2168950870eb6",
+    "semantic_hash": "891f73d6c07beef0adb2168950870eb6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/app/api/auth/[...path]/route.ts": {
+    "mtime": 1785250800.4582705,
+    "ast_hash": "d84dc550c5f82391bbd5f5014ae73a60",
+    "semantic_hash": "d84dc550c5f82391bbd5f5014ae73a60"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/app/dashboard/layout.tsx": {
+    "mtime": 1785250800.609273,
+    "ast_hash": "b7e9f23712dc341218a857ab0c0e21b2",
+    "semantic_hash": "b7e9f23712dc341218a857ab0c0e21b2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/app/dashboard/page.tsx": {
+    "mtime": 1785250800.678274,
+    "ast_hash": "1a949d5508bd31ebd3424eb1cfc0465e",
+    "semantic_hash": "1a949d5508bd31ebd3424eb1cfc0465e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/app/layout.tsx": {
+    "mtime": 1785250801.4312856,
+    "ast_hash": "3cd89c053884de33a6efab0e93bd99dd",
+    "semantic_hash": "3cd89c053884de33a6efab0e93bd99dd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/app/login/actions.ts": {
+    "mtime": 1785251804.6789522,
+    "ast_hash": "1f1536f345db1cde0f0e6422a126e2f8",
+    "semantic_hash": "1f1536f345db1cde0f0e6422a126e2f8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/app/login/login-form.tsx": {
+    "mtime": 1785250800.9892788,
+    "ast_hash": "80df3c903d1370bdb654cc1bb628c067",
+    "semantic_hash": "80df3c903d1370bdb654cc1bb628c067"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/app/login/page.tsx": {
+    "mtime": 1785250800.7752755,
+    "ast_hash": "a26bbb320cc144ad0c368c876c81eb3e",
+    "semantic_hash": "a26bbb320cc144ad0c368c876c81eb3e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/app/page.tsx": {
+    "mtime": 1785250801.586288,
+    "ast_hash": "ace8ede0dcea26226f1ae5437d43da0e",
+    "semantic_hash": "ace8ede0dcea26226f1ae5437d43da0e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/auth/client.ts": {
+    "mtime": 1785250800.2631803,
+    "ast_hash": "db5e9c0352df4ab08ba1744e4ba9ea48",
+    "semantic_hash": "db5e9c0352df4ab08ba1744e4ba9ea48"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/auth/server.ts": {
+    "mtime": 1785251804.6792834,
+    "ast_hash": "ce7296adc1f91e97a45991d43a0d5eed",
+    "semantic_hash": "ce7296adc1f91e97a45991d43a0d5eed"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/db/client.ts": {
+    "mtime": 1785251804.6793861,
+    "ast_hash": "00693854d13d829ea5405b6f654fdb5c",
+    "semantic_hash": "00693854d13d829ea5405b6f654fdb5c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/db/schema.ts": {
+    "mtime": 1785250800.0424032,
+    "ast_hash": "978a39d8dba4082f48dba4d1d2de1afa",
+    "semantic_hash": "978a39d8dba4082f48dba4d1d2de1afa"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/i18n/actions.ts": {
+    "mtime": 1785250799.2150388,
+    "ast_hash": "2adc51a62136e68b66da216195034f12",
+    "semantic_hash": "2adc51a62136e68b66da216195034f12"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/i18n/config.ts": {
+    "mtime": 1785251804.6794887,
+    "ast_hash": "73f4d74e52dcdda9643b6754849211a5",
+    "semantic_hash": "73f4d74e52dcdda9643b6754849211a5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/i18n/cookies.ts": {
+    "mtime": 1785250799.2149682,
+    "ast_hash": "380fb7db34b17674c2b8c8d142b194b6",
+    "semantic_hash": "380fb7db34b17674c2b8c8d142b194b6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/i18n/request.ts": {
+    "mtime": 1785250799.278095,
+    "ast_hash": "e176a0ad5f797e8e8aa37836e95d2ce7",
+    "semantic_hash": "e176a0ad5f797e8e8aa37836e95d2ce7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/theme/actions.ts": {
+    "mtime": 1785250799.851507,
+    "ast_hash": "fc392be8e1e6c990b821bc69b92f1c62",
+    "semantic_hash": "fc392be8e1e6c990b821bc69b92f1c62"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/theme/cookies.ts": {
+    "mtime": 1785250799.794554,
+    "ast_hash": "1b57802e5b48e627509bcdbc03df36f3",
+    "semantic_hash": "1b57802e5b48e627509bcdbc03df36f3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/lib/utils.ts": {
+    "mtime": 1785250801.2372825,
+    "ast_hash": "155202c8d8de405982cdfd124f34185f",
+    "semantic_hash": "155202c8d8de405982cdfd124f34185f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/schemas/index.ts": {
+    "mtime": 1785250801.3337212,
+    "ast_hash": "fa850976bce42e665cb2c7f30ef7bab0",
+    "semantic_hash": "fa850976bce42e665cb2c7f30ef7bab0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/tsconfig.json": {
+    "mtime": 1785249276.2306368,
+    "ast_hash": "ee17fd1c97c735e9f3564e3f5251f125",
+    "semantic_hash": "ee17fd1c97c735e9f3564e3f5251f125"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/LICENSE.txt": {
+    "mtime": 1785252007.5923367,
+    "ast_hash": "0ee6429f4c66920b6744d818225fb58f",
+    "semantic_hash": "0ee6429f4c66920b6744d818225fb58f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/SKILL.md": {
+    "mtime": 1785252007.5923367,
+    "ast_hash": "3004dffc91611ca480b24d952d33ad46",
+    "semantic_hash": "3004dffc91611ca480b24d952d33ad46"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/ArsenalSC-OFL.txt": {
+    "mtime": 1785252007.5949874,
+    "ast_hash": "6ba27859bff46d6040ce48e164b2b6b5",
+    "semantic_hash": "6ba27859bff46d6040ce48e164b2b6b5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/BigShoulders-OFL.txt": {
+    "mtime": 1785252007.5950067,
+    "ast_hash": "db35b3b1166369fabfe18614e67ad0f7",
+    "semantic_hash": "db35b3b1166369fabfe18614e67ad0f7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/Boldonse-OFL.txt": {
+    "mtime": 1785252007.5950904,
+    "ast_hash": "fd1bd9bdc739431ca190a2178b29fe2e",
+    "semantic_hash": "fd1bd9bdc739431ca190a2178b29fe2e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/BricolageGrotesque-OFL.txt": {
+    "mtime": 1785252007.5951588,
+    "ast_hash": "c01c6f2840f06aacc97899ab09ec0e01",
+    "semantic_hash": "c01c6f2840f06aacc97899ab09ec0e01"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/CrimsonPro-OFL.txt": {
+    "mtime": 1785252007.595285,
+    "ast_hash": "2b62069b71f49dddd2bde54448a986a0",
+    "semantic_hash": "2b62069b71f49dddd2bde54448a986a0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/DMMono-OFL.txt": {
+    "mtime": 1785252007.5953548,
+    "ast_hash": "c6a3ddf00ed346cbb45fdfa0ca2c4b9c",
+    "semantic_hash": "c6a3ddf00ed346cbb45fdfa0ca2c4b9c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/EricaOne-OFL.txt": {
+    "mtime": 1785252007.5953846,
+    "ast_hash": "0312065d0003e7a4ef6a459afd7e1ccb",
+    "semantic_hash": "0312065d0003e7a4ef6a459afd7e1ccb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/GeistMono-OFL.txt": {
+    "mtime": 1785252007.5954494,
+    "ast_hash": "9678944f41fc8b46592ca1626f1c0896",
+    "semantic_hash": "9678944f41fc8b46592ca1626f1c0896"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/Gloock-OFL.txt": {
+    "mtime": 1785252007.5965915,
+    "ast_hash": "2cc6d168f1171b25a10e825bb7a54ee7",
+    "semantic_hash": "2cc6d168f1171b25a10e825bb7a54ee7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/IBMPlexMono-OFL.txt": {
+    "mtime": 1785252007.596615,
+    "ast_hash": "30de3a874e3399fc7b9d1bec045d3166",
+    "semantic_hash": "30de3a874e3399fc7b9d1bec045d3166"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/InstrumentSans-OFL.txt": {
+    "mtime": 1785252007.6003013,
+    "ast_hash": "35856d470a6adf5d5c4a9bcdfd659bcc",
+    "semantic_hash": "35856d470a6adf5d5c4a9bcdfd659bcc"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/Italiana-OFL.txt": {
+    "mtime": 1785252007.6003678,
+    "ast_hash": "233d74d83b54a786d21a429304775aef",
+    "semantic_hash": "233d74d83b54a786d21a429304775aef"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/JetBrainsMono-OFL.txt": {
+    "mtime": 1785252007.6017742,
+    "ast_hash": "2025a2ee80175b15561a8232e67d74d5",
+    "semantic_hash": "2025a2ee80175b15561a8232e67d74d5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/Jura-OFL.txt": {
+    "mtime": 1785252007.6018453,
+    "ast_hash": "227060bfebf7bcf3f924fafa47d1237d",
+    "semantic_hash": "227060bfebf7bcf3f924fafa47d1237d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/LibreBaskerville-OFL.txt": {
+    "mtime": 1785252007.6018784,
+    "ast_hash": "077df2dc77ecd9ca43d6fbc15ed1c0cb",
+    "semantic_hash": "077df2dc77ecd9ca43d6fbc15ed1c0cb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/Lora-OFL.txt": {
+    "mtime": 1785252007.6032078,
+    "ast_hash": "a6f35dd3870842fab964fbcd0ffb2908",
+    "semantic_hash": "a6f35dd3870842fab964fbcd0ffb2908"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/NationalPark-OFL.txt": {
+    "mtime": 1785252007.6050954,
+    "ast_hash": "67073750dbf1a5d68e56c4c5ffec8f09",
+    "semantic_hash": "67073750dbf1a5d68e56c4c5ffec8f09"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/NothingYouCouldDo-OFL.txt": {
+    "mtime": 1785252007.6050954,
+    "ast_hash": "b3dd666855ec5cd55f351287c80b9eb1",
+    "semantic_hash": "b3dd666855ec5cd55f351287c80b9eb1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/Outfit-OFL.txt": {
+    "mtime": 1785252007.605158,
+    "ast_hash": "1b36bbe38eb97e26055123ff42f44fc7",
+    "semantic_hash": "1b36bbe38eb97e26055123ff42f44fc7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/PixelifySans-OFL.txt": {
+    "mtime": 1785252007.6063147,
+    "ast_hash": "1f685eb54479bfa39bced4f64798a900",
+    "semantic_hash": "1f685eb54479bfa39bced4f64798a900"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/PoiretOne-OFL.txt": {
+    "mtime": 1785252007.6063147,
+    "ast_hash": "954ca844e5dd9e31353213c6a142b9a4",
+    "semantic_hash": "954ca844e5dd9e31353213c6a142b9a4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/RedHatMono-OFL.txt": {
+    "mtime": 1785252007.6064131,
+    "ast_hash": "0787f4274246f7bbf6c429db807e3049",
+    "semantic_hash": "0787f4274246f7bbf6c429db807e3049"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/Silkscreen-OFL.txt": {
+    "mtime": 1785252007.6064765,
+    "ast_hash": "ed13fbda3931ec8f3beb063f8fcd2182",
+    "semantic_hash": "ed13fbda3931ec8f3beb063f8fcd2182"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/SmoochSans-OFL.txt": {
+    "mtime": 1785252007.6064992,
+    "ast_hash": "da377dd00a998b32d88274b2b17c64be",
+    "semantic_hash": "da377dd00a998b32d88274b2b17c64be"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/Tektur-OFL.txt": {
+    "mtime": 1785252007.6065464,
+    "ast_hash": "40fd22c803f19bfbdb6383598f3bfacb",
+    "semantic_hash": "40fd22c803f19bfbdb6383598f3bfacb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/WorkSans-OFL.txt": {
+    "mtime": 1785252007.6077056,
+    "ast_hash": "4bf1338afcac74d0c9ea569f07a87fab",
+    "semantic_hash": "4bf1338afcac74d0c9ea569f07a87fab"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/canvas-design/canvas-fonts/YoungSerif-OFL.txt": {
+    "mtime": 1785252007.6077566,
+    "ast_hash": "fa532d4441344be225f3f46d7ce2aabf",
+    "semantic_hash": "fa532d4441344be225f3f46d7ce2aabf"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/claimable-postgres/SKILL.md": {
+    "mtime": 1785251804.6716268,
+    "ast_hash": "1c6e7afaeb0222d0f81ba3ddbdeb0d80",
+    "semantic_hash": "1c6e7afaeb0222d0f81ba3ddbdeb0d80"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-docs/SKILL.md": {
+    "mtime": 1785249730.2091732,
+    "ast_hash": "76d1235fda94186c6e30bdfd6a8bc2a7",
+    "semantic_hash": "76d1235fda94186c6e30bdfd6a8bc2a7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/SKILL.md": {
+    "mtime": 1785249730.2580187,
+    "ast_hash": "8dc66b09a87596151d2e61a448d491d5",
+    "semantic_hash": "8dc66b09a87596151d2e61a448d491d5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/api-decision-tree.md": {
+    "mtime": 1785249730.2587068,
+    "ast_hash": "6a8d2b7ba7bc83e1ab704b8fc8562350",
+    "semantic_hash": "6a8d2b7ba7bc83e1ab704b8fc8562350"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/cldimage-transformations.md": {
+    "mtime": 1785249730.2587602,
+    "ast_hash": "f044882ea3315f0d9b4d51002ceede94",
+    "semantic_hash": "f044882ea3315f0d9b4d51002ceede94"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/cldimage.md": {
+    "mtime": 1785249730.2587802,
+    "ast_hash": "58ae3e882504f1bec05656d9806ed0ac",
+    "semantic_hash": "58ae3e882504f1bec05656d9806ed0ac"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/environment.md": {
+    "mtime": 1785249730.2587802,
+    "ast_hash": "b82ecac73efe56eb1ffe8304bec437ef",
+    "semantic_hash": "b82ecac73efe56eb1ffe8304bec437ef"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/imports.md": {
+    "mtime": 1785249730.2588089,
+    "ast_hash": "84639d66d8ac788cee2494a48539dd9f",
+    "semantic_hash": "84639d66d8ac788cee2494a48539dd9f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/official-docs.md": {
+    "mtime": 1785249730.2588365,
+    "ast_hash": "e9a243991f6748583f85a799de0db9c2",
+    "semantic_hash": "e9a243991f6748583f85a799de0db9c2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/og-images.md": {
+    "mtime": 1785249730.2588534,
+    "ast_hash": "7f9775b24664b4410dbf5b857e0a6016",
+    "semantic_hash": "7f9775b24664b4410dbf5b857e0a6016"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/overlays.md": {
+    "mtime": 1785249730.2588534,
+    "ast_hash": "d0f2c051503934d553563e066ba5442a",
+    "semantic_hash": "d0f2c051503934d553563e066ba5442a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/project-setup.md": {
+    "mtime": 1785249730.2588916,
+    "ast_hash": "2767a84adbffeb8c010267d24a70f643",
+    "semantic_hash": "2767a84adbffeb8c010267d24a70f643"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/quick-checklist.md": {
+    "mtime": 1785249730.2589126,
+    "ast_hash": "ba99684fa71ae6f73d1df79fabb1a7e6",
+    "semantic_hash": "ba99684fa71ae6f73d1df79fabb1a7e6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/responsive-images.md": {
+    "mtime": 1785249730.2589126,
+    "ast_hash": "de656169c7fad43c7f72ffe77364fbfb",
+    "semantic_hash": "de656169c7fad43c7f72ffe77364fbfb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/server-upload-delete.md": {
+    "mtime": 1785249730.2589126,
+    "ast_hash": "29b81c10f5d8887b50d771c226ba6833",
+    "semantic_hash": "29b81c10f5d8887b50d771c226ba6833"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/signed-uploads.md": {
+    "mtime": 1785249730.2589655,
+    "ast_hash": "fdf4e6a00e4e435f9ad69d919dc8d84a",
+    "semantic_hash": "fdf4e6a00e4e435f9ad69d919dc8d84a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/troubleshooting.md": {
+    "mtime": 1785249730.2589858,
+    "ast_hash": "d3294f45ab1e5306152d650e415de73d",
+    "semantic_hash": "d3294f45ab1e5306152d650e415de73d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/typescript.md": {
+    "mtime": 1785249730.2589858,
+    "ast_hash": "c920fbf949623294062abab5dee03403",
+    "semantic_hash": "c920fbf949623294062abab5dee03403"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/upload-widget.md": {
+    "mtime": 1785249730.2589858,
+    "ast_hash": "394c8f2e3b24378d541d8ccc838d20ce",
+    "semantic_hash": "394c8f2e3b24378d541d8ccc838d20ce"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-next/references/video-player.md": {
+    "mtime": 1785249730.2590451,
+    "ast_hash": "5cd228523ebf0fafbded6acfec86ea2a",
+    "semantic_hash": "5cd228523ebf0fafbded6acfec86ea2a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-react/SKILL.md": {
+    "mtime": 1785249730.2750294,
+    "ast_hash": "7e0d093fccff576d9f400397c76b088e",
+    "semantic_hash": "7e0d093fccff576d9f400397c76b088e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-react/references/signed-uploads.md": {
+    "mtime": 1785249730.2751045,
+    "ast_hash": "4736d4cdb35bffa16d216ac26dffcbd8",
+    "semantic_hash": "4736d4cdb35bffa16d216ac26dffcbd8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-react/references/troubleshooting.md": {
+    "mtime": 1785249730.2751367,
+    "ast_hash": "198a6b4479e369a6c94317793510f58a",
+    "semantic_hash": "198a6b4479e369a6c94317793510f58a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-react/references/typescript-patterns.md": {
+    "mtime": 1785249730.2751045,
+    "ast_hash": "0f349bad34004f6dca8c6a8b8ec311da",
+    "semantic_hash": "0f349bad34004f6dca8c6a8b8ec311da"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-react/references/video-player.md": {
+    "mtime": 1785249730.2751367,
+    "ast_hash": "38b51c61731fdc9716e7cc78fadbef54",
+    "semantic_hash": "38b51c61731fdc9716e7cc78fadbef54"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/SKILL.md": {
+    "mtime": 1785249730.300372,
+    "ast_hash": "7b69ab740cb3ea3f0a60d1ebf3061960",
+    "semantic_hash": "7b69ab740cb3ea3f0a60d1ebf3061960"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/references/advanced-features.md": {
+    "mtime": 1785249730.3006253,
+    "ast_hash": "fad342a6cfa6727d806d30078a391054",
+    "semantic_hash": "fad342a6cfa6727d806d30078a391054"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/references/ai-transformations.md": {
+    "mtime": 1785249730.300653,
+    "ast_hash": "a65a7eaff18ba2c498d2ed466ab753fd",
+    "semantic_hash": "a65a7eaff18ba2c498d2ed466ab753fd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/references/debugging.md": {
+    "mtime": 1785249730.300653,
+    "ast_hash": "116a0619cf910556076a6f4c9e66f2e7",
+    "semantic_hash": "116a0619cf910556076a6f4c9e66f2e7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/references/examples.md": {
+    "mtime": 1785249730.3006773,
+    "ast_hash": "84a80a25366c8502a7bd65458def4fe8",
+    "semantic_hash": "84a80a25366c8502a7bd65458def4fe8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/references/named-transformations.md": {
+    "mtime": 1785249730.3007238,
+    "ast_hash": "c5b3e2a647e224559a15cb761c330af2",
+    "semantic_hash": "c5b3e2a647e224559a15cb761c330af2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/references/responsive-images.md": {
+    "mtime": 1785249730.300744,
+    "ast_hash": "9cc255fb8d059701db55af0069d1ab83",
+    "semantic_hash": "9cc255fb8d059701db55af0069d1ab83"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/references/transformation-costs.md": {
+    "mtime": 1785249730.300744,
+    "ast_hash": "291e8139021041dee7fd35f7e8634983",
+    "semantic_hash": "291e8139021041dee7fd35f7e8634983"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/cloudinary-transformations/references/video-transformations.md": {
+    "mtime": 1785249730.3007731,
+    "ast_hash": "3a8b9db49f4c834727d8449b3a8581c6",
+    "semantic_hash": "3a8b9db49f4c834727d8449b3a8581c6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/deploy-to-vercel/SKILL.md": {
+    "mtime": 1785253112.4990072,
+    "ast_hash": "bd596f082654a053cfbe0fc27a4e40b9",
+    "semantic_hash": "bd596f082654a053cfbe0fc27a4e40b9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/design-taste-frontend/SKILL.md": {
+    "mtime": 1785252059.9482632,
+    "ast_hash": "6f73606d20cd948b471b1ce1767aab50",
+    "semantic_hash": "6f73606d20cd948b471b1ce1767aab50"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/frontend-design/LICENSE.txt": {
+    "mtime": 1785251936.6602888,
+    "ast_hash": "2ee41112a44fe7014dce33e26468ba93",
+    "semantic_hash": "2ee41112a44fe7014dce33e26468ba93"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/frontend-design/SKILL.md": {
+    "mtime": 1785251936.6602888,
+    "ast_hash": "31c633612585bf2dd4e6d1103afc9f33",
+    "semantic_hash": "31c633612585bf2dd4e6d1103afc9f33"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/gsap-core/SKILL.md": {
+    "mtime": 1785249982.730681,
+    "ast_hash": "e14974bb48ddfe9e0da3406562b8f18f",
+    "semantic_hash": "e14974bb48ddfe9e0da3406562b8f18f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/gsap-frameworks/SKILL.md": {
+    "mtime": 1785249982.740585,
+    "ast_hash": "8b067a9a32a69b11732678bcf09f5b4a",
+    "semantic_hash": "8b067a9a32a69b11732678bcf09f5b4a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/gsap-performance/SKILL.md": {
+    "mtime": 1785249982.7501497,
+    "ast_hash": "f6b97aae273b24930d77e634dcf1c62e",
+    "semantic_hash": "f6b97aae273b24930d77e634dcf1c62e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/gsap-plugins/SKILL.md": {
+    "mtime": 1785249982.7597747,
+    "ast_hash": "694d28e8efac50b29b33905ffa62ec4f",
+    "semantic_hash": "694d28e8efac50b29b33905ffa62ec4f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/gsap-react/SKILL.md": {
+    "mtime": 1785249982.769172,
+    "ast_hash": "9fc3789feebbe444032cee2ade44f5b4",
+    "semantic_hash": "9fc3789feebbe444032cee2ade44f5b4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/gsap-scrolltrigger/SKILL.md": {
+    "mtime": 1785249982.7787101,
+    "ast_hash": "4082bbc747d61f4241b2f0c5f2cfbeca",
+    "semantic_hash": "4082bbc747d61f4241b2f0c5f2cfbeca"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/gsap-timeline/SKILL.md": {
+    "mtime": 1785249982.78776,
+    "ast_hash": "3dfefe09dc41a59f2322734a7694b810",
+    "semantic_hash": "3dfefe09dc41a59f2322734a7694b810"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/gsap-utils/SKILL.md": {
+    "mtime": 1785249982.796529,
+    "ast_hash": "6a9b883f5a4ce55430fd7463176a2004",
+    "semantic_hash": "6a9b883f5a4ce55430fd7463176a2004"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/high-end-visual-design/SKILL.md": {
+    "mtime": 1785252108.777612,
+    "ast_hash": "269e37851b3a17693d8052f5f8002cfc",
+    "semantic_hash": "269e37851b3a17693d8052f5f8002cfc"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/SKILL.md": {
+    "mtime": 1785252389.2710395,
+    "ast_hash": "382269d3bfb8247fac488add513dec76",
+    "semantic_hash": "382269d3bfb8247fac488add513dec76"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/class-mapping.md": {
+    "mtime": 1785252389.2710612,
+    "ast_hash": "2dd2bdf6f6272178d5f5def7e0b756e0",
+    "semantic_hash": "2dd2bdf6f6272178d5f5def7e0b756e0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/consumer-props.md": {
+    "mtime": 1785252389.2710783,
+    "ast_hash": "ba77c7384da61102ac51a65b83bbe8c4",
+    "semantic_hash": "ba77c7384da61102ac51a65b83bbe8c4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/disclosure.md": {
+    "mtime": 1785252389.2710783,
+    "ast_hash": "32040ece866b6e8f3b333b27f9453c35",
+    "semantic_hash": "32040ece866b6e8f3b333b27f9453c35"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/display-misc.md": {
+    "mtime": 1785252389.2711172,
+    "ast_hash": "d35fdf046ac9faf8d72be29601fc438c",
+    "semantic_hash": "d35fdf046ac9faf8d72be29601fc438c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/form-controls.md": {
+    "mtime": 1785252389.2711396,
+    "ast_hash": "2cd39a3de7a2dc70084b04c43ada34b3",
+    "semantic_hash": "2cd39a3de7a2dc70084b04c43ada34b3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/menus.md": {
+    "mtime": 1785252389.2711396,
+    "ast_hash": "bf42ef87a36caaa24d97a07a89ef1f20",
+    "semantic_hash": "bf42ef87a36caaa24d97a07a89ef1f20"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/overlays.md": {
+    "mtime": 1785252389.2711575,
+    "ast_hash": "04ef54d38ed3597ddbab77211b8044c0",
+    "semantic_hash": "04ef54d38ed3597ddbab77211b8044c0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/universal-patterns.md": {
+    "mtime": 1785252389.2711833,
+    "ast_hash": "872c98bfcd48b47646a0df7e725da223",
+    "semantic_hash": "872c98bfcd48b47646a0df7e725da223"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/migrate-radix-to-base/wrapper-shapes.md": {
+    "mtime": 1785252389.271216,
+    "ast_hash": "534412c9379e8c9da9b95cd9915911ae",
+    "semantic_hash": "534412c9379e8c9da9b95cd9915911ae"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-ai-gateway/SKILL.md": {
+    "mtime": 1785251804.6716268,
+    "ast_hash": "27ad51ba06cc74eeec1845f3df6534ea",
+    "semantic_hash": "27ad51ba06cc74eeec1845f3df6534ea"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-functions/SKILL.md": {
+    "mtime": 1785251804.6716268,
+    "ast_hash": "7d1b9bb86d918b6c897a9e22b6ed2dcd",
+    "semantic_hash": "7d1b9bb86d918b6c897a9e22b6ed2dcd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-functions/references/ai-sdk.md": {
+    "mtime": 1785251804.6722982,
+    "ast_hash": "feb769e07dcf21e09ccc432f7fd66e06",
+    "semantic_hash": "feb769e07dcf21e09ccc432f7fd66e06"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-functions/references/hono-websockets.md": {
+    "mtime": 1785251804.6724029,
+    "ast_hash": "6086f4ba5c06392b818552556e13258a",
+    "semantic_hash": "6086f4ba5c06392b818552556e13258a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-functions/references/mastra-studio.md": {
+    "mtime": 1785251804.6724029,
+    "ast_hash": "d2baff9afccb4b479c311fd83bb8719f",
+    "semantic_hash": "d2baff9afccb4b479c311fd83bb8719f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-functions/references/mcp.md": {
+    "mtime": 1785251804.6724029,
+    "ast_hash": "fa550ac9870d2d505d0ded923badd92c",
+    "semantic_hash": "fa550ac9870d2d505d0ded923badd92c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-functions/references/sentry.md": {
+    "mtime": 1785251804.6724029,
+    "ast_hash": "7eaf4d73f6983982439bcef0ab9a2372",
+    "semantic_hash": "7eaf4d73f6983982439bcef0ab9a2372"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-functions/references/sse.md": {
+    "mtime": 1785251804.6724029,
+    "ast_hash": "a1e1ec9d3e2e3896817786463840e919",
+    "semantic_hash": "a1e1ec9d3e2e3896817786463840e919"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-object-storage/SKILL.md": {
+    "mtime": 1785251804.6726267,
+    "ast_hash": "77f6dc6ed9066c74272f1dfc9f3ec343",
+    "semantic_hash": "77f6dc6ed9066c74272f1dfc9f3ec343"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-postgres-branches/SKILL.md": {
+    "mtime": 1785251804.6726267,
+    "ast_hash": "db6b0852792180a266def10ad140f771",
+    "semantic_hash": "db6b0852792180a266def10ad140f771"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-postgres-egress-optimizer/SKILL.md": {
+    "mtime": 1785251804.6726267,
+    "ast_hash": "ba3786c5959ba5daa05d11b041591fe9",
+    "semantic_hash": "ba3786c5959ba5daa05d11b041591fe9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon-postgres/SKILL.md": {
+    "mtime": 1785251804.6726267,
+    "ast_hash": "0bb5b2ce6a5f0270367cf3755941ec01",
+    "semantic_hash": "0bb5b2ce6a5f0270367cf3755941ec01"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/neon/SKILL.md": {
+    "mtime": 1785251804.6726267,
+    "ast_hash": "9f418098909284a5447938eb59e2fefd",
+    "semantic_hash": "9f418098909284a5447938eb59e2fefd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-app-router-fundamentals/SKILL.md": {
+    "mtime": 1785251804.6726267,
+    "ast_hash": "fadb357a9cb5820e7a1fdfcd441df82e",
+    "semantic_hash": "fadb357a9cb5820e7a1fdfcd441df82e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/SKILL.md": {
+    "mtime": 1785251804.6726267,
+    "ast_hash": "c2f615e321d102d88dcfb1aa56cb81ae",
+    "semantic_hash": "c2f615e321d102d88dcfb1aa56cb81ae"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/overlay.yaml": {
+    "mtime": 1785251804.6739047,
+    "ast_hash": "b9478efbb47b611922720e9ea9fe48bb",
+    "semantic_hash": "b9478efbb47b611922720e9ea9fe48bb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/references/core-concepts.md": {
+    "mtime": 1785251804.6739047,
+    "ast_hash": "c15d59f429b67d8a40f4d982be071be6",
+    "semantic_hash": "c15d59f429b67d8a40f4d982be071be6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/references/debugging-and-checklist.md": {
+    "mtime": 1785251804.6744,
+    "ast_hash": "eb2e8f0270ef546aad5c8f844b528a76",
+    "semantic_hash": "eb2e8f0270ef546aad5c8f844b528a76"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/references/migration-from-unstable-cache.md": {
+    "mtime": 1785251804.6744,
+    "ast_hash": "928d1e09d6e80f9fa6c2ecd0f7f83f64",
+    "semantic_hash": "928d1e09d6e80f9fa6c2ecd0f7f83f64"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-cache-architecture/references/personalized-content.md": {
+    "mtime": 1785251804.6744,
+    "ast_hash": "12308e7745a9df11b743bd44112f5466",
+    "semantic_hash": "12308e7745a9df11b743bd44112f5466"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-developer/SKILL.md": {
+    "mtime": 1785251804.6746268,
+    "ast_hash": "b3cf9e02600f473a70f353c87d1dfb45",
+    "semantic_hash": "b3cf9e02600f473a70f353c87d1dfb45"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-developer/references/app-router.md": {
+    "mtime": 1785251804.6746268,
+    "ast_hash": "ebad3ccf4653e09539f07c2e7bdccf18",
+    "semantic_hash": "ebad3ccf4653e09539f07c2e7bdccf18"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-developer/references/data-fetching.md": {
+    "mtime": 1785251804.6750073,
+    "ast_hash": "289367a886a37f6f9f364c2bd30cbb28",
+    "semantic_hash": "289367a886a37f6f9f364c2bd30cbb28"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-developer/references/deployment.md": {
+    "mtime": 1785251804.6750073,
+    "ast_hash": "d2d7b5c0c064524a99c9f2b94bda4501",
+    "semantic_hash": "d2d7b5c0c064524a99c9f2b94bda4501"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-developer/references/server-actions.md": {
+    "mtime": 1785251804.6750073,
+    "ast_hash": "8f571a6570e016903b502b257abdbf83",
+    "semantic_hash": "8f571a6570e016903b502b257abdbf83"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-developer/references/server-components.md": {
+    "mtime": 1785251804.6750073,
+    "ast_hash": "dab12d6d0d8a5ea4f9d0399b5ff2fa10",
+    "semantic_hash": "dab12d6d0d8a5ea4f9d0399b5ff2fa10"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-react-typescript/SKILL.md": {
+    "mtime": 1785251804.6750073,
+    "ast_hash": "88efe2ab21660d9b3afd270b4786ff0b",
+    "semantic_hash": "88efe2ab21660d9b3afd270b4786ff0b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-seo/SKILL.md": {
+    "mtime": 1785251804.6750073,
+    "ast_hash": "a4c24e97c5efad39b0033b6111b31eaa",
+    "semantic_hash": "a4c24e97c5efad39b0033b6111b31eaa"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-seo/references/ai-search.md": {
+    "mtime": 1785251804.675593,
+    "ast_hash": "850c0df493e977eccde011a18aef8c46",
+    "semantic_hash": "850c0df493e977eccde011a18aef8c46"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-seo/references/checklist.md": {
+    "mtime": 1785251804.675704,
+    "ast_hash": "c8627040545a6972a8ccb06132faba93",
+    "semantic_hash": "c8627040545a6972a8ccb06132faba93"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-seo/references/json-ld.md": {
+    "mtime": 1785251804.675704,
+    "ast_hash": "d020672e34e120247ed92c113b756c45",
+    "semantic_hash": "d020672e34e120247ed92c113b756c45"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-seo/references/metadata-api.md": {
+    "mtime": 1785251804.675704,
+    "ast_hash": "80cf08c2a517da9aefcf34f7a3ab1bf2",
+    "semantic_hash": "80cf08c2a517da9aefcf34f7a3ab1bf2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-seo/references/sitemap-robots.md": {
+    "mtime": 1785251804.675704,
+    "ast_hash": "aa8ec116367c68d13eee831c941ff680",
+    "semantic_hash": "aa8ec116367c68d13eee831c941ff680"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/nextjs-seo/references/troubleshooting.md": {
+    "mtime": 1785251804.675704,
+    "ast_hash": "8089f436069c08964c865c4aa6d93a85",
+    "semantic_hash": "8089f436069c08964c865c4aa6d93a85"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/SKILL.md": {
+    "mtime": 1785252389.2486503,
+    "ast_hash": "0576bd87f8be7a9b7896931b3244303a",
+    "semantic_hash": "0576bd87f8be7a9b7896931b3244303a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/agents/openai.yml": {
+    "mtime": 1785252389.2490137,
+    "ast_hash": "a8a6560dc8e671f75672be86a079af15",
+    "semantic_hash": "a8a6560dc8e671f75672be86a079af15"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/cli.md": {
+    "mtime": 1785252389.2487469,
+    "ast_hash": "5eeb341a5865c3fd75e2a1717f34c668",
+    "semantic_hash": "5eeb341a5865c3fd75e2a1717f34c668"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/customization.md": {
+    "mtime": 1785252389.2487693,
+    "ast_hash": "4092f633550842b6e866233553a0c1cb",
+    "semantic_hash": "4092f633550842b6e866233553a0c1cb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/mcp.md": {
+    "mtime": 1785252389.2487469,
+    "ast_hash": "9e9e06615702b185d87e6713b5ceb464",
+    "semantic_hash": "9e9e06615702b185d87e6713b5ceb464"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/registry.md": {
+    "mtime": 1785252389.2487874,
+    "ast_hash": "a693ab1e548de5a07cff192b802ddc3c",
+    "semantic_hash": "a693ab1e548de5a07cff192b802ddc3c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/rules/base-vs-radix.md": {
+    "mtime": 1785252389.2490895,
+    "ast_hash": "4c692439c8df72ec0e93c997f82935ae",
+    "semantic_hash": "4c692439c8df72ec0e93c997f82935ae"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/rules/chat.md": {
+    "mtime": 1785252389.249108,
+    "ast_hash": "43b95727b2f6b05e22081d3f7fe5c729",
+    "semantic_hash": "43b95727b2f6b05e22081d3f7fe5c729"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/rules/composition.md": {
+    "mtime": 1785252389.249108,
+    "ast_hash": "09c5910294d50e6061377d047379af65",
+    "semantic_hash": "09c5910294d50e6061377d047379af65"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/rules/forms.md": {
+    "mtime": 1785252389.249108,
+    "ast_hash": "be26c2aade3ec3455ec07d3026e44789",
+    "semantic_hash": "be26c2aade3ec3455ec07d3026e44789"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/rules/icons.md": {
+    "mtime": 1785252389.2491484,
+    "ast_hash": "b56104107df95ef257fdf308b7ed4491",
+    "semantic_hash": "b56104107df95ef257fdf308b7ed4491"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/rules/styling.md": {
+    "mtime": 1785252389.2491746,
+    "ast_hash": "a2601e13ef35777bb3aa348b41add6f7",
+    "semantic_hash": "a2601e13ef35777bb3aa348b41add6f7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/tailwindcss-advanced-layouts/SKILL.md": {
+    "mtime": 1785252530.1201544,
+    "ast_hash": "c72c761f221c340052013be59cd75784",
+    "semantic_hash": "c72c761f221c340052013be59cd75784"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-animation/SKILL.md": {
+    "mtime": 1785253026.1124747,
+    "ast_hash": "889523a4b978de3a3b8c20028c9a87f4",
+    "semantic_hash": "889523a4b978de3a3b8c20028c9a87f4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-fundamentals/SKILL.md": {
+    "mtime": 1785253026.1216176,
+    "ast_hash": "426f34a84e30434814b73b888677cd87",
+    "semantic_hash": "426f34a84e30434814b73b888677cd87"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-geometry/SKILL.md": {
+    "mtime": 1785253026.13023,
+    "ast_hash": "44f615adaf9af4da6200e2833088fc2b",
+    "semantic_hash": "44f615adaf9af4da6200e2833088fc2b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-interaction/SKILL.md": {
+    "mtime": 1785253026.1388233,
+    "ast_hash": "f21d928de97c85b259a2441f600de054",
+    "semantic_hash": "f21d928de97c85b259a2441f600de054"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-lighting/SKILL.md": {
+    "mtime": 1785253026.1475337,
+    "ast_hash": "552d5331ad2f789fd75b98ac70b9f3d4",
+    "semantic_hash": "552d5331ad2f789fd75b98ac70b9f3d4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-loaders/SKILL.md": {
+    "mtime": 1785253026.1569138,
+    "ast_hash": "de93ea2eca83756ca58c695121d3ccfe",
+    "semantic_hash": "de93ea2eca83756ca58c695121d3ccfe"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-materials/SKILL.md": {
+    "mtime": 1785253026.1653621,
+    "ast_hash": "ba143d4be6aa2d2534c90a81bff8fb82",
+    "semantic_hash": "ba143d4be6aa2d2534c90a81bff8fb82"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-postprocessing/SKILL.md": {
+    "mtime": 1785253026.1738465,
+    "ast_hash": "2b92954c287e43b638d55111179ac64b",
+    "semantic_hash": "2b92954c287e43b638d55111179ac64b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-shaders/SKILL.md": {
+    "mtime": 1785253026.1823547,
+    "ast_hash": "fb7afc360f8f09f628f27bab103bc90f",
+    "semantic_hash": "fb7afc360f8f09f628f27bab103bc90f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-textures/SKILL.md": {
+    "mtime": 1785253026.1913052,
+    "ast_hash": "a9f9e1949599617a5a803bcbc7afbad3",
+    "semantic_hash": "a9f9e1949599617a5a803bcbc7afbad3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/AGENTS.md": {
+    "mtime": 1785253171.439698,
+    "ast_hash": "c548947809d491268b100a45cd2da745",
+    "semantic_hash": "c548947809d491268b100a45cd2da745"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/CONTRIBUTING.md": {
+    "mtime": 1785253171.440698,
+    "ast_hash": "edd4e874da0e09d30c38edc90021f3a8",
+    "semantic_hash": "edd4e874da0e09d30c38edc90021f3a8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/README.md": {
+    "mtime": 1785253171.450033,
+    "ast_hash": "3b81f88a695a25dc72f8968f57b0099a",
+    "semantic_hash": "3b81f88a695a25dc72f8968f57b0099a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/SKILL.md": {
+    "mtime": 1785253171.458731,
+    "ast_hash": "3004ff145ea50b74278a5a51a9d4cc87",
+    "semantic_hash": "3004ff145ea50b74278a5a51a9d4cc87"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/candidates.md": {
+    "mtime": 1785253171.450033,
+    "ast_hash": "36c828877d4239f1a68f50be90a0029f",
+    "semantic_hash": "36c828877d4239f1a68f50be90a0029f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/data-collection.md": {
+    "mtime": 1785253171.4504251,
+    "ast_hash": "ac3de32b03b6f19ccfb8186695c5a065",
+    "semantic_hash": "ac3de32b03b6f19ccfb8186695c5a065"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/doctrine.md": {
+    "mtime": 1785253171.450699,
+    "ast_hash": "557fedf75a91a396977aa9135b5ac909",
+    "semantic_hash": "557fedf75a91a396977aa9135b5ac909"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/observability-plus.md": {
+    "mtime": 1785253171.4508023,
+    "ast_hash": "75b3fb11b1cbc73d5cfa44e4e7e8af25",
+    "semantic_hash": "75b3fb11b1cbc73d5cfa44e4e7e8af25"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/playbooks/README.md": {
+    "mtime": 1785253171.451408,
+    "ast_hash": "38e40783767b998712937ffafdfa2b31",
+    "semantic_hash": "38e40783767b998712937ffafdfa2b31"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/playbooks/ai-application.md": {
+    "mtime": 1785253171.4508023,
+    "ast_hash": "e8a6b82a43bed3cbb7b9f3b491058469",
+    "semantic_hash": "e8a6b82a43bed3cbb7b9f3b491058469"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/playbooks/api-service.md": {
+    "mtime": 1785253171.4510152,
+    "ast_hash": "1b264c3cb4eee14f7db6cd1f7f279b83",
+    "semantic_hash": "1b264c3cb4eee14f7db6cd1f7f279b83"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/playbooks/content-site.md": {
+    "mtime": 1785253171.4511156,
+    "ast_hash": "cf86a2150a2cafc354301475762dc6db",
+    "semantic_hash": "cf86a2150a2cafc354301475762dc6db"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/playbooks/ecommerce.md": {
+    "mtime": 1785253171.451214,
+    "ast_hash": "eeb87a5f1fd4b446f44b10ae49ca455b",
+    "semantic_hash": "eeb87a5f1fd4b446f44b10ae49ca455b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/playbooks/marketing.md": {
+    "mtime": 1785253171.45131,
+    "ast_hash": "3c36ca77f9e04032633d4ad7688dfe55",
+    "semantic_hash": "3c36ca77f9e04032633d4ad7688dfe55"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/playbooks/saas.md": {
+    "mtime": 1785253171.4515047,
+    "ast_hash": "506a0acf7f039a5b8a3dd0df8cb6a995",
+    "semantic_hash": "506a0acf7f039a5b8a3dd0df8cb6a995"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/playbooks/sveltekit.md": {
+    "mtime": 1785253171.4516065,
+    "ast_hash": "294da8cca4eae9aeb14511f93ebfb33b",
+    "semantic_hash": "294da8cca4eae9aeb14511f93ebfb33b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/recommendations.md": {
+    "mtime": 1785253171.4516065,
+    "ast_hash": "ab03dd1b132aa49617ff97194cd162ac",
+    "semantic_hash": "ab03dd1b132aa49617ff97194cd162ac"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/scanner-patterns.md": {
+    "mtime": 1785253171.451698,
+    "ast_hash": "1f6b850d2cb815cdd77929bba0ca1f60",
+    "semantic_hash": "1f6b850d2cb815cdd77929bba0ca1f60"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/scoring.md": {
+    "mtime": 1785253171.4519565,
+    "ast_hash": "069183aa8901c91cca0e2beb1d3b79c3",
+    "semantic_hash": "069183aa8901c91cca0e2beb1d3b79c3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/README.md": {
+    "mtime": 1785253171.4557316,
+    "ast_hash": "b6d96d3eca36725dc0cf89e26047330c",
+    "semantic_hash": "b6d96d3eca36725dc0cf89e26047330c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/astro-edge-middleware-scope.md": {
+    "mtime": 1785253171.4519565,
+    "ast_hash": "83acf1a1e3ec6ef8b6b3fce3a7a015e2",
+    "semantic_hash": "83acf1a1e3ec6ef8b6b3fce3a7a015e2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/astro-output-mode-and-isr.md": {
+    "mtime": 1785253171.4521592,
+    "ast_hash": "1d4e263a33c98fe5147101e8543f108d",
+    "semantic_hash": "1d4e263a33c98fe5147101e8543f108d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/auth-preserving-parallelization.md": {
+    "mtime": 1785253171.4522557,
+    "ast_hash": "8c71e95cd4df9bcc58060fba190e774c",
+    "semantic_hash": "8c71e95cd4df9bcc58060fba190e774c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/bot-protection-product-guardrails.md": {
+    "mtime": 1785253171.4523523,
+    "ast_hash": "88602781f17cb922bdcbcfee997d1965",
+    "semantic_hash": "88602781f17cb922bdcbcfee997d1965"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/build-minutes-monorepo-fanout.md": {
+    "mtime": 1785253171.4524484,
+    "ast_hash": "10cb1ce35b66314408b363abcaf6eade",
+    "semantic_hash": "10cb1ce35b66314408b363abcaf6eade"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/cache-components-static-shell-boundaries.md": {
+    "mtime": 1785253171.4525428,
+    "ast_hash": "ee9d881970a1aeb314edec7d2cd8f4a9",
+    "semantic_hash": "ee9d881970a1aeb314edec7d2cd8f4a9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/cache-components-suspense-dedupe-pitfall.md": {
+    "mtime": 1785253171.452637,
+    "ast_hash": "2a9936eb4e8eb1bf1fa86e92b39bdaee",
+    "semantic_hash": "2a9936eb4e8eb1bf1fa86e92b39bdaee"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/cdn-cache-auth-safety.md": {
+    "mtime": 1785253171.4527316,
+    "ast_hash": "cfe8f2180c5ecdec210b333cfd7be60c",
+    "semantic_hash": "cfe8f2180c5ecdec210b333cfd7be60c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/cold-start-initialization-bundle.md": {
+    "mtime": 1785253171.4528737,
+    "ast_hash": "9785f0643358284b6c80ec02714afb99",
+    "semantic_hash": "9785f0643358284b6c80ec02714afb99"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/core-web-vitals-client-bottlenecks.md": {
+    "mtime": 1785253171.452979,
+    "ast_hash": "05cc43ebf92360ba71d089dda1a859d6",
+    "semantic_hash": "05cc43ebf92360ba71d089dda1a859d6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/database-egress-pooling-region.md": {
+    "mtime": 1785253171.4530768,
+    "ast_hash": "46aa8e5e1ebb3e37b3fedf4767bc1c8d",
+    "semantic_hash": "46aa8e5e1ebb3e37b3fedf4767bc1c8d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/dynamic-rendering-traps.md": {
+    "mtime": 1785253171.4531744,
+    "ast_hash": "93de8b4141d413455911f3b0d36d324d",
+    "semantic_hash": "93de8b4141d413455911f3b0d36d324d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/external-api-critical-path-platform.md": {
+    "mtime": 1785253171.4532745,
+    "ast_hash": "a1f01e7b62f3a8e0d2b7ecb35d072108",
+    "semantic_hash": "a1f01e7b62f3a8e0d2b7ecb35d072108"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/external-api-critical-path.md": {
+    "mtime": 1785253171.4533718,
+    "ast_hash": "9099ef3c3ad113cd615bbe797d37c12f",
+    "semantic_hash": "9099ef3c3ad113cd615bbe797d37c12f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/fast-data-transfer-payloads.md": {
+    "mtime": 1785253171.4534707,
+    "ast_hash": "d2828aeb0084ed7796c7ee79325e4709",
+    "semantic_hash": "d2828aeb0084ed7796c7ee79325e4709"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/fluid-compute-caveats.md": {
+    "mtime": 1785253171.4535658,
+    "ast_hash": "c38d06d869f74ac49ec151be0e1623f8",
+    "semantic_hash": "c38d06d869f74ac49ec151be0e1623f8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/function-duration-io-and-after.md": {
+    "mtime": 1785253171.4536657,
+    "ast_hash": "ea7a0aa2cf6dc2965930064092d3c1c0",
+    "semantic_hash": "ea7a0aa2cf6dc2965930064092d3c1c0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/function-invocation-reduction.md": {
+    "mtime": 1785253171.4537654,
+    "ast_hash": "08a6bee7c1d97e78e68f83cbd0d9e9f3",
+    "semantic_hash": "08a6bee7c1d97e78e68f83cbd0d9e9f3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/function-region-misconfiguration-ttfb.md": {
+    "mtime": 1785253171.4539087,
+    "ast_hash": "1fca083069a94c53ad8af5897aa8c4f9",
+    "semantic_hash": "1fca083069a94c53ad8af5897aa8c4f9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/image-optimization-cost-control.md": {
+    "mtime": 1785253171.454056,
+    "ast_hash": "41eeac94aecd292e9966d904698840bd",
+    "semantic_hash": "41eeac94aecd292e9966d904698840bd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/isr-revalidation-static-generation.md": {
+    "mtime": 1785253171.4541728,
+    "ast_hash": "ea73104b6cdfb2b0dbfabe3f5189d36f",
+    "semantic_hash": "ea73104b6cdfb2b0dbfabe3f5189d36f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/middleware-proxy-edge-cost.md": {
+    "mtime": 1785253171.4542816,
+    "ast_hash": "651ec158b522e9e6a04fe1b2d600c00c",
+    "semantic_hash": "651ec158b522e9e6a04fe1b2d600c00c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/next-fetch-revalidate-floor.md": {
+    "mtime": 1785253171.4543974,
+    "ast_hash": "ad9f0af0630c982544d743617a531722",
+    "semantic_hash": "ad9f0af0630c982544d743617a531722"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/next-font-cls-self-hosting.md": {
+    "mtime": 1785253171.45451,
+    "ast_hash": "2d6c1addae6cba6966d73a714dd96ecb",
+    "semantic_hash": "2d6c1addae6cba6966d73a714dd96ecb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/next-heavy-ui-lazy-load-boundaries.md": {
+    "mtime": 1785253171.4546173,
+    "ast_hash": "7a443cccd5b085554029249f041ad893",
+    "semantic_hash": "7a443cccd5b085554029249f041ad893"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/next-image-lcp-preload-sizes.md": {
+    "mtime": 1785253171.4547203,
+    "ast_hash": "207450610d64cb368ae834d0d80b4ae6",
+    "semantic_hash": "207450610d64cb368ae834d0d80b4ae6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/next-route-handler-get-cache-defaults.md": {
+    "mtime": 1785253171.4548357,
+    "ast_hash": "0ba364c7af7fa96633df888cd1d99653",
+    "semantic_hash": "0ba364c7af7fa96633df888cd1d99653"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/next-script-third-party-strategy.md": {
+    "mtime": 1785253171.454953,
+    "ast_hash": "7816b4963eeb460f9be6eb6999398ed9",
+    "semantic_hash": "7816b4963eeb460f9be6eb6999398ed9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/nextjs-version-cache-semantics.md": {
+    "mtime": 1785253171.4551878,
+    "ast_hash": "4ee9a56442df8ffd68a392a855044347",
+    "semantic_hash": "4ee9a56442df8ffd68a392a855044347"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/not-found-catchall-request-waste.md": {
+    "mtime": 1785253171.4552913,
+    "ast_hash": "63bb220bdb2d1099e8c4864cee9978c6",
+    "semantic_hash": "63bb220bdb2d1099e8c4864cee9978c6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/nuxt-route-rules-cache-isr.md": {
+    "mtime": 1785253171.4553938,
+    "ast_hash": "99223476ee2c97b465105e49f2d743cb",
+    "semantic_hash": "99223476ee2c97b465105e49f2d743cb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/observability-events-cost-attribution.md": {
+    "mtime": 1785253171.4554968,
+    "ast_hash": "ba32debf8256f23be68f410eb7304e4d",
+    "semantic_hash": "ba32debf8256f23be68f410eb7304e4d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/post-response-work-waituntil.md": {
+    "mtime": 1785253171.4556289,
+    "ast_hash": "b866b921acf4422e51b71e637fd11934",
+    "semantic_hash": "b866b921acf4422e51b71e637fd11934"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/route-error-durable-offload.md": {
+    "mtime": 1785253171.4558377,
+    "ast_hash": "a68a6bcc0e822aebc2dea37a573d7513",
+    "semantic_hash": "a68a6bcc0e822aebc2dea37a573d7513"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/route-error-runtime-limits.md": {
+    "mtime": 1785253171.455943,
+    "ast_hash": "f56972293da723c05ce6db807b68f6ae",
+    "semantic_hash": "f56972293da723c05ce6db807b68f6ae"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/runtime-cache-reusable-data.md": {
+    "mtime": 1785253171.4560456,
+    "ast_hash": "a6b18061833e015b43a3874189e68116",
+    "semantic_hash": "a6b18061833e015b43a3874189e68116"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/sveltekit-isr-prerender-safety.md": {
+    "mtime": 1785253171.4561555,
+    "ast_hash": "5d13712af56abdf69d4d5179c3eac5f8",
+    "semantic_hash": "5d13712af56abdf69d4d5179c3eac5f8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/sveltekit-split-cold-start-tradeoff.md": {
+    "mtime": 1785253171.4562702,
+    "ast_hash": "059a23adfcc098033001aee7d077fc7c",
+    "semantic_hash": "059a23adfcc098033001aee7d077fc7c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/usage-spike-triage.md": {
+    "mtime": 1785253171.4564035,
+    "ast_hash": "887ac2e9ab3b438924c11cafb90d80fa",
+    "semantic_hash": "887ac2e9ab3b438924c11cafb90d80fa"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/use-cache-date-stamp-isr-write-amplifier.md": {
+    "mtime": 1785253171.4565191,
+    "ast_hash": "268e14dfae67c84de16bcbed4e30b1ea",
+    "semantic_hash": "268e14dfae67c84de16bcbed4e30b1ea"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/use-cache-remote-shared-origin-data.md": {
+    "mtime": 1785253171.456622,
+    "ast_hash": "d7d6fc890fd4ef116219a18d331a6422",
+    "semantic_hash": "d7d6fc890fd4ef116219a18d331a6422"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/support-topics/workflow-resumable-stream-routes.md": {
+    "mtime": 1785253171.4567251,
+    "ast_hash": "630e048528a31c0437048cfe2cd58bd6",
+    "semantic_hash": "630e048528a31c0437048cfe2cd58bd6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/verification.md": {
+    "mtime": 1785253171.4567251,
+    "ast_hash": "8a6f7bbb51103f644d7464ccc3cda5bc",
+    "semantic_hash": "8a6f7bbb51103f644d7464ccc3cda5bc"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/references/voice.md": {
+    "mtime": 1785253171.4569695,
+    "ast_hash": "069a5b7210e6a4ae9f90fc88a1e064b1",
+    "semantic_hash": "069a5b7210e6a4ae9f90fc88a1e064b1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/AGENTS.md": {
+    "mtime": 1785253082.5043051,
+    "ast_hash": "fc8f9b0218d2173112a8418bf9d8abe7",
+    "semantic_hash": "fc8f9b0218d2173112a8418bf9d8abe7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/README.md": {
+    "mtime": 1785253082.5043051,
+    "ast_hash": "abb5236c535db0bf7ce6f38c8998bc47",
+    "semantic_hash": "abb5236c535db0bf7ce6f38c8998bc47"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/SKILL.md": {
+    "mtime": 1785253082.5132222,
+    "ast_hash": "995a667ef0b53598f56ff897d9e4b334",
+    "semantic_hash": "995a667ef0b53598f56ff897d9e4b334"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/_sections.md": {
+    "mtime": 1785253082.5043051,
+    "ast_hash": "b8c110b45145ded6919562772afe067c",
+    "semantic_hash": "b8c110b45145ded6919562772afe067c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/_template.md": {
+    "mtime": 1785253082.5052462,
+    "ast_hash": "a0d76a2f87f3f80e9a8f3a2a1054aaaf",
+    "semantic_hash": "a0d76a2f87f3f80e9a8f3a2a1054aaaf"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/advanced-effect-event-deps.md": {
+    "mtime": 1785253082.5053523,
+    "ast_hash": "3a0e314bb9576bab61f68d5de5afaf3e",
+    "semantic_hash": "3a0e314bb9576bab61f68d5de5afaf3e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/advanced-event-handler-refs.md": {
+    "mtime": 1785253082.5054603,
+    "ast_hash": "f2a0d125f3773bfda91e187fa5bed48a",
+    "semantic_hash": "f2a0d125f3773bfda91e187fa5bed48a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/advanced-init-once.md": {
+    "mtime": 1785253082.5055654,
+    "ast_hash": "0100519098b834e69a3515657a39bdc9",
+    "semantic_hash": "0100519098b834e69a3515657a39bdc9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/advanced-use-latest.md": {
+    "mtime": 1785253082.5056698,
+    "ast_hash": "60309961293388c9b9e9fd4e0db344e3",
+    "semantic_hash": "60309961293388c9b9e9fd4e0db344e3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/async-api-routes.md": {
+    "mtime": 1785253082.5057745,
+    "ast_hash": "344fa543b37e303660404e1ef3a4638b",
+    "semantic_hash": "344fa543b37e303660404e1ef3a4638b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/async-cheap-condition-before-await.md": {
+    "mtime": 1785253082.5058854,
+    "ast_hash": "96352f626f328e15a6213d485e29e36f",
+    "semantic_hash": "96352f626f328e15a6213d485e29e36f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/async-defer-await.md": {
+    "mtime": 1785253082.5059927,
+    "ast_hash": "235a6b5760c2e4843d778167e462cb0e",
+    "semantic_hash": "235a6b5760c2e4843d778167e462cb0e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/async-dependencies.md": {
+    "mtime": 1785253082.5060995,
+    "ast_hash": "9c5622d97b20b9e0cb79455b4322061a",
+    "semantic_hash": "9c5622d97b20b9e0cb79455b4322061a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/async-parallel.md": {
+    "mtime": 1785253082.5062044,
+    "ast_hash": "a0e06a8e9985cdff4ece0312d8ee35db",
+    "semantic_hash": "a0e06a8e9985cdff4ece0312d8ee35db"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/async-suspense-boundaries.md": {
+    "mtime": 1785253082.5063205,
+    "ast_hash": "dbb2fc80721ca1ce32426f43219d314f",
+    "semantic_hash": "dbb2fc80721ca1ce32426f43219d314f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/bundle-analyzable-paths.md": {
+    "mtime": 1785253082.5064373,
+    "ast_hash": "8cfe6e284cafd2be33f09c6a1abc78fd",
+    "semantic_hash": "8cfe6e284cafd2be33f09c6a1abc78fd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/bundle-barrel-imports.md": {
+    "mtime": 1785253082.506546,
+    "ast_hash": "fcba301df7f11c6847dca5962ac78828",
+    "semantic_hash": "fcba301df7f11c6847dca5962ac78828"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/bundle-conditional.md": {
+    "mtime": 1785253082.506695,
+    "ast_hash": "585be2b6fc418c766e5b91cc2141d334",
+    "semantic_hash": "585be2b6fc418c766e5b91cc2141d334"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/bundle-defer-third-party.md": {
+    "mtime": 1785253082.5068061,
+    "ast_hash": "6d4d1d4fac411f724071428dd0bc93ba",
+    "semantic_hash": "6d4d1d4fac411f724071428dd0bc93ba"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/bundle-dynamic-imports.md": {
+    "mtime": 1785253082.5069234,
+    "ast_hash": "72d89583306887810f67e9f7860f06af",
+    "semantic_hash": "72d89583306887810f67e9f7860f06af"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/bundle-preload.md": {
+    "mtime": 1785253082.5070317,
+    "ast_hash": "924ec7e7502ca042070326d38e88f8cd",
+    "semantic_hash": "924ec7e7502ca042070326d38e88f8cd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/client-event-listeners.md": {
+    "mtime": 1785253082.5071847,
+    "ast_hash": "71062add972f9735348b7ae77e778eb8",
+    "semantic_hash": "71062add972f9735348b7ae77e778eb8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/client-localstorage-schema.md": {
+    "mtime": 1785253082.507293,
+    "ast_hash": "982a459b07cbec2f8386e526b924c339",
+    "semantic_hash": "982a459b07cbec2f8386e526b924c339"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/client-passive-event-listeners.md": {
+    "mtime": 1785253082.5073986,
+    "ast_hash": "3853533fd5f49fa2fc98296f9c34d84f",
+    "semantic_hash": "3853533fd5f49fa2fc98296f9c34d84f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/client-swr-dedup.md": {
+    "mtime": 1785253082.5075064,
+    "ast_hash": "e565fcba7836d339ca4707aad6fdaa4a",
+    "semantic_hash": "e565fcba7836d339ca4707aad6fdaa4a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-batch-dom-css.md": {
+    "mtime": 1785253082.5076132,
+    "ast_hash": "869dbc06a931ccfb899b739316c348af",
+    "semantic_hash": "869dbc06a931ccfb899b739316c348af"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-cache-function-results.md": {
+    "mtime": 1785253082.5077178,
+    "ast_hash": "5d641ce87ef753d59e3205244e2851a1",
+    "semantic_hash": "5d641ce87ef753d59e3205244e2851a1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-cache-property-access.md": {
+    "mtime": 1785253082.5078306,
+    "ast_hash": "5b4ae3cd853b92222a8fd8c8d8202426",
+    "semantic_hash": "5b4ae3cd853b92222a8fd8c8d8202426"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-cache-storage.md": {
+    "mtime": 1785253082.5079458,
+    "ast_hash": "828f260566ff92df56089321fa41c116",
+    "semantic_hash": "828f260566ff92df56089321fa41c116"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-combine-iterations.md": {
+    "mtime": 1785253082.5080588,
+    "ast_hash": "4f241532133637fee75304d40f016713",
+    "semantic_hash": "4f241532133637fee75304d40f016713"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-early-exit.md": {
+    "mtime": 1785253082.5081708,
+    "ast_hash": "d300cb3e57255029e446bdfa49dc4074",
+    "semantic_hash": "d300cb3e57255029e446bdfa49dc4074"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-flatmap-filter.md": {
+    "mtime": 1785253082.5082777,
+    "ast_hash": "161d9d8b444e5ec9cb58bffb0e1b76cd",
+    "semantic_hash": "161d9d8b444e5ec9cb58bffb0e1b76cd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-hoist-regexp.md": {
+    "mtime": 1785253082.508388,
+    "ast_hash": "ced4609a5916db47bbaccfcc3f2dcdbb",
+    "semantic_hash": "ced4609a5916db47bbaccfcc3f2dcdbb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-index-maps.md": {
+    "mtime": 1785253082.5084982,
+    "ast_hash": "db5bcfde02e1ce9f41d6ed1f5aafc8c5",
+    "semantic_hash": "db5bcfde02e1ce9f41d6ed1f5aafc8c5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-length-check-first.md": {
+    "mtime": 1785253082.5086067,
+    "ast_hash": "2ba208759dd91578f1085c28e6a92ce9",
+    "semantic_hash": "2ba208759dd91578f1085c28e6a92ce9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-min-max-loop.md": {
+    "mtime": 1785253082.508719,
+    "ast_hash": "82f654d27529dd80be7ae33d45dcdf8c",
+    "semantic_hash": "82f654d27529dd80be7ae33d45dcdf8c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-request-idle-callback.md": {
+    "mtime": 1785253082.508841,
+    "ast_hash": "91d7e7fca676efb7cecb4ccff1eaec01",
+    "semantic_hash": "91d7e7fca676efb7cecb4ccff1eaec01"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-set-map-lookups.md": {
+    "mtime": 1785253082.5089514,
+    "ast_hash": "59a278e21ecd322bff566ba4ad7f5a30",
+    "semantic_hash": "59a278e21ecd322bff566ba4ad7f5a30"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/js-tosorted-immutable.md": {
+    "mtime": 1785253082.509064,
+    "ast_hash": "fd0804905877b6b7b1858e5df1b5f3c4",
+    "semantic_hash": "fd0804905877b6b7b1858e5df1b5f3c4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-activity.md": {
+    "mtime": 1785253082.5091765,
+    "ast_hash": "b66bde1377564aa196ba15fc94215cd3",
+    "semantic_hash": "b66bde1377564aa196ba15fc94215cd3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-animate-svg-wrapper.md": {
+    "mtime": 1785253082.509285,
+    "ast_hash": "7301cbe48bf0e1c44934847861384d03",
+    "semantic_hash": "7301cbe48bf0e1c44934847861384d03"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-conditional-render.md": {
+    "mtime": 1785253082.509395,
+    "ast_hash": "7aa6112d7544d55147e183b84add9c31",
+    "semantic_hash": "7aa6112d7544d55147e183b84add9c31"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-content-visibility.md": {
+    "mtime": 1785253082.5095057,
+    "ast_hash": "a4ec0125d3a9d79ac2ab5f7a7b5b4d7d",
+    "semantic_hash": "a4ec0125d3a9d79ac2ab5f7a7b5b4d7d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-hoist-jsx.md": {
+    "mtime": 1785253082.5096152,
+    "ast_hash": "00519c11155c5c2a6f493d7980211a71",
+    "semantic_hash": "00519c11155c5c2a6f493d7980211a71"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-hydration-no-flicker.md": {
+    "mtime": 1785253082.5097272,
+    "ast_hash": "a33ebc96d26525f94c460342d913e47a",
+    "semantic_hash": "a33ebc96d26525f94c460342d913e47a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-hydration-suppress-warning.md": {
+    "mtime": 1785253082.509847,
+    "ast_hash": "23bc895f5697c19a59712bf19474ec12",
+    "semantic_hash": "23bc895f5697c19a59712bf19474ec12"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-resource-hints.md": {
+    "mtime": 1785253082.5099595,
+    "ast_hash": "a612b2d1d86d1b8205b92ff7dfd81eb8",
+    "semantic_hash": "a612b2d1d86d1b8205b92ff7dfd81eb8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-script-defer-async.md": {
+    "mtime": 1785253082.5100715,
+    "ast_hash": "d62596aed565dd3ad7bddd38bc8f7798",
+    "semantic_hash": "d62596aed565dd3ad7bddd38bc8f7798"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-svg-precision.md": {
+    "mtime": 1785253082.5101807,
+    "ast_hash": "1b880754ee449c52ccc725481f8b2e90",
+    "semantic_hash": "1b880754ee449c52ccc725481f8b2e90"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rendering-usetransition-loading.md": {
+    "mtime": 1785253082.5102892,
+    "ast_hash": "3cea04ec76a76183cebc6571ac6365a2",
+    "semantic_hash": "3cea04ec76a76183cebc6571ac6365a2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-defer-reads.md": {
+    "mtime": 1785253082.5104005,
+    "ast_hash": "2b754062eb7b203632859f6515ed3561",
+    "semantic_hash": "2b754062eb7b203632859f6515ed3561"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-dependencies.md": {
+    "mtime": 1785253082.5105119,
+    "ast_hash": "ad0e42cd0616237f62f8a5abbc2138bc",
+    "semantic_hash": "ad0e42cd0616237f62f8a5abbc2138bc"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-derived-state-no-effect.md": {
+    "mtime": 1785253082.5106196,
+    "ast_hash": "c83ba3c8ea58015fd30072790a4959c4",
+    "semantic_hash": "c83ba3c8ea58015fd30072790a4959c4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-derived-state.md": {
+    "mtime": 1785253082.5107296,
+    "ast_hash": "fadd31941e355786cb0cc7bba3c672fd",
+    "semantic_hash": "fadd31941e355786cb0cc7bba3c672fd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-functional-setstate.md": {
+    "mtime": 1785253082.510852,
+    "ast_hash": "188c0b949d23c11885914c573f4a770a",
+    "semantic_hash": "188c0b949d23c11885914c573f4a770a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-lazy-state-init.md": {
+    "mtime": 1785253082.5109775,
+    "ast_hash": "6f9fc3d826cea2ca484912256149b077",
+    "semantic_hash": "6f9fc3d826cea2ca484912256149b077"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-memo-with-default-value.md": {
+    "mtime": 1785253082.5111022,
+    "ast_hash": "9bfa45660e0a4d4f180e1d12d9ed44ea",
+    "semantic_hash": "9bfa45660e0a4d4f180e1d12d9ed44ea"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-memo.md": {
+    "mtime": 1785253082.5112185,
+    "ast_hash": "f0decabf1e4cf032c36f0977c81167b7",
+    "semantic_hash": "f0decabf1e4cf032c36f0977c81167b7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-move-effect-to-event.md": {
+    "mtime": 1785253082.5113323,
+    "ast_hash": "599463fe624afd8822ba2bfa7c0138d5",
+    "semantic_hash": "599463fe624afd8822ba2bfa7c0138d5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-no-inline-components.md": {
+    "mtime": 1785253082.5114431,
+    "ast_hash": "713855e0060cfe2ce549d08ea77e1af6",
+    "semantic_hash": "713855e0060cfe2ce549d08ea77e1af6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-simple-expression-in-memo.md": {
+    "mtime": 1785253082.5115554,
+    "ast_hash": "42c37552160cff86a0fcbd93a27aa74e",
+    "semantic_hash": "42c37552160cff86a0fcbd93a27aa74e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-split-combined-hooks.md": {
+    "mtime": 1785253082.5116668,
+    "ast_hash": "b7485878ff82ce8468078a31fc1b7f19",
+    "semantic_hash": "b7485878ff82ce8468078a31fc1b7f19"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-transitions.md": {
+    "mtime": 1785253082.5117793,
+    "ast_hash": "3f275bbfb966fcb39c554ad959fdf016",
+    "semantic_hash": "3f275bbfb966fcb39c554ad959fdf016"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-use-deferred-value.md": {
+    "mtime": 1785253082.5119019,
+    "ast_hash": "913dc783397142c25ec997b5dc11245b",
+    "semantic_hash": "913dc783397142c25ec997b5dc11245b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/rerender-use-ref-transient-values.md": {
+    "mtime": 1785253082.5120153,
+    "ast_hash": "24d2e82617e2da4207afaf049e1314f3",
+    "semantic_hash": "24d2e82617e2da4207afaf049e1314f3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-after-nonblocking.md": {
+    "mtime": 1785253082.5121353,
+    "ast_hash": "c88a79384f87826bf1b20aa3637093a5",
+    "semantic_hash": "c88a79384f87826bf1b20aa3637093a5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-auth-actions.md": {
+    "mtime": 1785253082.512258,
+    "ast_hash": "d8691820d666e5dd9094ccc6996398e3",
+    "semantic_hash": "d8691820d666e5dd9094ccc6996398e3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-cache-lru.md": {
+    "mtime": 1785253082.5123835,
+    "ast_hash": "723195ea460bfbc4d43b4eb0c47b246b",
+    "semantic_hash": "723195ea460bfbc4d43b4eb0c47b246b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-cache-react.md": {
+    "mtime": 1785253082.512507,
+    "ast_hash": "bc168ee66c4378854c7aa23cb9ca1369",
+    "semantic_hash": "bc168ee66c4378854c7aa23cb9ca1369"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-dedup-props.md": {
+    "mtime": 1785253082.512627,
+    "ast_hash": "86bf6f2d562ca98bca778a5b9d2f0251",
+    "semantic_hash": "86bf6f2d562ca98bca778a5b9d2f0251"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-hoist-static-io.md": {
+    "mtime": 1785253082.5127463,
+    "ast_hash": "05789c4ba35f68cc0ed6deba3078f7ab",
+    "semantic_hash": "05789c4ba35f68cc0ed6deba3078f7ab"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-no-shared-module-state.md": {
+    "mtime": 1785253082.5128872,
+    "ast_hash": "7733faf82c146008e8f1c65660bac4bb",
+    "semantic_hash": "7733faf82c146008e8f1c65660bac4bb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-parallel-fetching.md": {
+    "mtime": 1785253082.5130033,
+    "ast_hash": "1a36cf0b49a1a498fc1150afbf7a42c2",
+    "semantic_hash": "1a36cf0b49a1a498fc1150afbf7a42c2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-parallel-nested-fetching.md": {
+    "mtime": 1785253082.5131125,
+    "ast_hash": "eaa7835a15d41842406acc34002f0d6c",
+    "semantic_hash": "eaa7835a15d41842406acc34002f0d6c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-react-best-practices/rules/server-serialization.md": {
+    "mtime": 1785253082.5132222,
+    "ast_hash": "e6d34426614852685f43609dd9e3b250",
+    "semantic_hash": "e6d34426614852685f43609dd9e3b250"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/web-design-guidelines/SKILL.md": {
+    "mtime": 1785251847.8011518,
+    "ast_hash": "98087aedd18375666dbb093c859b2949",
+    "semantic_hash": "98087aedd18375666dbb093c859b2949"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.github/copilot-instructions.md": {
+    "mtime": 1785253616.5957115,
+    "ast_hash": "7ab20439f6c2c65f1b3bd53e1a1bf389",
+    "semantic_hash": "7ab20439f6c2c65f1b3bd53e1a1bf389"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.github/instructions/blog-schemas.instructions.md": {
+    "mtime": 1785251804.6763518,
+    "ast_hash": "b69795d2fa979c0e9181a2aef1155805",
+    "semantic_hash": "b69795d2fa979c0e9181a2aef1155805"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.github/instructions/drizzle-neon.instructions.md": {
+    "mtime": 1785251804.6764517,
+    "ast_hash": "d4210898b778752a91755b76d6bcd48c",
+    "semantic_hash": "d4210898b778752a91755b76d6bcd48c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.github/instructions/rtl-logical-props.instructions.md": {
+    "mtime": 1785251804.6765532,
+    "ast_hash": "7d744b87d580c2ab5c3a35ea7c1b4b79",
+    "semantic_hash": "7d744b87d580c2ab5c3a35ea7c1b4b79"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.github/prompts/phase-status.prompt.md": {
+    "mtime": 1785253369.5020711,
+    "ast_hash": "03f4610a91eb3dd0245e5fa61dfcf704",
+    "semantic_hash": "03f4610a91eb3dd0245e5fa61dfcf704"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.github/prompts/rtl-audit.prompt.md": {
+    "mtime": 1785253369.504464,
+    "ast_hash": "cb66d817b73511ab0ee32cf53d5534b1",
+    "semantic_hash": "cb66d817b73511ab0ee32cf53d5534b1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/AGENTS.md": {
+    "mtime": 1785253616.5957115,
+    "ast_hash": "7ab20439f6c2c65f1b3bd53e1a1bf389",
+    "semantic_hash": "7ab20439f6c2c65f1b3bd53e1a1bf389"
+  },
+  "/home/prokken-inc/Desktop/portfolio/CLAUDE.md": {
+    "mtime": 1785253616.5957115,
+    "ast_hash": "7ab20439f6c2c65f1b3bd53e1a1bf389",
+    "semantic_hash": "7ab20439f6c2c65f1b3bd53e1a1bf389"
+  },
+  "/home/prokken-inc/Desktop/portfolio/HASIBUL_ISLAM_RESUME.md": {
+    "mtime": 1785215034.0,
+    "ast_hash": "6fb7fef8e407dd591cfbe04649c3783a",
+    "semantic_hash": "6fb7fef8e407dd591cfbe04649c3783a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/PROJECT_CONTEXT.md": {
+    "mtime": 1785251896.8464649,
+    "ast_hash": "085dc2e17dbd1f501786a30690fe570f",
+    "semantic_hash": "085dc2e17dbd1f501786a30690fe570f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/README.md": {
+    "mtime": 1785251804.6769042,
+    "ast_hash": "a782a1ad577c46e58c5edc34bc58ca6b",
+    "semantic_hash": "a782a1ad577c46e58c5edc34bc58ca6b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/docs/BUILD_PLAN.md": {
+    "mtime": 1785257917.7560892,
+    "ast_hash": "24d265861fc8881c4b0d83f3c025fddf",
+    "semantic_hash": "24d265861fc8881c4b0d83f3c025fddf"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/assets/shadcn-small.png": {
+    "mtime": 1785252389.2490137,
+    "ast_hash": "72349c6b7f303e6be598a2196391291b",
+    "semantic_hash": "72349c6b7f303e6be598a2196391291b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/shadcn/assets/shadcn.png": {
+    "mtime": 1785252389.2490137,
+    "ast_hash": "cb56bf002d36bb860c3d320a23bd871a",
+    "semantic_hash": "cb56bf002d36bb860c3d320a23bd871a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/brand/reference.jpg": {
+    "mtime": 1781848588.0189831,
+    "ast_hash": "b13356d307bfccb5676ae2a7410225f1",
+    "semantic_hash": "b13356d307bfccb5676ae2a7410225f1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/file.svg": {
+    "mtime": 1785249276.2303677,
+    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
+    "semantic_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/globe.svg": {
+    "mtime": 1785249276.2306042,
+    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
+    "semantic_hash": "2aaafa6a49b6563925fe440891e32717"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/next.svg": {
+    "mtime": 1785249276.2306368,
+    "ast_hash": "8e061864f388b47f33a1c3780831193e",
+    "semantic_hash": "8e061864f388b47f33a1c3780831193e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/vercel.svg": {
+    "mtime": 1785249276.2306368,
+    "ast_hash": "c0af2f507b369b085b35ef4bbe3bcf1e",
+    "semantic_hash": "c0af2f507b369b085b35ef4bbe3bcf1e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/window.svg": {
+    "mtime": 1785249276.2306042,
+    "ast_hash": "a2760511c65806022ad20adf74370ff3",
+    "semantic_hash": "a2760511c65806022ad20adf74370ff3"
+  }
+}

@@ -1,0 +1,1 @@
+{"nodes": [{"id": "server_parallel_nested_fetching_rule", "label": "Parallel Nested Data Fetching", "file_type": "document", "source_file": ".agents/skills/vercel-react-best-practices/rules/server-parallel-nested-fetching.md", "source_location": null, "source_url": null, "captured_at": null, "author": "vercel", "contributor": null}], "edges": [], "hyperedges": []}
