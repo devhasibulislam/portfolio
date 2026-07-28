@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "siteTitle": "חסיבול איסלאם",
+    "siteDescription": "מהנדס Full-Stack בכיר. ארכיטקטורת בקאנד, מערכות LLM/RAG וייצור Node.js."
+  },
+  "nav": {
+    "home": "בית",
+    "blog": "בלוג",
+    "resume": "קורות חיים",
+    "links": "קישורים"
+  },
+  "auth": {
+    "signIn": "התחבר",
+    "email": "אימייל",
+    "password": "סיסמה",
+    "submit": "התחבר",
+    "invalid": "אימייל או סיסמה שגויים."
+  }
+}

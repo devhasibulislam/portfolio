@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* -----------------------------------------------------------------------------
+ * Brand palette — sampled from public/brand/reference.jpg (see PROJECT_CONTEXT §8).
+ * ---------------------------------------------------------------------------*/
+@theme {
+  --color-brand-highlight: #e86b1c; /* lit orange — glows, hotspots, CTAs */
+  --color-brand-shadow: #b84a0f;    /* deeper orange — pressed/active */
+  --color-brand-navy: #252e3f;      /* secondary surface */
+  --color-brand-ink: #0f131a;       /* near-black base */
+  --color-brand-cream: #f2e4d0;     /* text on dark, soft backgrounds */
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* -----------------------------------------------------------------------------
+ * Dark-first theme. Toggled via `data-theme` on <html>, set server-side from
+ * the `theme` cookie in src/app/layout.tsx — no flash of wrong theme.
+ * ---------------------------------------------------------------------------*/
+:root,
+html[data-theme="dark"] {
+  --color-bg: var(--color-brand-ink);
+  --color-fg: var(--color-brand-cream);
+  --color-surface: var(--color-brand-navy);
+  --color-accent: var(--color-brand-highlight);
+  --color-accent-strong: var(--color-brand-shadow);
+  --color-border: rgba(242, 228, 208, 0.12);
+}
+
+html[data-theme="light"] {
+  --color-bg: #faf5ec;
+  --color-fg: var(--color-brand-ink);
+  --color-surface: #ffffff;
+  --color-accent: var(--color-brand-highlight);
+  --color-accent-strong: var(--color-brand-shadow);
+  --color-border: rgba(15, 19, 26, 0.12);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}

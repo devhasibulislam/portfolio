@@ -1,0 +1,54 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/mcp.json",
+  "inputs": [
+    {
+      "id": "vercelToken",
+      "type": "promptString",
+      "description": "Vercel API token — pulled from VERCEL_TOKEN in .env.local. Leave blank to skip Vercel MCP.",
+      "password": true
+    }
+  ],
+  "servers": {
+    "shadcn": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "shadcn@latest", "mcp"]
+    },
+    "nextjs": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@next/mcp@latest"]
+    },
+    "cloudinary": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@cloudinary/asset-management",
+        "--cloud-name",
+        "${env:CLOUDINARY_CLOUD_NAME}",
+        "--api-key",
+        "${env:CLOUDINARY_API_KEY}",
+        "--api-secret",
+        "${env:CLOUDINARY_API_SECRET}"
+      ]
+    },
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com",
+      "headers": {
+        "Authorization": "Bearer ${input:vercelToken}"
+      }
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    }
+  }
+}

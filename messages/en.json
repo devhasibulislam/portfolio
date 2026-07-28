@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "siteTitle": "Hasibul Islam",
+    "siteDescription": "Senior full-stack engineer. Backend architecture, LLM/RAG systems, and production Node.js."
+  },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "resume": "Resume",
+    "links": "Links"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "invalid": "Invalid email or password."
+  }
+}
