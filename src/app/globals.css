@@ -6,10 +6,10 @@
  * ---------------------------------------------------------------------------*/
 @theme {
   --color-brand-highlight: #e86b1c; /* lit orange — glows, hotspots, CTAs */
-  --color-brand-shadow: #b84a0f;    /* deeper orange — pressed/active */
-  --color-brand-navy: #252e3f;      /* secondary surface */
-  --color-brand-ink: #0f131a;       /* near-black base */
-  --color-brand-cream: #f2e4d0;     /* text on dark, soft backgrounds */
+  --color-brand-shadow: #b84a0f; /* deeper orange — pressed/active */
+  --color-brand-navy: #252e3f; /* secondary surface */
+  --color-brand-ink: #0f131a; /* near-black base */
+  --color-brand-cream: #f2e4d0; /* text on dark, soft backgrounds */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

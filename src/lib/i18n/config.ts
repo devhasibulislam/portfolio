@@ -39,5 +39,7 @@ export const HREFLANG: Record<Locale, string> = {
 };
 
 export function isLocale(value: string | undefined): value is Locale {
-  return typeof value === "string" && (LOCALES as readonly string[]).includes(value);
+  return (
+    typeof value === "string" && (LOCALES as readonly string[]).includes(value)
+  );
 }

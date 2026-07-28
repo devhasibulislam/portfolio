@@ -27,13 +27,13 @@ if (!baseUrl) {
   console.warn(
     "[auth] NEON_AUTH_BASE_URL is not set. Enable Auth in the Neon Console " +
       "(Project → Branch → Auth → Enable), copy the Auth URL, and paste it " +
-      "into .env.local. Auth calls will fail until this is done."
+      "into .env.local. Auth calls will fail until this is done.",
   );
 }
 if (!cookieSecret) {
   console.warn(
     "[auth] NEON_AUTH_COOKIE_SECRET is not set. Generate with " +
-      "`openssl rand -base64 48` and add to .env.local."
+      "`openssl rand -base64 48` and add to .env.local.",
   );
 }
 

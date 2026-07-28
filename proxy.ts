@@ -16,4 +16,3 @@ export const config = {
   // Protect the dashboard and any nested routes. Everything else is public.
   matcher: ["/dashboard/:path*"],
 };
-

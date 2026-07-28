@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "claimable-postgres": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/claimable-postgres/SKILL.md",
+      "computedHash": "67aa25ffcbb8257790ea07884cb86e39aeea77b2f46b03c5052b08fd35a3d046"
+    },
     "cloudinary-docs": {
       "source": "cloudinary-devs/skills",
       "sourceType": "github",
@@ -72,6 +78,78 @@
       "sourceType": "github",
       "skillPath": "skills/gsap-utils/SKILL.md",
       "computedHash": "1ab2387f6e694718a4f1b5acf2a4ab16e1b884c3428adf5f6b26d830f00826cf"
+    },
+    "neon": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon/SKILL.md",
+      "computedHash": "f51065e397e6865a234c98a4688b23859fa7744cc0434d95d35dd4e8183fcc31"
+    },
+    "neon-ai-gateway": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon-ai-gateway/SKILL.md",
+      "computedHash": "cd28f1ae1c8c84319dc2bd7be7a5c9b9aa883949164ee0165590405a85a9c4dc"
+    },
+    "neon-functions": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon-functions/SKILL.md",
+      "computedHash": "4e5314bb70a96ca144a4bf82cc625e4a4652c05ef0511a3d560ce2f5a017f2f3"
+    },
+    "neon-object-storage": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon-object-storage/SKILL.md",
+      "computedHash": "7d24b809f8c1bd5d7fdaf12b86c3a5c7a2c1f774bd6a1982569389245ea499b0"
+    },
+    "neon-postgres": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon-postgres/SKILL.md",
+      "computedHash": "d4c284e055236b2a3ea1eaaa7dbcf832918ffad5e2745d8c938fa5b5c671e9a3"
+    },
+    "neon-postgres-branches": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon-postgres-branches/SKILL.md",
+      "computedHash": "39a27a390d91bb944c604f9b703aae62fec265ff492ca749bcb9345c6759346b"
+    },
+    "neon-postgres-egress-optimizer": {
+      "source": "neondatabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/neon-postgres-egress-optimizer/SKILL.md",
+      "computedHash": "a9dab78ac3c88090b0e12a3348784cc9f762f903f324c9e94526510776912a88"
+    },
+    "nextjs-app-router-fundamentals": {
+      "source": "wsimmonds/claude-nextjs-skills",
+      "sourceType": "github",
+      "skillPath": "nextjs-app-router-fundamentals/SKILL.md",
+      "computedHash": "2d73efbbc227187a78d547d80e7e778d179048d592530dc9f69c8307eee6ae76"
+    },
+    "nextjs-cache-architecture": {
+      "source": "mohamed-hossam1/nextjs-cache-architecture",
+      "sourceType": "github",
+      "skillPath": "skills/nextjs-cache-architecture/SKILL.md",
+      "computedHash": "1920a70af3f3ffb6036aaf91b667a54ff87775757cbd9fc6a1945b38c9e8a323"
+    },
+    "nextjs-developer": {
+      "source": "jeffallan/claude-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nextjs-developer/SKILL.md",
+      "computedHash": "e53bdeaf766e6d5d29d1328f424777a8236f80f489134f1661bbda6c8c4149e9"
+    },
+    "nextjs-react-typescript": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "skillPath": "nextjs-react-typescript/SKILL.md",
+      "computedHash": "eb995cc826bf48498e0e90969fc7dadfa2ec634002c26cfcfde565134cefa738"
+    },
+    "nextjs-seo": {
+      "source": "laguagu/claude-code-nextjs-skills",
+      "sourceType": "github",
+      "skillPath": "skills/nextjs-seo/SKILL.md",
+      "computedHash": "d34602e896a5e23d547feb7c9f97adf178d4c2e1515d722e35e8457edb0acf1d"
     }
   }
 }

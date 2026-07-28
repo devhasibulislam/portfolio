@@ -19,7 +19,7 @@ if (!process.env.DATABASE_URL.includes("-pooler")) {
   // if the developer explicitly overrides.
   console.warn(
     "[db] DATABASE_URL does not contain '-pooler'. Use the pooled connection " +
-      "string in production or you will hit Neon's connection limits."
+      "string in production or you will hit Neon's connection limits.",
   );
 }
 

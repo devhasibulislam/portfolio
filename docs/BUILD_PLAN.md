@@ -2,7 +2,7 @@
 
 This file is the **single source of truth for day-to-day progress**. When you sit down at a new machine, read this file top to bottom before anything else. Update the checkboxes and the "Current focus" line at the end of every meaningful work session.
 
-`PROJECT_CONTEXT.md` is the frozen *spec* — this file is the *plan*.
+`PROJECT_CONTEXT.md` is the frozen _spec_ — this file is the _plan_.
 
 ---
 
@@ -25,9 +25,11 @@ This file is the **single source of truth for day-to-day progress**. When you si
 
 ## Provisioning still to do (blocks Phase 1 auth work)
 
-- [ ] **Enable Neon Auth in the console**: https://console.neon.tech → project → branch → **Auth** → **Enable Auth** → **Configuration** tab → copy the Auth URL → paste as `NEON_AUTH_BASE_URL` in `.env.local`.
-- [ ] **Create the sole user in Neon Auth** (either via console UI or one-time seed script) — `devhasibulislam@gmail.com` / `Hasib@123`.
-- [ ] **Disable sign-up** in the Neon Auth project settings.
+- [x] **Enable Neon Auth in the console**: https://console.neon.tech → project → branch → **Auth** → **Enable Auth** → **Configuration** tab → copy the Auth URL → paste as `NEON_AUTH_BASE_URL` in `.env.local`.
+- [ ] **Enable Email & Password sign-up** in the Neon Auth Configuration tab. Without this, `POST /sign-up/email` returns `EMAIL_AND_PASSWORD_SIGN_UP_IS_NOT_ENABLED` and the seed script fails.
+- [ ] **Delete any empty-password user** created via the Console UI (the Console can't set passwords, only names).
+- [ ] **Seed the sole user** with a password by running `npm run seed:user`. Reads `NEON_AUTH_BASE_URL`, `DASHBOARD_ALLOWED_EMAIL`, `SEED_USER_NAME`, `SEED_USER_PASSWORD` from `.env.local`.
+- [ ] **~~Disable sign-up in Neon Auth project settings~~** — not currently possible (Beta limitation, see PROJECT_CONTEXT §11). Revisit once Neon ships restricted-signup support.
 - [ ] Confirm the Neon Postgres database is at least the pooled tier (free is fine).
 
 ---
@@ -129,6 +131,14 @@ Content management. Nothing else can be demoed without this.
 
 ## Current focus
 
-**Phase 0 — closing out.** Remaining work in this phase: Husky hooks, the three Copilot instruction files, README, and first `next build` verification before push.
+**Phase 0 shipped ✅.** Commit `9d28aeb` on `origin/master`. `next build` passes; only warning is the expected `NEON_AUTH_BASE_URL` missing until Auth is enabled in the Neon Console.
 
-Last touched: 2026-07-28 (Phase 0 initial commit)
+**Next up — Phase 1.** Before touching any code:
+
+1. Enable Neon Auth in the console → paste `NEON_AUTH_BASE_URL` into `.env.local`
+2. Create the sole user (`devhasibulislam@gmail.com` / `Hasib@123`) in Neon Auth
+3. Disable sign-up in Neon Auth project settings
+
+Then start on: session-only cookie override (deferred TODO), then Drizzle schema for `posts`/`categories`/`tags`/`media`/`resumes`/`links`.
+
+Last touched: 2026-07-28 (Phase 0 initial commit + push)

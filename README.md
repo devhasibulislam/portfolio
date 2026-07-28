@@ -21,16 +21,16 @@ npm run dev                  # http://localhost:3000
 
 ## Scripts
 
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Dev server (Turbopack) |
-| `npm run build` | Production build |
-| `npm start` | Serve production build |
-| `npm run typecheck` | `tsc --noEmit` |
-| `npm run lint` | ESLint |
+| Command               | Purpose                                                    |
+| --------------------- | ---------------------------------------------------------- |
+| `npm run dev`         | Dev server (Turbopack)                                     |
+| `npm run build`       | Production build                                           |
+| `npm start`           | Serve production build                                     |
+| `npm run typecheck`   | `tsc --noEmit`                                             |
+| `npm run lint`        | ESLint                                                     |
 | `npm run db:generate` | Generate Drizzle SQL migration from `src/lib/db/schema.ts` |
-| `npm run db:migrate` | Apply pending migrations |
-| `npm run db:studio` | Drizzle Studio |
+| `npm run db:migrate`  | Apply pending migrations                                   |
+| `npm run db:studio`   | Drizzle Studio                                             |
 
 ## Repo layout
 
