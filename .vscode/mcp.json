@@ -2,9 +2,15 @@
   "$schema": "https://modelcontextprotocol.io/schema/mcp.json",
   "inputs": [
     {
-      "id": "vercelToken",
+      "id": "cloudinaryApiKey",
       "type": "promptString",
-      "description": "Vercel API token — pulled from VERCEL_TOKEN in .env.local. Leave blank to skip Vercel MCP.",
+      "description": "Cloudinary API key. Paste the value of CLOUDINARY_API_KEY from .env.local. Stored in VS Code secret storage after first entry — you'll only be asked once per machine.",
+      "password": true
+    },
+    {
+      "id": "cloudinaryApiSecret",
+      "type": "promptString",
+      "description": "Cloudinary API secret. Paste the value of CLOUDINARY_API_SECRET from .env.local. Stored in VS Code secret storage after first entry — you'll only be asked once per machine.",
       "password": true
     }
   ],
@@ -14,31 +20,23 @@
       "command": "npx",
       "args": ["-y", "shadcn@latest", "mcp"]
     },
-    "nextjs": {
+    "next-devtools": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@next/mcp@latest"]
+      "args": ["-y", "next-devtools-mcp@latest"]
     },
     "cloudinary": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@cloudinary/asset-management",
-        "--cloud-name",
-        "${env:CLOUDINARY_CLOUD_NAME}",
-        "--api-key",
-        "${env:CLOUDINARY_API_KEY}",
-        "--api-secret",
-        "${env:CLOUDINARY_API_SECRET}"
-      ]
+      "type": "sse",
+      "url": "https://asset-management.mcp.cloudinary.com/mcp",
+      "headers": {
+        "cloudinary-cloud-name": "devhasibulislam",
+        "cloudinary-api-key": "${input:cloudinaryApiKey}",
+        "cloudinary-api-secret": "${input:cloudinaryApiSecret}"
+      }
     },
     "vercel": {
       "type": "http",
-      "url": "https://mcp.vercel.com",
-      "headers": {
-        "Authorization": "Bearer ${input:vercelToken}"
-      }
+      "url": "https://mcp.vercel.com"
     },
     "playwright": {
       "type": "stdio",
