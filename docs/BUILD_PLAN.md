@@ -21,7 +21,12 @@ This file is the **single source of truth for day-to-day progress**. When you si
 3. `npm install`
 4. `npm run seed:user` — creates the sole dashboard user in Neon Auth (idempotent; no-op if user exists)
 5. `npm run dev`
-6. Open VS Code — the **seven** MCPs in `.vscode/mcp.json` auto-load. On first start you'll be prompted **four times** (once each): Cloudinary API key, Cloudinary API secret, Neon API key, Vercel token. Paste values from `.env.local`. VS Code stores them in its OS keychain — you're never asked again on that machine.
+6. **For the graphify MCP** (optional but useful): install the graphify Python tool with the MCP extra and pin `mcp<2`:
+   ```bash
+   python3 -m pip install --user --break-system-packages "graphifyy[mcp]" "mcp<2"
+   ```
+   Then run `/graphify .` once in Copilot Chat to build `graphify-out/graph.json` — the MCP server reads from this file.
+7. Open VS Code — the **eight** MCPs in `.vscode/mcp.json` auto-load. On first start you'll be prompted **four times** (once each): Cloudinary API key, Cloudinary API secret, Neon API key, Vercel token. Paste values from `.env.local`. VS Code stores them in its OS keychain — you're never asked again on that machine.
 
 ---
 
