@@ -18,6 +18,12 @@
       "type": "promptString",
       "description": "Neon API key. Paste the value of NEON_API_KEY from .env.local. Stored in VS Code secret storage after first entry — you'll only be asked once per machine.",
       "password": true
+    },
+    {
+      "id": "vercelToken",
+      "type": "promptString",
+      "description": "Vercel API token. Paste the value of VERCEL_TOKEN from .env.local. Stored in VS Code secret storage after first entry — you'll only be asked once per machine.",
+      "password": true
     }
   ],
   "servers": {
@@ -45,6 +51,13 @@
       "url": "https://mcp.neon.tech/mcp",
       "headers": {
         "Authorization": "Bearer ${input:neonApiKey}"
+      }
+    },
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com",
+      "headers": {
+        "Authorization": "Bearer ${input:vercelToken}"
       }
     },
     "playwright": {
