@@ -9,7 +9,7 @@
 
 Next 16 (App Router, Turbopack, Cache Components) · React 19 · TypeScript strict · Tailwind v4 · shadcn/ui · Drizzle + Neon Postgres (pooled) · Neon Auth (`@neondatabase/auth`, Managed Better Auth) · Cloudinary · next-intl · GSAP + Framer Motion + Three.js/R3F (Phase 4).
 
-**Never introduce**: Prisma, TypeORM, MUI, Redux/RTK, GraphQL, Sanity, Contentful, MDX-based CMS, other 3D engines. These are the owner's *day-job* tools and are explicitly out-of-scope for this repo (see §2, §15, §16). They may appear only as *content* (bio text), never as `package.json` dependencies.
+**Never introduce**: Prisma, TypeORM, MUI, Redux/RTK, GraphQL, Sanity, Contentful, MDX-based CMS, other 3D engines. These are the owner's _day-job_ tools and are explicitly out-of-scope for this repo (see §2, §15, §16). They may appear only as _content_ (bio text), never as `package.json` dependencies.
 
 ## Engineering discipline
 
