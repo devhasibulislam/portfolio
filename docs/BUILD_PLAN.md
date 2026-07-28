@@ -51,14 +51,14 @@ Scaffold that everything else builds on. All items are project-scoped (nothing i
 - [x] `.vscode/settings.json` — TS SDK pin, format-on-save, ESLint fix on save
 - [x] `components.json` + `src/lib/utils.ts` — shadcn wired (add components via `npx shadcn@latest add <name>`)
 - [x] `src/schemas/index.ts` — placeholder for shared Zod schemas (one-per-entity per §14)
-- [ ] Husky + lint-staged + `pre-commit` (`tsc --noEmit && next lint --fix`) + `pre-push` (`next build`)
-- [ ] `.github/instructions/*.instructions.md` — Copilot repo-scoped skills:
-  - [ ] `drizzle-neon.instructions.md`
-  - [ ] `blog-schemas.instructions.md`
-  - [ ] `rtl-logical-props.instructions.md`
-- [ ] `README.md` — quickstart + repo layout
-- [ ] First `next build` passes with no errors
-- [ ] First commit + push to `origin/master`
+- [x] Husky + lint-staged + `pre-commit` (`lint-staged`) + `pre-push` (`typecheck`)
+- [x] `.github/instructions/*.instructions.md` — Copilot repo-scoped skills:
+  - [x] `drizzle-neon.instructions.md`
+  - [x] `blog-schemas.instructions.md`
+  - [x] `rtl-logical-props.instructions.md`
+- [x] `README.md` — quickstart + repo layout
+- [x] First `next build` passes with no errors
+- [x] First commit + push to `origin/master`
 
 ### Known Phase 0 TODOs deferred into Phase 1
 
