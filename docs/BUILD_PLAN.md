@@ -9,28 +9,30 @@ This file is the **single source of truth for day-to-day progress**. When you si
 ## Resume from another device
 
 1. `git clone https://github.com/devhasibulislam/portfolio.git && cd portfolio`
-2. `cp .env.example .env.local` and paste values from your password manager. Values you need:
+2. `cp .env.example .env.local` and fill values from your password manager. Values you need:
    - `DATABASE_URL` — pooled Neon connection (host must contain `-pooler`)
    - `NEON_API_KEY` — Neon Management API personal key
    - `NEON_AUTH_BASE_URL` — Neon Console → Project → Branch → Auth → Configuration → Auth URL
    - `NEON_AUTH_COOKIE_SECRET` — 32+ chars (regenerate with `openssl rand -base64 48` if you never saved it)
    - `DASHBOARD_ALLOWED_EMAIL` — `devhasibulislam@gmail.com`
+   - `SEED_USER_NAME` / `SEED_USER_PASSWORD` — consumed by `npm run seed:user` only
    - `CLOUDINARY_CLOUD_NAME` / `CLOUDINARY_API_KEY` / `CLOUDINARY_API_SECRET` / `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME`
    - `VERCEL_TOKEN`
 3. `npm install`
-4. `npm run dev`
-5. Open VS Code — the six MCPs in `.vscode/mcp.json` auto-load. Approve them when prompted.
+4. `npm run seed:user` — creates the sole dashboard user in Neon Auth (idempotent; no-op if user exists)
+5. `npm run dev`
+6. Open VS Code — the **seven** MCPs in `.vscode/mcp.json` auto-load. On first start you'll be prompted **four times** (once each): Cloudinary API key, Cloudinary API secret, Neon API key, Vercel token. Paste values from `.env.local`. VS Code stores them in its OS keychain — you're never asked again on that machine.
 
 ---
 
 ## Provisioning still to do (blocks Phase 1 auth work)
 
 - [x] **Enable Neon Auth in the console**: https://console.neon.tech → project → branch → **Auth** → **Enable Auth** → **Configuration** tab → copy the Auth URL → paste as `NEON_AUTH_BASE_URL` in `.env.local`.
-- [ ] **Enable Email & Password sign-up** in the Neon Auth Configuration tab. Without this, `POST /sign-up/email` returns `EMAIL_AND_PASSWORD_SIGN_UP_IS_NOT_ENABLED` and the seed script fails.
-- [ ] **Delete any empty-password user** created via the Console UI (the Console can't set passwords, only names).
-- [ ] **Seed the sole user** with a password by running `npm run seed:user`. Reads `NEON_AUTH_BASE_URL`, `DASHBOARD_ALLOWED_EMAIL`, `SEED_USER_NAME`, `SEED_USER_PASSWORD` from `.env.local`.
+- [x] **Enable Email & Password sign-up** in the Neon Auth Configuration tab. (Was blocking the seed script with `EMAIL_AND_PASSWORD_SIGN_UP_IS_NOT_ENABLED`. Consider disabling it again after seeding, since the app-level whitelist protects the dashboard either way — PROJECT_CONTEXT §11.)
+- [x] **Delete the empty-password user** created via the Console UI (Console can't set passwords, only names).
+- [ ] **Seed the sole user**: `npm run seed:user` — waiting for confirmation that `✓ Created (200)` was printed.
 - [ ] **~~Disable sign-up in Neon Auth project settings~~** — not currently possible (Beta limitation, see PROJECT_CONTEXT §11). Revisit once Neon ships restricted-signup support.
-- [ ] Confirm the Neon Postgres database is at least the pooled tier (free is fine).
+- [x] Neon Postgres pooled connection verified (free tier).
 
 ---
 
@@ -49,7 +51,7 @@ Scaffold that everything else builds on. All items are project-scoped (nothing i
 - [x] `proxy.ts` (Next 16 middleware) — protects `/dashboard/:path*`, redirects to `/login`
 - [x] `src/app/dashboard/layout.tsx` enforces single-user email whitelist (defence-in-depth)
 - [x] `src/app/login/` — page + server action + client form (Neon Auth email/password)
-- [x] `.vscode/mcp.json` — six MCPs (shadcn, Next.js, Cloudinary, Vercel, Playwright, Chrome DevTools) — **project-scoped**
+- [x] `.vscode/mcp.json` — **seven MCPs** (shadcn, next-devtools, Cloudinary, Neon, Vercel, Playwright, Chrome DevTools) — **project-scoped**; API-key MCPs use `${input:...}` prompted secrets (paste-once-per-machine, stored in VS Code secret storage)
 - [x] `.vscode/settings.json` — TS SDK pin, format-on-save, ESLint fix on save
 - [x] `components.json` + `src/lib/utils.ts` — shadcn wired (add components via `npx shadcn@latest add <name>`)
 - [x] `src/schemas/index.ts` — placeholder for shared Zod schemas (one-per-entity per §14)
@@ -58,6 +60,13 @@ Scaffold that everything else builds on. All items are project-scoped (nothing i
   - [x] `drizzle-neon.instructions.md`
   - [x] `blog-schemas.instructions.md`
   - [x] `rtl-logical-props.instructions.md`
+- [x] `.github/copilot-instructions.md` — top-level agent instructions loaded on every chat turn; includes `.agents/skills/` auto-consult directive
+- [x] `AGENTS.md` + `CLAUDE.md` — root symlinks pointing at `.github/copilot-instructions.md` so Codex/Cursor/Claude Code all read the same source of truth
+- [x] `.github/prompts/` — slash-commands available in Copilot Chat:
+  - [x] `/phase-status` — report current phase, last commit, next actionable item
+  - [x] `/rtl-audit` — grep for banned physical CSS/Tailwind properties
+- [x] `.agents/skills/` — 46 installable skill packs (Cloudinary, Neon, Next.js, shadcn, GSAP, Three.js, Vercel, Tailwind, design taste) auto-installed via `npx skills add`, referenced from top-level Copilot instructions
+- [x] `scripts/seed-user.ts` + `npm run seed:user` — one-shot user seeder that bypasses the Neon Auth Console's no-password admin-create limitation
 - [x] `README.md` — quickstart + repo layout
 - [x] First `next build` passes with no errors
 - [x] First commit + push to `origin/master`
@@ -131,14 +140,16 @@ Content management. Nothing else can be demoed without this.
 
 ## Current focus
 
-**Phase 0 shipped ✅.** Commit `9d28aeb` on `origin/master`. `next build` passes; only warning is the expected `NEON_AUTH_BASE_URL` missing until Auth is enabled in the Neon Console.
+**Phase 0 + meta setup shipped ✅.** HEAD at commit `8f4cc36` on `origin/master`. `next build` passes; `tsc --noEmit` passes. Seven MCPs configured, agent skills library wired in via `.github/copilot-instructions.md`, seed script tested against live Neon Auth.
 
-**Next up — Phase 1.** Before touching any code:
+**One blocker remaining before Phase 1 code:** confirm `npm run seed:user` printed `✓ Created (200)` — exit code 0 from last run but output not captured. If it did, we have a working login. If not, re-run after enabling Email & Password sign-up in the Neon Auth Configuration tab.
 
-1. Enable Neon Auth in the console → paste `NEON_AUTH_BASE_URL` into `.env.local`
-2. Create the sole user (`devhasibulislam@gmail.com` / `Hasib@123`) in Neon Auth
-3. Disable sign-up in Neon Auth project settings
+**Phase 1 opening moves** (in order):
 
-Then start on: session-only cookie override (deferred TODO), then Drizzle schema for `posts`/`categories`/`tags`/`media`/`resumes`/`links`.
+1. Session-only auth cookie override (deferred TODO from Phase 0 — strip `Max-Age`/`Expires` from Neon Auth's `Set-Cookie` so closing the tab forces re-login)
+2. First-visit theme = system preference no-flash script (deferred TODO from Phase 0)
+3. Drizzle schema commit — `posts`, `categories`, `tags`, `posts_tags`, `media`, `media_uses`, `resumes`, `links` with `db:generate` + `db:migrate`
+4. Shared Zod schemas in `src/schemas/*.ts` enforcing §5 field lengths (client + server)
+5. Dashboard shell — shadcn sidebar/breadcrumbs/sign-out, then Posts CRUD (Tiptap first)
 
-Last touched: 2026-07-28 (Phase 0 initial commit + push)
+Last touched: 2026-07-28 (post-scaffold meta setup pushed as `8f4cc36`)
