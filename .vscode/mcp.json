@@ -40,9 +40,12 @@
         "cloudinary-api-secret": "${input:cloudinaryApiSecret}"
       }
     },
-    "vercel": {
+    "neon": {
       "type": "http",
-      "url": "https://mcp.vercel.com"
+      "url": "https://mcp.neon.tech/mcp",
+      "headers": {
+        "Authorization": "Bearer ${input:neonApiKey}"
+      }
     },
     "playwright": {
       "type": "stdio",
