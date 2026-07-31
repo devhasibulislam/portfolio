@@ -43,9 +43,7 @@ export function TagMultiPicker({ options, value, onChange, max = 8 }: Props) {
     const q = query.trim().toLowerCase();
     if (!q) return [] as TagOption[];
     return options
-      .filter(
-        (o) => !selectedIds.has(o.id) && o.name.toLowerCase().includes(q),
-      )
+      .filter((o) => !selectedIds.has(o.id) && o.name.toLowerCase().includes(q))
       .slice(0, 8);
   }, [options, selectedIds, query]);
 
