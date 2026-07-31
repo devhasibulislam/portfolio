@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -88,19 +87,24 @@ export function AppSidebar({ userEmail }: Props) {
       </SidebarContent>
 
       <SidebarFooter>
-        <form action={signOutAction}>
-          <Button
-            type="submit"
-            variant="ghost"
-            className="w-full justify-start"
-            size="sm"
-          >
-            <LogOut className="me-2 size-4" />
-            <span className="group-data-[collapsible=icon]:hidden">
-              Sign out
-            </span>
-          </Button>
-        </form>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            {/* Use the same primitive as the nav rows so the tooltip appears
+                on hover when the sidebar is collapsed, and the icon column
+                stays aligned. The <form> wraps the button so the sign-out
+                server action fires on click. */}
+            <form action={signOutAction}>
+              <SidebarMenuButton
+                type="submit"
+                tooltip="Sign out"
+                className="w-full"
+              >
+                <LogOut />
+                <span>Sign out</span>
+              </SidebarMenuButton>
+            </form>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
   );
