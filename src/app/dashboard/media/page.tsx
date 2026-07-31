@@ -1,10 +1,10 @@
-import { ComingSoon } from "@/components/dashboard/coming-soon";
+import { MediaGrid } from "@/components/dashboard/media-grid";
+import { listMedia } from "@/lib/db/queries/media";
+
+export const dynamic = "force-dynamic";
 export const metadata = { title: "Media" };
-export default function Page() {
-  return (
-    <ComingSoon
-      title="Media"
-      description="Cloudinary uploader ships after Posts."
-    />
-  );
+
+export default async function Page() {
+  const rows = await listMedia();
+  return <MediaGrid rows={rows} />;
 }
