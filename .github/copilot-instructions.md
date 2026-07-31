@@ -21,7 +21,7 @@ Next 16 (App Router, Turbopack, Cache Components) · React 19 · TypeScript stri
 - **No duplicated logic** (§14). One Zod schema per entity in `src/schemas/`, imported by both client forms and server actions. One cursor-pagination hook parameterised by filter. One image picker. Before adding any function/component, check whether an existing one can be extended.
 - **No per-request DB writes on public routes** (§13). Writes only happen in dashboard server actions. After every mutation, call `revalidateTag()` for the affected route family — never rely on time-based revalidation.
 - **Cursor-based pagination only.** No `OFFSET`, no numbered UI ("1 2 3 4").
-- **Neon connection**: always import `db` from `@/lib/db/client`. Never call `neon()` or `drizzle()` elsewhere.
+- **Neon connection**: always import `db` from `@/lib/db/client`. Never call `neon()` or `drizzle()` elsewhere. Full ruleset in [`.github/instructions/drizzle-neon.instructions.md`](instructions/drizzle-neon.instructions.md) (auto-loaded via `applyTo`).
 - **RTL**: use logical CSS properties (`ms-`, `me-`, `ps-`, `pe-`, `start-`, `end-`, `text-start`, `text-end`) — never `ml-`, `pl-`, `left-`, `text-left`. Enforced by `.github/instructions/rtl-logical-props.instructions.md`.
 - **Blog field lengths**: SEO-critical, enforced by `.github/instructions/blog-schemas.instructions.md` and shared Zod schemas.
 
@@ -45,6 +45,7 @@ Rough map of when to reach for which family (not exhaustive — the `description
 | Metadata, JSON-LD, sitemap, robots, hreflang                                                                                               | `nextjs-seo/SKILL.md`                                                                                                                                  |
 | Cloudinary uploads, transforms, `<CldImage>`, OG images                                                                                    | `cloudinary-next/`, `cloudinary-docs/`, `cloudinary-transformations/`, `cloudinary-react/`                                                             |
 | Neon connection, branches, egress, object storage, AI gateway                                                                              | `neon/`, `neon-postgres/`, `neon-postgres-branches/`, `neon-postgres-egress-optimizer/`, `neon-object-storage/`, `neon-ai-gateway/`, `neon-functions/` |
+| Temporary/throwaway Postgres for prototyping (`claimable-postgres/`)                                                                       | ❌ Out of scope — we use a permanent Neon project. Skill exists on disk but is not to be consulted.                                                     |
 | GSAP — timelines, ScrollTrigger, React integration, perf                                                                                   | `gsap-core/`, `gsap-timeline/`, `gsap-scrolltrigger/`, `gsap-react/`, `gsap-performance/`, `gsap-plugins/`, `gsap-utils/`, `gsap-frameworks/`          |
 | Three.js / R3F (Phase 4) — geometry, lighting, materials, shaders, postprocessing, loaders, interaction, animation, textures, fundamentals | `threejs-*` (10 skills)                                                                                                                                |
 | Vercel deploy, edge, optimization, React patterns for Vercel                                                                               | `deploy-to-vercel/`, `vercel-optimize/`, `vercel-react-best-practices/`                                                                                |
@@ -53,6 +54,13 @@ Rough map of when to reach for which family (not exhaustive — the `description
 | Radix → Base UI migration references (if we ever swap primitives)                                                                          | `migrate-radix-to-base/`                                                                                                                               |
 
 **Rule**: if you would have answered from generic knowledge and a matching `SKILL.md` exists, you MUST cite the skill you consulted in your response ("Consulted `.agents/skills/<name>/SKILL.md`") so the human can verify the guidance is being applied. If no skill matches, proceed with generic knowledge — do not fabricate a citation.
+
+## Slash prompts — user-invoked, not auto-loaded
+
+These live in `.github/prompts/` and are typed into Copilot Chat as `/name`:
+
+- **`/phase-status`** — read `docs/BUILD_PLAN.md` and report the current phase, last commit SHA, next actionable checkbox, and any drift between the plan and the actual repo state. Run at the start of a session, especially on a new machine.
+- **`/rtl-audit`** — grep for banned physical CSS/Tailwind properties per [`instructions/rtl-logical-props.instructions.md`](instructions/rtl-logical-props.instructions.md). Run before shipping any UI phase.
 
 ## When in doubt
 
