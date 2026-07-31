@@ -56,9 +56,24 @@ export function ThemeToggle({ current }: { current: Choice }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <Row label="Light" icon={Sun} active={current === "light"} onSelect={() => pick("light")} />
-        <Row label="Dark" icon={Moon} active={current === "dark"} onSelect={() => pick("dark")} />
-        <Row label="System" icon={Monitor} active={current === "system"} onSelect={() => pick("system")} />
+        <Row
+          label="Light"
+          icon={Sun}
+          active={current === "light"}
+          onSelect={() => pick("light")}
+        />
+        <Row
+          label="Dark"
+          icon={Moon}
+          active={current === "dark"}
+          onSelect={() => pick("dark")}
+        />
+        <Row
+          label="System"
+          icon={Monitor}
+          active={current === "system"}
+          onSelect={() => pick("system")}
+        />
       </DropdownMenuContent>
     </DropdownMenu>
   );
