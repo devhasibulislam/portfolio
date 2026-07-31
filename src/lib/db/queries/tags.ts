@@ -1,4 +1,4 @@
-import { sql } from "drizzle-orm";
+import { count, eq } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { tags, postsTags } from "@/lib/db/schema";
 import type { SlugRow } from "@/components/dashboard/slug-entity-table";
@@ -10,11 +10,10 @@ export async function listTagsWithCount(): Promise<SlugRow[]> {
       id: tags.id,
       name: tags.name,
       slug: tags.slug,
-      postCount:
-        sql<number>`(SELECT count(*)::int FROM ${postsTags} WHERE ${postsTags.tagId} = ${tags.id})`.as(
-          "post_count",
-        ),
+      postCount: count(postsTags.postId).as("post_count"),
     })
     .from(tags)
+    .leftJoin(postsTags, eq(postsTags.tagId, tags.id))
+    .groupBy(tags.id)
     .orderBy(tags.name);
 }

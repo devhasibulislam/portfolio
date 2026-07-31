@@ -58,15 +58,25 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
             }}
             onSuccess={(result: CloudinaryUploadWidgetResults) => {
               const info = result.info;
-              if (typeof info !== "object" || info === null || !("public_id" in info)) {
+              if (
+                typeof info !== "object" ||
+                info === null ||
+                !("public_id" in info)
+              ) {
                 return;
               }
               const fd = new FormData();
               fd.set("publicId", String(info.public_id));
-              fd.set("url", String((info as { secure_url: string }).secure_url));
+              fd.set(
+                "url",
+                String((info as { secure_url: string }).secure_url),
+              );
               fd.set(
                 "originalName",
-                String((info as { original_filename?: string }).original_filename ?? info.public_id),
+                String(
+                  (info as { original_filename?: string }).original_filename ??
+                    info.public_id,
+                ),
               );
               fd.set("width", String((info as { width: number }).width));
               fd.set("height", String((info as { height: number }).height));
@@ -85,7 +95,9 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
             }}
             onError={(err) => {
               toast.error(
-                typeof err === "string" ? err : (err?.statusText ?? "Upload failed"),
+                typeof err === "string"
+                  ? err
+                  : (err?.statusText ?? "Upload failed"),
               );
             }}
           >
@@ -135,7 +147,10 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
                 </Button>
               </div>
               <div className="mt-2 flex items-baseline justify-between gap-2 text-xs">
-                <span className="text-foreground truncate" title={m.originalName}>
+                <span
+                  className="text-foreground truncate"
+                  title={m.originalName}
+                >
                   {m.originalName}
                 </span>
                 <span className="text-muted-foreground tabular-nums whitespace-nowrap">

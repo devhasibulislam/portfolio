@@ -57,32 +57,40 @@ export function DashboardBreadcrumb() {
             </BreadcrumbLink>
           )}
         </BreadcrumbItem>
-        {rest.map((seg, i) => {
-          const last = i === rest.length - 1;
-          const label = seg === "new" ? "New" : decodeURIComponent(seg);
-          return (
-            <span key={`${seg}-${i}`} className="contents">
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                {last ? (
-                  <BreadcrumbPage className="capitalize">
-                    {label}
-                  </BreadcrumbPage>
-                ) : (
-                  <BreadcrumbLink asChild>
-                    <Link
-                      href={`/${segments.slice(0, 2 + i + 1).join("/")}`}
-                      className="capitalize"
-                    >
+        {rest
+          .filter((seg) => !isUuid(seg))
+          .map((seg, i, arr) => {
+            const last = i === arr.length - 1;
+            const label = seg === "new" ? "New" : decodeURIComponent(seg);
+            return (
+              <span key={`${seg}-${i}`} className="contents">
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  {last ? (
+                    <BreadcrumbPage className="capitalize">
                       {label}
-                    </Link>
-                  </BreadcrumbLink>
-                )}
-              </BreadcrumbItem>
-            </span>
-          );
-        })}
+                    </BreadcrumbPage>
+                  ) : (
+                    <BreadcrumbLink asChild>
+                      <Link
+                        href={`/${segments.slice(0, 2 + i + 1).join("/")}`}
+                        className="capitalize"
+                      >
+                        {label}
+                      </Link>
+                    </BreadcrumbLink>
+                  )}
+                </BreadcrumbItem>
+              </span>
+            );
+          })}
       </BreadcrumbList>
     </Breadcrumb>
   );
+}
+
+const UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+function isUuid(s: string) {
+  return UUID_RE.test(s);
 }
