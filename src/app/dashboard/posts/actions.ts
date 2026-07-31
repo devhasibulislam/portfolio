@@ -117,3 +117,46 @@ export async function deletePost(
   updateTag(tag.posts());
   return { ok: true };
 }
+
+/**
+ * Flip a single post between draft and published. Sets `publishedAt` on the
+ * first draft → published transition and clears it when going back to draft.
+ * Used by the posts-list row Switch — no full form save.
+ */
+export async function togglePostStatus(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const id = String(formData.get("id") ?? "").trim();
+  const status = formData.get("status") as "draft" | "published" | null;
+  if (!id || (status !== "draft" && status !== "published")) {
+    return { error: "Missing id or status" };
+  }
+
+  const [prev] = await db
+    .select({
+      slug: posts.slug,
+      status: posts.status,
+      publishedAt: posts.publishedAt,
+    })
+    .from(posts)
+    .where(eq(posts.id, id));
+  if (!prev) return { error: "Not found" };
+
+  let publishedAt: Date | null;
+  if (status === "published") {
+    publishedAt =
+      prev.status === "published" ? (prev.publishedAt ?? new Date()) : new Date();
+  } else {
+    publishedAt = null;
+  }
+
+  await db
+    .update(posts)
+    .set({ status, publishedAt, updatedAt: new Date() })
+    .where(eq(posts.id, id));
+
+  updateTag(tag.posts());
+  updateTag(tag.post(prev.slug));
+  return { ok: true };
+}

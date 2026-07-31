@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useTransition } from "react";
+import { useOptimistic, useState, useTransition } from "react";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -16,6 +16,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import {
   Table,
   TableBody,
@@ -24,8 +25,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import type { PostRow } from "@/lib/db/queries/posts";
-import { deletePost } from "@/app/dashboard/posts/actions";
+import { deletePost, togglePostStatus } from "@/app/dashboard/posts/actions";
 
 export function PostsTable({ rows }: { rows: PostRow[] }) {
   const router = useRouter();
@@ -72,7 +78,7 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
                   {r.categoryName ?? "—"}
                 </TableCell>
                 <TableCell>
-                  <StatusPill status={r.status} />
+                  <StatusSwitch row={r} />
                 </TableCell>
                 <TableCell className="text-muted-foreground text-sm">
                   {formatRelative(r.updatedAt)}
@@ -149,6 +155,55 @@ function StatusPill({ status }: { status: "draft" | "published" }) {
       <span className="size-1.5 rounded-full bg-current" />
       Draft
     </span>
+  );
+}
+
+/**
+ * Row-level status Switch. Optimistic toggle via `useOptimistic` so the UI
+ * flips instantly; if the server action returns an error we bounce back.
+ */
+function StatusSwitch({ row }: { row: PostRow }) {
+  const router = useRouter();
+  const [optimisticStatus, setOptimisticStatus] = useOptimistic(row.status);
+  const [pending, startTransition] = useTransition();
+  const isPublished = optimisticStatus === "published";
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <span className="inline-flex items-center gap-2">
+          <Switch
+            checked={isPublished}
+            disabled={pending}
+            onCheckedChange={(checked) => {
+              const next = checked ? "published" : "draft";
+              startTransition(async () => {
+                setOptimisticStatus(next);
+                const fd = new FormData();
+                fd.set("id", row.id);
+                fd.set("status", next);
+                const res = await togglePostStatus(null, fd);
+                if (res?.error) {
+                  toast.error(res.error);
+                  return;
+                }
+                toast.success(
+                  next === "published" ? "Post published" : "Moved to draft",
+                );
+                router.refresh();
+              });
+            }}
+            aria-label={
+              isPublished ? "Move to draft" : "Publish this post"
+            }
+          />
+          <StatusPill status={optimisticStatus} />
+        </span>
+      </TooltipTrigger>
+      <TooltipContent>
+        {isPublished ? "Move to draft" : "Publish this post"}
+      </TooltipContent>
+    </Tooltip>
   );
 }
 

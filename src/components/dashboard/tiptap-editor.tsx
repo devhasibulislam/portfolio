@@ -4,7 +4,7 @@ import { useEditor, EditorContent, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Bold,
   Code,
@@ -33,6 +33,8 @@ type Props = {
  * No fonts, no colors, no tables. Body JSON serialized via editor.getJSON().
  */
 export function TiptapEditor({ value, onChange }: Props) {
+  const [focused, setFocused] = useState(false);
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -51,6 +53,8 @@ export function TiptapEditor({ value, onChange }: Props) {
     content: value ?? { type: "doc", content: [] },
     immediatelyRender: false,
     onUpdate: ({ editor: e }) => onChange(e.getJSON()),
+    onFocus: () => setFocused(true),
+    onBlur: () => setFocused(false),
     editorProps: {
       attributes: {
         class:
@@ -74,8 +78,10 @@ export function TiptapEditor({ value, onChange }: Props) {
   if (!editor) return null;
 
   return (
-    <div className="border-input rounded-md border">
-      <Toolbar editor={editor} />
+    // relative + isolate so the sticky toolbar stacks above the prose content
+    // while the container itself scrolls with the outer page.
+    <div className="border-input relative isolate rounded-md border">
+      <Toolbar editor={editor} focused={focused} />
       <EditorContent editor={editor} />
     </div>
   );
@@ -83,74 +89,77 @@ export function TiptapEditor({ value, onChange }: Props) {
 
 /* ---------------------------------- toolbar ---------------------------------- */
 
-function Toolbar({ editor }: { editor: Editor }) {
+function Toolbar({ editor, focused }: { editor: Editor; focused: boolean }) {
+  // `active` only lights up while the selection is actually inside the editor.
+  // When the user tabs into the title/meta fields, all buttons revert to idle.
+  const isActive = (
+    name: string,
+    attrs?: Record<string, unknown>,
+  ): boolean => focused && editor.isActive(name, attrs);
+
   return (
-    <div className="border-input bg-muted/40 flex flex-wrap items-center gap-1 border-b p-1">
+    <div
+      // sticky within the editor container so it hugs the top as the user
+      // scrolls the body; z-10 keeps it above the prose.
+      className="border-input bg-background/95 sticky top-0 z-10 flex flex-wrap items-center gap-1 rounded-t-md border-b p-1 backdrop-blur"
+    >
       <TB
-        editor={editor}
+        // preventDefault on mousedown keeps focus in the editor when the user
+        // clicks a toolbar button, so `focused` doesn't flicker off.
         cmd={() => editor.chain().focus().toggleBold().run()}
-        active={editor.isActive("bold")}
+        active={isActive("bold")}
         label="Bold"
         icon={Bold}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().toggleItalic().run()}
-        active={editor.isActive("italic")}
+        active={isActive("italic")}
         label="Italic"
         icon={Italic}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        active={editor.isActive("heading", { level: 2 })}
+        active={isActive("heading", { level: 2 })}
         label="Heading 2"
         icon={Heading2}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        active={editor.isActive("heading", { level: 3 })}
+        active={isActive("heading", { level: 3 })}
         label="Heading 3"
         icon={Heading3}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().toggleBulletList().run()}
-        active={editor.isActive("bulletList")}
+        active={isActive("bulletList")}
         label="Bullet list"
         icon={List}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().toggleOrderedList().run()}
-        active={editor.isActive("orderedList")}
+        active={isActive("orderedList")}
         label="Numbered list"
         icon={ListOrdered}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().toggleBlockquote().run()}
-        active={editor.isActive("blockquote")}
+        active={isActive("blockquote")}
         label="Blockquote"
         icon={Quote}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().toggleCode().run()}
-        active={editor.isActive("code")}
+        active={isActive("code")}
         label="Inline code"
         icon={Code}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().toggleCodeBlock().run()}
-        active={editor.isActive("codeBlock")}
+        active={isActive("codeBlock")}
         label="Code block"
         icon={SquareCode}
       />
       <TB
-        editor={editor}
         cmd={() => {
           const prev = (editor.getAttributes("link").href as string) ?? "";
           const url = window.prompt("URL", prev);
@@ -166,12 +175,11 @@ function Toolbar({ editor }: { editor: Editor }) {
             .setLink({ href: url })
             .run();
         }}
-        active={editor.isActive("link")}
+        active={isActive("link")}
         label="Link"
         icon={LinkIcon}
       />
       <TB
-        editor={editor}
         cmd={() => {
           const url = window.prompt("Image URL");
           if (!url) return;
@@ -182,10 +190,9 @@ function Toolbar({ editor }: { editor: Editor }) {
         icon={ImageIcon}
       />
 
-      <span className="mx-1 h-4 w-px bg-white/10" aria-hidden />
+      <span className="border-border mx-1 h-4 w-px border-l" aria-hidden />
 
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().undo().run()}
         active={false}
         disabled={!editor.can().undo()}
@@ -193,7 +200,6 @@ function Toolbar({ editor }: { editor: Editor }) {
         icon={Undo2}
       />
       <TB
-        editor={editor}
         cmd={() => editor.chain().focus().redo().run()}
         active={false}
         disabled={!editor.can().redo()}
@@ -205,7 +211,6 @@ function Toolbar({ editor }: { editor: Editor }) {
 }
 
 type TBProps = {
-  editor: Editor;
   cmd: () => void;
   active: boolean;
   disabled?: boolean;
@@ -220,6 +225,10 @@ function TB({ cmd, active, disabled, label, icon: Icon }: TBProps) {
       size="icon"
       variant={active ? "default" : "ghost"}
       disabled={disabled}
+      // Prevent the editor from blurring when the user clicks a toolbar
+      // button — clicking would otherwise fire mousedown → blur → click and
+      // the `focused` state (which drives `active`) would flash off.
+      onMouseDown={(e) => e.preventDefault()}
       onClick={cmd}
       aria-label={label}
       title={label}

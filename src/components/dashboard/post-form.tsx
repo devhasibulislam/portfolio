@@ -246,7 +246,7 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
             value={categoryId ?? "__none"}
             onValueChange={(v) => setCategoryId(v === "__none" ? null : v)}
           >
-            <SelectTrigger>
+            <SelectTrigger className="w-full">
               <SelectValue placeholder="Pick a category" />
             </SelectTrigger>
             <SelectContent>

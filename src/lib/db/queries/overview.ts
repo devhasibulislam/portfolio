@@ -1,13 +1,7 @@
 import { count as sqlCount } from "drizzle-orm";
 import type { PgTable } from "drizzle-orm/pg-core";
 import { db } from "@/lib/db/client";
-import {
-  categories,
-  media,
-  posts,
-  resumes,
-  tags,
-} from "@/lib/db/schema";
+import { categories, media, posts, resumes, tags } from "@/lib/db/schema";
 
 export type OverviewCounts = {
   posts: number;
