@@ -44,7 +44,10 @@ export async function setActiveResume(
   const id = String(formData.get("id") ?? "").trim();
   if (!id) return { error: "Missing id" };
 
-  await db.update(resumes).set({ isActive: false }).where(eq(resumes.isActive, true));
+  await db
+    .update(resumes)
+    .set({ isActive: false })
+    .where(eq(resumes.isActive, true));
   await db.update(resumes).set({ isActive: true }).where(eq(resumes.id, id));
 
   updateTag(tag.resumes());
@@ -62,7 +65,8 @@ export async function deleteResume(
 
   const [row] = await db.select().from(resumes).where(eq(resumes.id, id));
   if (!row) return { error: "Not found" };
-  if (row.isActive) return { error: "Set another resume active before deleting this one." };
+  if (row.isActive)
+    return { error: "Set another resume active before deleting this one." };
 
   try {
     await cloudinary.uploader.destroy(row.publicId, {

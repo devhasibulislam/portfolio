@@ -278,7 +278,9 @@ function DeleteDialog({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Delete “{row.label}”?</AlertDialogTitle>
-          <AlertDialogDescription>Can&rsquo;t be undone.</AlertDialogDescription>
+          <AlertDialogDescription>
+            Can&rsquo;t be undone.
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>

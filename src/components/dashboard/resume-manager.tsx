@@ -51,7 +51,11 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
           }}
           onSuccess={(result: CloudinaryUploadWidgetResults) => {
             const info = result.info;
-            if (typeof info !== "object" || info === null || !("public_id" in info)) {
+            if (
+              typeof info !== "object" ||
+              info === null ||
+              !("public_id" in info)
+            ) {
               return;
             }
             const fd = new FormData();
@@ -77,7 +81,9 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
           }}
           onError={(err) => {
             toast.error(
-              typeof err === "string" ? err : (err?.statusText ?? "Upload failed"),
+              typeof err === "string"
+                ? err
+                : (err?.statusText ?? "Upload failed"),
             );
           }}
         >
@@ -138,7 +144,8 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                     ) : null}
                   </div>
                   <div className="text-muted-foreground text-xs">
-                    {formatBytes(r.bytes)} · {new Date(r.createdAt).toLocaleDateString()}
+                    {formatBytes(r.bytes)} ·{" "}
+                    {new Date(r.createdAt).toLocaleDateString()}
                   </div>
                 </div>
               </label>
