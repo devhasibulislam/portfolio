@@ -101,7 +101,7 @@ export function SlugEntityTable({
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>
-              <TableHead>Slug</TableHead>
+              <TableHead className="hidden md:table-cell">Slug</TableHead>
               <TableHead className="text-end">Posts</TableHead>
               <TableHead className="w-1" />
             </TableRow>
@@ -125,7 +125,7 @@ export function SlugEntityTable({
                   onClick={() => setEditing({ mode: "edit", row: r })}
                 >
                   <TableCell className="font-medium">{r.name}</TableCell>
-                  <TableCell className="text-muted-foreground font-mono text-xs">
+                  <TableCell className="text-muted-foreground hidden font-mono text-xs md:table-cell">
                     {r.slug}
                   </TableCell>
                   <TableCell className="text-end tabular-nums">

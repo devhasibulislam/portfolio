@@ -1,6 +1,8 @@
 import * as React from "react";
 
-const MOBILE_BREAKPOINT = 768;
+// Bumped from 768 to 1024 so the sidebar behaves as a drawer at tablet sizes
+// where an expanded 256px rail leaves too little room for our tables/forms.
+const MOBILE_BREAKPOINT = 1024;
 
 /**
  * SSR-safe viewport-based mobile detector. Uses `useSyncExternalStore` so the

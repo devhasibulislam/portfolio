@@ -44,9 +44,9 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
         <TableHeader>
           <TableRow>
             <TableHead>Title</TableHead>
-            <TableHead>Category</TableHead>
+            <TableHead className="hidden md:table-cell">Category</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead>Updated</TableHead>
+            <TableHead className="hidden md:table-cell">Updated</TableHead>
             <TableHead className="w-1" />
           </TableRow>
         </TableHeader>
@@ -63,24 +63,26 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
           ) : (
             rows.map((r) => (
               <TableRow key={r.id} className="cursor-pointer">
-                <TableCell>
+                <TableCell className="max-w-0 md:max-w-none">
                   <Link
                     href={`/dashboard/posts/${r.id}/edit`}
                     className="hover:text-primary block font-medium"
                   >
-                    {r.title}
-                    <div className="text-muted-foreground mt-0.5 font-mono text-xs">
+                    <span className="block truncate md:whitespace-normal">
+                      {r.title}
+                    </span>
+                    <span className="text-muted-foreground mt-0.5 block truncate font-mono text-xs md:whitespace-normal">
                       /{r.slug}
-                    </div>
+                    </span>
                   </Link>
                 </TableCell>
-                <TableCell className="text-muted-foreground text-sm">
+                <TableCell className="text-muted-foreground hidden text-sm md:table-cell">
                   {r.categoryName ?? "—"}
                 </TableCell>
                 <TableCell>
                   <StatusSwitch row={r} />
                 </TableCell>
-                <TableCell className="text-muted-foreground text-sm">
+                <TableCell className="text-muted-foreground hidden text-sm md:table-cell">
                   {formatRelative(r.updatedAt)}
                 </TableCell>
                 <TableCell className="text-end">
