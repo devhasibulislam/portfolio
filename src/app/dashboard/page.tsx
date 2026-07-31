@@ -1,13 +1,7 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { NAV } from "@/components/dashboard/nav";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
+import { getOverviewCounts } from "@/lib/db/queries/overview";
 
 export const dynamic = "force-dynamic";
 
@@ -17,10 +11,23 @@ const DESCRIPTIONS: Record<string, string> = {
   "/dashboard/tags": "Group posts by topic (max 8 per post).",
   "/dashboard/media": "Cloudinary uploads reused across posts.",
   "/dashboard/resume": "One active PDF served at /resume.",
-  "/dashboard/links": "Small Linktree-style rows.",
 };
 
-export default function DashboardPage() {
+const COUNT_KEY: Record<
+  string,
+  keyof Awaited<ReturnType<typeof getOverviewCounts>>
+> = {
+  "/dashboard/posts": "posts",
+  "/dashboard/categories": "categories",
+  "/dashboard/tags": "tags",
+  "/dashboard/media": "media",
+  "/dashboard/resume": "resume",
+};
+
+const pad = (n: number) => n.toString().padStart(2, "0");
+
+export default async function DashboardPage() {
+  const counts = await getOverviewCounts();
   const tiles = NAV.filter((n) => n.href !== "/dashboard");
   return (
     <main className="mx-auto w-full max-w-5xl px-6 py-8">
@@ -31,25 +38,30 @@ export default function DashboardPage() {
         </p>
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tiles.map(({ label, href, icon: Icon }) => (
-          <Link key={href} href={href} className="group">
-            <Card className="hover:border-primary/50 h-full transition-colors">
-              <CardHeader className="flex-row items-start gap-3 space-y-0">
+        {tiles.map(({ label, href, icon: Icon }) => {
+          const key = COUNT_KEY[href];
+          const n = key ? counts[key] : 0;
+          return (
+            <Link key={href} href={href} className="group">
+              <Card className="hover:border-primary/50 group-focus-visible:ring-ring flex h-full flex-row items-start gap-3 p-4 transition-colors group-focus-visible:ring-2">
                 <div className="bg-primary/10 text-primary rounded-md p-2">
                   <Icon className="size-4" />
                 </div>
-                <div className="flex-1">
-                  <CardTitle className="text-base">{label}</CardTitle>
-                  <CardDescription className="mt-1">
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-base leading-none font-semibold">
+                    {label}
+                  </h2>
+                  <p className="text-muted-foreground mt-1 text-sm">
                     {DESCRIPTIONS[href] ?? ""}
-                  </CardDescription>
+                  </p>
                 </div>
-                <ArrowRight className="text-muted-foreground group-hover:text-primary mt-1 size-4 transition-colors rtl:rotate-180" />
-              </CardHeader>
-              <CardContent />
-            </Card>
-          </Link>
-        ))}
+                <span className="text-muted-foreground group-hover:text-primary group-hover:border-primary/40 rounded-md border px-2 py-0.5 font-mono text-sm tabular-nums transition-colors">
+                  {pad(n)}
+                </span>
+              </Card>
+            </Link>
+          );
+        })}
       </div>
     </main>
   );

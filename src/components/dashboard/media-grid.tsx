@@ -4,7 +4,7 @@ import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { CldImage, CldUploadWidget } from "next-cloudinary";
 import type { CloudinaryUploadWidgetResults } from "next-cloudinary";
-import { Trash2, Upload } from "lucide-react";
+import { Copy, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import {
   AlertDialog,
@@ -17,6 +17,18 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import type { MediaRow } from "@/lib/db/queries/media";
 import { deleteMedia, registerMedia } from "@/app/dashboard/media/actions";
 
@@ -26,6 +38,7 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
   const router = useRouter();
   const [filter, setFilter] = useState<Filter>("all");
   const [confirmDelete, setConfirmDelete] = useState<MediaRow | null>(null);
+  const [preview, setPreview] = useState<MediaRow | null>(null);
   const [pending, startTransition] = useTransition();
 
   const filtered = useMemo(() => {
@@ -121,7 +134,12 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {filtered.map((m) => (
             <li key={m.id} className="group relative">
-              <div className="bg-muted relative overflow-hidden rounded-lg border">
+              <button
+                type="button"
+                onClick={() => setPreview(m)}
+                aria-label={`Preview ${m.originalName}`}
+                className="bg-muted relative block w-full overflow-hidden rounded-lg border transition-transform hover:scale-[1.01] focus-visible:outline-2"
+              >
                 <CldImage
                   src={m.publicId}
                   width={400}
@@ -136,6 +154,25 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
                     In use
                   </span>
                 ) : null}
+              </button>
+              {m.inUse ? (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="absolute end-2 top-2">
+                      <Button
+                        size="icon"
+                        variant="secondary"
+                        disabled
+                        aria-label={`Delete ${m.originalName} (in use)`}
+                        className="opacity-70 shadow-md"
+                      >
+                        <Trash2 className="size-4" />
+                      </Button>
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>In use as a post cover</TooltipContent>
+                </Tooltip>
+              ) : (
                 <Button
                   size="icon"
                   variant="secondary"
@@ -145,7 +182,7 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
                 >
                   <Trash2 className="size-4" />
                 </Button>
-              </div>
+              )}
               <div className="mt-2 flex items-baseline justify-between gap-2 text-xs">
                 <span
                   className="text-foreground truncate"
@@ -165,6 +202,11 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
       <DeleteDialog
         row={confirmDelete}
         onOpenChange={(open) => !open && setConfirmDelete(null)}
+      />
+
+      <PreviewDialog
+        row={preview}
+        onOpenChange={(open) => !open && setPreview(null)}
       />
     </div>
   );
@@ -260,4 +302,62 @@ function formatBytes(n: number): string {
   if (n < 1024) return `${n} B`;
   if (n < 1_048_576) return `${(n / 1024).toFixed(1)} KB`;
   return `${(n / 1_048_576).toFixed(1)} MB`;
+}
+
+/* ---------------------------- preview lightbox --------------------------- */
+
+function PreviewDialog({
+  row,
+  onOpenChange,
+}: {
+  row: MediaRow | null;
+  onOpenChange: (open: boolean) => void;
+}) {
+  if (!row) return null;
+  const copy = async (text: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success(`Copied ${label}`);
+    } catch {
+      toast.error("Copy failed");
+    }
+  };
+  return (
+    <Dialog open onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-3xl">
+        <DialogHeader>
+          <DialogTitle className="truncate">{row.originalName}</DialogTitle>
+          <DialogDescription>
+            {row.width} × {row.height} · {formatBytes(row.bytes)} ·{" "}
+            {row.format.toUpperCase()}
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex justify-center">
+          <CldImage
+            src={row.publicId}
+            width={row.width}
+            height={row.height}
+            alt={row.originalName}
+            className="max-h-[70vh] w-auto rounded-md"
+          />
+        </div>
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => copy(row.publicId, "public ID")}
+          >
+            <Copy className="me-1.5 size-3.5" /> Public ID
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => copy(row.url, "URL")}
+          >
+            <Copy className="me-1.5 size-3.5" /> URL
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
 }

@@ -17,6 +17,12 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import type { ResumeRow } from "@/lib/db/queries/resumes";
 import {
   deleteResume,
@@ -109,13 +115,11 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                 r.isActive ? "border-primary/50 bg-primary/5" : ""
               }`}
             >
-              <label className="flex flex-1 items-center gap-3 truncate">
-                <input
-                  type="radio"
-                  name="active-resume"
+              <div className="flex flex-1 items-center gap-3 truncate">
+                <Switch
                   checked={r.isActive}
-                  disabled={pending}
-                  onChange={() => {
+                  disabled={pending || r.isActive}
+                  onCheckedChange={() => {
                     if (r.isActive) return;
                     const fd = new FormData();
                     fd.set("id", r.id);
@@ -129,7 +133,11 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                       router.refresh();
                     });
                   }}
-                  className="accent-primary size-4"
+                  aria-label={
+                    r.isActive
+                      ? `${r.originalName} is active`
+                      : `Set ${r.originalName} active`
+                  }
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 truncate">
@@ -148,7 +156,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                     {new Date(r.createdAt).toLocaleDateString()}
                   </div>
                 </div>
-              </label>
+              </div>
               <div className="flex items-center gap-1">
                 <Button size="icon" variant="ghost" asChild>
                   <a
@@ -160,14 +168,35 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                     <ExternalLink className="size-4" />
                   </a>
                 </Button>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  aria-label={`Delete ${r.originalName}`}
-                  onClick={() => setConfirmDelete(r)}
-                >
-                  <Trash2 className="size-4" />
-                </Button>
+                {r.isActive ? (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span>
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          disabled
+                          aria-label={`Delete ${r.originalName} (active)`}
+                          className="opacity-50"
+                        >
+                          <Trash2 className="size-4" />
+                        </Button>
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      Active resume — set another active first
+                    </TooltipContent>
+                  </Tooltip>
+                ) : (
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    aria-label={`Delete ${r.originalName}`}
+                    onClick={() => setConfirmDelete(r)}
+                  >
+                    <Trash2 className="size-4" />
+                  </Button>
+                )}
               </div>
             </li>
           ))}

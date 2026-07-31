@@ -11,5 +11,4 @@ export const tag = {
   media: () => "media",
   resumes: () => "resumes",
   activeResume: () => "resume:active",
-  links: () => "links",
 };

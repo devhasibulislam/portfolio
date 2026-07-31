@@ -124,16 +124,6 @@ export const resumes = pgTable(
   ],
 );
 
-// ---------- links --------------------------------------------------------
-
-export const links = pgTable("links", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  label: varchar("label", { length: 60 }).notNull(),
-  url: text("url").notNull(),
-  sortOrder: integer("sort_order").notNull().default(0),
-  ...timestamps,
-});
-
 // ---------- relations ----------------------------------------------------
 
 export const postsRelations = relations(posts, ({ one, many }) => ({

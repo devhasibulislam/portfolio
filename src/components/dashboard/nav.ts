@@ -4,7 +4,6 @@ import {
   FolderTree,
   Images,
   LayoutDashboard,
-  Link2,
   ScrollText,
   Tags,
 } from "lucide-react";
@@ -27,5 +26,4 @@ export const NAV: NavItem[] = [
   { label: "Tags", href: "/dashboard/tags", icon: Tags },
   { label: "Media", href: "/dashboard/media", icon: Images },
   { label: "Resume", href: "/dashboard/resume", icon: ScrollText },
-  { label: "Links", href: "/dashboard/links", icon: Link2 },
 ];

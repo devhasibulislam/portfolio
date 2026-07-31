@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Plus, Trash2 } from "lucide-react";
+import { Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import {
   AlertDialog,
@@ -33,6 +33,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { slugify } from "@/lib/slug";
 
 /**
@@ -130,14 +135,49 @@ export function SlugEntityTable({
                     className="text-end"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      onClick={() => setConfirmDelete(r)}
-                      aria-label={`Delete ${r.name}`}
-                    >
-                      <Trash2 className="size-4" />
-                    </Button>
+                    <div className="inline-flex items-center gap-1">
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        onClick={() => setEditing({ mode: "edit", row: r })}
+                        aria-label={`Edit ${r.name}`}
+                        title={`Edit ${r.name}`}
+                      >
+                        <Pencil className="size-4" />
+                      </Button>
+                      {r.postCount > 0 ? (
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            {/* span wrapper so the tooltip still fires while the
+                                button underneath is disabled */}
+                            <span>
+                              <Button
+                                size="icon"
+                                variant="ghost"
+                                disabled
+                                aria-label={`Delete ${r.name} (in use)`}
+                                className="opacity-50"
+                              >
+                                <Trash2 className="size-4" />
+                              </Button>
+                            </span>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            In use by {r.postCount} post
+                            {r.postCount === 1 ? "" : "s"}
+                          </TooltipContent>
+                        </Tooltip>
+                      ) : (
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          onClick={() => setConfirmDelete(r)}
+                          aria-label={`Delete ${r.name}`}
+                        >
+                          <Trash2 className="size-4" />
+                        </Button>
+                      )}
+                    </div>
                   </TableCell>
                 </TableRow>
               ))

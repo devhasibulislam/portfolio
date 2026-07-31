@@ -9,4 +9,3 @@ export * from "./category";
 export * from "./tag";
 export * from "./media";
 export * from "./resume";
-export * from "./link";
