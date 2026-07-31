@@ -19,12 +19,7 @@ type Props = {
  * Enforces a soft max — button + input disable at limit, error toast up to
  * caller.
  */
-export function TagMultiPicker({
-  options,
-  value,
-  onChange,
-  max = 8,
-}: Props) {
+export function TagMultiPicker({ options, value, onChange, max = 8 }: Props) {
   const [query, setQuery] = useState("");
   const selectedIds = useMemo(() => new Set(value), [value]);
   const remaining = useMemo(

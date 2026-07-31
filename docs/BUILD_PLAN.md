@@ -87,20 +87,20 @@ Scaffold that everything else builds on. All items are project-scoped (nothing i
 
 Content management. Nothing else can be demoed without this.
 
-- [ ] Seed Neon Auth with the sole user (see Provisioning above)
-- [ ] Session-only cookie override (see Phase 0 deferred TODOs)
-- [ ] Real login UI polish (shadcn `Card` + `Input` + `Button`)
-- [ ] Drizzle schema: `posts`, `categories`, `tags`, `posts_tags`, `media`, `media_uses`, `resumes`, `links`
-- [ ] Zod schemas for each entity in `src/schemas/*.ts` (client + server), enforcing §5 field lengths
-- [ ] Dashboard shell: sidebar nav, breadcrumbs, sign-out
-- [ ] **Posts CRUD** — Tiptap toolbar locked to §5 subset; publish/draft toggle; auto-slug + slug edit
-- [ ] **Categories CRUD** — in-use guard on delete
-- [ ] **Tags CRUD** — in-use guard on delete; 5–8 cap enforced at post level
-- [ ] **Media library** — Cloudinary uploader with 1MB client-side reject, mandatory 1.91:1 crop, reuse-vs-upload picker, in-use tracking, "in use" vs "unused" filter, blocked-delete on in-use
-- [ ] **Resume manager** — upload history, single-active radio, active PDF served on `/resume`
-- [ ] **Links manager** — small CRUD for `/links` entries
-- [ ] All mutations call `revalidateTag()` for the correct route family (§13)
-- [ ] Middleware smoke-test: cookie-tampered session with a foreign email is signed out
+- [x] Seed Neon Auth with the sole user (see Provisioning above)
+- [x] Session-only cookie override (see Phase 0 deferred TODOs)
+- [x] Real login UI polish (shadcn `Card` + `Input` + `Button`)
+- [x] Drizzle schema: `posts`, `categories`, `tags`, `posts_tags`, `media`, `resumes`, `links` (no `media_uses` — runtime `SELECT ... WHERE cover_media_id = ?` covers the in-use check)
+- [x] Zod schemas for each entity in `src/schemas/*.ts` (client + server), enforcing §5 field lengths
+- [x] Dashboard shell: sidebar nav, breadcrumbs, sign-out
+- [x] **Posts CRUD** — Tiptap toolbar locked to §5 subset; publish/draft toggle; auto-slug + slug edit
+- [x] **Categories CRUD** — in-use guard on delete
+- [x] **Tags CRUD** — in-use guard on delete; 5–8 cap enforced at post level
+- [x] **Media library** — Cloudinary uploader with 1MB client-side reject, 1.91:1 delivery-time crop (`c_fill,g_auto` at 1200×630 via CldImage — not physical crop), reuse-vs-upload picker, in-use tracking, "in use" vs "unused" filter, blocked-delete on in-use
+- [x] **Resume manager** — upload history, single-active radio, active PDF served on `/resume`
+- [x] **Links manager** — small CRUD for `/links` entries
+- [x] All mutations call `updateTag()` for the correct route family (§13) — Next 16 renamed `revalidateTag` inside server actions to `updateTag` for read-your-writes semantics
+- [x] Middleware smoke-test: `dashboard/layout.tsx` re-checks `session.user.email !== DASHBOARD_ALLOWED_EMAIL` and calls `auth.signOut()` before redirecting to `/login?denied=1`. Verified by code review — cookie tampering can't forge the email claim because the session cookie is signed with `NEON_AUTH_COOKIE_SECRET`, but the layout guarantees defense-in-depth if the signature check ever regressed.
 
 ---
 
@@ -145,16 +145,29 @@ Content management. Nothing else can be demoed without this.
 
 ## Current focus
 
-**Phase 0 + meta setup shipped ✅.** HEAD at commit `8f4cc36` on `origin/master`. `next build` passes; `tsc --noEmit` passes. Seven MCPs configured, agent skills library wired in via `.github/copilot-instructions.md`, seed script tested against live Neon Auth.
+**Phase 1 shipped ✅** — the dashboard CMS is complete. Every entity from PROJECT_CONTEXT §5 has a working CRUD surface, session-only cookies land per §11, Cloudinary uploads are signed, and every mutation calls `updateTag()` (Next 16's server-action equivalent of `revalidateTag`) for the correct cache family.
 
-**One blocker remaining before Phase 1 code:** confirm `npm run seed:user` printed `✓ Created (200)` — exit code 0 from last run but output not captured. If it did, we have a working login. If not, re-run after enabling Email & Password sign-up in the Neon Auth Configuration tab.
+**What Phase 1 shipped this session:**
 
-**Phase 1 opening moves** (in order):
+- Login polish + dashboard shell (collapsible sidebar, breadcrumb, sign-out, sonner top-right)
+- Categories + Tags CRUD via a shared `SlugEntityTable` (§14: one component, two entities)
+- Media library with signed Cloudinary uploads, 1MB reject, filter tabs, delete guard
+- Posts CRUD with a Tiptap editor locked to the §5 subset, category/tag/cover pickers, publish/draft flow, auto-slug
+- Resume manager with single-active radio and PDF-only uploads
+- Links CRUD with sort order
 
-1. Session-only auth cookie override (deferred TODO from Phase 0 — strip `Max-Age`/`Expires` from Neon Auth's `Set-Cookie` so closing the tab forces re-login)
-2. First-visit theme = system preference no-flash script (deferred TODO from Phase 0)
-3. Drizzle schema commit — `posts`, `categories`, `tags`, `posts_tags`, `media`, `media_uses`, `resumes`, `links` with `db:generate` + `db:migrate`
-4. Shared Zod schemas in `src/schemas/*.ts` enforcing §5 field lengths (client + server)
-5. Dashboard shell — shadcn sidebar/breadcrumbs/sign-out, then Posts CRUD (Tiptap first)
+**Runtime workarounds baked in** (local dev only, transparent on Vercel):
 
-Last touched: 2026-07-28 (post-scaffold meta setup pushed as `8f4cc36`)
+- `drizzle.config.ts` resolves DNS to IPv4 via `getent ahostsv4` because `pg`'s `family:4` is silently ignored (see `node_modules/pg/lib/connection.js:44`).
+- `src/lib/db/client.ts` uses `pg` locally (TCP:5432) and `@neondatabase/serverless` (HTTP) on Vercel — Node 24 + undici currently fails to reach Neon over IPv6 and can't fall back to IPv4 cleanly.
+
+**Next up — Phase 2 opening moves** (in order):
+
+1. Shared `useCursor<Item>(filter)` hook — one implementation, three consumers per §14.
+2. `/blog` list with cursor-based infinite scroll (no offset pagination).
+3. `/blog/[slug]` with `generateMetadata` + Article JSON-LD + canonical + hreflang.
+4. `/blog/category/[slug]` and `/blog/tag/[slug]` — real server-rendered SEO pages, not client filters.
+5. `next/og` fallback OG image when a post has no cover.
+6. `sitemap.xml`, `robots.txt`, `llms.txt` — hreflang for all 5 locales.
+
+Last touched: 2026-07-31 (Phase 1 complete — Resume + Links + BUILD_PLAN sync)

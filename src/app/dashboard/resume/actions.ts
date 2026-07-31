@@ -1,0 +1,79 @@
+"use server";
+
+import { updateTag } from "next/cache";
+import { eq } from "drizzle-orm";
+import { db } from "@/lib/db/client";
+import { resumes } from "@/lib/db/schema";
+import { cloudinary } from "@/lib/cloudinary";
+import { tag } from "@/lib/cache-tags";
+import { resumeInput } from "@/schemas/resume";
+
+export type ActionState = { error?: string; ok?: true } | null;
+
+/** Register a resume after Cloudinary upload. First one uploaded is auto-active. */
+export async function registerResume(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const parsed = resumeInput.safeParse({
+    publicId: String(formData.get("publicId") ?? ""),
+    url: String(formData.get("url") ?? ""),
+    originalName: String(formData.get("originalName") ?? "").slice(0, 255),
+    bytes: Number(formData.get("bytes") ?? 0),
+  });
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+  }
+
+  const existing = await db.select({ id: resumes.id }).from(resumes).limit(1);
+  await db
+    .insert(resumes)
+    .values({ ...parsed.data, isActive: existing.length === 0 })
+    .onConflictDoNothing({ target: resumes.publicId });
+
+  updateTag(tag.resumes());
+  if (existing.length === 0) updateTag(tag.activeResume());
+  return { ok: true };
+}
+
+/** Set exactly one resume active. Two writes; partial-unique index guards races. */
+export async function setActiveResume(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) return { error: "Missing id" };
+
+  await db.update(resumes).set({ isActive: false }).where(eq(resumes.isActive, true));
+  await db.update(resumes).set({ isActive: true }).where(eq(resumes.id, id));
+
+  updateTag(tag.resumes());
+  updateTag(tag.activeResume());
+  return { ok: true };
+}
+
+/** Delete a resume. Blocks if it's the active one — pick another first. */
+export async function deleteResume(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) return { error: "Missing id" };
+
+  const [row] = await db.select().from(resumes).where(eq(resumes.id, id));
+  if (!row) return { error: "Not found" };
+  if (row.isActive) return { error: "Set another resume active before deleting this one." };
+
+  try {
+    await cloudinary.uploader.destroy(row.publicId, {
+      resource_type: "raw",
+      invalidate: true,
+    });
+  } catch (e) {
+    console.error("[resume.delete] cloudinary destroy failed", e);
+  }
+
+  await db.delete(resumes).where(eq(resumes.id, id));
+  updateTag(tag.resumes());
+  return { ok: true };
+}

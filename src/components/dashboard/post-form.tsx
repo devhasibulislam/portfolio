@@ -45,13 +45,7 @@ type Props = {
   savedFlash?: boolean;
 };
 
-export function PostForm({
-  post,
-  categories,
-  tags,
-  media,
-  savedFlash,
-}: Props) {
+export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
   const router = useRouter();
   const [title, setTitle] = useState(post?.title ?? "");
   const [slug, setSlug] = useState(post?.slug ?? "");
@@ -160,10 +154,7 @@ export function PostForm({
           <div className="flex flex-col gap-2">
             {status === "published" ? (
               <>
-                <Button
-                  disabled={pending}
-                  onClick={() => submit("published")}
-                >
+                <Button disabled={pending} onClick={() => submit("published")}>
                   {pending ? "Saving…" : "Update"}
                 </Button>
                 <Button
@@ -176,10 +167,7 @@ export function PostForm({
               </>
             ) : (
               <>
-                <Button
-                  disabled={pending}
-                  onClick={() => submit("published")}
-                >
+                <Button disabled={pending} onClick={() => submit("published")}>
                   {pending ? "Publishing…" : "Publish"}
                 </Button>
                 <Button

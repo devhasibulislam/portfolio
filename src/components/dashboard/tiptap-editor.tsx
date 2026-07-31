@@ -69,7 +69,6 @@ export function TiptapEditor({ value, onChange }: Props) {
       });
     }
     // Only run when the value ref changes, not on every render.
-     
   }, [editor, value]);
 
   if (!editor) return null;
@@ -160,7 +159,12 @@ function Toolbar({ editor }: { editor: Editor }) {
             editor.chain().focus().extendMarkRange("link").unsetLink().run();
             return;
           }
-          editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+          editor
+            .chain()
+            .focus()
+            .extendMarkRange("link")
+            .setLink({ href: url })
+            .run();
         }}
         active={editor.isActive("link")}
         label="Link"
