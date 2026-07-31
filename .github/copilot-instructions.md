@@ -4,6 +4,11 @@
 > It is mirrored at the repo root as `AGENTS.md` and `CLAUDE.md` (symlinks) so
 > that GitHub Copilot, OpenAI Codex/Cursor, and Claude Code all discover it
 > under their expected filename. Edit this file — the mirrors auto-update.
+>
+> **Sync rule**: when adding a skill to `.agents/skills/`, an instructions
+> file to `.github/instructions/`, or a prompt to `.github/prompts/`, update
+> the relevant section of this file in the same commit. Run `/audit-agents`
+> if unsure whether anything drifted.
 
 **Read these two files before proposing or writing any code:**
 
@@ -61,6 +66,7 @@ These live in `.github/prompts/` and are typed into Copilot Chat as `/name`:
 
 - **`/phase-status`** — read `docs/BUILD_PLAN.md` and report the current phase, last commit SHA, next actionable checkbox, and any drift between the plan and the actual repo state. Run at the start of a session, especially on a new machine.
 - **`/rtl-audit`** — grep for banned physical CSS/Tailwind properties per [`instructions/rtl-logical-props.instructions.md`](instructions/rtl-logical-props.instructions.md). Run before shipping any UI phase.
+- **`/audit-agents`** — cross-reference `.agents/skills/`, `.github/instructions/`, and `.github/prompts/` against this file to catch drift. Run at the end of each phase, after any `npx skills add`, and any time this file feels stale.
 
 ## When in doubt
 
