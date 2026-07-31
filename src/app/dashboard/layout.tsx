@@ -1,4 +1,13 @@
 import { redirect } from "next/navigation";
+import { AppSidebar } from "@/components/dashboard/app-sidebar";
+import { DashboardBreadcrumb } from "@/components/dashboard/breadcrumb";
+import { Separator } from "@/components/ui/separator";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Toaster } from "@/components/ui/sonner";
 import { auth } from "@/lib/auth/server";
 
 export const dynamic = "force-dynamic"; // auth.getSession() reads cookies
@@ -29,5 +38,18 @@ export default async function DashboardLayout({
     redirect("/login?denied=1");
   }
 
-  return <>{children}</>;
+  return (
+    <SidebarProvider>
+      <AppSidebar userEmail={session.user.email} />
+      <SidebarInset>
+        <header className="bg-background/70 sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b px-4 backdrop-blur">
+          <SidebarTrigger className="-ms-1" />
+          <Separator orientation="vertical" className="me-2 h-4" />
+          <DashboardBreadcrumb />
+        </header>
+        <div className="flex-1">{children}</div>
+        <Toaster richColors closeButton position="top-right" />
+      </SidebarInset>
+    </SidebarProvider>
+  );
 }

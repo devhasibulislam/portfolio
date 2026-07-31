@@ -1,3 +1,10 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { LoginForm } from "./login-form";
 
 export const dynamic = "force-dynamic";
@@ -19,19 +26,24 @@ export default async function LoginPage({
   const { denied } = await searchParams;
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-sm flex-col justify-center px-6 py-12">
-      <h1 className="text-2xl font-semibold tracking-tight">Sign in</h1>
-      <p className="mt-1 text-sm opacity-70">Authorized user only.</p>
-
-      {denied ? (
-        <div className="mt-4 rounded-md border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-300">
-          Access denied. Only the site owner can sign in.
-        </div>
-      ) : null}
-
-      <div className="mt-6">
-        <LoginForm />
-      </div>
+    <main className="mx-auto flex min-h-screen w-full max-w-md flex-col items-stretch justify-center px-6 py-12">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-2xl">Sign in</CardTitle>
+          <CardDescription>Authorized user only.</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4">
+          {denied ? (
+            <p
+              role="alert"
+              className="rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive"
+            >
+              Access denied. Only the site owner can sign in.
+            </p>
+          ) : null}
+          <LoginForm />
+        </CardContent>
+      </Card>
     </main>
   );
 }

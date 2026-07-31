@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* ---break---*/
+@custom-variant dark (&:is([data-theme="dark"] *, [data-theme="dark"]));
 @plugin "@tailwindcss/typography";
 
 /* -----------------------------------------------------------------------------
@@ -17,7 +19,8 @@
 
 /* -----------------------------------------------------------------------------
  * Dark-first theme. Toggled via `data-theme` on <html>, set server-side from
- * the `theme` cookie in src/app/layout.tsx — no flash of wrong theme.
+ * the `theme` cookie in src/app/layout.tsx. Shadcn semantic tokens are mapped
+ * from the brand palette below via `@theme inline` — one source of truth.
  * ---------------------------------------------------------------------------*/
 :root,
 html[data-theme="dark"] {
@@ -27,6 +30,37 @@ html[data-theme="dark"] {
   --color-accent: var(--color-brand-highlight);
   --color-accent-strong: var(--color-brand-shadow);
   --color-border: rgba(242, 228, 208, 0.12);
+
+  /* shadcn semantic tokens */
+  --background: var(--color-brand-ink);
+  --foreground: var(--color-brand-cream);
+  --card: #171c26;
+  --card-foreground: var(--color-brand-cream);
+  --popover: #171c26;
+  --popover-foreground: var(--color-brand-cream);
+  --primary: var(--color-brand-highlight);
+  --primary-foreground: #1a0a03;
+  --secondary: var(--color-brand-navy);
+  --secondary-foreground: var(--color-brand-cream);
+  --muted: rgba(242, 228, 208, 0.06);
+  --muted-foreground: rgba(242, 228, 208, 0.65);
+  --shadcn-accent: var(--color-brand-navy);
+  --shadcn-accent-foreground: var(--color-brand-cream);
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(242, 228, 208, 0.12);
+  --input: rgba(242, 228, 208, 0.14);
+  --ring: var(--color-brand-highlight);
+  --radius: 0.625rem;
+
+  --sidebar: #12171f;
+  --sidebar-foreground: var(--color-brand-cream);
+  --sidebar-primary: var(--color-brand-highlight);
+  --sidebar-primary-foreground: #1a0a03;
+  --sidebar-accent: rgba(242, 228, 208, 0.06);
+  --sidebar-accent-foreground: var(--color-brand-cream);
+  --sidebar-border: rgba(242, 228, 208, 0.08);
+  --sidebar-ring: var(--color-brand-highlight);
 }
 
 html[data-theme="light"] {
@@ -36,10 +70,74 @@ html[data-theme="light"] {
   --color-accent: var(--color-brand-highlight);
   --color-accent-strong: var(--color-brand-shadow);
   --color-border: rgba(15, 19, 26, 0.12);
+
+  --background: #faf5ec;
+  --foreground: var(--color-brand-ink);
+  --card: #ffffff;
+  --card-foreground: var(--color-brand-ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--color-brand-ink);
+  --primary: var(--color-brand-highlight);
+  --primary-foreground: #ffffff;
+  --secondary: #f0e6d2;
+  --secondary-foreground: var(--color-brand-ink);
+  --muted: rgba(15, 19, 26, 0.04);
+  --muted-foreground: rgba(15, 19, 26, 0.6);
+  --shadcn-accent: #f0e6d2;
+  --shadcn-accent-foreground: var(--color-brand-ink);
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: rgba(15, 19, 26, 0.12);
+  --input: rgba(15, 19, 26, 0.16);
+  --ring: var(--color-brand-highlight);
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--color-brand-ink);
+  --sidebar-primary: var(--color-brand-highlight);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(15, 19, 26, 0.05);
+  --sidebar-accent-foreground: var(--color-brand-ink);
+  --sidebar-border: rgba(15, 19, 26, 0.08);
+  --sidebar-ring: var(--color-brand-highlight);
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-fg);
+  background: var(--background);
+  color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* ---break---*/
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--shadcn-accent);
+  --color-accent-foreground: var(--shadcn-accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }

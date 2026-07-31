@@ -42,3 +42,6 @@ next-env.d.ts
 
 # committed env schema (overrides .env* rule above)
 !.env.example
+
+# Playwright MCP artifacts (debug screenshots/snapshots)
+.playwright-mcp/

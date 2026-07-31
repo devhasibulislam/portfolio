@@ -49,6 +49,12 @@
       "skillPath": "skills/taste-skill/SKILL.md",
       "computedHash": "6d838b246d0e35d0b53f4f23f98ba7a1dd561937e64f7d0c7553b0928e376c3e"
     },
+    "dev": {
+      "source": "microsoft/playwright-cli",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/dev/SKILL.md",
+      "computedHash": "da14d3749ab3f65b479db8b056ab64cd262ce15d07dd642f7d3263ad10708c1b"
+    },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
@@ -192,6 +198,24 @@
       "sourceType": "github",
       "skillPath": "skills/nextjs-seo/SKILL.md",
       "computedHash": "d34602e896a5e23d547feb7c9f97adf178d4c2e1515d722e35e8457edb0acf1d"
+    },
+    "playwright-best-practices": {
+      "source": "currents-dev/playwright-best-practices-skill",
+      "sourceType": "github",
+      "skillPath": "playwright-best-practices/SKILL.md",
+      "computedHash": "7eb144f734450fee649dc1d209114775ddda07cbf45be84fe969d3d4f3971dce"
+    },
+    "playwright-cli": {
+      "source": "microsoft/playwright-cli",
+      "sourceType": "github",
+      "skillPath": "skills/playwright-cli/SKILL.md",
+      "computedHash": "f602822b51bcb6d033749c60731b8f1e80f308222fcb2e4af551905a817c6e08"
+    },
+    "playwright-generate-test": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "skillPath": "skills/playwright-generate-test/SKILL.md",
+      "computedHash": "8f963da3e25f705ff39755b8b990f20da0c0320cb86ac83fcc4d2d4eca91f6e4"
     },
     "shadcn": {
       "source": "shadcn/ui",

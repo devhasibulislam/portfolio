@@ -1,7 +1,12 @@
 /**
- * Shared Zod schemas. Defined once per entity here, imported by both client
- * forms and server actions/route handlers. See PROJECT_CONTEXT §14.
- *
- * Populated in Phase 1 when we model posts/categories/tags/media/resume.
+ * Shared Zod schemas — one file per entity, imported by both client forms
+ * and server actions. See PROJECT_CONTEXT §14 and
+ * .github/instructions/blog-schemas.instructions.md.
  */
-export {};
+export * from "./common";
+export * from "./post";
+export * from "./category";
+export * from "./tag";
+export * from "./media";
+export * from "./resume";
+export * from "./link";
