@@ -2,8 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CldImage, CldUploadWidget } from "next-cloudinary";
-import type { CloudinaryUploadWidgetResults } from "next-cloudinary";
+import { CldImage } from "next-cloudinary";
 import { Copy, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -29,8 +28,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ImagePickerDialog } from "@/components/dashboard/image-picker";
 import type { MediaRow } from "@/lib/db/queries/media";
-import { deleteMedia, registerMedia } from "@/app/dashboard/media/actions";
+import { deleteMedia } from "@/app/dashboard/media/actions";
 
 type Filter = "all" | "in-use" | "unused";
 
@@ -38,8 +38,8 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
   const router = useRouter();
   const [filter, setFilter] = useState<Filter>("all");
   const [confirmDelete, setConfirmDelete] = useState<MediaRow | null>(null);
+  const [uploadOpen, setUploadOpen] = useState(false);
   const [preview, setPreview] = useState<MediaRow | null>(null);
-  const [pending, startTransition] = useTransition();
 
   const filtered = useMemo(() => {
     if (filter === "all") return rows;
@@ -59,68 +59,10 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
 
         <div className="flex items-center gap-2">
           <FilterTabs value={filter} onChange={setFilter} />
-          <CldUploadWidget
-            signatureEndpoint="/api/sign-cloudinary-params"
-            options={{
-              sources: ["local", "url"],
-              multiple: false,
-              maxFiles: 1,
-              maxFileSize: 1_048_576, // 1MB
-              folder: "portfolio/posts",
-              clientAllowedFormats: ["png", "jpg", "jpeg", "webp"],
-            }}
-            onSuccess={(result: CloudinaryUploadWidgetResults) => {
-              const info = result.info;
-              if (
-                typeof info !== "object" ||
-                info === null ||
-                !("public_id" in info)
-              ) {
-                return;
-              }
-              const fd = new FormData();
-              fd.set("publicId", String(info.public_id));
-              fd.set(
-                "url",
-                String((info as { secure_url: string }).secure_url),
-              );
-              fd.set(
-                "originalName",
-                String(
-                  (info as { original_filename?: string }).original_filename ??
-                    info.public_id,
-                ),
-              );
-              fd.set("width", String((info as { width: number }).width));
-              fd.set("height", String((info as { height: number }).height));
-              fd.set("bytes", String((info as { bytes: number }).bytes));
-              fd.set("format", String((info as { format: string }).format));
-              fd.set("folder", "portfolio/posts");
-              startTransition(async () => {
-                const res = await registerMedia(null, fd);
-                if (res?.error) {
-                  toast.error(res.error);
-                  return;
-                }
-                toast.success("Uploaded");
-                router.refresh();
-              });
-            }}
-            onError={(err) => {
-              toast.error(
-                typeof err === "string"
-                  ? err
-                  : (err?.statusText ?? "Upload failed"),
-              );
-            }}
-          >
-            {({ open }) => (
-              <Button onClick={() => open()} disabled={pending}>
-                <Upload className="me-1 size-4" />
-                Upload
-              </Button>
-            )}
-          </CldUploadWidget>
+          <Button onClick={() => setUploadOpen(true)}>
+            <Upload className="me-1 size-4" />
+            Upload
+          </Button>
         </div>
       </div>
 
@@ -207,6 +149,17 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
       <PreviewDialog
         row={preview}
         onOpenChange={(open) => !open && setPreview(null)}
+      />
+
+      <ImagePickerDialog
+        open={uploadOpen}
+        onOpenChange={setUploadOpen}
+        // Library tab is redundant here — this whole page IS the library.
+        options={[]}
+        onSelect={() => {
+          setUploadOpen(false);
+          router.refresh();
+        }}
       />
     </div>
   );

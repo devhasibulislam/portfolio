@@ -1,9 +1,7 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CldUploadWidget } from "next-cloudinary";
-import type { CloudinaryUploadWidgetResults } from "next-cloudinary";
 import { CheckCircle2, ExternalLink, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -34,6 +32,82 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
   const router = useRouter();
   const [confirmDelete, setConfirmDelete] = useState<ResumeRow | null>(null);
   const [pending, startTransition] = useTransition();
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const apiKey = process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;
+  const MAX_BYTES = 5_242_880; // 5MB
+
+  const uploadPdf = (file: File) => {
+    if (file.size > MAX_BYTES) {
+      toast.error(
+        `File is ${(file.size / 1024 / 1024).toFixed(2)} MB — max is ${MAX_BYTES / 1024 / 1024} MB.`,
+      );
+      return;
+    }
+    const ext = file.name.split(".").pop()?.toLowerCase();
+    if (ext !== "pdf") {
+      toast.error("Only PDF is allowed.");
+      return;
+    }
+
+    startTransition(async () => {
+      try {
+        const timestamp = Math.floor(Date.now() / 1000);
+        const folder = "portfolio/resume";
+        const paramsToSign = { folder, timestamp };
+        const signRes = await fetch("/api/sign-cloudinary-params", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ paramsToSign }),
+        });
+        if (!signRes.ok) throw new Error("Signing failed");
+        const { signature } = (await signRes.json()) as { signature: string };
+
+        // Resumes are `resource_type: raw` on Cloudinary — the endpoint
+        // segment changes accordingly.
+        const form = new FormData();
+        form.append("file", file);
+        form.append("api_key", apiKey!);
+        form.append("timestamp", String(timestamp));
+        form.append("signature", signature);
+        form.append("folder", folder);
+
+        const uploadRes = await fetch(
+          `https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`,
+          { method: "POST", body: form },
+        );
+        if (!uploadRes.ok) {
+          const err = await uploadRes.json().catch(() => ({}));
+          throw new Error(
+            (err as { error?: { message?: string } })?.error?.message ??
+              "Cloudinary upload failed",
+          );
+        }
+        const info = (await uploadRes.json()) as {
+          public_id: string;
+          secure_url: string;
+          original_filename?: string;
+          bytes: number;
+        };
+
+        const fd = new FormData();
+        fd.set("publicId", info.public_id);
+        fd.set("url", info.secure_url);
+        fd.set("originalName", info.original_filename ?? info.public_id);
+        fd.set("bytes", String(info.bytes));
+        const reg = await registerResume(null, fd);
+        if (reg?.error) {
+          toast.error(reg.error);
+          return;
+        }
+        toast.success("Resume uploaded");
+        router.refresh();
+      } catch (e) {
+        toast.error(e instanceof Error ? e.message : "Upload failed");
+      }
+    });
+  };
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-8">
@@ -44,62 +118,24 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
             Upload a new PDF; pick the one served at <code>/resume</code>.
           </p>
         </div>
-        <CldUploadWidget
-          signatureEndpoint="/api/sign-cloudinary-params"
-          options={{
-            sources: ["local"],
-            resourceType: "raw",
-            multiple: false,
-            maxFiles: 1,
-            folder: "portfolio/resume",
-            clientAllowedFormats: ["pdf"],
-            maxFileSize: 5_242_880, // 5MB — resumes are text, but keep some room
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".pdf"
+          className="hidden"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) uploadPdf(file);
+            e.target.value = "";
           }}
-          onSuccess={(result: CloudinaryUploadWidgetResults) => {
-            const info = result.info;
-            if (
-              typeof info !== "object" ||
-              info === null ||
-              !("public_id" in info)
-            ) {
-              return;
-            }
-            const fd = new FormData();
-            fd.set("publicId", String(info.public_id));
-            fd.set("url", String((info as { secure_url: string }).secure_url));
-            fd.set(
-              "originalName",
-              String(
-                (info as { original_filename?: string }).original_filename ??
-                  info.public_id,
-              ),
-            );
-            fd.set("bytes", String((info as { bytes: number }).bytes));
-            startTransition(async () => {
-              const res = await registerResume(null, fd);
-              if (res?.error) {
-                toast.error(res.error);
-                return;
-              }
-              toast.success("Resume uploaded");
-              router.refresh();
-            });
-          }}
-          onError={(err) => {
-            toast.error(
-              typeof err === "string"
-                ? err
-                : (err?.statusText ?? "Upload failed"),
-            );
-          }}
+        />
+        <Button
+          onClick={() => fileInputRef.current?.click()}
+          disabled={pending}
         >
-          {({ open }) => (
-            <Button onClick={() => open()} disabled={pending}>
-              <Upload className="me-1 size-4" />
-              Upload PDF
-            </Button>
-          )}
-        </CldUploadWidget>
+          <Upload className="me-1 size-4" />
+          {pending ? "Uploading…" : "Upload PDF"}
+        </Button>
       </div>
 
       {rows.length === 0 ? (
@@ -118,9 +154,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
               {/* Filename + meta take the left / stretch column. */}
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-2 truncate">
-                  <span className="truncate font-medium">
-                    {r.originalName}
-                  </span>
+                  <span className="truncate font-medium">{r.originalName}</span>
                   {r.isActive ? (
                     <span className="text-primary inline-flex shrink-0 items-center gap-1 text-xs">
                       <CheckCircle2 className="size-3.5" />
@@ -167,9 +201,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                     </span>
                   </TooltipTrigger>
                   <TooltipContent>
-                    {r.isActive
-                      ? "This is the active resume"
-                      : "Set as active"}
+                    {r.isActive ? "This is the active resume" : "Set as active"}
                   </TooltipContent>
                 </Tooltip>
                 <Button size="icon" variant="ghost" asChild>

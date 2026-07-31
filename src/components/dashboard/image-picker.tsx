@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { CldImage, CldUploadWidget } from "next-cloudinary";
-import type { CloudinaryUploadWidgetResults } from "next-cloudinary";
+import { CldImage } from "next-cloudinary";
 import { Upload } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -38,18 +37,20 @@ type Props = {
   options: LibraryOption[];
   onSelect: (media: PickedMedia) => void;
   /**
-   * Optional fixed aspect ratio for the crop step (e.g. 1.91 for OG cover).
-   * Omit for free-form.
+   * Optional target aspect ratio for the OG cover hint. Only used in the
+   * description string — the actual crop happens at delivery time
+   * (`c_fill,g_auto` via CldImage) so we skip a client cropper.
    */
   aspect?: number;
   /**
    * Which folder to store new uploads under. Defaults to portfolio/posts —
-   * used by both post covers and inline body images so they share the pool.
+   * shared by post covers and inline body images so they can reuse each
+   * other.
    */
   folder?: string;
   /**
-   * Cloudinary Upload Widget will pre-check this on the client, then again
-   * server-side. 1MB per §5.
+   * Client-side pre-check; the server also enforces this via the media Zod
+   * schema. 1MB per §5.
    */
   maxFileSize?: number;
   /** File extensions accepted. Defaults to the §5 image set. */
@@ -59,11 +60,10 @@ type Props = {
 /**
  * Reusable pick-or-upload modal. Two tabs:
  *   - Library: grid of media rows already in Cloudinary + our DB.
- *   - Upload:  CldUploadWidget with client-side size/format guard and an
- *              optional crop step (Cloudinary's own cropping UI, controlled
- *              via `aspect`). New assets are registered via `registerMedia`
- *              so they show up under the same picker the next time.
- * Wired into both the Cover picker and the Tiptap Image tool.
+ *   - Upload:  native <input type="file"> → direct signed upload to
+ *              Cloudinary. Bypasses `CldUploadWidget` because its iframe
+ *              "Browse" button silently fails in strict browsers (Brave
+ *              Shields, popup blockers, cross-origin file-picker rules).
  */
 export function ImagePickerDialog({
   open,
@@ -75,11 +75,9 @@ export function ImagePickerDialog({
   maxFileSize = 1_048_576,
   allowedFormats = ["jpg", "jpeg", "png", "gif", "webp"],
 }: Props) {
-  const router = useRouter();
   const [tab, setTab] = useState<"library" | "upload">(
     options.length > 0 ? "library" : "upload",
   );
-  const [pending, startTransition] = useTransition();
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -89,7 +87,7 @@ export function ImagePickerDialog({
           <DialogDescription>
             {allowedFormats.map((f) => f.toUpperCase()).join(", ")} · up to{" "}
             {Math.round(maxFileSize / 1024 / 1024)} MB
-            {aspect ? ` · cropped to ${aspect.toFixed(2)}:1` : " · any ratio"}
+            {aspect ? ` · displayed at ${aspect.toFixed(2)}:1` : " · any ratio"}
           </DialogDescription>
         </DialogHeader>
 
@@ -121,9 +119,6 @@ export function ImagePickerDialog({
                     <button
                       type="button"
                       onClick={() =>
-                        // Library items are already the "raw" versions; caller
-                        // will decide how to render them (CldImage with any
-                        // transform they need).
                         onSelect({
                           id: m.id,
                           publicId: m.publicId,
@@ -153,97 +148,171 @@ export function ImagePickerDialog({
           </TabsContent>
 
           <TabsContent value="upload" className="pt-2">
-            <CldUploadWidget
-              signatureEndpoint="/api/sign-cloudinary-params"
-              options={{
-                sources: ["local", "url"],
-                multiple: false,
-                maxFiles: 1,
-                maxFileSize,
-                folder,
-                clientAllowedFormats: [...allowedFormats],
-                cropping: true,
-                croppingAspectRatio: aspect,
-                croppingCoordinatesMode: aspect ? "custom" : undefined,
-                croppingShowDimensions: true,
-                croppingShowBackButton: true,
-                showSkipCropButton: !aspect,
-              }}
-              onSuccess={(result: CloudinaryUploadWidgetResults) => {
-                const info = result.info;
-                if (
-                  typeof info !== "object" ||
-                  info === null ||
-                  !("public_id" in info)
-                ) {
-                  return;
-                }
-                const fd = new FormData();
-                fd.set("publicId", String(info.public_id));
-                fd.set(
-                  "url",
-                  String((info as { secure_url: string }).secure_url),
-                );
-                fd.set(
-                  "originalName",
-                  String(
-                    (info as { original_filename?: string })
-                      .original_filename ?? info.public_id,
-                  ),
-                );
-                fd.set("width", String((info as { width: number }).width));
-                fd.set("height", String((info as { height: number }).height));
-                fd.set("bytes", String((info as { bytes: number }).bytes));
-                fd.set("format", String((info as { format: string }).format));
-                fd.set("folder", folder);
-                startTransition(async () => {
-                  const res = await registerMedia(null, fd);
-                  if (res?.error) {
-                    toast.error(res.error);
-                    return;
-                  }
-                  toast.success("Uploaded");
-                  onSelect({
-                    id: "", // freshly uploaded — id is assigned on next fetch
-                    publicId: String(info.public_id),
-                    url: String((info as { secure_url: string }).secure_url),
-                    width: (info as { width: number }).width,
-                    height: (info as { height: number }).height,
-                    originalName: String(
-                      (info as { original_filename?: string })
-                        .original_filename ?? info.public_id,
-                    ),
-                  });
-                  router.refresh();
-                });
-              }}
-              onError={(err) => {
-                toast.error(
-                  typeof err === "string"
-                    ? err
-                    : (err?.statusText ?? "Upload failed"),
-                );
-              }}
-            >
-              {({ open: openWidget }) => (
-                <div className="flex flex-col items-center gap-4 py-10">
-                  <p className="text-muted-foreground text-sm">
-                    Drag &amp; drop or click to select a file.
-                  </p>
-                  <Button
-                    type="button"
-                    onClick={() => openWidget()}
-                    disabled={pending}
-                  >
-                    <Upload className="me-2 size-4" />
-                    {pending ? "Uploading…" : "Choose file"}
-                  </Button>
-                </div>
-              )}
-            </CldUploadWidget>
+            <UploadTab
+              folder={folder}
+              maxFileSize={maxFileSize}
+              allowedFormats={allowedFormats}
+              onUploaded={onSelect}
+            />
           </TabsContent>
         </Tabs>
       </DialogContent>
     </Dialog>
+  );
+}
+
+/* ---------------------------- upload tab body ---------------------------- */
+
+function UploadTab({
+  folder,
+  maxFileSize,
+  allowedFormats,
+  onUploaded,
+}: {
+  folder: string;
+  maxFileSize: number;
+  allowedFormats: readonly string[];
+  onUploaded: (media: PickedMedia) => void;
+}) {
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [pending, startTransition] = useTransition();
+  const [dragging, setDragging] = useState(false);
+
+  const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
+  const apiKey = process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;
+
+  const handleFile = (file: File) => {
+    if (file.size > maxFileSize) {
+      toast.error(
+        `File is ${(file.size / 1024 / 1024).toFixed(2)} MB — max is ${Math.round(
+          maxFileSize / 1024 / 1024,
+        )} MB.`,
+      );
+      return;
+    }
+    const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
+    if (!allowedFormats.includes(ext)) {
+      toast.error(
+        `Only ${allowedFormats.map((f) => f.toUpperCase()).join(", ")} allowed.`,
+      );
+      return;
+    }
+
+    startTransition(async () => {
+      try {
+        // 1. Ask our server to sign the params.
+        const timestamp = Math.floor(Date.now() / 1000);
+        const paramsToSign = { folder, timestamp };
+        const signRes = await fetch("/api/sign-cloudinary-params", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ paramsToSign }),
+        });
+        if (!signRes.ok) throw new Error("Signing failed");
+        const { signature } = (await signRes.json()) as { signature: string };
+
+        // 2. Upload directly to Cloudinary with the signature.
+        const form = new FormData();
+        form.append("file", file);
+        form.append("api_key", apiKey!);
+        form.append("timestamp", String(timestamp));
+        form.append("signature", signature);
+        form.append("folder", folder);
+
+        const uploadRes = await fetch(
+          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+          { method: "POST", body: form },
+        );
+        if (!uploadRes.ok) {
+          const err = await uploadRes.json().catch(() => ({}));
+          throw new Error(
+            (err as { error?: { message?: string } })?.error?.message ??
+              "Cloudinary upload failed",
+          );
+        }
+        const info = (await uploadRes.json()) as {
+          public_id: string;
+          secure_url: string;
+          original_filename?: string;
+          width: number;
+          height: number;
+          bytes: number;
+          format: string;
+        };
+
+        // 3. Register the row in our DB so the library sees it next time.
+        const fd = new FormData();
+        fd.set("publicId", info.public_id);
+        fd.set("url", info.secure_url);
+        fd.set("originalName", info.original_filename ?? info.public_id);
+        fd.set("width", String(info.width));
+        fd.set("height", String(info.height));
+        fd.set("bytes", String(info.bytes));
+        fd.set("format", info.format);
+        fd.set("folder", folder);
+        const reg = await registerMedia(null, fd);
+        if (reg?.error) {
+          toast.error(reg.error);
+          return;
+        }
+
+        toast.success("Uploaded");
+        onUploaded({
+          id: "", // set on next fetch; caller uses publicId for immediate preview
+          publicId: info.public_id,
+          url: info.secure_url,
+          width: info.width,
+          height: info.height,
+          originalName: info.original_filename ?? info.public_id,
+        });
+        router.refresh();
+      } catch (e) {
+        toast.error(e instanceof Error ? e.message : "Upload failed");
+      }
+    });
+  };
+
+  return (
+    <div
+      onDragOver={(e) => {
+        e.preventDefault();
+        setDragging(true);
+      }}
+      onDragLeave={() => setDragging(false)}
+      onDrop={(e) => {
+        e.preventDefault();
+        setDragging(false);
+        const file = e.dataTransfer.files?.[0];
+        if (file) handleFile(file);
+      }}
+      className={`flex flex-col items-center gap-4 rounded-md border-2 border-dashed p-10 transition-colors ${
+        dragging ? "border-primary bg-primary/5" : "border-input"
+      }`}
+    >
+      <p className="text-muted-foreground text-sm">
+        Drag &amp; drop a file here, or click Browse to pick one.
+      </p>
+      <input
+        ref={inputRef}
+        type="file"
+        accept={allowedFormats.map((f) => `.${f}`).join(",")}
+        className="hidden"
+        onChange={(e) => {
+          const file = e.target.files?.[0];
+          if (file) handleFile(file);
+          // Reset so picking the same file twice still fires onChange.
+          e.target.value = "";
+        }}
+      />
+      <Button
+        type="button"
+        onClick={() => inputRef.current?.click()}
+        disabled={pending}
+      >
+        <Upload className="me-2 size-4" />
+        {pending ? "Uploading…" : "Browse"}
+      </Button>
+    </div>
   );
 }
