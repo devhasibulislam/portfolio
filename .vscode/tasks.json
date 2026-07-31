@@ -1,0 +1,137 @@
+{
+  // -----------------------------------------------------------------------------
+  // VS Code tasks for portfolio.
+  //
+  // ONE task auto-runs on folder open: `dev`. Everything else is a one-click
+  // entry in Command Palette → "Tasks: Run Task".
+  //
+  // First time you open this repo in VS Code, you'll see a workspace-trust
+  // prompt asking whether to allow auto-run tasks. Click "Trust" (or "Manage
+  // Workspace Trust" → trust). After that, `npm run dev` will start
+  // automatically every time you open the folder.
+  //
+  // To disable auto-start temporarily: Command Palette → "Tasks: Manage
+  // Automatic Tasks" → "Disallow Automatic Tasks in Folder".
+  // -----------------------------------------------------------------------------
+  "version": "2.0.0",
+  "tasks": [
+    // ---- LONG-RUNNING (auto-run) -------------------------------------------
+    {
+      "label": "dev",
+      "detail": "Next 16 dev server on http://localhost:3000 (Turbopack). Auto-starts on folder open.",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "group": "servers",
+        "reveal": "silent",
+        "showReuseMessage": false,
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+
+    // ---- ONE-SHOT (manual) -------------------------------------------------
+    {
+      "label": "build",
+      "detail": "Production build (next build). Slow — do not auto-run.",
+      "type": "npm",
+      "script": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "group": "build",
+        "clear": true
+      }
+    },
+    {
+      "label": "typecheck",
+      "detail": "tsc --noEmit. Same check that runs on pre-push.",
+      "type": "npm",
+      "script": "typecheck",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "group": "build",
+        "clear": true
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "lint",
+      "detail": "ESLint across the src tree.",
+      "type": "npm",
+      "script": "lint",
+      "group": "test",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "build",
+        "clear": true
+      },
+      "problemMatcher": ["$eslint-stylish"]
+    },
+
+    // ---- DATABASE (manual only, side effects on Neon) ----------------------
+    {
+      "label": "db:generate",
+      "detail": "Drizzle Kit: generate SQL migration from schema.ts. Rewrites drizzle/ folder.",
+      "type": "npm",
+      "script": "db:generate",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "db",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "db:migrate",
+      "detail": "Drizzle Kit: apply pending migrations. WRITES TO NEON DB.",
+      "type": "npm",
+      "script": "db:migrate",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "db",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "db:studio",
+      "detail": "Drizzle Studio (opens browser). Requires DATABASE_URL in .env.local.",
+      "type": "npm",
+      "script": "db:studio",
+      "isBackground": true,
+      "presentation": {
+        "panel": "dedicated",
+        "group": "db",
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+
+    // ---- AUTH SEED (manual, one-shot, idempotent) --------------------------
+    {
+      "label": "seed:user",
+      "detail": "Create the sole dashboard user in Neon Auth (idempotent).",
+      "type": "npm",
+      "script": "seed:user",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "seed",
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
