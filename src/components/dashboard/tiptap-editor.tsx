@@ -214,12 +214,7 @@ function Toolbar({
         label="Link"
         icon={LinkIcon}
       />
-      <TB
-        cmd={onImageClick}
-        active={false}
-        label="Image"
-        icon={ImageIcon}
-      />
+      <TB cmd={onImageClick} active={false} label="Image" icon={ImageIcon} />
 
       <span className="border-border mx-1 h-4 w-px border-l" aria-hidden />
 

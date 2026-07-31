@@ -187,8 +187,8 @@ export function ImagePickerDialog({
                 fd.set(
                   "originalName",
                   String(
-                    (info as { original_filename?: string }).original_filename ??
-                      info.public_id,
+                    (info as { original_filename?: string })
+                      .original_filename ?? info.public_id,
                   ),
                 );
                 fd.set("width", String((info as { width: number }).width));
