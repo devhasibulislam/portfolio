@@ -193,9 +193,7 @@ function StatusSwitch({ row }: { row: PostRow }) {
                 router.refresh();
               });
             }}
-            aria-label={
-              isPublished ? "Move to draft" : "Publish this post"
-            }
+            aria-label={isPublished ? "Move to draft" : "Publish this post"}
           />
           <StatusPill status={optimisticStatus} />
         </span>

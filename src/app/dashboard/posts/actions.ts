@@ -146,7 +146,9 @@ export async function togglePostStatus(
   let publishedAt: Date | null;
   if (status === "published") {
     publishedAt =
-      prev.status === "published" ? (prev.publishedAt ?? new Date()) : new Date();
+      prev.status === "published"
+        ? (prev.publishedAt ?? new Date())
+        : new Date();
   } else {
     publishedAt = null;
   }

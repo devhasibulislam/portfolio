@@ -92,10 +92,8 @@ export function TiptapEditor({ value, onChange }: Props) {
 function Toolbar({ editor, focused }: { editor: Editor; focused: boolean }) {
   // `active` only lights up while the selection is actually inside the editor.
   // When the user tabs into the title/meta fields, all buttons revert to idle.
-  const isActive = (
-    name: string,
-    attrs?: Record<string, unknown>,
-  ): boolean => focused && editor.isActive(name, attrs);
+  const isActive = (name: string, attrs?: Record<string, unknown>): boolean =>
+    focused && editor.isActive(name, attrs);
 
   return (
     <div
