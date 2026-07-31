@@ -4,6 +4,7 @@ import { useEditor, EditorContent, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
+import { getCldImageUrl } from "next-cloudinary";
 import { useEffect, useState } from "react";
 import {
   Bold,
@@ -21,10 +22,20 @@ import {
   Undo2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  ImagePickerDialog,
+  type PickedMedia,
+} from "@/components/dashboard/image-picker";
+import type { MediaOption } from "@/components/dashboard/media-picker";
 
 type Props = {
   value: unknown;
   onChange: (json: unknown) => void;
+  /**
+   * The media library the toolbar Image tool draws from. Passed through from
+   * the post form's server-side fetch.
+   */
+  mediaOptions: MediaOption[];
 };
 
 /**
@@ -32,8 +43,9 @@ type Props = {
  *   bold, italic, H2/H3, ul/ol, link, code (inline + block), blockquote, image.
  * No fonts, no colors, no tables. Body JSON serialized via editor.getJSON().
  */
-export function TiptapEditor({ value, onChange }: Props) {
+export function TiptapEditor({ value, onChange, mediaOptions }: Props) {
   const [focused, setFocused] = useState(false);
+  const [pickerOpen, setPickerOpen] = useState(false);
 
   const editor = useEditor({
     extensions: [
@@ -75,21 +87,46 @@ export function TiptapEditor({ value, onChange }: Props) {
     // Only run when the value ref changes, not on every render.
   }, [editor, value]);
 
+  const handleImagePicked = (media: PickedMedia) => {
+    // Insert a delivery-optimized Cloudinary URL (max 1200px wide, f_auto/q_auto).
+    const src = getCldImageUrl({ src: media.publicId, width: 1200 });
+    editor?.chain().focus().setImage({ src, alt: media.originalName }).run();
+    setPickerOpen(false);
+  };
+
   if (!editor) return null;
 
   return (
     // relative + isolate so the sticky toolbar stacks above the prose content
     // while the container itself scrolls with the outer page.
     <div className="border-input relative isolate rounded-md border">
-      <Toolbar editor={editor} focused={focused} />
+      <Toolbar
+        editor={editor}
+        focused={focused}
+        onImageClick={() => setPickerOpen(true)}
+      />
       <EditorContent editor={editor} />
+      <ImagePickerDialog
+        open={pickerOpen}
+        onOpenChange={setPickerOpen}
+        options={mediaOptions}
+        onSelect={handleImagePicked}
+      />
     </div>
   );
 }
 
 /* ---------------------------------- toolbar ---------------------------------- */
 
-function Toolbar({ editor, focused }: { editor: Editor; focused: boolean }) {
+function Toolbar({
+  editor,
+  focused,
+  onImageClick,
+}: {
+  editor: Editor;
+  focused: boolean;
+  onImageClick: () => void;
+}) {
   // `active` only lights up while the selection is actually inside the editor.
   // When the user tabs into the title/meta fields, all buttons revert to idle.
   const isActive = (name: string, attrs?: Record<string, unknown>): boolean =>
@@ -178,11 +215,7 @@ function Toolbar({ editor, focused }: { editor: Editor; focused: boolean }) {
         icon={LinkIcon}
       />
       <TB
-        cmd={() => {
-          const url = window.prompt("Image URL");
-          if (!url) return;
-          editor.chain().focus().setImage({ src: url }).run();
-        }}
+        cmd={onImageClick}
         active={false}
         label="Image"
         icon={ImageIcon}

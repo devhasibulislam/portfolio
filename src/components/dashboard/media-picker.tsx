@@ -5,12 +5,9 @@ import { CldImage } from "next-cloudinary";
 import { ImagePlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+  ImagePickerDialog,
+  type PickedMedia,
+} from "@/components/dashboard/image-picker";
 
 export type MediaOption = {
   id: string;
@@ -25,13 +22,22 @@ type Props = {
 };
 
 /**
- * Cover image picker. Shows current cover (or Add button), opens a grid dialog
- * of media rows, calls `onChange` with the new id. Uploads live on the Media
- * page — this picker only reuses existing rows.
+ * Cover image picker. Renders the current cover thumbnail + Change/Remove
+ * buttons; opens the reusable `ImagePickerDialog` (library + upload tabs,
+ * enforces the 1.91:1 crop for OG covers).
  */
 export function MediaPicker({ options, value, onChange }: Props) {
   const [open, setOpen] = useState(false);
   const current = options.find((o) => o.id === value) ?? null;
+
+  const handleSelect = (media: PickedMedia) => {
+    // Library items already carry a DB id. Fresh uploads don't — they'll
+    // land in the media list on the next `router.refresh()` fired by the
+    // dialog; until then we still hand the caller the publicId so a preview
+    // can render.
+    onChange(media.id || media.publicId);
+    setOpen(false);
+  };
 
   return (
     <>
@@ -72,51 +78,19 @@ export function MediaPicker({ options, value, onChange }: Props) {
           variant="outline"
           onClick={() => setOpen(true)}
           className="h-32 w-full border-dashed"
-          disabled={options.length === 0}
         >
           <ImagePlus className="me-2 size-5" />
-          {options.length === 0
-            ? "Upload one on the Media page first"
-            : "Pick a cover"}
+          Pick or upload a cover
         </Button>
       )}
 
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-3xl">
-          <DialogHeader>
-            <DialogTitle>Pick a cover image</DialogTitle>
-            <DialogDescription>
-              Only images uploaded to Media appear here. Delivered at 1200×630.
-            </DialogDescription>
-          </DialogHeader>
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {options.map((m) => (
-              <li key={m.id}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    onChange(m.id);
-                    setOpen(false);
-                  }}
-                  className={`focus-visible:ring-ring block w-full overflow-hidden rounded-md border transition-all hover:ring-2 focus-visible:ring-2 ${
-                    m.id === value ? "ring-primary ring-2" : ""
-                  }`}
-                >
-                  <CldImage
-                    src={m.publicId}
-                    width={320}
-                    height={168}
-                    crop="fill"
-                    gravity="auto"
-                    alt={m.originalName}
-                    className="h-auto w-full"
-                  />
-                </button>
-              </li>
-            ))}
-          </ul>
-        </DialogContent>
-      </Dialog>
+      <ImagePickerDialog
+        open={open}
+        onOpenChange={setOpen}
+        options={options}
+        onSelect={handleSelect}
+        aspect={1200 / 630}
+      />
     </>
   );
 }

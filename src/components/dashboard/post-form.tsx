@@ -121,7 +121,11 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
 
         <div className="grid gap-2">
           <Label htmlFor="post-body">Body</Label>
-          <TiptapEditor value={body} onChange={setBody} />
+          <TiptapEditor
+            value={body}
+            onChange={setBody}
+            mediaOptions={media}
+          />
         </div>
 
         {error ? (
