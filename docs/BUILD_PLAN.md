@@ -101,6 +101,56 @@ Content management. Nothing else can be demoed without this.
 - [x] **Links manager** — small CRUD for `/links` entries
 - [x] All mutations call `updateTag()` for the correct route family (§13) — Next 16 renamed `revalidateTag` inside server actions to `updateTag` for read-your-writes semantics
 - [x] Middleware smoke-test: `dashboard/layout.tsx` re-checks `session.user.email !== DASHBOARD_ALLOWED_EMAIL` and calls `auth.signOut()` before redirecting to `/login?denied=1`. Verified by code review — cookie tampering can't forge the email claim because the session cookie is signed with `NEON_AUTH_COOKIE_SECRET`, but the layout guarantees defense-in-depth if the signature check ever regressed.
+- [x] Theme toggle (Light / Dark / System) in the dashboard header — mirrors onto `<html data-theme>` synchronously + persists cookie server-side
+
+---
+
+## Phase 1.5 — Dashboard polish (owner feedback)
+
+Ship-blockers surfaced by first real use of the dashboard. Group by area; each item is a small change on top of the Phase 1 code. **Discussion still open — the owner will pick priority/scope before we start writing.**
+
+### Overview (dashboard home)
+
+- [ ] **Cards** — the whole card is already a `<Link>`; drop the arrow icon since redundant. Add a **count badge** in the top-right corner (icon stays top-left). E.g. `Posts (05)`, `Media (12)`. Format as two digits with a leading zero.
+
+### Posts — list view
+
+- [ ] **Status column** = a real toggle (shadcn `Switch` in a `Tooltip`) that flips draft ↔ published in place via a small server action + `updateTag('posts')`. Optimistic UI + toast on error.
+
+### Posts — create/edit form
+
+- [ ] **Cover image**: replace the current MediaPicker with a single reusable modal that combines *pick-from-existing* **and** *upload-new* (Cloudinary widget) inside the same surface. Applies to the Media page too where sensible.
+- [ ] **Free cropper** — display the intrinsic resolution + let the user drag/reposition a crop rect at any target ratio. Used by both Cover picker and inline Body images. Ships as a shared component (`src/components/dashboard/image-cropper.tsx`).
+- [ ] **Category select** — full-width to match the tags row.
+- [ ] **Tags picker** — redesign. Current chip-plus-search UI feels utilitarian; move to something with better discovery and hover states (candidate: shadcn Command palette style with grouped suggestions, keyboard-navigable).
+- [ ] **Tiptap toolbar** — sticky **within** the editor container as the body scrolls, not sticky to the viewport. Use `position: sticky; top: 0` inside the scrollable editor pane.
+- [ ] **Tiptap active state** — active-mark styling should only reflect *the current selection inside the editor*. Currently when focus leaves the editor the toolbar keeps `H2`/`Link` lit. Fix by binding to `editor.state.selection` + a `focus` listener; clear active classes when the editor loses focus.
+- [ ] **Tiptap Image tool** — replace the `window.prompt("Image URL")` with the same reusable pick-or-upload modal used by the cover, backed by the same free cropper. Multi-file upload, `jpg|jpeg|png|gif|webp`, each ≤1MB (client-side reject).
+- [ ] **Clarification — social preview / SEO fields.** Current form has `meta_description` (Google snippet, 120–160 chars) and `excerpt` (listing card, 200–300). Social preview reuses the cover image at 1200×630 via `next/og`. Per PROJECT_CONTEXT §5 there is no separate OG title / OG description — Google, Facebook, LinkedIn, Twitter all fall back to `<title>` + `meta_description` + the OG image, so the current three fields cover it. Confirm before we build anything extra.
+
+### Categories & Tags
+
+- [ ] **Edit action** — the whole row is currently clickable (opens the edit dialog). Owner wants an **explicit pencil icon** next to the delete icon so it is discoverable. Row-click stays as a shortcut.
+- [ ] **Delete button** — currently opens a dialog that says "Blocked". Change to **disable the button entirely** with a tooltip explaining why (e.g. "In use by 3 posts") when `postCount > 0`.
+
+### Media
+
+- [ ] **Delete disabled when `inUse === true`** — right now the button opens a "blocked" alert dialog. Same fix as above: disable the button + tooltip.
+- [ ] **Lightbox** — click a tile to open a large-size preview modal. Shows original resolution + file size; secondary "Copy public_id" and "Copy URL" buttons.
+
+### Resume
+
+- [ ] **Explicit active/inactive toggle button** — the native radio is not discoverable enough. Use a shadcn `Switch` or a clear "Set active" button per row.
+- [ ] **Confirm behaviour**: activating a new resume already deactivates the previously-active one (partial-unique index + two-step `UPDATE`). The first-uploaded resume already defaults to `is_active = true`. Both behaviours exist server-side but were invisible in the UI — the toggle redesign fixes that.
+
+### Links
+
+- [ ] **Remove entirely.** Drop the DB table (`links`), the `linkInput` Zod schema, the `/dashboard/links` page + form + query + server actions, the nav entry, the cache tag `tag.links()`, and the placeholder for the public `/links` page (Phase 3). Ship a Drizzle migration that drops the table.
+
+### Cross-cutting
+
+- [ ] **Full device responsive audit** — every dashboard page at 375 / 768 / 1024 / 1280+. Playwright screenshot each width and fix overflow / hidden controls.
+- [ ] **Bottom nav bar on small/mid devices** — hide the sidebar on `< md`, render a horizontal icon bar at the bottom of the viewport with the same 6 destinations (Overview / Posts / Categories / Tags / Media / Resume). Sign-out and theme toggle move into a sheet drawer accessed from the header.
 
 ---
 
@@ -116,10 +166,9 @@ Content management. Nothing else can be demoed without this.
 
 ---
 
-## Phase 3 — `/resume` and `/links`
+## Phase 3 — `/resume`
 
-- [ ] `/resume` — embed active PDF, download button, nothing else
-- [ ] `/links` — read from the `links` table; small Linktree-style page
+- [ ] `/resume` — embed active PDF, download button, nothing else. (`/links` was dropped in Phase 1.5.)
 
 ---
 
