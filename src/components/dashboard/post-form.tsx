@@ -7,14 +7,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { CategoryCombobox } from "@/components/dashboard/category-combobox";
 import {
   MediaPicker,
   type MediaOption,
@@ -242,22 +236,11 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
 
         <div className="grid gap-2">
           <Label>Category</Label>
-          <Select
-            value={categoryId ?? "__none"}
-            onValueChange={(v) => setCategoryId(v === "__none" ? null : v)}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Pick a category" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="__none">— none —</SelectItem>
-              {categories.map((c) => (
-                <SelectItem key={c.id} value={c.id}>
-                  {c.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+          <CategoryCombobox
+            options={categories}
+            value={categoryId}
+            onChange={setCategoryId}
+          />
         </div>
 
         <div className="grid gap-2">

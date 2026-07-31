@@ -149,8 +149,7 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 ### Cross-cutting
 
-- [ ] **Full device responsive audit** — every dashboard page at 375 / 768 / 1024 / 1280+. Playwright screenshot each width and fix overflow / hidden controls.
-- [ ] **Bottom nav bar on small/mid devices** — hide the sidebar on `< md`, render a horizontal icon bar at the bottom of the viewport with the same 6 destinations (Overview / Posts / Categories / Tags / Media / Resume). Sign-out and theme toggle move into a sheet drawer accessed from the header.
+- [ ] **Full device responsive audit** — every dashboard page at 375 / 768 / 1024 / 1280+. Playwright screenshot each width and fix overflow / hidden controls. _(Bottom nav bar on small/mid devices — cut by the owner. The collapsible sidebar handles mobile via SidebarProvider's built-in drawer.)_
 
 ---
 
