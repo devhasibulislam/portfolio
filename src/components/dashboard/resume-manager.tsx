@@ -111,53 +111,67 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
           {rows.map((r) => (
             <li
               key={r.id}
-              className={`flex items-center justify-between gap-3 rounded-lg border px-4 py-3 ${
+              className={`flex items-center gap-3 rounded-lg border px-4 py-3 ${
                 r.isActive ? "border-primary/50 bg-primary/5" : ""
               }`}
             >
-              <div className="flex flex-1 items-center gap-3 truncate">
-                <Switch
-                  checked={r.isActive}
-                  disabled={pending || r.isActive}
-                  onCheckedChange={() => {
-                    if (r.isActive) return;
-                    const fd = new FormData();
-                    fd.set("id", r.id);
-                    startTransition(async () => {
-                      const res = await setActiveResume(null, fd);
-                      if (res?.error) {
-                        toast.error(res.error);
-                        return;
-                      }
-                      toast.success(`Active: ${r.originalName}`);
-                      router.refresh();
-                    });
-                  }}
-                  aria-label={
-                    r.isActive
-                      ? `${r.originalName} is active`
-                      : `Set ${r.originalName} active`
-                  }
-                />
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 truncate">
-                    <span className="truncate font-medium">
-                      {r.originalName}
+              {/* Filename + meta take the left / stretch column. */}
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-2 truncate">
+                  <span className="truncate font-medium">
+                    {r.originalName}
+                  </span>
+                  {r.isActive ? (
+                    <span className="text-primary inline-flex shrink-0 items-center gap-1 text-xs">
+                      <CheckCircle2 className="size-3.5" />
+                      Active
                     </span>
-                    {r.isActive ? (
-                      <span className="text-primary inline-flex shrink-0 items-center gap-1 text-xs">
-                        <CheckCircle2 className="size-3.5" />
-                        Active
-                      </span>
-                    ) : null}
-                  </div>
-                  <div className="text-muted-foreground text-xs">
-                    {formatBytes(r.bytes)} ·{" "}
-                    {new Date(r.createdAt).toLocaleDateString()}
-                  </div>
+                  ) : null}
+                </div>
+                <div className="text-muted-foreground text-xs">
+                  {formatBytes(r.bytes)} ·{" "}
+                  {new Date(r.createdAt).toLocaleDateString()}
                 </div>
               </div>
-              <div className="flex items-center gap-1">
+
+              {/* Actions cluster: Switch (activate) + Open + Delete. Grouped
+                  on the trailing edge so their positions stay predictable as
+                  more resumes are added. */}
+              <div className="flex shrink-0 items-center gap-1.5">
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <span className="me-1 inline-flex">
+                      <Switch
+                        checked={r.isActive}
+                        disabled={pending || r.isActive}
+                        onCheckedChange={() => {
+                          if (r.isActive) return;
+                          const fd = new FormData();
+                          fd.set("id", r.id);
+                          startTransition(async () => {
+                            const res = await setActiveResume(null, fd);
+                            if (res?.error) {
+                              toast.error(res.error);
+                              return;
+                            }
+                            toast.success(`Active: ${r.originalName}`);
+                            router.refresh();
+                          });
+                        }}
+                        aria-label={
+                          r.isActive
+                            ? `${r.originalName} is active`
+                            : `Set ${r.originalName} active`
+                        }
+                      />
+                    </span>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    {r.isActive
+                      ? "This is the active resume"
+                      : "Set as active"}
+                  </TooltipContent>
+                </Tooltip>
                 <Button size="icon" variant="ghost" asChild>
                   <a
                     href={r.url}
@@ -168,35 +182,14 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                     <ExternalLink className="size-4" />
                   </a>
                 </Button>
-                {r.isActive ? (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <span>
-                        <Button
-                          size="icon"
-                          variant="ghost"
-                          disabled
-                          aria-label={`Delete ${r.originalName} (active)`}
-                          className="opacity-50"
-                        >
-                          <Trash2 className="size-4" />
-                        </Button>
-                      </span>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      Active resume — set another active first
-                    </TooltipContent>
-                  </Tooltip>
-                ) : (
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    aria-label={`Delete ${r.originalName}`}
-                    onClick={() => setConfirmDelete(r)}
-                  >
-                    <Trash2 className="size-4" />
-                  </Button>
-                )}
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  aria-label={`Delete ${r.originalName}`}
+                  onClick={() => setConfirmDelete(r)}
+                >
+                  <Trash2 className="size-4" />
+                </Button>
               </div>
             </li>
           ))}
@@ -214,14 +207,14 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
             </AlertDialogTitle>
             <AlertDialogDescription>
               {confirmDelete?.isActive
-                ? "Blocked: this is the active resume. Set another active first."
-                : "Removes the file from Cloudinary and this list. Can't be undone."}
+                ? "This is the active resume — deleting it leaves /resume with nothing to serve until you activate another one. Removes the file from Cloudinary too. Can’t be undone."
+                : "Removes the file from Cloudinary and this list. Can’t be undone."}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
             <AlertDialogAction
-              disabled={pending || confirmDelete?.isActive}
+              disabled={pending}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               onClick={(e) => {
                 e.preventDefault();

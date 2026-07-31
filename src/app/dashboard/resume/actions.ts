@@ -55,7 +55,12 @@ export async function setActiveResume(
   return { ok: true };
 }
 
-/** Delete a resume. Blocks if it's the active one — pick another first. */
+/**
+ * Delete a resume — always allowed, even the currently-active one. Cloudinary
+ * asset is destroyed too (invalidate:true kills the CDN cache). If the deleted
+ * row was active, no fallback is auto-picked — the owner picks the next
+ * active one manually.
+ */
 export async function deleteResume(
   _prev: ActionState,
   formData: FormData,
@@ -65,8 +70,6 @@ export async function deleteResume(
 
   const [row] = await db.select().from(resumes).where(eq(resumes.id, id));
   if (!row) return { error: "Not found" };
-  if (row.isActive)
-    return { error: "Set another resume active before deleting this one." };
 
   try {
     await cloudinary.uploader.destroy(row.publicId, {
@@ -79,5 +82,6 @@ export async function deleteResume(
 
   await db.delete(resumes).where(eq(resumes.id, id));
   updateTag(tag.resumes());
+  if (row.isActive) updateTag(tag.activeResume());
   return { ok: true };
 }
