@@ -1,6 +1,8 @@
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { DashboardBreadcrumb } from "@/components/dashboard/breadcrumb";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -9,6 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
 import { auth } from "@/lib/auth/server";
+import { THEME_COOKIE, isTheme } from "@/lib/theme/cookies";
 
 export const dynamic = "force-dynamic"; // auth.getSession() reads cookies
 
@@ -38,6 +41,10 @@ export default async function DashboardLayout({
     redirect("/login?denied=1");
   }
 
+  // Absent cookie = "system" (inline script applied prefers-color-scheme).
+  const raw = (await cookies()).get(THEME_COOKIE)?.value;
+  const themeChoice = isTheme(raw) ? raw : "system";
+
   return (
     <SidebarProvider>
       <AppSidebar userEmail={session.user.email} />
@@ -46,6 +53,9 @@ export default async function DashboardLayout({
           <SidebarTrigger className="-ms-1" />
           <Separator orientation="vertical" className="me-2 h-4" />
           <DashboardBreadcrumb />
+          <div className="ms-auto">
+            <ThemeToggle current={themeChoice} />
+          </div>
         </header>
         <div className="flex-1">{children}</div>
         <Toaster richColors closeButton position="top-right" />
