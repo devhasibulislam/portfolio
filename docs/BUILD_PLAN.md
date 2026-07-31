@@ -119,12 +119,12 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 ### Posts — create/edit form
 
-- [ ] **Cover image**: replace the current MediaPicker with a single reusable modal that combines *pick-from-existing* **and** *upload-new* (Cloudinary widget) inside the same surface. Applies to the Media page too where sensible.
+- [ ] **Cover image**: replace the current MediaPicker with a single reusable modal that combines _pick-from-existing_ **and** _upload-new_ (Cloudinary widget) inside the same surface. Applies to the Media page too where sensible.
 - [ ] **Free cropper** — display the intrinsic resolution + let the user drag/reposition a crop rect at any target ratio. Used by both Cover picker and inline Body images. Ships as a shared component (`src/components/dashboard/image-cropper.tsx`).
 - [ ] **Category select** — full-width to match the tags row.
 - [ ] **Tags picker** — redesign. Current chip-plus-search UI feels utilitarian; move to something with better discovery and hover states (candidate: shadcn Command palette style with grouped suggestions, keyboard-navigable).
 - [ ] **Tiptap toolbar** — sticky **within** the editor container as the body scrolls, not sticky to the viewport. Use `position: sticky; top: 0` inside the scrollable editor pane.
-- [ ] **Tiptap active state** — active-mark styling should only reflect *the current selection inside the editor*. Currently when focus leaves the editor the toolbar keeps `H2`/`Link` lit. Fix by binding to `editor.state.selection` + a `focus` listener; clear active classes when the editor loses focus.
+- [ ] **Tiptap active state** — active-mark styling should only reflect _the current selection inside the editor_. Currently when focus leaves the editor the toolbar keeps `H2`/`Link` lit. Fix by binding to `editor.state.selection` + a `focus` listener; clear active classes when the editor loses focus.
 - [ ] **Tiptap Image tool** — replace the `window.prompt("Image URL")` with the same reusable pick-or-upload modal used by the cover, backed by the same free cropper. Multi-file upload, `jpg|jpeg|png|gif|webp`, each ≤1MB (client-side reject).
 - [ ] **Clarification — social preview / SEO fields.** Current form has `meta_description` (Google snippet, 120–160 chars) and `excerpt` (listing card, 200–300). Social preview reuses the cover image at 1200×630 via `next/og`. Per PROJECT_CONTEXT §5 there is no separate OG title / OG description — Google, Facebook, LinkedIn, Twitter all fall back to `<title>` + `meta_description` + the OG image, so the current three fields cover it. Confirm before we build anything extra.
 
@@ -178,8 +178,9 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 - [ ] `next/dynamic({ ssr: false })` for Three.js/R3F — verify Three not shipped to mobile in Network tab
 - [ ] Procedural `GeometricForms` — no `.glb` pipeline
 - [ ] Hotspot system + GSAP camera choreography
-- [ ] `LinksPortal` hotspot → `/links`
 - [ ] `MobileFallbackExperience` — separate tree, GSAP + Framer only
+
+_(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
 
 ---
 
@@ -194,23 +195,16 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 ## Current focus
 
-**Phase 1 shipped ✅** — the dashboard CMS is complete. Every entity from PROJECT_CONTEXT §5 has a working CRUD surface, session-only cookies land per §11, Cloudinary uploads are signed, and every mutation calls `updateTag()` (Next 16's server-action equivalent of `revalidateTag`) for the correct cache family.
+**Phase 1 code-complete ✅.** All 16 dashboard checkboxes ticked plus the theme toggle. HEAD on `origin/master`. Two manual tests still owed by the owner (Cloudinary upload widget for Media and Resume — Playwright can't reliably drive the widget iframe).
 
-**What Phase 1 shipped this session:**
+**Now working on Phase 1.5** — the polish list above. Discussion still open; the owner will pick order before implementation starts. Confirmed items so far:
 
-- Login polish + dashboard shell (collapsible sidebar, breadcrumb, sign-out, sonner top-right)
-- Categories + Tags CRUD via a shared `SlugEntityTable` (§14: one component, two entities)
-- Media library with signed Cloudinary uploads, 1MB reject, filter tabs, delete guard
-- Posts CRUD with a Tiptap editor locked to the §5 subset, category/tag/cover pickers, publish/draft flow, auto-slug
-- Resume manager with single-active radio and PDF-only uploads
-- Links CRUD with sort order
+- Links will be removed entirely (table, page, schema, cache tag, migration).
+- Sidebar avatar alignment when collapsed → fixed (`SidebarMenuButton size="lg"` in the header).
+- Resume auto-activate + swap-active behaviour already works server-side; toggle redesign is a UX fix, not a logic fix.
+- SEO/OG surface as-designed uses `meta_description` + `excerpt` + cover image; no separate OG title/description per §5. Awaiting owner sign-off before ruling that out for good.
 
-**Runtime workarounds baked in** (local dev only, transparent on Vercel):
-
-- `drizzle.config.ts` resolves DNS to IPv4 via `getent ahostsv4` because `pg`'s `family:4` is silently ignored (see `node_modules/pg/lib/connection.js:44`).
-- `src/lib/db/client.ts` uses `pg` locally (TCP:5432) and `@neondatabase/serverless` (HTTP) on Vercel — Node 24 + undici currently fails to reach Neon over IPv6 and can't fall back to IPv4 cleanly.
-
-**Next up — Phase 2 opening moves** (in order):
+**Phase 2 (after 1.5 lands):**
 
 1. Shared `useCursor<Item>(filter)` hook — one implementation, three consumers per §14.
 2. `/blog` list with cursor-based infinite scroll (no offset pagination).
@@ -219,4 +213,4 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 5. `next/og` fallback OG image when a post has no cover.
 6. `sitemap.xml`, `robots.txt`, `llms.txt` — hreflang for all 5 locales.
 
-Last touched: 2026-07-31 (Phase 1 complete — Resume + Links + BUILD_PLAN sync)
+Last touched: 2026-07-31 (Phase 1.5 opened; sidebar-collapsed alignment fix landed)

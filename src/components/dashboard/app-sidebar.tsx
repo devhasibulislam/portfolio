@@ -29,19 +29,32 @@ export function AppSidebar({ userEmail }: Props) {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        <div className="flex items-center gap-3 px-2 py-1.5">
-          <Avatar className="size-8">
-            <AvatarFallback className="bg-primary/10 text-primary text-sm font-semibold">
-              {initial}
-            </AvatarFallback>
-          </Avatar>
-          <div className="flex min-w-0 flex-col leading-tight group-data-[collapsible=icon]:hidden">
-            <span className="truncate text-sm font-medium">Portfolio CMS</span>
-            <span className="text-muted-foreground truncate text-xs">
-              {userEmail}
-            </span>
-          </div>
-        </div>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            {/* Use the shadcn menu-button primitive so the avatar column lines
+                up pixel-for-pixel with the nav icons when the sidebar
+                collapses to icon-only. */}
+            <SidebarMenuButton
+              size="lg"
+              className="hover:bg-transparent active:bg-transparent"
+              tooltip={userEmail}
+            >
+              <Avatar className="size-8">
+                <AvatarFallback className="bg-primary/10 text-primary text-sm font-semibold">
+                  {initial}
+                </AvatarFallback>
+              </Avatar>
+              <div className="grid flex-1 leading-tight">
+                <span className="truncate text-sm font-medium">
+                  Portfolio CMS
+                </span>
+                <span className="text-muted-foreground truncate text-xs">
+                  {userEmail}
+                </span>
+              </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
 
       <SidebarContent>
