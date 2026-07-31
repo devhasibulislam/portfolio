@@ -1,9 +1,9 @@
 # Agent instructions — devhasibulislam/portfolio
 
 > This file is the single source of truth for AI-agent behaviour in this repo.
-> It is mirrored at the repo root as `AGENTS.md` and `CLAUDE.md` (symlinks) so
-> that GitHub Copilot, OpenAI Codex/Cursor, and Claude Code all discover it
-> under their expected filename. Edit this file — the mirrors auto-update.
+> It is mirrored at the repo root as `AGENTS.md` (symlink) so that GitHub
+> Copilot, OpenAI Codex/Cursor, and other AI tools discover it under the
+> filename each one expects. Edit this file — the mirror auto-updates.
 >
 > **Sync rule**: when adding a skill to `.agents/skills/`, an instructions
 > file to `.github/instructions/`, or a prompt to `.github/prompts/`, update
@@ -57,7 +57,6 @@ Rough map of when to reach for which family (not exhaustive — the `description
 | Tailwind v4 advanced layouts, subgrid, container queries                                                                                   | `tailwindcss-advanced-layouts/SKILL.md`                                                                                                                |
 | Visual design taste, hero sections, typography systems                                                                                     | `design-taste-frontend/`, `frontend-design/`, `high-end-visual-design/`, `web-design-guidelines/`, `canvas-design/`                                    |
 | Radix → Base UI migration references (if we ever swap primitives)                                                                          | `migrate-radix-to-base/`                                                                                                                               |
-| De-AI-ify English prose (blog copy, About text) — detects em-dash overuse, rule of three, vague attributions, filler phrases per §16 tone | `humanizer/SKILL.md` — run on `/blog` post drafts and About/bio text before publishing                                                                  |
 
 **Rule**: if you would have answered from generic knowledge and a matching `SKILL.md` exists, you MUST cite the skill you consulted in your response ("Consulted `.agents/skills/<name>/SKILL.md`") so the human can verify the guidance is being applied. If no skill matches, proceed with generic knowledge — do not fabricate a citation.
 
