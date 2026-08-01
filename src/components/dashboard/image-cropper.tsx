@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Cropper, { type Area } from "react-easy-crop";
 import { Button } from "@/components/ui/button";
 
@@ -29,9 +29,16 @@ export function ImageCropper({ file, aspect, onCancel, onConfirm }: Props) {
   const [zoom, setZoom] = useState(1);
   const [croppedArea, setCroppedArea] = useState<Area | null>(null);
   const [pending, setPending] = useState(false);
+  const [src, setSrc] = useState<string | null>(null);
 
-  const src = useMemo(() => URL.createObjectURL(file), [file]);
-  useEffect(() => () => URL.revokeObjectURL(src), [src]);
+  // Create the blob URL inside an effect so it survives React 19 strict-mode
+  // remount without being revoked mid-render. Cleanup runs on real unmount.
+  useEffect(() => {
+    const url = URL.createObjectURL(file);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing blob URL lifecycle to component mount
+    setSrc(url);
+    return () => URL.revokeObjectURL(url);
+  }, [file]);
 
   const onCropComplete = useCallback(
     (_: Area, cropped: Area) => setCroppedArea(cropped),
@@ -39,7 +46,7 @@ export function ImageCropper({ file, aspect, onCancel, onConfirm }: Props) {
   );
 
   const confirm = async () => {
-    if (!croppedArea) return;
+    if (!croppedArea || !src) return;
     setPending(true);
     try {
       const blob = await cropToBlob(src, croppedArea, file.type);
@@ -55,16 +62,18 @@ export function ImageCropper({ file, aspect, onCancel, onConfirm }: Props) {
   return (
     <div className="flex flex-col gap-3">
       <div className="bg-muted relative h-[55vh] w-full overflow-hidden rounded-md">
-        <Cropper
-          image={src}
-          crop={crop}
-          zoom={zoom}
-          aspect={aspect}
-          onCropChange={setCrop}
-          onZoomChange={setZoom}
-          onCropComplete={onCropComplete}
-          restrictPosition
-        />
+        {src ? (
+          <Cropper
+            image={src}
+            crop={crop}
+            zoom={zoom}
+            aspect={aspect}
+            onCropChange={setCrop}
+            onZoomChange={setZoom}
+            onCropComplete={onCropComplete}
+            restrictPosition
+          />
+        ) : null}
       </div>
 
       <div className="flex flex-wrap items-center gap-4 text-xs">
