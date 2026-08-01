@@ -51,6 +51,13 @@ export function TiptapEditor({ value, onChange, mediaOptions }: Props) {
     extensions: [
       StarterKit.configure({
         heading: { levels: [2, 3] },
+        // StarterKit v3 bundles Link; disable it and add our configured Link
+        // instance below (otherwise tiptap warns about duplicate 'link').
+        link: false,
+        // Don't allow bold inside headings — prose CSS already renders
+        // headings bold, and letting the mark apply confuses the toolbar's
+        // "is bold active" indicator.
+        bold: { HTMLAttributes: {} },
       }),
       Link.configure({
         openOnClick: false,
@@ -135,14 +142,17 @@ function Toolbar({
   return (
     <div
       // sticky within the editor container so it hugs the top as the user
-      // scrolls the body; z-10 keeps it above the prose.
-      className="border-input bg-background/95 sticky top-0 z-10 flex flex-wrap items-center gap-1 rounded-t-md border-b p-1 backdrop-blur"
+      // scrolls the body. Offset by 3.5rem to clear the dashboard header
+      // (also sticky top-0, h-14). z-10 keeps it above the prose.
+      className="border-input bg-background/95 sticky top-14 z-10 flex flex-wrap items-center gap-1 rounded-t-md border-b p-1 backdrop-blur"
     >
       <TB
         // preventDefault on mousedown keeps focus in the editor when the user
         // clicks a toolbar button, so `focused` doesn't flicker off.
         cmd={() => editor.chain().focus().toggleBold().run()}
-        active={isActive("bold")}
+        // Don't light up Bold while the cursor is inside a heading — headings
+        // are rendered bold by prose CSS but no bold mark is actually applied.
+        active={isActive("bold") && !editor.isActive("heading")}
         label="Bold"
         icon={Bold}
       />

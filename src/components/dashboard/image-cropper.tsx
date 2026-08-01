@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Cropper, { type Area } from "react-easy-crop";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Props = {
@@ -10,6 +11,11 @@ type Props = {
    * Fixed aspect ratio (width / height). Omit for free-form crop.
    */
   aspect?: number;
+  /**
+   * True while the parent is uploading the cropped blob. Keeps the button
+   * disabled + shows a spinner so the user sees the whole crop→upload flow.
+   */
+  uploading?: boolean;
   onCancel: () => void;
   onConfirm: (blob: Blob, cropped: { width: number; height: number }) => void;
 };
@@ -24,7 +30,7 @@ type Props = {
  * the client and let the caller decide what to do with the blob (usually
  * a signed upload to Cloudinary).
  */
-export function ImageCropper({ file, aspect, onCancel, onConfirm }: Props) {
+export function ImageCropper({ file, aspect, uploading, onCancel, onConfirm }: Props) {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedArea, setCroppedArea] = useState<Area | null>(null);
@@ -108,12 +114,23 @@ export function ImageCropper({ file, aspect, onCancel, onConfirm }: Props) {
           type="button"
           variant="ghost"
           onClick={onCancel}
-          disabled={pending}
+          disabled={pending || uploading}
         >
           Cancel
         </Button>
-        <Button type="button" onClick={confirm} disabled={pending}>
-          {pending ? "Cropping…" : "Use crop"}
+        <Button
+          type="button"
+          onClick={confirm}
+          disabled={pending || uploading}
+        >
+          {pending || uploading ? (
+            <>
+              <Loader2 className="size-4 animate-spin" />
+              {uploading ? "Uploading…" : "Cropping…"}
+            </>
+          ) : (
+            "Use crop"
+          )}
         </Button>
       </div>
     </div>

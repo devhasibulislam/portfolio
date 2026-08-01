@@ -299,6 +299,7 @@ function UploadTab({
       <ImageCropper
         file={stagedFile}
         aspect={aspect}
+        uploading={pending}
         onCancel={() => setStagedFile(null)}
         onConfirm={(blob) => uploadBlob(blob, stagedFile.name)}
       />
