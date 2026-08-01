@@ -30,7 +30,13 @@ type Props = {
  * the client and let the caller decide what to do with the blob (usually
  * a signed upload to Cloudinary).
  */
-export function ImageCropper({ file, aspect, uploading, onCancel, onConfirm }: Props) {
+export function ImageCropper({
+  file,
+  aspect,
+  uploading,
+  onCancel,
+  onConfirm,
+}: Props) {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedArea, setCroppedArea] = useState<Area | null>(null);
@@ -118,11 +124,7 @@ export function ImageCropper({ file, aspect, uploading, onCancel, onConfirm }: P
         >
           Cancel
         </Button>
-        <Button
-          type="button"
-          onClick={confirm}
-          disabled={pending || uploading}
-        >
+        <Button type="button" onClick={confirm} disabled={pending || uploading}>
           {pending || uploading ? (
             <>
               <Loader2 className="size-4 animate-spin" />
