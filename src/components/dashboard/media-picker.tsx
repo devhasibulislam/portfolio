@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { CldImage } from "next-cloudinary";
 import { ImagePlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -24,18 +24,31 @@ type Props = {
 /**
  * Cover image picker. Renders the current cover thumbnail + Change/Remove
  * buttons; opens the reusable `ImagePickerDialog` (library + upload tabs,
- * enforces the 1.91:1 crop for OG covers).
+ * enforces the 1.91:1 crop for OG covers). Freshly-uploaded assets are
+ * appended to a local `fresh` list so the preview renders before the
+ * server-side `options` prop rehydrates on the next router.refresh().
  */
 export function MediaPicker({ options, value, onChange }: Props) {
   const [open, setOpen] = useState(false);
-  const current = options.find((o) => o.id === value) ?? null;
+  const [fresh, setFresh] = useState<MediaOption[]>([]);
+  const merged = useMemo(() => [...fresh, ...options], [fresh, options]);
+  const current = merged.find((o) => o.id === value) ?? null;
 
   const handleSelect = (media: PickedMedia) => {
-    // Library items already carry a DB id. Fresh uploads don't — they'll
-    // land in the media list on the next `router.refresh()` fired by the
-    // dialog; until then we still hand the caller the publicId so a preview
-    // can render.
-    onChange(media.id || media.publicId);
+    // registerMedia returned the DB id on fresh uploads; keep a local copy
+    // so the current row is findable even before router.refresh() lands the
+    // new options prop from the server.
+    if (media.id && !merged.some((o) => o.id === media.id)) {
+      setFresh((prev) => [
+        {
+          id: media.id,
+          publicId: media.publicId,
+          originalName: media.originalName,
+        },
+        ...prev,
+      ]);
+    }
+    onChange(media.id || null);
     setOpen(false);
   };
 
@@ -87,7 +100,7 @@ export function MediaPicker({ options, value, onChange }: Props) {
       <ImagePickerDialog
         open={open}
         onOpenChange={setOpen}
-        options={options}
+        options={merged}
         onSelect={handleSelect}
         aspect={1200 / 630}
       />

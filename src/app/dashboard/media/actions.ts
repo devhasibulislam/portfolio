@@ -8,12 +8,14 @@ import { cloudinary } from "@/lib/cloudinary";
 import { tag } from "@/lib/cache-tags";
 import { mediaInput } from "@/schemas/media";
 
-export type ActionState = { error?: string; ok?: true } | null;
+export type ActionState = { error?: string; ok?: true; id?: string } | null;
 
 /**
- * Called by the client immediately after CldUploadWidget onSuccess. Inserts a
- * row into `media` so the asset shows up in the reuse picker. The public_id
- * unique index protects against duplicate registrations.
+ * Called by the client immediately after a successful signed upload. Inserts
+ * a row into `media` so the asset shows up in the reuse picker, and returns
+ * the DB `id` so the caller can persist it as a FK (e.g. `posts.cover_media_id`).
+ * The public_id unique index protects against duplicate registrations —
+ * on conflict we return the existing row's id.
  */
 export async function registerMedia(
   _prev: ActionState,
@@ -33,13 +35,27 @@ export async function registerMedia(
     return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
   }
 
-  await db
+  const [inserted] = await db
     .insert(media)
     .values(parsed.data)
-    .onConflictDoNothing({ target: media.publicId });
+    .onConflictDoNothing({ target: media.publicId })
+    .returning();
+
+  // onConflictDoNothing returns [] when a row already existed for this
+  // publicId (duplicate registration). Look the id up so the client can
+  // still get a usable FK.
+  const id =
+    inserted?.id ??
+    (
+      await db
+        .select({ id: media.id })
+        .from(media)
+        .where(eq(media.publicId, parsed.data.publicId))
+        .limit(1)
+    )[0]?.id;
 
   updateTag(tag.media());
-  return { ok: true };
+  return { ok: true, id };
 }
 
 /**

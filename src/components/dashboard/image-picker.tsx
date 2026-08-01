@@ -14,6 +14,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ImageCropper } from "@/components/dashboard/image-cropper";
 import { registerMedia } from "@/app/dashboard/media/actions";
 
 export type PickedMedia = {
@@ -152,6 +153,7 @@ export function ImagePickerDialog({
               folder={folder}
               maxFileSize={maxFileSize}
               allowedFormats={allowedFormats}
+              aspect={aspect}
               onUploaded={onSelect}
             />
           </TabsContent>
@@ -167,17 +169,23 @@ function UploadTab({
   folder,
   maxFileSize,
   allowedFormats,
+  aspect,
   onUploaded,
 }: {
   folder: string;
   maxFileSize: number;
   allowedFormats: readonly string[];
+  aspect?: number;
   onUploaded: (media: PickedMedia) => void;
 }) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [pending, startTransition] = useTransition();
   const [dragging, setDragging] = useState(false);
+  // Two-step flow: pick a file → crop it → upload. `stagedFile` is the
+  // original the user picked; the crop step is skipped if it's not an
+  // image mime we can rasterize (GIFs preserve animation this way).
+  const [stagedFile, setStagedFile] = useState<File | null>(null);
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
   const apiKey = process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY;
@@ -198,7 +206,16 @@ function UploadTab({
       );
       return;
     }
+    // GIF preserves animation only if we skip canvas rasterization.
+    if (ext === "gif") {
+      uploadBlob(file, file.name);
+      return;
+    }
+    // Everything else goes through the cropper first.
+    setStagedFile(file);
+  };
 
+  const uploadBlob = (blob: Blob, originalName: string) => {
     startTransition(async () => {
       try {
         // 1. Ask our server to sign the params.
@@ -214,7 +231,7 @@ function UploadTab({
 
         // 2. Upload directly to Cloudinary with the signature.
         const form = new FormData();
-        form.append("file", file);
+        form.append("file", blob, originalName);
         form.append("api_key", apiKey!);
         form.append("timestamp", String(timestamp));
         form.append("signature", signature);
@@ -245,7 +262,7 @@ function UploadTab({
         const fd = new FormData();
         fd.set("publicId", info.public_id);
         fd.set("url", info.secure_url);
-        fd.set("originalName", info.original_filename ?? info.public_id);
+        fd.set("originalName", info.original_filename ?? originalName);
         fd.set("width", String(info.width));
         fd.set("height", String(info.height));
         fd.set("bytes", String(info.bytes));
@@ -258,13 +275,16 @@ function UploadTab({
         }
 
         toast.success("Uploaded");
+        setStagedFile(null);
         onUploaded({
-          id: "", // set on next fetch; caller uses publicId for immediate preview
+          // Registered row id, so the caller can persist it as a FK
+          // immediately (posts.cover_media_id) without waiting for a refetch.
+          id: reg?.id ?? "",
           publicId: info.public_id,
           url: info.secure_url,
           width: info.width,
           height: info.height,
-          originalName: info.original_filename ?? info.public_id,
+          originalName: info.original_filename ?? originalName,
         });
         router.refresh();
       } catch (e) {
@@ -272,6 +292,18 @@ function UploadTab({
       }
     });
   };
+
+  // Cropper takes over the tab once a file is staged.
+  if (stagedFile) {
+    return (
+      <ImageCropper
+        file={stagedFile}
+        aspect={aspect}
+        onCancel={() => setStagedFile(null)}
+        onConfirm={(blob) => uploadBlob(blob, stagedFile.name)}
+      />
+    );
+  }
 
   return (
     <div
