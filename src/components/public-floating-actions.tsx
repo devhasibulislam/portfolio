@@ -145,17 +145,26 @@ function ThemeMenu() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          size="icon"
-          variant="ghost"
-          aria-label="Change theme"
-          disabled={pending}
-          className="size-11 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] shadow-md ring-1 ring-[var(--color-accent)]/25 backdrop-blur hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent)]"
-        >
-          <Icon className="size-4" />
-        </Button>
-      </DropdownMenuTrigger>
+      <TooltipProvider>
+        <Tooltip defaultOpen>
+          <DropdownMenuTrigger asChild>
+            <TooltipTrigger asChild>
+              <Button
+                size="icon"
+                variant="ghost"
+                aria-label="Change theme"
+                disabled={pending}
+                className="size-11 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] shadow-md ring-1 ring-[var(--color-accent)]/25 backdrop-blur hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent)]"
+              >
+                <Icon className="size-4" />
+              </Button>
+            </TooltipTrigger>
+          </DropdownMenuTrigger>
+          <TooltipContent side="left" sideOffset={8}>
+            Change theme
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       <DropdownMenuContent align="end" side="top" sideOffset={8}>
         <DropdownMenuLabel>Theme</DropdownMenuLabel>
         <DropdownMenuSeparator />

@@ -18,9 +18,11 @@ import { HOTSPOTS, PALETTE } from "./config";
 export default function HeroScene({
   focusId,
   onSelect,
+  onReady,
 }: {
   focusId: string | null;
   onSelect: (id: string) => void;
+  onReady?: () => void;
 }) {
   return (
     <Canvas
@@ -29,6 +31,7 @@ export default function HeroScene({
       gl={{ antialias: true, alpha: false }}
       style={{ background: PALETTE.ink }}
       shadows={false}
+      onCreated={() => onReady?.()}
     >
       <fog attach="fog" args={[PALETTE.ink, 10, 26]} />
       <ambientLight intensity={0.55} color={PALETTE.cream} />

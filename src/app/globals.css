@@ -23,7 +23,8 @@
  * from the brand palette below via `@theme inline` — one source of truth.
  * ---------------------------------------------------------------------------*/
 :root,
-html[data-theme="dark"] {
+html[data-theme="dark"],
+[data-theme="dark"] {
   --color-bg: var(--color-brand-ink);
   --color-fg: var(--color-brand-cream);
   --color-surface: var(--color-brand-navy);
@@ -63,7 +64,8 @@ html[data-theme="dark"] {
   --sidebar-ring: var(--color-brand-highlight);
 }
 
-html[data-theme="light"] {
+html[data-theme="light"],
+[data-theme="light"] {
   --color-bg: #faf5ec;
   --color-fg: var(--color-brand-ink);
   --color-surface: #ffffff;

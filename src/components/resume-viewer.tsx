@@ -52,13 +52,13 @@ export function ResumeViewer({ url }: { url: string }) {
             Couldn&apos;t load the PDF.
           </div>
         }
-        className="flex flex-col items-center gap-4 p-4"
+        className="flex flex-col items-center gap-4"
       >
         {Array.from({ length: pageCount }, (_, i) => (
           <Page
             key={i + 1}
             pageNumber={i + 1}
-            width={width ? Math.min(width - 32, 900) : undefined}
+            width={width ? Math.min(width, 900) : undefined}
             className="!bg-transparent overflow-hidden rounded-lg shadow-md"
           />
         ))}

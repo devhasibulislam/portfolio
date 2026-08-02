@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { detectCapability, type Capability } from "@/lib/capabilities";
 import { HOTSPOTS } from "./config";
+import { HeroLoader } from "./hero-loader";
 import { HotspotOverlay } from "./hotspot-overlay";
 
 const HeroScene = dynamic(() => import("./hero-scene"), {
@@ -31,6 +32,7 @@ export function HomeExperience() {
   const [overlayPanel, setOverlayPanel] = useState<"about" | "projects" | null>(
     null,
   );
+  const [sceneReady, setSceneReady] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -57,20 +59,29 @@ export function HomeExperience() {
     setOverlayPanel(null);
   }, []);
 
-  if (capability === null) return null;
+  const isFull = capability === "full";
+  // Loader stays up until we know the device is the DOM fallback (paints
+  // instantly) OR the R3F canvas has actually mounted. This prevents the
+  // brief flash of the hero background before the loader appears.
+  const ready = capability === "fallback" || sceneReady;
 
   return (
     <>
       {/* Canvas / fallback fills the viewport via an absolutely-positioned
           wrapper. Overlay drawer sits above at z-40+. */}
       <div className="absolute inset-0">
-        {capability === "full" ? (
-          <HeroScene focusId={focusId} onSelect={onSelect} />
+        {capability === null ? null : isFull ? (
+          <HeroScene
+            focusId={focusId}
+            onSelect={onSelect}
+            onReady={() => setSceneReady(true)}
+          />
         ) : (
           <MobileFallback onSelect={onSelect} />
         )}
       </div>
       <HotspotOverlay panel={overlayPanel} onClose={onClose} />
+      <HeroLoader ready={ready} />
     </>
   );
 }

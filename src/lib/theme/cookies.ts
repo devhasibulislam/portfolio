@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 
 export type Theme = "light" | "dark";
 export const THEME_COOKIE = "theme";
-export const DEFAULT_THEME: Theme = "dark"; // dark-first per §8
+export const DEFAULT_THEME: Theme = "light"; // light-first (owner preference)
 
 export function isTheme(value: string | undefined): value is Theme {
   return value === "light" || value === "dark";
