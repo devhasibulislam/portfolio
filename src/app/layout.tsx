@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { cookies } from "next/headers";
-import { DIRECTION } from "@/lib/i18n/config";
+import { DEFAULT_LOCALE } from "@/lib/i18n/config";
 import { getLocale } from "@/lib/i18n/cookies";
-import { getTheme, THEME_COOKIE } from "@/lib/theme/cookies";
+import { DEFAULT_THEME, THEME_COOKIE } from "@/lib/theme/cookies";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,6 +20,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  ),
   title: {
     default: "Hasibul Islam",
     template: "%s · Hasibul Islam",
@@ -27,43 +31,51 @@ export const metadata: Metadata = {
     "Senior full-stack engineer. Backend architecture, LLM/RAG systems, and production Node.js.",
 };
 
-// First-visit no-flash: if the theme cookie is absent, respect the OS
-// preference before hydration. Server render still ships DEFAULT_THEME so
-// the CSS variables are always defined. § 8, deferred Phase 0 TODO.
-const THEME_INIT_SCRIPT = `(function(){try{if(document.cookie.indexOf('${THEME_COOKIE}=')!==-1)return;if(window.matchMedia('(prefers-color-scheme: light)').matches){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();`;
+// Pre-hydration script: reads the `locale` and `theme` cookies from the
+// browser and applies them to `<html lang dir data-theme>` before React
+// hydrates. This lets the shell render statically (no server-side
+// `cookies()` read) while still avoiding a flash of the wrong locale/theme.
+// Required under Next 16 `cacheComponents`: any `cookies()` at the layout
+// level triggers a blocking-route warning.
+const RTL_LOCALES = "ar,he,ur";
+const INIT_SCRIPT = `(function(){try{var d=document.documentElement;var c=document.cookie;var lm=c.match(/(?:^|; )locale=([^;]+)/);if(lm){var l=decodeURIComponent(lm[1]);d.setAttribute('lang',l);d.setAttribute('dir','${RTL_LOCALES}'.split(',').indexOf(l)>-1?'rtl':'ltr');}var tm=c.match(/(?:^|; )${THEME_COOKIE}=([^;]+)/);if(tm){d.setAttribute('data-theme',decodeURIComponent(tm[1]));}else if(window.matchMedia('(prefers-color-scheme: light)').matches){d.setAttribute('data-theme','light');}}catch(e){}})();`;
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [locale, theme, messages, store] = await Promise.all([
-    getLocale(),
-    getTheme(),
-    getMessages(),
-    cookies(),
-  ]);
-  const dir = DIRECTION[locale];
-  const themeCookieSet = store.has(THEME_COOKIE);
-
   return (
     <html
-      lang={locale}
-      dir={dir}
-      data-theme={theme}
+      lang={DEFAULT_LOCALE}
+      dir="ltr"
+      data-theme={DEFAULT_THEME}
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      {!themeCookieSet && (
-        <head>
-          <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-        </head>
-      )}
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: INIT_SCRIPT }} />
+      </head>
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <Suspense fallback={null}>
+          <LocalizedShell>{children}</LocalizedShell>
+        </Suspense>
       </body>
     </html>
+  );
+}
+
+/**
+ * Async child: reads the cookie-based locale, loads next-intl messages,
+ * and renders inside a Suspense boundary so the outer `<html>`/`<body>`
+ * shell stays static under `cacheComponents`.
+ */
+async function LocalizedShell({ children }: { children: React.ReactNode }) {
+  const [locale, messages] = await Promise.all([getLocale(), getMessages()]);
+  return (
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <SiteHeader />
+      {children}
+    </NextIntlClientProvider>
   );
 }

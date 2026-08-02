@@ -3,7 +3,6 @@ import { NAV } from "@/components/dashboard/nav";
 import { Card } from "@/components/ui/card";
 import { getOverviewCounts } from "@/lib/db/queries/overview";
 
-export const dynamic = "force-dynamic";
 
 const DESCRIPTIONS: Record<string, string> = {
   "/dashboard/posts": "Write and publish blog posts.",

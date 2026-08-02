@@ -174,11 +174,11 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 ## Phase 4 — The `/` experience
 
-- [ ] Capability detector (WebGL renderer + `deviceMemory` + primary-input) — runs before any Three.js imports
-- [ ] `next/dynamic({ ssr: false })` for Three.js/R3F — verify Three not shipped to mobile in Network tab
-- [ ] Procedural `GeometricForms` — no `.glb` pipeline
-- [ ] Hotspot system + GSAP camera choreography
-- [ ] `MobileFallbackExperience` — separate tree, GSAP + Framer only
+- [x] Capability detector (WebGL renderer + `deviceMemory` + primary-input) — runs before any Three.js imports
+- [x] `next/dynamic({ ssr: false })` for Three.js/R3F — verify Three not shipped to mobile in Network tab
+- [x] Procedural `GeometricForms` — no `.glb` pipeline
+- [x] Hotspot system + GSAP camera choreography
+- [x] `MobileFallbackExperience` — separate tree, GSAP + Framer only
 
 _(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
 
@@ -186,10 +186,21 @@ _(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
 
 ## Phase 5 — Polish
 
-- [ ] Neon Management API dashboard widget (optional; §11)
-- [ ] Lighthouse pass
-- [ ] Cache-tag audit
-- [ ] Deploy to Vercel, wire env, sanity-check every route
+- [ ] ~~Neon Management API dashboard widget~~ — marked optional in §11; skipping unless owner asks.
+- [x] Lighthouse pass (dev-mode indicative; a real audit needs a green prod build — see blocker below). Desktop scores at 2026-08-02: `/` A11y 100 / BP 96 / SEO 100 / Agentic 100. `/blog` A11y 100 / BP 96 / SEO 92 / Agentic 67. `/resume` A11y 100 / BP 96 / SEO 100 / Agentic 89. Fixes shipped this pass: added `metadataBase` to root layout (so `alternates.canonical` resolves to an absolute URL — was the `/blog` SEO 92 hit), matched `SiteHeader` logo `aria-label` to its visible text "Hasibul Islam — home" (was `label-content-name-mismatch`). Remaining audit fails all trace to the RootLayout blocking-route issue (see pre-deploy blocker) plus one llms.txt "recommendations" nit with no actionable rule.
+- [x] Cache-tag audit. Paired every mutation server action with a public reader tag:
+  - `posts` create/update/delete → `tag.posts()` + `tag.post(slug)` — readers `/blog`, `/blog/[slug]`, `/blog/category/[slug]`, `/blog/tag/[slug]`.
+  - `categories`/`tags` create/update/delete → `tag.categories()`/`tag.tags()` + `tag.posts()` (cascades because post cards render chip).
+  - `resume` upload/toggle/delete → `tag.resumes()` + `tag.activeResume()` — reader `/resume`.
+  - `media` create/delete → `tag.media()` (no public reader; media is URL-embedded in post bodies, invalidation via `tag.posts()`).
+  - **One gap fixed**: `/blog/[slug]` was only tagged with `tag.post(slug)`, so a category/tag rename would stale the individual post card. Added `tag.posts()` to the reader.
+- [ ] Deploy to Vercel — deferred; owner will schedule with discussion.
+
+### Pre-deploy blocker (concrete)
+
+~~`next build` fails with `HANGING_PROMISE_REJECTION`...~~ **Resolved 2026-08-02.** RootLayout is now a synchronous server component that renders `<html lang="en" dir="ltr" data-theme="dark">` defaults; a pre-hydration inline script reads the `locale` and `theme` cookies and applies them to the `<html>` element before React hydrates (same technique as the existing theme no-flash script). All async work (`getLocale()`, `getMessages()`, `<NextIntlClientProvider>`, `<SiteHeader>`) moved into `LocalizedShell`, an async child wrapped in `<Suspense fallback={null}>`. Build now succeeds — every public route reports as Partial Prerender (◐): static shell + streamed dynamic body. Dev-mode `errors-in-console` on Lighthouse is gone.
+
+Also cleaned up in this pass: stripped `export const dynamic = "force-dynamic"` from `src/app/login/page.tsx` and `export const runtime = "nodejs"` from `src/app/api/sign-cloudinary-params/route.ts` (both incompatible with `cacheComponents`). Moved `cacheComponents` from `experimental` to the top level of `next.config.ts` (Next 16 renamed it).
 
 ---
 
@@ -213,4 +224,6 @@ _(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
 5. `next/og` fallback OG image when a post has no cover.
 6. `sitemap.xml`, `robots.txt`, `llms.txt` — hreflang for all 5 locales.
 
-Last touched: 2026-08-02 (Phase 3 done in one file. `src/app/resume/page.tsx` reads `getActiveResume()` under `"use cache"` + `cacheTag(tag.activeResume())`, renders header + filename + Download button (`<a download>` on the raw Cloudinary URL) and embeds the PDF via native `<object type="application/pdf">`. iOS Safari fallback link inside the object body. 404s when no active resume exists. Verified live: `/resume` returns 200 titled `Resume · Hasibul Islam` with Download link pointing at Cloudinary. Next: Phase 4 (`/` R3F experience) — capability detector + dynamic Three import.)
+Last touched: 2026-08-02 (Hero redesign v2 — user said "not happy with the results". Rebuilt the `/` composition to feel intentional instead of prototype-ish: (1) `GeometricForms` reduced from 4 shapes to Centerpiece icosahedron (radius 1.6, slow-spin) + orbiting orange Satellite octahedron — cleaner focal hierarchy. (2) `ParticleField` added — 350-dot cream star field (positions seeded once at module scope to satisfy `react-hooks/purity`). (3) `Hotspot` redesigned: instead of tiny sphere the user has to hunt for, each hotspot now renders a drei `<Html>` DOM pill button with a mono `01/02/03/04` counter, label, and arrow — always visible, obviously clickable. Anchor sphere shrunk to 0.045 spark below the pill. Because the pill is a real `<button>` element inside `<Html pointerEvents=auto>`, clicks work through normal DOM events (no R3F raycast dependency — should fix the "hotspot won't click" issue). (4) `HOTSPOTS` repositioned to a front-facing arc `[-3, 1.6, 2.8]` / `[-1.1, 0.5, 3.6]` / `[1.1, 0.5, 3.6]` / `[3, 1.6, 2.8]` — all four pills sit inside the 1440-wide viewport with room to breathe. (5) Camera rig replaced orbit with a gentle sine bob (`sin(t*0.25)*0.35` on X, `sin(t*0.4)*0.18` on Y) at `[0, 2.8, 9]` fov 42 so labels stay readable; GSAP focus tween preserved for hotspot activation. (6) Fog + lighting tweaked (ambient 0.55, orange rim 0.9, orange fill 0.4). Verified via Playwright screenshot at 1440×900: composition reads as premium — big dark icosahedron dominates, orange satellite orbits, star field adds depth, all 4 labeled pills visible top and bottom of the arc. Typecheck + lint green.
+
+Prior polish pass same day (Full-site walkthrough + polish pass after Phase 4 v1. Findings and fixes: (1) No shared public nav — shipped `src/components/site-header.tsx` (sticky, blur backdrop, Blog/Resume pills, active-state highlight) mounted in root layout; suppresses itself on `/dashboard*` and `/login`. (2) Home page hero + R3F canvas were showing on a cream strip when the site theme cookie was `light` — the hero must be dark per §16, so `/` now hardcodes `data-theme="dark"`, `bg:#0f131a`, `text:#f2e4d0` and pulls the main up under the sticky header (`-mt-16` + `pt-16`) so the header floats over the canvas with backdrop-blur. (3) R3F composition made more readable: front `ambientLight`+ key `directionalLight` intensities lifted, added an orange fill point-light under the origin, form base color raised from pure navy to `#3a4762`. Torus knot scaled from radius 0.7 to 0.48 so it no longer dominates the right side. (4) Blog list header rewritten with an orange kicker, larger hero title, richer excerpt copy; PostCard cards upgraded to `rounded-xl` + `ring-1 ring-black/5`, hover scale, tighter typography. (5) Blog detail (`/blog/[slug]`) got a `← ALL POSTS` back link, larger title, orange category chip. (6) Resume page: orange kicker, filename as headline, `size="lg"` Download button. (7) **Bug fixed**: enabling `experimental.cacheComponents` in Phase 2 broke every dashboard page that had `export const dynamic = "force-dynamic"` (incompatible directive). Stripped from `dashboard/layout.tsx`, `dashboard/page.tsx`, `dashboard/posts/page.tsx`, `dashboard/posts/new/page.tsx`, `dashboard/posts/[id]/edit/page.tsx`, `dashboard/categories/page.tsx`, `dashboard/tags/page.tsx`, `dashboard/media/page.tsx`, `dashboard/resume/page.tsx` — 9 files. Verified live via Playwright: `/`, `/blog`, `/blog/[slug]`, `/resume`, `/dashboard` all render clean. Owner still needs to try a hotspot click on `/` (R3F raycast requires a real mouse; my synthetic events don't reach it).)

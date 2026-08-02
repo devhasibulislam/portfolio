@@ -13,7 +13,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { auth } from "@/lib/auth/server";
 import { THEME_COOKIE, isTheme } from "@/lib/theme/cookies";
 
-export const dynamic = "force-dynamic"; // auth.getSession() reads cookies
 
 /**
  * Dashboard shell. proxy.ts already blocks unauthenticated access; this layout

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { PostsTable } from "@/components/dashboard/posts-table";
 import { listPosts } from "@/lib/db/queries/posts";
 
-export const dynamic = "force-dynamic";
 export const metadata = { title: "Posts" };
 
 export default async function Page() {

@@ -13,7 +13,9 @@ type Params = { slug: string };
 
 async function loadPost(slug: string) {
   "use cache";
-  cacheTag(tag.post(slug));
+  // `tag.posts()` covers cross-cutting invalidations (category/tag rename,
+  // schema-level changes) that don't know per-slug tags.
+  cacheTag(tag.post(slug), tag.posts());
   return getPublishedPostBySlug(slug);
 }
 
@@ -80,7 +82,7 @@ export default async function BlogPostPage({
   };
 
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-12">
+    <main className="mx-auto w-full max-w-3xl px-6 pt-8 pb-24">
       <script
         type="application/ld+json"
         // Next 16 requires this to be inline for the crawler; safe because
@@ -88,22 +90,37 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <header className="mb-8 flex flex-col gap-3">
+      <Link
+        href="/blog"
+        className="text-muted-foreground hover:text-[var(--color-accent)] group mb-8 inline-flex items-center gap-1.5 text-xs uppercase tracking-widest transition-colors"
+      >
+        <span
+          aria-hidden
+          className="transition-transform group-hover:-translate-x-0.5"
+        >
+          ←
+        </span>
+        All posts
+      </Link>
+
+      <header className="mb-10 flex flex-col gap-4">
         {post.categoryName && post.categorySlug ? (
           <Link
             href={`/blog/category/${post.categorySlug}`}
-            className="text-muted-foreground hover:text-primary text-xs uppercase tracking-wider"
+            className="text-[var(--color-accent)] hover:opacity-80 self-start text-xs font-semibold uppercase tracking-[0.2em] transition-opacity"
           >
             {post.categoryName}
           </Link>
         ) : null}
-        <h1 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+        <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
           {post.title}
         </h1>
-        <p className="text-muted-foreground text-base">{post.excerpt}</p>
+        <p className="text-muted-foreground text-lg leading-relaxed">
+          {post.excerpt}
+        </p>
         <time
           dateTime={post.publishedAt}
-          className="text-muted-foreground text-sm"
+          className="text-muted-foreground/80 mt-1 text-sm tabular-nums"
         >
           {new Date(post.publishedAt).toLocaleDateString(undefined, {
             year: "numeric",

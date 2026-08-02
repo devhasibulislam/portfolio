@@ -7,8 +7,6 @@ import {
 } from "@/components/ui/card";
 import { LoginForm } from "./login-form";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   robots: { index: false, follow: false },
   title: "Sign in",

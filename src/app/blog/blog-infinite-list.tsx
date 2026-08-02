@@ -93,9 +93,9 @@ function PostCard({
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col gap-3 focus-visible:outline-2"
+      className="group flex flex-col gap-4 focus-visible:outline-2"
     >
-      <div className="bg-muted relative aspect-[1200/630] overflow-hidden rounded-lg">
+      <div className="bg-muted relative aspect-[1200/630] overflow-hidden rounded-xl ring-1 ring-black/5 transition-shadow group-hover:ring-black/10">
         {post.coverPublicId ? (
           <CldImage
             src={post.coverPublicId}
@@ -105,25 +105,25 @@ function PostCard({
             gravity="auto"
             alt={post.title}
             priority={priority}
-            className="h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : null}
       </div>
       <div className="flex flex-col gap-2">
         {post.categoryName ? (
-          <span className="text-muted-foreground text-xs uppercase tracking-wider">
+          <span className="text-[var(--color-accent)] text-[0.7rem] font-semibold uppercase tracking-[0.16em]">
             {post.categoryName}
           </span>
         ) : null}
-        <h2 className="text-lg font-semibold leading-tight group-hover:underline">
+        <h2 className="text-xl font-semibold leading-tight tracking-tight transition-colors group-hover:text-[var(--color-accent)]">
           {post.title}
         </h2>
-        <p className="text-muted-foreground line-clamp-2 text-sm">
+        <p className="text-muted-foreground line-clamp-2 text-sm leading-relaxed">
           {post.excerpt}
         </p>
         <time
           dateTime={post.publishedAt}
-          className="text-muted-foreground text-xs"
+          className="text-muted-foreground/80 mt-1 text-xs tabular-nums"
         >
           {new Date(post.publishedAt).toLocaleDateString(undefined, {
             year: "numeric",

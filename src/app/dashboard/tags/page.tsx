@@ -2,7 +2,6 @@ import { SlugEntityTable } from "@/components/dashboard/slug-entity-table";
 import { listTagsWithCount } from "@/lib/db/queries/tags";
 import { deleteTag, saveTag } from "./actions";
 
-export const dynamic = "force-dynamic";
 export const metadata = { title: "Tags" };
 
 export default async function Page() {

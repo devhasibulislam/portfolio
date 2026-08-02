@@ -23,16 +23,20 @@ export default async function ResumePage() {
   if (!resume) notFound();
 
   return (
-    <main className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-5xl flex-col gap-4 px-6 py-8">
-      <div className="flex items-center justify-between gap-3">
+    <main className="mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-5xl flex-col gap-6 px-6 pt-8 pb-16">
+      <div className="flex items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Resume</h1>
-          <p className="text-muted-foreground text-sm">{resume.originalName}</p>
+          <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
+            Resume
+          </p>
+          <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+            {resume.originalName.replace(/\.pdf$/i, "")}
+          </h1>
         </div>
-        <Button asChild>
+        <Button asChild size="lg">
           <a href={resume.url} download={resume.originalName} rel="noopener">
-            <Download className="me-1 size-4" />
-            Download
+            <Download className="me-2 size-4" />
+            Download PDF
           </a>
         </Button>
       </div>
@@ -40,7 +44,7 @@ export default async function ResumePage() {
       <object
         data={resume.url}
         type="application/pdf"
-        className="min-h-[75vh] w-full flex-1 rounded-lg border"
+        className="min-h-[75vh] w-full flex-1 rounded-xl border shadow-sm"
         aria-label={resume.originalName}
       >
         {/* Fallback for browsers without inline PDF viewers (iOS Safari). */}
@@ -48,7 +52,7 @@ export default async function ResumePage() {
           Your browser can&apos;t display the PDF inline.{" "}
           <a
             href={resume.url}
-            className="text-primary underline"
+            className="text-[var(--color-accent)] underline"
             target="_blank"
             rel="noopener"
           >

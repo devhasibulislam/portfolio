@@ -2,7 +2,6 @@ import { SlugEntityTable } from "@/components/dashboard/slug-entity-table";
 import { listCategoriesWithCount } from "@/lib/db/queries/categories";
 import { deleteCategory, saveCategory } from "./actions";
 
-export const dynamic = "force-dynamic";
 export const metadata = { title: "Categories" };
 
 export default async function Page() {

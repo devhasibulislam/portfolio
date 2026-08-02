@@ -20,13 +20,17 @@ async function firstPage() {
 export default async function BlogPage() {
   const initial = await firstPage();
   return (
-    <main className="mx-auto w-full max-w-6xl px-6 py-12">
-      <header className="mb-10">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+    <main className="mx-auto w-full max-w-6xl px-6 pt-8 pb-24">
+      <header className="mb-14 max-w-2xl">
+        <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
+          Writing
+        </p>
+        <h1 className="mt-4 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
           Blog
         </h1>
-        <p className="text-muted-foreground mt-2 text-base">
-          Notes on building things.
+        <p className="text-muted-foreground mt-3 text-lg leading-relaxed">
+          Field notes on shipping — TypeScript, Node, databases, and the
+          occasional design detour.
         </p>
       </header>
       <BlogInfiniteList initial={initial} />

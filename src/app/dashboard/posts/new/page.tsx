@@ -5,7 +5,6 @@ import {
   listTagsForPicker,
 } from "@/lib/db/queries/posts";
 
-export const dynamic = "force-dynamic";
 export const metadata = { title: "New post" };
 
 export default async function Page() {

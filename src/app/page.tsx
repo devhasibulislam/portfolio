@@ -1,23 +1,41 @@
+import { HomeExperience } from "@/components/home/home-experience";
+
+/**
+ * Phase 4 hero. `HomeExperience` runs the capability probe, picks the R3F
+ * scene or the framer fallback, and hosts the hotspot overlay drawer. The
+ * page itself is just a full-viewport shell so both trees can render
+ * absolutely inside a stable box.
+ */
 export default function HomePage() {
+  // The hero is always dark ("§16 dark-mode-first aesthetic"), even when the
+  // site theme cookie is `light`. Pull the main up under the sticky header
+  // and repad from inside so the canvas fills the viewport edge-to-edge.
   return (
-    <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6 py-24">
-      <p className="text-xs uppercase tracking-widest opacity-60">
-        Portfolio · Phase 0 · Foundation
-      </p>
-      <h1 className="mt-3 text-4xl font-semibold tracking-tight">
-        Hasibul Islam
-      </h1>
-      <p className="mt-2 max-w-xl text-lg opacity-80">
-        Senior full-stack engineer. Backend architecture, LLM/RAG systems, and
-        production Node.js.
-      </p>
-      <p className="mt-8 text-sm opacity-60">
-        Foundation is up. See{" "}
-        <code className="rounded bg-[var(--color-surface)] px-1.5 py-0.5">
-          docs/BUILD_PLAN.md
-        </code>{" "}
-        for what is next.
-      </p>
+    <main
+      data-theme="dark"
+      className="relative -mt-16 min-h-[100svh] w-full overflow-hidden pt-16"
+      style={{ background: "#0f131a", color: "#f2e4d0" }}
+    >
+      <HomeExperience />
+
+      {/* Hero overlay. Top-left, well below the sticky site header. */}
+      <div className="pointer-events-none absolute inset-0 z-10 mx-auto flex max-w-6xl flex-col justify-between px-6 pt-24 pb-16">
+        <div className="max-w-xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#e86b1c]">
+            Portfolio · Interactive
+          </p>
+          <h1 className="mt-4 text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+            Hasibul Islam
+          </h1>
+          <p className="mt-4 max-w-md text-lg leading-relaxed text-[#f2e4d0]/85">
+            Senior full-stack engineer. Backend architecture, LLM/RAG systems,
+            and production Node.js.
+          </p>
+        </div>
+        <p className="text-xs uppercase tracking-widest text-[#f2e4d0]/50">
+          Click a glowing node to explore →
+        </p>
+      </div>
     </main>
   );
 }

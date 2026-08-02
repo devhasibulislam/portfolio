@@ -1,7 +1,7 @@
 import { cloudinary } from "@/lib/cloudinary";
 
-// Node runtime required — cloudinary SDK uses Node APIs.
-export const runtime = "nodejs";
+// Route handlers default to the Node.js runtime, which the cloudinary SDK
+// requires — no explicit `runtime` export (incompatible with cacheComponents).
 
 /**
  * Signature endpoint for CldUploadWidget signed uploads. The widget POSTs
