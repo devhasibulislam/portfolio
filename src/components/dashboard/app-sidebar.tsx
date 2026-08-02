@@ -15,6 +15,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { signOutAction } from "@/lib/auth/actions";
 import { NAV } from "./nav";
@@ -23,6 +24,12 @@ type Props = { userEmail: string };
 
 export function AppSidebar({ userEmail }: Props) {
   const pathname = usePathname();
+  // Close the mobile drawer after a nav click — otherwise the sheet stays
+  // open, overlaying the newly-navigated route until the user dismisses it.
+  const { isMobile, setOpenMobile } = useSidebar();
+  const closeIfMobile = () => {
+    if (isMobile) setOpenMobile(false);
+  };
   const initial = userEmail.slice(0, 1).toUpperCase();
 
   return (
@@ -73,7 +80,7 @@ export function AppSidebar({ userEmail }: Props) {
                       isActive={active}
                       tooltip={label}
                     >
-                      <Link href={href}>
+                      <Link href={href} onClick={closeIfMobile}>
                         <Icon />
                         <span>{label}</span>
                       </Link>

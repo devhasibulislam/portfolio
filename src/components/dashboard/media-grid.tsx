@@ -119,7 +119,9 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
                   size="icon"
                   variant="secondary"
                   aria-label={`Delete ${m.originalName}`}
-                  className="absolute end-2 top-2 opacity-0 shadow-md transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
+                  // Hover-reveal on desktop; always visible on touch/mobile
+                  // (no hover state → the delete button would be unreachable).
+                  className="absolute end-2 top-2 opacity-100 shadow-md transition-opacity md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100"
                   onClick={() => setConfirmDelete(m)}
                 >
                   <Trash2 className="size-4" />
@@ -127,7 +129,7 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
               )}
               <div className="mt-2 flex items-baseline justify-between gap-2 text-xs">
                 <span
-                  className="text-foreground truncate"
+                  className="text-foreground min-w-0 flex-1 truncate"
                   title={m.originalName}
                 >
                   {m.originalName}

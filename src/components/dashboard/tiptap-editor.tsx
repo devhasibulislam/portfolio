@@ -226,7 +226,7 @@ function Toolbar({
       />
       <TB cmd={onImageClick} active={false} label="Image" icon={ImageIcon} />
 
-      <span className="border-border mx-1 h-4 w-px border-l" aria-hidden />
+      <span className="border-border mx-1 h-4 w-px border-s" aria-hidden />
 
       <TB
         cmd={() => editor.chain().focus().undo().run()}

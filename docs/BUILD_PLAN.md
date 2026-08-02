@@ -111,37 +111,37 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 ### Overview (dashboard home)
 
-- [ ] **Cards** — the whole card is already a `<Link>`; drop the arrow icon since redundant. Add a **count badge** in the top-right corner (icon stays top-left). E.g. `Posts (05)`, `Media (12)`. Format as two digits with a leading zero.
+- [x] **Cards** — the whole card is already a `<Link>`; drop the arrow icon since redundant. Add a **count badge** in the top-right corner (icon stays top-left). E.g. `Posts (05)`, `Media (12)`. Format as two digits with a leading zero.
 
 ### Posts — list view
 
-- [ ] **Status column** = a real toggle (shadcn `Switch` in a `Tooltip`) that flips draft ↔ published in place via a small server action + `updateTag('posts')`. Optimistic UI + toast on error.
+- [x] **Status column** = a real toggle (shadcn `Switch` in a `Tooltip`) that flips draft ↔ published in place via a small server action + `updateTag('posts')`. Optimistic UI + toast on error.
 
 ### Posts — create/edit form
 
-- [ ] **Cover image**: replace the current MediaPicker with a single reusable modal that combines _pick-from-existing_ **and** _upload-new_ (Cloudinary widget) inside the same surface. Applies to the Media page too where sensible.
-- [ ] **Free cropper** — display the intrinsic resolution + let the user drag/reposition a crop rect at any target ratio. Used by both Cover picker and inline Body images. Ships as a shared component (`src/components/dashboard/image-cropper.tsx`).
-- [ ] **Category select** — full-width to match the tags row.
-- [ ] **Tags picker** — redesign. Current chip-plus-search UI feels utilitarian; move to something with better discovery and hover states (candidate: shadcn Command palette style with grouped suggestions, keyboard-navigable).
-- [ ] **Tiptap toolbar** — sticky **within** the editor container as the body scrolls, not sticky to the viewport. Use `position: sticky; top: 0` inside the scrollable editor pane.
-- [ ] **Tiptap active state** — active-mark styling should only reflect _the current selection inside the editor_. Currently when focus leaves the editor the toolbar keeps `H2`/`Link` lit. Fix by binding to `editor.state.selection` + a `focus` listener; clear active classes when the editor loses focus.
-- [ ] **Tiptap Image tool** — replace the `window.prompt("Image URL")` with the same reusable pick-or-upload modal used by the cover, backed by the same free cropper. Multi-file upload, `jpg|jpeg|png|gif|webp`, each ≤1MB (client-side reject).
+- [x] **Cover image**: replace the current MediaPicker with a single reusable modal that combines _pick-from-existing_ **and** _upload-new_ (Cloudinary widget) inside the same surface. Applies to the Media page too where sensible.
+- [x] **Free cropper** — display the intrinsic resolution + let the user drag/reposition a crop rect at any target ratio. Used by both Cover picker and inline Body images. Ships as a shared component (`src/components/dashboard/image-cropper.tsx`).
+- [x] **Category select** — full-width to match the tags row.
+- [x] **Tags picker** — redesign. Current chip-plus-search UI feels utilitarian; move to something with better discovery and hover states (candidate: shadcn Command palette style with grouped suggestions, keyboard-navigable).
+- [x] **Tiptap toolbar** — sticky **within** the editor container as the body scrolls, not sticky to the viewport. Use `position: sticky; top: 0` inside the scrollable editor pane.
+- [x] **Tiptap active state** — active-mark styling should only reflect _the current selection inside the editor_. Currently when focus leaves the editor the toolbar keeps `H2`/`Link` lit. Fix by binding to `editor.state.selection` + a `focus` listener; clear active classes when the editor loses focus.
+- [x] **Tiptap Image tool** — replace the `window.prompt("Image URL")` with the same reusable pick-or-upload modal used by the cover, backed by the same free cropper. Multi-file upload, `jpg|jpeg|png|gif|webp`, each ≤1MB (client-side reject).
 - [ ] **Clarification — social preview / SEO fields.** Current form has `meta_description` (Google snippet, 120–160 chars) and `excerpt` (listing card, 200–300). Social preview reuses the cover image at 1200×630 via `next/og`. Per PROJECT_CONTEXT §5 there is no separate OG title / OG description — Google, Facebook, LinkedIn, Twitter all fall back to `<title>` + `meta_description` + the OG image, so the current three fields cover it. Confirm before we build anything extra.
 
 ### Categories & Tags
 
-- [ ] **Edit action** — the whole row is currently clickable (opens the edit dialog). Owner wants an **explicit pencil icon** next to the delete icon so it is discoverable. Row-click stays as a shortcut.
-- [ ] **Delete button** — currently opens a dialog that says "Blocked". Change to **disable the button entirely** with a tooltip explaining why (e.g. "In use by 3 posts") when `postCount > 0`.
+- [x] **Edit action** — the whole row is currently clickable (opens the edit dialog). Owner wants an **explicit pencil icon** next to the delete icon so it is discoverable. Row-click stays as a shortcut.
+- [x] **Delete button** — currently opens a dialog that says "Blocked". Change to **disable the button entirely** with a tooltip explaining why (e.g. "In use by 3 posts") when `postCount > 0`.
 
 ### Media
 
-- [ ] **Delete disabled when `inUse === true`** — right now the button opens a "blocked" alert dialog. Same fix as above: disable the button + tooltip.
-- [ ] **Lightbox** — click a tile to open a large-size preview modal. Shows original resolution + file size; secondary "Copy public_id" and "Copy URL" buttons.
+- [x] **Delete disabled when `inUse === true`** — right now the button opens a "blocked" alert dialog. Same fix as above: disable the button + tooltip.
+- [x] **Lightbox** — click a tile to open a large-size preview modal. Shows original resolution + file size; secondary "Copy public_id" and "Copy URL" buttons.
 
 ### Resume
 
-- [ ] **Explicit active/inactive toggle button** — the native radio is not discoverable enough. Use a shadcn `Switch` or a clear "Set active" button per row.
-- [ ] **Confirm behaviour**: activating a new resume already deactivates the previously-active one (partial-unique index + two-step `UPDATE`). The first-uploaded resume already defaults to `is_active = true`. Both behaviours exist server-side but were invisible in the UI — the toggle redesign fixes that.
+- [x] **Explicit active/inactive toggle button** — the native radio is not discoverable enough. Use a shadcn `Switch` or a clear "Set active" button per row.
+- [x] **Confirm behaviour**: activating a new resume already deactivates the previously-active one (partial-unique index + two-step `UPDATE`). The first-uploaded resume already defaults to `is_active = true`. Both behaviours exist server-side but were invisible in the UI — the toggle redesign fixes that.
 
 ### Links
 
@@ -149,7 +149,7 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 ### Cross-cutting
 
-- [ ] **Full device responsive audit** — every dashboard page at 375 / 768 / 1024 / 1280+. Playwright screenshot each width and fix overflow / hidden controls. _(Bottom nav bar on small/mid devices — cut by the owner. The collapsible sidebar handles mobile via SidebarProvider's built-in drawer.)_
+- [x] **Full device responsive audit** — every dashboard page at 375 / 768 / 1024 / 1280+. Playwright screenshot each width and fix overflow / hidden controls. _(Bottom nav bar on small/mid devices — cut by the owner. The collapsible sidebar handles mobile via SidebarProvider's built-in drawer.)_ Static Tailwind-class audit (agent-driven) surfaced four findings; all four fixed 2026-08-02: media-grid delete button now `opacity-100 md:opacity-0` so touch users can reach it; media filename gets `min-w-0 flex-1` so it truncates cleanly next to size; `AppSidebar` closes the mobile drawer on nav-link click via `useSidebar().setOpenMobile`; leftover `border-l` in Tiptap toolbar divider swapped to `border-s`.
 
 ---
 
@@ -212,4 +212,4 @@ _(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
 5. `next/og` fallback OG image when a post has no cover.
 6. `sitemap.xml`, `robots.txt`, `llms.txt` — hreflang for all 5 locales.
 
-Last touched: 2026-07-31 (Phase 1.5 opened; sidebar-collapsed alignment fix landed)
+Last touched: 2026-08-02 (Responsive audit closed via static Tailwind-class review — four fixes landed: media-grid delete visible on touch, media filename truncation, mobile sidebar auto-close on nav, `border-l` → `border-s` in Tiptap. Phase 1.5 code-complete; only the SEO/OG-fields owner sign-off blocks a full tick. Next up: Phase 2 kickoff — shared `useCursor<Item>(filter)` hook, then `/blog` list with infinite scroll.)
