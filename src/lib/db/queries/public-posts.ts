@@ -1,7 +1,7 @@
 import "server-only";
-import { and, desc, eq, isNotNull, lt, or, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, isNotNull, lt, or, sql } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import { categories, media, posts } from "@/lib/db/schema";
+import { categories, media, posts, postsTags, tags } from "@/lib/db/schema";
 
 export type PublicPostCard = {
   id: string;
@@ -58,7 +58,7 @@ export async function listPublishedPostsCursor(input: {
   cursor?: string | null;
   limit?: number;
   categorySlug?: string;
-  // ponytail: tagSlug branch lives here later — needs postsTags join.
+  tagSlug?: string;
 }): Promise<PostsPage> {
   const limit = Math.min(Math.max(input.limit ?? 12, 1), 24);
   const cur = decodeCursor(input.cursor ?? null);
@@ -75,8 +75,11 @@ export async function listPublishedPostsCursor(input: {
   if (input.categorySlug) {
     conds.push(eq(categories.slug, input.categorySlug));
   }
+  if (input.tagSlug) {
+    conds.push(eq(tags.slug, input.tagSlug));
+  }
 
-  const rows = await db
+  const base = db
     .select({
       id: posts.id,
       title: posts.title,
@@ -89,7 +92,17 @@ export async function listPublishedPostsCursor(input: {
     })
     .from(posts)
     .leftJoin(categories, eq(categories.id, posts.categoryId))
-    .leftJoin(media, eq(media.id, posts.coverMediaId))
+    .leftJoin(media, eq(media.id, posts.coverMediaId));
+
+  // Only join the M2M table when actually filtering by tag — keeps the
+  // hot /blog and category paths from paying for a join they don't use.
+  const query = input.tagSlug
+    ? base
+        .innerJoin(postsTags, eq(postsTags.postId, posts.id))
+        .innerJoin(tags, eq(tags.id, postsTags.tagId))
+    : base;
+
+  const rows = await query
     .where(and(...conds))
     .orderBy(desc(posts.publishedAt), desc(posts.id))
     .limit(limit + 1);
@@ -108,4 +121,93 @@ export async function listPublishedPostsCursor(input: {
     hasMore && last ? encodeCursor({ p: last.publishedAt, id: last.id }) : null;
 
   return { items, nextCursor };
+}
+
+export type PublicPostDetail = {
+  id: string;
+  title: string;
+  slug: string;
+  metaDescription: string;
+  excerpt: string;
+  body: unknown; // Tiptap JSON
+  publishedAt: string;
+  updatedAt: string;
+  categoryName: string | null;
+  categorySlug: string | null;
+  coverPublicId: string | null;
+  coverWidth: number | null;
+  coverHeight: number | null;
+  tags: { name: string; slug: string }[];
+};
+
+/**
+ * A single published post by slug for `/blog/[slug]`. Returns null if the
+ * slug is unknown or the post is a draft — the page maps that to 404.
+ */
+export async function getPublishedPostBySlug(
+  slug: string,
+): Promise<PublicPostDetail | null> {
+  const [row] = await db
+    .select({
+      id: posts.id,
+      title: posts.title,
+      slug: posts.slug,
+      metaDescription: posts.metaDescription,
+      excerpt: posts.excerpt,
+      body: posts.body,
+      publishedAt: sql<Date>`${posts.publishedAt}`.as("published_at"),
+      updatedAt: posts.updatedAt,
+      categoryName: categories.name,
+      categorySlug: categories.slug,
+      coverPublicId: media.publicId,
+      coverWidth: media.width,
+      coverHeight: media.height,
+    })
+    .from(posts)
+    .leftJoin(categories, eq(categories.id, posts.categoryId))
+    .leftJoin(media, eq(media.id, posts.coverMediaId))
+    .where(
+      and(
+        eq(posts.slug, slug),
+        eq(posts.status, "published"),
+        isNotNull(posts.publishedAt),
+      ),
+    );
+  if (!row) return null;
+
+  const tagRows = await db
+    .select({ name: tags.name, slug: tags.slug })
+    .from(postsTags)
+    .innerJoin(tags, eq(tags.id, postsTags.tagId))
+    .where(inArray(postsTags.postId, [row.id]))
+    .orderBy(tags.name);
+
+  return {
+    ...row,
+    publishedAt: new Date(
+      row.publishedAt as unknown as string | Date,
+    ).toISOString(),
+    updatedAt: new Date(
+      row.updatedAt as unknown as string | Date,
+    ).toISOString(),
+    tags: tagRows,
+  };
+}
+
+/** Category name for the `/blog/category/[slug]` header + metadata. */
+export async function getCategoryBySlug(slug: string) {
+  const [row] = await db
+    .select({ name: categories.name, slug: categories.slug })
+    .from(categories)
+    .where(eq(categories.slug, slug));
+  return row ?? null;
+}
+
+/** Tag name for the `/blog/tag/[slug]` header + metadata. */
+export async function getTagBySlug(slug: string) {
+  const [row] = await db
+    .select({ name: tags.name, slug: tags.slug })
+    .from(tags)
+    .where(eq(tags.slug, slug));
+  return row ?? null;
 }

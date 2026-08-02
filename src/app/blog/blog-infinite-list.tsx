@@ -11,10 +11,19 @@ import type { PostsPage, PublicPostCard } from "@/lib/db/queries/public-posts";
  * Renders the SSR-seeded first page plus an IntersectionObserver sentinel
  * that requests more via the shared `useCursor` hook. No offset pagination
  * per PROJECT_CONTEXT §13 — cursor only.
+ *
+ * `loader` defaults to the unfiltered posts action so the base `/blog`
+ * page stays a one-arg call; category/tag pages pass their own action.
  */
-export function BlogInfiniteList({ initial }: { initial: PostsPage }) {
+export function BlogInfiniteList({
+  initial,
+  loader = loadMoreBlogPosts,
+}: {
+  initial: PostsPage;
+  loader?: (cursor: string) => Promise<PostsPage>;
+}) {
   const { items, hasMore, loading, error, loadMore } =
-    useCursor<PublicPostCard>(initial, loadMoreBlogPosts);
+    useCursor<PublicPostCard>(initial, loader);
   const sentinel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

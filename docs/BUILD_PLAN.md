@@ -158,9 +158,9 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 - [x] Shared cursor-pagination hook (`useCursor<Item>(filter)`) — one implementation, three consumers
 - [x] `/blog` list w/ IntersectionObserver infinite scroll
-- [ ] `/blog/[slug]` w/ `generateMetadata`, JSON-LD `Article`, canonical, hreflang
-- [ ] `/blog/category/[slug]` real SSG page
-- [ ] `/blog/tag/[slug]` real SSG page
+- [x] `/blog/[slug]` w/ `generateMetadata`, JSON-LD `Article`, canonical, hreflang
+- [x] `/blog/category/[slug]` real SSG page
+- [x] `/blog/tag/[slug]` real SSG page
 - [ ] `next/og` fallback OG generator when a post has no cover image
 - [ ] `sitemap.xml`, `robots.txt`, `llms.txt`, `hreflang` for all 5 locales
 
@@ -213,4 +213,4 @@ _(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
 5. `next/og` fallback OG image when a post has no cover.
 6. `sitemap.xml`, `robots.txt`, `llms.txt` — hreflang for all 5 locales.
 
-Last touched: 2026-08-02 (Phase 2 step 1+2 tested live via Playwright at 375px and 1280px. /blog renders one published post with cover, category label, title, excerpt, and formatted date; metadata template resolves to `Blog · Hasibul Islam`; LCP priority set on the first cover. Bug fixed during test: `publishedAt` normalized to ISO string end-to-end since server actions serialize Date to string but RSC keeps Date — unified the shape. Surfaced pre-existing Phase 0 debt: `RootLayout` reads cookies outside `<Suspense>`, so Cache Components flags a `blocking-route` warning (functional, but blocks whole-app prerender). Recorded under Phase 0 deferred TODOs. Next Phase 2 task: `/blog/[slug]` detail page with `generateMetadata` + Article JSON-LD + canonical.)
+Last touched: 2026-08-02 (Phase 2 steps 4+5: category + tag archive pages shipped. `listPublishedPostsCursor` extended with a `tagSlug` filter that opts into the `postsTags` join only when needed — hot `/blog` and category paths pay no extra cost. Added `getCategoryBySlug` / `getTagBySlug` for header + metadata. `BlogInfiniteList` now accepts an optional `loader` prop (defaults to the base loader), so `/blog/category/[slug]` and `/blog/tag/[slug]` reuse the same client component with a `.bind(null, slug)` server action. Both pages hit `"use cache"` + `cacheTag(tag.posts(), tag.<category|tags>())`, `generateMetadata` with canonical, and 404 on unknown slugs. Verified live via Playwright: `/blog/category/engineering` → 200, `/blog/tag/codex` → 200, `/blog/category/does-not-exist` → 404. Next Phase 2: `next/og` fallback OG generator + sitemap.xml / robots.txt / llms.txt.)
