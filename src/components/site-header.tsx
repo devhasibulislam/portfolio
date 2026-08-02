@@ -2,21 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 /**
  * Public site header. Renders on `/`, `/blog*`, `/resume`. Hidden on the
- * dashboard (has its own SidebarProvider header) and on `/login`.
- *
- * Fixed to the top with a soft blur backdrop so it reads over the R3F scene
- * on `/` without stealing focus. Highlights the active section.
+ * dashboard and `/login`.
  */
 export function SiteHeader() {
   const pathname = usePathname();
-  if (
-    pathname === "/login" ||
-    pathname.startsWith("/dashboard") ||
-    pathname === "/dashboard"
-  ) {
+  if (pathname === "/login" || pathname.startsWith("/dashboard")) {
     return null;
   }
 
@@ -25,32 +20,31 @@ export function SiteHeader() {
     { href: "/resume", label: "Resume" },
   ];
 
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+  const isActive = (href: string) => pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-30 w-full backdrop-blur">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          className="rounded-md text-sm font-semibold tracking-tight text-[var(--color-fg)] hover:text-[var(--color-accent)] transition-colors"
-          aria-label="Hasibul Islam — home"
-        >
-          Hasibul Islam
-        </Link>
-        <ul className="flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/60 px-1.5 py-1 text-sm backdrop-blur">
+        <Button variant="link" asChild className="px-0 text-sm font-semibold">
+          <Link href="/" aria-label="Hasibul Islam — home">
+            Hasibul Islam
+          </Link>
+        </Button>
+        <ul className="flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/60 px-1.5 py-1 backdrop-blur">
           {items.map((it) => (
             <li key={it.href}>
-              <Link
-                href={it.href}
-                className={`inline-flex items-center rounded-full px-3 py-1 transition-colors ${
-                  isActive(it.href)
-                    ? "bg-[var(--color-accent)]/15 text-[var(--color-accent)]"
-                    : "text-[var(--color-fg)]/75 hover:text-[var(--color-fg)]"
-                }`}
+              <Button
+                variant="ghost"
+                size="sm"
+                asChild
+                className={cn(
+                  "rounded-full",
+                  isActive(it.href) &&
+                    "bg-[var(--color-accent)]/15 text-[var(--color-accent)] hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent)]",
+                )}
               >
-                {it.label}
-              </Link>
+                <Link href={it.href}>{it.label}</Link>
+              </Button>
             </li>
           ))}
         </ul>

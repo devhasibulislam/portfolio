@@ -28,6 +28,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ImagePickerDialog } from "@/components/dashboard/image-picker";
 import type { MediaRow } from "@/lib/db/queries/media";
 import { deleteMedia } from "@/app/dashboard/media/actions";
@@ -58,7 +59,13 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <FilterTabs value={filter} onChange={setFilter} />
+          <Tabs value={filter} onValueChange={(v) => setFilter(v as Filter)}>
+            <TabsList>
+              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="in-use">In use</TabsTrigger>
+              <TabsTrigger value="unused">Unused</TabsTrigger>
+            </TabsList>
+          </Tabs>
           <Button onClick={() => setUploadOpen(true)}>
             <Upload className="me-1 size-4" />
             Upload
@@ -163,42 +170,6 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
           router.refresh();
         }}
       />
-    </div>
-  );
-}
-
-function FilterTabs({
-  value,
-  onChange,
-}: {
-  value: Filter;
-  onChange: (v: Filter) => void;
-}) {
-  const items: { value: Filter; label: string }[] = [
-    { value: "all", label: "All" },
-    { value: "in-use", label: "In use" },
-    { value: "unused", label: "Unused" },
-  ];
-  return (
-    <div
-      role="tablist"
-      className="bg-muted inline-flex rounded-md p-0.5 text-sm"
-    >
-      {items.map((it) => (
-        <button
-          key={it.value}
-          role="tab"
-          aria-selected={value === it.value}
-          onClick={() => onChange(it.value)}
-          className={`rounded-sm px-3 py-1 transition-colors ${
-            value === it.value
-              ? "bg-background text-foreground shadow-sm"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          {it.label}
-        </button>
-      ))}
     </div>
   );
 }

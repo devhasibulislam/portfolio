@@ -1,12 +1,16 @@
 "use client";
 
-import { X } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { ABOUT_COPY, PROJECTS } from "./config";
 
 /**
- * Right-side slide-in drawer. Renders one of two panels: About (bio prose)
- * or Projects (four cards). Kept as plain CSS transitions on a container so
- * we don't drag another lib in for a single slide.
+ * Right-side slide-in panel for About / Projects hotspots. Shadcn Sheet
+ * handles the drawer + scrim + close button + a11y.
  */
 export function HotspotOverlay({
   panel,
@@ -15,47 +19,20 @@ export function HotspotOverlay({
   panel: "about" | "projects" | null;
   onClose: () => void;
 }) {
-  const open = panel !== null;
   return (
-    <>
-      {/* Scrim — dims the scene, click to close. */}
-      <div
-        onClick={onClose}
-        aria-hidden
-        className={`fixed inset-0 z-40 transition-opacity duration-500 ${
-          open
-            ? "pointer-events-auto bg-black/40 opacity-100"
-            : "pointer-events-none opacity-0"
-        }`}
-      />
-      <aside
-        role="dialog"
-        aria-modal="true"
-        aria-hidden={!open}
-        className={`bg-[var(--color-surface)] text-[var(--color-fg)] border-[var(--color-border)] fixed inset-y-0 end-0 z-50 flex w-full max-w-md flex-col border-s shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0.24,1)] ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <header className="flex items-center justify-between border-b border-[var(--color-border)] px-6 py-4">
-          <p className="text-xs uppercase tracking-widest opacity-60">
+    <Sheet open={panel !== null} onOpenChange={(o) => !o && onClose()}>
+      <SheetContent side="right" className="w-full max-w-md gap-0">
+        <SheetHeader className="border-b border-[var(--color-border)] px-6 py-4">
+          <SheetTitle className="text-xs uppercase tracking-widest opacity-60 font-normal">
             {panel ?? ""}
-          </p>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close panel"
-            className="hover:text-[var(--color-accent)] rounded-md p-1 transition-colors"
-          >
-            <X className="size-4" />
-          </button>
-        </header>
-
+          </SheetTitle>
+        </SheetHeader>
         <div className="flex-1 overflow-y-auto px-6 py-6">
           {panel === "about" ? <AboutPanel /> : null}
           {panel === "projects" ? <ProjectsPanel /> : null}
         </div>
-      </aside>
-    </>
+      </SheetContent>
+    </Sheet>
   );
 }
 

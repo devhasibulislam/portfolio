@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import { HOTSPOTS } from "./config";
 
 /**
@@ -45,10 +46,10 @@ export default function MobileFallback({
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}
             >
-              <button
-                type="button"
+              <Button
+                variant="outline"
                 onClick={() => onSelect(h.id)}
-                className="group border-[var(--color-border)] hover:border-[var(--color-accent)] flex w-full items-center justify-between rounded-lg border px-4 py-3 text-start transition-colors"
+                className="group hover:border-[var(--color-accent)] flex h-auto w-full items-center justify-between rounded-lg px-4 py-3 text-start"
               >
                 <span className="text-base font-medium">{h.label}</span>
                 <span
@@ -57,7 +58,7 @@ export default function MobileFallback({
                 >
                   →
                 </span>
-              </button>
+              </Button>
             </motion.li>
           ))}
         </ul>
