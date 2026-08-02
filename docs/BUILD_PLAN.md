@@ -80,6 +80,7 @@ Scaffold that everything else builds on. All items are project-scoped (nothing i
 
 - **Session-only auth cookie**: `@neondatabase/auth` sets a persistent cookie by default. §11 requires a browser-session cookie (dies on tab close). Implement by stripping `Max-Age` / `Expires` from the `Set-Cookie` written by the auth handler — likely via a response-transforming wrapper in `src/app/api/auth/[...path]/route.ts` or a `proxy.ts` post-hook. Tracked here so it isn't forgotten.
 - **First-visit theme = system preference**: currently defaults to dark. Add a no-flash inline script in `layout.tsx` that reads `prefers-color-scheme` when the theme cookie is absent, sets `data-theme` before hydration.
+- **`RootLayout` blocks the render tree under Cache Components**: With `experimental.cacheComponents: true` (enabled in Phase 2 so `updateTag()` mutations invalidate readers), `RootLayout` accesses `cookies()` via `getLocale()`/`getTheme()`/`getMessages()` outside a `<Suspense>` boundary. Next 16 flags this as a `blocking-route` warning: `/blog` renders correctly but the top-level tree can't be prerendered. Fix by pushing the dynamic bits (locale/theme/messages/NextIntlClientProvider) into a client boundary or a Suspense-wrapped server child so `<html lang dir data-theme>` still renders statically. Non-critical — blog is functional — but blocks Vercel-side static generation for the whole app.
 
 ---
 
@@ -155,8 +156,8 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 ## Phase 2 — Public blog + SEO surface
 
-- [ ] Shared cursor-pagination hook (`useCursor<Item>(filter)`) — one implementation, three consumers
-- [ ] `/blog` list w/ IntersectionObserver infinite scroll
+- [x] Shared cursor-pagination hook (`useCursor<Item>(filter)`) — one implementation, three consumers
+- [x] `/blog` list w/ IntersectionObserver infinite scroll
 - [ ] `/blog/[slug]` w/ `generateMetadata`, JSON-LD `Article`, canonical, hreflang
 - [ ] `/blog/category/[slug]` real SSG page
 - [ ] `/blog/tag/[slug]` real SSG page
@@ -212,4 +213,4 @@ _(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
 5. `next/og` fallback OG image when a post has no cover.
 6. `sitemap.xml`, `robots.txt`, `llms.txt` — hreflang for all 5 locales.
 
-Last touched: 2026-08-02 (Responsive audit closed via static Tailwind-class review — four fixes landed: media-grid delete visible on touch, media filename truncation, mobile sidebar auto-close on nav, `border-l` → `border-s` in Tiptap. Phase 1.5 code-complete; only the SEO/OG-fields owner sign-off blocks a full tick. Next up: Phase 2 kickoff — shared `useCursor<Item>(filter)` hook, then `/blog` list with infinite scroll.)
+Last touched: 2026-08-02 (Phase 2 step 1+2 tested live via Playwright at 375px and 1280px. /blog renders one published post with cover, category label, title, excerpt, and formatted date; metadata template resolves to `Blog · Hasibul Islam`; LCP priority set on the first cover. Bug fixed during test: `publishedAt` normalized to ISO string end-to-end since server actions serialize Date to string but RSC keeps Date — unified the shape. Surfaced pre-existing Phase 0 debt: `RootLayout` reads cookies outside `<Suspense>`, so Cache Components flags a `blocking-route` warning (functional, but blocks whole-app prerender). Recorded under Phase 0 deferred TODOs. Next Phase 2 task: `/blog/[slug]` detail page with `generateMetadata` + Article JSON-LD + canonical.)

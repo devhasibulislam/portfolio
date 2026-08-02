@@ -9,7 +9,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com" }],
   },
   experimental: {
-    // Placeholder for Cache Components / Turbopack tweaks per PROJECT_CONTEXT §13.
+    // Cache Components: enables `"use cache"` + `cacheTag()` per PROJECT_CONTEXT §13.
+    // The dashboard mutations already call `updateTag()`; public readers opt in
+    // via `"use cache"` inside RSCs (see `/blog`).
+    cacheComponents: true,
   },
 };
 
