@@ -48,7 +48,7 @@ export default async function CategoryPage({
   const boundLoader = loadMoreCategoryPosts.bind(null, category.slug);
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-6 py-12">
+    <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
       <header className="mb-10">
         <p className="text-muted-foreground text-sm uppercase tracking-wider">
           Category

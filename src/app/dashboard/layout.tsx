@@ -13,7 +13,6 @@ import { Toaster } from "@/components/ui/sonner";
 import { auth } from "@/lib/auth/server";
 import { THEME_COOKIE, isTheme } from "@/lib/theme/cookies";
 
-
 /**
  * Dashboard shell. proxy.ts already blocks unauthenticated access; this layout
  * adds the defence-in-depth *single-user email whitelist* required by §11.
@@ -46,7 +45,7 @@ export default async function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <AppSidebar userEmail={session.user.email} />
+      <AppSidebar />
       <SidebarInset>
         <header className="bg-background/70 sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b px-4 backdrop-blur">
           <SidebarTrigger className="-ms-1" />

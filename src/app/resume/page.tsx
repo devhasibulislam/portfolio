@@ -23,7 +23,7 @@ export default async function ResumePage() {
   if (!resume) notFound();
 
   return (
-    <main className="mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-5xl flex-col gap-6 px-6 pt-8 pb-16">
+    <main className="mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-5xl flex-col gap-6 px-6 pt-24 pb-16">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">

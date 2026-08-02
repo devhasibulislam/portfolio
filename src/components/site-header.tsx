@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BrandBadge } from "@/components/brand-badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -23,13 +24,9 @@ export function SiteHeader() {
   const isActive = (href: string) => pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-30 w-full backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-30 w-full backdrop-blur">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-        <Button variant="link" asChild className="px-0 text-sm font-semibold">
-          <Link href="/" aria-label="Hasibul Islam — home">
-            Hasibul Islam
-          </Link>
-        </Button>
+        <BrandBadge size="sm" />
         <ul className="flex items-center gap-1 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/60 px-1.5 py-1 backdrop-blur">
           {items.map((it) => (
             <li key={it.href}>

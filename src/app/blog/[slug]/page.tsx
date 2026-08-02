@@ -3,6 +3,8 @@ import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getCldImageUrl } from "next-cloudinary";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { tag } from "@/lib/cache-tags";
 import { getPublishedPostBySlug } from "@/lib/db/queries/public-posts";
 import { coverOgUrl, renderTiptapToHtml } from "@/lib/tiptap-render";
@@ -82,7 +84,7 @@ export default async function BlogPostPage({
   };
 
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 pt-8 pb-24">
+    <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
       <script
         type="application/ld+json"
         // Next 16 requires this to be inline for the crawler; safe because
@@ -90,18 +92,17 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Link
-        href="/blog"
-        className="text-muted-foreground hover:text-[var(--color-accent)] group mb-8 inline-flex items-center gap-1.5 text-xs uppercase tracking-widest transition-colors"
+      <Button
+        asChild
+        variant="ghost"
+        size="sm"
+        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-xs uppercase tracking-widest"
       >
-        <span
-          aria-hidden
-          className="transition-transform group-hover:-translate-x-0.5"
-        >
-          ←
-        </span>
-        All posts
-      </Link>
+        <Link href="/blog">
+          <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
+          All posts
+        </Link>
+      </Button>
 
       <header className="mb-10 flex flex-col gap-4">
         {post.categoryName && post.categorySlug ? (

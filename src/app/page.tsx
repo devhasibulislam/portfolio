@@ -13,7 +13,9 @@ export default function HomePage() {
   return (
     <main
       data-theme="dark"
-      className="relative -mt-16 min-h-[100svh] w-full overflow-hidden pt-16"
+      // Header is fixed and floats over the canvas; hero fills the full
+      // viewport exactly so `/` never scrolls.
+      className="relative h-[100svh] w-full overflow-hidden"
       style={{ background: "#0f131a", color: "#f2e4d0" }}
     >
       <HomeExperience />

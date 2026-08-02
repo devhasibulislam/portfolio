@@ -141,3 +141,13 @@ body {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
+
+/* Hide the browser scrollbar without disabling scroll. Applied to <html>
+   by <PublicFloatingActions> only on public routes; the dashboard keeps
+   its native scrollbar. */
+html.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+html.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chromium, Safari */
+}

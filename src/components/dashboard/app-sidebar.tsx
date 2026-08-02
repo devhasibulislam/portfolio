@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogOut } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Sidebar,
   SidebarContent,
@@ -20,9 +20,8 @@ import {
 import { signOutAction } from "@/lib/auth/actions";
 import { NAV } from "./nav";
 
-type Props = { userEmail: string };
-
-export function AppSidebar({ userEmail }: Props) {
+// Sidebar has no props — the header is a static brand badge (avatar + name).
+export function AppSidebar() {
   const pathname = usePathname();
   // Close the mobile drawer after a nav click — otherwise the sheet stays
   // open, overlaying the newly-navigated route until the user dismisses it.
@@ -30,34 +29,32 @@ export function AppSidebar({ userEmail }: Props) {
   const closeIfMobile = () => {
     if (isMobile) setOpenMobile(false);
   };
-  const initial = userEmail.slice(0, 1).toUpperCase();
 
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            {/* Use the shadcn menu-button primitive so the avatar column lines
-                up pixel-for-pixel with the nav icons when the sidebar
-                collapses to icon-only. */}
+            {/* Brand row: matches the nav-item pattern (asChild + Link +
+                tooltip) so it collapses to just the avatar when the sidebar
+                is icon-only, and shows the name in a tooltip. */}
             <SidebarMenuButton
+              asChild
               size="lg"
-              className="hover:bg-transparent active:bg-transparent"
-              tooltip={userEmail}
+              tooltip="Hasibul Islam"
+              className="gap-2 hover:bg-transparent active:bg-transparent"
             >
-              <Avatar className="size-8">
-                <AvatarFallback className="bg-primary/10 text-primary text-sm font-semibold">
-                  {initial}
-                </AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 leading-tight">
-                <span className="truncate text-sm font-medium">
-                  Portfolio CMS
+              <Link href="/dashboard" onClick={closeIfMobile}>
+                <Avatar className="size-8 shrink-0">
+                  <AvatarImage src="/brand/hasibul.jpg" alt="" />
+                  <AvatarFallback className="bg-[var(--color-accent)]/15 text-[var(--color-accent)] text-sm font-semibold">
+                    H
+                  </AvatarFallback>
+                </Avatar>
+                <span className="truncate text-base font-semibold tracking-tight">
+                  Hasibul Islam
                 </span>
-                <span className="text-muted-foreground truncate text-xs">
-                  {userEmail}
-                </span>
-              </div>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

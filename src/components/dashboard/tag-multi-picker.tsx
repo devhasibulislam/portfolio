@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
+  CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
@@ -117,26 +118,28 @@ export function TagMultiPicker({ options, value, onChange, max = 8 }: Props) {
                     ? "No tags exist yet. Create some on the Tags page."
                     : "No matches."}
                 </CommandEmpty>
-                {options.map((o) => {
-                  const isSelected = selected.has(o.id);
-                  const disabled = atMax && !isSelected;
-                  return (
-                    <CommandItem
-                      key={o.id}
-                      value={o.name}
-                      disabled={disabled}
-                      onSelect={() => toggle(o.id)}
-                    >
-                      <Check
-                        className={cn(
-                          "size-4",
-                          isSelected ? "opacity-100" : "opacity-0",
-                        )}
-                      />
-                      <span>{o.name}</span>
-                    </CommandItem>
-                  );
-                })}
+                <CommandGroup>
+                  {options.map((o) => {
+                    const isSelected = selected.has(o.id);
+                    const disabled = atMax && !isSelected;
+                    return (
+                      <CommandItem
+                        key={o.id}
+                        value={o.name}
+                        disabled={disabled}
+                        onSelect={() => toggle(o.id)}
+                      >
+                        <Check
+                          className={cn(
+                            "size-4",
+                            isSelected ? "opacity-100" : "opacity-0",
+                          )}
+                        />
+                        <span>{o.name}</span>
+                      </CommandItem>
+                    );
+                  })}
+                </CommandGroup>
               </CommandList>
             </Command>
           </PopoverContent>
