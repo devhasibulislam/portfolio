@@ -161,14 +161,14 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 - [x] `/blog/[slug]` w/ `generateMetadata`, JSON-LD `Article`, canonical, hreflang
 - [x] `/blog/category/[slug]` real SSG page
 - [x] `/blog/tag/[slug]` real SSG page
-- [ ] `next/og` fallback OG generator when a post has no cover image
-- [ ] `sitemap.xml`, `robots.txt`, `llms.txt`, `hreflang` for all 5 locales
+- [x] `next/og` fallback OG generator when a post has no cover image
+- [x] `sitemap.xml`, `robots.txt`, `llms.txt`, `hreflang` for all 5 locales
 
 ---
 
 ## Phase 3 — `/resume`
 
-- [ ] `/resume` — embed active PDF, download button, nothing else. (`/links` was dropped in Phase 1.5.)
+- [x] `/resume` — embed active PDF, download button, nothing else. (`/links` was dropped in Phase 1.5.)
 
 ---
 
@@ -213,4 +213,4 @@ _(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
 5. `next/og` fallback OG image when a post has no cover.
 6. `sitemap.xml`, `robots.txt`, `llms.txt` — hreflang for all 5 locales.
 
-Last touched: 2026-08-02 (Phase 2 steps 4+5: category + tag archive pages shipped. `listPublishedPostsCursor` extended with a `tagSlug` filter that opts into the `postsTags` join only when needed — hot `/blog` and category paths pay no extra cost. Added `getCategoryBySlug` / `getTagBySlug` for header + metadata. `BlogInfiniteList` now accepts an optional `loader` prop (defaults to the base loader), so `/blog/category/[slug]` and `/blog/tag/[slug]` reuse the same client component with a `.bind(null, slug)` server action. Both pages hit `"use cache"` + `cacheTag(tag.posts(), tag.<category|tags>())`, `generateMetadata` with canonical, and 404 on unknown slugs. Verified live via Playwright: `/blog/category/engineering` → 200, `/blog/tag/codex` → 200, `/blog/category/does-not-exist` → 404. Next Phase 2: `next/og` fallback OG generator + sitemap.xml / robots.txt / llms.txt.)
+Last touched: 2026-08-02 (Phase 3 done in one file. `src/app/resume/page.tsx` reads `getActiveResume()` under `"use cache"` + `cacheTag(tag.activeResume())`, renders header + filename + Download button (`<a download>` on the raw Cloudinary URL) and embeds the PDF via native `<object type="application/pdf">`. iOS Safari fallback link inside the object body. 404s when no active resume exists. Verified live: `/resume` returns 200 titled `Resume · Hasibul Islam` with Download link pointing at Cloudinary. Next: Phase 4 (`/` R3F experience) — capability detector + dynamic Three import.)
