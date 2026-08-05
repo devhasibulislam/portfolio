@@ -1,6 +1,6 @@
-import { asc, desc, eq } from "drizzle-orm";
+import { and, asc, desc, eq } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import { projectLinks, projects } from "@/lib/db/schema";
+import { media, projectLinks, projects } from "@/lib/db/schema";
 import type { ProjectInput, ProjectLinkInput } from "@/schemas/project";
 
 export type ProjectRow = {

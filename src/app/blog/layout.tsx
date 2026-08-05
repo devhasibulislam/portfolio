@@ -1,19 +1,12 @@
-import { StarBackdrop } from "@/components/star-backdrop";
-
 /**
- * Blog routes share the same dark star-field surface as the hero (§16
- * dark-mode-first aesthetic). The backdrop is fixed and CSS-only —
- * cheap enough to ship on every blog page.
+ * Blog routes share the same visual system as /skills, /resume, and the
+ * dashboard — no forced dark theme, no star backdrop, so the light/dark
+ * toggle in the header controls the whole site consistently.
  */
 export default function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div data-theme="dark" className="text-[var(--color-fg)]">
-      <StarBackdrop />
-      {children}
-    </div>
-  );
+  return <>{children}</>;
 }
