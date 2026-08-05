@@ -3,13 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Award,
-  BookOpen,
   Briefcase,
   FileText,
   FolderKanban,
-  MessageSquareQuote,
   MoreHorizontal,
+  Rss,
   Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -30,14 +28,13 @@ import { cn } from "@/lib/utils";
 
 /**
  * Public site header. Priority-collapse nav:
- *   xl+  Resume | Projects | Experiences | Blogs | ⋯ More
- *   lg   Resume | Projects | Experiences | ⋯ More  (Blogs → menu)
- *   md   Resume | Projects | ⋯ More                (Experiences → menu)
- *   sm   Resume | ⋯ More                           (Projects → menu)
- *   <sm  ⋯ (icon-only, tooltip)                    (Resume → menu)
+ *   lg+  Resume | Projects | Experience | ⋯ More (Skills, Blogs)
+ *   md   Resume | Projects | ⋯ More              (Experience → menu)
+ *   sm   Resume | ⋯ More                         (Projects → menu)
+ *   <sm  ⋯ (icon-only, tooltip)                  (Resume → menu)
  *
- * Skills / Certifications / Testimonials always live inside the menu —
- * they'll open shadcn Sheets once the owner wires them up.
+ * Skills + Blogs always live inside More — they're secondary destinations
+ * and keep the top row focused on the three headline sections.
  */
 
 type Item = {
@@ -58,30 +55,18 @@ const ITEMS: Item[] = [
   },
   { key: "projects", label: "Projects", visibleAt: "md", icon: FolderKanban },
   {
-    key: "experiences",
-    label: "Experiences",
+    key: "experience",
+    label: "Experience",
     visibleAt: "lg",
     icon: Briefcase,
   },
+  { key: "skills", label: "Skills", visibleAt: null, icon: Sparkles },
   {
     key: "blogs",
     label: "Blogs",
     href: "/blog",
-    visibleAt: "xl",
-    icon: BookOpen,
-  },
-  { key: "skills", label: "Skills", visibleAt: null, icon: Sparkles },
-  {
-    key: "certifications",
-    label: "Certifications",
     visibleAt: null,
-    icon: Award,
-  },
-  {
-    key: "testimonials",
-    label: "Testimonials",
-    visibleAt: null,
-    icon: MessageSquareQuote,
+    icon: Rss,
   },
 ];
 
@@ -131,6 +116,7 @@ export function SiteHeader() {
 }
 
 function NavPill({ item, active }: { item: Item; active: boolean }) {
+  const Icon = item.icon;
   // Active   = accent-tinted pill.
   // Inactive = normal foreground text (white on dark, dark on light).
   // Disabled placeholders below get their own muted styling.
@@ -143,20 +129,24 @@ function NavPill({ item, active }: { item: Item; active: boolean }) {
   if (item.href) {
     return (
       <Button variant="ghost" size="sm" asChild className={className}>
-        <Link href={item.href}>{item.label}</Link>
+        <Link href={item.href} className="inline-flex items-center gap-1.5">
+          <Icon className="size-4 shrink-0 opacity-80" />
+          <span>{item.label}</span>
+        </Link>
       </Button>
     );
   }
-  // Placeholder items (Projects / Experiences until sheets are wired) —
+  // Placeholder items (Projects / Experience until sheets are wired) —
   // greyed out so the row visually distinguishes routable vs pending items.
   return (
     <span
       className={cn(
-        "text-muted-foreground inline-flex h-8 cursor-not-allowed items-center rounded-full px-3 text-sm opacity-70",
+        "text-muted-foreground inline-flex h-8 cursor-not-allowed items-center gap-1.5 rounded-full px-3 text-sm opacity-70",
       )}
       aria-disabled
     >
-      {item.label}
+      <Icon className="size-4 shrink-0" />
+      <span>{item.label}</span>
     </span>
   );
 }

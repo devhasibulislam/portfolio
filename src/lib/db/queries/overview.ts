@@ -1,10 +1,22 @@
 import { count as sqlCount } from "drizzle-orm";
 import type { PgTable } from "drizzle-orm/pg-core";
 import { db } from "@/lib/db/client";
-import { categories, media, posts, resumes, tags } from "@/lib/db/schema";
+import {
+  categories,
+  experiences,
+  media,
+  posts,
+  projects,
+  resumes,
+  skills,
+  tags,
+} from "@/lib/db/schema";
 
 export type OverviewCounts = {
   posts: number;
+  projects: number;
+  experience: number;
+  skills: number;
   categories: number;
   tags: number;
   media: number;
@@ -21,12 +33,24 @@ export async function getOverviewCounts(): Promise<OverviewCounts> {
     return rows[0]!.n;
   };
 
-  const [p, c, t, m, r] = await Promise.all([
+  const [p, pr, ex, sk, c, t, m, r] = await Promise.all([
     one(posts),
+    one(projects),
+    one(experiences),
+    one(skills),
     one(categories),
     one(tags),
     one(media),
     one(resumes),
   ]);
-  return { posts: p, categories: c, tags: t, media: m, resume: r };
+  return {
+    posts: p,
+    projects: pr,
+    experience: ex,
+    skills: sk,
+    categories: c,
+    tags: t,
+    media: m,
+    resume: r,
+  };
 }

@@ -6,6 +6,9 @@ import { getOverviewCounts } from "@/lib/db/queries/overview";
 
 const DESCRIPTIONS: Record<string, string> = {
   "/dashboard/posts": "Write and publish blog posts.",
+  "/dashboard/projects": "Client engagements, products, OSS references.",
+  "/dashboard/experience": "Roles + bullet-point highlights per company.",
+  "/dashboard/skills": "Grouped stack list surfaced across the site.",
   "/dashboard/categories": "One category per post.",
   "/dashboard/tags": "Group posts by topic (max 8 per post).",
   "/dashboard/media": "Cloudinary uploads reused across posts.",
@@ -17,6 +20,9 @@ const COUNT_KEY: Record<
   keyof Awaited<ReturnType<typeof getOverviewCounts>>
 > = {
   "/dashboard/posts": "posts",
+  "/dashboard/projects": "projects",
+  "/dashboard/experience": "experience",
+  "/dashboard/skills": "skills",
   "/dashboard/categories": "categories",
   "/dashboard/tags": "tags",
   "/dashboard/media": "media",

@@ -1,10 +1,13 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  Briefcase,
   FileText,
+  FolderKanban,
   FolderTree,
   Images,
   LayoutDashboard,
   ScrollText,
+  Sparkles,
   Tags,
 } from "lucide-react";
 
@@ -22,6 +25,9 @@ export type NavItem = {
 export const NAV: NavItem[] = [
   { label: "Overview", href: "/dashboard", icon: LayoutDashboard },
   { label: "Posts", href: "/dashboard/posts", icon: FileText },
+  { label: "Projects", href: "/dashboard/projects", icon: FolderKanban },
+  { label: "Experience", href: "/dashboard/experience", icon: Briefcase },
+  { label: "Skills", href: "/dashboard/skills", icon: Sparkles },
   { label: "Categories", href: "/dashboard/categories", icon: FolderTree },
   { label: "Tags", href: "/dashboard/tags", icon: Tags },
   { label: "Media", href: "/dashboard/media", icon: Images },
