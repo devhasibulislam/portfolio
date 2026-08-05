@@ -34,15 +34,12 @@ export function ResumeViewer({ url }: { url: string }) {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="no-scrollbar h-full min-h-0 w-full overflow-y-auto"
-    >
+    <div ref={containerRef} className="w-full">
       <Document
         file={url}
         onLoadSuccess={({ numPages }) => setPageCount(numPages)}
         loading={
-          <div className="text-muted-foreground flex h-full items-center justify-center gap-2 p-8 text-sm">
+          <div className="text-muted-foreground flex items-center justify-center gap-2 p-8 text-sm">
             <Loader2 className="size-4 animate-spin" />
             Loading resume…
           </div>
