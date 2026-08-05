@@ -19,20 +19,45 @@ type Props = {
   options: MediaOption[];
   value: string | null;
   onChange: (id: string | null) => void;
+  /**
+   * Target aspect ratio (w/h). Drives both the preview thumbnail and the
+   * ImageCropper's crop box. Defaults to OG 1.91:1 for backward compat
+   * with existing cover pickers.
+   */
+  aspect?: number;
+  /** Label shown on the empty-state button. */
+  label?: string;
 };
 
 /**
  * Cover image picker. Renders the current cover thumbnail + Change/Remove
  * buttons; opens the reusable `ImagePickerDialog` (library + upload tabs,
- * enforces the 1.91:1 crop for OG covers). Freshly-uploaded assets are
+ * enforcing whatever aspect is passed). Freshly-uploaded assets are
  * appended to a local `fresh` list so the preview renders before the
  * server-side `options` prop rehydrates on the next router.refresh().
+ *
+ * Aspects in use:
+ *   1.91 : 1  → project cover / OG (default)
+ *   1 : 1     → experience company logo, skill icon
  */
-export function MediaPicker({ options, value, onChange }: Props) {
+export function MediaPicker({
+  options,
+  value,
+  onChange,
+  aspect = 1200 / 630,
+  label = "Pick or upload a cover",
+}: Props) {
   const [open, setOpen] = useState(false);
   const [fresh, setFresh] = useState<MediaOption[]>([]);
   const merged = useMemo(() => [...fresh, ...options], [fresh, options]);
   const current = merged.find((o) => o.id === value) ?? null;
+
+  // For near-square aspects (logos, icons) render a compact fixed-size
+  // preview instead of stretching full-width. Threshold = 1.5, so
+  // 4:3 (~1.33) and 1:1 render compact; 16:10 (~1.6) and OG stretch.
+  const compact = aspect < 1.5;
+  const previewWidth = compact ? 160 : 640;
+  const previewHeight = Math.round(previewWidth / aspect);
 
   const handleSelect = (media: PickedMedia) => {
     // registerMedia returned the DB id on fresh uploads; keep a local copy
@@ -55,15 +80,18 @@ export function MediaPicker({ options, value, onChange }: Props) {
   return (
     <>
       {current ? (
-        <div className="relative">
+        <div
+          className={`relative ${compact ? "inline-block" : ""}`}
+          style={compact ? { width: previewWidth } : undefined}
+        >
           <CldImage
             src={current.publicId}
-            width={640}
-            height={335}
+            width={previewWidth}
+            height={previewHeight}
             crop="fill"
             gravity="auto"
             alt={current.originalName}
-            className="w-full rounded-md border"
+            className={compact ? "rounded-md border" : "w-full rounded-md border"}
           />
           <div className="absolute end-2 top-2 flex gap-1">
             <Button
@@ -78,7 +106,7 @@ export function MediaPicker({ options, value, onChange }: Props) {
               type="button"
               size="icon"
               variant="secondary"
-              aria-label="Remove cover"
+              aria-label="Remove image"
               onClick={() => onChange(null)}
             >
               <X className="size-4" />
@@ -90,10 +118,17 @@ export function MediaPicker({ options, value, onChange }: Props) {
           type="button"
           variant="outline"
           onClick={() => setOpen(true)}
-          className="h-32 w-full border-dashed"
+          className={
+            compact
+              ? "border-dashed inline-flex flex-col justify-center"
+              : "h-32 w-full border-dashed"
+          }
+          style={
+            compact ? { width: previewWidth, height: previewHeight } : undefined
+          }
         >
           <ImagePlus className="me-2 size-5" />
-          Pick or upload a cover
+          {label}
         </Button>
       )}
 
@@ -102,7 +137,7 @@ export function MediaPicker({ options, value, onChange }: Props) {
         onOpenChange={setOpen}
         options={merged}
         onSelect={handleSelect}
-        aspect={1200 / 630}
+        aspect={aspect}
       />
     </>
   );

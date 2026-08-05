@@ -25,6 +25,12 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { MediaPicker, type MediaOption } from "@/components/dashboard/media-picker";
+import {
+  CountedInput,
+  OptionalMark,
+  RequiredMark,
+} from "@/components/dashboard/field-helpers";
 import {
   Select,
   SelectContent,
@@ -64,7 +70,13 @@ type EditingState = { mode: "new" } | { mode: "edit"; row: SkillRow } | null;
  * SlugEntityTable (used by categories/tags) but with the extra fields the
  * `skills` table carries. One page = full CRUD; no subroutes.
  */
-export function SkillsManager({ rows }: { rows: SkillRow[] }) {
+export function SkillsManager({
+  rows,
+  mediaOptions,
+}: {
+  rows: SkillRow[];
+  mediaOptions: MediaOption[];
+}) {
   const router = useRouter();
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<SkillRow | null>(null);
@@ -210,6 +222,7 @@ export function SkillsManager({ rows }: { rows: SkillRow[] }) {
 
       <SkillDialog
         editing={editing}
+        mediaOptions={mediaOptions}
         onClose={() => setEditing(null)}
         onSave={onSave}
         pending={pending}
@@ -243,11 +256,13 @@ export function SkillsManager({ rows }: { rows: SkillRow[] }) {
 
 function SkillDialog({
   editing,
+  mediaOptions,
   onClose,
   onSave,
   pending,
 }: {
   editing: EditingState;
+  mediaOptions: MediaOption[];
   onClose: () => void;
   onSave: (fd: FormData) => void;
   pending: boolean;
@@ -255,12 +270,8 @@ function SkillDialog({
   const open = editing !== null;
   const row = editing?.mode === "edit" ? editing.row : null;
 
-  // Local state for auto-slug — matches the pattern in slug-entity-table.
-  const [name, setName] = useState(row?.name ?? "");
-  const [slug, setSlug] = useState(row?.slug ?? "");
-  const [slugDirty, setSlugDirty] = useState(false);
-
-  // Reset local state when the dialog is (re)opened for a different row.
+  // Keyed inner form: React remounts state on target row change instead of
+  // resyncing via useEffect (matches projects/experience managers).
   const dialogKey = `${editing?.mode ?? "closed"}-${row?.id ?? "new"}`;
 
   return (
@@ -271,167 +282,234 @@ function SkillDialog({
       }}
     >
       <DialogContent className="max-w-lg">
-        <form
-          key={dialogKey}
-          action={(fd) => {
-            if (row) fd.set("id", row.id);
-            onSave(fd);
-          }}
-        >
-          <DialogHeader>
-            <DialogTitle>{row ? "Edit skill" : "New skill"}</DialogTitle>
-            <DialogDescription>
-              Skills group by resume section on the public page.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="mt-4 flex flex-col gap-4">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="col-span-2 flex flex-col gap-1.5">
-                <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  name="name"
-                  required
-                  maxLength={60}
-                  defaultValue={row?.name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                    if (!slugDirty) setSlug(slugify(e.target.value));
-                  }}
-                />
-              </div>
-
-              <div className="col-span-2 flex flex-col gap-1.5">
-                <Label htmlFor="slug">Slug</Label>
-                <Input
-                  id="slug"
-                  name="slug"
-                  required
-                  maxLength={70}
-                  value={slug || (name ? slugify(name) : "")}
-                  onChange={(e) => {
-                    setSlug(e.target.value);
-                    setSlugDirty(true);
-                  }}
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <Label htmlFor="group">Group</Label>
-                <Select
-                  name="group"
-                  defaultValue={row?.group ?? "backend"}
-                  required
-                >
-                  <SelectTrigger id="group">
-                    <SelectValue placeholder="Group" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {SKILL_GROUPS.map((g) => (
-                      <SelectItem key={g.value} value={g.value}>
-                        {g.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <Label htmlFor="proficiency">Proficiency</Label>
-                <Select
-                  name="proficiency"
-                  defaultValue={row?.proficiency ?? "proficient"}
-                  required
-                >
-                  <SelectTrigger id="proficiency">
-                    <SelectValue placeholder="Proficiency" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {PROFICIENCY_OPTIONS.map((p) => (
-                      <SelectItem key={p} value={p}>
-                        {SKILL_PROFICIENCY_LABEL[p]}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <Label htmlFor="years">Years (optional)</Label>
-                <Input
-                  id="years"
-                  name="years"
-                  type="number"
-                  min={0}
-                  max={60}
-                  step={1}
-                  defaultValue={row?.years ?? ""}
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <Label htmlFor="displayOrder">Display order</Label>
-                <Input
-                  id="displayOrder"
-                  name="displayOrder"
-                  type="number"
-                  min={0}
-                  step={1}
-                  defaultValue={row?.displayOrder ?? 0}
-                />
-              </div>
-
-              <div className="col-span-2 flex items-center justify-between rounded-md border p-3">
-                <div>
-                  <Label htmlFor="isPrimary" className="cursor-pointer">
-                    Primary skill
-                  </Label>
-                  <p className="text-muted-foreground text-xs">
-                    Surfaces in hero/summary contexts.
-                  </p>
-                </div>
-                <Switch
-                  id="isPrimary"
-                  name="isPrimary"
-                  defaultChecked={row?.isPrimary ?? false}
-                />
-              </div>
-
-              <div className="col-span-2 flex flex-col gap-1.5">
-                <Label htmlFor="status">Status</Label>
-                <Select
-                  name="status"
-                  defaultValue={row?.status ?? "active"}
-                  required
-                >
-                  <SelectTrigger id="status">
-                    <SelectValue placeholder="Status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="archived">Archived</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
-
-          <DialogFooter className="mt-6">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClose}
-              disabled={pending}
-            >
-              Cancel
-            </Button>
-            <Button type="submit" disabled={pending}>
-              {pending ? "Saving…" : row ? "Save changes" : "Create skill"}
-            </Button>
-          </DialogFooter>
-        </form>
+        {open ? (
+          <SkillDialogBody
+            key={dialogKey}
+            row={row}
+            mediaOptions={mediaOptions}
+            onClose={onClose}
+            onSave={onSave}
+            pending={pending}
+          />
+        ) : null}
       </DialogContent>
     </Dialog>
+  );
+}
+
+function SkillDialogBody({
+  row,
+  mediaOptions,
+  onClose,
+  onSave,
+  pending,
+}: {
+  row: SkillRow | null;
+  mediaOptions: MediaOption[];
+  onClose: () => void;
+  onSave: (fd: FormData) => void;
+  pending: boolean;
+}) {
+  // Local state for auto-slug + icon picker. Initialised once per keyed
+  // mount, so switching rows always re-reads defaults.
+  const [name, setName] = useState(row?.name ?? "");
+  const [slug, setSlug] = useState(row?.slug ?? "");
+  const [slugDirty, setSlugDirty] = useState(false);
+  const [iconId, setIconId] = useState<string | null>(
+    row?.iconMediaId ?? null,
+  );
+
+  return (
+    <form
+      action={(fd) => {
+        if (row) fd.set("id", row.id);
+        if (iconId) fd.set("iconMediaId", iconId);
+        onSave(fd);
+      }}
+    >
+      <DialogHeader>
+        <DialogTitle>{row ? "Edit skill" : "New skill"}</DialogTitle>
+        <DialogDescription>
+          Skills group by resume section on the public page.
+        </DialogDescription>
+      </DialogHeader>
+
+      <div className="mt-4 flex flex-col gap-4">
+        <div className="grid grid-cols-2 gap-3">
+          <div className="col-span-2 flex flex-col gap-1.5">
+            <Label htmlFor="name">
+              Name<RequiredMark />
+            </Label>
+            <CountedInput
+              id="name"
+              name="name"
+              required
+              max={60}
+              defaultValue={row?.name}
+              onChange={(e) => {
+                setName(e.target.value);
+                if (!slugDirty) setSlug(slugify(e.target.value));
+              }}
+            />
+          </div>
+
+          <div className="col-span-2 flex flex-col gap-1.5">
+            <Label htmlFor="slug">
+              Slug<RequiredMark />
+            </Label>
+            <CountedInput
+              id="slug"
+              name="slug"
+              required
+              max={70}
+              value={slug || (name ? slugify(name) : "")}
+              onChange={(e) => {
+                setSlug(e.target.value);
+                setSlugDirty(true);
+              }}
+            />
+          </div>
+
+          <div className="col-span-2 flex flex-col gap-1.5">
+            <Label>
+              Icon<OptionalMark />
+            </Label>
+            <p className="text-muted-foreground text-xs">
+              Square 1:1 logo (SVG or PNG, ideally 256×256+). Up to 5 MB.
+            </p>
+            <MediaPicker
+              options={mediaOptions}
+              value={iconId}
+              onChange={setIconId}
+              aspect={1}
+              label="Pick or upload icon"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="group">
+              Group<RequiredMark />
+            </Label>
+            <Select
+              name="group"
+              defaultValue={row?.group ?? "backend"}
+              required
+            >
+              <SelectTrigger id="group">
+                <SelectValue placeholder="Group" />
+              </SelectTrigger>
+              <SelectContent>
+                {SKILL_GROUPS.map((g) => (
+                  <SelectItem key={g.value} value={g.value}>
+                    {g.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="proficiency">
+              Proficiency<RequiredMark />
+            </Label>
+            <Select
+              name="proficiency"
+              defaultValue={row?.proficiency ?? "proficient"}
+              required
+            >
+              <SelectTrigger id="proficiency">
+                <SelectValue placeholder="Proficiency" />
+              </SelectTrigger>
+              <SelectContent>
+                {PROFICIENCY_OPTIONS.map((p) => (
+                  <SelectItem key={p} value={p}>
+                    {SKILL_PROFICIENCY_LABEL[p]}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="years">
+              Years<OptionalMark />
+            </Label>
+            <Input
+              id="years"
+              name="years"
+              type="number"
+              min={0}
+              max={60}
+              step={1}
+              defaultValue={row?.years ?? ""}
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="displayOrder">
+              Display order<RequiredMark />
+            </Label>
+            <Input
+              id="displayOrder"
+              name="displayOrder"
+              type="number"
+              min={0}
+              step={1}
+              required
+              defaultValue={row?.displayOrder ?? 0}
+            />
+          </div>
+
+          <div className="col-span-2 flex items-center justify-between rounded-md border p-3">
+            <div>
+              <Label htmlFor="isPrimary" className="cursor-pointer">
+                Primary skill
+              </Label>
+              <p className="text-muted-foreground text-xs">
+                Surfaces in hero/summary contexts.
+              </p>
+            </div>
+            <Switch
+              id="isPrimary"
+              name="isPrimary"
+              defaultChecked={row?.isPrimary ?? false}
+            />
+          </div>
+
+          <div className="col-span-2 flex flex-col gap-1.5">
+            <Label htmlFor="status">
+              Status<RequiredMark />
+            </Label>
+            <Select
+              name="status"
+              defaultValue={row?.status ?? "active"}
+              required
+            >
+              <SelectTrigger id="status">
+                <SelectValue placeholder="Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="active">Active</SelectItem>
+                <SelectItem value="archived">Archived</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+      </div>
+
+      <DialogFooter className="mt-6">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onClose}
+          disabled={pending}
+        >
+          Cancel
+        </Button>
+        <Button type="submit" disabled={pending}>
+          {pending ? "Saving…" : row ? "Save changes" : "Create skill"}
+        </Button>
+      </DialogFooter>
+    </form>
   );
 }

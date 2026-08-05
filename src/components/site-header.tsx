@@ -53,10 +53,17 @@ const ITEMS: Item[] = [
     visibleAt: "sm",
     icon: FileText,
   },
-  { key: "projects", label: "Projects", visibleAt: "md", icon: FolderKanban },
+  {
+    key: "projects",
+    label: "Projects",
+    href: "/projects",
+    visibleAt: "md",
+    icon: FolderKanban,
+  },
   {
     key: "experience",
     label: "Experience",
+    href: "/experience",
     visibleAt: "lg",
     icon: Briefcase,
   },

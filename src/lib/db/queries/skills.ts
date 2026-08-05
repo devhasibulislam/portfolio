@@ -13,6 +13,7 @@ export type SkillRow = {
   isPrimary: boolean;
   displayOrder: number;
   status: "active" | "archived";
+  iconMediaId: string | null;
   updatedAt: Date;
 };
 
@@ -33,6 +34,7 @@ export async function listSkillsForDashboard(): Promise<SkillRow[]> {
       isPrimary: skills.isPrimary,
       displayOrder: skills.displayOrder,
       status: skills.status,
+      iconMediaId: skills.iconMediaId,
       updatedAt: skills.updatedAt,
     })
     .from(skills)
@@ -51,6 +53,7 @@ export async function getSkillById(id: string): Promise<SkillRow | null> {
       isPrimary: skills.isPrimary,
       displayOrder: skills.displayOrder,
       status: skills.status,
+      iconMediaId: skills.iconMediaId,
       updatedAt: skills.updatedAt,
     })
     .from(skills)

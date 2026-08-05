@@ -38,8 +38,15 @@ export const metadata: Metadata = {
 // `cookies()` read) while still avoiding a flash of the wrong locale/theme.
 // Required under Next 16 `cacheComponents`: any `cookies()` at the layout
 // level triggers a blocking-route warning.
+//
+// Cookie precedence:
+//   1. explicit theme cookie → use it
+//   2. no cookie (= "System") → fall through to prefers-color-scheme.
+//      Both light and dark branches SET the attribute so the SSR default
+//      is overridden either way — otherwise OS-dark leaves the SSR
+//      "light" default in place and the page flashes / stays light.
 const RTL_LOCALES = "ar,he,ur";
-const INIT_SCRIPT = `(function(){try{var d=document.documentElement;var c=document.cookie;var lm=c.match(/(?:^|; )locale=([^;]+)/);if(lm){var l=decodeURIComponent(lm[1]);d.setAttribute('lang',l);d.setAttribute('dir','${RTL_LOCALES}'.split(',').indexOf(l)>-1?'rtl':'ltr');}var tm=c.match(/(?:^|; )${THEME_COOKIE}=([^;]+)/);if(tm){d.setAttribute('data-theme',decodeURIComponent(tm[1]));}else if(window.matchMedia('(prefers-color-scheme: light)').matches){d.setAttribute('data-theme','light');}}catch(e){}})();`;
+const INIT_SCRIPT = `(function(){try{var d=document.documentElement;var c=document.cookie;var lm=c.match(/(?:^|; )locale=([^;]+)/);if(lm){var l=decodeURIComponent(lm[1]);d.setAttribute('lang',l);d.setAttribute('dir','${RTL_LOCALES}'.split(',').indexOf(l)>-1?'rtl':'ltr');}var tm=c.match(/(?:^|; )${THEME_COOKIE}=([^;]+)/);if(tm){d.setAttribute('data-theme',decodeURIComponent(tm[1]));}else{d.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}}catch(e){}})();`;
 
 export default function RootLayout({
   children,

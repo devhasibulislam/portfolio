@@ -30,6 +30,12 @@ import {
   type MediaOption,
 } from "@/components/dashboard/media-picker";
 import {
+  CountedInput,
+  CountedTextarea,
+  OptionalMark,
+  RequiredMark,
+} from "@/components/dashboard/field-helpers";
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -394,12 +400,12 @@ function ExperienceDialogForm({
         {/* Company */}
         <Section title="Company">
           <FieldGrid>
-            <Field htmlFor="company" label="Name">
-              <Input
+            <Field htmlFor="company" label="Name" required>
+              <CountedInput
                 id="company"
                 name="company"
                 required
-                maxLength={120}
+                max={120}
                 value={company}
                 onChange={(e) => {
                   setCompany(e.target.value);
@@ -412,13 +418,14 @@ function ExperienceDialogForm({
             <Field
               htmlFor="companySlug"
               label="Company slug"
+              required
               hint="Groups roles at the same company."
             >
-              <Input
+              <CountedInput
                 id="companySlug"
                 name="companySlug"
                 required
-                maxLength={130}
+                max={130}
                 value={companySlug}
                 onChange={(e) => {
                   setCompanySlug(e.target.value);
@@ -426,15 +433,15 @@ function ExperienceDialogForm({
                 }}
               />
             </Field>
-            <Field htmlFor="location" label="Location">
-              <Input
+            <Field htmlFor="location" label="Location" optional>
+              <CountedInput
                 id="location"
                 name="location"
-                maxLength={100}
+                max={100}
                 defaultValue={full?.location ?? ""}
               />
             </Field>
-            <Field htmlFor="workType" label="Work type">
+            <Field htmlFor="workType" label="Work type" optional>
               <Select name="workType" defaultValue={full?.workType ?? "none"}>
                 <SelectTrigger id="workType">
                   <SelectValue placeholder="—" />
@@ -452,7 +459,8 @@ function ExperienceDialogForm({
             <Field
               className="col-span-2"
               htmlFor="companyUrl"
-              label="Company URL (optional)"
+              label="Company URL"
+              optional
             >
               <Input
                 id="companyUrl"
@@ -462,12 +470,19 @@ function ExperienceDialogForm({
               />
             </Field>
             <div className="col-span-2">
-              <Label>Company logo</Label>
+              <Label>
+                Company logo<OptionalMark />
+              </Label>
+              <p className="text-muted-foreground mt-1 text-xs">
+                Square 1:1 (ideally 512×512+). Up to 5 MB.
+              </p>
               <div className="mt-1.5">
                 <MediaPicker
                   options={mediaOptions}
                   value={logoId}
                   onChange={setLogoId}
+                  aspect={1}
+                  label="Pick or upload logo"
                 />
               </div>
             </div>
@@ -477,12 +492,12 @@ function ExperienceDialogForm({
         {/* Role */}
         <Section title="Role">
           <FieldGrid>
-            <Field htmlFor="role" label="Title">
-              <Input
+            <Field htmlFor="role" label="Title" required>
+              <CountedInput
                 id="role"
                 name="role"
                 required
-                maxLength={120}
+                max={120}
                 value={role}
                 onChange={(e) => {
                   setRole(e.target.value);
@@ -492,12 +507,12 @@ function ExperienceDialogForm({
                 }}
               />
             </Field>
-            <Field htmlFor="slug" label="URL slug">
-              <Input
+            <Field htmlFor="slug" label="URL slug" required>
+              <CountedInput
                 id="slug"
                 name="slug"
                 required
-                maxLength={200}
+                max={200}
                 value={slug || derivedSlug}
                 onChange={(e) => {
                   setSlug(e.target.value);
@@ -505,7 +520,7 @@ function ExperienceDialogForm({
                 }}
               />
             </Field>
-            <Field htmlFor="periodStart" label="Start date">
+            <Field htmlFor="periodStart" label="Start date" required>
               <Input
                 id="periodStart"
                 name="periodStart"
@@ -517,6 +532,7 @@ function ExperienceDialogForm({
             <Field
               htmlFor="periodEnd"
               label="End date"
+              optional
               hint="Leave blank if still there."
             >
               <Input
@@ -530,14 +546,16 @@ function ExperienceDialogForm({
               className="col-span-2"
               htmlFor="summary"
               label="Summary"
+              required
               hint="≤ 240 chars. Doubles as meta description fallback."
             >
-              <Textarea
+              <CountedTextarea
                 id="summary"
                 name="summary"
                 required
                 rows={2}
-                maxLength={240}
+                max={240}
+                publishMin={80}
                 defaultValue={full?.summary ?? ""}
               />
             </Field>
@@ -545,6 +563,7 @@ function ExperienceDialogForm({
               className="col-span-2"
               htmlFor="highlightsText"
               label="Highlights"
+              optional
               hint="One bullet per line. Blank lines OK — leading dashes ignored."
             >
               <Textarea
@@ -564,38 +583,42 @@ function ExperienceDialogForm({
             <Field
               className="col-span-2"
               htmlFor="metaTitle"
-              label="Meta title (optional)"
+              label="Meta title"
+              optional
             >
-              <Input
+              <CountedInput
                 id="metaTitle"
                 name="metaTitle"
-                maxLength={70}
+                max={70}
                 defaultValue={full?.metaTitle ?? ""}
               />
             </Field>
             <Field
               className="col-span-2"
               htmlFor="metaDescription"
-              label="Meta description (optional)"
+              label="Meta description"
+              optional
             >
-              <Textarea
+              <CountedTextarea
                 id="metaDescription"
                 name="metaDescription"
-                maxLength={160}
+                max={160}
+                publishMin={80}
                 rows={2}
                 defaultValue={full?.metaDescription ?? ""}
               />
             </Field>
-            <Field htmlFor="displayOrder" label="Display order">
+            <Field htmlFor="displayOrder" label="Display order" required>
               <Input
                 id="displayOrder"
                 name="displayOrder"
                 type="number"
                 min={0}
+                required
                 defaultValue={full?.displayOrder ?? 0}
               />
             </Field>
-            <Field htmlFor="status" label="Status">
+            <Field htmlFor="status" label="Status" required>
               <Select
                 name="status"
                 defaultValue={full?.status ?? "draft"}
@@ -663,17 +686,25 @@ function Field({
   label,
   hint,
   className,
+  required,
+  optional,
   children,
 }: {
   htmlFor?: string;
   label: string;
   hint?: string;
   className?: string;
+  required?: boolean;
+  optional?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <div className={`flex flex-col gap-1.5 ${className ?? ""}`}>
-      <Label htmlFor={htmlFor}>{label}</Label>
+      <Label htmlFor={htmlFor}>
+        {label}
+        {required ? <RequiredMark /> : null}
+        {optional ? <OptionalMark /> : null}
+      </Label>
       {children}
       {hint ? <p className="text-muted-foreground text-xs">{hint}</p> : null}
     </div>

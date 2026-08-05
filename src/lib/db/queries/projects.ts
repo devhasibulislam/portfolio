@@ -106,3 +106,166 @@ export async function getProjectForEdit(
     links: linkRows,
   };
 }
+
+// ---------- public projections ------------------------------------------
+
+export type PublicProjectCard = {
+  id: string;
+  title: string;
+  slug: string;
+  tagline: string;
+  client: string | null;
+  category: ProjectInput["category"];
+  featured: boolean;
+  publishedAt: Date;
+  coverPublicId: string | null;
+  coverWidth: number | null;
+  coverHeight: number | null;
+};
+
+/**
+ * Published projects for the public `/projects` grid. Featured first,
+ * then by displayOrder, then newest published. Cover media flattened so
+ * the card component can Cloudinary-render without a second round-trip.
+ */
+export async function listPublishedProjects(): Promise<PublicProjectCard[]> {
+  const rows = await db
+    .select({
+      id: projects.id,
+      title: projects.title,
+      slug: projects.slug,
+      tagline: projects.tagline,
+      client: projects.client,
+      category: projects.category,
+      featured: projects.featured,
+      displayOrder: projects.displayOrder,
+      publishedAt: projects.publishedAt,
+      coverPublicId: media.publicId,
+      coverWidth: media.width,
+      coverHeight: media.height,
+    })
+    .from(projects)
+    .leftJoin(media, eq(media.id, projects.coverMediaId))
+    .where(and(eq(projects.status, "published"), eq(projects.noindex, false)))
+    .orderBy(
+      desc(projects.featured),
+      asc(projects.displayOrder),
+      desc(projects.publishedAt),
+    );
+  return rows.map((r) => ({
+    ...r,
+    // status='published' guarantees publishedAt is set, but the column is
+    // nullable — narrow it here so consumers don't have to.
+    publishedAt: r.publishedAt as Date,
+  }));
+}
+
+export type PublicProject = {
+  id: string;
+  title: string;
+  slug: string;
+  tagline: string;
+  client: string | null;
+  location: string | null;
+  role: string | null;
+  periodStart: Date | null;
+  periodEnd: Date | null;
+  body: unknown;
+  outcome: string | null;
+  category: ProjectInput["category"];
+  metaTitle: string | null;
+  metaDescription: string | null;
+  publishedAt: Date;
+  updatedAt: Date;
+  coverPublicId: string | null;
+  coverWidth: number | null;
+  coverHeight: number | null;
+  ogPublicId: string | null;
+  links: ProjectLinkInput[];
+};
+
+/**
+ * Full public project by slug — returns null for drafts, missing rows, or
+ * noindex rows so the route handler renders 404. Cover + OG image are
+ * flattened from the media table in the same query.
+ */
+export async function getPublishedProjectBySlug(
+  slug: string,
+): Promise<PublicProject | null> {
+  const [row] = await db
+    .select({
+      id: projects.id,
+      title: projects.title,
+      slug: projects.slug,
+      tagline: projects.tagline,
+      client: projects.client,
+      location: projects.location,
+      role: projects.role,
+      periodStart: projects.periodStart,
+      periodEnd: projects.periodEnd,
+      body: projects.body,
+      outcome: projects.outcome,
+      category: projects.category,
+      metaTitle: projects.metaTitle,
+      metaDescription: projects.metaDescription,
+      publishedAt: projects.publishedAt,
+      updatedAt: projects.updatedAt,
+      coverMediaId: projects.coverMediaId,
+      coverPublicId: media.publicId,
+      coverWidth: media.width,
+      coverHeight: media.height,
+      ogImageId: projects.ogImageId,
+      status: projects.status,
+      noindex: projects.noindex,
+    })
+    .from(projects)
+    .leftJoin(media, eq(media.id, projects.coverMediaId))
+    .where(eq(projects.slug, slug));
+  if (!row || row.status !== "published" || row.noindex) return null;
+
+  // OG image comes from a separate join — one extra tiny lookup only when
+  // an OG override was set. Keeping it out of the main SELECT keeps the
+  // cover join sane (no double-join to the same table).
+  let ogPublicId: string | null = null;
+  if (row.ogImageId) {
+    const [ogRow] = await db
+      .select({ publicId: media.publicId })
+      .from(media)
+      .where(eq(media.id, row.ogImageId));
+    ogPublicId = ogRow?.publicId ?? null;
+  }
+
+  const linkRows = await db
+    .select({
+      kind: projectLinks.kind,
+      label: projectLinks.label,
+      url: projectLinks.url,
+    })
+    .from(projectLinks)
+    .where(eq(projectLinks.projectId, row.id))
+    .orderBy(asc(projectLinks.sortOrder));
+
+  return {
+    id: row.id,
+    title: row.title,
+    slug: row.slug,
+    tagline: row.tagline,
+    client: row.client,
+    location: row.location,
+    role: row.role,
+    periodStart: row.periodStart,
+    periodEnd: row.periodEnd,
+    body: row.body,
+    outcome: row.outcome,
+    category: row.category,
+    metaTitle: row.metaTitle,
+    metaDescription: row.metaDescription,
+    publishedAt: row.publishedAt as Date,
+    updatedAt: row.updatedAt,
+    coverPublicId: row.coverPublicId,
+    coverWidth: row.coverWidth,
+    coverHeight: row.coverHeight,
+    ogPublicId,
+    links: linkRows,
+  };
+}

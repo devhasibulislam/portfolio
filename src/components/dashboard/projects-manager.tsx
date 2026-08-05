@@ -30,6 +30,12 @@ import {
   type MediaOption,
 } from "@/components/dashboard/media-picker";
 import {
+  CountedInput,
+  CountedTextarea,
+  OptionalMark,
+  RequiredMark,
+} from "@/components/dashboard/field-helpers";
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -395,12 +401,13 @@ function ProjectDialogForm({
         {/* Basics */}
         <Section title="Basics">
           <FieldGrid>
-            <Field className="col-span-2" htmlFor="title" label="Title">
-              <Input
+            <Field className="col-span-2" htmlFor="title" label="Title" required>
+              <CountedInput
                 id="title"
                 name="title"
                 required
-                maxLength={120}
+                max={120}
+                publishMin={8}
                 defaultValue={full?.title}
                 onChange={(e) => {
                   setTitle(e.target.value);
@@ -408,12 +415,12 @@ function ProjectDialogForm({
                 }}
               />
             </Field>
-            <Field className="col-span-2" htmlFor="slug" label="Slug">
-              <Input
+            <Field className="col-span-2" htmlFor="slug" label="Slug" required>
+              <CountedInput
                 id="slug"
                 name="slug"
                 required
-                maxLength={130}
+                max={130}
                 value={slug || (title ? slugify(title) : "")}
                 onChange={(e) => {
                   setSlug(e.target.value);
@@ -425,41 +432,43 @@ function ProjectDialogForm({
               className="col-span-2"
               htmlFor="tagline"
               label="Tagline"
+              required
               hint="One-line summary. Doubles as meta description fallback."
             >
-              <Input
+              <CountedInput
                 id="tagline"
                 name="tagline"
                 required
-                maxLength={200}
+                max={200}
+                publishMin={40}
                 defaultValue={full?.tagline}
               />
             </Field>
-            <Field htmlFor="client" label="Client">
-              <Input
+            <Field htmlFor="client" label="Client" optional>
+              <CountedInput
                 id="client"
                 name="client"
-                maxLength={100}
+                max={100}
                 defaultValue={full?.client ?? ""}
               />
             </Field>
-            <Field htmlFor="location" label="Location">
-              <Input
+            <Field htmlFor="location" label="Location" optional>
+              <CountedInput
                 id="location"
                 name="location"
-                maxLength={100}
+                max={100}
                 defaultValue={full?.location ?? ""}
               />
             </Field>
-            <Field htmlFor="role" label="Your role">
-              <Input
+            <Field htmlFor="role" label="Your role" optional>
+              <CountedInput
                 id="role"
                 name="role"
-                maxLength={100}
+                max={100}
                 defaultValue={full?.role ?? ""}
               />
             </Field>
-            <Field htmlFor="category" label="Category">
+            <Field htmlFor="category" label="Category" required>
               <Select
                 name="category"
                 defaultValue={full?.category ?? "enterprise"}
@@ -477,7 +486,7 @@ function ProjectDialogForm({
                 </SelectContent>
               </Select>
             </Field>
-            <Field htmlFor="periodStart" label="Period start">
+            <Field htmlFor="periodStart" label="Period start" optional>
               <Input
                 id="periodStart"
                 name="periodStart"
@@ -488,6 +497,7 @@ function ProjectDialogForm({
             <Field
               htmlFor="periodEnd"
               label="Period end"
+              optional
               hint="Leave blank for ongoing"
             >
               <Input
@@ -504,7 +514,9 @@ function ProjectDialogForm({
         <Section title="Content">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="bodyText">Body</Label>
+              <Label htmlFor="bodyText">
+                Body<OptionalMark />
+              </Label>
               <Textarea
                 id="bodyText"
                 name="bodyText"
@@ -514,21 +526,31 @@ function ProjectDialogForm({
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="outcome">Outcome</Label>
-              <Textarea
+              <Label htmlFor="outcome">
+                Outcome<OptionalMark />
+              </Label>
+              <CountedTextarea
                 id="outcome"
                 name="outcome"
                 rows={3}
-                maxLength={1000}
+                max={1000}
                 defaultValue={full?.outcome ?? ""}
               />
             </div>
             <div className="flex flex-col gap-1.5">
-              <Label>Cover image</Label>
+              <Label>
+                Cover image<RequiredMark />
+              </Label>
+              <p className="text-muted-foreground text-xs">
+                1.91:1 landscape (used for OG cards, ideally 1200×630). Up to 5
+                MB. Required to publish.
+              </p>
               <MediaPicker
                 options={mediaOptions}
                 value={coverId}
                 onChange={setCoverId}
+                aspect={1200 / 630}
+                label="Pick or upload cover"
               />
             </div>
           </div>
@@ -607,40 +629,44 @@ function ProjectDialogForm({
             <Field
               className="col-span-2"
               htmlFor="metaTitle"
-              label="Meta title (optional)"
+              label="Meta title"
+              optional
               hint="≤ 60 chars. Leave blank to fall back to project title."
             >
-              <Input
+              <CountedInput
                 id="metaTitle"
                 name="metaTitle"
-                maxLength={70}
+                max={70}
                 defaultValue={full?.metaTitle ?? ""}
               />
             </Field>
             <Field
               className="col-span-2"
               htmlFor="metaDescription"
-              label="Meta description (optional)"
+              label="Meta description"
+              optional
               hint="≤ 160 chars. Leave blank to fall back to tagline."
             >
-              <Textarea
+              <CountedTextarea
                 id="metaDescription"
                 name="metaDescription"
-                maxLength={160}
+                max={160}
+                publishMin={80}
                 rows={2}
                 defaultValue={full?.metaDescription ?? ""}
               />
             </Field>
-            <Field htmlFor="displayOrder" label="Display order">
+            <Field htmlFor="displayOrder" label="Display order" required>
               <Input
                 id="displayOrder"
                 name="displayOrder"
                 type="number"
                 min={0}
+                required
                 defaultValue={full?.displayOrder ?? 0}
               />
             </Field>
-            <Field htmlFor="status" label="Status">
+            <Field htmlFor="status" label="Status" required>
               <Select
                 name="status"
                 defaultValue={full?.status ?? "draft"}
@@ -721,17 +747,25 @@ function Field({
   label,
   hint,
   className,
+  required,
+  optional,
   children,
 }: {
   htmlFor?: string;
   label: string;
   hint?: string;
   className?: string;
+  required?: boolean;
+  optional?: boolean;
   children: React.ReactNode;
 }) {
   return (
     <div className={`flex flex-col gap-1.5 ${className ?? ""}`}>
-      <Label htmlFor={htmlFor}>{label}</Label>
+      <Label htmlFor={htmlFor}>
+        {label}
+        {required ? <RequiredMark /> : null}
+        {optional ? <OptionalMark /> : null}
+      </Label>
       {children}
       {hint ? <p className="text-muted-foreground text-xs">{hint}</p> : null}
     </div>
