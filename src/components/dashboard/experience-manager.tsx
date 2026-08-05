@@ -382,260 +382,257 @@ function ExperienceDialogForm({
         onSave(fd);
       }}
     >
-          <DialogHeader>
-            <DialogTitle>{full ? "Edit role" : "New role"}</DialogTitle>
-            <DialogDescription>
-              One row per role. A promotion at the same company shares a company
-              slug so the public page groups them.
-            </DialogDescription>
-          </DialogHeader>
+      <DialogHeader>
+        <DialogTitle>{full ? "Edit role" : "New role"}</DialogTitle>
+        <DialogDescription>
+          One row per role. A promotion at the same company shares a company
+          slug so the public page groups them.
+        </DialogDescription>
+      </DialogHeader>
 
-          <div className="mt-4 flex flex-col gap-6">
-            {/* Company */}
-            <Section title="Company">
-              <FieldGrid>
-                <Field htmlFor="company" label="Name">
-                  <Input
-                    id="company"
-                    name="company"
-                    required
-                    maxLength={120}
-                    value={company}
-                    onChange={(e) => {
-                      setCompany(e.target.value);
-                      if (!companySlugDirty) {
-                        setCompanySlug(slugify(e.target.value));
-                      }
-                    }}
-                  />
-                </Field>
-                <Field
-                  htmlFor="companySlug"
-                  label="Company slug"
-                  hint="Groups roles at the same company."
-                >
-                  <Input
-                    id="companySlug"
-                    name="companySlug"
-                    required
-                    maxLength={130}
-                    value={companySlug}
-                    onChange={(e) => {
-                      setCompanySlug(e.target.value);
-                      setCompanySlugDirty(true);
-                    }}
-                  />
-                </Field>
-                <Field htmlFor="location" label="Location">
-                  <Input
-                    id="location"
-                    name="location"
-                    maxLength={100}
-                    defaultValue={full?.location ?? ""}
-                  />
-                </Field>
-                <Field htmlFor="workType" label="Work type">
-                  <Select
-                    name="workType"
-                    defaultValue={full?.workType ?? "none"}
-                  >
-                    <SelectTrigger id="workType">
-                      <SelectValue placeholder="—" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="none">—</SelectItem>
-                      {WORK_TYPES.map((w) => (
-                        <SelectItem key={w.value} value={w.value}>
-                          {w.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </Field>
-                <Field
-                  className="col-span-2"
-                  htmlFor="companyUrl"
-                  label="Company URL (optional)"
-                >
-                  <Input
-                    id="companyUrl"
-                    name="companyUrl"
-                    type="url"
-                    defaultValue={full?.companyUrl ?? ""}
-                  />
-                </Field>
-                <div className="col-span-2">
-                  <Label>Company logo</Label>
-                  <div className="mt-1.5">
-                    <MediaPicker
-                      options={mediaOptions}
-                      value={logoId}
-                      onChange={setLogoId}
-                    />
-                  </div>
-                </div>
-              </FieldGrid>
-            </Section>
-
-            {/* Role */}
-            <Section title="Role">
-              <FieldGrid>
-                <Field htmlFor="role" label="Title">
-                  <Input
-                    id="role"
-                    name="role"
-                    required
-                    maxLength={120}
-                    value={role}
-                    onChange={(e) => {
-                      setRole(e.target.value);
-                      if (!slugDirty && companySlug) {
-                        setSlug(`${companySlug}-${slugify(e.target.value)}`);
-                      }
-                    }}
-                  />
-                </Field>
-                <Field htmlFor="slug" label="URL slug">
-                  <Input
-                    id="slug"
-                    name="slug"
-                    required
-                    maxLength={200}
-                    value={slug || derivedSlug}
-                    onChange={(e) => {
-                      setSlug(e.target.value);
-                      setSlugDirty(true);
-                    }}
-                  />
-                </Field>
-                <Field htmlFor="periodStart" label="Start date">
-                  <Input
-                    id="periodStart"
-                    name="periodStart"
-                    type="date"
-                    required
-                    defaultValue={toDateInputValue(full?.periodStart ?? null)}
-                  />
-                </Field>
-                <Field
-                  htmlFor="periodEnd"
-                  label="End date"
-                  hint="Leave blank if still there."
-                >
-                  <Input
-                    id="periodEnd"
-                    name="periodEnd"
-                    type="date"
-                    defaultValue={toDateInputValue(full?.periodEnd ?? null)}
-                  />
-                </Field>
-                <Field
-                  className="col-span-2"
-                  htmlFor="summary"
-                  label="Summary"
-                  hint="≤ 240 chars. Doubles as meta description fallback."
-                >
-                  <Textarea
-                    id="summary"
-                    name="summary"
-                    required
-                    rows={2}
-                    maxLength={240}
-                    defaultValue={full?.summary ?? ""}
-                  />
-                </Field>
-                <Field
-                  className="col-span-2"
-                  htmlFor="highlightsText"
-                  label="Highlights"
-                  hint="One bullet per line. Blank lines OK — leading dashes ignored."
-                >
-                  <Textarea
-                    id="highlightsText"
-                    name="highlightsText"
-                    rows={8}
-                    placeholder={`- Cut hot-path list API p95 from ~200 ms to ~20 ms\n- Standardised multi-tenant isolation with Postgres RLS`}
-                    defaultValue={bulletDocToText(full?.highlights)}
-                  />
-                </Field>
-              </FieldGrid>
-            </Section>
-
-            {/* SEO + publish */}
-            <Section title="SEO / Publish">
-              <FieldGrid>
-                <Field
-                  className="col-span-2"
-                  htmlFor="metaTitle"
-                  label="Meta title (optional)"
-                >
-                  <Input
-                    id="metaTitle"
-                    name="metaTitle"
-                    maxLength={70}
-                    defaultValue={full?.metaTitle ?? ""}
-                  />
-                </Field>
-                <Field
-                  className="col-span-2"
-                  htmlFor="metaDescription"
-                  label="Meta description (optional)"
-                >
-                  <Textarea
-                    id="metaDescription"
-                    name="metaDescription"
-                    maxLength={160}
-                    rows={2}
-                    defaultValue={full?.metaDescription ?? ""}
-                  />
-                </Field>
-                <Field htmlFor="displayOrder" label="Display order">
-                  <Input
-                    id="displayOrder"
-                    name="displayOrder"
-                    type="number"
-                    min={0}
-                    defaultValue={full?.displayOrder ?? 0}
-                  />
-                </Field>
-                <Field htmlFor="status" label="Status">
-                  <Select
-                    name="status"
-                    defaultValue={full?.status ?? "draft"}
-                    required
-                  >
-                    <SelectTrigger id="status">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="draft">Draft</SelectItem>
-                      <SelectItem value="published">Published</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </Field>
-                <SwitchRow
-                  name="noindex"
-                  label="Noindex"
-                  hint="Hide from search engines."
-                  defaultChecked={full?.noindex ?? false}
-                />
-              </FieldGrid>
-            </Section>
-          </div>
-
-          <DialogFooter className="mt-6">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClose}
-              disabled={pending}
+      <div className="mt-4 flex flex-col gap-6">
+        {/* Company */}
+        <Section title="Company">
+          <FieldGrid>
+            <Field htmlFor="company" label="Name">
+              <Input
+                id="company"
+                name="company"
+                required
+                maxLength={120}
+                value={company}
+                onChange={(e) => {
+                  setCompany(e.target.value);
+                  if (!companySlugDirty) {
+                    setCompanySlug(slugify(e.target.value));
+                  }
+                }}
+              />
+            </Field>
+            <Field
+              htmlFor="companySlug"
+              label="Company slug"
+              hint="Groups roles at the same company."
             >
-              Cancel
-            </Button>
-            <Button type="submit" disabled={pending}>
-              {pending ? "Saving…" : full ? "Save changes" : "Create role"}
-            </Button>
-          </DialogFooter>
+              <Input
+                id="companySlug"
+                name="companySlug"
+                required
+                maxLength={130}
+                value={companySlug}
+                onChange={(e) => {
+                  setCompanySlug(e.target.value);
+                  setCompanySlugDirty(true);
+                }}
+              />
+            </Field>
+            <Field htmlFor="location" label="Location">
+              <Input
+                id="location"
+                name="location"
+                maxLength={100}
+                defaultValue={full?.location ?? ""}
+              />
+            </Field>
+            <Field htmlFor="workType" label="Work type">
+              <Select name="workType" defaultValue={full?.workType ?? "none"}>
+                <SelectTrigger id="workType">
+                  <SelectValue placeholder="—" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">—</SelectItem>
+                  {WORK_TYPES.map((w) => (
+                    <SelectItem key={w.value} value={w.value}>
+                      {w.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </Field>
+            <Field
+              className="col-span-2"
+              htmlFor="companyUrl"
+              label="Company URL (optional)"
+            >
+              <Input
+                id="companyUrl"
+                name="companyUrl"
+                type="url"
+                defaultValue={full?.companyUrl ?? ""}
+              />
+            </Field>
+            <div className="col-span-2">
+              <Label>Company logo</Label>
+              <div className="mt-1.5">
+                <MediaPicker
+                  options={mediaOptions}
+                  value={logoId}
+                  onChange={setLogoId}
+                />
+              </div>
+            </div>
+          </FieldGrid>
+        </Section>
+
+        {/* Role */}
+        <Section title="Role">
+          <FieldGrid>
+            <Field htmlFor="role" label="Title">
+              <Input
+                id="role"
+                name="role"
+                required
+                maxLength={120}
+                value={role}
+                onChange={(e) => {
+                  setRole(e.target.value);
+                  if (!slugDirty && companySlug) {
+                    setSlug(`${companySlug}-${slugify(e.target.value)}`);
+                  }
+                }}
+              />
+            </Field>
+            <Field htmlFor="slug" label="URL slug">
+              <Input
+                id="slug"
+                name="slug"
+                required
+                maxLength={200}
+                value={slug || derivedSlug}
+                onChange={(e) => {
+                  setSlug(e.target.value);
+                  setSlugDirty(true);
+                }}
+              />
+            </Field>
+            <Field htmlFor="periodStart" label="Start date">
+              <Input
+                id="periodStart"
+                name="periodStart"
+                type="date"
+                required
+                defaultValue={toDateInputValue(full?.periodStart ?? null)}
+              />
+            </Field>
+            <Field
+              htmlFor="periodEnd"
+              label="End date"
+              hint="Leave blank if still there."
+            >
+              <Input
+                id="periodEnd"
+                name="periodEnd"
+                type="date"
+                defaultValue={toDateInputValue(full?.periodEnd ?? null)}
+              />
+            </Field>
+            <Field
+              className="col-span-2"
+              htmlFor="summary"
+              label="Summary"
+              hint="≤ 240 chars. Doubles as meta description fallback."
+            >
+              <Textarea
+                id="summary"
+                name="summary"
+                required
+                rows={2}
+                maxLength={240}
+                defaultValue={full?.summary ?? ""}
+              />
+            </Field>
+            <Field
+              className="col-span-2"
+              htmlFor="highlightsText"
+              label="Highlights"
+              hint="One bullet per line. Blank lines OK — leading dashes ignored."
+            >
+              <Textarea
+                id="highlightsText"
+                name="highlightsText"
+                rows={8}
+                placeholder={`- Cut hot-path list API p95 from ~200 ms to ~20 ms\n- Standardised multi-tenant isolation with Postgres RLS`}
+                defaultValue={bulletDocToText(full?.highlights)}
+              />
+            </Field>
+          </FieldGrid>
+        </Section>
+
+        {/* SEO + publish */}
+        <Section title="SEO / Publish">
+          <FieldGrid>
+            <Field
+              className="col-span-2"
+              htmlFor="metaTitle"
+              label="Meta title (optional)"
+            >
+              <Input
+                id="metaTitle"
+                name="metaTitle"
+                maxLength={70}
+                defaultValue={full?.metaTitle ?? ""}
+              />
+            </Field>
+            <Field
+              className="col-span-2"
+              htmlFor="metaDescription"
+              label="Meta description (optional)"
+            >
+              <Textarea
+                id="metaDescription"
+                name="metaDescription"
+                maxLength={160}
+                rows={2}
+                defaultValue={full?.metaDescription ?? ""}
+              />
+            </Field>
+            <Field htmlFor="displayOrder" label="Display order">
+              <Input
+                id="displayOrder"
+                name="displayOrder"
+                type="number"
+                min={0}
+                defaultValue={full?.displayOrder ?? 0}
+              />
+            </Field>
+            <Field htmlFor="status" label="Status">
+              <Select
+                name="status"
+                defaultValue={full?.status ?? "draft"}
+                required
+              >
+                <SelectTrigger id="status">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="draft">Draft</SelectItem>
+                  <SelectItem value="published">Published</SelectItem>
+                </SelectContent>
+              </Select>
+            </Field>
+            <SwitchRow
+              name="noindex"
+              label="Noindex"
+              hint="Hide from search engines."
+              defaultChecked={full?.noindex ?? false}
+            />
+          </FieldGrid>
+        </Section>
+      </div>
+
+      <DialogFooter className="mt-6">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onClose}
+          disabled={pending}
+        >
+          Cancel
+        </Button>
+        <Button type="submit" disabled={pending}>
+          {pending ? "Saving…" : full ? "Save changes" : "Create role"}
+        </Button>
+      </DialogFooter>
     </form>
   );
 }

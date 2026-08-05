@@ -384,314 +384,306 @@ function ProjectDialogForm({
         onSave(fd);
       }}
     >
-          <DialogHeader>
-            <DialogTitle>{full ? "Edit project" : "New project"}</DialogTitle>
-            <DialogDescription>
-              Set draft to save without publishing. Cover image required to
-              publish.
-            </DialogDescription>
-          </DialogHeader>
+      <DialogHeader>
+        <DialogTitle>{full ? "Edit project" : "New project"}</DialogTitle>
+        <DialogDescription>
+          Set draft to save without publishing. Cover image required to publish.
+        </DialogDescription>
+      </DialogHeader>
 
-          <div className="mt-4 flex flex-col gap-6">
-            {/* Basics */}
-            <Section title="Basics">
-              <FieldGrid>
-                <Field className="col-span-2" htmlFor="title" label="Title">
-                  <Input
-                    id="title"
-                    name="title"
-                    required
-                    maxLength={120}
-                    defaultValue={full?.title}
-                    onChange={(e) => {
-                      setTitle(e.target.value);
-                      if (!slugDirty) setSlug(slugify(e.target.value));
-                    }}
-                  />
-                </Field>
-                <Field className="col-span-2" htmlFor="slug" label="Slug">
-                  <Input
-                    id="slug"
-                    name="slug"
-                    required
-                    maxLength={130}
-                    value={slug || (title ? slugify(title) : "")}
-                    onChange={(e) => {
-                      setSlug(e.target.value);
-                      setSlugDirty(true);
-                    }}
-                  />
-                </Field>
-                <Field
-                  className="col-span-2"
-                  htmlFor="tagline"
-                  label="Tagline"
-                  hint="One-line summary. Doubles as meta description fallback."
+      <div className="mt-4 flex flex-col gap-6">
+        {/* Basics */}
+        <Section title="Basics">
+          <FieldGrid>
+            <Field className="col-span-2" htmlFor="title" label="Title">
+              <Input
+                id="title"
+                name="title"
+                required
+                maxLength={120}
+                defaultValue={full?.title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                  if (!slugDirty) setSlug(slugify(e.target.value));
+                }}
+              />
+            </Field>
+            <Field className="col-span-2" htmlFor="slug" label="Slug">
+              <Input
+                id="slug"
+                name="slug"
+                required
+                maxLength={130}
+                value={slug || (title ? slugify(title) : "")}
+                onChange={(e) => {
+                  setSlug(e.target.value);
+                  setSlugDirty(true);
+                }}
+              />
+            </Field>
+            <Field
+              className="col-span-2"
+              htmlFor="tagline"
+              label="Tagline"
+              hint="One-line summary. Doubles as meta description fallback."
+            >
+              <Input
+                id="tagline"
+                name="tagline"
+                required
+                maxLength={200}
+                defaultValue={full?.tagline}
+              />
+            </Field>
+            <Field htmlFor="client" label="Client">
+              <Input
+                id="client"
+                name="client"
+                maxLength={100}
+                defaultValue={full?.client ?? ""}
+              />
+            </Field>
+            <Field htmlFor="location" label="Location">
+              <Input
+                id="location"
+                name="location"
+                maxLength={100}
+                defaultValue={full?.location ?? ""}
+              />
+            </Field>
+            <Field htmlFor="role" label="Your role">
+              <Input
+                id="role"
+                name="role"
+                maxLength={100}
+                defaultValue={full?.role ?? ""}
+              />
+            </Field>
+            <Field htmlFor="category" label="Category">
+              <Select
+                name="category"
+                defaultValue={full?.category ?? "enterprise"}
+                required
+              >
+                <SelectTrigger id="category">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {CATEGORIES.map((c) => (
+                    <SelectItem key={c.value} value={c.value}>
+                      {c.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </Field>
+            <Field htmlFor="periodStart" label="Period start">
+              <Input
+                id="periodStart"
+                name="periodStart"
+                type="date"
+                defaultValue={toDateInputValue(full?.periodStart ?? null)}
+              />
+            </Field>
+            <Field
+              htmlFor="periodEnd"
+              label="Period end"
+              hint="Leave blank for ongoing"
+            >
+              <Input
+                id="periodEnd"
+                name="periodEnd"
+                type="date"
+                defaultValue={toDateInputValue(full?.periodEnd ?? null)}
+              />
+            </Field>
+          </FieldGrid>
+        </Section>
+
+        {/* Content */}
+        <Section title="Content">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="bodyText">Body</Label>
+              <Textarea
+                id="bodyText"
+                name="bodyText"
+                rows={6}
+                placeholder="Paragraphs separated by blank lines. Rich formatting coming later."
+                defaultValue={docToText(full?.body)}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <Label htmlFor="outcome">Outcome</Label>
+              <Textarea
+                id="outcome"
+                name="outcome"
+                rows={3}
+                maxLength={1000}
+                defaultValue={full?.outcome ?? ""}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <Label>Cover image</Label>
+              <MediaPicker
+                options={mediaOptions}
+                value={coverId}
+                onChange={setCoverId}
+              />
+            </div>
+          </div>
+        </Section>
+
+        {/* Links */}
+        <Section
+          title="Links"
+          action={
+            <Button type="button" variant="outline" size="sm" onClick={addLink}>
+              <Plus className="me-1 size-3.5" />
+              Add link
+            </Button>
+          }
+        >
+          {links.length === 0 ? (
+            <p className="text-muted-foreground text-sm">
+              No links yet. Add website, case study, GitHub, or store links —
+              kind drives the icon automatically.
+            </p>
+          ) : (
+            <ul className="flex flex-col gap-2">
+              {links.map((l, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-2 rounded-md border p-2"
                 >
-                  <Input
-                    id="tagline"
-                    name="tagline"
-                    required
-                    maxLength={200}
-                    defaultValue={full?.tagline}
-                  />
-                </Field>
-                <Field htmlFor="client" label="Client">
-                  <Input
-                    id="client"
-                    name="client"
-                    maxLength={100}
-                    defaultValue={full?.client ?? ""}
-                  />
-                </Field>
-                <Field htmlFor="location" label="Location">
-                  <Input
-                    id="location"
-                    name="location"
-                    maxLength={100}
-                    defaultValue={full?.location ?? ""}
-                  />
-                </Field>
-                <Field htmlFor="role" label="Your role">
-                  <Input
-                    id="role"
-                    name="role"
-                    maxLength={100}
-                    defaultValue={full?.role ?? ""}
-                  />
-                </Field>
-                <Field htmlFor="category" label="Category">
                   <Select
-                    name="category"
-                    defaultValue={full?.category ?? "enterprise"}
-                    required
+                    value={l.kind}
+                    onValueChange={(v) =>
+                      updateLink(i, {
+                        kind: v as ProjectLinkInput["kind"],
+                      })
+                    }
                   >
-                    <SelectTrigger id="category">
+                    <SelectTrigger className="w-40">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {CATEGORIES.map((c) => (
-                        <SelectItem key={c.value} value={c.value}>
-                          {c.label}
+                      {LINK_KINDS.map((k) => (
+                        <SelectItem key={k.value} value={k.value}>
+                          {k.label}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
-                </Field>
-                <Field htmlFor="periodStart" label="Period start">
                   <Input
-                    id="periodStart"
-                    name="periodStart"
-                    type="date"
-                    defaultValue={toDateInputValue(full?.periodStart ?? null)}
+                    placeholder="Label"
+                    value={l.label}
+                    maxLength={40}
+                    onChange={(e) => updateLink(i, { label: e.target.value })}
                   />
-                </Field>
-                <Field
-                  htmlFor="periodEnd"
-                  label="Period end"
-                  hint="Leave blank for ongoing"
-                >
                   <Input
-                    id="periodEnd"
-                    name="periodEnd"
-                    type="date"
-                    defaultValue={toDateInputValue(full?.periodEnd ?? null)}
+                    placeholder="https://…"
+                    value={l.url}
+                    onChange={(e) => updateLink(i, { url: e.target.value })}
                   />
-                </Field>
-              </FieldGrid>
-            </Section>
-
-            {/* Content */}
-            <Section title="Content">
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="bodyText">Body</Label>
-                  <Textarea
-                    id="bodyText"
-                    name="bodyText"
-                    rows={6}
-                    placeholder="Paragraphs separated by blank lines. Rich formatting coming later."
-                    defaultValue={docToText(full?.body)}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="outcome">Outcome</Label>
-                  <Textarea
-                    id="outcome"
-                    name="outcome"
-                    rows={3}
-                    maxLength={1000}
-                    defaultValue={full?.outcome ?? ""}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <Label>Cover image</Label>
-                  <MediaPicker
-                    options={mediaOptions}
-                    value={coverId}
-                    onChange={setCoverId}
-                  />
-                </div>
-              </div>
-            </Section>
-
-            {/* Links */}
-            <Section
-              title="Links"
-              action={
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  onClick={addLink}
-                >
-                  <Plus className="me-1 size-3.5" />
-                  Add link
-                </Button>
-              }
-            >
-              {links.length === 0 ? (
-                <p className="text-muted-foreground text-sm">
-                  No links yet. Add website, case study, GitHub, or store links
-                  — kind drives the icon automatically.
-                </p>
-              ) : (
-                <ul className="flex flex-col gap-2">
-                  {links.map((l, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-2 rounded-md border p-2"
-                    >
-                      <Select
-                        value={l.kind}
-                        onValueChange={(v) =>
-                          updateLink(i, {
-                            kind: v as ProjectLinkInput["kind"],
-                          })
-                        }
-                      >
-                        <SelectTrigger className="w-40">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {LINK_KINDS.map((k) => (
-                            <SelectItem key={k.value} value={k.value}>
-                              {k.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                      <Input
-                        placeholder="Label"
-                        value={l.label}
-                        maxLength={40}
-                        onChange={(e) =>
-                          updateLink(i, { label: e.target.value })
-                        }
-                      />
-                      <Input
-                        placeholder="https://…"
-                        value={l.url}
-                        onChange={(e) => updateLink(i, { url: e.target.value })}
-                      />
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        aria-label="Remove link"
-                        onClick={() => removeLink(i)}
-                      >
-                        <X className="size-4" />
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </Section>
-
-            {/* SEO */}
-            <Section title="SEO">
-              <FieldGrid>
-                <Field
-                  className="col-span-2"
-                  htmlFor="metaTitle"
-                  label="Meta title (optional)"
-                  hint="≤ 60 chars. Leave blank to fall back to project title."
-                >
-                  <Input
-                    id="metaTitle"
-                    name="metaTitle"
-                    maxLength={70}
-                    defaultValue={full?.metaTitle ?? ""}
-                  />
-                </Field>
-                <Field
-                  className="col-span-2"
-                  htmlFor="metaDescription"
-                  label="Meta description (optional)"
-                  hint="≤ 160 chars. Leave blank to fall back to tagline."
-                >
-                  <Textarea
-                    id="metaDescription"
-                    name="metaDescription"
-                    maxLength={160}
-                    rows={2}
-                    defaultValue={full?.metaDescription ?? ""}
-                  />
-                </Field>
-                <Field htmlFor="displayOrder" label="Display order">
-                  <Input
-                    id="displayOrder"
-                    name="displayOrder"
-                    type="number"
-                    min={0}
-                    defaultValue={full?.displayOrder ?? 0}
-                  />
-                </Field>
-                <Field htmlFor="status" label="Status">
-                  <Select
-                    name="status"
-                    defaultValue={full?.status ?? "draft"}
-                    required
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    aria-label="Remove link"
+                    onClick={() => removeLink(i)}
                   >
-                    <SelectTrigger id="status">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="draft">Draft</SelectItem>
-                      <SelectItem value="published">Published</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </Field>
-                <SwitchRow
-                  name="featured"
-                  label="Featured"
-                  hint="Surfaces first on the projects grid."
-                  defaultChecked={full?.featured ?? false}
-                />
-                <SwitchRow
-                  name="noindex"
-                  label="Noindex"
-                  hint="Hide from search engines."
-                  defaultChecked={full?.noindex ?? false}
-                />
-              </FieldGrid>
-            </Section>
-          </div>
+                    <X className="size-4" />
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Section>
 
-          <DialogFooter className="mt-6">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onClose}
-              disabled={pending}
+        {/* SEO */}
+        <Section title="SEO">
+          <FieldGrid>
+            <Field
+              className="col-span-2"
+              htmlFor="metaTitle"
+              label="Meta title (optional)"
+              hint="≤ 60 chars. Leave blank to fall back to project title."
             >
-              Cancel
-            </Button>
-            <Button type="submit" disabled={pending}>
-              {pending ? "Saving…" : full ? "Save changes" : "Create project"}
-            </Button>
-          </DialogFooter>
+              <Input
+                id="metaTitle"
+                name="metaTitle"
+                maxLength={70}
+                defaultValue={full?.metaTitle ?? ""}
+              />
+            </Field>
+            <Field
+              className="col-span-2"
+              htmlFor="metaDescription"
+              label="Meta description (optional)"
+              hint="≤ 160 chars. Leave blank to fall back to tagline."
+            >
+              <Textarea
+                id="metaDescription"
+                name="metaDescription"
+                maxLength={160}
+                rows={2}
+                defaultValue={full?.metaDescription ?? ""}
+              />
+            </Field>
+            <Field htmlFor="displayOrder" label="Display order">
+              <Input
+                id="displayOrder"
+                name="displayOrder"
+                type="number"
+                min={0}
+                defaultValue={full?.displayOrder ?? 0}
+              />
+            </Field>
+            <Field htmlFor="status" label="Status">
+              <Select
+                name="status"
+                defaultValue={full?.status ?? "draft"}
+                required
+              >
+                <SelectTrigger id="status">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="draft">Draft</SelectItem>
+                  <SelectItem value="published">Published</SelectItem>
+                </SelectContent>
+              </Select>
+            </Field>
+            <SwitchRow
+              name="featured"
+              label="Featured"
+              hint="Surfaces first on the projects grid."
+              defaultChecked={full?.featured ?? false}
+            />
+            <SwitchRow
+              name="noindex"
+              label="Noindex"
+              hint="Hide from search engines."
+              defaultChecked={full?.noindex ?? false}
+            />
+          </FieldGrid>
+        </Section>
+      </div>
+
+      <DialogFooter className="mt-6">
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onClose}
+          disabled={pending}
+        >
+          Cancel
+        </Button>
+        <Button type="submit" disabled={pending}>
+          {pending ? "Saving…" : full ? "Save changes" : "Create project"}
+        </Button>
+      </DialogFooter>
     </form>
   );
 }
