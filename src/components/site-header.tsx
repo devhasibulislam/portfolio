@@ -2,7 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MoreHorizontal } from "lucide-react";
+import {
+  Award,
+  BookOpen,
+  Briefcase,
+  FileText,
+  FolderKanban,
+  MessageSquareQuote,
+  MoreHorizontal,
+  Sparkles,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { BrandBadge } from "@/components/brand-badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -35,16 +45,44 @@ type Item = {
   label: string;
   href?: string; // absent = placeholder no-op (owner will wire later)
   visibleAt: "sm" | "md" | "lg" | "xl" | null;
+  icon: LucideIcon;
 };
 
 const ITEMS: Item[] = [
-  { key: "resume", label: "Resume", href: "/resume", visibleAt: "sm" },
-  { key: "projects", label: "Projects", visibleAt: "md" },
-  { key: "experiences", label: "Experiences", visibleAt: "lg" },
-  { key: "blogs", label: "Blogs", href: "/blog", visibleAt: "xl" },
-  { key: "skills", label: "Skills", visibleAt: null },
-  { key: "certifications", label: "Certifications", visibleAt: null },
-  { key: "testimonials", label: "Testimonials", visibleAt: null },
+  {
+    key: "resume",
+    label: "Resume",
+    href: "/resume",
+    visibleAt: "sm",
+    icon: FileText,
+  },
+  { key: "projects", label: "Projects", visibleAt: "md", icon: FolderKanban },
+  {
+    key: "experiences",
+    label: "Experiences",
+    visibleAt: "lg",
+    icon: Briefcase,
+  },
+  {
+    key: "blogs",
+    label: "Blogs",
+    href: "/blog",
+    visibleAt: "xl",
+    icon: BookOpen,
+  },
+  { key: "skills", label: "Skills", visibleAt: null, icon: Sparkles },
+  {
+    key: "certifications",
+    label: "Certifications",
+    visibleAt: null,
+    icon: Award,
+  },
+  {
+    key: "testimonials",
+    label: "Testimonials",
+    visibleAt: null,
+    icon: MessageSquareQuote,
+  },
 ];
 
 // Class fragments per breakpoint kept as literal strings so Tailwind's
@@ -177,8 +215,9 @@ function MoreMenu({
 }
 
 function MenuRow({ item, active }: { item: Item; active: boolean }) {
+  const Icon = item.icon;
   const className = cn(
-    "block w-full rounded-md px-3 py-2 text-start text-sm transition-colors",
+    "flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-start text-sm transition-colors",
     active
       ? "bg-[var(--color-accent)]/20 font-semibold text-[var(--color-accent-strong)] ring-1 ring-[var(--color-accent)]/40"
       : "hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-fg)]",
@@ -186,7 +225,8 @@ function MenuRow({ item, active }: { item: Item; active: boolean }) {
   if (item.href) {
     return (
       <Link href={item.href} className={className}>
-        {item.label}
+        <Icon className="size-4 shrink-0 opacity-80" />
+        <span>{item.label}</span>
       </Link>
     );
   }
@@ -195,7 +235,8 @@ function MenuRow({ item, active }: { item: Item; active: boolean }) {
       className={cn(className, "cursor-not-allowed opacity-60")}
       aria-disabled
     >
-      {item.label}
+      <Icon className="size-4 shrink-0" />
+      <span>{item.label}</span>
     </span>
   );
 }
