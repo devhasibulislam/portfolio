@@ -1,0 +1,79 @@
+"use server";
+
+import { updateTag } from "next/cache";
+import { and, eq, ne } from "drizzle-orm";
+import { db } from "@/lib/db/client";
+import { skills } from "@/lib/db/schema";
+import { tag } from "@/lib/cache-tags";
+import { skillInput } from "@/schemas/skill";
+
+export type ActionState = { error?: string; ok?: true } | null;
+
+/**
+ * Create or update a skill. Slug uniqueness is enforced explicitly so we
+ * can return a friendly error before the DB constraint fires.
+ */
+export async function saveSkill(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const id = String(formData.get("id") ?? "").trim() || null;
+
+  // `years` is optional; treat empty string as null.
+  const yearsRaw = String(formData.get("years") ?? "").trim();
+  const years = yearsRaw === "" ? null : Number(yearsRaw);
+
+  // `displayOrder` defaults to 0 when the field is left blank.
+  const displayOrderRaw = String(formData.get("displayOrder") ?? "0").trim();
+  const displayOrder = displayOrderRaw === "" ? 0 : Number(displayOrderRaw);
+
+  const parsed = skillInput.safeParse({
+    name: String(formData.get("name") ?? "").trim(),
+    slug: String(formData.get("slug") ?? "").trim(),
+    group: String(formData.get("group") ?? ""),
+    proficiency: String(formData.get("proficiency") ?? "proficient"),
+    years,
+    isPrimary: formData.get("isPrimary") === "on",
+    displayOrder,
+    iconMediaId: (formData.get("iconMediaId") as string) || null,
+    status: (formData.get("status") as "active" | "archived") ?? "active",
+  });
+  if (!parsed.success) {
+    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+  }
+
+  // Slug uniqueness (skip current row on edit).
+  const clash = await db
+    .select({ id: skills.id })
+    .from(skills)
+    .where(
+      id
+        ? and(eq(skills.slug, parsed.data.slug), ne(skills.id, id))
+        : eq(skills.slug, parsed.data.slug),
+    )
+    .limit(1);
+  if (clash.length) return { error: "Slug already in use." };
+
+  if (id) {
+    await db
+      .update(skills)
+      .set({ ...parsed.data, updatedAt: new Date() })
+      .where(eq(skills.id, id));
+  } else {
+    await db.insert(skills).values(parsed.data);
+  }
+
+  updateTag(tag.skills());
+  return { ok: true };
+}
+
+export async function deleteSkill(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const id = String(formData.get("id") ?? "").trim();
+  if (!id) return { error: "Missing id" };
+  await db.delete(skills).where(eq(skills.id, id));
+  updateTag(tag.skills());
+  return { ok: true };
+}

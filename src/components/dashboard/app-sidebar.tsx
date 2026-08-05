@@ -18,7 +18,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { signOutAction } from "@/lib/auth/actions";
-import { NAV } from "./nav";
+import { NAV_GROUPS } from "./nav";
 
 // Sidebar has no props — the header is a static brand badge (avatar + name).
 export function AppSidebar() {
@@ -61,33 +61,35 @@ export function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Manage</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {NAV.map(({ label, href, icon: Icon }) => {
-                const active =
-                  href === "/dashboard"
-                    ? pathname === href
-                    : pathname === href || pathname.startsWith(`${href}/`);
-                return (
-                  <SidebarMenuItem key={href}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={active}
-                      tooltip={label}
-                    >
-                      <Link href={href} onClick={closeIfMobile}>
-                        <Icon />
-                        <span>{label}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        {NAV_GROUPS.map((group) => (
+          <SidebarGroup key={group.label}>
+            <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {group.items.map(({ label, href, icon: Icon }) => {
+                  const active =
+                    href === "/dashboard"
+                      ? pathname === href
+                      : pathname === href || pathname.startsWith(`${href}/`);
+                  return (
+                    <SidebarMenuItem key={href}>
+                      <SidebarMenuButton
+                        asChild
+                        isActive={active}
+                        tooltip={label}
+                      >
+                        <Link href={href} onClick={closeIfMobile}>
+                          <Icon />
+                          <span>{label}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
       </SidebarContent>
 
       <SidebarFooter>

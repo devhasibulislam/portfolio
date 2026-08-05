@@ -1,30 +1,35 @@
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ProjectsManager } from "@/components/dashboard/projects-manager";
+import { listMedia } from "@/lib/db/queries/media";
+import {
+  getProjectForEdit,
+  listProjectsForDashboard,
+} from "@/lib/db/queries/projects";
 
 export const metadata = { title: "Projects" };
 
-// Stub list page — real table + `New project` form land in Phase 8.
-// Sidebar still needs a live target so this shows an honest empty state.
-export default function Page() {
+// Server action passed down to the client manager — lets the edit dialog
+// hydrate a single row's full body + links on demand, keeping the list
+// query small.
+async function resolveFull(id: string) {
+  "use server";
+  return getProjectForEdit(id);
+}
+
+export default async function Page() {
+  const [rows, media] = await Promise.all([
+    listProjectsForDashboard(),
+    listMedia(),
+  ]);
+  const mediaOptions = media.map((m) => ({
+    id: m.id,
+    publicId: m.publicId,
+    originalName: m.originalName,
+  }));
   return (
-    <div className="mx-auto w-full max-w-5xl px-6 py-8">
-      <div className="mb-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Projects</h1>
-          <p className="text-muted-foreground text-sm">
-            Client engagements, products, and open-source references.
-          </p>
-        </div>
-        <Button disabled>
-          <Plus className="me-1 size-4" />
-          New project
-        </Button>
-      </div>
-      <div className="rounded-md border border-dashed p-10 text-center">
-        <p className="text-muted-foreground text-sm">
-          List + create form ship in the next pass. Schema and DB are live.
-        </p>
-      </div>
-    </div>
+    <ProjectsManager
+      rows={rows}
+      mediaOptions={mediaOptions}
+      resolveFull={resolveFull}
+    />
   );
 }

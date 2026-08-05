@@ -60,7 +60,13 @@ const ITEMS: Item[] = [
     visibleAt: "lg",
     icon: Briefcase,
   },
-  { key: "skills", label: "Skills", visibleAt: null, icon: Sparkles },
+  {
+    key: "skills",
+    label: "Skills",
+    href: "/skills",
+    visibleAt: null,
+    icon: Sparkles,
+  },
   {
     key: "blogs",
     label: "Blogs",
