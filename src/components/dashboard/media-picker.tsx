@@ -91,7 +91,9 @@ export function MediaPicker({
             crop="fill"
             gravity="auto"
             alt={current.originalName}
-            className={compact ? "rounded-md border" : "w-full rounded-md border"}
+            className={
+              compact ? "rounded-md border" : "w-full rounded-md border"
+            }
           />
           <div className="absolute end-2 top-2 flex gap-1">
             <Button

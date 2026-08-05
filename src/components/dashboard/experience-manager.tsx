@@ -471,7 +471,8 @@ function ExperienceDialogForm({
             </Field>
             <div className="col-span-2">
               <Label>
-                Company logo<OptionalMark />
+                Company logo
+                <OptionalMark />
               </Label>
               <p className="text-muted-foreground mt-1 text-xs">
                 Square 1:1 (ideally 512×512+). Up to 5 MB.

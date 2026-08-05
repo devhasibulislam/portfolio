@@ -25,7 +25,10 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { MediaPicker, type MediaOption } from "@/components/dashboard/media-picker";
+import {
+  MediaPicker,
+  type MediaOption,
+} from "@/components/dashboard/media-picker";
 import {
   CountedInput,
   OptionalMark,
@@ -315,9 +318,7 @@ function SkillDialogBody({
   const [name, setName] = useState(row?.name ?? "");
   const [slug, setSlug] = useState(row?.slug ?? "");
   const [slugDirty, setSlugDirty] = useState(false);
-  const [iconId, setIconId] = useState<string | null>(
-    row?.iconMediaId ?? null,
-  );
+  const [iconId, setIconId] = useState<string | null>(row?.iconMediaId ?? null);
 
   return (
     <form
@@ -338,7 +339,8 @@ function SkillDialogBody({
         <div className="grid grid-cols-2 gap-3">
           <div className="col-span-2 flex flex-col gap-1.5">
             <Label htmlFor="name">
-              Name<RequiredMark />
+              Name
+              <RequiredMark />
             </Label>
             <CountedInput
               id="name"
@@ -355,7 +357,8 @@ function SkillDialogBody({
 
           <div className="col-span-2 flex flex-col gap-1.5">
             <Label htmlFor="slug">
-              Slug<RequiredMark />
+              Slug
+              <RequiredMark />
             </Label>
             <CountedInput
               id="slug"
@@ -372,7 +375,8 @@ function SkillDialogBody({
 
           <div className="col-span-2 flex flex-col gap-1.5">
             <Label>
-              Icon<OptionalMark />
+              Icon
+              <OptionalMark />
             </Label>
             <p className="text-muted-foreground text-xs">
               Square 1:1 logo (SVG or PNG, ideally 256×256+). Up to 5 MB.
@@ -388,7 +392,8 @@ function SkillDialogBody({
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="group">
-              Group<RequiredMark />
+              Group
+              <RequiredMark />
             </Label>
             <Select
               name="group"
@@ -410,7 +415,8 @@ function SkillDialogBody({
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="proficiency">
-              Proficiency<RequiredMark />
+              Proficiency
+              <RequiredMark />
             </Label>
             <Select
               name="proficiency"
@@ -432,7 +438,8 @@ function SkillDialogBody({
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="years">
-              Years<OptionalMark />
+              Years
+              <OptionalMark />
             </Label>
             <Input
               id="years"
@@ -447,7 +454,8 @@ function SkillDialogBody({
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="displayOrder">
-              Display order<RequiredMark />
+              Display order
+              <RequiredMark />
             </Label>
             <Input
               id="displayOrder"
@@ -478,7 +486,8 @@ function SkillDialogBody({
 
           <div className="col-span-2 flex flex-col gap-1.5">
             <Label htmlFor="status">
-              Status<RequiredMark />
+              Status
+              <RequiredMark />
             </Label>
             <Select
               name="status"

@@ -401,7 +401,12 @@ function ProjectDialogForm({
         {/* Basics */}
         <Section title="Basics">
           <FieldGrid>
-            <Field className="col-span-2" htmlFor="title" label="Title" required>
+            <Field
+              className="col-span-2"
+              htmlFor="title"
+              label="Title"
+              required
+            >
               <CountedInput
                 id="title"
                 name="title"
@@ -515,7 +520,8 @@ function ProjectDialogForm({
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="bodyText">
-                Body<OptionalMark />
+                Body
+                <OptionalMark />
               </Label>
               <Textarea
                 id="bodyText"
@@ -527,7 +533,8 @@ function ProjectDialogForm({
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="outcome">
-                Outcome<OptionalMark />
+                Outcome
+                <OptionalMark />
               </Label>
               <CountedTextarea
                 id="outcome"
@@ -539,7 +546,8 @@ function ProjectDialogForm({
             </div>
             <div className="flex flex-col gap-1.5">
               <Label>
-                Cover image<RequiredMark />
+                Cover image
+                <RequiredMark />
               </Label>
               <p className="text-muted-foreground text-xs">
                 1.91:1 landscape (used for OG cards, ideally 1200×630). Up to 5
