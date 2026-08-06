@@ -2,6 +2,12 @@
 
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 // Same contact endpoints as `public-floating-actions.tsx` (single-owner site,
 // per PROJECT_CONTEXT §2). Kept duplicated here rather than lifted into a
@@ -63,26 +69,34 @@ export function PublicFooter() {
         </div>
 
         <ul className="flex flex-wrap items-center gap-2">
-          {SOCIALS.map((s) => (
-            <li key={s.href}>
-              <a
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={s.label}
-                title={s.label}
-                className="border-border bg-background hover:bg-muted focus-visible:ring-ring inline-flex size-9 items-center justify-center rounded-lg border transition-colors focus-visible:outline-none focus-visible:ring-2"
-              >
-                <Image
-                  src={s.src}
-                  alt=""
-                  width={20}
-                  height={20}
-                  className="size-5 rounded-sm"
-                />
-              </a>
-            </li>
-          ))}
+          <TooltipProvider delayDuration={150}>
+            {SOCIALS.map((s) => (
+              <li key={s.href}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className="border-border bg-background hover:bg-muted focus-visible:ring-ring inline-flex size-9 items-center justify-center rounded-lg border transition-colors focus-visible:outline-none focus-visible:ring-2"
+                    >
+                      <Image
+                        src={s.src}
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="size-5 rounded-sm"
+                      />
+                    </a>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" sideOffset={6}>
+                    {s.label}
+                  </TooltipContent>
+                </Tooltip>
+              </li>
+            ))}
+          </TooltipProvider>
         </ul>
       </div>
 
