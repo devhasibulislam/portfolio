@@ -2,16 +2,20 @@ import type { Metadata } from "next";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { Download } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import { getActiveResume } from "@/lib/db/queries/resumes";
 import { Button } from "@/components/ui/button";
 import { ResumeViewerClient } from "@/components/resume-viewer-client";
 
-export const metadata: Metadata = {
-  title: "Resume",
-  description: "Hasibul Islam, resume (PDF).",
-  alternates: { canonical: "/resume" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const m = await getTranslations("meta.resume");
+  return {
+    title: m("title"),
+    description: m("description"),
+    alternates: { canonical: "/resume" },
+  };
+}
 
 async function loadActive() {
   "use cache";
@@ -20,22 +24,26 @@ async function loadActive() {
 }
 
 export default async function ResumePage() {
-  const resume = await loadActive();
+  const [resume, t] = await Promise.all([
+    loadActive(),
+    getTranslations("resume"),
+  ]);
   if (!resume) notFound();
+
+  const filename = resume.originalName.replace(/\.pdf$/i, "");
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-4 pt-20 pb-16 sm:px-6 sm:pt-24 sm:pb-24">
       <div className="flex items-end justify-between gap-4">
         <div className="min-w-0 flex-1">
           <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
-            Resume
+            {t("kicker")}
           </p>
           <h1 className="mt-3 text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
-            Hasibul Islam
+            {t("heading")}
           </h1>
           <p className="text-muted-foreground mt-2 text-sm sm:text-base">
-            {resume.originalName.replace(/\.pdf$/i, "")} · preview below,
-            download to keep.
+            {t("subtitle", { name: filename })}
           </p>
         </div>
         <Button
@@ -48,7 +56,7 @@ export default async function ResumePage() {
             href={resume.url}
             download={resume.originalName}
             rel="noopener"
-            aria-label="Download PDF"
+            aria-label={t("download")}
           >
             <Download className="size-4" />
           </a>
@@ -56,7 +64,7 @@ export default async function ResumePage() {
         <Button asChild size="lg" className="hidden shrink-0 sm:inline-flex">
           <a href={resume.url} download={resume.originalName} rel="noopener">
             <Download className="me-2 size-4" />
-            Download PDF
+            {t("download")}
           </a>
         </Button>
       </div>

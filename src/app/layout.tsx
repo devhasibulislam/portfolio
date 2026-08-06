@@ -22,17 +22,20 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
-  title: {
-    default: "Hasibul Islam",
-    template: "%s · Hasibul Islam",
-  },
-  description:
-    "Senior full-stack engineer. Backend architecture, LLM/RAG systems, and production Node.js.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { getTranslations } = await import("next-intl/server");
+  const t = await getTranslations("meta");
+  return {
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    ),
+    title: {
+      default: t("siteTitle"),
+      template: `%s · ${t("siteTitle")}`,
+    },
+    description: t("siteDescription"),
+  };
+}
 
 // Pre-hydration script: reads the `locale` and `theme` cookies from the
 // browser and applies them to `<html lang dir data-theme>` before React

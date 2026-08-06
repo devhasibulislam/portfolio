@@ -1,19 +1,152 @@
 {
   "meta": {
     "siteTitle": "হাসিবুল ইসলাম",
-    "siteDescription": "সিনিয়র ফুল-স্ট্যাক ইঞ্জিনিয়ার। ব্যাকএন্ড আর্কিটেকচার, LLM/RAG সিস্টেম এবং প্রোডাকশন Node.js।"
+    "siteDescription": "সিনিয়র ফুল-স্ট্যাক ইঞ্জিনিয়ার। ব্যাকএন্ড আর্কিটেকচার, LLM/RAG সিস্টেম এবং প্রোডাকশন Node.js।",
+    "home": {
+      "title": "হাসিবুল ইসলাম",
+      "description": "সিনিয়র ফুল-স্ট্যাক ইঞ্জিনিয়ার। ব্যাকএন্ড আর্কিটেকচার, LLM/RAG সিস্টেম এবং প্রোডাকশন Node.js।"
+    },
+    "blog": {
+      "title": "ব্লগ",
+      "description": "TypeScript, Next.js, ডাটাবেস এবং ডিজাইন নিয়ে টুকরো নোট।"
+    },
+    "projects": {
+      "title": "প্রকল্প",
+      "description": "ক্লায়েন্ট কাজ, প্রোডাক্ট এবং ওপেন-সোর্স রেফারেন্স: ব্যাকএন্ড, LLM/RAG এবং ইনফ্রাস্ট্রাকচার যা আমি শিপ করেছি।"
+    },
+    "experience": {
+      "title": "অভিজ্ঞতা",
+      "description": "যেসব ভূমিকায় ছিলাম (ZMC, Zubion, WeWise, MessageMind, FoorWeb, Prokken) এবং প্রতিটিতে কী তৈরি করেছি।"
+    },
+    "skills": {
+      "title": "দক্ষতা",
+      "description": "যে স্ট্যাক দিয়ে শিপ করি: TypeScript, NestJS, PostgreSQL, Kafka/BullMQ, AWS, LLM/RAG এবং আরও অনেক কিছু।"
+    },
+    "resume": {
+      "title": "রেজিউমে",
+      "description": "হাসিবুল ইসলাম, রেজিউমে (PDF)।"
+    }
   },
-  "nav": {
-    "home": "হোম",
-    "blog": "ব্লগ",
-    "resume": "রিজিউমে",
-    "links": "লিঙ্ক"
+  "header": {
+    "brandAria": "হাসিবুল ইসলাম, হোম",
+    "themeTooltip": "থিম বদলান",
+    "nav": {
+      "resume": "রেজিউমে",
+      "projects": "প্রকল্প",
+      "experience": "অভিজ্ঞতা",
+      "skills": "দক্ষতা",
+      "blog": "ব্লগ",
+      "more": "আরও"
+    },
+    "themes": {
+      "system": "সিস্টেম",
+      "light": "লাইট",
+      "dark": "ডার্ক",
+      "label": "থিম"
+    }
+  },
+  "footer": {
+    "name": "হাসিবুল ইসলাম",
+    "tagline": "সিনিয়র ফুল-স্ট্যাক ইঞ্জিনিয়ার। ব্যাকএন্ড, LLM/RAG এবং প্রোডাকশন Node.js।",
+    "copyright": "© {year} হাসিবুল ইসলাম। Next.js দিয়ে তৈরি।",
+    "langLabel": "ভাষা",
+    "source": "সোর্স",
+    "sourceTooltip": "শীঘ্রই আসছে, ওপেন সোর্স হবে",
+    "socials": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "facebook": "Facebook",
+      "youtube": "YouTube",
+      "productHunt": "Product Hunt"
+    }
+  },
+  "contactMenu": {
+    "button": "হাসিবের সাথে যোগাযোগ",
+    "header": "যোগাযোগ করুন",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "email": "ইমেইল"
+  },
+  "backToTop": {
+    "tooltip": "উপরে ফিরুন"
+  },
+  "home": {
+    "kicker": "পোর্টফোলিও",
+    "heading": "হাসিবুল ইসলাম",
+    "hero": "সিনিয়র ফুল-স্ট্যাক ইঞ্জিনিয়ার। ব্যাকএন্ড আর্কিটেকচার, LLM/RAG সিস্টেম এবং প্রোডাকশন Node.js।"
+  },
+  "blog": {
+    "kicker": "লেখালেখি",
+    "heading": "ব্লগ",
+    "hero": "শিপিং-এর ফিল্ড নোট: TypeScript, Node, ডাটাবেস এবং মাঝে মাঝে ডিজাইন নিয়ে ঘোরাঘুরি।",
+    "empty": "এখনও কোনো পোস্ট নেই।"
+  },
+  "projects": {
+    "kicker": "কাজ",
+    "heading": "প্রকল্প",
+    "hero": "ক্লায়েন্ট কাজ, প্রোডাক্ট এবং ওপেন-সোর্স রেফারেন্স। শুধু পাবলিক আর্টিফ্যাক্ট থাকা প্রকল্পগুলো। NDA কাজ শুধু ক্যাটাগরি হিসেবে দেখানো।",
+    "empty": "ড্যাশবোর্ড থেকে যোগ করলে প্রকল্প এখানে দেখা যাবে।",
+    "categories": {
+      "enterprise": "ক্লায়েন্ট",
+      "product": "প্রোডাক্ট",
+      "open_source": "ওপেন সোর্স",
+      "nda": "NDA অধীনে"
+    }
+  },
+  "experience": {
+    "kicker": "ক্যারিয়ার",
+    "heading": "অভিজ্ঞতা",
+    "hero": "যেসব কোম্পানির জন্য শিপ করেছি এবং প্রতিটিতে কাজের ধরন। একই কোম্পানিতে পদোন্নতি একটি কার্ডে জমে থাকে।",
+    "empty": "ড্যাশবোর্ড থেকে যোগ করলে ভূমিকা এখানে দেখা যাবে।",
+    "present": "চলমান",
+    "workTypes": {
+      "on_site": "অফিসে",
+      "remote": "রিমোট",
+      "hybrid": "হাইব্রিড"
+    }
+  },
+  "skills": {
+    "kicker": "স্ট্যাক",
+    "heading": "দক্ষতা",
+    "hero": "প্রোডাকশনে যা আমি ব্যবহার করি। ডোমেইন অনুসারে সাজানো, ব্যবহারের ফ্রিকোয়েন্সি অনুযায়ী ক্রম।",
+    "empty": "ড্যাশবোর্ড থেকে যোগ করলে দক্ষতা এখানে দেখা যাবে।",
+    "proficiency": {
+      "expert": "এক্সপার্ট",
+      "proficient": "দক্ষ",
+      "working": "কাজ চালানোর মতো জ্ঞান"
+    },
+    "groups": {
+      "languages": "ভাষা",
+      "backend": "ব্যাকএন্ড",
+      "database": "ডাটাবেস",
+      "messaging_async": "মেসেজিং ও অ্যাসিঙ্ক",
+      "cloud_devops": "ক্লাউড ও DevOps",
+      "ai_llm": "AI ও LLM",
+      "testing_performance": "টেস্টিং ও পারফরম্যান্স",
+      "integrations": "ইন্টিগ্রেশন",
+      "security_practice": "সিকিউরিটি ও প্র্যাকটিস",
+      "frontend": "ফ্রন্টএন্ড",
+      "working_knowledge": "কাজ চালানোর মতো জ্ঞান"
+    }
+  },
+  "resume": {
+    "kicker": "রেজিউমে",
+    "heading": "হাসিবুল ইসলাম",
+    "subtitle": "{name} · নিচে প্রিভিউ, ডাউনলোড করে রাখতে পারেন।",
+    "download": "PDF ডাউনলোড",
+    "downloadShort": "PDF ডাউনলোড"
   },
   "auth": {
     "signIn": "সাইন ইন",
     "email": "ইমেইল",
     "password": "পাসওয়ার্ড",
     "submit": "সাইন ইন",
-    "invalid": "ভুল ইমেইল বা পাসওয়ার্ড।"
+    "invalid": "ইমেইল বা পাসওয়ার্ড ভুল।"
+  },
+  "nav": {
+    "home": "হোম",
+    "blog": "ব্লগ",
+    "resume": "রেজিউমে",
+    "links": "লিঙ্ক"
   }
 }

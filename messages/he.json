@@ -1,19 +1,152 @@
 {
   "meta": {
     "siteTitle": "חסיבול איסלאם",
-    "siteDescription": "מהנדס Full-Stack בכיר. ארכיטקטורת בקאנד, מערכות LLM/RAG וייצור Node.js."
+    "siteDescription": "מהנדס פול-סטאק בכיר. ארכיטקטורת בקאנד, מערכות LLM/RAG ופרודקשן Node.js.",
+    "home": {
+      "title": "חסיבול איסלאם",
+      "description": "מהנדס פול-סטאק בכיר. ארכיטקטורת בקאנד, מערכות LLM/RAG ופרודקשן Node.js."
+    },
+    "blog": {
+      "title": "בלוג",
+      "description": "הערות על בנייה: TypeScript, Next.js, בסיסי נתונים ועיצוב."
+    },
+    "projects": {
+      "title": "פרויקטים",
+      "description": "עבודות לקוחות, מוצרים ומראי מקום קוד פתוח: בקאנד, LLM/RAG ותשתיות שהעליתי לפרודקשן."
+    },
+    "experience": {
+      "title": "ניסיון",
+      "description": "תפקידים שמילאתי (ZMC, Zubion, WeWise, MessageMind, FoorWeb, Prokken) ומה בניתי בכל אחד מהם."
+    },
+    "skills": {
+      "title": "כישורים",
+      "description": "הסטאק שאיתו אני משיק: TypeScript, NestJS, PostgreSQL, Kafka/BullMQ, AWS, LLM/RAG ועוד."
+    },
+    "resume": {
+      "title": "קורות חיים",
+      "description": "חסיבול איסלאם, קורות חיים (PDF)."
+    }
+  },
+  "header": {
+    "brandAria": "חסיבול איסלאם, דף הבית",
+    "themeTooltip": "שנה ערכת נושא",
+    "nav": {
+      "resume": "קורות חיים",
+      "projects": "פרויקטים",
+      "experience": "ניסיון",
+      "skills": "כישורים",
+      "blog": "בלוג",
+      "more": "עוד"
+    },
+    "themes": {
+      "system": "מערכת",
+      "light": "בהיר",
+      "dark": "כהה",
+      "label": "ערכת נושא"
+    }
+  },
+  "footer": {
+    "name": "חסיבול איסלאם",
+    "tagline": "מהנדס פול-סטאק בכיר. בקאנד, LLM/RAG ופרודקשן Node.js.",
+    "copyright": "© {year} חסיבול איסלאם. נבנה עם Next.js.",
+    "langLabel": "שפה",
+    "source": "מקור",
+    "sourceTooltip": "בקרוב, יהיה קוד פתוח",
+    "socials": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "facebook": "Facebook",
+      "youtube": "YouTube",
+      "productHunt": "Product Hunt"
+    }
+  },
+  "contactMenu": {
+    "button": "צור קשר עם חסיב",
+    "header": "צרו קשר",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "email": "אימייל"
+  },
+  "backToTop": {
+    "tooltip": "חזרה למעלה"
+  },
+  "home": {
+    "kicker": "פורטפוליו",
+    "heading": "חסיבול איסלאם",
+    "hero": "מהנדס פול-סטאק בכיר. ארכיטקטורת בקאנד, מערכות LLM/RAG ופרודקשן Node.js."
+  },
+  "blog": {
+    "kicker": "כתיבה",
+    "heading": "בלוג",
+    "hero": "הערות שדה על השקה: TypeScript, Node, בסיסי נתונים ולעיתים פנייה לעיצוב.",
+    "empty": "אין עדיין פוסטים."
+  },
+  "projects": {
+    "kicker": "עבודה",
+    "heading": "פרויקטים",
+    "hero": "עבודות לקוחות, מוצרים ומראי מקום קוד פתוח. רק אלה שיש להם ארטיפקטים פומביים. עבודת NDA מוצגת לפי קטגוריה בלבד.",
+    "empty": "פרויקטים יופיעו כאן ברגע שיתווספו מלוח הבקרה.",
+    "categories": {
+      "enterprise": "לקוח",
+      "product": "מוצר",
+      "open_source": "קוד פתוח",
+      "nda": "תחת NDA"
+    }
+  },
+  "experience": {
+    "kicker": "קריירה",
+    "heading": "ניסיון",
+    "hero": "חברות שהשקתי עבורן וסוג העבודה בכל אחת. קידומים באותה חברה מקובצים לכרטיס אחד.",
+    "empty": "תפקידים יופיעו כאן ברגע שיתווספו מלוח הבקרה.",
+    "present": "כיום",
+    "workTypes": {
+      "on_site": "במשרד",
+      "remote": "מרחוק",
+      "hybrid": "היברידי"
+    }
+  },
+  "skills": {
+    "kicker": "סטאק",
+    "heading": "כישורים",
+    "hero": "מה שאני משתמש בו בפרודקשן. מקובץ לפי תחום, מסודר לפי תדירות השימוש.",
+    "empty": "כישורים יופיעו כאן ברגע שיתווספו מלוח הבקרה.",
+    "proficiency": {
+      "expert": "מומחה",
+      "proficient": "בקיא",
+      "working": "ידע עבודה"
+    },
+    "groups": {
+      "languages": "שפות",
+      "backend": "בקאנד",
+      "database": "בסיס נתונים",
+      "messaging_async": "העברת הודעות ואסינכרוני",
+      "cloud_devops": "ענן ו-DevOps",
+      "ai_llm": "AI ו-LLM",
+      "testing_performance": "בדיקות וביצועים",
+      "integrations": "אינטגרציות",
+      "security_practice": "אבטחה ומנהג",
+      "frontend": "פרונטאנד",
+      "working_knowledge": "ידע עבודה"
+    }
+  },
+  "resume": {
+    "kicker": "קורות חיים",
+    "heading": "חסיבול איסלאם",
+    "subtitle": "{name} · תצוגה מקדימה למטה, הורידו לשמירה.",
+    "download": "הורד PDF",
+    "downloadShort": "הורד PDF"
+  },
+  "auth": {
+    "signIn": "התחברות",
+    "email": "אימייל",
+    "password": "סיסמה",
+    "submit": "התחברות",
+    "invalid": "אימייל או סיסמה שגויים."
   },
   "nav": {
     "home": "בית",
     "blog": "בלוג",
     "resume": "קורות חיים",
     "links": "קישורים"
-  },
-  "auth": {
-    "signIn": "התחבר",
-    "email": "אימייל",
-    "password": "סיסמה",
-    "submit": "התחבר",
-    "invalid": "אימייל או סיסמה שגויים."
   }
 }

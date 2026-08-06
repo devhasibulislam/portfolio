@@ -11,6 +11,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { BrandBadge } from "@/components/brand-badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,49 +39,19 @@ import { cn } from "@/lib/utils";
  */
 
 type Item = {
-  key: string;
-  label: string;
-  href?: string; // absent = placeholder no-op (owner will wire later)
+  /** Message key under `header.nav.*` — doubles as React key. */
+  key: "resume" | "projects" | "experience" | "skills" | "blog";
+  href?: string;
   visibleAt: "sm" | "md" | "lg" | "xl" | null;
   icon: LucideIcon;
 };
 
 const ITEMS: Item[] = [
-  {
-    key: "resume",
-    label: "Resume",
-    href: "/resume",
-    visibleAt: "sm",
-    icon: FileText,
-  },
-  {
-    key: "projects",
-    label: "Projects",
-    href: "/projects",
-    visibleAt: "md",
-    icon: FolderKanban,
-  },
-  {
-    key: "experience",
-    label: "Experience",
-    href: "/experience",
-    visibleAt: "lg",
-    icon: Briefcase,
-  },
-  {
-    key: "skills",
-    label: "Skills",
-    href: "/skills",
-    visibleAt: null,
-    icon: Sparkles,
-  },
-  {
-    key: "blogs",
-    label: "Blogs",
-    href: "/blog",
-    visibleAt: null,
-    icon: Rss,
-  },
+  { key: "resume", href: "/resume", visibleAt: "sm", icon: FileText },
+  { key: "projects", href: "/projects", visibleAt: "md", icon: FolderKanban },
+  { key: "experience", href: "/experience", visibleAt: "lg", icon: Briefcase },
+  { key: "skills", href: "/skills", visibleAt: null, icon: Sparkles },
+  { key: "blog", href: "/blog", visibleAt: null, icon: Rss },
 ];
 
 // Class fragments per breakpoint kept as literal strings so Tailwind's
@@ -130,9 +101,8 @@ export function SiteHeader() {
 
 function NavPill({ item, active }: { item: Item; active: boolean }) {
   const Icon = item.icon;
-  // Active   = accent-tinted pill.
-  // Inactive = normal foreground text (white on dark, dark on light).
-  // Disabled placeholders below get their own muted styling.
+  const t = useTranslations("header.nav");
+  const label = t(item.key);
   const className = cn(
     "rounded-full focus-visible:ring-0",
     active
@@ -144,13 +114,11 @@ function NavPill({ item, active }: { item: Item; active: boolean }) {
       <Button variant="ghost" size="sm" asChild className={className}>
         <Link href={item.href} className="inline-flex items-center gap-1.5">
           <Icon className="size-4 shrink-0 opacity-80" />
-          <span>{item.label}</span>
+          <span>{label}</span>
         </Link>
       </Button>
     );
   }
-  // Placeholder items (Projects / Experience until sheets are wired) —
-  // greyed out so the row visually distinguishes routable vs pending items.
   return (
     <span
       className={cn(
@@ -159,7 +127,7 @@ function NavPill({ item, active }: { item: Item; active: boolean }) {
       aria-disabled
     >
       <Icon className="size-4 shrink-0" />
-      <span>{item.label}</span>
+      <span>{label}</span>
     </span>
   );
 }
@@ -171,6 +139,7 @@ function MoreMenu({
   items: Item[];
   isActive: (href?: string) => boolean;
 }) {
+  const t = useTranslations("header");
   return (
     <Popover>
       <TooltipProvider>
@@ -180,18 +149,18 @@ function MoreMenu({
               <Button
                 variant="ghost"
                 size="sm"
-                aria-label="Click to see all items"
+                aria-label={t("nav.more")}
                 className="text-foreground hover:text-[var(--color-accent)] gap-1.5 rounded-full hover:bg-transparent focus-visible:ring-0"
               >
                 <MoreHorizontal className="size-4" />
                 <span className="hidden sm:inline text-xs uppercase tracking-widest">
-                  More
+                  {t("nav.more")}
                 </span>
               </Button>
             </TooltipTrigger>
           </PopoverTrigger>
           <TooltipContent side="bottom" sideOffset={6}>
-            Click to see all items
+            {t("nav.more")}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -219,6 +188,8 @@ function MoreMenu({
 
 function MenuRow({ item, active }: { item: Item; active: boolean }) {
   const Icon = item.icon;
+  const t = useTranslations("header.nav");
+  const label = t(item.key);
   const className = cn(
     "flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-start text-sm transition-colors",
     active
@@ -229,7 +200,7 @@ function MenuRow({ item, active }: { item: Item; active: boolean }) {
     return (
       <Link href={item.href} className={className}>
         <Icon className="size-4 shrink-0 opacity-80" />
-        <span>{item.label}</span>
+        <span>{label}</span>
       </Link>
     );
   }
@@ -239,7 +210,7 @@ function MenuRow({ item, active }: { item: Item; active: boolean }) {
       aria-disabled
     >
       <Icon className="size-4 shrink-0" />
-      <span>{item.label}</span>
+      <span>{label}</span>
     </span>
   );
 }

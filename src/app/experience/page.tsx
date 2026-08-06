@@ -3,37 +3,31 @@ import Link from "next/link";
 import { cacheTag } from "next/cache";
 import { getCldImageUrl } from "next-cloudinary";
 import { ArrowUpRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import {
   listPublishedExperience,
   type PublicExperienceCard,
 } from "@/lib/db/queries/experience";
-import type { ExperienceInput } from "@/schemas/experience";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-export const metadata: Metadata = {
-  title: "Experience",
-  description:
-    "Roles I've held (ZMC, Zubion, WeWise, MessageMind, FoorWeb, Prokken) and what I built in each.",
-  alternates: { canonical: "/experience" },
-  openGraph: {
-    type: "website",
-    title: "Experience · Hasibul Islam",
-    description:
-      "Roles I've held and what I built in each: backend architecture, LLM/RAG, and production infra.",
-    url: `${SITE_URL}/experience`,
-  },
-};
-
-const WORK_TYPE_LABEL: Record<
-  NonNullable<ExperienceInput["workType"]>,
-  string
-> = {
-  on_site: "On-site",
-  remote: "Remote",
-  hybrid: "Hybrid",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const m = await getTranslations("meta.experience");
+  const title = m("title");
+  const description = m("description");
+  return {
+    title,
+    description,
+    alternates: { canonical: "/experience" },
+    openGraph: {
+      type: "website",
+      title: `${title} · Hasibul Islam`,
+      description,
+      url: `${SITE_URL}/experience`,
+    },
+  };
+}
 
 async function loadRoles() {
   "use cache";
@@ -72,36 +66,42 @@ function groupByCompany(rows: PublicExperienceCard[]): {
   return groups;
 }
 
-function formatPeriod(start: Date, end: Date | null): string {
+function formatPeriod(
+  start: Date,
+  end: Date | null,
+  presentLabel: string,
+): string {
   const fmt = (d: Date) =>
     d.toLocaleDateString(undefined, { month: "short", year: "numeric" });
-  return `${fmt(start)} to ${end ? fmt(end) : "Present"}`;
+  return `${fmt(start)} to ${end ? fmt(end) : presentLabel}`;
 }
 
 export default async function ExperiencePage() {
-  const rows = await loadRoles();
+  const [rows, t, workTypeLabels] = await Promise.all([
+    loadRoles(),
+    getTranslations("experience"),
+    getTranslations("experience.workTypes"),
+  ]);
   const groups = groupByCompany(rows);
+  const presentLabel = t("present");
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6 pt-24 pb-24">
       <header className="mb-14 max-w-2xl">
         <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
-          Career
+          {t("kicker")}
         </p>
         <h1 className="mt-4 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
-          Experience
+          {t("heading")}
         </h1>
         <p className="text-muted-foreground mt-3 text-lg leading-relaxed">
-          Companies I&apos;ve shipped for and the shape of the work in each.
-          Promotions at the same company stack under one card.
+          {t("hero")}
         </p>
       </header>
 
       {groups.length === 0 ? (
         <div className="rounded-md border border-dashed p-10 text-center">
-          <p className="text-muted-foreground text-sm">
-            Roles will appear here once added from the dashboard.
-          </p>
+          <p className="text-muted-foreground text-sm">{t("empty")}</p>
         </div>
       ) : (
         <ol className="flex flex-col gap-10">
@@ -160,7 +160,7 @@ export default async function ExperiencePage() {
                           {role.role}
                         </h3>
                         <p className="text-muted-foreground text-xs tabular-nums">
-                          {formatPeriod(role.periodStart, role.periodEnd)}
+                          {formatPeriod(role.periodStart, role.periodEnd, presentLabel)}
                         </p>
                       </div>
                       {role.location || role.workType ? (
@@ -168,7 +168,7 @@ export default async function ExperiencePage() {
                           {[
                             role.location,
                             role.workType
-                              ? WORK_TYPE_LABEL[role.workType]
+                              ? workTypeLabels(role.workType)
                               : null,
                           ]
                             .filter(Boolean)

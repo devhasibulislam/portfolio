@@ -1,13 +1,140 @@
 {
   "meta": {
     "siteTitle": "Hasibul Islam",
-    "siteDescription": "Senior full-stack engineer. Backend architecture, LLM/RAG systems, and production Node.js."
+    "siteDescription": "Senior full-stack engineer. Backend architecture, LLM/RAG systems, and production Node.js.",
+    "home": {
+      "title": "Hasibul Islam",
+      "description": "Senior full-stack engineer. Backend architecture, LLM/RAG systems, and production Node.js."
+    },
+    "blog": {
+      "title": "Blog",
+      "description": "Notes on building things: TypeScript, Next.js, databases, and design."
+    },
+    "projects": {
+      "title": "Projects",
+      "description": "Client engagements, products, and open-source references: backend, LLM/RAG, and infrastructure work I've shipped."
+    },
+    "experience": {
+      "title": "Experience",
+      "description": "Roles I've held (ZMC, Zubion, WeWise, MessageMind, FoorWeb, Prokken) and what I built in each."
+    },
+    "skills": {
+      "title": "Skills",
+      "description": "The stack I ship with: TypeScript, NestJS, PostgreSQL, Kafka/BullMQ, AWS, LLM/RAG, and more."
+    },
+    "resume": {
+      "title": "Resume",
+      "description": "Hasibul Islam, resume (PDF)."
+    }
   },
-  "nav": {
-    "home": "Home",
-    "blog": "Blog",
-    "resume": "Resume",
-    "links": "Links"
+  "header": {
+    "brandAria": "Hasibul Islam, home",
+    "themeTooltip": "Change theme",
+    "nav": {
+      "resume": "Resume",
+      "projects": "Projects",
+      "experience": "Experience",
+      "skills": "Skills",
+      "blog": "Blogs",
+      "more": "More"
+    },
+    "themes": {
+      "system": "System",
+      "light": "Light",
+      "dark": "Dark",
+      "label": "Theme"
+    }
+  },
+  "footer": {
+    "name": "Hasibul Islam",
+    "tagline": "Senior full-stack engineer. Backend, LLM/RAG, and production Node.js.",
+    "copyright": "© {year} Hasibul Islam. Built with Next.js.",
+    "langLabel": "Language",
+    "source": "Source",
+    "sourceTooltip": "Coming soon, going open source",
+    "socials": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "facebook": "Facebook",
+      "youtube": "YouTube",
+      "productHunt": "Product Hunt"
+    }
+  },
+  "contactMenu": {
+    "button": "Contact with Hasib",
+    "header": "Get in touch",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "email": "Email"
+  },
+  "backToTop": {
+    "tooltip": "Back to top"
+  },
+  "home": {
+    "kicker": "Portfolio",
+    "heading": "Hasibul Islam",
+    "hero": "Senior full-stack engineer. Backend architecture, LLM/RAG systems, and production Node.js."
+  },
+  "blog": {
+    "kicker": "Writing",
+    "heading": "Blog",
+    "hero": "Field notes on shipping: TypeScript, Node, databases, and the occasional design detour.",
+    "empty": "No posts yet."
+  },
+  "projects": {
+    "kicker": "Work",
+    "heading": "Projects",
+    "hero": "Client engagements, products, and open-source references. Just the ones with public artefacts. NDA work is listed by category only.",
+    "empty": "Projects will appear here once added from the dashboard.",
+    "categories": {
+      "enterprise": "Client",
+      "product": "Product",
+      "open_source": "Open source",
+      "nda": "Under NDA"
+    }
+  },
+  "experience": {
+    "kicker": "Career",
+    "heading": "Experience",
+    "hero": "Companies I've shipped for and the shape of the work in each. Promotions at the same company stack under one card.",
+    "empty": "Roles will appear here once added from the dashboard.",
+    "present": "Present",
+    "workTypes": {
+      "on_site": "On-site",
+      "remote": "Remote",
+      "hybrid": "Hybrid"
+    }
+  },
+  "skills": {
+    "kicker": "Stack",
+    "heading": "Skills",
+    "hero": "What I reach for in production. Grouped by domain, ordered by how often I use it.",
+    "empty": "Skills will appear here once added from the dashboard.",
+    "proficiency": {
+      "expert": "Expert",
+      "proficient": "Proficient",
+      "working": "Working knowledge"
+    },
+    "groups": {
+      "languages": "Languages",
+      "backend": "Backend",
+      "database": "Database",
+      "messaging_async": "Messaging & async",
+      "cloud_devops": "Cloud & DevOps",
+      "ai_llm": "AI & LLM",
+      "testing_performance": "Testing & performance",
+      "integrations": "Integrations",
+      "security_practice": "Security & practice",
+      "frontend": "Frontend",
+      "working_knowledge": "Working knowledge"
+    }
+  },
+  "resume": {
+    "kicker": "Resume",
+    "heading": "Hasibul Islam",
+    "subtitle": "{name} · preview below, download to keep.",
+    "download": "Download PDF",
+    "downloadShort": "Download PDF"
   },
   "auth": {
     "signIn": "Sign in",
@@ -15,5 +142,11 @@
     "password": "Password",
     "submit": "Sign in",
     "invalid": "Invalid email or password."
+  },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "resume": "Resume",
+    "links": "Links"
   }
 }

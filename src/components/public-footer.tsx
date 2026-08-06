@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 import { LOCALES, type Locale } from "@/lib/i18n/config";
 import { setLocaleAction } from "@/lib/i18n/actions";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const LOCALE_LABEL: Record<Locale, string> = {
   en: "English",
@@ -29,36 +29,39 @@ const LOCALE_LABEL: Record<Locale, string> = {
   he: "עברית",
 };
 
-// Same contact endpoints as `public-floating-actions.tsx` (single-owner site,
-// per PROJECT_CONTEXT §2). Kept duplicated here rather than lifted into a
-// shared module because the two components use different subsets.
-const SOCIALS = [
+// Social channels — labels come from i18n so tooltips + aria-labels swap
+// language with the site chrome.
+const SOCIALS: {
+  href: string;
+  key: "linkedin" | "github" | "facebook" | "youtube" | "productHunt";
+  src: string;
+}[] = [
   {
     href: "https://linkedin.com/in/devhasibulislam",
-    label: "LinkedIn",
+    key: "linkedin",
     src: "/social/linkedin.webp",
   },
   {
     href: "https://github.com/devhasibulislam",
-    label: "GitHub",
+    key: "github",
     src: "/social/github.webp",
   },
   {
     href: "https://facebook.com/devhasibulislam",
-    label: "Facebook",
+    key: "facebook",
     src: "/social/facebook.webp",
   },
   {
     href: "https://youtube.com/@devhasibulislam",
-    label: "YouTube",
+    key: "youtube",
     src: "/social/youtube.webp",
   },
   {
     href: "https://producthunt.com/@devhasibulislam",
-    label: "Product Hunt",
+    key: "productHunt",
     src: "/social/product-hunt.webp",
   },
-] as const;
+];
 
 /**
  * Flat public footer. Renders under every public route, hidden on
@@ -75,6 +78,7 @@ export function PublicFooter() {
   const isPublic = pathname !== "/login" && !pathname.startsWith("/dashboard");
   const locale = useLocale() as Locale;
   const [switching, startSwitching] = useTransition();
+  const t = useTranslations("footer");
   if (!isPublic) return null;
 
   const year = new Date().getFullYear();
@@ -83,41 +87,41 @@ export function PublicFooter() {
     <footer className="border-t">
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-6 px-6 py-10">
         <div className="min-w-0">
-          <p className="text-foreground text-sm font-semibold">Hasibul Islam</p>
-          <p className="text-muted-foreground mt-1 text-xs">
-            Senior full-stack engineer. Backend, LLM/RAG, and production
-            Node.js.
-          </p>
+          <p className="text-foreground text-sm font-semibold">{t("name")}</p>
+          <p className="text-muted-foreground mt-1 text-xs">{t("tagline")}</p>
         </div>
 
         <ul className="flex flex-wrap items-center gap-2">
           <TooltipProvider delayDuration={150}>
-            {SOCIALS.map((s) => (
-              <li key={s.href}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      className="border-border bg-background hover:bg-muted focus-visible:ring-ring inline-flex size-9 items-center justify-center rounded-lg border transition-colors focus-visible:outline-none focus-visible:ring-2"
-                    >
-                      <Image
-                        src={s.src}
-                        alt=""
-                        width={20}
-                        height={20}
-                        className="size-5 rounded-sm"
-                      />
-                    </a>
-                  </TooltipTrigger>
-                  <TooltipContent side="top" sideOffset={6}>
-                    {s.label}
-                  </TooltipContent>
-                </Tooltip>
-              </li>
-            ))}
+            {SOCIALS.map((s) => {
+              const label = t(`socials.${s.key}`);
+              return (
+                <li key={s.href}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        className="border-border bg-background hover:bg-muted focus-visible:ring-ring inline-flex size-9 items-center justify-center rounded-lg border transition-colors focus-visible:outline-none focus-visible:ring-2"
+                      >
+                        <Image
+                          src={s.src}
+                          alt=""
+                          width={20}
+                          height={20}
+                          className="size-5 rounded-sm"
+                        />
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent side="top" sideOffset={6}>
+                      {label}
+                    </TooltipContent>
+                  </Tooltip>
+                </li>
+              );
+            })}
           </TooltipProvider>
         </ul>
       </div>
@@ -125,7 +129,7 @@ export function PublicFooter() {
       <div className="border-t">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
           <p className="text-muted-foreground text-xs">
-            © {year} Hasibul Islam. Built with Next.js.
+            {t("copyright", { year })}
           </p>
           <div className="flex items-center gap-4">
             <Select
@@ -139,7 +143,7 @@ export function PublicFooter() {
             >
               <SelectTrigger
                 size="sm"
-                aria-label="Language"
+                aria-label={t("langLabel")}
                 className="h-8 min-w-28 text-xs"
               >
                 <SelectValue />
@@ -161,12 +165,12 @@ export function PublicFooter() {
                     aria-disabled="true"
                     className="text-muted-foreground inline-flex cursor-not-allowed items-center gap-1 text-xs"
                   >
-                    Source
+                    {t("source")}
                     <Lock className="size-3.5" aria-hidden />
                   </button>
                 </TooltipTrigger>
                 <TooltipContent side="top" sideOffset={6}>
-                  Coming soon, going open source
+                  {t("sourceTooltip")}
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>

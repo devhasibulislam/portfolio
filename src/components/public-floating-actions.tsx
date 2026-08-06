@@ -27,6 +27,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { clearThemeAction, setThemeAction } from "@/lib/theme/actions";
+import { useTranslations } from "next-intl";
 
 type ThemeChoice = "light" | "dark" | "system";
 
@@ -72,6 +73,7 @@ export function PublicFloatingActions() {
 
 function BackToTop() {
   const [visible, setVisible] = useState(false);
+  const t = useTranslations("backToTop");
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 300);
     onScroll();
@@ -86,7 +88,7 @@ function BackToTop() {
           <Button
             size="icon"
             variant="outline"
-            aria-label="Back to top"
+            aria-label={t("tooltip")}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className={`size-11 rounded-full shadow-lg backdrop-blur transition-opacity ${
               visible ? "opacity-100" : "pointer-events-none opacity-0"
@@ -96,7 +98,7 @@ function BackToTop() {
           </Button>
         </TooltipTrigger>
         <TooltipContent side="left" sideOffset={8}>
-          Back to top
+          {t("tooltip")}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -213,6 +215,7 @@ function ThemeRow({
 /* -------------------------------------------------------------------------- */
 
 function ContactMenu() {
+  const t = useTranslations("contactMenu");
   return (
     <DropdownMenu>
       <TooltipProvider>
@@ -221,7 +224,7 @@ function ContactMenu() {
             <TooltipTrigger asChild>
               <Button
                 size="icon"
-                aria-label="Contact with Hasib"
+                aria-label={t("button")}
                 className="size-11 rounded-full shadow-lg"
               >
                 <MessageCircleMore className="size-4" />
@@ -229,7 +232,7 @@ function ContactMenu() {
             </TooltipTrigger>
           </DropdownMenuTrigger>
           <TooltipContent side="left" sideOffset={8}>
-            Contact with Hasib
+            {t("button")}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -239,24 +242,24 @@ function ContactMenu() {
         sideOffset={8}
         className="w-64"
       >
-        <DropdownMenuLabel>Get in touch</DropdownMenuLabel>
+        <DropdownMenuLabel>{t("header")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <ContactRow
           href={WHATSAPP_URL}
           src="/social/whatsapp.webp"
-          label="WhatsApp"
+          label={t("whatsapp")}
           subtitle={`+${PHONE.replace(/^88/, "88 ")}`}
         />
         <ContactRow
           href={TELEGRAM_URL}
           src="/social/telegram.webp"
-          label="Telegram"
+          label={t("telegram")}
           subtitle={`@${USERNAME}`}
         />
         <ContactRow
           href={EMAIL_URL}
           src="/social/gmail.webp"
-          label="Email"
+          label={t("email")}
           subtitle={EMAIL}
           external={false}
         />

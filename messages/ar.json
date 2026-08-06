@@ -1,13 +1,140 @@
 {
   "meta": {
     "siteTitle": "حسيب الإسلام",
-    "siteDescription": "مهندس Full-Stack كبير. بنية الواجهة الخلفية وأنظمة LLM/RAG وإنتاج Node.js."
+    "siteDescription": "مهندس برمجيات كامل بخبرة عالية. هندسة الخلفية وأنظمة LLM/RAG وإنتاج Node.js.",
+    "home": {
+      "title": "حسيب الإسلام",
+      "description": "مهندس برمجيات كامل بخبرة عالية. هندسة الخلفية وأنظمة LLM/RAG وإنتاج Node.js."
+    },
+    "blog": {
+      "title": "المدونة",
+      "description": "ملاحظات حول البناء: TypeScript وNext.js وقواعد البيانات والتصميم."
+    },
+    "projects": {
+      "title": "المشاريع",
+      "description": "أعمال العملاء والمنتجات والمراجع مفتوحة المصدر: الخلفية وLLM/RAG وأعمال البنية التحتية التي أطلقتها."
+    },
+    "experience": {
+      "title": "الخبرة",
+      "description": "المناصب التي شغلتها (ZMC وZubion وWeWise وMessageMind وFoorWeb وProkken) وما بنيته في كل منها."
+    },
+    "skills": {
+      "title": "المهارات",
+      "description": "الحزمة التي أطلق بها: TypeScript وNestJS وPostgreSQL وKafka/BullMQ وAWS وLLM/RAG والمزيد."
+    },
+    "resume": {
+      "title": "السيرة الذاتية",
+      "description": "حسيب الإسلام، السيرة الذاتية (PDF)."
+    }
   },
-  "nav": {
-    "home": "الرئيسية",
-    "blog": "المدونة",
-    "resume": "السيرة الذاتية",
-    "links": "الروابط"
+  "header": {
+    "brandAria": "حسيب الإسلام، الرئيسية",
+    "themeTooltip": "تغيير السمة",
+    "nav": {
+      "resume": "السيرة الذاتية",
+      "projects": "المشاريع",
+      "experience": "الخبرة",
+      "skills": "المهارات",
+      "blog": "المدونة",
+      "more": "المزيد"
+    },
+    "themes": {
+      "system": "النظام",
+      "light": "فاتح",
+      "dark": "داكن",
+      "label": "السمة"
+    }
+  },
+  "footer": {
+    "name": "حسيب الإسلام",
+    "tagline": "مهندس برمجيات كامل. الخلفية وLLM/RAG وإنتاج Node.js.",
+    "copyright": "© {year} حسيب الإسلام. مبني بـ Next.js.",
+    "langLabel": "اللغة",
+    "source": "المصدر",
+    "sourceTooltip": "قريبًا، سيصبح مفتوح المصدر",
+    "socials": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "facebook": "Facebook",
+      "youtube": "YouTube",
+      "productHunt": "Product Hunt"
+    }
+  },
+  "contactMenu": {
+    "button": "تواصل مع حسيب",
+    "header": "تواصل معي",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "email": "البريد الإلكتروني"
+  },
+  "backToTop": {
+    "tooltip": "العودة إلى الأعلى"
+  },
+  "home": {
+    "kicker": "معرض الأعمال",
+    "heading": "حسيب الإسلام",
+    "hero": "مهندس برمجيات كامل. هندسة الخلفية وأنظمة LLM/RAG وإنتاج Node.js."
+  },
+  "blog": {
+    "kicker": "الكتابة",
+    "heading": "المدونة",
+    "hero": "ملاحظات ميدانية حول الإطلاق: TypeScript وNode وقواعد البيانات وأحيانًا انعطافات تصميمية.",
+    "empty": "لا توجد مقالات بعد."
+  },
+  "projects": {
+    "kicker": "الأعمال",
+    "heading": "المشاريع",
+    "hero": "أعمال العملاء والمنتجات والمراجع مفتوحة المصدر. فقط تلك التي تحوي قطعًا علنية. أعمال NDA تُذكر بالفئة فقط.",
+    "empty": "ستظهر المشاريع هنا بمجرد إضافتها من لوحة التحكم.",
+    "categories": {
+      "enterprise": "عميل",
+      "product": "منتج",
+      "open_source": "مفتوح المصدر",
+      "nda": "تحت NDA"
+    }
+  },
+  "experience": {
+    "kicker": "المسيرة المهنية",
+    "heading": "الخبرة",
+    "hero": "الشركات التي أطلقت لها وشكل العمل في كل واحدة. الترقيات في نفس الشركة تُجمع في بطاقة واحدة.",
+    "empty": "ستظهر المناصب هنا بمجرد إضافتها من لوحة التحكم.",
+    "present": "حتى الآن",
+    "workTypes": {
+      "on_site": "في الموقع",
+      "remote": "عن بُعد",
+      "hybrid": "هجين"
+    }
+  },
+  "skills": {
+    "kicker": "الحزمة",
+    "heading": "المهارات",
+    "hero": "ما ألجأ إليه في الإنتاج. مصنف بحسب المجال، مرتب بحسب معدل الاستخدام.",
+    "empty": "ستظهر المهارات هنا بمجرد إضافتها من لوحة التحكم.",
+    "proficiency": {
+      "expert": "خبير",
+      "proficient": "متقن",
+      "working": "معرفة عملية"
+    },
+    "groups": {
+      "languages": "اللغات",
+      "backend": "الخلفية",
+      "database": "قاعدة البيانات",
+      "messaging_async": "المراسلة والتزامن",
+      "cloud_devops": "السحابة وDevOps",
+      "ai_llm": "الذكاء الاصطناعي وLLM",
+      "testing_performance": "الاختبار والأداء",
+      "integrations": "التكاملات",
+      "security_practice": "الأمن والممارسة",
+      "frontend": "الواجهة",
+      "working_knowledge": "معرفة عملية"
+    }
+  },
+  "resume": {
+    "kicker": "السيرة الذاتية",
+    "heading": "حسيب الإسلام",
+    "subtitle": "{name} · معاينة أدناه، حمّل للاحتفاظ.",
+    "download": "تنزيل PDF",
+    "downloadShort": "تنزيل PDF"
   },
   "auth": {
     "signIn": "تسجيل الدخول",
@@ -15,5 +142,11 @@
     "password": "كلمة المرور",
     "submit": "تسجيل الدخول",
     "invalid": "البريد الإلكتروني أو كلمة المرور غير صحيحة."
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "blog": "المدونة",
+    "resume": "السيرة الذاتية",
+    "links": "الروابط"
   }
 }

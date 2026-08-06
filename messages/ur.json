@@ -1,13 +1,140 @@
 {
   "meta": {
     "siteTitle": "حسیب الاسلام",
-    "siteDescription": "سینئر فل اسٹیک انجینئر۔ بیک اینڈ آرکیٹیکچر، LLM/RAG سسٹمز اور پروڈکشن Node.js۔"
+    "siteDescription": "سینئر فل-اسٹیک انجینئر۔ بیک اینڈ آرکیٹیکچر، LLM/RAG سسٹمز اور پروڈکشن Node.js۔",
+    "home": {
+      "title": "حسیب الاسلام",
+      "description": "سینئر فل-اسٹیک انجینئر۔ بیک اینڈ آرکیٹیکچر، LLM/RAG سسٹمز اور پروڈکشن Node.js۔"
+    },
+    "blog": {
+      "title": "بلاگ",
+      "description": "چیزیں بنانے پر نوٹس: TypeScript، Next.js، ڈیٹا بیس اور ڈیزائن۔"
+    },
+    "projects": {
+      "title": "پروجیکٹس",
+      "description": "کلائنٹ مصروفیات، پروڈکٹس اور اوپن سورس ریفرنسز: بیک اینڈ، LLM/RAG اور انفراسٹرکچر کا کام جو میں نے شپ کیا۔"
+    },
+    "experience": {
+      "title": "تجربہ",
+      "description": "میں نے جو کردار ادا کیے (ZMC، Zubion، WeWise، MessageMind، FoorWeb، Prokken) اور ہر ایک میں کیا بنایا۔"
+    },
+    "skills": {
+      "title": "مہارتیں",
+      "description": "میں جس اسٹیک کے ساتھ شپ کرتا ہوں: TypeScript، NestJS، PostgreSQL، Kafka/BullMQ، AWS، LLM/RAG اور مزید۔"
+    },
+    "resume": {
+      "title": "ریزیومے",
+      "description": "حسیب الاسلام، ریزیومے (PDF)۔"
+    }
   },
-  "nav": {
-    "home": "ہوم",
-    "blog": "بلاگ",
-    "resume": "ریزیومے",
-    "links": "لنکس"
+  "header": {
+    "brandAria": "حسیب الاسلام، ہوم",
+    "themeTooltip": "تھیم بدلیں",
+    "nav": {
+      "resume": "ریزیومے",
+      "projects": "پروجیکٹس",
+      "experience": "تجربہ",
+      "skills": "مہارتیں",
+      "blog": "بلاگ",
+      "more": "مزید"
+    },
+    "themes": {
+      "system": "سسٹم",
+      "light": "لائٹ",
+      "dark": "ڈارک",
+      "label": "تھیم"
+    }
+  },
+  "footer": {
+    "name": "حسیب الاسلام",
+    "tagline": "سینئر فل-اسٹیک انجینئر۔ بیک اینڈ، LLM/RAG اور پروڈکشن Node.js۔",
+    "copyright": "© {year} حسیب الاسلام۔ Next.js سے بنایا گیا۔",
+    "langLabel": "زبان",
+    "source": "سورس",
+    "sourceTooltip": "جلد آ رہا ہے، اوپن سورس ہوگا",
+    "socials": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "facebook": "Facebook",
+      "youtube": "YouTube",
+      "productHunt": "Product Hunt"
+    }
+  },
+  "contactMenu": {
+    "button": "حسیب سے رابطہ",
+    "header": "رابطہ کریں",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "email": "ای میل"
+  },
+  "backToTop": {
+    "tooltip": "اوپر واپس"
+  },
+  "home": {
+    "kicker": "پورٹ فولیو",
+    "heading": "حسیب الاسلام",
+    "hero": "سینئر فل-اسٹیک انجینئر۔ بیک اینڈ آرکیٹیکچر، LLM/RAG سسٹمز اور پروڈکشن Node.js۔"
+  },
+  "blog": {
+    "kicker": "تحریر",
+    "heading": "بلاگ",
+    "hero": "شپنگ پر فیلڈ نوٹس: TypeScript، Node، ڈیٹا بیس اور کبھی کبھار ڈیزائن کی جانب۔",
+    "empty": "ابھی تک کوئی پوسٹ نہیں۔"
+  },
+  "projects": {
+    "kicker": "کام",
+    "heading": "پروجیکٹس",
+    "hero": "کلائنٹ مصروفیات، پروڈکٹس اور اوپن سورس ریفرنسز۔ صرف وہ جن میں پبلک آرٹیفیکٹس ہوں۔ NDA کام صرف کیٹگری کے حساب سے درج ہے۔",
+    "empty": "ڈیش بورڈ سے شامل کرنے پر پروجیکٹس یہاں ظاہر ہوں گے۔",
+    "categories": {
+      "enterprise": "کلائنٹ",
+      "product": "پروڈکٹ",
+      "open_source": "اوپن سورس",
+      "nda": "NDA کے تحت"
+    }
+  },
+  "experience": {
+    "kicker": "کیریئر",
+    "heading": "تجربہ",
+    "hero": "جن کمپنیوں کے لیے شپ کیا اور ہر ایک میں کام کی شکل۔ ایک ہی کمپنی میں ترقیاں ایک کارڈ میں جمع ہوتی ہیں۔",
+    "empty": "ڈیش بورڈ سے شامل کرنے پر کردار یہاں ظاہر ہوں گے۔",
+    "present": "موجودہ",
+    "workTypes": {
+      "on_site": "دفتر میں",
+      "remote": "ریموٹ",
+      "hybrid": "ہائبرڈ"
+    }
+  },
+  "skills": {
+    "kicker": "اسٹیک",
+    "heading": "مہارتیں",
+    "hero": "پروڈکشن میں جو میں استعمال کرتا ہوں۔ ڈومین کے حساب سے گروپ اور استعمال کی تعداد کے حساب سے ترتیب۔",
+    "empty": "ڈیش بورڈ سے شامل کرنے پر مہارتیں یہاں ظاہر ہوں گی۔",
+    "proficiency": {
+      "expert": "ماہر",
+      "proficient": "قابل",
+      "working": "کاری علم"
+    },
+    "groups": {
+      "languages": "زبانیں",
+      "backend": "بیک اینڈ",
+      "database": "ڈیٹا بیس",
+      "messaging_async": "میسجنگ اور async",
+      "cloud_devops": "کلاؤڈ اور DevOps",
+      "ai_llm": "AI اور LLM",
+      "testing_performance": "ٹیسٹنگ اور کارکردگی",
+      "integrations": "انٹیگریشنز",
+      "security_practice": "سیکورٹی اور مشق",
+      "frontend": "فرنٹ اینڈ",
+      "working_knowledge": "کاری علم"
+    }
+  },
+  "resume": {
+    "kicker": "ریزیومے",
+    "heading": "حسیب الاسلام",
+    "subtitle": "{name} · نیچے پیش نظر، ڈاؤن لوڈ کریں۔",
+    "download": "PDF ڈاؤن لوڈ",
+    "downloadShort": "PDF ڈاؤن لوڈ"
   },
   "auth": {
     "signIn": "سائن ان",
@@ -15,5 +142,11 @@
     "password": "پاس ورڈ",
     "submit": "سائن ان",
     "invalid": "ای میل یا پاس ورڈ غلط ہے۔"
+  },
+  "nav": {
+    "home": "ہوم",
+    "blog": "بلاگ",
+    "resume": "ریزیومے",
+    "links": "لنکس"
   }
 }

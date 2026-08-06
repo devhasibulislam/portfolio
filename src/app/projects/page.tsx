@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { cacheTag } from "next/cache";
 import { getCldImageUrl } from "next-cloudinary";
+import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import {
   listPublishedProjects,
@@ -10,26 +11,22 @@ import {
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
-export const metadata: Metadata = {
-  title: "Projects",
-  description:
-    "Client engagements, products, and open-source references: backend, LLM/RAG, and infrastructure work I've shipped.",
-  alternates: { canonical: "/projects" },
-  openGraph: {
-    type: "website",
-    title: "Projects · Hasibul Islam",
-    description:
-      "Client engagements, products, and open-source references: backend, LLM/RAG, and infrastructure work I've shipped.",
-    url: `${SITE_URL}/projects`,
-  },
-};
-
-const CATEGORY_LABEL: Record<PublicProjectCard["category"], string> = {
-  enterprise: "Client",
-  product: "Product",
-  open_source: "Open source",
-  nda: "Under NDA",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const m = await getTranslations("meta.projects");
+  const title = m("title");
+  const description = m("description");
+  return {
+    title,
+    description,
+    alternates: { canonical: "/projects" },
+    openGraph: {
+      type: "website",
+      title: `${title} · Hasibul Islam`,
+      description,
+      url: `${SITE_URL}/projects`,
+    },
+  };
+}
 
 async function loadProjects() {
   "use cache";
@@ -38,34 +35,38 @@ async function loadProjects() {
 }
 
 export default async function ProjectsPage() {
-  const rows = await loadProjects();
+  const [rows, t, categoryLabels] = await Promise.all([
+    loadProjects(),
+    getTranslations("projects"),
+    getTranslations("projects.categories"),
+  ]);
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-24">
       <header className="mb-14 max-w-2xl">
         <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
-          Work
+          {t("kicker")}
         </p>
         <h1 className="mt-4 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
-          Projects
+          {t("heading")}
         </h1>
         <p className="text-muted-foreground mt-3 text-lg leading-relaxed">
-          Client engagements, products, and open-source references. Just the
-          ones with public artefacts. NDA work is listed by category only.
+          {t("hero")}
         </p>
       </header>
 
       {rows.length === 0 ? (
         <div className="rounded-md border border-dashed p-10 text-center">
-          <p className="text-muted-foreground text-sm">
-            Projects will appear here once added from the dashboard.
-          </p>
+          <p className="text-muted-foreground text-sm">{t("empty")}</p>
         </div>
       ) : (
         <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {rows.map((p) => (
             <li key={p.id}>
-              <ProjectCard project={p} />
+              <ProjectCard
+                project={p}
+                categoryLabel={categoryLabels(p.category)}
+              />
             </li>
           ))}
         </ul>
@@ -74,7 +75,13 @@ export default async function ProjectsPage() {
   );
 }
 
-function ProjectCard({ project }: { project: PublicProjectCard }) {
+function ProjectCard({
+  project,
+  categoryLabel,
+}: {
+  project: PublicProjectCard;
+  categoryLabel: string;
+}) {
   const cover = project.coverPublicId
     ? getCldImageUrl({ src: project.coverPublicId, width: 800 })
     : null;
@@ -96,9 +103,7 @@ function ProjectCard({ project }: { project: PublicProjectCard }) {
         )}
       </div>
       <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em]">
-        <span className="text-[var(--color-accent)]">
-          {CATEGORY_LABEL[project.category]}
-        </span>
+        <span className="text-[var(--color-accent)]">{categoryLabel}</span>
         {project.client ? (
           <>
             <span className="text-muted-foreground/50">·</span>
