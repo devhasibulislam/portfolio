@@ -153,18 +153,18 @@ export function ProjectsManager({
 
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-8">
-      <div className="mb-4 flex items-center justify-between">
-        <div>
+      <div className="mb-4">
+        <div className="flex items-center justify-between gap-3">
           <h1 className="text-2xl font-semibold tracking-tight">Projects</h1>
-          <p className="text-muted-foreground text-sm">
-            Client engagements, products, and open-source references. Featured
-            projects surface first on the public page.
-          </p>
+          <Button onClick={() => setEditing({ mode: "new" })}>
+            <Plus className="me-1 size-4" />
+            New project
+          </Button>
         </div>
-        <Button onClick={() => setEditing({ mode: "new" })}>
-          <Plus className="me-1 size-4" />
-          New project
-        </Button>
+        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
+          Client engagements, products, and open-source references. Featured
+          projects surface first on the public page.
+        </p>
       </div>
 
       {rows.length === 0 ? (

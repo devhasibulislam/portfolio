@@ -111,31 +111,31 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-8">
-      <div className="mb-6 flex items-center justify-between">
-        <div>
+      <div className="mb-6">
+        <div className="flex items-center justify-between gap-3">
           <h1 className="text-2xl font-semibold tracking-tight">Resume</h1>
-          <p className="text-muted-foreground text-sm">
-            Upload a new PDF; pick the one served at <code>/resume</code>.
-          </p>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".pdf"
+            className="hidden"
+            onChange={(e) => {
+              const file = e.target.files?.[0];
+              if (file) uploadPdf(file);
+              e.target.value = "";
+            }}
+          />
+          <Button
+            onClick={() => fileInputRef.current?.click()}
+            disabled={pending}
+          >
+            <Upload className="me-1 size-4" />
+            {pending ? "Uploading…" : "Upload PDF"}
+          </Button>
         </div>
-        <input
-          ref={fileInputRef}
-          type="file"
-          accept=".pdf"
-          className="hidden"
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file) uploadPdf(file);
-            e.target.value = "";
-          }}
-        />
-        <Button
-          onClick={() => fileInputRef.current?.click()}
-          disabled={pending}
-        >
-          <Upload className="me-1 size-4" />
-          {pending ? "Uploading…" : "Upload PDF"}
-        </Button>
+        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
+          Upload a new PDF; pick the one served at <code>/resume</code>.
+        </p>
       </div>
 
       {rows.length === 0 ? (

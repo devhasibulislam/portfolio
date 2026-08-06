@@ -84,16 +84,16 @@ export function SlugEntityTable({
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-8">
-      <div className="mb-4 flex items-center justify-between">
-        <div>
+      <div className="mb-4">
+        <div className="flex items-center justify-between gap-3">
           <h1 className="text-2xl font-semibold tracking-tight">
             {entityPlural}
           </h1>
-          <p className="text-muted-foreground text-sm">{subtitle}</p>
+          <Button onClick={() => setEditing({ mode: "new" })}>
+            <Plus className="me-1 size-4" /> New
+          </Button>
         </div>
-        <Button onClick={() => setEditing({ mode: "new" })}>
-          <Plus className="me-1 size-4" /> New
-        </Button>
+        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">{subtitle}</p>
       </div>
 
       <div className="rounded-lg border">
