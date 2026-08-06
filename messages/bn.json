@@ -534,6 +534,12 @@
       "useCrop": "এই ক্রপ ব্যবহার",
       "uploading": "আপলোড হচ্ছে…",
       "cropping": "ক্রপ হচ্ছে…"
+    },
+    "themeToggle": {
+      "aria": "থিম বদলান",
+      "light": "হালকা",
+      "dark": "গাঢ়",
+      "system": "সিস্টেম"
     }
   },
   "login": {

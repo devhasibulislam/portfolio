@@ -534,6 +534,12 @@
       "useCrop": "استخدم القص",
       "uploading": "جارٍ الرفع…",
       "cropping": "جارٍ القص…"
+    },
+    "themeToggle": {
+      "aria": "تغيير السمة",
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "النظام"
     }
   },
   "login": {

@@ -534,6 +534,12 @@
       "useCrop": "Use crop",
       "uploading": "Uploading…",
       "cropping": "Cropping…"
+    },
+    "themeToggle": {
+      "aria": "Change theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
     }
   },
   "login": {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { Check, Monitor, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,6 +20,7 @@ type Choice = "light" | "dark" | "system";
  * synchronously so the *current* tab flips without a reload.
  */
 export function ThemeToggle({ current }: { current: Choice }) {
+  const t = useTranslations("dashboard.themeToggle");
   const [pending, startTransition] = useTransition();
 
   const pick = (next: Choice) => {
@@ -43,7 +45,7 @@ export function ThemeToggle({ current }: { current: Choice }) {
         <Button
           size="icon"
           variant="ghost"
-          aria-label="Change theme"
+          aria-label={t("aria")}
           disabled={pending}
         >
           {current === "dark" ? (
@@ -57,19 +59,19 @@ export function ThemeToggle({ current }: { current: Choice }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <Row
-          label="Light"
+          label={t("light")}
           icon={Sun}
           active={current === "light"}
           onSelect={() => pick("light")}
         />
         <Row
-          label="Dark"
+          label={t("dark")}
           icon={Moon}
           active={current === "dark"}
           onSelect={() => pick("dark")}
         />
         <Row
-          label="System"
+          label={t("system")}
           icon={Monitor}
           active={current === "system"}
           onSelect={() => pick("system")}

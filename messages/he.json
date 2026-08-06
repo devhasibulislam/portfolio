@@ -534,6 +534,12 @@
       "useCrop": "השתמש בחיתוך",
       "uploading": "מעלה…",
       "cropping": "חותך…"
+    },
+    "themeToggle": {
+      "aria": "החלף ערכת נושא",
+      "light": "בהיר",
+      "dark": "כהה",
+      "system": "מערכת"
     }
   },
   "login": {
