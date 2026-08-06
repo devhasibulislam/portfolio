@@ -515,6 +515,8 @@ function ProjectDialogForm({
                 value={body}
                 onChange={setBody}
                 mediaOptions={mediaOptions}
+                variant="compact"
+                stickyTopClass="top-0"
               />
             </div>
             <div className="flex flex-col gap-1.5">

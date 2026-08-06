@@ -553,6 +553,8 @@ function ExperienceDialogForm({
                 value={highlights}
                 onChange={setHighlights}
                 mediaOptions={mediaOptions}
+                variant="compact"
+                stickyTopClass="top-0"
               />
             </Field>
           </FieldGrid>

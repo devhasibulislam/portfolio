@@ -36,6 +36,23 @@ type Props = {
    * the post form's server-side fetch.
    */
   mediaOptions: MediaOption[];
+  /**
+   * Toolbar preset.
+   *   `full`    — everything (bold, italic, H2/H3, lists, quote, code, code
+   *               block, link, image, undo/redo). Used by the blog post
+   *               editor where long-form structure matters.
+   *   `compact` — just what makes sense for a project/experience detail
+   *               body: bold, italic, H3, lists, link, image, undo/redo.
+   *               No H2 (the page already renders one), no blockquote, no
+   *               code marks.
+   */
+  variant?: "full" | "compact";
+  /**
+   * Tailwind class controlling where the sticky toolbar pins itself. Blog
+   * post form lives under the dashboard header (h-14) → `top-14`. Inside
+   * a Dialog there's no header to clear → `top-0`.
+   */
+  stickyTopClass?: string;
 };
 
 /**
@@ -43,7 +60,13 @@ type Props = {
  *   bold, italic, H2/H3, ul/ol, link, code (inline + block), blockquote, image.
  * No fonts, no colors, no tables. Body JSON serialized via editor.getJSON().
  */
-export function TiptapEditor({ value, onChange, mediaOptions }: Props) {
+export function TiptapEditor({
+  value,
+  onChange,
+  mediaOptions,
+  variant = "full",
+  stickyTopClass = "top-14",
+}: Props) {
   const [focused, setFocused] = useState(false);
   const [pickerOpen, setPickerOpen] = useState(false);
 
@@ -111,6 +134,8 @@ export function TiptapEditor({ value, onChange, mediaOptions }: Props) {
         editor={editor}
         focused={focused}
         onImageClick={() => setPickerOpen(true)}
+        variant={variant}
+        stickyTopClass={stickyTopClass}
       />
       <EditorContent editor={editor} />
       <ImagePickerDialog
@@ -129,22 +154,28 @@ function Toolbar({
   editor,
   focused,
   onImageClick,
+  variant,
+  stickyTopClass,
 }: {
   editor: Editor;
   focused: boolean;
   onImageClick: () => void;
+  variant: "full" | "compact";
+  stickyTopClass: string;
 }) {
   // `active` only lights up while the selection is actually inside the editor.
   // When the user tabs into the title/meta fields, all buttons revert to idle.
   const isActive = (name: string, attrs?: Record<string, unknown>): boolean =>
     focused && editor.isActive(name, attrs);
 
+  const compact = variant === "compact";
+
   return (
     <div
       // sticky within the editor container so it hugs the top as the user
-      // scrolls the body. Offset by 3.5rem to clear the dashboard header
-      // (also sticky top-0, h-14). z-10 keeps it above the prose.
-      className="border-input bg-background/95 sticky top-14 z-10 flex flex-wrap items-center gap-1 rounded-t-md border-b p-1 backdrop-blur"
+      // scrolls the body. `stickyTopClass` picks the offset — `top-14` on
+      // the blog form (dashboard header height), `top-0` inside a Dialog.
+      className={`border-input bg-background/95 sticky ${stickyTopClass} z-10 flex flex-wrap items-center gap-1 rounded-t-md border-b p-1 backdrop-blur`}
     >
       <TB
         // preventDefault on mousedown keeps focus in the editor when the user
@@ -162,12 +193,14 @@ function Toolbar({
         label="Italic"
         icon={Italic}
       />
-      <TB
-        cmd={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        active={isActive("heading", { level: 2 })}
-        label="Heading 2"
-        icon={Heading2}
-      />
+      {!compact ? (
+        <TB
+          cmd={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+          active={isActive("heading", { level: 2 })}
+          label="Heading 2"
+          icon={Heading2}
+        />
+      ) : null}
       <TB
         cmd={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
         active={isActive("heading", { level: 3 })}
@@ -186,24 +219,28 @@ function Toolbar({
         label="Numbered list"
         icon={ListOrdered}
       />
-      <TB
-        cmd={() => editor.chain().focus().toggleBlockquote().run()}
-        active={isActive("blockquote")}
-        label="Blockquote"
-        icon={Quote}
-      />
-      <TB
-        cmd={() => editor.chain().focus().toggleCode().run()}
-        active={isActive("code")}
-        label="Inline code"
-        icon={Code}
-      />
-      <TB
-        cmd={() => editor.chain().focus().toggleCodeBlock().run()}
-        active={isActive("codeBlock")}
-        label="Code block"
-        icon={SquareCode}
-      />
+      {!compact ? (
+        <>
+          <TB
+            cmd={() => editor.chain().focus().toggleBlockquote().run()}
+            active={isActive("blockquote")}
+            label="Blockquote"
+            icon={Quote}
+          />
+          <TB
+            cmd={() => editor.chain().focus().toggleCode().run()}
+            active={isActive("code")}
+            label="Inline code"
+            icon={Code}
+          />
+          <TB
+            cmd={() => editor.chain().focus().toggleCodeBlock().run()}
+            active={isActive("codeBlock")}
+            label="Code block"
+            icon={SquareCode}
+          />
+        </>
+      ) : null}
       <TB
         cmd={() => {
           const prev = (editor.getAttributes("link").href as string) ?? "";
