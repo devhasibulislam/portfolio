@@ -28,16 +28,15 @@ import {
 } from "@/components/ui/tooltip";
 import { clearThemeAction, setThemeAction } from "@/lib/theme/actions";
 import { useTranslations } from "next-intl";
+import { SITE_CONFIG } from "@/config/site";
 
 type ThemeChoice = "light" | "dark" | "system";
 
-// Contact endpoints — hard-coded per PROJECT_CONTEXT §2 (single-owner site).
-const PHONE = "8801906315901"; // wa.me format = no `+`
-const USERNAME = "devhasibulislam";
-const EMAIL = "devhasibulislam@gmail.com";
-const WHATSAPP_URL = `https://wa.me/${PHONE}`;
-const TELEGRAM_URL = `https://t.me/${USERNAME}`;
-const EMAIL_URL = `mailto:${EMAIL}`;
+// Contact endpoints — sourced from `src/config/site.ts` so a fork only
+// touches one file. See PROJECT_CONTEXT §2 for why this is single-owner.
+const WHATSAPP_URL = `https://wa.me/${SITE_CONFIG.phone}`;
+const TELEGRAM_URL = `https://t.me/${SITE_CONFIG.username}`;
+const EMAIL_URL = `mailto:${SITE_CONFIG.email}`;
 
 /**
  * Bottom-end floating column for public routes: back-to-top (blog only) +
@@ -249,19 +248,19 @@ function ContactMenu() {
           href={WHATSAPP_URL}
           src="/social/whatsapp.webp"
           label={t("whatsapp")}
-          subtitle={`+${PHONE.replace(/^88/, "88 ")}`}
+          subtitle={`+${SITE_CONFIG.phone.replace(/^88/, "88 ")}`}
         />
         <ContactRow
           href={TELEGRAM_URL}
           src="/social/telegram.webp"
           label={t("telegram")}
-          subtitle={`@${USERNAME}`}
+          subtitle={`@${SITE_CONFIG.username}`}
         />
         <ContactRow
           href={EMAIL_URL}
           src="/social/gmail.webp"
           label={t("email")}
-          subtitle={EMAIL}
+          subtitle={SITE_CONFIG.email}
           external={false}
         />
       </DropdownMenuContent>

@@ -11,40 +11,22 @@ import {
 } from "@/components/ui/tooltip";
 import { LanguageSelect } from "@/components/language-select";
 import { useTranslations } from "next-intl";
+import { SITE_CONFIG, type SocialKey } from "@/config/site";
 
 // Social channels — labels come from i18n so tooltips + aria-labels swap
-// language with the site chrome.
-const SOCIALS: {
-  href: string;
-  key: "linkedin" | "github" | "facebook" | "youtube" | "productHunt";
-  src: string;
-}[] = [
-  {
-    href: "https://linkedin.com/in/devhasibulislam",
-    key: "linkedin",
-    src: "/social/linkedin.webp",
-  },
-  {
-    href: "https://github.com/devhasibulislam",
-    key: "github",
-    src: "/social/github.webp",
-  },
-  {
-    href: "https://facebook.com/devhasibulislam",
-    key: "facebook",
-    src: "/social/facebook.webp",
-  },
-  {
-    href: "https://youtube.com/@devhasibulislam",
-    key: "youtube",
-    src: "/social/youtube.webp",
-  },
-  {
-    href: "https://producthunt.com/@devhasibulislam",
-    key: "productHunt",
-    src: "/social/product-hunt.webp",
-  },
-];
+// language with the site chrome. URLs live in `src/config/site.ts` so a
+// fork edits one file.
+const SOCIAL_ICONS: Record<SocialKey, string> = {
+  linkedin: "/social/linkedin.webp",
+  github: "/social/github.webp",
+  facebook: "/social/facebook.webp",
+  youtube: "/social/youtube.webp",
+  productHunt: "/social/product-hunt.webp",
+};
+
+const SOCIALS = (Object.entries(SITE_CONFIG.socials) as [SocialKey, string][])
+  .filter(([, href]) => Boolean(href))
+  .map(([key, href]) => ({ key, href, src: SOCIAL_ICONS[key] }));
 
 /**
  * Flat public footer. Renders under every public route, hidden on

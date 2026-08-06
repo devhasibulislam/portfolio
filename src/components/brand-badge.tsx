@@ -32,7 +32,7 @@ export function BrandBadge({
       )}
     >
       <Avatar className={avatarSize}>
-        <AvatarImage src="/brand/hasibul.jpg" alt="" />
+        <AvatarImage src="/brand/avatar.jpg" alt="" />
         <AvatarFallback className="bg-[var(--color-accent)]/15 text-[var(--color-accent)] text-xs font-semibold">
           H
         </AvatarFallback>

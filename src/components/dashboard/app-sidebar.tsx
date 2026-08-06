@@ -57,7 +57,7 @@ export function AppSidebar() {
             >
               <Link href="/dashboard" onClick={closeIfMobile}>
                 <Avatar className="size-8 shrink-0">
-                  <AvatarImage src="/brand/hasibul.jpg" alt="" />
+                  <AvatarImage src="/brand/avatar.jpg" alt="" />
                   <AvatarFallback className="bg-[var(--color-accent)]/15 text-[var(--color-accent)] text-sm font-semibold">
                     H
                   </AvatarFallback>
