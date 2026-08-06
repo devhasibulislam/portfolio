@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LanguageSelect } from "@/components/language-select";
@@ -19,15 +19,21 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { DIRECTION, type Locale } from "@/lib/i18n/config";
 import { signOutAction } from "@/lib/auth/actions";
 import { NAV_GROUPS } from "./nav";
 
 // Sidebar has no props — the header is a static brand badge (avatar + name).
 export function AppSidebar() {
   const pathname = usePathname();
+  const locale = useLocale() as Locale;
   const tBrand = useTranslations("brand");
   const tDash = useTranslations("dashboard");
   const name = tBrand("name");
+  // Flip the sidebar to the trailing edge in RTL locales so it matches the
+  // rest of the RTL layout. shadcn's Sidebar component has native support
+  // for this via the `side` prop.
+  const side = DIRECTION[locale] === "rtl" ? "right" : "left";
   // Close the mobile drawer after a nav click — otherwise the sheet stays
   // open, overlaying the newly-navigated route until the user dismisses it.
   const { isMobile, setOpenMobile } = useSidebar();
@@ -36,7 +42,7 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" side={side}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
