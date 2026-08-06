@@ -356,7 +356,8 @@
         "name": "নাম",
         "thisCantBeUndone": "এটি বাতিল করা যাবে না।",
         "change": "বদলান",
-        "optional": "(ঐচ্ছিক)"
+        "optional": "(ঐচ্ছিক)",
+        "minToPublish": "প্রকাশ করতে সর্বনিম্ন {n}"
       },
       "post": {
         "title": "শিরোনাম",

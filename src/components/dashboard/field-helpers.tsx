@@ -25,6 +25,7 @@ export function CharCount({
   publishMin?: number;
   className?: string;
 }) {
+  const t = useTranslations("dashboard.forms.common");
   const pct = max > 0 ? current / max : 0;
   const tone =
     pct >= 1
@@ -35,7 +36,7 @@ export function CharCount({
   return (
     <span className={cn("text-xs tabular-nums", tone, className)}>
       {current} / {max}
-      {publishMin ? ` · min ${publishMin} to publish` : ""}
+      {publishMin ? ` · ${t("minToPublish", { n: publishMin })}` : ""}
     </span>
   );
 }

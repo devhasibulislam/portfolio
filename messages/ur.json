@@ -356,7 +356,8 @@
         "name": "نام",
         "thisCantBeUndone": "اسے واپس نہیں کیا جا سکتا۔",
         "change": "تبدیل",
-        "optional": "(اختیاری)"
+        "optional": "(اختیاری)",
+        "minToPublish": "شائع کرنے کے لیے کم از کم {n}"
       },
       "post": {
         "title": "عنوان",

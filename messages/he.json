@@ -356,7 +356,8 @@
         "name": "שם",
         "thisCantBeUndone": "לא ניתן לבטל פעולה זו.",
         "change": "החלף",
-        "optional": "(אופציונלי)"
+        "optional": "(אופציונלי)",
+        "minToPublish": "מינימום {n} לפרסום"
       },
       "post": {
         "title": "כותרת",

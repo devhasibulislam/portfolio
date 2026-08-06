@@ -356,7 +356,8 @@
         "name": "الاسم",
         "thisCantBeUndone": "لا يمكن التراجع عن هذا.",
         "change": "تغيير",
-        "optional": "(اختياري)"
+        "optional": "(اختياري)",
+        "minToPublish": "الحد الأدنى {n} للنشر"
       },
       "post": {
         "title": "العنوان",

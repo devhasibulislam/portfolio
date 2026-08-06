@@ -356,7 +356,8 @@
         "name": "Name",
         "thisCantBeUndone": "This can't be undone.",
         "change": "Change",
-        "optional": "(optional)"
+        "optional": "(optional)",
+        "minToPublish": "min {n} to publish"
       },
       "post": {
         "title": "Title",
