@@ -100,6 +100,7 @@ export function ProjectsManager({
   resolveFull: (id: string) => Promise<ProjectFull | null>;
 }) {
   const t = useTranslations("actions.projects");
+  const tPage = useTranslations("dashboard.pages.projects");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ProjectRow | null>(null);
   const [fetching, startFetch] = useTransition();
@@ -139,12 +140,12 @@ export function ProjectsManager({
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-8">
       <PageHeader
-        title="Projects"
-        description="Client engagements, products, and open-source references. Featured projects surface first on the public page."
+        title={tPage("title")}
+        description={tPage("description")}
         action={
           <Button onClick={() => setEditing({ mode: "new" })}>
             <Plus className="me-1 size-4" />
-            New project
+            {tPage("newButton")}
           </Button>
         }
       />
@@ -152,9 +153,7 @@ export function ProjectsManager({
       {rows.length === 0 ? (
         <div className="rounded-md border border-dashed p-10 text-center">
           <p className="text-muted-foreground text-sm">
-            No projects yet. Click{" "}
-            <span className="text-foreground font-medium">New project</span> to
-            add your first one.
+            {tPage("empty", { newButton: tPage("newButton") })}
           </p>
         </div>
       ) : (
@@ -234,7 +233,7 @@ export function ProjectsManager({
       <ConfirmDeleteDialog
         open={confirmDelete !== null}
         onOpenChange={(open) => !open && setConfirmDelete(null)}
-        title="Delete project?"
+        title={tPage("deleteDialogTitle")}
         description={
           <>
             &quot;{confirmDelete?.title}&quot; will be permanently removed.
@@ -304,6 +303,7 @@ function ProjectDialogForm({
   onSave: (fd: FormData) => void;
   pending: boolean;
 }) {
+  const tPage = useTranslations("dashboard.pages.projects");
   const [title, setTitle] = useState(full?.title ?? "");
   const [slug, setSlug] = useState(full?.slug ?? "");
   const [slugDirty, setSlugDirty] = useState(false);
@@ -340,7 +340,7 @@ function ProjectDialogForm({
       }}
     >
       <DialogHeader>
-        <DialogTitle>{full ? "Edit project" : "New project"}</DialogTitle>
+        <DialogTitle>{full ? tPage("editDialogEdit") : tPage("editDialogNew")}</DialogTitle>
         <DialogDescription>
           Set draft to save without publishing. Cover image required to publish.
         </DialogDescription>
@@ -529,8 +529,7 @@ function ProjectDialogForm({
         >
           {links.length === 0 ? (
             <p className="text-muted-foreground text-sm">
-              No links yet. Add website, case study, GitHub, or store links.
-              Kind drives the icon automatically.
+              {tPage("linksEmpty")}
             </p>
           ) : (
             <ul className="flex flex-col gap-2">

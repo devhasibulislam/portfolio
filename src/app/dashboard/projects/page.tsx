@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { ProjectsManager } from "@/components/dashboard/projects-manager";
 import { listMedia } from "@/lib/db/queries/media";
 import {
@@ -5,7 +7,10 @@ import {
   listProjectsForDashboard,
 } from "@/lib/db/queries/projects";
 
-export const metadata = { title: "Projects" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("dashboard.nav.items");
+  return { title: t("projects") };
+}
 
 // Server action passed down to the client manager — lets the edit dialog
 // hydrate a single row's full body + links on demand, keeping the list

@@ -264,7 +264,78 @@
         "media": "رفعات Cloudinary مُعاد استخدامها بين المنشورات."
       }
     },
-    "neonRefreshed": "تم تحديث تحليلات Neon"
+    "neonRefreshed": "تم تحديث تحليلات Neon",
+    "common": {
+      "new": "جديد",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "cancel": "إلغاء",
+      "save": "حفظ التغييرات",
+      "create": "إنشاء",
+      "saving": "جارٍ الحفظ…"
+    },
+    "pages": {
+      "posts": {
+        "title": "المنشورات",
+        "description": "المسودات مخفية. المنشورات المنشورة تظهر في المدونة العامة.",
+        "newButton": "منشور جديد",
+        "empty": "لا توجد منشورات بعد. انقر على {newButton}.",
+        "deleteDialogTitle": "حذف «{title}»؟",
+        "deleteDialogDescription": "هذا يحذف المنشور وروابط الوسوم. صورة الغلاف تبقى في مكتبة الوسائط."
+      },
+      "projects": {
+        "title": "المشاريع",
+        "description": "مشاريع العملاء والمنتجات ومراجع مفتوحة المصدر. المشاريع المميزة تظهر أولاً في الصفحة العامة.",
+        "newButton": "مشروع جديد",
+        "empty": "لا توجد مشاريع بعد. انقر على {newButton} للإضافة.",
+        "editDialogNew": "مشروع جديد",
+        "editDialogEdit": "تعديل المشروع",
+        "deleteDialogTitle": "حذف المشروع؟",
+        "linksEmpty": "لا توجد روابط بعد. أضف موقعًا أو دراسة حالة أو GitHub أو روابط المتاجر."
+      },
+      "experience": {
+        "title": "الخبرات",
+        "description": "صف واحد لكل دور. الترقيات تشترك في مُعرِّف الشركة وتُجمَّع في الصفحة العامة.",
+        "newButton": "دور جديد",
+        "empty": "لا توجد أدوار بعد. انقر على {newButton} للإضافة.",
+        "editDialogNew": "دور جديد",
+        "editDialogEdit": "تعديل الدور",
+        "deleteDialogTitle": "حذف الدور؟"
+      },
+      "skills": {
+        "title": "المهارات",
+        "description": "مُجمَّعة حسب أقسام السيرة الذاتية. ترتيب العرض يحدد مكان كل صف داخل مجموعته.",
+        "newButton": "مهارة جديدة",
+        "empty": "لا توجد مهارات بعد. انقر على {newButton} للإضافة.",
+        "editDialogNew": "مهارة جديدة",
+        "editDialogEdit": "تعديل المهارة",
+        "deleteDialogTitle": "حذف المهارة؟"
+      },
+      "resume": {
+        "title": "السيرة الذاتية",
+        "description": "ارفع ملف PDF جديد؛ اختر الملف المقدَّم في /resume.",
+        "uploadButton": "رفع PDF",
+        "uploading": "جارٍ الرفع…",
+        "empty": "لا توجد سير ذاتية بعد. انقر على {uploadButton}."
+      },
+      "categories": {
+        "subtitle": "واحدة لكل منشور. حذف تصنيف مستخدم في منشور غير مسموح."
+      },
+      "tags": {
+        "subtitle": "جمّع المنشورات حسب الموضوع. يُنصح بـ 5 إلى 8 لكل منشور."
+      },
+      "media": {
+        "title": "الوسائط",
+        "description": "أغلفة المنشورات. الحد الأقصى 1 ميجابايت، تُقص إلى 1.91:1 (1200×630) عند التوصيل.",
+        "uploadButton": "رفع",
+        "filterAll": "الكل",
+        "filterInUse": "مستخدم",
+        "filterUnused": "غير مستخدم",
+        "empty": "لا توجد وسائط بعد. انقر على {uploadButton}.",
+        "noneMatch": "لا شيء يطابق هذا الفلتر.",
+        "inUseBadge": "مستخدم"
+      }
+    }
   },
   "login": {
     "title": "تسجيل الدخول",

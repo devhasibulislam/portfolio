@@ -30,6 +30,7 @@ type Filter = "all" | "in-use" | "unused";
 
 export function MediaGrid({ rows }: { rows: MediaRow[] }) {
   const router = useRouter();
+  const tPage = useTranslations("dashboard.pages.media");
   const [filter, setFilter] = useState<Filter>("all");
   const [confirmDelete, setConfirmDelete] = useState<MediaRow | null>(null);
   const [uploadOpen, setUploadOpen] = useState(false);
@@ -45,23 +46,25 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
     <div className="mx-auto w-full max-w-6xl px-6 py-8">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Media</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {tPage("title")}
+          </h1>
           <p className="text-muted-foreground text-sm">
-            Post covers. 1MB max, cropped to 1.91:1 (1200×630) on delivery.
+            {tPage("description")}
           </p>
         </div>
 
         <div className="flex items-center gap-2">
           <Tabs value={filter} onValueChange={(v) => setFilter(v as Filter)}>
             <TabsList>
-              <TabsTrigger value="all">All</TabsTrigger>
-              <TabsTrigger value="in-use">In use</TabsTrigger>
-              <TabsTrigger value="unused">Unused</TabsTrigger>
+              <TabsTrigger value="all">{tPage("filterAll")}</TabsTrigger>
+              <TabsTrigger value="in-use">{tPage("filterInUse")}</TabsTrigger>
+              <TabsTrigger value="unused">{tPage("filterUnused")}</TabsTrigger>
             </TabsList>
           </Tabs>
           <Button onClick={() => setUploadOpen(true)}>
             <Upload className="me-1 size-4" />
-            Upload
+            {tPage("uploadButton")}
           </Button>
         </div>
       </div>
@@ -69,8 +72,8 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
       {filtered.length === 0 ? (
         <div className="text-muted-foreground rounded-lg border py-16 text-center">
           {rows.length === 0
-            ? "No media yet. Click Upload."
-            : "Nothing matches this filter."}
+            ? tPage("empty", { uploadButton: tPage("uploadButton") })
+            : tPage("noneMatch")}
         </div>
       ) : (
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -96,7 +99,7 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
                 />
                 {m.inUse ? (
                   <span className="bg-primary text-primary-foreground absolute start-2 top-2 rounded-md px-2 py-0.5 text-xs font-medium">
-                    In use
+                    {tPage("inUseBadge")}
                   </span>
                 ) : null}
               </button>

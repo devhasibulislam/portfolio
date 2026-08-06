@@ -25,6 +25,7 @@ import {
 export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
   const router = useRouter();
   const t = useTranslations("actions.resume");
+  const tPage = useTranslations("dashboard.pages.resume");
   const [confirmDelete, setConfirmDelete] = useState<ResumeRow | null>(null);
   const [uploading, startUpload] = useTransition();
   const activate = useAction(setActiveResume);
@@ -113,12 +114,8 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-8">
       <PageHeader
-        title="Resume"
-        description={
-          <>
-            Upload a new PDF; pick the one served at <code>/resume</code>.
-          </>
-        }
+        title={tPage("title")}
+        description={tPage("description")}
         className="mb-6"
         action={
           <>
@@ -138,7 +135,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
               disabled={pending}
             >
               <Upload className="me-1 size-4" />
-              {pending ? "Uploading…" : "Upload PDF"}
+              {pending ? tPage("uploading") : tPage("uploadButton")}
             </Button>
           </>
         }
@@ -146,7 +143,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
 
       {rows.length === 0 ? (
         <div className="text-muted-foreground rounded-lg border py-16 text-center">
-          No resumes yet. Click <strong>Upload PDF</strong>.
+          {tPage("empty", { uploadButton: tPage("uploadButton") })}
         </div>
       ) : (
         <ul className="flex flex-col gap-2">

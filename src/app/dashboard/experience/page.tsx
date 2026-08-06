@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { ExperienceManager } from "@/components/dashboard/experience-manager";
 import { listMedia } from "@/lib/db/queries/media";
 import {
@@ -5,7 +7,10 @@ import {
   listExperienceForDashboard,
 } from "@/lib/db/queries/experience";
 
-export const metadata = { title: "Experience" };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("dashboard.nav.items");
+  return { title: t("experience") };
+}
 
 // Server action for on-demand edit hydration — same pattern as Projects.
 async function resolveFull(id: string) {

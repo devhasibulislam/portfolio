@@ -73,6 +73,7 @@ export function SkillsManager({
   mediaOptions: MediaOption[];
 }) {
   const t = useTranslations("actions.skills");
+  const tPage = useTranslations("dashboard.pages.skills");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<SkillRow | null>(null);
   const save = useAction(saveSkill);
@@ -106,12 +107,12 @@ export function SkillsManager({
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-8">
       <PageHeader
-        title="Skills"
-        description="Grouped by resume section. Display order controls where each row appears within its group."
+        title={tPage("title")}
+        description={tPage("description")}
         action={
           <Button onClick={() => setEditing({ mode: "new" })}>
             <Plus className="me-1 size-4" />
-            New skill
+            {tPage("newButton")}
           </Button>
         }
       />
@@ -119,9 +120,7 @@ export function SkillsManager({
       {rows.length === 0 ? (
         <div className="rounded-md border border-dashed p-10 text-center">
           <p className="text-muted-foreground text-sm">
-            No skills yet. Click{" "}
-            <span className="text-foreground font-medium">New skill</span> to
-            add your first one.
+            {tPage("empty", { newButton: tPage("newButton") })}
           </p>
         </div>
       ) : (
@@ -212,7 +211,7 @@ export function SkillsManager({
       <ConfirmDeleteDialog
         open={confirmDelete !== null}
         onOpenChange={(open) => !open && setConfirmDelete(null)}
-        title="Delete skill?"
+        title={tPage("deleteDialogTitle")}
         description={
           <>&quot;{confirmDelete?.name}&quot; will be permanently removed.</>
         }
@@ -279,6 +278,7 @@ function SkillDialogBody({
   onSave: (fd: FormData) => void;
   pending: boolean;
 }) {
+  const tPage = useTranslations("dashboard.pages.skills");
   // Local state for auto-slug + icon picker. Initialised once per keyed
   // mount, so switching rows always re-reads defaults.
   const [name, setName] = useState(row?.name ?? "");
@@ -295,7 +295,7 @@ function SkillDialogBody({
       }}
     >
       <DialogHeader>
-        <DialogTitle>{row ? "Edit skill" : "New skill"}</DialogTitle>
+        <DialogTitle>{row ? tPage("editDialogEdit") : tPage("editDialogNew")}</DialogTitle>
         <DialogDescription>
           Skills group by resume section on the public page.
         </DialogDescription>

@@ -264,7 +264,78 @@
         "media": "העלאות Cloudinary לשימוש חוזר בפוסטים."
       }
     },
-    "neonRefreshed": "אנליטיקת Neon רועננה"
+    "neonRefreshed": "אנליטיקת Neon רועננה",
+    "common": {
+      "new": "חדש",
+      "edit": "עריכה",
+      "delete": "מחיקה",
+      "cancel": "ביטול",
+      "save": "שמור שינויים",
+      "create": "צור",
+      "saving": "שומר…"
+    },
+    "pages": {
+      "posts": {
+        "title": "פוסטים",
+        "description": "טיוטות מוסתרות. פוסטים שפורסמו מוצגים בבלוג הציבורי.",
+        "newButton": "פוסט חדש",
+        "empty": "אין פוסטים עדיין. לחץ על {newButton}.",
+        "deleteDialogTitle": "למחוק את \"{title}\"?",
+        "deleteDialogDescription": "פעולה זו מוחקת את הפוסט ואת קישורי התגיות. תמונת השער נשארת בספריית המדיה."
+      },
+      "projects": {
+        "title": "פרויקטים",
+        "description": "פרויקטים ללקוחות, מוצרים והפניות קוד פתוח. פרויקטים מומלצים מופיעים ראשונים בעמוד הציבורי.",
+        "newButton": "פרויקט חדש",
+        "empty": "אין פרויקטים עדיין. לחץ על {newButton} כדי להוסיף.",
+        "editDialogNew": "פרויקט חדש",
+        "editDialogEdit": "עריכת פרויקט",
+        "deleteDialogTitle": "למחוק את הפרויקט?",
+        "linksEmpty": "אין קישורים עדיין. הוסף אתר, מחקר מקרה, GitHub או קישורי חנות."
+      },
+      "experience": {
+        "title": "ניסיון",
+        "description": "שורה אחת לכל תפקיד. קידומים חולקים אותו מזהה חברה ומקובצים בעמוד הציבורי.",
+        "newButton": "תפקיד חדש",
+        "empty": "אין תפקידים עדיין. לחץ על {newButton} כדי להוסיף.",
+        "editDialogNew": "תפקיד חדש",
+        "editDialogEdit": "עריכת תפקיד",
+        "deleteDialogTitle": "למחוק את התפקיד?"
+      },
+      "skills": {
+        "title": "מיומנויות",
+        "description": "מקובצות לפי חלקי קורות החיים. סדר התצוגה קובע היכן כל שורה מופיעה בקבוצתה.",
+        "newButton": "מיומנות חדשה",
+        "empty": "אין מיומנויות עדיין. לחץ על {newButton} כדי להוסיף.",
+        "editDialogNew": "מיומנות חדשה",
+        "editDialogEdit": "עריכת מיומנות",
+        "deleteDialogTitle": "למחוק את המיומנות?"
+      },
+      "resume": {
+        "title": "קורות חיים",
+        "description": "העלה PDF חדש; בחר את זה שיוגש ב‑/resume.",
+        "uploadButton": "העלאת PDF",
+        "uploading": "מעלה…",
+        "empty": "אין קורות חיים עדיין. לחץ על {uploadButton}."
+      },
+      "categories": {
+        "subtitle": "אחת לכל פוסט. מחיקת קטגוריה שנעשה בה שימוש בפוסט חסומה."
+      },
+      "tags": {
+        "subtitle": "קבץ פוסטים לפי נושא. מומלץ 5 עד 8 לפוסט."
+      },
+      "media": {
+        "title": "מדיה",
+        "description": "כריכות פוסטים. מקסימום 1MB, נחתך ל‑1.91:1 (1200×630) במסירה.",
+        "uploadButton": "העלאה",
+        "filterAll": "הכל",
+        "filterInUse": "בשימוש",
+        "filterUnused": "לא בשימוש",
+        "empty": "אין מדיה עדיין. לחץ על {uploadButton}.",
+        "noneMatch": "שום דבר לא תואם את המסנן.",
+        "inUseBadge": "בשימוש"
+      }
+    }
   },
   "login": {
     "title": "התחברות",

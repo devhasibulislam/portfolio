@@ -85,6 +85,7 @@ export function ExperienceManager({
   resolveFull: (id: string) => Promise<ExperienceFull | null>;
 }) {
   const t = useTranslations("actions.experience");
+  const tPage = useTranslations("dashboard.pages.experience");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ExperienceRow | null>(
     null,
@@ -126,12 +127,12 @@ export function ExperienceManager({
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-8">
       <PageHeader
-        title="Experience"
-        description="One row per role. Promotions share a company slug and group on the public page."
+        title={tPage("title")}
+        description={tPage("description")}
         action={
           <Button onClick={() => setEditing({ mode: "new" })}>
             <Plus className="me-1 size-4" />
-            New role
+            {tPage("newButton")}
           </Button>
         }
       />
@@ -139,9 +140,7 @@ export function ExperienceManager({
       {rows.length === 0 ? (
         <div className="rounded-md border border-dashed p-10 text-center">
           <p className="text-muted-foreground text-sm">
-            No roles yet. Click{" "}
-            <span className="text-foreground font-medium">New role</span> to add
-            your first one.
+            {tPage("empty", { newButton: tPage("newButton") })}
           </p>
         </div>
       ) : (
@@ -224,7 +223,7 @@ export function ExperienceManager({
       <ConfirmDeleteDialog
         open={confirmDelete !== null}
         onOpenChange={(open) => !open && setConfirmDelete(null)}
-        title="Delete role?"
+        title={tPage("deleteDialogTitle")}
         description={
           <>
             {confirmDelete?.role} at {confirmDelete?.company} will be
@@ -305,6 +304,7 @@ function ExperienceDialogForm({
   onSave: (fd: FormData) => void;
   pending: boolean;
 }) {
+  const tPage = useTranslations("dashboard.pages.experience");
   const [company, setCompany] = useState(full?.company ?? "");
   const [companySlug, setCompanySlug] = useState(full?.companySlug ?? "");
   const [companySlugDirty, setCompanySlugDirty] = useState(false);
@@ -338,7 +338,7 @@ function ExperienceDialogForm({
       }}
     >
       <DialogHeader>
-        <DialogTitle>{full ? "Edit role" : "New role"}</DialogTitle>
+        <DialogTitle>{full ? tPage("editDialogEdit") : tPage("editDialogNew")}</DialogTitle>
         <DialogDescription>
           One row per role. A promotion at the same company shares a company
           slug so the public page groups them.

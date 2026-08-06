@@ -264,7 +264,78 @@
         "media": "Cloudinary uploads reused across posts."
       }
     },
-    "neonRefreshed": "Neon analytics refreshed"
+    "neonRefreshed": "Neon analytics refreshed",
+    "common": {
+      "new": "New",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "save": "Save changes",
+      "create": "Create",
+      "saving": "Saving…"
+    },
+    "pages": {
+      "posts": {
+        "title": "Posts",
+        "description": "Drafts stay hidden. Published shows on the public blog.",
+        "newButton": "New post",
+        "empty": "No posts yet. Click {newButton}.",
+        "deleteDialogTitle": "Delete \"{title}\"?",
+        "deleteDialogDescription": "This deletes the post and its tag links. Cover image stays in the media library."
+      },
+      "projects": {
+        "title": "Projects",
+        "description": "Client engagements, products, and open-source references. Featured projects surface first on the public page.",
+        "newButton": "New project",
+        "empty": "No projects yet. Click {newButton} to add.",
+        "editDialogNew": "New project",
+        "editDialogEdit": "Edit project",
+        "deleteDialogTitle": "Delete project?",
+        "linksEmpty": "No links yet. Add website, case study, GitHub, or store links."
+      },
+      "experience": {
+        "title": "Experience",
+        "description": "One row per role. Promotions share a company slug and group on the public page.",
+        "newButton": "New role",
+        "empty": "No roles yet. Click {newButton} to add.",
+        "editDialogNew": "New role",
+        "editDialogEdit": "Edit role",
+        "deleteDialogTitle": "Delete role?"
+      },
+      "skills": {
+        "title": "Skills",
+        "description": "Grouped by resume section. Display order controls where each row appears within its group.",
+        "newButton": "New skill",
+        "empty": "No skills yet. Click {newButton} to add.",
+        "editDialogNew": "New skill",
+        "editDialogEdit": "Edit skill",
+        "deleteDialogTitle": "Delete skill?"
+      },
+      "resume": {
+        "title": "Resume",
+        "description": "Upload a new PDF; pick the one served at /resume.",
+        "uploadButton": "Upload PDF",
+        "uploading": "Uploading…",
+        "empty": "No resumes yet. Click {uploadButton}."
+      },
+      "categories": {
+        "subtitle": "One per post. Deleting one used by a post is blocked."
+      },
+      "tags": {
+        "subtitle": "Group posts by topic. 5 to 8 per post recommended."
+      },
+      "media": {
+        "title": "Media",
+        "description": "Post covers. 1MB max, cropped to 1.91:1 (1200×630) on delivery.",
+        "uploadButton": "Upload",
+        "filterAll": "All",
+        "filterInUse": "In use",
+        "filterUnused": "Unused",
+        "empty": "No media yet. Click {uploadButton}.",
+        "noneMatch": "Nothing matches this filter.",
+        "inUseBadge": "In use"
+      }
+    }
   },
   "login": {
     "title": "Sign in",

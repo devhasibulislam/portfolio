@@ -28,6 +28,7 @@ import { deletePost, togglePostStatus } from "@/app/dashboard/posts/actions";
 
 export function PostsTable({ rows }: { rows: PostRow[] }) {
   const t = useTranslations("actions.posts");
+  const tPage = useTranslations("dashboard.pages.posts");
   const [confirmDelete, setConfirmDelete] = useState<PostRow | null>(null);
   const del = useAction(deletePost);
   const pending = del.pending;
@@ -51,7 +52,7 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
                 colSpan={5}
                 className="text-muted-foreground py-8 text-center"
               >
-                No posts yet. Click <strong>New post</strong>.
+                {tPage("empty", { newButton: tPage("newButton") })}
               </TableCell>
             </TableRow>
           ) : (
@@ -98,8 +99,8 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
       <ConfirmDeleteDialog
         open={!!confirmDelete}
         onOpenChange={(o) => !o && setConfirmDelete(null)}
-        title={<>Delete &quot;{confirmDelete?.title}&quot;?</>}
-        description="This deletes the post and its tag links. Cover image stays in the media library."
+        title={tPage("deleteDialogTitle", { title: confirmDelete?.title ?? "" })}
+        description={tPage("deleteDialogDescription")}
         pending={pending}
         destructive
         onConfirm={() => {
