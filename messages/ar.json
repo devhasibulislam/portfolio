@@ -229,5 +229,15 @@
   },
   "dashboard": {
     "signOut": "تسجيل الخروج"
+  },
+  "login": {
+    "title": "تسجيل الدخول",
+    "subtitle": "للمستخدم المصرح له فقط.",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "emailPlaceholder": "you@example.com",
+    "submit": "تسجيل الدخول",
+    "submitting": "جارٍ تسجيل الدخول…",
+    "accessDenied": "تم رفض الوصول. فقط مالك الموقع يمكنه تسجيل الدخول."
   }
 }

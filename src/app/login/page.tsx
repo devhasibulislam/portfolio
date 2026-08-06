@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import {
   Card,
   CardContent,
@@ -7,10 +9,13 @@ import {
 } from "@/components/ui/card";
 import { LoginForm } from "./login-form";
 
-export const metadata = {
-  robots: { index: false, follow: false },
-  title: "Sign in",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("login");
+  return {
+    robots: { index: false, follow: false },
+    title: t("title"),
+  };
+}
 
 /**
  * Login page for the dashboard. No sign-up route, no forgot-password route.
@@ -22,13 +27,14 @@ export default async function LoginPage({
   searchParams: Promise<{ denied?: string }>;
 }) {
   const { denied } = await searchParams;
+  const t = await getTranslations("login");
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-md flex-col items-stretch justify-center px-6 py-12">
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Sign in</CardTitle>
-          <CardDescription>Authorized user only.</CardDescription>
+          <CardTitle className="text-2xl">{t("title")}</CardTitle>
+          <CardDescription>{t("subtitle")}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           {denied ? (
@@ -36,7 +42,7 @@ export default async function LoginPage({
               role="alert"
               className="rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm text-destructive"
             >
-              Access denied. Only the site owner can sign in.
+              {t("accessDenied")}
             </p>
           ) : null}
           <LoginForm />

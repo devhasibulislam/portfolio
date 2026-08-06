@@ -229,5 +229,15 @@
   },
   "dashboard": {
     "signOut": "সাইন আউট"
+  },
+  "login": {
+    "title": "সাইন ইন",
+    "subtitle": "শুধু অনুমোদিত ব্যবহারকারী।",
+    "email": "ইমেইল",
+    "password": "পাসওয়ার্ড",
+    "emailPlaceholder": "you@example.com",
+    "submit": "সাইন ইন",
+    "submitting": "সাইন ইন হচ্ছে…",
+    "accessDenied": "অ্যাক্সেস অস্বীকৃত। শুধু সাইট মালিক সাইন ইন করতে পারবেন।"
   }
 }

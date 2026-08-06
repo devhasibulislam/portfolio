@@ -229,5 +229,15 @@
   },
   "dashboard": {
     "signOut": "Sign out"
+  },
+  "login": {
+    "title": "Sign in",
+    "subtitle": "Authorized user only.",
+    "email": "Email",
+    "password": "Password",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Sign in",
+    "submitting": "Signing in…",
+    "accessDenied": "Access denied. Only the site owner can sign in."
   }
 }

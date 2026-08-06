@@ -229,5 +229,15 @@
   },
   "dashboard": {
     "signOut": "سائن آؤٹ"
+  },
+  "login": {
+    "title": "سائن اِن",
+    "subtitle": "صرف مجاز صارف کے لیے۔",
+    "email": "ای میل",
+    "password": "پاس ورڈ",
+    "emailPlaceholder": "you@example.com",
+    "submit": "سائن اِن",
+    "submitting": "سائن اِن ہو رہا ہے…",
+    "accessDenied": "رسائی مسترد۔ صرف سائٹ کا مالک سائن اِن کر سکتا ہے۔"
   }
 }

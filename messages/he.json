@@ -229,5 +229,15 @@
   },
   "dashboard": {
     "signOut": "התנתקות"
+  },
+  "login": {
+    "title": "התחברות",
+    "subtitle": "למשתמש מורשה בלבד.",
+    "email": "אימייל",
+    "password": "סיסמה",
+    "emailPlaceholder": "you@example.com",
+    "submit": "התחבר",
+    "submitting": "מתחבר…",
+    "accessDenied": "הגישה נדחתה. רק בעל האתר יכול להתחבר."
   }
 }

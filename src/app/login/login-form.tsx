@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,12 +10,13 @@ import { signInAction, type LoginState } from "./actions";
 const initial: LoginState = null;
 
 export function LoginForm() {
+  const t = useTranslations("login");
   const [state, formAction, isPending] = useActionState(signInAction, initial);
 
   return (
     <form action={formAction} className="flex flex-col gap-5">
       <div className="grid gap-2">
-        <Label htmlFor="email">Email</Label>
+        <Label htmlFor="email">{t("email")}</Label>
         <Input
           id="email"
           name="email"
@@ -22,12 +24,12 @@ export function LoginForm() {
           autoComplete="email"
           required
           autoFocus
-          placeholder="you@example.com"
+          placeholder={t("emailPlaceholder")}
         />
       </div>
 
       <div className="grid gap-2">
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password">{t("password")}</Label>
         <Input
           id="password"
           name="password"
@@ -47,7 +49,7 @@ export function LoginForm() {
       ) : null}
 
       <Button type="submit" disabled={isPending} className="w-full">
-        {isPending ? "Signing in…" : "Sign in"}
+        {isPending ? t("submitting") : t("submit")}
       </Button>
     </form>
   );
