@@ -34,7 +34,10 @@ export async function saveCategory(
         : eq(categories.slug, parsed.data.slug),
     )
     .limit(1);
-  if (existing.length) return { error: (await getTranslations("actions.categories"))("slugTaken") };
+  if (existing.length)
+    return {
+      error: (await getTranslations("actions.categories"))("slugTaken"),
+    };
 
   if (id) {
     await db

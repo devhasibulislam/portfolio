@@ -1,9 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
 /**
- * Reusable brand logo: avatar + "Hasibul Islam" wordmark. Used in the
+ * Reusable brand logo: avatar + localized name wordmark. Used in the
  * public `SiteHeader` and the dashboard `SidebarHeader`. The Avatar
  * fallback "H" renders until the photo loads, so the slot always reads
  * like an image even before the file is available.
@@ -17,6 +20,8 @@ export function BrandBadge({
   asLink?: boolean;
   className?: string;
 }) {
+  const t = useTranslations("brand");
+  const name = t("name");
   const avatarSize = size === "lg" ? "size-8" : "size-7";
   const textSize = size === "lg" ? "text-base" : "text-sm";
   const inner = (
@@ -33,7 +38,7 @@ export function BrandBadge({
         </AvatarFallback>
       </Avatar>
       <span className={cn("font-semibold tracking-tight", textSize)}>
-        Hasibul Islam
+        {name}
       </span>
     </span>
   );
@@ -42,7 +47,7 @@ export function BrandBadge({
   return (
     <Link
       href="/"
-      aria-label="Hasibul Islam, home"
+      aria-label={`${name}, home`}
       className="focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] rounded-full"
     >
       {inner}

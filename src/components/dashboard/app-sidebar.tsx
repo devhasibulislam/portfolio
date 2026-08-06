@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { LanguageSelect } from "@/components/language-select";
 import {
   Sidebar,
   SidebarContent,
@@ -23,6 +25,9 @@ import { NAV_GROUPS } from "./nav";
 // Sidebar has no props — the header is a static brand badge (avatar + name).
 export function AppSidebar() {
   const pathname = usePathname();
+  const tBrand = useTranslations("brand");
+  const tDash = useTranslations("dashboard");
+  const name = tBrand("name");
   // Close the mobile drawer after a nav click — otherwise the sheet stays
   // open, overlaying the newly-navigated route until the user dismisses it.
   const { isMobile, setOpenMobile } = useSidebar();
@@ -41,7 +46,7 @@ export function AppSidebar() {
             <SidebarMenuButton
               asChild
               size="lg"
-              tooltip="Hasibul Islam"
+              tooltip={name}
               className="gap-2 hover:bg-transparent active:bg-transparent"
             >
               <Link href="/dashboard" onClick={closeIfMobile}>
@@ -52,7 +57,7 @@ export function AppSidebar() {
                   </AvatarFallback>
                 </Avatar>
                 <span className="truncate text-base font-semibold tracking-tight">
-                  Hasibul Islam
+                  {name}
                 </span>
               </Link>
             </SidebarMenuButton>
@@ -93,6 +98,9 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter>
+        <div className="px-2 pb-2">
+          <LanguageSelect align="start" className="h-8 w-full text-xs" />
+        </div>
         <SidebarMenu>
           <SidebarMenuItem>
             {/* Use the same primitive as the nav rows so the tooltip appears
@@ -102,11 +110,11 @@ export function AppSidebar() {
             <form action={signOutAction}>
               <SidebarMenuButton
                 type="submit"
-                tooltip="Sign out"
+                tooltip={tDash("signOut")}
                 className="w-full"
               >
                 <LogOut />
-                <span>Sign out</span>
+                <span>{tDash("signOut")}</span>
               </SidebarMenuButton>
             </form>
           </SidebarMenuItem>

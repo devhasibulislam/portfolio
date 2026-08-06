@@ -48,7 +48,7 @@
   "footer": {
     "name": "حسیب الاسلام",
     "tagline": "سینئر فل-اسٹیک انجینئر۔ بیک اینڈ، LLM/RAG اور پروڈکشن Node.js۔",
-    "copyright": "© {year} حسیب الاسلام۔ Next.js سے بنایا گیا۔",
+    "copyright": "© {year} حسیب الاسلام۔ جملہ حقوق محفوظ ہیں۔",
     "langLabel": "زبان",
     "source": "سورس",
     "sourceTooltip": "جلد آ رہا ہے، اوپن سورس ہوگا",
@@ -223,5 +223,11 @@
     "neon": {
       "refreshed": "Neon تجزیات ریفریش ہو گئے"
     }
+  },
+  "brand": {
+    "name": "حسیب الاسلام"
+  },
+  "dashboard": {
+    "signOut": "سائن آؤٹ"
   }
 }

@@ -48,7 +48,7 @@
   "footer": {
     "name": "חסיבול איסלאם",
     "tagline": "מהנדס פול-סטאק בכיר. בקאנד, LLM/RAG ופרודקשן Node.js.",
-    "copyright": "© {year} חסיבול איסלאם. נבנה עם Next.js.",
+    "copyright": "© {year} חסיבול איסלאם. כל הזכויות שמורות.",
     "langLabel": "שפה",
     "source": "מקור",
     "sourceTooltip": "בקרוב, יהיה קוד פתוח",
@@ -223,5 +223,11 @@
     "neon": {
       "refreshed": "אנליטיקת Neon רועננה"
     }
+  },
+  "brand": {
+    "name": "חסיבול איסלאם"
+  },
+  "dashboard": {
+    "signOut": "התנתקות"
   }
 }

@@ -126,9 +126,7 @@ export function ProjectsManager({
         toast.error(res.error);
         return;
       }
-      toast.success(
-        editing?.mode === "edit" ? t("updated") : t("saved"),
-      );
+      toast.success(editing?.mode === "edit" ? t("updated") : t("saved"));
       setEditing(null);
       router.refresh();
     });

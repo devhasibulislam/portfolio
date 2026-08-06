@@ -190,7 +190,9 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                               toast.error(res.error);
                               return;
                             }
-                            toast.success(t("activated", { name: r.originalName }));
+                            toast.success(
+                              t("activated", { name: r.originalName }),
+                            );
                             router.refresh();
                           });
                         }}

@@ -166,7 +166,9 @@ function StatusSwitch({ row }: { row: PostRow }) {
                   return;
                 }
                 toast.success(
-                  next === "published" ? t("publishedToast") : t("draftedToast"),
+                  next === "published"
+                    ? t("publishedToast")
+                    : t("draftedToast"),
                 );
                 router.refresh();
               });

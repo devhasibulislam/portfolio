@@ -53,7 +53,8 @@ export async function saveSkill(
         : eq(skills.slug, parsed.data.slug),
     )
     .limit(1);
-  if (clash.length) return { error: (await getTranslations("actions.skills"))("slugTaken") };
+  if (clash.length)
+    return { error: (await getTranslations("actions.skills"))("slugTaken") };
 
   if (id) {
     await db

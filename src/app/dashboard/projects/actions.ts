@@ -35,7 +35,9 @@ function parseBodyJson(raw: string): Record<string, unknown> {
 // Best-effort host check for App Store / Play Store links so a mistyped
 // URL surfaces before it hits the public site. Soft errors only — Zod
 // still enforces valid URL shape.
-async function validateLinkHosts(links: ProjectLinkInput[]): Promise<string | null> {
+async function validateLinkHosts(
+  links: ProjectLinkInput[],
+): Promise<string | null> {
   const t = await getTranslations("actions.projects");
   for (const l of links) {
     try {
@@ -127,7 +129,8 @@ export async function saveProject(
         : eq(projects.slug, parsed.data.slug),
     )
     .limit(1);
-  if (clash.length) return { error: (await getTranslations("actions.projects"))("slugTaken") };
+  if (clash.length)
+    return { error: (await getTranslations("actions.projects"))("slugTaken") };
 
   // MVP: tagIds is parsed for schema compat but not persisted yet — projects
   // tag picker will land with the tags.kind='tech' UI in a follow-up.

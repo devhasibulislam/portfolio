@@ -48,7 +48,7 @@
   "footer": {
     "name": "حسيب الإسلام",
     "tagline": "مهندس برمجيات كامل. الخلفية وLLM/RAG وإنتاج Node.js.",
-    "copyright": "© {year} حسيب الإسلام. مبني بـ Next.js.",
+    "copyright": "© {year} حسيب الإسلام. جميع الحقوق محفوظة.",
     "langLabel": "اللغة",
     "source": "المصدر",
     "sourceTooltip": "قريبًا، سيصبح مفتوح المصدر",
@@ -223,5 +223,11 @@
     "neon": {
       "refreshed": "تم تحديث تحليلات Neon"
     }
+  },
+  "brand": {
+    "name": "حسيب الإسلام"
+  },
+  "dashboard": {
+    "signOut": "تسجيل الخروج"
   }
 }

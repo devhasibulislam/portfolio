@@ -32,7 +32,8 @@ export async function saveTag(
         : eq(tags.slug, parsed.data.slug),
     )
     .limit(1);
-  if (existing.length) return { error: (await getTranslations("actions.tags"))("slugTaken") };
+  if (existing.length)
+    return { error: (await getTranslations("actions.tags"))("slugTaken") };
 
   if (id) {
     await db

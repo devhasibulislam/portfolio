@@ -48,7 +48,7 @@
   "footer": {
     "name": "Hasibul Islam",
     "tagline": "Senior full-stack engineer. Backend, LLM/RAG, and production Node.js.",
-    "copyright": "© {year} Hasibul Islam. Built with Next.js.",
+    "copyright": "© {year} Hasibul Islam. All rights reserved.",
     "langLabel": "Language",
     "source": "Source",
     "sourceTooltip": "Coming soon, going open source",
@@ -223,5 +223,11 @@
     "neon": {
       "refreshed": "Neon analytics refreshed"
     }
+  },
+  "brand": {
+    "name": "Hasibul Islam"
+  },
+  "dashboard": {
+    "signOut": "Sign out"
   }
 }

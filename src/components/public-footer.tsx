@@ -1,6 +1,5 @@
 "use client";
 
-import { useTransition } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { Lock } from "lucide-react";
@@ -10,24 +9,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { LOCALES, type Locale } from "@/lib/i18n/config";
-import { setLocaleAction } from "@/lib/i18n/actions";
-import { useLocale, useTranslations } from "next-intl";
-
-const LOCALE_LABEL: Record<Locale, string> = {
-  en: "English",
-  bn: "বাংলা",
-  ar: "العربية",
-  ur: "اردو",
-  he: "עברית",
-};
+import { LanguageSelect } from "@/components/language-select";
+import { useTranslations } from "next-intl";
 
 // Social channels — labels come from i18n so tooltips + aria-labels swap
 // language with the site chrome.
@@ -76,8 +59,6 @@ const SOCIALS: {
 export function PublicFooter() {
   const pathname = usePathname();
   const isPublic = pathname !== "/login" && !pathname.startsWith("/dashboard");
-  const locale = useLocale() as Locale;
-  const [switching, startSwitching] = useTransition();
   const t = useTranslations("footer");
   if (!isPublic) return null;
 
@@ -132,30 +113,7 @@ export function PublicFooter() {
             {t("copyright", { year })}
           </p>
           <div className="flex items-center gap-4">
-            <Select
-              value={locale}
-              disabled={switching}
-              onValueChange={(next) =>
-                startSwitching(async () => {
-                  await setLocaleAction(next as Locale);
-                })
-              }
-            >
-              <SelectTrigger
-                size="sm"
-                aria-label={t("langLabel")}
-                className="h-8 min-w-28 text-xs"
-              >
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent align="end">
-                {LOCALES.map((l) => (
-                  <SelectItem key={l} value={l} className="text-xs">
-                    {LOCALE_LABEL[l]}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <LanguageSelect />
             <TooltipProvider delayDuration={150}>
               <Tooltip>
                 <TooltipTrigger asChild>
