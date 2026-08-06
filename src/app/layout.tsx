@@ -10,6 +10,8 @@ import { SiteHeader } from "@/components/site-header";
 import { PublicFloatingActions } from "@/components/public-floating-actions";
 import { PublicFooter } from "@/components/public-footer";
 import { TopProgressBar } from "@/components/top-progress-bar";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -197,6 +199,8 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <LocalizedShell>{children}</LocalizedShell>
         </Suspense>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
