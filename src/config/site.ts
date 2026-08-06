@@ -48,6 +48,12 @@ export const SITE_CONFIG = {
   },
 
   /**
+   * Public source-code repository. Rendered as the "Source" link in the
+   * public footer. Leave empty to hide the link entirely.
+   */
+  sourceRepo: "https://github.com/devhasibulislam/portfolio",
+
+  /**
    * Brand assets. All paths are relative to the `public/` root — drop
    * new files in place with the same names to swap.
    */

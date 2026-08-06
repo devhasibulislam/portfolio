@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { Lock } from "lucide-react";
+import { ExternalLink, Lock } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -99,15 +99,27 @@ export function PublicFooter() {
             <TooltipProvider delayDuration={150}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button
-                    type="button"
-                    disabled
-                    aria-disabled="true"
-                    className="text-muted-foreground inline-flex cursor-not-allowed items-center gap-1 text-xs"
-                  >
-                    {t("source")}
-                    <Lock className="size-3.5" aria-hidden />
-                  </button>
+                  {SITE_CONFIG.sourceRepo ? (
+                    <a
+                      href={SITE_CONFIG.sourceRepo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-xs underline-offset-2 hover:underline"
+                    >
+                      {t("source")}
+                      <ExternalLink className="size-3.5" aria-hidden />
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      aria-disabled="true"
+                      className="text-muted-foreground inline-flex cursor-not-allowed items-center gap-1 text-xs"
+                    >
+                      {t("source")}
+                      <Lock className="size-3.5" aria-hidden />
+                    </button>
+                  )}
                 </TooltipTrigger>
                 <TooltipContent side="top" sideOffset={6}>
                   {t("sourceTooltip")}
