@@ -295,7 +295,9 @@ function SkillDialogBody({
       }}
     >
       <DialogHeader>
-        <DialogTitle>{row ? tPage("editDialogEdit") : tPage("editDialogNew")}</DialogTitle>
+        <DialogTitle>
+          {row ? tPage("editDialogEdit") : tPage("editDialogNew")}
+        </DialogTitle>
         <DialogDescription>
           Skills group by resume section on the public page.
         </DialogDescription>

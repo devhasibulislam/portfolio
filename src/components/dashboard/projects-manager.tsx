@@ -340,7 +340,9 @@ function ProjectDialogForm({
       }}
     >
       <DialogHeader>
-        <DialogTitle>{full ? tPage("editDialogEdit") : tPage("editDialogNew")}</DialogTitle>
+        <DialogTitle>
+          {full ? tPage("editDialogEdit") : tPage("editDialogNew")}
+        </DialogTitle>
         <DialogDescription>
           Set draft to save without publishing. Cover image required to publish.
         </DialogDescription>

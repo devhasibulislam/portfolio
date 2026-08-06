@@ -99,7 +99,9 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
       <ConfirmDeleteDialog
         open={!!confirmDelete}
         onOpenChange={(o) => !o && setConfirmDelete(null)}
-        title={tPage("deleteDialogTitle", { title: confirmDelete?.title ?? "" })}
+        title={tPage("deleteDialogTitle", {
+          title: confirmDelete?.title ?? "",
+        })}
         description={tPage("deleteDialogDescription")}
         pending={pending}
         destructive

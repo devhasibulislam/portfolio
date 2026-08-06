@@ -338,7 +338,9 @@ function ExperienceDialogForm({
       }}
     >
       <DialogHeader>
-        <DialogTitle>{full ? tPage("editDialogEdit") : tPage("editDialogNew")}</DialogTitle>
+        <DialogTitle>
+          {full ? tPage("editDialogEdit") : tPage("editDialogNew")}
+        </DialogTitle>
         <DialogDescription>
           One row per role. A promotion at the same company shares a company
           slug so the public page groups them.
