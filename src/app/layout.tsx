@@ -9,6 +9,7 @@ import { DEFAULT_THEME, THEME_COOKIE } from "@/lib/theme/cookies";
 import { SiteHeader } from "@/components/site-header";
 import { PublicFloatingActions } from "@/components/public-floating-actions";
 import { PublicFooter } from "@/components/public-footer";
+import { TopProgressBar } from "@/components/top-progress-bar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -83,6 +84,7 @@ async function LocalizedShell({ children }: { children: React.ReactNode }) {
   const [locale, messages] = await Promise.all([getLocale(), getMessages()]);
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <TopProgressBar />
       {/* Sticky-footer shell: min-h-svh flex column keeps the footer glued to
           the viewport bottom when the page content is shorter than the
           viewport, and lets it flow naturally below content when longer. */}
