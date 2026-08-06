@@ -54,8 +54,7 @@ export function CountedInput(props: CountedInputProps) {
   const [uncontrolledLen, setUncontrolledLen] = useState(
     String(defaultValue ?? "").length,
   );
-  const len =
-    value !== undefined ? String(value).length : uncontrolledLen;
+  const len = value !== undefined ? String(value).length : uncontrolledLen;
 
   return (
     <div className="flex flex-col gap-1">
@@ -84,8 +83,7 @@ export function CountedTextarea(props: CountedTextareaProps) {
   const [uncontrolledLen, setUncontrolledLen] = useState(
     String(defaultValue ?? "").length,
   );
-  const len =
-    value !== undefined ? String(value).length : uncontrolledLen;
+  const len = value !== undefined ? String(value).length : uncontrolledLen;
 
   return (
     <div className="flex flex-col gap-1">

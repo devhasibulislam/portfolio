@@ -82,10 +82,10 @@ export function TopProgressBar() {
   return (
     <div
       aria-hidden
-      className={`pointer-events-none fixed inset-x-0 top-0 z-[100] h-0.5 transition-opacity duration-300 ${opacityClass}`}
+      className={`pointer-events-none fixed inset-x-0 top-0 z-[100] h-[3px] transition-opacity duration-300 ${opacityClass}`}
     >
       <div
-        className={`bg-accent h-full transition-[width] ${speedClass} ${widthClass}`}
+        className={`bg-primary h-full shadow-[0_0_10px_var(--color-brand-highlight)] transition-[width] ${speedClass} ${widthClass}`}
       />
     </div>
   );
