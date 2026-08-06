@@ -328,9 +328,7 @@ function UploadTab({
         dragging ? "border-primary bg-primary/5" : "border-input"
       }`}
     >
-      <p className="text-muted-foreground text-sm">
-        {tPicker("dropHint")}
-      </p>
+      <p className="text-muted-foreground text-sm">{tPicker("dropHint")}</p>
       <input
         ref={inputRef}
         type="file"
