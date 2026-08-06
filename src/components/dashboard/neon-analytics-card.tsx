@@ -30,6 +30,7 @@ import { refreshNeonAnalytics } from "@/app/dashboard/neon-actions";
 export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
   const router = useRouter();
   const t = useTranslations("dashboard");
+  const tN = useTranslations("dashboard.neon");
   const [pending, startTransition] = useTransition();
 
   const onRefresh = () =>
@@ -45,11 +46,11 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
         <div className="flex items-start gap-3">
           <Database className="text-muted-foreground mt-0.5 size-4" />
           <div>
-            <h3 className="text-sm font-semibold">Neon analytics</h3>
-            <p className="text-muted-foreground mt-1 text-sm">
-              Set <code>NEON_API_KEY</code> and <code>NEON_PROJECT_ID</code> in{" "}
-              <code>.env.local</code> to enable the live database stats widget.
-            </p>
+            <h3 className="text-sm font-semibold">{tN("title")}</h3>
+            <p
+              className="text-muted-foreground mt-1 text-sm"
+              dangerouslySetInnerHTML={{ __html: tN("notConfigured") }}
+            />
           </div>
         </div>
       </Card>
@@ -62,7 +63,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
         <div className="flex items-start gap-3">
           <AlertCircle className="text-destructive mt-0.5 size-4" />
           <div className="flex-1">
-            <h3 className="text-sm font-semibold">Neon analytics</h3>
+            <h3 className="text-sm font-semibold">{tN("title")}</h3>
             <p className="text-muted-foreground mt-1 text-sm break-all">
               {data.error}
             </p>
@@ -76,7 +77,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
             <RefreshCw
               className={`me-1 size-3.5 ${pending ? "animate-spin" : ""}`}
             />
-            Retry
+            {tN("retry")}
           </Button>
         </div>
       </Card>
@@ -115,7 +116,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
           <p className="text-muted-foreground mt-1 text-xs">
             {data.region} · Postgres {data.pgVersion}
             {data.periodStart
-              ? ` · billing period from ${new Date(data.periodStart).toLocaleDateString(undefined, { month: "short", day: "numeric" })}`
+              ? ` · ${tN("billingFrom", { date: new Date(data.periodStart).toLocaleDateString(undefined, { month: "short", day: "numeric" }) })}`
               : null}
           </p>
         </div>
@@ -124,40 +125,40 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
           size="sm"
           onClick={onRefresh}
           disabled={pending}
-          aria-label="Refresh Neon analytics"
+          aria-label={tN("refreshAria")}
         >
           <RefreshCw
             className={`me-1 size-3.5 ${pending ? "animate-spin" : ""}`}
           />
-          {pending ? "Refreshing…" : "Refresh"}
+          {pending ? tN("refreshing") : tN("refresh")}
         </Button>
       </header>
 
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         <Stat
           icon={HardDrive}
-          label="Storage"
+          label={tN("storage")}
           value={formatBytes(data.storageBytes)}
-          hint={`of ${formatBytes(data.storageLimitBytes)}`}
+          hint={tN("storageOf", { size: formatBytes(data.storageLimitBytes) })}
           progress={storagePct}
         />
         <Stat
           icon={Cpu}
-          label="Compute"
+          label={tN("compute")}
           value={formatDuration(data.computeTimeSeconds)}
-          hint={`of ~192 CU-hr (Free)`}
+          hint={tN("computeOf")}
           progress={computePct}
         />
         <Stat
           icon={ArrowDownToLine}
-          label="Egress"
+          label={tN("egress")}
           value={formatBytes(data.dataTransferBytes)}
-          hint={`of 5 GB (Free)`}
+          hint={tN("egressOf")}
           progress={egressPct}
         />
         <Stat
           icon={Timer}
-          label="Period ends"
+          label={tN("periodEnds")}
           value={formatCountdown(data.periodEnd)}
           hint={
             data.periodEnd
@@ -172,19 +173,19 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
 
       <div className="text-muted-foreground mt-3 grid grid-cols-2 gap-4 text-xs md:grid-cols-4">
         <div>
-          <span className="me-1">Active</span>
+          <span className="me-1">{tN("active")}</span>
           <span className="text-foreground tabular-nums">
             {formatDuration(data.activeTimeSeconds)}
           </span>
         </div>
         <div>
-          <span className="me-1">Writes</span>
+          <span className="me-1">{tN("writes")}</span>
           <span className="text-foreground tabular-nums">
             {formatBytes(data.writtenDataBytes)}
           </span>
         </div>
         <div>
-          <span className="me-1">Branches</span>
+          <span className="me-1">{tN("branches")}</span>
           <span className="text-foreground tabular-nums">
             {data.branchCount}
           </span>
@@ -192,19 +193,19 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
         <div>
           <span className="me-1 inline-flex items-center gap-1">
             <GitBranch className="size-3" />
-            Primary
+            {tN("primary")}
           </span>
           <span className="text-foreground">{data.primaryBranch ?? "-"}</span>
         </div>
       </div>
 
       <footer className="text-muted-foreground mt-4 text-[11px]">
-        Cached · updated {relativeTime(data.fetchedAt)}
+        {tN("cachedUpdated", { when: relativeTime(data.fetchedAt) })}
         {data.suspendTimeoutSeconds === 0
-          ? " · scales to zero when idle"
+          ? ` · ${tN("scalesToZero")}`
           : null}
         {data.autoscalingMaxCu != null
-          ? ` · ${data.autoscalingMinCu} to ${data.autoscalingMaxCu} CU autoscale`
+          ? ` · ${tN("autoscale", { min: data.autoscalingMinCu ?? 0, max: data.autoscalingMaxCu })}`
           : null}
       </footer>
     </Card>

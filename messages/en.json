@@ -535,12 +535,30 @@
       "uploading": "Uploading…",
       "cropping": "Cropping…"
     },
-    "themeToggle": {
-      "aria": "Change theme",
-      "light": "Light",
-      "dark": "Dark",
-      "system": "System"
-    }
+    "neon": {
+      "title": "Neon analytics",
+      "refresh": "Refresh",
+      "refreshing": "Refreshing…",
+      "retry": "Retry",
+      "refreshAria": "Refresh Neon analytics",
+      "notConfigured": "Set <code>NEON_API_KEY</code> and <code>NEON_PROJECT_ID</code> in <code>.env.local</code> to enable the live database stats widget.",
+      "storage": "Storage",
+      "storageOf": "of {size}",
+      "compute": "Compute",
+      "computeOf": "of ~192 CU-hr (Free)",
+      "egress": "Egress",
+      "egressOf": "of 5 GB (Free)",
+      "periodEnds": "Period ends",
+      "active": "Active",
+      "writes": "Writes",
+      "branches": "Branches",
+      "primary": "Primary",
+      "cachedUpdated": "Cached · updated {when}",
+      "scalesToZero": "scales to zero when idle",
+      "autoscale": "{min} to {max} CU autoscale",
+      "billingFrom": "billing period from {date}"
+    },
+    "requiredMark": "Required"
   },
   "login": {
     "title": "Sign in",
@@ -551,5 +569,12 @@
     "submit": "Sign in",
     "submitting": "Signing in…",
     "accessDenied": "Access denied. Only the site owner can sign in."
+  },
+  "theme": {
+    "aria": "Change theme",
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }

@@ -109,11 +109,12 @@ export function CountedTextarea(props: CountedTextareaProps) {
  * (Marking required fields). Consumers write `Title <RequiredMark />`.
  */
 export function RequiredMark() {
+  const t = useTranslations("dashboard");
   return (
     <span
       className="text-destructive ms-0.5"
-      aria-label="required"
-      title="Required"
+      aria-label={t("requiredMark")}
+      title={t("requiredMark")}
     >
       *
     </span>

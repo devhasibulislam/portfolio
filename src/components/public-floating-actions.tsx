@@ -108,6 +108,7 @@ function BackToTop() {
 /* -------------------------------------------------------------------------- */
 
 function ThemeMenu() {
+  const tTheme = useTranslations("theme");
   const [choice, setChoice] = useState<ThemeChoice>("system");
   const [pending, startTransition] = useTransition();
 
@@ -153,7 +154,7 @@ function ThemeMenu() {
               <Button
                 size="icon"
                 variant="ghost"
-                aria-label="Change theme"
+                aria-label={tTheme("aria")}
                 disabled={pending}
                 className="size-11 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] shadow-md ring-1 ring-[var(--color-accent)]/25 backdrop-blur hover:bg-[var(--color-accent)]/20 hover:text-[var(--color-accent)]"
               >
@@ -162,27 +163,27 @@ function ThemeMenu() {
             </TooltipTrigger>
           </DropdownMenuTrigger>
           <TooltipContent side="left" sideOffset={8}>
-            Change theme
+            {tTheme("aria")}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
       <DropdownMenuContent align="end" side="top" sideOffset={8}>
-        <DropdownMenuLabel>Theme</DropdownMenuLabel>
+        <DropdownMenuLabel>{tTheme("label")}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <ThemeRow
-          label="Light"
+          label={tTheme("light")}
           icon={Sun}
           active={choice === "light"}
           onSelect={() => pick("light")}
         />
         <ThemeRow
-          label="Dark"
+          label={tTheme("dark")}
           icon={Moon}
           active={choice === "dark"}
           onSelect={() => pick("dark")}
         />
         <ThemeRow
-          label="System"
+          label={tTheme("system")}
           icon={Monitor}
           active={choice === "system"}
           onSelect={() => pick("system")}

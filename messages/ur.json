@@ -535,12 +535,30 @@
       "uploading": "اپ لوڈ ہو رہا ہے…",
       "cropping": "کراپ ہو رہا ہے…"
     },
-    "themeToggle": {
-      "aria": "تھیم تبدیل کریں",
-      "light": "روشن",
-      "dark": "گہرا",
-      "system": "سسٹم"
-    }
+    "neon": {
+      "title": "Neon تجزیات",
+      "refresh": "ریفریش",
+      "refreshing": "ریفریش ہو رہا ہے…",
+      "retry": "دوبارہ کوشش",
+      "refreshAria": "Neon تجزیات ریفریش",
+      "notConfigured": "لائیو ڈیٹا بیس اعداد و شمار ویجٹ کو فعال کرنے کے لیے <code>.env.local</code> میں <code>NEON_API_KEY</code> اور <code>NEON_PROJECT_ID</code> سیٹ کریں۔",
+      "storage": "سٹوریج",
+      "storageOf": "{size} میں سے",
+      "compute": "کمپیوٹ",
+      "computeOf": "~192 CU-گھنٹے میں سے (مفت)",
+      "egress": "ایگریس",
+      "egressOf": "5 GB میں سے (مفت)",
+      "periodEnds": "مدت ختم",
+      "active": "فعال",
+      "writes": "لکھائی",
+      "branches": "شاخیں",
+      "primary": "بنیادی",
+      "cachedUpdated": "کیشڈ · {when} کو اپ ڈیٹ ہوا",
+      "scalesToZero": "بیکار ہونے پر صفر تک اسکیل",
+      "autoscale": "{min} سے {max} CU آٹو اسکیل",
+      "billingFrom": "{date} سے بلنگ مدت"
+    },
+    "requiredMark": "درکار"
   },
   "login": {
     "title": "سائن اِن",
@@ -551,5 +569,12 @@
     "submit": "سائن اِن",
     "submitting": "سائن اِن ہو رہا ہے…",
     "accessDenied": "رسائی مسترد۔ صرف سائٹ کا مالک سائن اِن کر سکتا ہے۔"
+  },
+  "theme": {
+    "aria": "تھیم تبدیل کریں",
+    "label": "تھیم",
+    "light": "روشن",
+    "dark": "گہرا",
+    "system": "سسٹم"
   }
 }

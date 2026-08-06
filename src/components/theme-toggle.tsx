@@ -20,7 +20,7 @@ type Choice = "light" | "dark" | "system";
  * synchronously so the *current* tab flips without a reload.
  */
 export function ThemeToggle({ current }: { current: Choice }) {
-  const t = useTranslations("dashboard.themeToggle");
+  const t = useTranslations("theme");
   const [pending, startTransition] = useTransition();
 
   const pick = (next: Choice) => {

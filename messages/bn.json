@@ -535,12 +535,30 @@
       "uploading": "আপলোড হচ্ছে…",
       "cropping": "ক্রপ হচ্ছে…"
     },
-    "themeToggle": {
-      "aria": "থিম বদলান",
-      "light": "হালকা",
-      "dark": "গাঢ়",
-      "system": "সিস্টেম"
-    }
+    "neon": {
+      "title": "Neon অ্যানালিটিক্স",
+      "refresh": "রিফ্রেশ",
+      "refreshing": "রিফ্রেশ হচ্ছে…",
+      "retry": "পুনরায় চেষ্টা",
+      "refreshAria": "Neon অ্যানালিটিক্স রিফ্রেশ",
+      "notConfigured": "লাইভ ডাটাবেস স্ট্যাটস উইজেট সক্রিয় করতে <code>.env.local</code>-এ <code>NEON_API_KEY</code> এবং <code>NEON_PROJECT_ID</code> সেট করুন।",
+      "storage": "স্টোরেজ",
+      "storageOf": "{size}-এর মধ্যে",
+      "compute": "কম্পিউট",
+      "computeOf": "~১৯২ CU-ঘন্টার মধ্যে (ফ্রি)",
+      "egress": "ইগ্রেস",
+      "egressOf": "৫ GB-এর মধ্যে (ফ্রি)",
+      "periodEnds": "সময়কাল শেষ",
+      "active": "সক্রিয়",
+      "writes": "লেখা",
+      "branches": "শাখা",
+      "primary": "প্রাথমিক",
+      "cachedUpdated": "ক্যাশড · {when} আপডেট হয়েছে",
+      "scalesToZero": "নিষ্ক্রিয় থাকলে শূন্যে স্কেল করে",
+      "autoscale": "{min} থেকে {max} CU অটোস্কেল",
+      "billingFrom": "{date} থেকে বিলিং সময়কাল"
+    },
+    "requiredMark": "প্রয়োজন"
   },
   "login": {
     "title": "সাইন ইন",
@@ -551,5 +569,12 @@
     "submit": "সাইন ইন",
     "submitting": "সাইন ইন হচ্ছে…",
     "accessDenied": "অ্যাক্সেস অস্বীকৃত। শুধু সাইট মালিক সাইন ইন করতে পারবেন।"
+  },
+  "theme": {
+    "aria": "থিম বদলান",
+    "label": "থিম",
+    "light": "হালকা",
+    "dark": "গাঢ়",
+    "system": "সিস্টেম"
   }
 }

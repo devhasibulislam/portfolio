@@ -535,12 +535,30 @@
       "uploading": "جارٍ الرفع…",
       "cropping": "جارٍ القص…"
     },
-    "themeToggle": {
-      "aria": "تغيير السمة",
-      "light": "فاتح",
-      "dark": "داكن",
-      "system": "النظام"
-    }
+    "neon": {
+      "title": "تحليلات Neon",
+      "refresh": "تحديث",
+      "refreshing": "جارٍ التحديث…",
+      "retry": "إعادة المحاولة",
+      "refreshAria": "تحديث تحليلات Neon",
+      "notConfigured": "عيّن <code>NEON_API_KEY</code> و <code>NEON_PROJECT_ID</code> في <code>.env.local</code> لتفعيل ودجت إحصاءات قاعدة البيانات المباشرة.",
+      "storage": "التخزين",
+      "storageOf": "من أصل {size}",
+      "compute": "الحوسبة",
+      "computeOf": "من أصل ~192 CU-س (مجاني)",
+      "egress": "الخروج",
+      "egressOf": "من أصل 5 GB (مجاني)",
+      "periodEnds": "نهاية الفترة",
+      "active": "نشط",
+      "writes": "الكتابات",
+      "branches": "الفروع",
+      "primary": "أساسي",
+      "cachedUpdated": "مخزَّن · تم التحديث {when}",
+      "scalesToZero": "يتناقص إلى الصفر عند الخمول",
+      "autoscale": "تحجيم تلقائي من {min} إلى {max} CU",
+      "billingFrom": "فترة الفوترة من {date}"
+    },
+    "requiredMark": "مطلوب"
   },
   "login": {
     "title": "تسجيل الدخول",
@@ -551,5 +569,12 @@
     "submit": "تسجيل الدخول",
     "submitting": "جارٍ تسجيل الدخول…",
     "accessDenied": "تم رفض الوصول. فقط مالك الموقع يمكنه تسجيل الدخول."
+  },
+  "theme": {
+    "aria": "تغيير السمة",
+    "label": "السمة",
+    "light": "فاتح",
+    "dark": "داكن",
+    "system": "النظام"
   }
 }

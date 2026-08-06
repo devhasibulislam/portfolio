@@ -535,12 +535,30 @@
       "uploading": "מעלה…",
       "cropping": "חותך…"
     },
-    "themeToggle": {
-      "aria": "החלף ערכת נושא",
-      "light": "בהיר",
-      "dark": "כהה",
-      "system": "מערכת"
-    }
+    "neon": {
+      "title": "אנליטיקת Neon",
+      "refresh": "רענן",
+      "refreshing": "מרענן…",
+      "retry": "נסה שוב",
+      "refreshAria": "רענן אנליטיקת Neon",
+      "notConfigured": "הגדר את <code>NEON_API_KEY</code> ואת <code>NEON_PROJECT_ID</code> ב‑<code>.env.local</code> כדי לאפשר את ווידג'ט הסטטיסטיקה החי של מסד הנתונים.",
+      "storage": "אחסון",
+      "storageOf": "מתוך {size}",
+      "compute": "מחשוב",
+      "computeOf": "מתוך ~192 CU-שעה (חינם)",
+      "egress": "תעבורה יוצאת",
+      "egressOf": "מתוך 5 GB (חינם)",
+      "periodEnds": "סוף תקופה",
+      "active": "פעיל",
+      "writes": "כתיבות",
+      "branches": "ענפים",
+      "primary": "ראשי",
+      "cachedUpdated": "במטמון · עודכן {when}",
+      "scalesToZero": "מתכווץ לאפס במצב סרק",
+      "autoscale": "קיצוב אוטומטי מ‑{min} עד {max} CU",
+      "billingFrom": "תקופת חיוב מ‑{date}"
+    },
+    "requiredMark": "חובה"
   },
   "login": {
     "title": "התחברות",
@@ -551,5 +569,12 @@
     "submit": "התחבר",
     "submitting": "מתחבר…",
     "accessDenied": "הגישה נדחתה. רק בעל האתר יכול להתחבר."
+  },
+  "theme": {
+    "aria": "החלף ערכת נושא",
+    "label": "ערכת נושא",
+    "light": "בהיר",
+    "dark": "כהה",
+    "system": "מערכת"
   }
 }
