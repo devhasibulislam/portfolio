@@ -8,6 +8,7 @@ import { getLocale } from "@/lib/i18n/cookies";
 import { DEFAULT_THEME, THEME_COOKIE } from "@/lib/theme/cookies";
 import { SiteHeader } from "@/components/site-header";
 import { PublicFloatingActions } from "@/components/public-floating-actions";
+import { PublicFooter } from "@/components/public-footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -84,6 +85,7 @@ async function LocalizedShell({ children }: { children: React.ReactNode }) {
     <NextIntlClientProvider locale={locale} messages={messages}>
       <SiteHeader />
       {children}
+      <PublicFooter />
       <PublicFloatingActions />
     </NextIntlClientProvider>
   );

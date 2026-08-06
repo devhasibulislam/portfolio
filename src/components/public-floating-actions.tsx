@@ -11,7 +11,6 @@ import {
   Sun,
   SunMoon,
 } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -245,21 +244,18 @@ function ContactMenu() {
         <ContactRow
           href={WHATSAPP_URL}
           src="/social/whatsapp.webp"
-          fallback="W"
           label="WhatsApp"
           subtitle={`+${PHONE.replace(/^88/, "88 ")}`}
         />
         <ContactRow
           href={TELEGRAM_URL}
           src="/social/telegram.webp"
-          fallback="T"
           label="Telegram"
           subtitle={`@${USERNAME}`}
         />
         <ContactRow
           href={EMAIL_URL}
           src="/social/gmail.webp"
-          fallback="G"
           label="Email"
           subtitle={EMAIL}
           external={false}
@@ -272,14 +268,12 @@ function ContactMenu() {
 function ContactRow({
   href,
   src,
-  fallback,
   label,
   subtitle,
   external = true,
 }: {
   href: string;
   src: string;
-  fallback: string;
   label: string;
   subtitle: string;
   external?: boolean;
@@ -291,12 +285,10 @@ function ContactRow({
         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className="flex items-center gap-3"
       >
-        <Avatar className="size-8 shrink-0">
-          <AvatarImage src={src} alt="" />
-          <AvatarFallback className="bg-[var(--color-accent)]/15 text-[var(--color-accent)] text-xs font-semibold">
-            {fallback}
-          </AvatarFallback>
-        </Avatar>
+        <span className="border-border bg-background flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-lg border">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt="" className="size-5 rounded-sm" />
+        </span>
         <span className="flex min-w-0 flex-col leading-tight">
           <span className="truncate text-sm font-medium">{label}</span>
           <span className="text-muted-foreground truncate text-xs">
