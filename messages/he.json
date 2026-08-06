@@ -558,7 +558,31 @@
       "autoscale": "קיצוב אוטומטי מ‑{min} עד {max} CU",
       "billingFrom": "תקופת חיוב מ‑{date}"
     },
-    "requiredMark": "חובה"
+    "requiredMark": "חובה",
+    "vercel": {
+      "title": "Vercel analytics",
+      "refresh": "Refresh",
+      "refreshing": "Refreshing…",
+      "retry": "Retry",
+      "refreshAria": "Refresh Vercel analytics",
+      "notConfigured": "Set <code>VERCEL_TOKEN</code>, <code>VERCEL_TEAM_ID</code>, and <code>VERCEL_PROJECT_ID</code> in <code>.env.local</code> to enable the live deployment stats widget.",
+      "deploysReady": "Ready",
+      "deploysError": "Failed",
+      "nBuilding": "{n} building",
+      "last10": "of last 10",
+      "speedInsights": "Speed Insights",
+      "webAnalytics": "Web Analytics",
+      "enabled": "Enabled",
+      "off": "Off",
+      "collecting": "Live",
+      "coreWebVitals": "LCP · INP · CLS",
+      "visitorsPageviews": "visitors · pageviews",
+      "latestDeployment": "Latest deployment",
+      "recentDeployments": "{n} more recent deployments",
+      "cachedUpdated": "Cached · updated {when}",
+      "nDomains": "{n} domain(s)"
+    },
+    "vercelRefreshed": "אנליטיקת Neon רועננה"
   },
   "login": {
     "title": "התחברות",

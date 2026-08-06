@@ -2,8 +2,10 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { NAV_GROUPS } from "@/components/dashboard/nav";
 import { NeonAnalyticsCard } from "@/components/dashboard/neon-analytics-card";
+import { VercelAnalyticsCard } from "@/components/dashboard/vercel-analytics-card";
 import { Card } from "@/components/ui/card";
 import { getNeonAnalytics } from "@/lib/neon-api";
+import { getVercelAnalytics } from "@/lib/vercel-api";
 import { getOverviewCounts } from "@/lib/db/queries/overview";
 
 const COUNT_KEY: Record<
@@ -23,12 +25,13 @@ const COUNT_KEY: Record<
 const pad = (n: number) => n.toString().padStart(2, "0");
 
 export default async function DashboardPage() {
-  // Content counts and Neon analytics resolve in parallel — the Neon call
-  // sits inside a `"use cache"` boundary so free-tier compute stays quiet
-  // between refreshes.
-  const [counts, neon, t] = await Promise.all([
+  // Content counts and infra analytics resolve in parallel — the Neon and
+  // Vercel calls sit inside `"use cache"` boundaries so free-tier quotas
+  // stay quiet between refreshes.
+  const [counts, neon, vercel, t] = await Promise.all([
     getOverviewCounts(),
     getNeonAnalytics(),
+    getVercelAnalytics(),
     getTranslations("dashboard"),
   ]);
   // Skip the "Overview" group on the Overview page itself (it would just
@@ -49,7 +52,10 @@ export default async function DashboardPage() {
         <h2 className="text-muted-foreground mb-3 text-xs font-medium tracking-widest uppercase">
           {t("overview.infrastructure")}
         </h2>
-        <NeonAnalyticsCard data={neon} />
+        <div className="flex flex-col gap-4">
+          <VercelAnalyticsCard data={vercel} />
+          <NeonAnalyticsCard data={neon} />
+        </div>
       </section>
 
       <div className="flex flex-col gap-8">

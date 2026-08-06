@@ -23,4 +23,7 @@ export const tag = {
   // Separate namespace so DB writes don't invalidate it — only the manual
   // refresh action does.
   neonAnalytics: () => "neon-analytics",
+  // Vercel REST aggregate (project details + recent deployments) for the
+  // dashboard analytics widget. Same rationale as `neonAnalytics`.
+  vercelAnalytics: () => "vercel-analytics",
 };
