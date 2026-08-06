@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DEFAULT_LOCALE, LOCALES } from "@/lib/i18n/config";
 import { getLocale } from "@/lib/i18n/cookies";
 import { DEFAULT_THEME, THEME_COOKIE } from "@/lib/theme/cookies";
@@ -10,8 +12,6 @@ import { SiteHeader } from "@/components/site-header";
 import { PublicFloatingActions } from "@/components/public-floating-actions";
 import { PublicFooter } from "@/components/public-footer";
 import { TopProgressBar } from "@/components/top-progress-bar";
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -199,8 +199,12 @@ export default function RootLayout({
         <Suspense fallback={null}>
           <LocalizedShell>{children}</LocalizedShell>
         </Suspense>
-        <Analytics />
-        <SpeedInsights />
+        {/* Vercel Web Analytics + Speed Insights. Client-only, injected at
+            the root so every route (public + dashboard) reports pageviews
+            and Core Web Vitals. `debug={false}` silences the dev console
+            noise. */}
+        <Analytics debug={false} />
+        <SpeedInsights debug={false} />
       </body>
     </html>
   );
