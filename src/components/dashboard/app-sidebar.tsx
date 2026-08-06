@@ -67,11 +67,14 @@ export function AppSidebar() {
 
       <SidebarContent>
         {NAV_GROUPS.map((group) => (
-          <SidebarGroup key={group.label}>
-            <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
+          <SidebarGroup key={group.key}>
+            <SidebarGroupLabel>
+              {tDash(`nav.groups.${group.key}`)}
+            </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {group.items.map(({ label, href, icon: Icon }) => {
+                {group.items.map(({ key, href, icon: Icon }) => {
+                  const label = tDash(`nav.items.${key}`);
                   const active =
                     href === "/dashboard"
                       ? pathname === href

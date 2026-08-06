@@ -228,7 +228,45 @@
     "name": "חסיבול איסלאם"
   },
   "dashboard": {
-    "signOut": "התנתקות"
+    "signOut": "התנתקות",
+    "breadcrumb": {
+      "root": "לוח בקרה",
+      "overview": "סקירה",
+      "new": "חדש"
+    },
+    "overview": {
+      "title": "סקירה",
+      "subtitle": "התוכן חי כאן. האתר הציבורי קורא ממה שאתה שומר.",
+      "infrastructure": "תשתית"
+    },
+    "nav": {
+      "groups": {
+        "overview": "סקירה",
+        "content": "תוכן",
+        "library": "ספרייה"
+      },
+      "items": {
+        "overview": "סקירה",
+        "posts": "פוסטים",
+        "projects": "פרויקטים",
+        "experience": "ניסיון",
+        "skills": "מיומנויות",
+        "resume": "קורות חיים",
+        "categories": "קטגוריות",
+        "tags": "תגיות",
+        "media": "מדיה"
+      },
+      "descriptions": {
+        "posts": "כתוב ופרסם פוסטים בבלוג.",
+        "projects": "פרויקטים ללקוחות, מוצרים והפניות קוד פתוח.",
+        "experience": "תפקידים ונקודות עיקריות לכל חברה.",
+        "skills": "רשימת סטאק המוצגת ברחבי האתר.",
+        "resume": "PDF פעיל אחד המוגש ב‑/resume.",
+        "categories": "קטגוריה אחת לכל פוסט.",
+        "tags": "קבץ פוסטים לפי נושא (עד 8 לפוסט).",
+        "media": "העלאות Cloudinary לשימוש חוזר בפוסטים."
+      }
+    }
   },
   "login": {
     "title": "התחברות",

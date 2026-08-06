@@ -13,43 +13,57 @@ import {
 
 /**
  * Dashboard nav — the single source of truth for both the sidebar (grouped)
- * and the breadcrumb resolver (flat lookup).
+ * and the breadcrumb resolver (flat lookup). Labels come from i18n at
+ * render time; this file only carries stable keys, hrefs and icons.
  *
  * `NAV_GROUPS` drives the sidebar sections + the Overview card sections.
  * `NAV` is a flat list preserved for breadcrumb + count lookups.
  */
+export type NavItemKey =
+  | "overview"
+  | "posts"
+  | "projects"
+  | "experience"
+  | "skills"
+  | "resume"
+  | "categories"
+  | "tags"
+  | "media";
+
+export type NavGroupKey = "overview" | "content" | "library";
+
 export type NavItem = {
-  label: string;
+  key: NavItemKey;
   href: string;
   icon: LucideIcon;
 };
 
 export type NavGroup = {
-  label: string;
+  key: NavGroupKey;
   items: NavItem[];
 };
 
 export const NAV_GROUPS: NavGroup[] = [
   {
-    label: "Overview",
-    items: [{ label: "Overview", href: "/dashboard", icon: LayoutDashboard }],
+    key: "overview",
+    items: [{ key: "overview", href: "/dashboard", icon: LayoutDashboard }],
   },
   {
-    label: "Content",
+    key: "content",
     items: [
-      { label: "Posts", href: "/dashboard/posts", icon: FileText },
-      { label: "Projects", href: "/dashboard/projects", icon: FolderKanban },
-      { label: "Experience", href: "/dashboard/experience", icon: Briefcase },
-      { label: "Skills", href: "/dashboard/skills", icon: Sparkles },
-      { label: "Resume", href: "/dashboard/resume", icon: ScrollText },
+      { key: "posts", href: "/dashboard/posts", icon: FileText },
+      { key: "projects", href: "/dashboard/projects", icon: FolderKanban },
+      { key: "experience", href: "/dashboard/experience", icon: Briefcase },
+      { key: "skills", href: "/dashboard/skills", icon: Sparkles },
+      { key: "resume", href: "/dashboard/resume", icon: ScrollText },
     ],
   },
   {
-    label: "Library",
+    key: "library",
     items: [
-      { label: "Categories", href: "/dashboard/categories", icon: FolderTree },
-      { label: "Tags", href: "/dashboard/tags", icon: Tags },
-      { label: "Media", href: "/dashboard/media", icon: Images },
+      { key: "categories", href: "/dashboard/categories", icon: FolderTree },
+      { key: "tags", href: "/dashboard/tags", icon: Tags },
+      { key: "media", href: "/dashboard/media", icon: Images },
     ],
   },
 ];

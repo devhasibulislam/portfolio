@@ -228,7 +228,45 @@
     "name": "Hasibul Islam"
   },
   "dashboard": {
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "breadcrumb": {
+      "root": "Dashboard",
+      "overview": "Overview",
+      "new": "New"
+    },
+    "overview": {
+      "title": "Overview",
+      "subtitle": "Content lives here. The public site reads from what you save.",
+      "infrastructure": "Infrastructure"
+    },
+    "nav": {
+      "groups": {
+        "overview": "Overview",
+        "content": "Content",
+        "library": "Library"
+      },
+      "items": {
+        "overview": "Overview",
+        "posts": "Posts",
+        "projects": "Projects",
+        "experience": "Experience",
+        "skills": "Skills",
+        "resume": "Resume",
+        "categories": "Categories",
+        "tags": "Tags",
+        "media": "Media"
+      },
+      "descriptions": {
+        "posts": "Write and publish blog posts.",
+        "projects": "Client engagements, products, OSS references.",
+        "experience": "Roles + bullet-point highlights per company.",
+        "skills": "Grouped stack list surfaced across the site.",
+        "resume": "One active PDF served at /resume.",
+        "categories": "One category per post.",
+        "tags": "Group posts by topic (max 8 per post).",
+        "media": "Cloudinary uploads reused across posts."
+      }
+    }
   },
   "login": {
     "title": "Sign in",

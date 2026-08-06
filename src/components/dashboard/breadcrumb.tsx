@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -20,6 +21,7 @@ import { NAV } from "./nav";
  */
 export function DashboardBreadcrumb() {
   const pathname = usePathname();
+  const t = useTranslations("dashboard");
   const segments = pathname.split("/").filter(Boolean); // ["dashboard", "posts", "new"]
 
   // Root: /dashboard alone
@@ -28,7 +30,7 @@ export function DashboardBreadcrumb() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbPage>Overview</BreadcrumbPage>
+            <BreadcrumbPage>{t("breadcrumb.overview")}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -36,7 +38,9 @@ export function DashboardBreadcrumb() {
   }
 
   const section = NAV.find((n) => n.href === `/dashboard/${segments[1]}`);
-  const sectionLabel = section?.label ?? segments[1];
+  const sectionLabel = section
+    ? t(`nav.items.${section.key}`)
+    : segments[1];
   const rest = segments.slice(2);
 
   return (
@@ -44,7 +48,7 @@ export function DashboardBreadcrumb() {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/dashboard">Dashboard</Link>
+            <Link href="/dashboard">{t("breadcrumb.root")}</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
@@ -61,7 +65,8 @@ export function DashboardBreadcrumb() {
           .filter((seg) => !isUuid(seg))
           .map((seg, i, arr) => {
             const last = i === arr.length - 1;
-            const label = seg === "new" ? "New" : decodeURIComponent(seg);
+            const label =
+              seg === "new" ? t("breadcrumb.new") : decodeURIComponent(seg);
             return (
               <span key={`${seg}-${i}`} className="contents">
                 <BreadcrumbSeparator />
