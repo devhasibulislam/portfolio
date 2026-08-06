@@ -304,6 +304,10 @@ function ProjectDialogForm({
   pending: boolean;
 }) {
   const tPage = useTranslations("dashboard.pages.projects");
+  const tForm = useTranslations("dashboard.forms.project");
+  const tCommon = useTranslations("dashboard.forms.common");
+  const tCat = useTranslations("projects.categories");
+  const tLinks = useTranslations("dashboard.forms.project.linkKinds");
   const [title, setTitle] = useState(full?.title ?? "");
   const [slug, setSlug] = useState(full?.slug ?? "");
   const [slugDirty, setSlugDirty] = useState(false);
@@ -344,18 +348,18 @@ function ProjectDialogForm({
           {full ? tPage("editDialogEdit") : tPage("editDialogNew")}
         </DialogTitle>
         <DialogDescription>
-          Set draft to save without publishing. Cover image required to publish.
+          {tForm("description")}
         </DialogDescription>
       </DialogHeader>
 
       <div className="mt-4 flex flex-col gap-6">
         {/* Basics */}
-        <Section title="Basics">
+        <Section title={tForm("section.basics")}>
           <FieldGrid>
             <Field
               className="col-span-2"
               htmlFor="title"
-              label="Title"
+              label={tForm("title")}
               required
             >
               <CountedInput
@@ -371,7 +375,7 @@ function ProjectDialogForm({
                 }}
               />
             </Field>
-            <Field className="col-span-2" htmlFor="slug" label="Slug" required>
+            <Field className="col-span-2" htmlFor="slug" label={tForm("slug")} required>
               <CountedInput
                 id="slug"
                 name="slug"
@@ -387,9 +391,9 @@ function ProjectDialogForm({
             <Field
               className="col-span-2"
               htmlFor="tagline"
-              label="Tagline"
+              label={tForm("tagline")}
               required
-              hint="One-line summary. Doubles as meta description fallback."
+              hint={tForm("taglineHint")}
             >
               <CountedInput
                 id="tagline"
@@ -400,7 +404,7 @@ function ProjectDialogForm({
                 defaultValue={full?.tagline}
               />
             </Field>
-            <Field htmlFor="client" label="Client" optional>
+            <Field htmlFor="client" label={tForm("client")} optional>
               <CountedInput
                 id="client"
                 name="client"
@@ -408,7 +412,7 @@ function ProjectDialogForm({
                 defaultValue={full?.client ?? ""}
               />
             </Field>
-            <Field htmlFor="location" label="Location" optional>
+            <Field htmlFor="location" label={tForm("location")} optional>
               <CountedInput
                 id="location"
                 name="location"
@@ -416,7 +420,7 @@ function ProjectDialogForm({
                 defaultValue={full?.location ?? ""}
               />
             </Field>
-            <Field htmlFor="role" label="Your role" optional>
+            <Field htmlFor="role" label={tForm("yourRole")} optional>
               <CountedInput
                 id="role"
                 name="role"
@@ -424,7 +428,7 @@ function ProjectDialogForm({
                 defaultValue={full?.role ?? ""}
               />
             </Field>
-            <Field htmlFor="category" label="Category" required>
+            <Field htmlFor="category" label={tForm("category")} required>
               <Select
                 name="category"
                 defaultValue={full?.category ?? "enterprise"}
@@ -436,13 +440,13 @@ function ProjectDialogForm({
                 <SelectContent>
                   {CATEGORIES.map((c) => (
                     <SelectItem key={c.value} value={c.value}>
-                      {c.label}
+                      {tCat(c.value)}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </Field>
-            <Field htmlFor="periodStart" label="Period start" optional>
+            <Field htmlFor="periodStart" label={tForm("periodStart")} optional>
               <Input
                 id="periodStart"
                 name="periodStart"
@@ -452,9 +456,9 @@ function ProjectDialogForm({
             </Field>
             <Field
               htmlFor="periodEnd"
-              label="Period end"
+              label={tForm("periodEnd")}
               optional
-              hint="Leave blank for ongoing"
+              hint={tForm("periodEndHint")}
             >
               <Input
                 id="periodEnd"
@@ -467,16 +471,15 @@ function ProjectDialogForm({
         </Section>
 
         {/* Content */}
-        <Section title="Content">
+        <Section title={tForm("section.content")}>
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
               <Label>
-                Body
+                {tForm("body")}
                 <OptionalMark />
               </Label>
               <p className="text-muted-foreground text-xs">
-                Rich text: headings, lists, links, code, images. Same editor the
-                blog.
+                {tForm("bodyHint")}
               </p>
               <TiptapEditor
                 value={body}
@@ -488,7 +491,7 @@ function ProjectDialogForm({
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="outcome">
-                Outcome
+                {tForm("outcome")}
                 <OptionalMark />
               </Label>
               <CountedTextarea
@@ -501,19 +504,18 @@ function ProjectDialogForm({
             </div>
             <div className="flex flex-col gap-1.5">
               <Label>
-                Cover image
+                {tForm("coverImage")}
                 <RequiredMark />
               </Label>
               <p className="text-muted-foreground text-xs">
-                1.91:1 landscape (used for OG cards, ideally 1200×630). Up to 5
-                MB. Required to publish.
+                {tForm("coverHint")}
               </p>
               <MediaPicker
                 options={mediaOptions}
                 value={coverId}
                 onChange={setCoverId}
                 aspect={1200 / 630}
-                label="Pick or upload cover"
+                label={tForm("coverPickerLabel")}
               />
             </div>
           </div>
@@ -521,11 +523,11 @@ function ProjectDialogForm({
 
         {/* Links */}
         <Section
-          title="Links"
+          title={tForm("section.links")}
           action={
             <Button type="button" variant="outline" size="sm" onClick={addLink}>
               <Plus className="me-1 size-3.5" />
-              Add link
+              {tForm("addLink")}
             </Button>
           }
         >
@@ -554,19 +556,19 @@ function ProjectDialogForm({
                     <SelectContent>
                       {LINK_KINDS.map((k) => (
                         <SelectItem key={k.value} value={k.value}>
-                          {k.label}
+                          {tLinks(k.value)}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                   <Input
-                    placeholder="Label"
+                    placeholder={tForm("linkLabelPlaceholder")}
                     value={l.label}
                     maxLength={40}
                     onChange={(e) => updateLink(i, { label: e.target.value })}
                   />
                   <Input
-                    placeholder="https://…"
+                    placeholder={tForm("linkUrlPlaceholder")}
                     value={l.url}
                     onChange={(e) => updateLink(i, { url: e.target.value })}
                   />
@@ -574,7 +576,7 @@ function ProjectDialogForm({
                     type="button"
                     variant="ghost"
                     size="icon"
-                    aria-label="Remove link"
+                    aria-label={tForm("removeLink")}
                     onClick={() => removeLink(i)}
                   >
                     <X className="size-4" />
@@ -586,14 +588,14 @@ function ProjectDialogForm({
         </Section>
 
         {/* SEO */}
-        <Section title="SEO">
+        <Section title={tForm("section.seo")}>
           <FieldGrid>
             <Field
               className="col-span-2"
               htmlFor="metaTitle"
-              label="Meta title"
+              label={tForm("metaTitle")}
               optional
-              hint="≤ 60 chars. Leave blank to fall back to project title."
+              hint={tForm("metaTitleHint")}
             >
               <CountedInput
                 id="metaTitle"
@@ -605,9 +607,9 @@ function ProjectDialogForm({
             <Field
               className="col-span-2"
               htmlFor="metaDescription"
-              label="Meta description"
+              label={tForm("metaDescription")}
               optional
-              hint="≤ 160 chars. Leave blank to fall back to tagline."
+              hint={tForm("metaDescriptionHint")}
             >
               <CountedTextarea
                 id="metaDescription"
@@ -618,7 +620,7 @@ function ProjectDialogForm({
                 defaultValue={full?.metaDescription ?? ""}
               />
             </Field>
-            <Field htmlFor="displayOrder" label="Display order" required>
+            <Field htmlFor="displayOrder" label={tForm("displayOrder")} required>
               <Input
                 id="displayOrder"
                 name="displayOrder"
@@ -628,7 +630,7 @@ function ProjectDialogForm({
                 defaultValue={full?.displayOrder ?? 0}
               />
             </Field>
-            <Field htmlFor="status" label="Status" required>
+            <Field htmlFor="status" label={tForm("status")} required>
               <Select
                 name="status"
                 defaultValue={full?.status ?? "draft"}
@@ -638,21 +640,21 @@ function ProjectDialogForm({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="draft">Draft</SelectItem>
-                  <SelectItem value="published">Published</SelectItem>
+                  <SelectItem value="draft">{tForm("draft")}</SelectItem>
+                  <SelectItem value="published">{tForm("published")}</SelectItem>
                 </SelectContent>
               </Select>
             </Field>
             <SwitchRow
               name="featured"
-              label="Featured"
-              hint="Surfaces first on the projects grid."
+              label={tForm("featured")}
+              hint={tForm("featuredHint")}
               defaultChecked={full?.featured ?? false}
             />
             <SwitchRow
               name="noindex"
-              label="Noindex"
-              hint="Hide from search engines."
+              label={tForm("noindex")}
+              hint={tForm("noindexHint")}
               defaultChecked={full?.noindex ?? false}
             />
           </FieldGrid>
@@ -666,10 +668,10 @@ function ProjectDialogForm({
           onClick={onClose}
           disabled={pending}
         >
-          Cancel
+          {tCommon("cancel")}
         </Button>
         <Button type="submit" disabled={pending}>
-          {pending ? "Saving…" : full ? "Save changes" : "Create project"}
+          {pending ? tCommon("saving") : full ? tCommon("save") : tForm("createButton")}
         </Button>
       </DialogFooter>
     </form>
