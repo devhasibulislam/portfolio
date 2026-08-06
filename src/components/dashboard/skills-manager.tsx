@@ -182,7 +182,7 @@ export function SkillsManager({
                         <TableCell>
                           {SKILL_PROFICIENCY_LABEL[r.proficiency]}
                         </TableCell>
-                        <TableCell>{r.years ?? "—"}</TableCell>
+                        <TableCell>{r.years ?? "-"}</TableCell>
                         <TableCell>{r.displayOrder}</TableCell>
                         <TableCell>
                           <span

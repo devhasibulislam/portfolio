@@ -103,13 +103,13 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
               if (!slugTouched) setSlug(slugify(e.target.value));
             }}
             maxLength={70}
-            placeholder="Something worth reading (10–70 chars)"
+            placeholder="Something worth reading (10 to 70 chars)"
             className="text-lg font-medium"
             required
             autoFocus
           />
           <p className="text-muted-foreground text-xs tabular-nums">
-            {title.length}/70 · ideal 50–60
+            {title.length}/70 · ideal 50 to 60
           </p>
         </div>
 
@@ -203,7 +203,7 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
             onChange={(e) => setMetaDescription(e.target.value)}
             maxLength={160}
             rows={3}
-            placeholder="Google snippet, 120–160 chars"
+            placeholder="Google snippet, 120 to 160 chars"
           />
           <p className="text-muted-foreground text-xs tabular-nums">
             {metaDescription.length}/160
@@ -218,7 +218,7 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
             onChange={(e) => setExcerpt(e.target.value)}
             maxLength={300}
             rows={4}
-            placeholder="Card summary, 200–300 chars"
+            placeholder="Card summary, 200 to 300 chars"
           />
           <p className="text-muted-foreground text-xs tabular-nums">
             {excerpt.length}/300

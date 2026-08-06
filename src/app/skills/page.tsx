@@ -10,7 +10,7 @@ import { SKILL_GROUP_LABEL, SKILL_PROFICIENCY_LABEL } from "@/lib/skill-groups";
 export const metadata: Metadata = {
   title: "Skills",
   description:
-    "The stack I ship with — TypeScript, NestJS, PostgreSQL, Kafka/BullMQ, AWS, LLM/RAG, and more.",
+    "The stack I ship with: TypeScript, NestJS, PostgreSQL, Kafka/BullMQ, AWS, LLM/RAG, and more.",
   alternates: { canonical: "/skills" },
 };
 

@@ -508,8 +508,8 @@ function ProjectDialogForm({
                 <OptionalMark />
               </Label>
               <p className="text-muted-foreground text-xs">
-                Rich text — headings, lists, links, code, images. Same editor
-                as the blog.
+                Rich text: headings, lists, links, code, images. Same editor
+                the blog.
               </p>
               <TiptapEditor
                 value={body}
@@ -564,8 +564,8 @@ function ProjectDialogForm({
         >
           {links.length === 0 ? (
             <p className="text-muted-foreground text-sm">
-              No links yet. Add website, case study, GitHub, or store links —
-              kind drives the icon automatically.
+              No links yet. Add website, case study, GitHub, or store links.
+              Kind drives the icon automatically.
             </p>
           ) : (
             <ul className="flex flex-col gap-2">

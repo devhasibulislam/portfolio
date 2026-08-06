@@ -13,13 +13,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Client engagements, products, and open-source references — backend, LLM/RAG, and infrastructure work I've shipped.",
+    "Client engagements, products, and open-source references: backend, LLM/RAG, and infrastructure work I've shipped.",
   alternates: { canonical: "/projects" },
   openGraph: {
     type: "website",
     title: "Projects · Hasibul Islam",
     description:
-      "Client engagements, products, and open-source references — backend, LLM/RAG, and infrastructure work I've shipped.",
+      "Client engagements, products, and open-source references: backend, LLM/RAG, and infrastructure work I've shipped.",
     url: `${SITE_URL}/projects`,
   },
 };
@@ -50,8 +50,8 @@ export default async function ProjectsPage() {
           Projects
         </h1>
         <p className="text-muted-foreground mt-3 text-lg leading-relaxed">
-          Client engagements, products, and open-source references — the ones
-          with public artefacts. NDA work is listed by category only.
+          Client engagements, products, and open-source references. Just the
+          ones with public artefacts. NDA work is listed by category only.
         </p>
       </header>
 

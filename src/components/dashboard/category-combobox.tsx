@@ -82,7 +82,7 @@ export function CategoryCombobox({
                     value === null ? "opacity-100" : "opacity-0",
                   )}
                 />
-                <span className="text-muted-foreground">— none —</span>
+                <span className="text-muted-foreground">None</span>
               </CommandItem>
               {options.map((o) => (
                 <CommandItem

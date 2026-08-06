@@ -193,7 +193,7 @@ function UploadTab({
   const handleFile = (file: File) => {
     if (file.size > maxFileSize) {
       toast.error(
-        `File is ${(file.size / 1024 / 1024).toFixed(2)} MB — max is ${Math.round(
+        `File is ${(file.size / 1024 / 1024).toFixed(2)} MB. Max is ${Math.round(
           maxFileSize / 1024 / 1024,
         )} MB.`,
       );

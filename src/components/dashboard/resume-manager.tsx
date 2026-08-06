@@ -41,7 +41,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
   const uploadPdf = (file: File) => {
     if (file.size > MAX_BYTES) {
       toast.error(
-        `File is ${(file.size / 1024 / 1024).toFixed(2)} MB — max is ${MAX_BYTES / 1024 / 1024} MB.`,
+        `File is ${(file.size / 1024 / 1024).toFixed(2)} MB. Max is ${MAX_BYTES / 1024 / 1024} MB.`,
       );
       return;
     }
@@ -235,12 +235,12 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Delete “{confirmDelete?.originalName}”?
+              Delete &quot;{confirmDelete?.originalName}&quot;?
             </AlertDialogTitle>
             <AlertDialogDescription>
               {confirmDelete?.isActive
-                ? "This is the active resume — deleting it leaves /resume with nothing to serve until you activate another one. Removes the file from Cloudinary too. Can’t be undone."
-                : "Removes the file from Cloudinary and this list. Can’t be undone."}
+                ? "This is the active resume. Deleting it leaves /resume with nothing to serve until you activate another one. It also removes the file from Cloudinary. This can't be undone."
+                : "Removes the file from Cloudinary and this list. This can't be undone."}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

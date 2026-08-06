@@ -9,7 +9,7 @@ import { ResumeViewerClient } from "@/components/resume-viewer-client";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description: "Hasibul Islam — resume (PDF).",
+  description: "Hasibul Islam, resume (PDF).",
   alternates: { canonical: "/resume" },
 };
 

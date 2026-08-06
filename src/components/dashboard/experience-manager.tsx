@@ -274,7 +274,7 @@ function formatPeriod(start: Date, end: Date | null): string {
   const e = end
     ? fmt(typeof end === "string" ? new Date(end) : end)
     : "Present";
-  return `${s} — ${e}`;
+  return `${s} to ${e}`;
 }
 
 function toDateInputValue(d: Date | string | null): string {
@@ -427,10 +427,10 @@ function ExperienceDialogForm({
             <Field htmlFor="workType" label="Work type" optional>
               <Select name="workType" defaultValue={full?.workType ?? "none"}>
                 <SelectTrigger id="workType">
-                  <SelectValue placeholder="—" />
+                  <SelectValue placeholder="Choose one" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="none">—</SelectItem>
+                  <SelectItem value="none">None</SelectItem>
                   {WORK_TYPES.map((w) => (
                     <SelectItem key={w.value} value={w.value}>
                       {w.label}
@@ -547,7 +547,7 @@ function ExperienceDialogForm({
               className="col-span-2"
               label="Highlights"
               optional
-              hint="Rich text — bullet lists, headings, links, code. Same editor as the blog."
+              hint="Rich text: bullet lists, headings, links, code. Same editor as the blog."
             >
               <TiptapEditor
                 value={highlights}

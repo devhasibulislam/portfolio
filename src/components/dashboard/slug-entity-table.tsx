@@ -367,7 +367,7 @@ function DeleteDialog({
     <AlertDialog open onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete “{row.name}”?</AlertDialogTitle>
+          <AlertDialogTitle>Delete &quot;{row.name}&quot;?</AlertDialogTitle>
           <AlertDialogDescription>
             {row.postCount > 0
               ? `Blocked: ${row.postCount} post${row.postCount === 1 ? "" : "s"} still use this ${entity.toLowerCase()}. Reassign them first.`

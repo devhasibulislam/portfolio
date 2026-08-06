@@ -163,7 +163,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
                   month: "short",
                   day: "numeric",
                 })
-              : "—"
+              : "-"
           }
         />
       </div>
@@ -192,7 +192,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
             <GitBranch className="size-3" />
             Primary
           </span>
-          <span className="text-foreground">{data.primaryBranch ?? "—"}</span>
+          <span className="text-foreground">{data.primaryBranch ?? "-"}</span>
         </div>
       </div>
 
@@ -202,7 +202,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
           ? " · scales to zero when idle"
           : null}
         {data.autoscalingMaxCu != null
-          ? ` · ${data.autoscalingMinCu}–${data.autoscalingMaxCu} CU autoscale`
+          ? ` · ${data.autoscalingMinCu} to ${data.autoscalingMaxCu} CU autoscale`
           : null}
       </footer>
     </Card>
@@ -270,7 +270,7 @@ function formatDuration(seconds: number): string {
 }
 
 function formatCountdown(iso: string | null): string {
-  if (!iso) return "—";
+  if (!iso) return "-";
   const ms = new Date(iso).getTime() - Date.now();
   if (ms <= 0) return "any time";
   const days = Math.floor(ms / 86400000);

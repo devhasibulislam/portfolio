@@ -42,7 +42,7 @@ export function BrandBadge({
   return (
     <Link
       href="/"
-      aria-label="Hasibul Islam — home"
+      aria-label="Hasibul Islam, home"
       className="focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] rounded-full"
     >
       {inner}

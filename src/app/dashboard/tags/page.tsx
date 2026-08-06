@@ -11,7 +11,7 @@ export default async function Page() {
       rows={rows}
       entity="Tag"
       entityPlural="Tags"
-      subtitle="Group posts by topic. 5–8 per post recommended."
+      subtitle="Group posts by topic. 5 to 8 per post recommended."
       slugMaxLen={30}
       saveAction={saveTag}
       deleteAction={deleteTag}

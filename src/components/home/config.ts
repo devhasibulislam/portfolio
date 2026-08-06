@@ -60,7 +60,7 @@ export const HOTSPOTS: Hotspot[] = [
 // attributions). Owner edits later.
 export const ABOUT_COPY = `Senior full-stack engineer with 7+ years of production Node.js, NestJS and TypeScript work. Most of my career has been remote and contract work with teams in Israel, Italy, Algeria, Saudi Arabia and Bangladesh.
 
-I own delivery end to end: schema, API, background workers, Docker/AWS, CI/CD and observability. Recent win — cut a hot-path list API from ~200 ms to ~20 ms with compound indexing, single-join rewrites, cache-aside and DTO projection.
+I own delivery end to end: schema, API, background workers, Docker/AWS, CI/CD and observability. Recent win: cut a hot-path list API from ~200 ms to ~20 ms with compound indexing, single-join rewrites, cache-aside and DTO projection.
 
 I fold LLM + RAG, MCP and agentic-skills features into real user-facing paths, without the demo-project feel.`;
 
@@ -86,7 +86,7 @@ export const PROJECTS: ProjectEntry[] = [
     role: "Author",
     href: "https://github.com/devhasibulislam/nestjs-multitenant-starter",
     blurb:
-      "Postgres Row-Level Security for multi-tenant SaaS. Eight integration tests that actively try to leak data across tenants — all green.",
+      "Postgres Row-Level Security for multi-tenant SaaS. Eight integration tests that actively try to leak data across tenants. All green.",
   },
   {
     title: "webcrawler.buzz",

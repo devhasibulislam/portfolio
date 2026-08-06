@@ -15,13 +15,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   title: "Experience",
   description:
-    "Roles I've held — ZMC, Zubion, WeWise, MessageMind, FoorWeb, Prokken — and what I built in each.",
+    "Roles I've held (ZMC, Zubion, WeWise, MessageMind, FoorWeb, Prokken) and what I built in each.",
   alternates: { canonical: "/experience" },
   openGraph: {
     type: "website",
     title: "Experience · Hasibul Islam",
     description:
-      "Roles I've held and what I built in each — backend architecture, LLM/RAG, and production infra.",
+      "Roles I've held and what I built in each: backend architecture, LLM/RAG, and production infra.",
     url: `${SITE_URL}/experience`,
   },
 };
@@ -75,7 +75,7 @@ function groupByCompany(rows: PublicExperienceCard[]): {
 function formatPeriod(start: Date, end: Date | null): string {
   const fmt = (d: Date) =>
     d.toLocaleDateString(undefined, { month: "short", year: "numeric" });
-  return `${fmt(start)} — ${end ? fmt(end) : "Present"}`;
+  return `${fmt(start)} to ${end ? fmt(end) : "Present"}`;
 }
 
 export default async function ExperiencePage() {

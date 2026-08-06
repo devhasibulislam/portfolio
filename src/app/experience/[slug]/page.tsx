@@ -71,7 +71,7 @@ export async function generateMetadata({
 function formatPeriod(start: Date, end: Date | null): string {
   const fmt = (d: Date) =>
     d.toLocaleDateString(undefined, { month: "long", year: "numeric" });
-  return `${fmt(start)} — ${end ? fmt(end) : "Present"}`;
+  return `${fmt(start)} to ${end ? fmt(end) : "Present"}`;
 }
 
 export default async function ExperienceDetailPage({

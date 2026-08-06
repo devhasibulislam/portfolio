@@ -77,7 +77,7 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
                   </Link>
                 </TableCell>
                 <TableCell className="text-muted-foreground hidden text-sm md:table-cell">
-                  {r.categoryName ?? "—"}
+                  {r.categoryName ?? "-"}
                 </TableCell>
                 <TableCell>
                   <StatusSwitch row={r} />
@@ -108,7 +108,7 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Delete “{confirmDelete?.title}”?
+              Delete &quot;{confirmDelete?.title}&quot;?
             </AlertDialogTitle>
             <AlertDialogDescription>
               This deletes the post and its tag links. Cover image stays in the

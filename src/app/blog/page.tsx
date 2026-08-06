@@ -7,7 +7,7 @@ import { listPublishedPostsCursor } from "@/lib/db/queries/public-posts";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Notes on building things — TypeScript, Next.js, databases, and design.",
+    "Notes on building things: TypeScript, Next.js, databases, and design.",
   alternates: { canonical: "/blog" },
 };
 
@@ -29,7 +29,7 @@ export default async function BlogPage() {
           Blog
         </h1>
         <p className="text-muted-foreground mt-3 text-lg leading-relaxed">
-          Field notes on shipping — TypeScript, Node, databases, and the
+          Field notes on shipping: TypeScript, Node, databases, and the
           occasional design detour.
         </p>
       </header>

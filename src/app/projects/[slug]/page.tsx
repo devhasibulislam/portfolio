@@ -103,7 +103,7 @@ function formatPeriod(start: Date | null, end: Date | null): string | null {
   if (!start) return null;
   const fmt = (d: Date) =>
     d.toLocaleDateString(undefined, { month: "short", year: "numeric" });
-  return `${fmt(start)} — ${end ? fmt(end) : "Present"}`;
+  return `${fmt(start)} to ${end ? fmt(end) : "Present"}`;
 }
 
 export default async function ProjectDetailPage({
