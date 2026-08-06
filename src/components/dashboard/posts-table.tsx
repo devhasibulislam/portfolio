@@ -5,16 +5,6 @@ import { useRouter } from "next/navigation";
 import { useOptimistic, useState, useTransition } from "react";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -30,6 +20,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
 import type { PostRow } from "@/lib/db/queries/posts";
 import { deletePost, togglePostStatus } from "@/app/dashboard/posts/actions";
 
@@ -101,47 +92,29 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
         </TableBody>
       </Table>
 
-      <AlertDialog
+      <ConfirmDeleteDialog
         open={!!confirmDelete}
         onOpenChange={(o) => !o && setConfirmDelete(null)}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              Delete &quot;{confirmDelete?.title}&quot;?
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              This deletes the post and its tag links. Cover image stays in the
-              media library.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              disabled={pending}
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              onClick={(e) => {
-                e.preventDefault();
-                if (!confirmDelete) return;
-                const fd = new FormData();
-                fd.set("id", confirmDelete.id);
-                startTransition(async () => {
-                  const res = await deletePost(null, fd);
-                  if (res?.error) {
-                    toast.error(res.error);
-                    return;
-                  }
-                  toast.success("Post deleted");
-                  setConfirmDelete(null);
-                  router.refresh();
-                });
-              }}
-            >
-              {pending ? "Deleting…" : "Delete"}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        title={<>Delete &quot;{confirmDelete?.title}&quot;?</>}
+        description="This deletes the post and its tag links. Cover image stays in the media library."
+        pending={pending}
+        destructive
+        onConfirm={() => {
+          if (!confirmDelete) return;
+          const fd = new FormData();
+          fd.set("id", confirmDelete.id);
+          startTransition(async () => {
+            const res = await deletePost(null, fd);
+            if (res?.error) {
+              toast.error(res.error);
+              return;
+            }
+            toast.success("Post deleted");
+            setConfirmDelete(null);
+            router.refresh();
+          });
+        }}
+      />
     </div>
   );
 }

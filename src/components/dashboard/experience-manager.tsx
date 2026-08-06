@@ -4,16 +4,6 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -32,9 +22,15 @@ import {
 import {
   CountedInput,
   CountedTextarea,
+  Field,
+  FieldGrid,
   OptionalMark,
   RequiredMark,
+  Section,
+  SwitchRow,
 } from "@/components/dashboard/field-helpers";
+import { PageHeader } from "@/components/dashboard/page-header";
+import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
 import { TiptapEditor } from "@/components/dashboard/tiptap-editor";
 import {
   Select,
@@ -53,6 +49,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { slugify } from "@/lib/slug";
+import { toDateInputValue } from "@/lib/dates";
 import type {
   ExperienceFull,
   ExperienceRow,
@@ -139,19 +136,16 @@ export function ExperienceManager({
 
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-8">
-      <div className="mb-4">
-        <div className="flex items-center justify-between gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">Experience</h1>
+      <PageHeader
+        title="Experience"
+        description="One row per role. Promotions share a company slug and group on the public page."
+        action={
           <Button onClick={() => setEditing({ mode: "new" })}>
             <Plus className="me-1 size-4" />
             New role
           </Button>
-        </div>
-        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
-          One row per role. Promotions share a company slug and group on the
-          public page.
-        </p>
-      </div>
+        }
+      />
 
       {rows.length === 0 ? (
         <div className="rounded-md border border-dashed p-10 text-center">
@@ -238,29 +232,19 @@ export function ExperienceManager({
         pending={pending}
       />
 
-      <AlertDialog
+      <ConfirmDeleteDialog
         open={confirmDelete !== null}
         onOpenChange={(open) => !open && setConfirmDelete(null)}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Delete role?</AlertDialogTitle>
-            <AlertDialogDescription>
-              {confirmDelete?.role} at {confirmDelete?.company} will be
-              permanently removed.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              disabled={pending}
-              onClick={() => confirmDelete && onDelete(confirmDelete)}
-            >
-              Delete
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        title="Delete role?"
+        description={
+          <>
+            {confirmDelete?.role} at {confirmDelete?.company} will be
+            permanently removed.
+          </>
+        }
+        pending={pending}
+        onConfirm={() => confirmDelete && onDelete(confirmDelete)}
+      />
     </div>
   );
 }
@@ -275,13 +259,6 @@ function formatPeriod(start: Date, end: Date | null): string {
     ? fmt(typeof end === "string" ? new Date(end) : end)
     : "Present";
   return `${s} to ${e}`;
-}
-
-function toDateInputValue(d: Date | string | null): string {
-  if (!d) return "";
-  const date = typeof d === "string" ? new Date(d) : d;
-  if (Number.isNaN(date.getTime())) return "";
-  return date.toISOString().slice(0, 10);
 }
 
 function ExperienceDialog({
@@ -640,80 +617,5 @@ function ExperienceDialogForm({
         </Button>
       </DialogFooter>
     </form>
-  );
-}
-
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section>
-      <h3 className="text-muted-foreground mb-3 text-xs font-semibold tracking-widest uppercase">
-        {title}
-      </h3>
-      {children}
-    </section>
-  );
-}
-
-function FieldGrid({ children }: { children: React.ReactNode }) {
-  return <div className="grid grid-cols-2 gap-3">{children}</div>;
-}
-
-function Field({
-  htmlFor,
-  label,
-  hint,
-  className,
-  required,
-  optional,
-  children,
-}: {
-  htmlFor?: string;
-  label: string;
-  hint?: string;
-  className?: string;
-  required?: boolean;
-  optional?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className={`flex flex-col gap-1.5 ${className ?? ""}`}>
-      <Label htmlFor={htmlFor}>
-        {label}
-        {required ? <RequiredMark /> : null}
-        {optional ? <OptionalMark /> : null}
-      </Label>
-      {children}
-      {hint ? <p className="text-muted-foreground text-xs">{hint}</p> : null}
-    </div>
-  );
-}
-
-function SwitchRow({
-  name,
-  label,
-  hint,
-  defaultChecked,
-}: {
-  name: string;
-  label: string;
-  hint: string;
-  defaultChecked: boolean;
-}) {
-  return (
-    <div className="col-span-2 flex items-center justify-between rounded-md border p-3">
-      <div>
-        <Label htmlFor={name} className="cursor-pointer">
-          {label}
-        </Label>
-        <p className="text-muted-foreground text-xs">{hint}</p>
-      </div>
-      <Switch id={name} name={name} defaultChecked={defaultChecked} />
-    </div>
   );
 }

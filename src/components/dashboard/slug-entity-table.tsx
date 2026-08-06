@@ -4,16 +4,6 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -38,6 +28,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { PageHeader } from "@/components/dashboard/page-header";
+import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
 import { slugify } from "@/lib/slug";
 
 /**
@@ -84,19 +76,15 @@ export function SlugEntityTable({
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-8">
-      <div className="mb-4">
-        <div className="flex items-center justify-between gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            {entityPlural}
-          </h1>
+      <PageHeader
+        title={entityPlural}
+        description={subtitle}
+        action={
           <Button onClick={() => setEditing({ mode: "new" })}>
             <Plus className="me-1 size-4" /> New
           </Button>
-        </div>
-        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
-          {subtitle}
-        </p>
-      </div>
+        }
+      />
 
       <div className="rounded-lg border">
         <Table>
@@ -366,41 +354,32 @@ function DeleteDialog({
   const [pending, startTransition] = useTransition();
   if (!row) return null;
   return (
-    <AlertDialog open onOpenChange={onOpenChange}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Delete &quot;{row.name}&quot;?</AlertDialogTitle>
-          <AlertDialogDescription>
-            {row.postCount > 0
-              ? `Blocked: ${row.postCount} post${row.postCount === 1 ? "" : "s"} still use this ${entity.toLowerCase()}. Reassign them first.`
-              : "This can't be undone."}
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            disabled={pending || row.postCount > 0}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            onClick={(e) => {
-              e.preventDefault();
-              const fd = new FormData();
-              fd.set("id", row.id);
-              startTransition(async () => {
-                const res = await deleteAction(null, fd);
-                if (res?.error) {
-                  toast.error(res.error);
-                  return;
-                }
-                toast.success(`${entity} deleted`);
-                onOpenChange(false);
-                router.refresh();
-              });
-            }}
-          >
-            {pending ? "Deleting…" : "Delete"}
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+    <ConfirmDeleteDialog
+      open
+      onOpenChange={onOpenChange}
+      title={<>Delete &quot;{row.name}&quot;?</>}
+      description={
+        row.postCount > 0
+          ? `Blocked: ${row.postCount} post${row.postCount === 1 ? "" : "s"} still use this ${entity.toLowerCase()}. Reassign them first.`
+          : "This can't be undone."
+      }
+      pending={pending}
+      disabled={row.postCount > 0}
+      destructive
+      onConfirm={() => {
+        const fd = new FormData();
+        fd.set("id", row.id);
+        startTransition(async () => {
+          const res = await deleteAction(null, fd);
+          if (res?.error) {
+            toast.error(res.error);
+            return;
+          }
+          toast.success(`${entity} deleted`);
+          onOpenChange(false);
+          router.refresh();
+        });
+      }}
+    />
   );
 }

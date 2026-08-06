@@ -4,16 +4,6 @@ import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { CheckCircle2, ExternalLink, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import {
@@ -21,6 +11,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { PageHeader } from "@/components/dashboard/page-header";
+import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
 import type { ResumeRow } from "@/lib/db/queries/resumes";
 import {
   deleteResume,
@@ -111,32 +103,37 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-8">
-      <div className="mb-6">
-        <div className="flex items-center justify-between gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">Resume</h1>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept=".pdf"
-            className="hidden"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file) uploadPdf(file);
-              e.target.value = "";
-            }}
-          />
-          <Button
-            onClick={() => fileInputRef.current?.click()}
-            disabled={pending}
-          >
-            <Upload className="me-1 size-4" />
-            {pending ? "Uploading…" : "Upload PDF"}
-          </Button>
-        </div>
-        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
-          Upload a new PDF; pick the one served at <code>/resume</code>.
-        </p>
-      </div>
+      <PageHeader
+        title="Resume"
+        description={
+          <>
+            Upload a new PDF; pick the one served at <code>/resume</code>.
+          </>
+        }
+        className="mb-6"
+        action={
+          <>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".pdf"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (file) uploadPdf(file);
+                e.target.value = "";
+              }}
+            />
+            <Button
+              onClick={() => fileInputRef.current?.click()}
+              disabled={pending}
+            >
+              <Upload className="me-1 size-4" />
+              {pending ? "Uploading…" : "Upload PDF"}
+            </Button>
+          </>
+        }
+      />
 
       {rows.length === 0 ? (
         <div className="text-muted-foreground rounded-lg border py-16 text-center">
@@ -228,48 +225,33 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
         </ul>
       )}
 
-      <AlertDialog
+      <ConfirmDeleteDialog
         open={!!confirmDelete}
         onOpenChange={(o) => !o && setConfirmDelete(null)}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              Delete &quot;{confirmDelete?.originalName}&quot;?
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {confirmDelete?.isActive
-                ? "This is the active resume. Deleting it leaves /resume with nothing to serve until you activate another one. It also removes the file from Cloudinary. This can't be undone."
-                : "Removes the file from Cloudinary and this list. This can't be undone."}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              disabled={pending}
-              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-              onClick={(e) => {
-                e.preventDefault();
-                if (!confirmDelete) return;
-                const fd = new FormData();
-                fd.set("id", confirmDelete.id);
-                startTransition(async () => {
-                  const res = await deleteResume(null, fd);
-                  if (res?.error) {
-                    toast.error(res.error);
-                    return;
-                  }
-                  toast.success("Resume deleted");
-                  setConfirmDelete(null);
-                  router.refresh();
-                });
-              }}
-            >
-              {pending ? "Deleting…" : "Delete"}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        title={<>Delete &quot;{confirmDelete?.originalName}&quot;?</>}
+        description={
+          confirmDelete?.isActive
+            ? "This is the active resume. Deleting it leaves /resume with nothing to serve until you activate another one. It also removes the file from Cloudinary. This can't be undone."
+            : "Removes the file from Cloudinary and this list. This can't be undone."
+        }
+        pending={pending}
+        destructive
+        onConfirm={() => {
+          if (!confirmDelete) return;
+          const fd = new FormData();
+          fd.set("id", confirmDelete.id);
+          startTransition(async () => {
+            const res = await deleteResume(null, fd);
+            if (res?.error) {
+              toast.error(res.error);
+              return;
+            }
+            toast.success("Resume deleted");
+            setConfirmDelete(null);
+            router.refresh();
+          });
+        }}
+      />
     </div>
   );
 }

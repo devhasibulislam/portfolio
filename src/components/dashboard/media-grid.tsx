@@ -5,16 +5,6 @@ import { useRouter } from "next/navigation";
 import { CldImage } from "next-cloudinary";
 import { Copy, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -30,6 +20,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ImagePickerDialog } from "@/components/dashboard/image-picker";
+import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
 import type { MediaRow } from "@/lib/db/queries/media";
 import { deleteMedia } from "@/app/dashboard/media/actions";
 
@@ -185,44 +176,33 @@ function DeleteDialog({
   const [pending, startTransition] = useTransition();
   if (!row) return null;
   return (
-    <AlertDialog open onOpenChange={onOpenChange}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>
-            Delete &quot;{row.originalName}&quot;?
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            {row.inUse
-              ? "Blocked: this image is set as a post cover. Reassign it first."
-              : "Removes the file from Cloudinary and this list. Can't be undone."}
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            disabled={pending || row.inUse}
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
-            onClick={(e) => {
-              e.preventDefault();
-              const fd = new FormData();
-              fd.set("id", row.id);
-              startTransition(async () => {
-                const res = await deleteMedia(null, fd);
-                if (res?.error) {
-                  toast.error(res.error);
-                  return;
-                }
-                toast.success("Deleted");
-                onOpenChange(false);
-                router.refresh();
-              });
-            }}
-          >
-            {pending ? "Deleting…" : "Delete"}
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+    <ConfirmDeleteDialog
+      open
+      onOpenChange={onOpenChange}
+      title={<>Delete &quot;{row.originalName}&quot;?</>}
+      description={
+        row.inUse
+          ? "Blocked: this image is set as a post cover. Reassign it first."
+          : "Removes the file from Cloudinary and this list. Can't be undone."
+      }
+      pending={pending}
+      disabled={row.inUse}
+      destructive
+      onConfirm={() => {
+        const fd = new FormData();
+        fd.set("id", row.id);
+        startTransition(async () => {
+          const res = await deleteMedia(null, fd);
+          if (res?.error) {
+            toast.error(res.error);
+            return;
+          }
+          toast.success("Deleted");
+          onOpenChange(false);
+          router.refresh();
+        });
+      }}
+    />
   );
 }
 

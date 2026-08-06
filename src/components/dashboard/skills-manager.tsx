@@ -4,16 +4,6 @@ import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -34,6 +24,8 @@ import {
   OptionalMark,
   RequiredMark,
 } from "@/components/dashboard/field-helpers";
+import { PageHeader } from "@/components/dashboard/page-header";
+import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
 import {
   Select,
   SelectContent,
@@ -124,19 +116,16 @@ export function SkillsManager({
 
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-8">
-      <div className="mb-4">
-        <div className="flex items-center justify-between gap-3">
-          <h1 className="text-2xl font-semibold tracking-tight">Skills</h1>
+      <PageHeader
+        title="Skills"
+        description="Grouped by resume section. Display order controls where each row appears within its group."
+        action={
           <Button onClick={() => setEditing({ mode: "new" })}>
             <Plus className="me-1 size-4" />
             New skill
           </Button>
-        </div>
-        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
-          Grouped by resume section. Display order controls where each row
-          appears within its group.
-        </p>
-      </div>
+        }
+      />
 
       {rows.length === 0 ? (
         <div className="rounded-md border border-dashed p-10 text-center">
@@ -231,28 +220,16 @@ export function SkillsManager({
         pending={pending}
       />
 
-      <AlertDialog
+      <ConfirmDeleteDialog
         open={confirmDelete !== null}
         onOpenChange={(open) => !open && setConfirmDelete(null)}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Delete skill?</AlertDialogTitle>
-            <AlertDialogDescription>
-              &quot;{confirmDelete?.name}&quot; will be permanently removed.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
-            <AlertDialogAction
-              disabled={pending}
-              onClick={() => confirmDelete && onDelete(confirmDelete)}
-            >
-              Delete
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
+        title="Delete skill?"
+        description={
+          <>&quot;{confirmDelete?.name}&quot; will be permanently removed.</>
+        }
+        pending={pending}
+        onConfirm={() => confirmDelete && onDelete(confirmDelete)}
+      />
     </div>
   );
 }
