@@ -513,6 +513,27 @@
         "cancel": "বাতিল",
         "createButton": "প্রকল্প তৈরি করুন"
       }
+    },
+    "imagePicker": {
+      "title": "একটি ইমেজ বাছুন",
+      "tabLibrary": "লাইব্রেরি",
+      "tabUpload": "নতুন আপলোড",
+      "libraryEmpty": "এখনও কিছু নেই। আপলোড ট্যাব ব্যবহার করুন।",
+      "dropHint": "ফাইল টেনে এনে ছেড়ে দিন, অথবা ব্রাউজ ক্লিক করুন।",
+      "browse": "ব্রাউজ",
+      "uploading": "আপলোড হচ্ছে…",
+      "descRatio": "{ratio}:1 রেশিওতে দেখানো",
+      "descAnyRatio": "যেকোনো রেশিও",
+      "descMaxSize": "সর্বোচ্চ {max} MB"
+    },
+    "imageCropper": {
+      "zoom": "জুম",
+      "lockedTo": "{ratio}:1 এ লক করা",
+      "anyRatio": "যেকোনো রেশিও",
+      "cancel": "বাতিল",
+      "useCrop": "এই ক্রপ ব্যবহার",
+      "uploading": "আপলোড হচ্ছে…",
+      "cropping": "ক্রপ হচ্ছে…"
     }
   },
   "login": {

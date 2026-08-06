@@ -513,6 +513,27 @@
         "cancel": "إلغاء",
         "createButton": "إنشاء مشروع"
       }
+    },
+    "imagePicker": {
+      "title": "اختر صورة",
+      "tabLibrary": "المكتبة",
+      "tabUpload": "رفع جديد",
+      "libraryEmpty": "لا يوجد شيء بعد. استخدم علامة تبويب الرفع.",
+      "dropHint": "اسحب وأفلت ملفًا هنا، أو انقر على استعراض للاختيار.",
+      "browse": "استعراض",
+      "uploading": "جارٍ الرفع…",
+      "descRatio": "يُعرض بنسبة {ratio}:1",
+      "descAnyRatio": "أي نسبة",
+      "descMaxSize": "حتى {max} ميجابايت"
+    },
+    "imageCropper": {
+      "zoom": "تكبير",
+      "lockedTo": "مقفل على {ratio}:1",
+      "anyRatio": "أي نسبة",
+      "cancel": "إلغاء",
+      "useCrop": "استخدم القص",
+      "uploading": "جارٍ الرفع…",
+      "cropping": "جارٍ القص…"
     }
   },
   "login": {

@@ -77,6 +77,7 @@ export function ImagePickerDialog({
   maxFileSize = 1_048_576,
   allowedFormats = ["jpg", "jpeg", "png", "gif", "webp"],
 }: Props) {
+  const t = useTranslations("dashboard.imagePicker");
   const [tab, setTab] = useState<"library" | "upload">(
     options.length > 0 ? "library" : "upload",
   );
@@ -85,11 +86,13 @@ export function ImagePickerDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl">
         <DialogHeader>
-          <DialogTitle>Pick an image</DialogTitle>
+          <DialogTitle>{t("title")}</DialogTitle>
           <DialogDescription>
-            {allowedFormats.map((f) => f.toUpperCase()).join(", ")} · up to{" "}
-            {Math.round(maxFileSize / 1024 / 1024)} MB
-            {aspect ? ` · displayed at ${aspect.toFixed(2)}:1` : " · any ratio"}
+            {allowedFormats.map((f) => f.toUpperCase()).join(", ")} ·{" "}
+            {t("descMaxSize", { max: Math.round(maxFileSize / 1024 / 1024) })}
+            {aspect
+              ? ` · ${t("descRatio", { ratio: aspect.toFixed(2) })}`
+              : ` · ${t("descAnyRatio")}`}
           </DialogDescription>
         </DialogHeader>
 
@@ -99,20 +102,20 @@ export function ImagePickerDialog({
         >
           <TabsList>
             <TabsTrigger value="library" disabled={options.length === 0}>
-              Library
+              {t("tabLibrary")}
               {options.length > 0 ? (
                 <span className="text-muted-foreground ms-2 tabular-nums">
                   {options.length}
                 </span>
               ) : null}
             </TabsTrigger>
-            <TabsTrigger value="upload">Upload new</TabsTrigger>
+            <TabsTrigger value="upload">{t("tabUpload")}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="library" className="pt-2">
             {options.length === 0 ? (
               <p className="text-muted-foreground py-8 text-center text-sm">
-                Nothing here yet. Use the Upload tab.
+                {t("libraryEmpty")}
               </p>
             ) : (
               <ul className="grid max-h-[60vh] grid-cols-2 gap-3 overflow-y-auto pe-1 sm:grid-cols-3">
@@ -181,6 +184,7 @@ function UploadTab({
 }) {
   const router = useRouter();
   const t = useTranslations("actions.media");
+  const tPicker = useTranslations("dashboard.imagePicker");
   const inputRef = useRef<HTMLInputElement>(null);
   const [pending, startTransition] = useTransition();
   const [dragging, setDragging] = useState(false);
@@ -325,7 +329,7 @@ function UploadTab({
       }`}
     >
       <p className="text-muted-foreground text-sm">
-        Drag &amp; drop a file here, or click Browse to pick one.
+        {tPicker("dropHint")}
       </p>
       <input
         ref={inputRef}
@@ -345,7 +349,7 @@ function UploadTab({
         disabled={pending}
       >
         <Upload className="me-2 size-4" />
-        {pending ? "Uploading…" : "Browse"}
+        {pending ? tPicker("uploading") : tPicker("browse")}
       </Button>
     </div>
   );

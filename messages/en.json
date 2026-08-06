@@ -513,6 +513,27 @@
         "cancel": "Cancel",
         "createButton": "Create project"
       }
+    },
+    "imagePicker": {
+      "title": "Pick an image",
+      "tabLibrary": "Library",
+      "tabUpload": "Upload new",
+      "libraryEmpty": "Nothing here yet. Use the Upload tab.",
+      "dropHint": "Drag & drop a file here, or click Browse to pick one.",
+      "browse": "Browse",
+      "uploading": "Uploading…",
+      "descRatio": "displayed at {ratio}:1",
+      "descAnyRatio": "any ratio",
+      "descMaxSize": "up to {max} MB"
+    },
+    "imageCropper": {
+      "zoom": "Zoom",
+      "lockedTo": "Locked to {ratio}:1",
+      "anyRatio": "Any ratio",
+      "cancel": "Cancel",
+      "useCrop": "Use crop",
+      "uploading": "Uploading…",
+      "cropping": "Cropping…"
     }
   },
   "login": {

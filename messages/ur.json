@@ -513,6 +513,27 @@
         "cancel": "منسوخ",
         "createButton": "پروجیکٹ بنائیں"
       }
+    },
+    "imagePicker": {
+      "title": "تصویر منتخب کریں",
+      "tabLibrary": "لائبریری",
+      "tabUpload": "نئی اپ لوڈ",
+      "libraryEmpty": "ابھی کچھ نہیں۔ اپ لوڈ ٹیب استعمال کریں۔",
+      "dropHint": "فائل کھینچ کر یہاں چھوڑیں، یا انتخاب کے لیے براؤز کلک کریں۔",
+      "browse": "براؤز",
+      "uploading": "اپ لوڈ ہو رہا ہے…",
+      "descRatio": "{ratio}:1 پر دکھایا گیا",
+      "descAnyRatio": "کوئی بھی تناسب",
+      "descMaxSize": "زیادہ سے زیادہ {max} MB"
+    },
+    "imageCropper": {
+      "zoom": "زوم",
+      "lockedTo": "{ratio}:1 پر مقفل",
+      "anyRatio": "کوئی بھی تناسب",
+      "cancel": "منسوخ",
+      "useCrop": "یہ کراپ استعمال کریں",
+      "uploading": "اپ لوڈ ہو رہا ہے…",
+      "cropping": "کراپ ہو رہا ہے…"
     }
   },
   "login": {

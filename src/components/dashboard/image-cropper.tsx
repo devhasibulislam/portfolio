@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import Cropper, { type Area } from "react-easy-crop";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -37,6 +38,7 @@ export function ImageCropper({
   onCancel,
   onConfirm,
 }: Props) {
+  const t = useTranslations("dashboard.imageCropper");
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedArea, setCroppedArea] = useState<Area | null>(null);
@@ -90,7 +92,7 @@ export function ImageCropper({
 
       <div className="flex flex-wrap items-center gap-4 text-xs">
         <label className="flex items-center gap-2">
-          <span className="text-muted-foreground">Zoom</span>
+          <span className="text-muted-foreground">{t("zoom")}</span>
           <input
             type="range"
             min={1}
@@ -108,10 +110,10 @@ export function ImageCropper({
         </span>
         {aspect ? (
           <span className="text-muted-foreground">
-            Locked to {aspect.toFixed(2)}:1
+            {t("lockedTo", { ratio: aspect.toFixed(2) })}
           </span>
         ) : (
-          <span className="text-muted-foreground">Any ratio</span>
+          <span className="text-muted-foreground">{t("anyRatio")}</span>
         )}
       </div>
 
@@ -122,16 +124,16 @@ export function ImageCropper({
           onClick={onCancel}
           disabled={pending || uploading}
         >
-          Cancel
+          {t("cancel")}
         </Button>
         <Button type="button" onClick={confirm} disabled={pending || uploading}>
           {pending || uploading ? (
             <>
               <Loader2 className="size-4 animate-spin" />
-              {uploading ? "Uploading…" : "Cropping…"}
+              {uploading ? t("uploading") : t("cropping")}
             </>
           ) : (
-            "Use crop"
+            t("useCrop")
           )}
         </Button>
       </div>

@@ -513,6 +513,27 @@
         "cancel": "ביטול",
         "createButton": "צור פרויקט"
       }
+    },
+    "imagePicker": {
+      "title": "בחר תמונה",
+      "tabLibrary": "ספרייה",
+      "tabUpload": "העלה חדש",
+      "libraryEmpty": "אין כלום עדיין. השתמש בכרטיסייה העלאה.",
+      "dropHint": "גרור ושחרר קובץ כאן, או לחץ עיון לבחירה.",
+      "browse": "עיון",
+      "uploading": "מעלה…",
+      "descRatio": "מוצג ביחס {ratio}:1",
+      "descAnyRatio": "כל יחס",
+      "descMaxSize": "עד {max} MB"
+    },
+    "imageCropper": {
+      "zoom": "זום",
+      "lockedTo": "נעול על {ratio}:1",
+      "anyRatio": "כל יחס",
+      "cancel": "ביטול",
+      "useCrop": "השתמש בחיתוך",
+      "uploading": "מעלה…",
+      "cropping": "חותך…"
     }
   },
   "login": {
