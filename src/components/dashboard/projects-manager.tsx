@@ -508,8 +508,8 @@ function ProjectDialogForm({
                 <OptionalMark />
               </Label>
               <p className="text-muted-foreground text-xs">
-                Rich text: headings, lists, links, code, images. Same editor
-                the blog.
+                Rich text: headings, lists, links, code, images. Same editor the
+                blog.
               </p>
               <TiptapEditor
                 value={body}

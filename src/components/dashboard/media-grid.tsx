@@ -188,7 +188,9 @@ function DeleteDialog({
     <AlertDialog open onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Delete &quot;{row.originalName}&quot;?</AlertDialogTitle>
+          <AlertDialogTitle>
+            Delete &quot;{row.originalName}&quot;?
+          </AlertDialogTitle>
           <AlertDialogDescription>
             {row.inUse
               ? "Blocked: this image is set as a post cover. Reassign it first."
