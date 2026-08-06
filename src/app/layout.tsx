@@ -32,17 +32,17 @@ export async function generateMetadata(): Promise<Metadata> {
     getTranslations("brand"),
     getLocale(),
   ]);
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const siteTitle = t("siteTitle");
   const siteDescription = t("siteDescription");
   const siteName = tBrand("name");
 
   // hreflang alternates — one entry per supported locale so Google/Bing pick
   // the right variant, plus `x-default` pointing at the canonical URL.
-  const languages = Object.fromEntries(
-    LOCALES.map((l) => [l, "/"]),
-  ) as Record<string, string>;
+  const languages = Object.fromEntries(LOCALES.map((l) => [l, "/"])) as Record<
+    string,
+    string
+  >;
   languages["x-default"] = "/";
 
   return {
