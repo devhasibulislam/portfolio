@@ -5,31 +5,31 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2914 nodes · 4699 edges · 277 communities (207 shown, 70 thin omitted)
+- 2995 nodes · 4859 edges · 281 communities (210 shown, 71 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 196 edges (avg confidence: 0.77)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
 - Vercel Optimize Budget Summary
+- Dashboard Shared Primitives
 - Vercel Optimize Recommendation Dedup
-- Vercel Optimize Claim Extraction
+- Public Pages Cache + Sign
 - Vercel Optimize Workspace Resolver
-- Dashboard Actions and Pages
 - Home Hero R3F
 - Vercel Optimize Impact Label
 - shadcn UI Primitives
+- Dashboard Actions + DB
+- Experience Manager Form
 - Neon Skills
-- Canvas Design Skill
-- Public Pages and Cloudinary Sign
-- Vercel Optimize Claim Verification
-- Vercel Optimize Docs and Gates
-- Experience CRUD
-- Cloudinary Skills
-- Vercel Optimize Auth Contract
 - Projects CRUD
-- Root Layout and i18n
-- Skills CRUD
-- Sitemap and DB Schema
+- Community 12
+- Community 13
+- Community 14
+- Community 15
+- Community 16
+- Community 17
+- Community 18
+- Community 19
 - Community 20
 - Community 21
 - Community 22
@@ -70,7 +70,7 @@
 - Community 57
 - Community 58
 - Community 59
-- Community 61
+- Community 60
 - Community 62
 - Community 63
 - Community 64
@@ -85,7 +85,7 @@
 - Community 73
 - Community 74
 - Community 75
-- Community 76
+- Community 77
 - Community 78
 - Community 79
 - Community 80
@@ -113,7 +113,7 @@
 - Community 102
 - Community 103
 - Community 104
-- Community 106
+- Community 105
 - Community 107
 - Community 108
 - Community 109
@@ -132,8 +132,8 @@
 - Community 122
 - Community 123
 - Community 124
+- Community 125
 - Community 126
-- Community 127
 - Community 128
 - Community 129
 - Community 130
@@ -193,7 +193,7 @@
 - Community 186
 - Community 187
 - Community 188
-- Community 190
+- Community 189
 - Community 191
 - Community 192
 - Community 193
@@ -206,19 +206,16 @@
 - Community 200
 - Community 201
 - Community 202
-- Community 205
+- Community 203
 - Community 206
 - Community 207
 - Community 208
 - Community 209
 - Community 210
-- Community 212
-- Community 213
-- Community 214
+- Community 211
 - Community 216
 - Community 217
 - Community 218
-- Community 219
 - Community 220
 - Community 221
 - Community 222
@@ -257,15 +254,19 @@
 - Community 255
 - Community 256
 - Community 257
-- Community 266
-- Community 269
+- Community 258
+- Community 259
+- Community 260
+- Community 261
 - Community 270
-- Community 271
-- Community 272
 - Community 273
 - Community 274
 - Community 275
 - Community 276
+- Community 277
+- Community 278
+- Community 279
+- Community 280
 
 ## God Nodes (most connected - your core abstractions)
 1. `verifyClaim()` - 42 edges
@@ -294,27 +295,27 @@
 ## Import Cycles
 - None detected.
 
-## Communities (277 total, 70 thin omitted)
+## Communities (281 total, 71 thin omitted)
 
 ### Community 0 - "Vercel Optimize Budget Summary"
 Cohesion: 0.05
 Nodes (85): buildBudgetSummary(), buildChatPreview(), buildExactChatMessage(), buildOptions(), buildPrintCheck(), buildQuestionPayload(), buildQuestionText(), renderBudgetSummaryMarkdown() (+77 more)
 
-### Community 1 - "Vercel Optimize Recommendation Dedup"
+### Community 1 - "Dashboard Shared Primitives"
+Cohesion: 0.06
+Nodes (43): metadata, ConfirmDeleteDialog(), EditingState, ExperienceDialogForm(), ExperienceManager(), formatPeriod(), WORK_TYPES, CountedInput() (+35 more)
+
+### Community 2 - "Vercel Optimize Recommendation Dedup"
 Cohesion: 0.08
 Nodes (57): affectedFiles(), appliesAlsoEntry(), cacheLifeIntent(), dedupEditTarget(), dedupeRecommendations(), dedupIntent(), firstAffectedFile(), fixShape() (+49 more)
 
-### Community 2 - "Vercel Optimize Claim Extraction"
-Cohesion: 0.09
-Nodes (54): asArray(), cacheRecommendationFiles(), extractClaims(), isCacheCandidate(), mentionsAuthSensitiveParallelization(), mentionsCachedNotFoundOr404(), mentionsCacheLifeCdnHeaderClaim(), mentionsCacheLifetimeChange() (+46 more)
+### Community 3 - "Public Pages Cache + Sign"
+Cohesion: 0.06
+Nodes (43): POST /api/sign-cloudinary-params, blog/[slug] generateMetadata, loadPost (cached), BlogPostPage, BrandBadge, Dashboard Categories Page, Dashboard Media Page, Dashboard Post Edit Page (+35 more)
 
-### Community 3 - "Vercel Optimize Workspace Resolver"
+### Community 4 - "Vercel Optimize Workspace Resolver"
 Cohesion: 0.07
 Nodes (50): buildPackageLookup(), buildResolver(), DEFAULT_RESOLVE_OPTIONS, detectMonorepoRoot(), escapeRegExp(), expandParts(), expandResolvedSpecifier(), expandWorkspaceGlob() (+42 more)
-
-### Community 4 - "Dashboard Actions and Pages"
-Cohesion: 0.06
-Nodes (32): ActionState, deleteCategory(), saveCategory(), metadata, Page(), metadata, Page(), metadata (+24 more)
 
 ### Community 5 - "Home Hero R3F"
 Cohesion: 0.07
@@ -328,221 +329,221 @@ Nodes (35): computeImpactLabel(), cwvIssue(), formatCwvIssue(), formatInteger(),
 Cohesion: 0.06
 Nodes (19): Separator(), Sheet(), SheetContent(), SheetDescription(), SheetHeader(), SheetTitle(), Sidebar(), SidebarContext (+11 more)
 
-### Community 8 - "Neon Skills"
+### Community 8 - "Dashboard Actions + DB"
+Cohesion: 0.06
+Nodes (38): ActionState, ActionState, loadSitemapRows(), sitemap(), tag, OverviewCounts, categories, categoriesRelations (+30 more)
+
+### Community 9 - "Experience Manager Form"
+Cohesion: 0.07
+Nodes (23): EditingState, ExperienceDialogForm(), toDateInputValue(), WORK_TYPES, CountedInput(), CountedInputProps, CountedTextarea(), CountedTextareaProps (+15 more)
+
+### Community 10 - "Neon Skills"
 Cohesion: 0.05
 Nodes (45): Neon AI Gateway Skill, Model Context Protocol, Streamable HTTP Transport, @sentry/node SDK, Server-Sent Events (text/event-stream), Neon Functions Skill, Neon Object Storage Skill, Neon Serverless Postgres Skill (+37 more)
 
-### Community 9 - "Canvas Design Skill"
+### Community 11 - "Projects CRUD"
+Cohesion: 0.07
+Nodes (36): ActionState, deleteProject(), EMPTY_DOC, parseBodyJson(), saveProject(), validateLinkHosts(), metadata, Page() (+28 more)
+
+### Community 12 - "Community 12"
 Cohesion: 0.08
 Nodes (41): Canvas Design Apache 2.0 License, Canvas Design Skill, Arsenal SC Font, Big Shoulders Font, Boldonse Font, Bricolage Grotesque Font, Analog Meditation Aesthetic Example, Canvas Creation Phase (+33 more)
 
-### Community 10 - "Public Pages and Cloudinary Sign"
+### Community 13 - "Community 13"
 Cohesion: 0.08
-Nodes (30): POST /api/sign-cloudinary-params, blog/[slug] generateMetadata, loadPost (cached), BlogPostPage, BrandBadge, Dashboard Categories Page, Dashboard Media Page, Dashboard Post Edit Page (+22 more)
+Nodes (34): ActionState, deleteExperience(), EMPTY_DOC, parseDocJson(), saveExperience(), metadata, Page(), resolveFull() (+26 more)
 
-### Community 11 - "Vercel Optimize Claim Verification"
-Cohesion: 0.13
-Nodes (36): findRecContradictions(), cacheInvalidationFileCache, cleanHeaderValue(), extractHeaderValues(), hasEmptyCacheDirective(), hasHeaderValue(), recText(), routeErrorFixBroadlyCatchesNotFound() (+28 more)
-
-### Community 12 - "Vercel Optimize Docs and Gates"
-Cohesion: 0.06
-Nodes (37): vercel-optimize AGENTS entry, vercel-optimize CONTRIBUTING, vercel-optimize README, build_minutes_fanout gate, cold_start gate, cwv_poor gate (Core Web Vitals), Candidate Gates Reference, collect-signals.mjs script (+29 more)
-
-### Community 13 - "Experience CRUD"
-Cohesion: 0.09
-Nodes (30): ActionState, EMPTY_DOC, parseDocJson(), saveExperience(), metadata, Page(), resolveFull(), ExperiencePage() (+22 more)
-
-### Community 14 - "Cloudinary Skills"
+### Community 14 - "Community 14"
 Cohesion: 0.09
 Nodes (35): Cloudinary Docs Skill, Cloudinary Next.js Skill, Cloudinary React Skill, Cloudinary Assets DAM sub-doc, Cloudinary Image & Video APIs sub-doc, Cloudinary Integrations sub-doc, Cloudinary llms.txt Index, Cloudinary MediaFlows sub-doc (+27 more)
 
-### Community 15 - "Vercel Optimize Auth Contract"
-Cohesion: 0.10
-Nodes (26): applyAuthDisqualifier(), isAuthRoute(), CandidateContractError, candidateLabel(), nonEmptyString(), VALID_SCOPES, validateCandidate(), validateCandidates() (+18 more)
-
-### Community 16 - "Projects CRUD"
-Cohesion: 0.09
-Nodes (29): ActionState, deleteProject(), EMPTY_DOC, parseBodyJson(), saveProject(), validateLinkHosts(), metadata, Page() (+21 more)
-
-### Community 17 - "Root Layout and i18n"
+### Community 15 - "Community 15"
 Cohesion: 0.09
 Nodes (22): PublicFloatingActions, geistMono, geistSans, metadata, RootLayout(), BrandBadge(), HIDE_IN_MENU, Item (+14 more)
 
-### Community 18 - "Skills CRUD"
+### Community 16 - "Community 16"
+Cohesion: 0.07
+Nodes (32): vercel-optimize AGENTS entry, vercel-optimize CONTRIBUTING, vercel-optimize README, build_minutes_fanout gate, cold_start gate, cwv_poor gate (Core Web Vitals), Candidate Gates Reference, collect-signals.mjs script (+24 more)
+
+### Community 17 - "Community 17"
+Cohesion: 0.18
+Nodes (31): asArray(), cacheRecommendationFiles(), extractClaims(), isCacheCandidate(), mentionsAuthSensitiveParallelization(), mentionsCachedNotFoundOr404(), mentionsCacheLifeCdnHeaderClaim(), mentionsCacheLifetimeChange() (+23 more)
+
+### Community 18 - "Community 18"
 Cohesion: 0.11
-Nodes (24): ActionState, deleteSkill(), saveSkill(), metadata, Page(), loadGroups(), metadata, PROFICIENCY_TONE (+16 more)
+Nodes (31): buildScriptHasMigrationSideEffect(), cacheInvalidationFileCache, cleanHeaderValue(), configContainsTag(), escapeRegExp(), extractHeaderValues(), formatPct(), functionStatusForRoute() (+23 more)
 
-### Community 19 - "Sitemap and DB Schema"
-Cohesion: 0.08
-Nodes (31): loadSitemapRows(), sitemap(), OverviewCounts, categories, categoriesRelations, experiences, experiencesRelations, experiencesTags (+23 more)
-
-### Community 20 - "Community 20"
+### Community 19 - "Community 19"
 Cohesion: 0.12
 Nodes (32): Fast Data Transfer payloads, ISR revalidation and static generation, Next.js fetch revalidation floor, Next.js Route Handler GET cache defaults, Next.js cache semantics by version, Not-found and catch-all request waste, Nuxt routeRules cache and ISR, SvelteKit ISR and prerender safety (+24 more)
+
+### Community 20 - "Community 20"
+Cohesion: 0.11
+Nodes (22): apply(), metadata, apply(), metadata, MODE_PATTERNS, isApplicable(), metadata, scan() (+14 more)
 
 ### Community 21 - "Community 21"
 Cohesion: 0.09
 Nodes (31): Hoist Static JSX Elements, Prevent Hydration Mismatch Without Flickering, Suppress Expected Hydration Mismatches, Use React DOM Resource Hints, Use defer or async on Script Tags, Optimize SVG Precision, Use useTransition Over Manual Loading States, Defer State Reads to Usage Point (+23 more)
 
 ### Community 22 - "Community 22"
+Cohesion: 0.09
+Nodes (22): Phase 1.5 Dashboard Polish Decisions, Reusable Pick-or-Upload Image Dialog Pattern, savePost Action, CategoryCombobox(), ImagePickerDialog(), PickedMedia, Filter, formatBytes() (+14 more)
+
+### Community 23 - "Community 23"
 Cohesion: 0.07
 Nodes (28): dom, dom.iterable, esnext, **/*.mts, .next/dev/types/**/*.ts, next-env.d.ts, .next/types/**/*.ts, node_modules (+20 more)
 
-### Community 23 - "Community 23"
+### Community 24 - "Community 24"
+Cohesion: 0.11
+Nodes (22): ActionState, deleteSkill(), saveSkill(), metadata, Page(), loadGroups(), metadata, PROFICIENCY_TONE (+14 more)
+
+### Community 25 - "Community 25"
 Cohesion: 0.08
 Nodes (28): GSAP Core Skill, GSAP Frameworks Skill, GSAP Performance Skill, GSAP Plugins Skill, GSAP React Skill, GSAP ScrollTrigger Skill, GSAP Timeline Skill, gsap.utils Skill (+20 more)
 
-### Community 24 - "Community 24"
+### Community 26 - "Community 26"
 Cohesion: 0.09
 Nodes (28): better-all library, React useEffectEvent hook, Do Not Put Effect Events in Dependency Arrays, Store Event Handlers in Refs, Initialize App Once, Not Per Mount, useEffectEvent for Stable Callback Refs, Prevent Waterfall Chains in API Routes, Check Cheap Conditions Before Async Flags (+20 more)
 
-### Community 25 - "Community 25"
+### Community 27 - "Community 27"
 Cohesion: 0.13
 Nodes (26): aggregateServicesByName(), baselineStack(), checkAuth(), checkCliVersion(), checkObservabilityPlusConfiguration(), classifyObservabilityPlusConfiguration(), detectNextCacheComponents(), detectStack() (+18 more)
 
-### Community 26 - "Community 26"
+### Community 28 - "Community 28"
 Cohesion: 0.26
 Nodes (24): arrayAt(), deploymentRegressionDecision(), dropWithObservation(), formatInteger(), formatMs(), formatPct(), isrOverrevalidationDecision(), numberAt() (+16 more)
 
-### Community 27 - "Community 27"
+### Community 29 - "Community 29"
 Cohesion: 0.11
 Nodes (26): Defer Non-Critical Third-Party Libraries, Dynamic Imports for Heavy Components, Preload Based on User Intent, Deduplicate Global Event Listeners, Version and Minimize localStorage Data, Use Passive Event Listeners for Scrolling Performance, SWR for Client Data Fetching with Deduplication, Avoid Layout Thrashing (+18 more)
 
-### Community 28 - "Community 28"
+### Community 30 - "Community 30"
 Cohesion: 0.11
 Nodes (21): AGENTS.md (humanizer), README.md (humanizer), humanizer skill, SKILL.md (humanizer), 33 AI writing patterns, blader (author), marketplace.json (humanizer claude-plugin), openai.yaml (humanizer agent interface) (+13 more)
 
-### Community 29 - "Community 29"
+### Community 31 - "Community 31"
+Cohesion: 0.13
+Nodes (17): gates, MAX_CODE_CANDIDATES, metadata, scanners, metadata, HERE, main(), REFS (+9 more)
+
+### Community 32 - "Community 32"
 Cohesion: 0.15
 Nodes (24): citationApplies(), HERE, KNOWN_CANDIDATE_KINDS, loadSupportTopics(), matchesCandidateKind(), matchesCandidateMetrics(), matchesCandidateRoutePatterns(), matchesFrameworks() (+16 more)
 
-### Community 30 - "Community 30"
+### Community 33 - "Community 33"
 Cohesion: 0.10
 Nodes (24): Asset Property Variables ($iw/$ih/$ar), Cloudinary Variables & Conditionals, Cloudinary Transformation Variables, Cloudinary Generative AI Transformations, Cloudinary Transformation Debugging, g_auto requires c_fill family, Cloudinary Transformation Examples, f_auto/dpr_auto/w_auto not in named (+16 more)
 
-### Community 31 - "Community 31"
+### Community 34 - "Community 34"
 Cohesion: 0.19
 Nodes (23): absoluteBriefPath(), briefRoots(), buildBrief(), cachePolicyGuidance(), capBriefFiles(), closestAncestorLayoutFiles(), isCatchAllPlaceholder(), isDynamicPlaceholder() (+15 more)
 
-### Community 32 - "Community 32"
+### Community 35 - "Community 35"
+Cohesion: 0.10
+Nodes (11): geistMono, geistSans, metadata, BrandBadge(), PublicFloatingActions(), ThemeChoice, LOCALE_LABEL, PublicFooter() (+3 more)
+
+### Community 36 - "Community 36"
+Cohesion: 0.16
+Nodes (19): Drop Links Migration, Drizzle Snapshot 0001 Schema, Drizzle Migration Journal, deleteMedia Action, deletePost Action, togglePostStatus Action, ActionState, deleteResume Action (+11 more)
+
+### Community 37 - "Community 37"
 Cohesion: 0.20
 Nodes (22): getAccountPlan(), getContract(), getMetricsSchema(), getProjectConfig(), getTeamInfo(), getUsage(), hasObservabilityPlus(), inferPlan() (+14 more)
 
-### Community 33 - "Community 33"
-Cohesion: 0.09
-Nodes (23): Vercel Observability Plus, Observability Plus Stop-And-Ask, Astro Framework on Vercel, Astro On-Demand Rendering, Vercel Bot Protection, Vercel BotID, Core Web Vitals (LCP/INP/CLS), platform_bot_protection gate (+15 more)
-
-### Community 34 - "Community 34"
-Cohesion: 0.11
-Nodes (11): CATEGORIES, CATEGORY_LABEL, EditingState, LINK_KINDS, ProjectDialogForm(), toDateInputValue(), Select(), SelectContent() (+3 more)
-
-### Community 35 - "Community 35"
+### Community 38 - "Community 38"
 Cohesion: 0.18
 Nodes (19): compareVersion(), HERE, isKnownUrl(), LIBRARY_PATH, libraryForStack(), loadLibrary(), lookupSkillRule(), lookupUrl() (+11 more)
 
-### Community 36 - "Community 36"
+### Community 39 - "Community 39"
 Cohesion: 0.14
 Nodes (18): Project Package Manifest, registerMedia Action, Category Combobox, Image Cropper, cropToBlob(), ImageCropper(), loadImage(), Props (+10 more)
 
-### Community 37 - "Community 37"
-Cohesion: 0.13
-Nodes (13): deleteExperience(), EditingState, ExperienceDialogForm(), ExperienceManager(), formatPeriod(), toDateInputValue(), WORK_TYPES, CountedInput() (+5 more)
-
-### Community 38 - "Community 38"
-Cohesion: 0.15
-Nodes (15): ActionState, refreshNeonAnalytics(), formatBytes(), formatCountdown(), formatDuration(), NeonAnalyticsCard(), relativeTime(), tag (+7 more)
-
-### Community 39 - "Community 39"
-Cohesion: 0.14
-Nodes (20): A/B Test at Edge Middleware, Playbooks README, Step 4 — Score and Report, Cart drawer 'use client' at leaf, Defer Third-Party JS Pattern, Flex Commit Discountable/Non-discountable SKUs, ImpactLabel Schema, Incremental Static Regeneration (ISR) (+12 more)
-
 ### Community 40 - "Community 40"
+Cohesion: 0.13
+Nodes (20): A/B Test at Edge Middleware, Playbooks README, Vercel Bot Protection, Vercel BotID, Cart drawer 'use client' at leaf, Defer Third-Party JS Pattern, Incremental Static Regeneration (ISR), next/font Component (+12 more)
+
+### Community 41 - "Community 41"
 Cohesion: 0.19
 Nodes (16): escapeODataString(), mergeIntoEvidence(), odataEq(), SCANNER_KINDS, simplify(), SPEC_GENERATORS, specsForCandidate(), readProjectJson() (+8 more)
 
-### Community 41 - "Community 41"
+### Community 42 - "Community 42"
+Cohesion: 0.18
+Nodes (19): recText(), verifyAuthGuardParallelizationSafety(), verifyCache404LongTtlSafety(), verifyCachePolicyPositiveOrNoReadyRec(), verifyCacheVaryCardinalitySafe(), verifyClaim(), verifyImmutableDynamicRouteSafety(), verifyNextCacheComponentsRouteSegmentConfig() (+11 more)
+
+### Community 43 - "Community 43"
 Cohesion: 0.23
 Nodes (17): candidateKey(), canonicalizeBranchPrefix(), canonicalizeRoute(), decodeSegmentToken(), dedupeCandidates(), firstRouteSegment(), isBase64FlagState(), isDynamicPlaceholder() (+9 more)
 
-### Community 42 - "Community 42"
+### Community 44 - "Community 44"
+Cohesion: 0.12
+Nodes (19): Recommendations Spec, Step 4 — Score and Report, Support Topics README, docs-library.json (citation allow-list), Envelope-unwrap Recovery, Flex Commit Discountable/Non-discountable SKUs, Recommendation Grading Rubric, ImpactLabel Schema (+11 more)
+
+### Community 45 - "Community 45"
 Cohesion: 0.22
 Nodes (14): loadMoreBlogPosts(), loadMoreCategoryPosts(), CategoryPage(), generateMetadata(), loadPage(), Params, loadMoreTagPosts(), decodeCursor() (+6 more)
 
-### Community 43 - "Community 43"
+### Community 46 - "Community 46"
 Cohesion: 0.11
 Nodes (17): author, name, url, description, homepage, keywords, license, name (+9 more)
 
-### Community 44 - "Community 44"
+### Community 47 - "Community 47"
 Cohesion: 0.14
 Nodes (18): asChild (Radix composition), nativeButton={false}, render prop (Base composition), Base vs Radix API Differences, Attachment, Bubble, Marker (system notes / dividers), Message Component (+10 more)
 
-### Community 45 - "Community 45"
-Cohesion: 0.16
-Nodes (13): isApplicable(), metadata, scan(), metadata, scan(), metadata, scan(), metadata (+5 more)
+### Community 48 - "Community 48"
+Cohesion: 0.18
+Nodes (15): byRoute(), gate(), metadata, ratioOverThreshold(), round2(), sumRows(), extractErrors(), extractFromStatusRows() (+7 more)
 
-### Community 46 - "Community 46"
-Cohesion: 0.13
-Nodes (7): geistMono, geistSans, metadata, BrandBadge(), PublicFloatingActions(), ThemeChoice, SiteHeader()
+### Community 49 - "Community 49"
+Cohesion: 0.12
+Nodes (18): Vercel Observability Plus, Observability Plus Stop-And-Ask, Astro Framework on Vercel, Astro On-Demand Rendering, Core Web Vitals (LCP/INP/CLS), cold_start gate, cwv_poor gate, isr_overrevalidation gate (+10 more)
 
-### Community 47 - "Community 47"
+### Community 50 - "Community 50"
 Cohesion: 0.11
 Nodes (17): aliases, components, hooks, lib, ui, utils, iconLibrary, rsc (+9 more)
 
-### Community 48 - "Community 48"
-Cohesion: 0.16
-Nodes (13): savePost Action, CategoryCombobox(), ImagePickerDialog(), PickedMedia, MediaOption, MediaPicker(), Props, Option (+5 more)
-
-### Community 49 - "Community 49"
-Cohesion: 0.14
-Nodes (5): metadata, Page(), Button(), buttonVariants, listPosts()
-
-### Community 50 - "Community 50"
-Cohesion: 0.16
-Nodes (12): MAX_CODE_CANDIDATES, scanners, isApplicable(), metadata, scan(), metadata, HERE, main() (+4 more)
-
 ### Community 51 - "Community 51"
+Cohesion: 0.17
+Nodes (13): config, mw, proxy(), Ctx, GET, { GET, POST }, h, POST (+5 more)
+
+### Community 52 - "Community 52"
+Cohesion: 0.21
+Nodes (13): applyAuthDisqualifier(), isAuthRoute(), CandidateContractError, candidateLabel(), nonEmptyString(), VALID_SCOPES, validateCandidate(), validateCandidates() (+5 more)
+
+### Community 53 - "Community 53"
+Cohesion: 0.22
+Nodes (14): summarizeClaimResults(), applyQualityFloor(), deriveProjectFacts(), findRecContradictions(), deriveRootFromSignals(), detectRepoRoot(), fileResolvesAt(), pickProbeFile() (+6 more)
+
+### Community 54 - "Community 54"
 Cohesion: 0.15
 Nodes (11): getMetricThrottle(), isDailyQuotaExceeded(), isRateLimited(), parsePositiveIntEnv(), resolveConcurrency(), resolveRateLimit(), retryOnRateLimit(), SemaphoreAbortError (+3 more)
 
-### Community 52 - "Community 52"
+### Community 55 - "Community 55"
 Cohesion: 0.25
 Nodes (17): External API critical path, Cross-framework external API critical path, Function duration, I/O, and post-response work, Function invocation reduction, Post-response work with waitUntil, Runtime Cache for reusable server data, https://nextjs.org/docs/app/api-reference/functions/after, https://react.dev/reference/react/cache (+9 more)
 
-### Community 53 - "Community 53"
+### Community 56 - "Community 56"
 Cohesion: 0.24
 Nodes (16): collectInputFiles(), escapeRegExp(), extractFenceBlocks(), extractJsonValue(), findBalancedJsonSpans(), inferCandidateRefFromFile(), isRecordObject(), log() (+8 more)
 
-### Community 54 - "Community 54"
+### Community 57 - "Community 57"
 Cohesion: 0.23
 Nodes (16): annotateCodebaseScan(), annotateFinding(), assertObject(), bestRouteSummary(), buildRouteMetricIndex(), exists(), formatRouteSignal(), hasTraffic() (+8 more)
 
-### Community 55 - "Community 55"
-Cohesion: 0.18
-Nodes (12): ActionState, deletePost Action, togglePostStatus Action, Posts Table, formatRelative(), PostsTable(), StatusSwitch(), Slug Entity Table (+4 more)
-
-### Community 56 - "Community 56"
+### Community 58 - "Community 58"
 Cohesion: 0.25
 Nodes (15): checkDynamicApisInsideCache(), checkNextConfig(), checkRevalidateTagSecondArg(), checkSkeletonFiles(), checkUpdateTagCentralization(), fail(), __filename, findings (+7 more)
 
-### Community 57 - "Community 57"
+### Community 59 - "Community 59"
 Cohesion: 0.24
 Nodes (15): citationSubset(), inferFrameworkPlaybook(), inferPlaybook(), candidateRefFor(), buildFanoutPlan(), buildManifest(), candidateFamilyKey(), HERE (+7 more)
 
-### Community 58 - "Community 58"
+### Community 60 - "Community 60"
 Cohesion: 0.16
 Nodes (16): Scanner Patterns Document, Cache-Control s-maxage Pattern, Vercel Edge Runtime, edge-heavy-import scanner, force-dynamic scanner, headers-in-page scanner, large-static-asset scanner, max-age-without-s-maxage scanner (+8 more)
 
-### Community 59 - "Community 59"
-Cohesion: 0.19
-Nodes (12): config, mw, proxy(), Ctx, GET, { GET, POST }, h, POST (+4 more)
-
-### Community 61 - "Community 61"
+### Community 62 - "Community 62"
 Cohesion: 0.15
 Nodes (15): asArray(), firstAccessiblePath(), firstDynamicRouteChainReason(), isCatchAllPlaceholder(), isDynamicPlaceholder(), layoutAppliesToCandidateRoute(), normalizeProjectRootDirectory(), normalizeRouteForLayoutMatch() (+7 more)
-
-### Community 62 - "Community 62"
-Cohesion: 0.17
-Nodes (15): buildScriptHasMigrationSideEffect(), compilePattern(), parseJsonLike(), readClaimFile(), readOptionalJsonFile(), recSeparatesTurboBuildSideEffects(), siblingPackageJson(), snippetFoundElsewhere() (+7 more)
 
 ### Community 63 - "Community 63"
 Cohesion: 0.14
@@ -562,79 +563,75 @@ Nodes (14): AI Crawlers (GPTBot/OAI-SearchBot/ClaudeBot/Bytespider), Organizatio
 
 ### Community 67 - "Community 67"
 Cohesion: 0.19
-Nodes (14): cacheLifeNeedsContentFreshnessProof(), configContainsTag(), dedupeCacheTags(), escapeRegExp(), execFileP, extractCacheTags(), extractCacheTagsFromFiles(), hasConfigDrivenInvalidation() (+6 more)
+Nodes (14): 'use cache' date-stamp ISR write amplifier, Remote cache for shared origin data, Next.js Cache Components, Next.js cacheLife() function, generateStaticParams, Partial Prerendering (PPR), cache-components-suspense-dedupe scanner, use-cache-date-stamp scanner (+6 more)
 
 ### Community 68 - "Community 68"
-Cohesion: 0.15
-Nodes (14): Recommendations Spec, Support Topics README, docs-library.json (citation allow-list), Envelope-unwrap Recovery, Recommendation Grading Rubric, Impact Magnitude Rule (buckets), Quality Floor 0.55, Recommendation JSON Schema (+6 more)
-
-### Community 69 - "Community 69"
-Cohesion: 0.27
-Nodes (12): Drop Links Migration, Drizzle Snapshot 0001 Schema, Drizzle Migration Journal, deleteMedia Action, ActionState, deleteResume Action, registerResume Action, setActiveResume Action (+4 more)
-
-### Community 70 - "Community 70"
 Cohesion: 0.24
 Nodes (7): metadata, Props, Card(), CardContent(), CardDescription(), CardHeader(), CardTitle()
 
-### Community 71 - "Community 71"
+### Community 70 - "Community 70"
 Cohesion: 0.15
 Nodes (13): asChild → render Prop Migration, Consumer-Side Prop Changes Reference, Universal Migration Patterns Reference, Base UI Button Primitive Usage, Wrapper Shapes Reference, @base-ui/react package, Golden Pair Strategy, Migration Preflight Checklist (+5 more)
 
-### Community 72 - "Community 72"
+### Community 71 - "Community 71"
 Cohesion: 0.15
 Nodes (13): Auto Cache Key Generation, cacheLife Profiles (seconds/minutes/hours/days/max), connection() API, "use cache" Limitations (edge/static export/128 tag limit), React cache() for Deduplication, cacheLife(), Suspense Boundaries, SuspenseOnSearchParams Component (+5 more)
 
-### Community 73 - "Community 73"
+### Community 72 - "Community 72"
 Cohesion: 0.23
 Nodes (12): CategoryPage, loadMoreBlogPosts, TagPage, loadMoreCategoryPosts, Cursor Pagination Only Policy, Phase 2 Public Blog and SEO Surface, llms.txt Route GET, robots() Route (+4 more)
 
-### Community 74 - "Community 74"
-Cohesion: 0.19
-Nodes (9): Phase 1.5 Dashboard Polish Decisions, Reusable Pick-or-Upload Image Dialog Pattern, Filter, formatBytes(), MediaGrid(), PreviewDialog(), TagMultiPicker, Props (+1 more)
-
-### Community 75 - "Community 75"
+### Community 73 - "Community 73"
 Cohesion: 0.15
-Nodes (13): eslint, eslint-config-next, devDependencies, eslint, eslint-config-next, tailwindcss, tsx, @types/pg (+5 more)
+Nodes (13): drizzle-kit, eslint-config-next, devDependencies, drizzle-kit, eslint-config-next, tailwindcss, tsx, @types/pg (+5 more)
 
-### Community 76 - "Community 76"
+### Community 74 - "Community 74"
 Cohesion: 0.33
 Nodes (10): metadata, Page(), metadata, Page(), getPostForEdit(), listCategoriesForPicker(), listMediaForPicker(), listTagsForPicker() (+2 more)
 
-### Community 78 - "Community 78"
+### Community 75 - "Community 75"
+Cohesion: 0.19
+Nodes (7): metadata, Page(), Action, Props, SlugEntityTable(), SlugRow, listTagsWithCount()
+
+### Community 77 - "Community 77"
 Cohesion: 0.20
 Nodes (12): Three.js Lighting, Three.js Materials, Three.js Shaders, Three.js Textures, AmbientLight, DirectionalLight, GLSL Uniforms, MeshStandardMaterial (PBR) (+4 more)
 
-### Community 79 - "Community 79"
-Cohesion: 0.24
-Nodes (8): gates, metadata, HERE, main(), REFS, renderCandidates(), renderScanners(), trimTrailingBlankLine()
+### Community 78 - "Community 78"
+Cohesion: 0.39
+Nodes (11): grade(), gradeRecommendation(), isAccountScope(), roundTo(), scoreActionability(), scoreEvidence(), scoreEvidenceAccount(), scoreGrounding() (+3 more)
 
-### Community 80 - "Community 80"
+### Community 79 - "Community 79"
 Cohesion: 0.27
 Nodes (12): Next.js font CLS guardrail, Next.js heavy UI lazy-load boundaries, Next.js image LCP preload and sizes, Next.js third-party script strategy, https://nextjs.org/docs/app/api-reference/components/font, https://nextjs.org/docs/app/api-reference/components/image, https://nextjs.org/docs/app/api-reference/components/script, https://nextjs.org/docs/app/guides/lazy-loading (+4 more)
 
-### Community 81 - "Community 81"
+### Community 80 - "Community 80"
 Cohesion: 0.23
 Nodes (9): PostCard, BlogInfiniteList, BlogInfiniteList(), BlogPage(), firstPage(), metadata, CursorPage, useCursor() (+1 more)
 
-### Community 82 - "Community 82"
+### Community 81 - "Community 81"
 Cohesion: 0.20
 Nodes (12): Serverless DB Connection Pooling, Edge Rate Limit at Middleware, Fluid Compute, N+1 ORM Anti-pattern, slow_route gate, Parallel External API Calls (Promise.all), API Service Playbook, SaaS Playbook (+4 more)
 
-### Community 83 - "Community 83"
+### Community 82 - "Community 82"
 Cohesion: 0.17
 Nodes (12): scripts, build, check, db:generate, db:migrate, db:studio, dev, lint (+4 more)
 
-### Community 84 - "Community 84"
+### Community 83 - "Community 83"
 Cohesion: 0.23
 Nodes (11): PC §11 The Dashboard, PC §12 SEO & AI-Crawler Friendliness, PC §16 Site Owner Background, PC §17 Open Items, PC §1 Overview, PC §3 Site Map, PC §5 Blog System, PC §6 Media Library (+3 more)
 
-### Community 85 - "Community 85"
-Cohesion: 0.29
-Nodes (9): extractErrors(), extractFromStatusRows(), gate(), metadata, extractCacheHitRates(), extractMethodShares(), gate(), metadata (+1 more)
-
-### Community 86 - "Community 86"
+### Community 84 - "Community 84"
 Cohesion: 0.18
 Nodes (11): class-variance-authority, cloudinary, dependencies, class-variance-authority, cloudinary, radix-ui, react-pdf, @tiptap/starter-kit (+3 more)
+
+### Community 85 - "Community 85"
+Cohesion: 0.25
+Nodes (8): ActionState, deleteCategory(), saveCategory(), metadata, Page(), CategoryRow, listCategoriesWithCount(), CategoryInput
+
+### Community 86 - "Community 86"
+Cohesion: 0.24
+Nodes (7): ActionState, deleteTag(), saveTag(), slug(), uuid, TagInput, tagKindEnum
 
 ### Community 87 - "Community 87"
 Cohesion: 0.31
@@ -669,84 +666,84 @@ Cohesion: 0.22
 Nodes (9): shadcn CLI (npx shadcn@latest), shadcn add --dry-run / --diff / --view, shadcn MCP Server, shadcn/ui Skill, shadcn Base UI vs Radix Primitives, components.json Config, FieldGroup + Field Form Pattern, shadcn OpenAI Agent Config (+1 more)
 
 ### Community 96 - "Community 96"
+Cohesion: 0.42
+Nodes (8): applyHardGates(), flagsEndpointReason(), isFlagsEndpointCandidate(), isWorkflowRuntimeEndpointCandidate(), normalizeRoute(), VERCEL_FLAGS_PACKAGES, WORKFLOW_ENDPOINT_PREFIXES, workflowEndpointReason()
+
+### Community 97 - "Community 97"
 Cohesion: 0.36
 Nodes (8): candidateForGroup(), gate(), groupFindings(), metadata, observedCacheHitRate(), questionFor(), SCANNER_GATES, uniqueStrings()
 
-### Community 97 - "Community 97"
-Cohesion: 0.33
-Nodes (6): apply(), metadata, apply(), metadata, MODE_PATTERNS, extractRoute()
-
 ### Community 98 - "Community 98"
-Cohesion: 0.31
-Nodes (9): Vercel AI Gateway, AI Provider Failover Pattern, BYOK Fallback Cost Gotcha, Next.js after() API, OIDC Keyless Auth, AI Application Playbook, Sandbox Reuse (pool by name), @vercel/functions waitUntil (+1 more)
+Cohesion: 0.33
+Nodes (5): candidateIdentity(), DEFAULT_KIND_CAPS, DIVERSITY_ELIGIBILITY, isDiversityEligible(), selectLaunchCandidates()
 
 ### Community 99 - "Community 99"
-Cohesion: 0.31
-Nodes (9): Blog Opengraph Image Route, Blog Post generateMetadata, BlogPostPage, Cache Components + Tag Invalidation Strategy, Cloudinary Delivery-Optimized Image URL Pattern, coverOgUrl, Next Cache Components Flag, getPublishedPostBySlug (+1 more)
+Cohesion: 0.28
+Nodes (9): cacheLifeNeedsContentFreshnessProof(), dedupeCacheTags(), execFileP, extractCacheTags(), extractCacheTagsFromFiles(), readCacheInvalidationFiles(), rgRelevantFiles(), verifyNextCacheLifetimeFreshnessSupported() (+1 more)
 
 ### Community 100 - "Community 100"
-Cohesion: 0.22
-Nodes (8): cacheTag(), cacheComponents Flag, Cache Architecture Overlay Config, Revalidation Utilities (lib/cache/revalidate.ts), Next.js Cache Architecture Skill, Cache Tag Registry (lib/cache/tags.ts), updateTag(), Cache Debugging Order & Checklist
+Cohesion: 0.31
+Nodes (9): compilePattern(), readClaimFile(), snippetFoundElsewhere(), verifyCodeSnippet(), verifyPatternAbsent(), verifyPatternCount(), verifyPatternExists(), verifyRepoCount() (+1 more)
 
 ### Community 101 - "Community 101"
 Cohesion: 0.31
-Nodes (9): Next.js Cache Components, generateStaticParams, Partial Prerendering (PPR), cache-components-suspense-dedupe scanner, use-cache-date-stamp scanner, Cache Components Static Shell Boundaries Topic, Cache Components Suspense Dedupe Pitfall Topic, Dynamic Rendering Traps Topic (+1 more)
+Nodes (9): Vercel AI Gateway, AI Provider Failover Pattern, BYOK Fallback Cost Gotcha, Next.js after() API, OIDC Keyless Auth, AI Application Playbook, Sandbox Reuse (pool by name), @vercel/functions waitUntil (+1 more)
 
 ### Community 102 - "Community 102"
+Cohesion: 0.31
+Nodes (9): Blog Opengraph Image Route, Blog Post generateMetadata, BlogPostPage, Cache Components + Tag Invalidation Strategy, Cloudinary Delivery-Optimized Image URL Pattern, coverOgUrl, Next Cache Components Flag, getPublishedPostBySlug (+1 more)
+
+### Community 103 - "Community 103"
+Cohesion: 0.22
+Nodes (8): cacheTag(), cacheComponents Flag, Cache Architecture Overlay Config, Revalidation Utilities (lib/cache/revalidate.ts), Next.js Cache Architecture Skill, Cache Tag Registry (lib/cache/tags.ts), updateTag(), Cache Debugging Order & Checklist
+
+### Community 104 - "Community 104"
 Cohesion: 0.22
 Nodes (4): HIDE_IN_MENU, Item, ITEMS, SHOW
 
-### Community 103 - "Community 103"
-Cohesion: 0.36
-Nodes (5): LoginState, signInAction(), LoginForm(), Input(), Label()
-
-### Community 104 - "Community 104"
-Cohesion: 0.33
-Nodes (8): CATEGORY_LABEL, formatPeriod(), generateMetadata(), LINK_META, loadProject(), Params, ProjectDetailPage(), getPublishedProjectBySlug()
-
-### Community 106 - "Community 106"
-Cohesion: 0.25
-Nodes (8): High-End Visual Design Skill, Absolute Zero Directive (Anti-Patterns), Double-Bezel Nested Architecture, Fluid Island Nav Motion Pattern, GPU-Safe Animation (transform/opacity), IntersectionObserver Scroll Reveal, Magnetic Button Hover Physics, Vanguard_UI_Architect Persona
+### Community 105 - "Community 105"
+Cohesion: 0.31
+Nodes (6): metadata, Page(), Db, sql, listMedia(), MediaRow
 
 ### Community 107 - "Community 107"
 Cohesion: 0.25
-Nodes (7): description, name, owner, name, url, plugins, $schema
+Nodes (8): High-End Visual Design Skill, Absolute Zero Directive (Anti-Patterns), Double-Bezel Nested Architecture, Fluid Island Nav Motion Pattern, GPU-Safe Animation (transform/opacity), IntersectionObserver Scroll Reveal, Magnetic Button Hover Physics, Vanguard_UI_Architect Persona
 
 ### Community 108 - "Community 108"
+Cohesion: 0.25
+Nodes (7): description, name, owner, name, url, plugins, $schema
+
+### Community 109 - "Community 109"
 Cohesion: 0.43
 Nodes (7): formatBytes(), metadata, scan(), shouldSkip(), SKIP_EXTENSIONS, SKIP_PATH_PREFIXES, walk()
 
-### Community 109 - "Community 109"
+### Community 110 - "Community 110"
 Cohesion: 0.25
 Nodes (7): applicableFrameworksSyntax, lastVerified, ruleSkillRefs, $schema, schemaVersion, urls, version
 
-### Community 110 - "Community 110"
+### Community 111 - "Community 111"
 Cohesion: 0.29
 Nodes (6): Use after() for Non-Blocking Operations, Authenticate Server Actions Like API Routes, Cross-Request LRU Caching, Server-side rules, lru-cache library, Vercel Fluid Compute
 
-### Community 111 - "Community 111"
+### Community 112 - "Community 112"
 Cohesion: 0.25
 Nodes (8): /rtl-audit Slash Command, Locale: Arabic (RTL), Locale: Bangla (LTR), Locale: English (default, LTR), Locale: Hebrew (RTL), Locale: Urdu (RTL), PC §10 i18n & RTL/LTR Support, RTL-safe Logical Properties Rule
 
-### Community 113 - "Community 113"
+### Community 114 - "Community 114"
 Cohesion: 0.25
 Nodes (7): VSCode task: build, VSCode task: db:generate, VSCode task: db:migrate, VSCode task: dev (Next.js dev server), VSCode task: lint, VSCode task: seed:user, VSCode task: typecheck
 
-### Community 114 - "Community 114"
+### Community 115 - "Community 115"
 Cohesion: 0.33
 Nodes (5): revalidate(), updateTags(), EntityTagFactory, Tag, TagRegistry
 
-### Community 115 - "Community 115"
+### Community 116 - "Community 116"
 Cohesion: 0.43
 Nodes (7): Three.js Animation, Three.js Loaders, AnimationAction, AnimationClip, AnimationMixer, GLTFLoader, LoadingManager
 
-### Community 116 - "Community 116"
+### Community 117 - "Community 117"
 Cohesion: 0.52
 Nodes (6): classifyFrameworkSupport(), CORE_SUPPORTED_FRAMEWORKS, frameworkLabel(), LABELS, LIMITED_FRAMEWORKS, normalizeFramework()
-
-### Community 117 - "Community 117"
-Cohesion: 0.48
-Nodes (6): byRoute(), gate(), metadata, ratioOverThreshold(), round2(), sumRows()
 
 ### Community 118 - "Community 118"
 Cohesion: 0.48
@@ -776,89 +773,89 @@ Nodes (7): Out-of-Scope: Blog Comments & Likes, Out-of-Scope: 3D on Mobile/Table
 Cohesion: 0.29
 Nodes (7): Palette: Cream Text #F2E4D0, Palette: Navy Secondary #252E3F, Palette: Near-Black Base #0F131A, Palette: Orange Highlight #E86B1C, Palette: Orange Shadow #B84A0F, PC §4 3D Landing Scene, PC §8 Visual Identity & Branding
 
-### Community 128 - "Community 128"
+### Community 125 - "Community 125"
+Cohesion: 0.38
+Nodes (4): metadata, Page(), listResumes(), ResumeRow
+
+### Community 126 - "Community 126"
+Cohesion: 0.43
+Nodes (4): signInAction(), LoginForm(), Input(), Label()
+
+### Community 130 - "Community 130"
 Cohesion: 0.33
 Nodes (6): App Router File Conventions (layout/page/loading/error), Intercepting Routes, Parallel Routes, Route Groups, Route Handlers (route.ts), Next.js App Router
 
-### Community 129 - "Community 129"
+### Community 131 - "Community 131"
 Cohesion: 0.53
 Nodes (5): defaultNormalize(), normalizeColdStart(), normalizerFor(), QUERIES, normalizeSummary()
 
-### Community 130 - "Community 130"
+### Community 132 - "Community 132"
 Cohesion: 0.53
 Nodes (5): isJsxLike(), isNextConfig(), metadata, scan(), snippet()
 
-### Community 131 - "Community 131"
-Cohesion: 0.47
-Nodes (4): Filter, formatBytes(), MediaGrid(), PreviewDialog()
-
-### Community 132 - "Community 132"
+### Community 133 - "Community 133"
 Cohesion: 0.33
 Nodes (5): lint-staged, *.{ts,tsx}, name, private, version
 
-### Community 133 - "Community 133"
+### Community 134 - "Community 134"
 Cohesion: 0.53
 Nodes (5): generateMetadata(), loadPage(), Params, TagPage(), getTagBySlug()
 
-### Community 134 - "Community 134"
+### Community 135 - "Community 135"
 Cohesion: 0.40
 Nodes (5): @sveltejs/adapter-vercel, SvelteKit load function, SvelteKit prerender option, SvelteKit Playbook, sveltekit-prerender-missing scanner
 
-### Community 135 - "Community 135"
+### Community 136 - "Community 136"
 Cohesion: 0.40
 Nodes (5): Smooch Sans OFL License, Tektur OFL License, Work Sans OFL License, Young Serif OFL License, SIL Open Font License v1.1
 
-### Community 136 - "Community 136"
+### Community 137 - "Community 137"
 Cohesion: 0.50
 Nodes (5): Claimable Postgres Skill, neon.new REST API, neon-new CLI, Parent Neon Skill (reference), vite-plugin-neon-new
 
-### Community 137 - "Community 137"
+### Community 138 - "Community 138"
 Cohesion: 0.40
 Nodes (5): Accordion Migration, Collapsible Migration, Disclosure Family Props Mapping, Tabs Migration, Toggle/ToggleGroup Migration
 
-### Community 138 - "Community 138"
+### Community 139 - "Community 139"
 Cohesion: 0.40
 Nodes (5): ContextMenu Migration, DropdownMenu → Base Menu Migration, NavigationMenu Migration, Portal>Positioner>Popup Restructure, Menu Family Props Mapping
 
-### Community 139 - "Community 139"
+### Community 140 - "Community 140"
 Cohesion: 0.40
 Nodes (5): Dialog Migration, HoverCard → PreviewCard Migration, Popover Migration, Overlays Props Mapping, Tooltip Migration
 
-### Community 140 - "Community 140"
+### Community 141 - "Community 141"
 Cohesion: 0.40
 Nodes (5): useOptimistic Updates, revalidatePath(), 'use server' Directive, useFormState/useFormStatus, Server Actions
 
-### Community 141 - "Community 141"
+### Community 142 - "Community 142"
 Cohesion: 0.50
 Nodes (5): Built Registry (public/r), include Directive, Registry Item, shadcn Registry Authoring, Source registry.json
 
-### Community 142 - "Community 142"
+### Community 143 - "Community 143"
 Cohesion: 0.60
 Nodes (4): extractCallCounts(), extractExternalApis(), gate(), metadata
 
-### Community 143 - "Community 143"
+### Community 144 - "Community 144"
 Cohesion: 0.60
 Nodes (4): computeBotShare(), gate(), metadata, totalRequestsFromSignals()
 
-### Community 144 - "Community 144"
+### Community 145 - "Community 145"
 Cohesion: 0.60
 Nodes (4): extractHighColdRoutes(), extractSlowHotRoutes(), gate(), metadata
 
-### Community 145 - "Community 145"
+### Community 146 - "Community 146"
 Cohesion: 0.60
 Nodes (4): extractErrorRatesByRoute(), extractFunctionRoutes(), gate(), metadata
 
-### Community 146 - "Community 146"
+### Community 147 - "Community 147"
 Cohesion: 0.40
 Nodes (4): Candidate, CandidateScope, GateMetadata, Signals
 
-### Community 147 - "Community 147"
+### Community 148 - "Community 148"
 Cohesion: 0.60
 Nodes (4): aggregateSkuStats(), dayTotal(), gate(), metadata
-
-### Community 148 - "Community 148"
-Cohesion: 0.40
-Nodes (5): formatPct(), functionStatusForRoute(), numberValue(), routeFromCandidateRef(), verifyCacheRecNotErrorDominatedOrAcknowledged()
 
 ### Community 149 - "Community 149"
 Cohesion: 0.40
@@ -989,54 +986,58 @@ Cohesion: 0.67
 Nodes (3): OpengraphImage(), size, getPublishedPostBySlug()
 
 ### Community 187 - "Community 187"
+Cohesion: 0.67
+Nodes (3): metadata, Page(), listPosts()
+
+### Community 188 - "Community 188"
 Cohesion: 0.50
 Nodes (4): Container Queries (@container), Grid Template Areas, Holy Grail Grid Layout, Tailwind Advanced Layouts
 
-### Community 188 - "Community 188"
+### Community 189 - "Community 189"
 Cohesion: 0.67
 Nodes (3): AGENTS.md (symlink), Web Interface Guidelines Review Skill, Agent Instructions (Copilot / Codex / Claude Code)
 
-### Community 190 - "Community 190"
+### Community 191 - "Community 191"
 Cohesion: 0.67
 Nodes (3): cloudinary-video-player package, Cloudinary Video Player Guide, Imperative Video Element Rule
 
-### Community 192 - "Community 192"
+### Community 193 - "Community 193"
 Cohesion: 0.67
 Nodes (3): Base UI Animation Idiom (starting/ending style), Data-Attribute Selector Rewrites, Class-Mapping Reference
 
-### Community 194 - "Community 194"
+### Community 195 - "Community 195"
 Cohesion: 0.67
 Nodes (3): shadcn Customization & Theming, Dark Mode via next-themes, OKLCH Semantic Color Tokens
 
-### Community 195 - "Community 195"
+### Community 196 - "Community 196"
 Cohesion: 0.67
 Nodes (3): Three.js Geometry, BoxGeometry / built-in shapes, BufferGeometry
 
-### Community 196 - "Community 196"
+### Community 197 - "Community 197"
 Cohesion: 0.67
 Nodes (3): Three.js Interaction, OrbitControls, Raycaster (mouse picking)
 
-### Community 197 - "Community 197"
+### Community 198 - "Community 198"
 Cohesion: 1.00
 Nodes (3): Three.js Post-Processing, EffectComposer, UnrealBloomPass
 
-### Community 198 - "Community 198"
+### Community 199 - "Community 199"
 Cohesion: 0.67
 Nodes (3): React.cache() Per-Request Deduplication, Parallel Data Fetching with Component Composition, Parallel Nested Data Fetching
 
-### Community 199 - "Community 199"
+### Community 200 - "Community 200"
 Cohesion: 0.67
 Nodes (3): postInput schema with publish-time refinement, postShape base schema, Draft-friendly validation with stricter minimums only on publish
 
-### Community 200 - "Community 200"
+### Community 201 - "Community 201"
 Cohesion: 0.67
 Nodes (3): Personal Brand Identity, App Favicon, Portrait Subject
 
-### Community 201 - "Community 201"
+### Community 202 - "Community 202"
 Cohesion: 0.67
 Nodes (3): File-based Metadata Priority, ImageResponse (next/og, Satori), opengraph-image File Convention
 
-### Community 202 - "Community 202"
+### Community 203 - "Community 203"
 Cohesion: 0.67
 Nodes (3): Next.js App Router Fundamentals Skill, No `any` Type Rule, Pages Router → App Router Migration
 
@@ -1045,24 +1046,24 @@ Nodes (3): Next.js App Router Fundamentals Skill, No `any` Type Rule, Pages Rout
   .agents/skills/vercel-react-best-practices/rules/rendering-hoist-jsx.md · relation: semantically_similar_to
 
 ## Knowledge Gaps
-- **529 isolated node(s):** `ParamsToSign`, `ResourceType`, `deploy-codex.sh script`, `deploy.sh script`, `Props` (+524 more)
+- **545 isolated node(s):** `ParamsToSign`, `ResourceType`, `deploy-codex.sh script`, `deploy.sh script`, `Props` (+540 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **70 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **71 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `Hoist Static JSX Elements` and `Don't Define Components Inside Components`?**
   _Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low._
-- **Why does `dependencies` connect `Community 86` to `Community 132`, `Community 182`, `Community 212`, `Community 213`, `Community 219`, `Community 221`, `Community 222`, `Community 225`, `Community 226`, `Community 227`, `Community 228`, `Community 229`, `Community 230`, `Community 231`, `Community 232`, `Community 233`, `Community 234`, `Community 235`, `Community 236`, `Community 237`, `Community 238`, `Community 239`, `Community 240`, `Community 241`, `Community 242`, `Community 243`, `Community 244`, `Community 245`, `Community 246`, `Community 247`, `Community 248`, `Community 249`?**
-  _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `gates` connect `Community 79` to `Vercel Optimize Budget Summary`, `Community 50`, `Community 29`, `Vercel Optimize Auth Contract`?**
+- **Why does `dependencies` connect `Community 84` to `Community 133`, `Community 182`, `Community 216`, `Community 217`, `Community 222`, `Community 225`, `Community 226`, `Community 229`, `Community 230`, `Community 231`, `Community 232`, `Community 233`, `Community 234`, `Community 235`, `Community 236`, `Community 237`, `Community 238`, `Community 239`, `Community 240`, `Community 241`, `Community 242`, `Community 243`, `Community 244`, `Community 245`, `Community 246`, `Community 247`, `Community 248`, `Community 249`, `Community 250`, `Community 251`, `Community 252`, `Community 253`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **Why does `scanners` connect `Community 50` to `Vercel Optimize Workspace Resolver`, `Community 79`?**
+- **Why does `gates` connect `Community 31` to `Vercel Optimize Budget Summary`, `Community 32`, `Community 52`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
+- **Why does `scanners` connect `Community 31` to `Vercel Optimize Workspace Resolver`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `ParamsToSign`, `ResourceType`, `deploy-codex.sh script` to the rest of the system?**
-  _529 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _545 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Vercel Optimize Budget Summary` be split into smaller, more focused modules?**
   _Cohesion score 0.05225885225885226 - nodes in this community are weakly interconnected._
-- **Should `Vercel Optimize Recommendation Dedup` be split into smaller, more focused modules?**
-  _Cohesion score 0.07853107344632769 - nodes in this community are weakly interconnected._
+- **Should `Dashboard Shared Primitives` be split into smaller, more focused modules?**
+  _Cohesion score 0.05621621621621622 - nodes in this community are weakly interconnected._
