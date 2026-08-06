@@ -93,7 +93,9 @@ export function SlugEntityTable({
             <Plus className="me-1 size-4" /> New
           </Button>
         </div>
-        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">{subtitle}</p>
+        <p className="text-muted-foreground mt-1 max-w-2xl text-sm">
+          {subtitle}
+        </p>
       </div>
 
       <div className="rounded-lg border">
