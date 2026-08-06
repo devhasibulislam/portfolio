@@ -310,7 +310,7 @@ function ProjectDialog({
         if (!o) onClose();
       }}
     >
-      <DialogContent className="max-h-[92svh] max-w-3xl overflow-y-auto">
+      <DialogContent className="max-w-3xl">
         {open ? (
           <ProjectDialogForm
             key={formKey}

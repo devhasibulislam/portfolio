@@ -310,7 +310,7 @@ function ExperienceDialog({
         if (!o) onClose();
       }}
     >
-      <DialogContent className="max-h-[92svh] max-w-2xl overflow-y-auto">
+      <DialogContent className="max-w-2xl">
         {open ? (
           <ExperienceDialogForm
             key={formKey}

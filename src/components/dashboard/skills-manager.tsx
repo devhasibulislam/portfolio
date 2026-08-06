@@ -284,7 +284,7 @@ function SkillDialog({
         if (!o) onClose();
       }}
     >
-      <DialogContent className="max-h-[92svh] max-w-lg overflow-y-auto">
+      <DialogContent className="max-w-lg">
         {open ? (
           <SkillDialogBody
             key={dialogKey}
