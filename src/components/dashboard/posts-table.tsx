@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useAction } from "@/hooks/use-action";
 import { Switch } from "@/components/ui/switch";
 import {
   Table,
@@ -26,10 +27,10 @@ import type { PostRow } from "@/lib/db/queries/posts";
 import { deletePost, togglePostStatus } from "@/app/dashboard/posts/actions";
 
 export function PostsTable({ rows }: { rows: PostRow[] }) {
-  const router = useRouter();
   const t = useTranslations("actions.posts");
   const [confirmDelete, setConfirmDelete] = useState<PostRow | null>(null);
-  const [pending, startTransition] = useTransition();
+  const del = useAction(deletePost);
+  const pending = del.pending;
 
   return (
     <div className="rounded-lg border">
@@ -105,15 +106,9 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
           if (!confirmDelete) return;
           const fd = new FormData();
           fd.set("id", confirmDelete.id);
-          startTransition(async () => {
-            const res = await deletePost(null, fd);
-            if (res?.error) {
-              toast.error(res.error);
-              return;
-            }
-            toast.success(t("deleted"));
-            setConfirmDelete(null);
-            router.refresh();
+          del.run(fd, {
+            successToast: t("deleted"),
+            onOk: () => setConfirmDelete(null),
           });
         }}
       />

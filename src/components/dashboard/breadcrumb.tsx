@@ -38,9 +38,7 @@ export function DashboardBreadcrumb() {
   }
 
   const section = NAV.find((n) => n.href === `/dashboard/${segments[1]}`);
-  const sectionLabel = section
-    ? t(`nav.items.${section.key}`)
-    : segments[1];
+  const sectionLabel = section ? t(`nav.items.${section.key}`) : segments[1];
   const rest = segments.slice(2);
 
   return (

@@ -29,13 +29,13 @@ import { refreshNeonAnalytics } from "@/app/dashboard/neon-actions";
  */
 export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
   const router = useRouter();
-  const t = useTranslations("actions.neon");
+  const t = useTranslations("dashboard");
   const [pending, startTransition] = useTransition();
 
   const onRefresh = () =>
     startTransition(async () => {
       await refreshNeonAnalytics();
-      toast.success(t("refreshed"));
+      toast.success(t("neonRefreshed"));
       router.refresh();
     });
 

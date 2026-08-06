@@ -219,9 +219,6 @@
       "pdfOnly": "רק PDF מותר.",
       "fileTooLarge": "הקובץ {size} MB. מקסימום {max} MB.",
       "uploadFailed": "ההעלאה נכשלה"
-    },
-    "neon": {
-      "refreshed": "אנליטיקת Neon רועננה"
     }
   },
   "brand": {
@@ -266,7 +263,8 @@
         "tags": "קבץ פוסטים לפי נושא (עד 8 לפוסט).",
         "media": "העלאות Cloudinary לשימוש חוזר בפוסטים."
       }
-    }
+    },
+    "neonRefreshed": "אנליטיקת Neon רועננה"
   },
   "login": {
     "title": "התחברות",

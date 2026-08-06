@@ -8,7 +8,7 @@ import { cloudinary } from "@/lib/cloudinary";
 import { tag } from "@/lib/cache-tags";
 import { resumeInput } from "@/schemas/resume";
 
-export type ActionState = { error?: string; ok?: true } | null;
+import type { ActionState } from "@/lib/action-helpers";
 
 /** Register a resume after Cloudinary upload. First one uploaded is auto-active. */
 export async function registerResume(

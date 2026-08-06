@@ -219,9 +219,6 @@
       "pdfOnly": "Only PDF is allowed.",
       "fileTooLarge": "File is {size} MB. Max is {max} MB.",
       "uploadFailed": "Upload failed"
-    },
-    "neon": {
-      "refreshed": "Neon analytics refreshed"
     }
   },
   "brand": {
@@ -266,7 +263,8 @@
         "tags": "Group posts by topic (max 8 per post).",
         "media": "Cloudinary uploads reused across posts."
       }
-    }
+    },
+    "neonRefreshed": "Neon analytics refreshed"
   },
   "login": {
     "title": "Sign in",

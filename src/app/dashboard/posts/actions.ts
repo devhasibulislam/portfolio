@@ -8,8 +8,7 @@ import { db } from "@/lib/db/client";
 import { posts, postsTags } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { postInput } from "@/schemas/post";
-
-export type ActionState = { error?: string; ok?: true } | null;
+import type { ActionState } from "@/lib/action-helpers";
 
 /**
  * Create or update a post. On success, redirects to the edit page (so the

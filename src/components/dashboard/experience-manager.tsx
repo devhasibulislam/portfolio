@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useAction } from "@/hooks/use-action";
 import {
   Dialog,
   DialogContent,
@@ -84,18 +84,20 @@ export function ExperienceManager({
   mediaOptions: MediaOption[];
   resolveFull: (id: string) => Promise<ExperienceFull | null>;
 }) {
-  const router = useRouter();
   const t = useTranslations("actions.experience");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ExperienceRow | null>(
     null,
   );
-  const [pending, startTransition] = useTransition();
+  const [fetching, startFetch] = useTransition();
+  const save = useAction(saveExperience);
+  const del = useAction(deleteExperience);
+  const pending = fetching || save.pending || del.pending;
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
   const onEdit = (row: ExperienceRow) => {
     setLoadingId(row.id);
-    startTransition(async () => {
+    startFetch(async () => {
       const full = await resolveFull(row.id);
       setLoadingId(null);
       if (!full) {
@@ -106,31 +108,18 @@ export function ExperienceManager({
     });
   };
 
-  const onSave = (fd: FormData) => {
-    startTransition(async () => {
-      const res = await saveExperience(null, fd);
-      if (res?.error) {
-        toast.error(res.error);
-        return;
-      }
-      toast.success(editing?.mode === "edit" ? t("updated") : t("added"));
-      setEditing(null);
-      router.refresh();
+  const onSave = (fd: FormData) =>
+    save.run(fd, {
+      successToast: editing?.mode === "edit" ? t("updated") : t("added"),
+      onOk: () => setEditing(null),
     });
-  };
 
   const onDelete = (row: ExperienceRow) => {
-    startTransition(async () => {
-      const fd = new FormData();
-      fd.set("id", row.id);
-      const res = await deleteExperience(null, fd);
-      if (res?.error) {
-        toast.error(res.error);
-        return;
-      }
-      toast.success(t("deleted", { role: row.role, company: row.company }));
-      setConfirmDelete(null);
-      router.refresh();
+    const fd = new FormData();
+    fd.set("id", row.id);
+    del.run(fd, {
+      successToast: t("deleted", { role: row.role, company: row.company }),
+      onOk: () => setConfirmDelete(null),
     });
   };
 

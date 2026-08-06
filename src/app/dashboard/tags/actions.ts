@@ -7,8 +7,7 @@ import { db } from "@/lib/db/client";
 import { tags, postsTags } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { tagInput } from "@/schemas/tag";
-
-export type ActionState = { error?: string; ok?: true } | null;
+import type { ActionState } from "@/lib/action-helpers";
 
 export async function saveTag(
   _prev: ActionState,

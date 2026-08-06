@@ -1,12 +1,13 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CldImage } from "next-cloudinary";
 import { Copy, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useAction } from "@/hooks/use-action";
 import {
   Dialog,
   DialogContent,
@@ -176,9 +177,8 @@ function DeleteDialog({
   row: MediaRow | null;
   onOpenChange: (open: boolean) => void;
 }) {
-  const router = useRouter();
   const t = useTranslations("actions.media");
-  const [pending, startTransition] = useTransition();
+  const del = useAction(deleteMedia);
   if (!row) return null;
   return (
     <ConfirmDeleteDialog
@@ -190,21 +190,15 @@ function DeleteDialog({
           ? "Blocked: this image is set as a post cover. Reassign it first."
           : "Removes the file from Cloudinary and this list. Can't be undone."
       }
-      pending={pending}
+      pending={del.pending}
       disabled={row.inUse}
       destructive
       onConfirm={() => {
         const fd = new FormData();
         fd.set("id", row.id);
-        startTransition(async () => {
-          const res = await deleteMedia(null, fd);
-          if (res?.error) {
-            toast.error(res.error);
-            return;
-          }
-          toast.success(t("deleted"));
-          onOpenChange(false);
-          router.refresh();
+        del.run(fd, {
+          successToast: t("deleted"),
+          onOk: () => onOpenChange(false),
         });
       }}
     />

@@ -9,7 +9,7 @@ import { cloudinary } from "@/lib/cloudinary";
 import { tag } from "@/lib/cache-tags";
 import { mediaInput } from "@/schemas/media";
 
-export type ActionState = { error?: string; ok?: true; id?: string } | null;
+type ActionState = { error?: string; ok?: true; id?: string } | null;
 
 /**
  * Called by the client immediately after a successful signed upload. Inserts

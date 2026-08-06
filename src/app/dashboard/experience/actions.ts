@@ -7,27 +7,11 @@ import { db } from "@/lib/db/client";
 import { experiences } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { experienceInput } from "@/schemas/experience";
-
-export type ActionState = { error?: string; ok?: true } | null;
-
-const EMPTY_DOC = { type: "doc", content: [] };
-
-/**
- * Parse a TipTap doc JSON blob posted from the client. Falls back to an
- * empty doc so the jsonb NOT NULL column is always populated.
- */
-function parseDocJson(raw: string): Record<string, unknown> {
-  if (!raw.trim()) return EMPTY_DOC;
-  try {
-    const parsed = JSON.parse(raw);
-    if (parsed && typeof parsed === "object" && parsed.type === "doc") {
-      return parsed as Record<string, unknown>;
-    }
-  } catch {
-    // fall through
-  }
-  return EMPTY_DOC;
-}
+import {
+  parseTiptapDoc,
+  toIso,
+  type ActionState,
+} from "@/lib/action-helpers";
 
 export async function saveExperience(
   _prev: ActionState,
@@ -38,8 +22,6 @@ export async function saveExperience(
 
   const periodStartRaw = String(formData.get("periodStart") ?? "").trim();
   const periodEndRaw = String(formData.get("periodEnd") ?? "").trim();
-  const toIso = (s: string) =>
-    s ? new Date(`${s}T00:00:00.000Z`).toISOString() : null;
   const startIso = toIso(periodStartRaw);
   if (!startIso) return { error: t("startRequired") };
 
@@ -61,7 +43,7 @@ export async function saveExperience(
     periodStart: startIso,
     periodEnd: toIso(periodEndRaw),
     summary: String(formData.get("summary") ?? "").trim(),
-    highlights: parseDocJson(highlightsRaw),
+    highlights: parseTiptapDoc(highlightsRaw),
     companyUrl: String(formData.get("companyUrl") ?? "").trim() || null,
     companyLogoId: (formData.get("companyLogoId") as string) || null,
     metaTitle: String(formData.get("metaTitle") ?? "").trim() || null,

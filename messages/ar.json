@@ -219,9 +219,6 @@
       "pdfOnly": "PDF فقط مسموح.",
       "fileTooLarge": "حجم الملف {size} MB. الحد الأقصى {max} MB.",
       "uploadFailed": "فشل الرفع"
-    },
-    "neon": {
-      "refreshed": "تم تحديث تحليلات Neon"
     }
   },
   "brand": {
@@ -266,7 +263,8 @@
         "tags": "جمّع المنشورات حسب الموضوع (الحد الأقصى 8 لكل منشور).",
         "media": "رفعات Cloudinary مُعاد استخدامها بين المنشورات."
       }
-    }
+    },
+    "neonRefreshed": "تم تحديث تحليلات Neon"
   },
   "login": {
     "title": "تسجيل الدخول",

@@ -7,8 +7,7 @@ import { db } from "@/lib/db/client";
 import { categories, posts } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { categoryInput } from "@/schemas/category";
-
-export type ActionState = { error?: string; ok?: true } | null;
+import type { ActionState } from "@/lib/action-helpers";
 
 /** Create or update a category (single action, id absent = create). */
 export async function saveCategory(

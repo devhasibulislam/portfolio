@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/tooltip";
 import { PageHeader } from "@/components/dashboard/page-header";
 import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
+import { useAction } from "@/hooks/use-action";
 import type { ResumeRow } from "@/lib/db/queries/resumes";
 import {
   deleteResume,
@@ -25,7 +26,10 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
   const router = useRouter();
   const t = useTranslations("actions.resume");
   const [confirmDelete, setConfirmDelete] = useState<ResumeRow | null>(null);
-  const [pending, startTransition] = useTransition();
+  const [uploading, startUpload] = useTransition();
+  const activate = useAction(setActiveResume);
+  const del = useAction(deleteResume);
+  const pending = uploading || activate.pending || del.pending;
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
@@ -48,7 +52,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
       return;
     }
 
-    startTransition(async () => {
+    startUpload(async () => {
       try {
         const timestamp = Math.floor(Date.now() / 1000);
         const folder = "portfolio/resume";
@@ -184,16 +188,10 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                           if (r.isActive) return;
                           const fd = new FormData();
                           fd.set("id", r.id);
-                          startTransition(async () => {
-                            const res = await setActiveResume(null, fd);
-                            if (res?.error) {
-                              toast.error(res.error);
-                              return;
-                            }
-                            toast.success(
-                              t("activated", { name: r.originalName }),
-                            );
-                            router.refresh();
+                          activate.run(fd, {
+                            successToast: t("activated", {
+                              name: r.originalName,
+                            }),
                           });
                         }}
                         aria-label={
@@ -247,15 +245,9 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
           if (!confirmDelete) return;
           const fd = new FormData();
           fd.set("id", confirmDelete.id);
-          startTransition(async () => {
-            const res = await deleteResume(null, fd);
-            if (res?.error) {
-              toast.error(res.error);
-              return;
-            }
-            toast.success(t("deleted"));
-            setConfirmDelete(null);
-            router.refresh();
+          del.run(fd, {
+            successToast: t("deleted"),
+            onOk: () => setConfirmDelete(null),
           });
         }}
       />

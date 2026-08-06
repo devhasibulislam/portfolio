@@ -7,8 +7,7 @@ import { db } from "@/lib/db/client";
 import { skills } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { skillInput } from "@/schemas/skill";
-
-export type ActionState = { error?: string; ok?: true } | null;
+import type { ActionState } from "@/lib/action-helpers";
 
 /**
  * Create or update a skill. Slug uniqueness is enforced explicitly so we

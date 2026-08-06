@@ -1,11 +1,10 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Pencil, Plus, Star, Trash2 } from "lucide-react";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useAction } from "@/hooks/use-action";
 import {
   Dialog,
   DialogContent,
@@ -73,11 +72,12 @@ export function SkillsManager({
   rows: SkillRow[];
   mediaOptions: MediaOption[];
 }) {
-  const router = useRouter();
   const t = useTranslations("actions.skills");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<SkillRow | null>(null);
-  const [pending, startTransition] = useTransition();
+  const save = useAction(saveSkill);
+  const del = useAction(deleteSkill);
+  const pending = save.pending || del.pending;
 
   const grouped = useMemo(() => {
     const map = new Map<SkillInput["group"], SkillRow[]>();
@@ -88,31 +88,18 @@ export function SkillsManager({
     );
   }, [rows]);
 
-  const onSave = (fd: FormData) => {
-    startTransition(async () => {
-      const res = await saveSkill(null, fd);
-      if (res?.error) {
-        toast.error(res.error);
-        return;
-      }
-      toast.success(editing?.mode === "edit" ? t("updated") : t("added"));
-      setEditing(null);
-      router.refresh();
+  const onSave = (fd: FormData) =>
+    save.run(fd, {
+      successToast: editing?.mode === "edit" ? t("updated") : t("added"),
+      onOk: () => setEditing(null),
     });
-  };
 
   const onDelete = (row: SkillRow) => {
-    startTransition(async () => {
-      const fd = new FormData();
-      fd.set("id", row.id);
-      const res = await deleteSkill(null, fd);
-      if (res?.error) {
-        toast.error(res.error);
-        return;
-      }
-      toast.success(t("deleted", { name: row.name }));
-      setConfirmDelete(null);
-      router.refresh();
+    const fd = new FormData();
+    fd.set("id", row.id);
+    del.run(fd, {
+      successToast: t("deleted", { name: row.name }),
+      onOk: () => setConfirmDelete(null),
     });
   };
 

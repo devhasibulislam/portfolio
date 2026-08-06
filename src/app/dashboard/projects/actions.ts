@@ -8,29 +8,11 @@ import { projectLinks, projects } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { projectInput } from "@/schemas/project";
 import type { ProjectLinkInput } from "@/schemas/project";
-
-export type ActionState = { error?: string; ok?: true } | null;
-
-// Minimal empty TipTap doc used when the author leaves the body / outcome
-// textarea blank. Body is jsonb NOT NULL in the schema.
-const EMPTY_DOC = { type: "doc", content: [] };
-
-/**
- * Parse a TipTap doc JSON blob posted from the client. Falls back to an
- * empty doc so the jsonb NOT NULL column is always populated.
- */
-function parseBodyJson(raw: string): Record<string, unknown> {
-  if (!raw.trim()) return EMPTY_DOC;
-  try {
-    const parsed = JSON.parse(raw);
-    if (parsed && typeof parsed === "object" && parsed.type === "doc") {
-      return parsed as Record<string, unknown>;
-    }
-  } catch {
-    // fall through
-  }
-  return EMPTY_DOC;
-}
+import {
+  parseTiptapDoc,
+  toIso,
+  type ActionState,
+} from "@/lib/action-helpers";
 
 // Best-effort host check for App Store / Play Store links so a mistyped
 // URL surfaces before it hits the public site. Soft errors only — Zod
@@ -69,10 +51,6 @@ export async function saveProject(
 
   const periodStartRaw = String(formData.get("periodStart") ?? "").trim();
   const periodEndRaw = String(formData.get("periodEnd") ?? "").trim();
-  // HTML date inputs give YYYY-MM-DD; upgrade to ISO so Zod's `.datetime()`
-  // is satisfied. Nullable — blank stays null.
-  const toIso = (s: string) =>
-    s ? new Date(`${s}T00:00:00.000Z`).toISOString() : null;
 
   // Links are posted as parallel arrays; each row's index must line up.
   const linkKinds = formData.getAll("linkKind").map(String);
@@ -97,7 +75,7 @@ export async function saveProject(
     role: String(formData.get("role") ?? "").trim() || null,
     periodStart: toIso(periodStartRaw),
     periodEnd: toIso(periodEndRaw),
-    body: parseBodyJson(bodyRaw),
+    body: parseTiptapDoc(bodyRaw),
     outcome: outcomeText || null,
     category: String(formData.get("category") ?? "enterprise"),
     coverMediaId: (formData.get("coverMediaId") as string) || null,

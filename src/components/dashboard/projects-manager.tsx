@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Pencil, Plus, Star, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { useAction } from "@/hooks/use-action";
 import {
   Dialog,
   DialogContent,
@@ -99,16 +99,18 @@ export function ProjectsManager({
   mediaOptions: MediaOption[];
   resolveFull: (id: string) => Promise<ProjectFull | null>;
 }) {
-  const router = useRouter();
   const t = useTranslations("actions.projects");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ProjectRow | null>(null);
-  const [pending, startTransition] = useTransition();
+  const [fetching, startFetch] = useTransition();
+  const save = useAction(saveProject);
+  const del = useAction(deleteProject);
+  const pending = fetching || save.pending || del.pending;
   const [loadingId, setLoadingId] = useState<string | null>(null);
 
   const onEdit = (row: ProjectRow) => {
     setLoadingId(row.id);
-    startTransition(async () => {
+    startFetch(async () => {
       const full = await resolveFull(row.id);
       setLoadingId(null);
       if (!full) {
@@ -119,31 +121,18 @@ export function ProjectsManager({
     });
   };
 
-  const onSave = (fd: FormData) => {
-    startTransition(async () => {
-      const res = await saveProject(null, fd);
-      if (res?.error) {
-        toast.error(res.error);
-        return;
-      }
-      toast.success(editing?.mode === "edit" ? t("updated") : t("saved"));
-      setEditing(null);
-      router.refresh();
+  const onSave = (fd: FormData) =>
+    save.run(fd, {
+      successToast: editing?.mode === "edit" ? t("updated") : t("saved"),
+      onOk: () => setEditing(null),
     });
-  };
 
   const onDelete = (row: ProjectRow) => {
-    startTransition(async () => {
-      const fd = new FormData();
-      fd.set("id", row.id);
-      const res = await deleteProject(null, fd);
-      if (res?.error) {
-        toast.error(res.error);
-        return;
-      }
-      toast.success(t("deleted", { title: row.title }));
-      setConfirmDelete(null);
-      router.refresh();
+    const fd = new FormData();
+    fd.set("id", row.id);
+    del.run(fd, {
+      successToast: t("deleted", { title: row.title }),
+      onOk: () => setConfirmDelete(null),
     });
   };
 
