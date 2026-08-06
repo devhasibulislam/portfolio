@@ -83,9 +83,14 @@ async function LocalizedShell({ children }: { children: React.ReactNode }) {
   const [locale, messages] = await Promise.all([getLocale(), getMessages()]);
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <SiteHeader />
-      {children}
-      <PublicFooter />
+      {/* Sticky-footer shell: min-h-svh flex column keeps the footer glued to
+          the viewport bottom when the page content is shorter than the
+          viewport, and lets it flow naturally below content when longer. */}
+      <div className="flex min-h-svh flex-col">
+        <SiteHeader />
+        <div className="flex-1">{children}</div>
+        <PublicFooter />
+      </div>
       <PublicFloatingActions />
     </NextIntlClientProvider>
   );

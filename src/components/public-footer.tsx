@@ -52,12 +52,10 @@ export function PublicFooter() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-24 border-t">
+    <footer className="border-t">
       <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-6 px-6 py-10">
         <div className="min-w-0">
-          <p className="text-foreground text-sm font-semibold">
-            Hasibul Islam
-          </p>
+          <p className="text-foreground text-sm font-semibold">Hasibul Islam</p>
           <p className="text-muted-foreground mt-1 text-xs">
             Senior full-stack engineer. Backend, LLM/RAG, and production
             Node.js.
