@@ -107,9 +107,7 @@ export function AppSidebar() {
       </SidebarContent>
 
       <SidebarFooter>
-        <div className="px-2 pb-2">
-          <LanguageSelect align="start" className="h-8 w-full text-xs" />
-        </div>
+        <LanguageSelect align="start" className="h-8 w-full text-xs" />
         <SidebarMenu>
           <SidebarMenuItem>
             {/* Use the same primitive as the nav rows so the tooltip appears
