@@ -270,9 +270,7 @@ function EditForm({
               ? tSlug("editTitle", { entity })
               : tSlug("newTitle", { entity })}
           </DialogTitle>
-          <DialogDescription>
-            {tSlug("description")}
-          </DialogDescription>
+          <DialogDescription>{tSlug("description")}</DialogDescription>
         </DialogHeader>
 
         <form
@@ -342,7 +340,11 @@ function EditForm({
               {tCommon("cancel")}
             </Button>
             <Button type="submit" disabled={pending}>
-              {pending ? tCommon("saving") : isEdit ? tCommon("save") : tSlug("create")}
+              {pending
+                ? tCommon("saving")
+                : isEdit
+                  ? tCommon("save")
+                  : tSlug("create")}
             </Button>
           </DialogFooter>
         </form>

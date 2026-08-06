@@ -305,6 +305,9 @@ function ExperienceDialogForm({
   pending: boolean;
 }) {
   const tPage = useTranslations("dashboard.pages.experience");
+  const tForm = useTranslations("dashboard.forms.experience");
+  const tCommon = useTranslations("dashboard.forms.common");
+  const tWork = useTranslations("experience.workTypes");
   const [company, setCompany] = useState(full?.company ?? "");
   const [companySlug, setCompanySlug] = useState(full?.companySlug ?? "");
   const [companySlugDirty, setCompanySlugDirty] = useState(false);
@@ -342,16 +345,15 @@ function ExperienceDialogForm({
           {full ? tPage("editDialogEdit") : tPage("editDialogNew")}
         </DialogTitle>
         <DialogDescription>
-          One row per role. A promotion at the same company shares a company
-          slug so the public page groups them.
+          {tForm("description")}
         </DialogDescription>
       </DialogHeader>
 
       <div className="mt-4 flex flex-col gap-6">
         {/* Company */}
-        <Section title="Company">
+        <Section title={tForm("section.company")}>
           <FieldGrid>
-            <Field htmlFor="company" label="Name" required>
+            <Field htmlFor="company" label={tForm("name")} required>
               <CountedInput
                 id="company"
                 name="company"
@@ -368,9 +370,9 @@ function ExperienceDialogForm({
             </Field>
             <Field
               htmlFor="companySlug"
-              label="Company slug"
+              label={tForm("companySlug")}
               required
-              hint="Groups roles at the same company."
+              hint={tForm("companySlugHint")}
             >
               <CountedInput
                 id="companySlug"
@@ -384,7 +386,7 @@ function ExperienceDialogForm({
                 }}
               />
             </Field>
-            <Field htmlFor="location" label="Location" optional>
+            <Field htmlFor="location" label={tForm("location")} optional>
               <CountedInput
                 id="location"
                 name="location"
@@ -392,16 +394,16 @@ function ExperienceDialogForm({
                 defaultValue={full?.location ?? ""}
               />
             </Field>
-            <Field htmlFor="workType" label="Work type" optional>
+            <Field htmlFor="workType" label={tForm("workType")} optional>
               <Select name="workType" defaultValue={full?.workType ?? "none"}>
                 <SelectTrigger id="workType">
-                  <SelectValue placeholder="Choose one" />
+                  <SelectValue placeholder={tForm("workTypeChoose")} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="none">None</SelectItem>
+                  <SelectItem value="none">{tForm("workTypeNone")}</SelectItem>
                   {WORK_TYPES.map((w) => (
                     <SelectItem key={w.value} value={w.value}>
-                      {w.label}
+                      {tWork(w.value)}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -410,7 +412,7 @@ function ExperienceDialogForm({
             <Field
               className="col-span-2"
               htmlFor="companyUrl"
-              label="Company URL"
+              label={tForm("companyUrl")}
               optional
             >
               <Input
@@ -422,11 +424,11 @@ function ExperienceDialogForm({
             </Field>
             <div className="col-span-2">
               <Label>
-                Company logo
+                {tForm("companyLogo")}
                 <OptionalMark />
               </Label>
               <p className="text-muted-foreground mt-1 text-xs">
-                Square 1:1 (ideally 512×512+). Up to 5 MB.
+                {tForm("logoHint")}
               </p>
               <div className="mt-1.5">
                 <MediaPicker
@@ -434,7 +436,7 @@ function ExperienceDialogForm({
                   value={logoId}
                   onChange={setLogoId}
                   aspect={1}
-                  label="Pick or upload logo"
+                  label={tForm("logoPickerLabel")}
                 />
               </div>
             </div>
@@ -442,9 +444,9 @@ function ExperienceDialogForm({
         </Section>
 
         {/* Role */}
-        <Section title="Role">
+        <Section title={tForm("section.role")}>
           <FieldGrid>
-            <Field htmlFor="role" label="Title" required>
+            <Field htmlFor="role" label={tForm("roleTitle")} required>
               <CountedInput
                 id="role"
                 name="role"
@@ -459,7 +461,7 @@ function ExperienceDialogForm({
                 }}
               />
             </Field>
-            <Field htmlFor="slug" label="URL slug" required>
+            <Field htmlFor="slug" label={tForm("slug")} required>
               <CountedInput
                 id="slug"
                 name="slug"
@@ -472,7 +474,7 @@ function ExperienceDialogForm({
                 }}
               />
             </Field>
-            <Field htmlFor="periodStart" label="Start date" required>
+            <Field htmlFor="periodStart" label={tForm("startDate")} required>
               <Input
                 id="periodStart"
                 name="periodStart"
@@ -483,9 +485,9 @@ function ExperienceDialogForm({
             </Field>
             <Field
               htmlFor="periodEnd"
-              label="End date"
+              label={tForm("endDate")}
               optional
-              hint="Leave blank if still there."
+              hint={tForm("endDateHint")}
             >
               <Input
                 id="periodEnd"
@@ -497,9 +499,9 @@ function ExperienceDialogForm({
             <Field
               className="col-span-2"
               htmlFor="summary"
-              label="Summary"
+              label={tForm("summary")}
               required
-              hint="≤ 240 chars. Doubles as meta description fallback."
+              hint={tForm("summaryHint")}
             >
               <CountedTextarea
                 id="summary"
@@ -513,9 +515,9 @@ function ExperienceDialogForm({
             </Field>
             <Field
               className="col-span-2"
-              label="Highlights"
+              label={tForm("highlights")}
               optional
-              hint="Rich text: bullet lists, headings, links, code. Same editor as the blog."
+              hint={tForm("highlightsHint")}
             >
               <TiptapEditor
                 value={highlights}
@@ -529,12 +531,12 @@ function ExperienceDialogForm({
         </Section>
 
         {/* SEO + publish */}
-        <Section title="SEO / Publish">
+        <Section title={tForm("section.seo")}>
           <FieldGrid>
             <Field
               className="col-span-2"
               htmlFor="metaTitle"
-              label="Meta title"
+              label={tForm("metaTitle")}
               optional
             >
               <CountedInput
@@ -547,7 +549,7 @@ function ExperienceDialogForm({
             <Field
               className="col-span-2"
               htmlFor="metaDescription"
-              label="Meta description"
+              label={tForm("metaDescription")}
               optional
             >
               <CountedTextarea
@@ -559,7 +561,7 @@ function ExperienceDialogForm({
                 defaultValue={full?.metaDescription ?? ""}
               />
             </Field>
-            <Field htmlFor="displayOrder" label="Display order" required>
+            <Field htmlFor="displayOrder" label={tForm("displayOrder")} required>
               <Input
                 id="displayOrder"
                 name="displayOrder"
@@ -569,7 +571,7 @@ function ExperienceDialogForm({
                 defaultValue={full?.displayOrder ?? 0}
               />
             </Field>
-            <Field htmlFor="status" label="Status" required>
+            <Field htmlFor="status" label={tForm("status")} required>
               <Select
                 name="status"
                 defaultValue={full?.status ?? "draft"}
@@ -579,15 +581,15 @@ function ExperienceDialogForm({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="draft">Draft</SelectItem>
-                  <SelectItem value="published">Published</SelectItem>
+                  <SelectItem value="draft">{tForm("draft")}</SelectItem>
+                  <SelectItem value="published">{tForm("published")}</SelectItem>
                 </SelectContent>
               </Select>
             </Field>
             <SwitchRow
               name="noindex"
-              label="Noindex"
-              hint="Hide from search engines."
+              label={tForm("noindex")}
+              hint={tForm("noindexHint")}
               defaultChecked={full?.noindex ?? false}
             />
           </FieldGrid>
@@ -601,10 +603,10 @@ function ExperienceDialogForm({
           onClick={onClose}
           disabled={pending}
         >
-          Cancel
+          {tCommon("cancel")}
         </Button>
         <Button type="submit" disabled={pending}>
-          {pending ? "Saving…" : full ? "Save changes" : "Create role"}
+          {pending ? tCommon("saving") : full ? tCommon("save") : tForm("createButton")}
         </Button>
       </DialogFooter>
     </form>

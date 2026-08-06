@@ -57,7 +57,9 @@ export function ConfirmDeleteDialog({
           <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel disabled={pending}>{t("cancel")}</AlertDialogCancel>
+          <AlertDialogCancel disabled={pending}>
+            {t("cancel")}
+          </AlertDialogCancel>
           <AlertDialogAction
             disabled={pending || disabled}
             className={

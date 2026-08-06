@@ -116,9 +116,7 @@ export function TagMultiPicker({ options, value, onChange, max = 8 }: Props) {
               />
               <CommandList>
                 <CommandEmpty>
-                  {options.length === 0
-                    ? t("noneYet")
-                    : t("noMatches")}
+                  {options.length === 0 ? t("noneYet") : t("noMatches")}
                 </CommandEmpty>
                 <CommandGroup>
                   {options.map((o) => {

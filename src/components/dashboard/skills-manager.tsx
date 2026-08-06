@@ -154,9 +154,7 @@ export function SkillsManager({
                             {r.slug}
                           </div>
                         </TableCell>
-                        <TableCell>
-                          {tProf(r.proficiency)}
-                        </TableCell>
+                        <TableCell>{tProf(r.proficiency)}</TableCell>
                         <TableCell>{r.years ?? "-"}</TableCell>
                         <TableCell>{r.displayOrder}</TableCell>
                         <TableCell>
@@ -300,9 +298,7 @@ function SkillDialogBody({
         <DialogTitle>
           {row ? tPage("editDialogEdit") : tPage("editDialogNew")}
         </DialogTitle>
-        <DialogDescription>
-          {tForm("description")}
-        </DialogDescription>
+        <DialogDescription>{tForm("description")}</DialogDescription>
       </DialogHeader>
 
       <div className="mt-4 flex flex-col gap-4">
@@ -348,9 +344,7 @@ function SkillDialogBody({
               {tForm("iconLabel")}
               <OptionalMark />
             </Label>
-            <p className="text-muted-foreground text-xs">
-              {tForm("iconHint")}
-            </p>
+            <p className="text-muted-foreground text-xs">{tForm("iconHint")}</p>
             <MediaPicker
               options={mediaOptions}
               value={iconId}
@@ -469,7 +463,9 @@ function SkillDialogBody({
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="active">{tForm("statusActive")}</SelectItem>
-                <SelectItem value="archived">{tForm("statusArchived")}</SelectItem>
+                <SelectItem value="archived">
+                  {tForm("statusArchived")}
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -486,7 +482,11 @@ function SkillDialogBody({
           {tCommon("cancel")}
         </Button>
         <Button type="submit" disabled={pending}>
-          {pending ? tCommon("saving") : row ? tCommon("save") : tForm("createButton")}
+          {pending
+            ? tCommon("saving")
+            : row
+              ? tCommon("save")
+              : tForm("createButton")}
         </Button>
       </DialogFooter>
     </form>
