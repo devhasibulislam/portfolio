@@ -335,6 +335,68 @@
         "noneMatch": "لا شيء يطابق هذا الفلتر.",
         "inUseBadge": "مستخدم"
       }
+    },
+    "forms": {
+      "common": {
+        "cancel": "إلغاء",
+        "save": "حفظ التغييرات",
+        "saving": "جارٍ الحفظ…",
+        "delete": "حذف",
+        "deleting": "جارٍ الحذف…",
+        "update": "تحديث",
+        "saveDraft": "حفظ كمسودة",
+        "publish": "نشر",
+        "publishing": "جارٍ النشر…",
+        "moveToDraft": "نقل إلى المسودة",
+        "published": "منشور",
+        "draft": "مسودة",
+        "live": "● مباشر",
+        "hidden": "○ مخفي",
+        "slug": "المُعرِّف",
+        "name": "الاسم",
+        "thisCantBeUndone": "لا يمكن التراجع عن هذا.",
+        "change": "تغيير"
+      },
+      "post": {
+        "title": "العنوان",
+        "titlePlaceholder": "شيء يستحق القراءة (10 إلى 70 حرفًا)",
+        "titleHelper": "{count}/70 · مثالي 50 إلى 60",
+        "body": "المحتوى",
+        "metaDescription": "وصف Meta",
+        "metaDescriptionPlaceholder": "مقتطف Google، 120 إلى 160 حرفًا",
+        "metaDescriptionHelper": "{count}/160",
+        "excerpt": "مقتطف",
+        "excerptPlaceholder": "ملخص البطاقة، 200 إلى 300 حرف",
+        "excerptHelper": "{count}/300",
+        "coverImage": "صورة الغلاف",
+        "category": "التصنيف",
+        "tags": "الوسوم"
+      },
+      "media": {
+        "pickerLabel": "اختر أو ارفع غلافًا",
+        "removeImage": "إزالة الصورة"
+      },
+      "category": {
+        "placeholder": "اختر تصنيفًا",
+        "searchPlaceholder": "البحث في التصنيفات…"
+      },
+      "tag": {
+        "addTag": "إضافة وسم",
+        "maxReached": "وصلت إلى الحد الأقصى {n} وسوم",
+        "maxLabel": "الحد {n}",
+        "searchPlaceholder": "البحث في الوسوم…",
+        "noneYet": "لا توجد وسوم بعد. أنشئ بعضها في صفحة الوسوم.",
+        "noMatches": "لا توجد نتائج."
+      },
+      "slugEntity": {
+        "description": "حد أقصى 30 حرفًا لكل حقل. المُعرِّف آمن في عناوين URL.",
+        "editTitle": "تعديل {entity}",
+        "newTitle": "{entity} جديد",
+        "deleteInUse": "محظور: {count} منشور لا يزال يستخدم هذا {entity}. أعد تعيينها أولاً.",
+        "deleteNoUse": "لا يمكن التراجع عن هذا.",
+        "empty": "لا توجد {entityPlural} بعد. انقر على جديد.",
+        "create": "إنشاء"
+      }
     }
   },
   "login": {

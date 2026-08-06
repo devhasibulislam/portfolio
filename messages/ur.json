@@ -335,6 +335,68 @@
         "noneMatch": "اس فلٹر سے کچھ نہیں ملتا۔",
         "inUseBadge": "استعمال میں"
       }
+    },
+    "forms": {
+      "common": {
+        "cancel": "منسوخ",
+        "save": "تبدیلیاں محفوظ کریں",
+        "saving": "محفوظ ہو رہا ہے…",
+        "delete": "حذف",
+        "deleting": "حذف ہو رہا ہے…",
+        "update": "اپ ڈیٹ",
+        "saveDraft": "ڈرافٹ محفوظ",
+        "publish": "شائع",
+        "publishing": "شائع ہو رہا ہے…",
+        "moveToDraft": "ڈرافٹ میں منتقل",
+        "published": "شائع شدہ",
+        "draft": "ڈرافٹ",
+        "live": "● لائیو",
+        "hidden": "○ چھپا",
+        "slug": "سلگ",
+        "name": "نام",
+        "thisCantBeUndone": "اسے واپس نہیں کیا جا سکتا۔",
+        "change": "تبدیل"
+      },
+      "post": {
+        "title": "عنوان",
+        "titlePlaceholder": "پڑھنے کے قابل کچھ (10 سے 70 حروف)",
+        "titleHelper": "{count}/70 · مثالی 50 سے 60",
+        "body": "مواد",
+        "metaDescription": "میٹا تفصیل",
+        "metaDescriptionPlaceholder": "Google snippet، 120 سے 160 حروف",
+        "metaDescriptionHelper": "{count}/160",
+        "excerpt": "اقتباس",
+        "excerptPlaceholder": "کارڈ خلاصہ، 200 سے 300 حروف",
+        "excerptHelper": "{count}/300",
+        "coverImage": "کور تصویر",
+        "category": "زمرہ",
+        "tags": "ٹیگز"
+      },
+      "media": {
+        "pickerLabel": "کور منتخب کریں یا اپ لوڈ کریں",
+        "removeImage": "تصویر ہٹائیں"
+      },
+      "category": {
+        "placeholder": "ایک زمرہ منتخب کریں",
+        "searchPlaceholder": "زمروں کی تلاش…"
+      },
+      "tag": {
+        "addTag": "ٹیگ شامل",
+        "maxReached": "زیادہ سے زیادہ {n} ٹیگز",
+        "maxLabel": "زیادہ سے زیادہ {n}",
+        "searchPlaceholder": "ٹیگز کی تلاش…",
+        "noneYet": "ابھی کوئی ٹیگ نہیں۔ ٹیگز صفحہ پر بنائیں۔",
+        "noMatches": "کوئی مماثلت نہیں۔"
+      },
+      "slugEntity": {
+        "description": "ہر ایک زیادہ سے زیادہ 30 حروف۔ سلگ URL محفوظ۔",
+        "editTitle": "{entity} ترمیم",
+        "newTitle": "نیا {entity}",
+        "deleteInUse": "بلاک: {count} پوسٹس ابھی بھی یہ {entity} استعمال کر رہی ہیں۔ پہلے دوبارہ تفویض کریں۔",
+        "deleteNoUse": "اسے واپس نہیں کیا جا سکتا۔",
+        "empty": "ابھی کوئی {entityPlural} نہیں۔ نیا پر کلک کریں۔",
+        "create": "بنائیں"
+      }
     }
   },
   "login": {

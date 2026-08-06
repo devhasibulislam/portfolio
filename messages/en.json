@@ -335,6 +335,68 @@
         "noneMatch": "Nothing matches this filter.",
         "inUseBadge": "In use"
       }
+    },
+    "forms": {
+      "common": {
+        "cancel": "Cancel",
+        "save": "Save changes",
+        "saving": "Saving…",
+        "delete": "Delete",
+        "deleting": "Deleting…",
+        "update": "Update",
+        "saveDraft": "Save draft",
+        "publish": "Publish",
+        "publishing": "Publishing…",
+        "moveToDraft": "Move to draft",
+        "published": "Published",
+        "draft": "Draft",
+        "live": "● live",
+        "hidden": "○ hidden",
+        "slug": "Slug",
+        "name": "Name",
+        "thisCantBeUndone": "This can't be undone.",
+        "change": "Change"
+      },
+      "post": {
+        "title": "Title",
+        "titlePlaceholder": "Something worth reading (10 to 70 chars)",
+        "titleHelper": "{count}/70 · ideal 50 to 60",
+        "body": "Body",
+        "metaDescription": "Meta description",
+        "metaDescriptionPlaceholder": "Google snippet, 120 to 160 chars",
+        "metaDescriptionHelper": "{count}/160",
+        "excerpt": "Excerpt",
+        "excerptPlaceholder": "Card summary, 200 to 300 chars",
+        "excerptHelper": "{count}/300",
+        "coverImage": "Cover image",
+        "category": "Category",
+        "tags": "Tags"
+      },
+      "media": {
+        "pickerLabel": "Pick or upload a cover",
+        "removeImage": "Remove image"
+      },
+      "category": {
+        "placeholder": "Pick a category",
+        "searchPlaceholder": "Search categories…"
+      },
+      "tag": {
+        "addTag": "Add tag",
+        "maxReached": "Max {n} tags reached",
+        "maxLabel": "Max {n}",
+        "searchPlaceholder": "Search tags…",
+        "noneYet": "No tags exist yet. Create some on the Tags page.",
+        "noMatches": "No matches."
+      },
+      "slugEntity": {
+        "description": "Max 30 chars each. Slug is URL-safe.",
+        "editTitle": "Edit {entity}",
+        "newTitle": "New {entity}",
+        "deleteInUse": "Blocked: {count} {count, plural, one {post} other {posts}} still use this {entity}. Reassign them first.",
+        "deleteNoUse": "This can't be undone.",
+        "empty": "No {entityPlural} yet. Click New.",
+        "create": "Create"
+      }
     }
   },
   "login": {

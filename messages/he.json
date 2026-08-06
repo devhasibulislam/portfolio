@@ -335,6 +335,68 @@
         "noneMatch": "שום דבר לא תואם את המסנן.",
         "inUseBadge": "בשימוש"
       }
+    },
+    "forms": {
+      "common": {
+        "cancel": "ביטול",
+        "save": "שמור שינויים",
+        "saving": "שומר…",
+        "delete": "מחיקה",
+        "deleting": "מוחק…",
+        "update": "עדכן",
+        "saveDraft": "שמור טיוטה",
+        "publish": "פרסם",
+        "publishing": "מפרסם…",
+        "moveToDraft": "העבר לטיוטה",
+        "published": "פורסם",
+        "draft": "טיוטה",
+        "live": "● חי",
+        "hidden": "○ מוסתר",
+        "slug": "מזהה",
+        "name": "שם",
+        "thisCantBeUndone": "לא ניתן לבטל פעולה זו.",
+        "change": "החלף"
+      },
+      "post": {
+        "title": "כותרת",
+        "titlePlaceholder": "משהו שווה קריאה (10 עד 70 תווים)",
+        "titleHelper": "{count}/70 · אידיאלי 50 עד 60",
+        "body": "תוכן",
+        "metaDescription": "תיאור Meta",
+        "metaDescriptionPlaceholder": "קטע Google, 120 עד 160 תווים",
+        "metaDescriptionHelper": "{count}/160",
+        "excerpt": "קטע",
+        "excerptPlaceholder": "סיכום כרטיס, 200 עד 300 תווים",
+        "excerptHelper": "{count}/300",
+        "coverImage": "תמונת שער",
+        "category": "קטגוריה",
+        "tags": "תגיות"
+      },
+      "media": {
+        "pickerLabel": "בחר או העלה תמונת שער",
+        "removeImage": "הסר תמונה"
+      },
+      "category": {
+        "placeholder": "בחר קטגוריה",
+        "searchPlaceholder": "חיפוש קטגוריות…"
+      },
+      "tag": {
+        "addTag": "הוסף תגית",
+        "maxReached": "הגעת למקסימום {n} תגיות",
+        "maxLabel": "מקסימום {n}",
+        "searchPlaceholder": "חיפוש תגיות…",
+        "noneYet": "אין תגיות עדיין. צור בעמוד התגיות.",
+        "noMatches": "אין תוצאות."
+      },
+      "slugEntity": {
+        "description": "עד 30 תווים כל אחד. המזהה בטוח לכתובות URL.",
+        "editTitle": "עריכת {entity}",
+        "newTitle": "{entity} חדש",
+        "deleteInUse": "חסום: {count} פוסטים עדיין משתמשים ב‑{entity} הזה. יש להקצות אותם מחדש קודם.",
+        "deleteNoUse": "לא ניתן לבטל פעולה זו.",
+        "empty": "אין {entityPlural} עדיין. לחץ על חדש.",
+        "create": "צור"
+      }
     }
   },
   "login": {

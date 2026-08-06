@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
 import { PostForm } from "@/components/dashboard/post-form";
 import {
   getPostForEdit,
@@ -7,7 +9,11 @@ import {
   listTagsForPicker,
 } from "@/lib/db/queries/posts";
 
-export const metadata = { title: "Edit post" };
+export async function generateMetadata(): Promise<Metadata> {
+  const tCommon = await getTranslations("dashboard.forms.common");
+  const tNav = await getTranslations("dashboard.nav.items");
+  return { title: `${tCommon("update")} — ${tNav("posts")}` };
+}
 
 export default async function Page({
   params,

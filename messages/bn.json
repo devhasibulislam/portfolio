@@ -335,6 +335,68 @@
         "noneMatch": "এই ফিল্টারে কিছু মেলে না।",
         "inUseBadge": "ব্যবহৃত"
       }
+    },
+    "forms": {
+      "common": {
+        "cancel": "বাতিল",
+        "save": "পরিবর্তন সংরক্ষণ",
+        "saving": "সংরক্ষণ হচ্ছে…",
+        "delete": "মুছুন",
+        "deleting": "মুছে ফেলা হচ্ছে…",
+        "update": "আপডেট",
+        "saveDraft": "ড্রাফট সংরক্ষণ",
+        "publish": "প্রকাশ",
+        "publishing": "প্রকাশ হচ্ছে…",
+        "moveToDraft": "ড্রাফটে সরান",
+        "published": "প্রকাশিত",
+        "draft": "ড্রাফট",
+        "live": "● লাইভ",
+        "hidden": "○ লুকানো",
+        "slug": "স্লাগ",
+        "name": "নাম",
+        "thisCantBeUndone": "এটি বাতিল করা যাবে না।",
+        "change": "বদলান"
+      },
+      "post": {
+        "title": "শিরোনাম",
+        "titlePlaceholder": "পড়ার মতো কিছু (১০ থেকে ৭০ অক্ষর)",
+        "titleHelper": "{count}/৭০ · আদর্শ ৫০ থেকে ৬০",
+        "body": "মূল বিষয়",
+        "metaDescription": "মেটা বিবরণ",
+        "metaDescriptionPlaceholder": "Google স্নিপেট, ১২০ থেকে ১৬০ অক্ষর",
+        "metaDescriptionHelper": "{count}/১৬০",
+        "excerpt": "সংক্ষিপ্তসার",
+        "excerptPlaceholder": "কার্ড সারমর্ম, ২০০ থেকে ৩০০ অক্ষর",
+        "excerptHelper": "{count}/৩০০",
+        "coverImage": "কভার ইমেজ",
+        "category": "ক্যাটাগরি",
+        "tags": "ট্যাগ"
+      },
+      "media": {
+        "pickerLabel": "একটি কভার বাছুন বা আপলোড করুন",
+        "removeImage": "ইমেজ সরান"
+      },
+      "category": {
+        "placeholder": "একটি ক্যাটাগরি বাছুন",
+        "searchPlaceholder": "ক্যাটাগরি অনুসন্ধান…"
+      },
+      "tag": {
+        "addTag": "ট্যাগ যোগ",
+        "maxReached": "সর্বোচ্চ {n}টি ট্যাগ পৌঁছেছে",
+        "maxLabel": "সর্বোচ্চ {n}",
+        "searchPlaceholder": "ট্যাগ অনুসন্ধান…",
+        "noneYet": "এখনও কোনো ট্যাগ নেই। ট্যাগ পাতায় তৈরি করুন।",
+        "noMatches": "কোনো মিল নেই।"
+      },
+      "slugEntity": {
+        "description": "প্রতিটি সর্বোচ্চ ৩০ অক্ষর। স্লাগ URL-নিরাপদ।",
+        "editTitle": "{entity} সম্পাদনা",
+        "newTitle": "নতুন {entity}",
+        "deleteInUse": "বাধা: {count} পোস্ট এখনও এই {entity} ব্যবহার করছে। প্রথমে পুনর্নিয়োগ করুন।",
+        "deleteNoUse": "এটি বাতিল করা যাবে না।",
+        "empty": "এখনও কোনো {entityPlural} নেই। নতুন ক্লিক করুন।",
+        "create": "তৈরি করুন"
+      }
     }
   },
   "login": {

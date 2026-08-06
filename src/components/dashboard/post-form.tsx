@@ -43,6 +43,8 @@ type Props = {
 export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
   const router = useRouter();
   const t = useTranslations("actions.posts");
+  const tForm = useTranslations("dashboard.forms.post");
+  const tCommon = useTranslations("dashboard.forms.common");
   const [title, setTitle] = useState(post?.title ?? "");
   const [slug, setSlug] = useState(post?.slug ?? "");
   const [slugTouched, setSlugTouched] = useState(!!post);
@@ -96,7 +98,7 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
     <div className="mx-auto grid w-full max-w-6xl gap-6 px-6 py-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="flex flex-col gap-4">
         <div className="grid gap-2">
-          <Label htmlFor="post-title">Title</Label>
+          <Label htmlFor="post-title">{tForm("title")}</Label>
           <Input
             id="post-title"
             value={title}
@@ -105,18 +107,18 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
               if (!slugTouched) setSlug(slugify(e.target.value));
             }}
             maxLength={70}
-            placeholder="Something worth reading (10 to 70 chars)"
+            placeholder={tForm("titlePlaceholder")}
             className="text-lg font-medium"
             required
             autoFocus
           />
           <p className="text-muted-foreground text-xs tabular-nums">
-            {title.length}/70 · ideal 50 to 60
+            {tForm("titleHelper", { count: title.length })}
           </p>
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="post-body">Body</Label>
+          <Label htmlFor="post-body">{tForm("body")}</Label>
           <TiptapEditor value={body} onChange={setBody} mediaOptions={media} />
         </div>
 
@@ -135,7 +137,7 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
         <div className="rounded-lg border p-4">
           <div className="mb-3 flex items-center justify-between">
             <span className="text-sm font-medium">
-              {status === "published" ? "Published" : "Draft"}
+              {status === "published" ? tCommon("published") : tCommon("draft")}
             </span>
             <span
               className={`text-xs font-medium ${
@@ -144,45 +146,45 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
                   : "text-muted-foreground"
               }`}
             >
-              {status === "published" ? "● live" : "○ hidden"}
+              {status === "published" ? tCommon("live") : tCommon("hidden")}
             </span>
           </div>
           <div className="flex flex-col gap-2">
             {status === "published" ? (
               <>
                 <Button disabled={pending} onClick={() => submit("published")}>
-                  {pending ? "Saving…" : "Update"}
+                  {pending ? tCommon("saving") : tCommon("update")}
                 </Button>
                 <Button
                   variant="outline"
                   disabled={pending}
                   onClick={() => submit("draft")}
                 >
-                  Move to draft
+                  {tCommon("moveToDraft")}
                 </Button>
               </>
             ) : (
               <>
                 <Button disabled={pending} onClick={() => submit("published")}>
-                  {pending ? "Publishing…" : "Publish"}
+                  {pending ? tCommon("publishing") : tCommon("publish")}
                 </Button>
                 <Button
                   variant="outline"
                   disabled={pending}
                   onClick={() => submit("draft")}
                 >
-                  {pending ? "Saving…" : "Save draft"}
+                  {pending ? tCommon("saving") : tCommon("saveDraft")}
                 </Button>
               </>
             )}
             <Button variant="ghost" asChild>
-              <Link href="/dashboard/posts">Cancel</Link>
+              <Link href="/dashboard/posts">{tCommon("cancel")}</Link>
             </Button>
           </div>
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="post-slug">Slug</Label>
+          <Label htmlFor="post-slug">{tCommon("slug")}</Label>
           <Input
             id="post-slug"
             value={slug}
@@ -198,37 +200,37 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="post-meta">Meta description</Label>
+          <Label htmlFor="post-meta">{tForm("metaDescription")}</Label>
           <Textarea
             id="post-meta"
             value={metaDescription}
             onChange={(e) => setMetaDescription(e.target.value)}
             maxLength={160}
             rows={3}
-            placeholder="Google snippet, 120 to 160 chars"
+            placeholder={tForm("metaDescriptionPlaceholder")}
           />
           <p className="text-muted-foreground text-xs tabular-nums">
-            {metaDescription.length}/160
+            {tForm("metaDescriptionHelper", { count: metaDescription.length })}
           </p>
         </div>
 
         <div className="grid gap-2">
-          <Label htmlFor="post-excerpt">Excerpt</Label>
+          <Label htmlFor="post-excerpt">{tForm("excerpt")}</Label>
           <Textarea
             id="post-excerpt"
             value={excerpt}
             onChange={(e) => setExcerpt(e.target.value)}
             maxLength={300}
             rows={4}
-            placeholder="Card summary, 200 to 300 chars"
+            placeholder={tForm("excerptPlaceholder")}
           />
           <p className="text-muted-foreground text-xs tabular-nums">
-            {excerpt.length}/300
+            {tForm("excerptHelper", { count: excerpt.length })}
           </p>
         </div>
 
         <div className="grid gap-2">
-          <Label>Cover image</Label>
+          <Label>{tForm("coverImage")}</Label>
           <MediaPicker
             options={media}
             value={coverMediaId}
@@ -237,7 +239,7 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
         </div>
 
         <div className="grid gap-2">
-          <Label>Category</Label>
+          <Label>{tForm("category")}</Label>
           <CategoryCombobox
             options={categories}
             value={categoryId}
@@ -246,7 +248,7 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
         </div>
 
         <div className="grid gap-2">
-          <Label>Tags</Label>
+          <Label>{tForm("tags")}</Label>
           <TagMultiPicker
             options={tags}
             value={tagIds}

@@ -73,6 +73,7 @@ export function SlugEntityTable({
   deleteAction,
   toastNamespace,
 }: Props) {
+  const tSlug = useTranslations("dashboard.forms.slugEntity");
   const [editing, setEditing] = useState<
     { mode: "new" } | { mode: "edit"; row: SlugRow } | null
   >(null);
@@ -107,8 +108,7 @@ export function SlugEntityTable({
                   colSpan={4}
                   className="text-muted-foreground py-8 text-center"
                 >
-                  No {entityPlural.toLowerCase()} yet. Click{" "}
-                  <strong>New</strong>.
+                  {tSlug("empty", { entityPlural })}
                 </TableCell>
               </TableRow>
             ) : (
@@ -249,6 +249,8 @@ function EditForm({
 }) {
   const router = useRouter();
   const t = useTranslations(toastNamespace);
+  const tSlug = useTranslations("dashboard.forms.slugEntity");
+  const tCommon = useTranslations("dashboard.forms.common");
   const isEdit = !!row;
   const [name, setName] = useState(row?.name ?? "");
   const [slug, setSlug] = useState(row?.slug ?? "");
@@ -265,11 +267,11 @@ function EditForm({
         <DialogHeader>
           <DialogTitle>
             {isEdit
-              ? `Edit ${entity.toLowerCase()}`
-              : `New ${entity.toLowerCase()}`}
+              ? tSlug("editTitle", { entity })
+              : tSlug("newTitle", { entity })}
           </DialogTitle>
           <DialogDescription>
-            Max 30 chars each. Slug is URL-safe.
+            {tSlug("description")}
           </DialogDescription>
         </DialogHeader>
 
@@ -292,7 +294,7 @@ function EditForm({
           }}
         >
           <div className="grid gap-2">
-            <Label htmlFor="slug-entity-name">Name</Label>
+            <Label htmlFor="slug-entity-name">{tCommon("name")}</Label>
             <Input
               id="slug-entity-name"
               value={name}
@@ -306,7 +308,7 @@ function EditForm({
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="slug-entity-slug">Slug</Label>
+            <Label htmlFor="slug-entity-slug">{tCommon("slug")}</Label>
             <Input
               id="slug-entity-slug"
               value={slug}
@@ -337,10 +339,10 @@ function EditForm({
               onClick={() => onOpenChange(false)}
               disabled={pending}
             >
-              Cancel
+              {tCommon("cancel")}
             </Button>
             <Button type="submit" disabled={pending}>
-              {pending ? "Saving…" : isEdit ? "Save changes" : "Create"}
+              {pending ? tCommon("saving") : isEdit ? tCommon("save") : tSlug("create")}
             </Button>
           </DialogFooter>
         </form>
@@ -366,6 +368,7 @@ function DeleteDialog({
 }) {
   const router = useRouter();
   const t = useTranslations(toastNamespace);
+  const tSlug = useTranslations("dashboard.forms.slugEntity");
   const [pending, startTransition] = useTransition();
   if (!row) return null;
   return (
@@ -375,8 +378,8 @@ function DeleteDialog({
       title={<>Delete &quot;{row.name}&quot;?</>}
       description={
         row.postCount > 0
-          ? `Blocked: ${row.postCount} post${row.postCount === 1 ? "" : "s"} still use this ${entity.toLowerCase()}. Reassign them first.`
-          : "This can't be undone."
+          ? tSlug("deleteInUse", { count: row.postCount, entity })
+          : tSlug("deleteNoUse")
       }
       pending={pending}
       disabled={row.postCount > 0}

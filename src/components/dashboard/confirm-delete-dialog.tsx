@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -30,8 +31,8 @@ export function ConfirmDeleteDialog({
   pending,
   disabled = false,
   destructive = false,
-  confirmLabel = "Delete",
-  pendingLabel = "Deleting…",
+  confirmLabel,
+  pendingLabel,
   onConfirm,
 }: {
   open: boolean;
@@ -45,6 +46,9 @@ export function ConfirmDeleteDialog({
   pendingLabel?: string;
   onConfirm: () => void;
 }) {
+  const t = useTranslations("dashboard.forms.common");
+  const resolvedConfirm = confirmLabel ?? t("delete");
+  const resolvedPending = pendingLabel ?? t("deleting");
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
@@ -53,7 +57,7 @@ export function ConfirmDeleteDialog({
           <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel disabled={pending}>Cancel</AlertDialogCancel>
+          <AlertDialogCancel disabled={pending}>{t("cancel")}</AlertDialogCancel>
           <AlertDialogAction
             disabled={pending || disabled}
             className={
@@ -66,7 +70,7 @@ export function ConfirmDeleteDialog({
               onConfirm();
             }}
           >
-            {pending ? pendingLabel : confirmLabel}
+            {pending ? resolvedPending : resolvedConfirm}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

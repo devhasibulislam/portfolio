@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Check, Plus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -40,6 +41,7 @@ type Props = {
  *   - The popover stays open after a pick so the owner can rapid-add.
  */
 export function TagMultiPicker({ options, value, onChange, max = 8 }: Props) {
+  const t = useTranslations("dashboard.forms.tag");
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const selected = new Set(value);
@@ -86,10 +88,10 @@ export function TagMultiPicker({ options, value, onChange, max = 8 }: Props) {
               size="sm"
               disabled={atMax}
               className="h-7 gap-1 px-2 text-xs"
-              aria-label={atMax ? `Max ${max} tags reached` : "Add tag"}
+              aria-label={atMax ? t("maxReached", { n: max }) : t("addTag")}
             >
               <Plus className="size-3" />
-              {atMax ? `Max ${max}` : "Add tag"}
+              {atMax ? t("maxLabel", { n: max }) : t("addTag")}
             </Button>
           </PopoverTrigger>
 
@@ -108,15 +110,15 @@ export function TagMultiPicker({ options, value, onChange, max = 8 }: Props) {
           >
             <Command>
               <CommandInput
-                placeholder="Search tags…"
+                placeholder={t("searchPlaceholder")}
                 value={search}
                 onValueChange={setSearch}
               />
               <CommandList>
                 <CommandEmpty>
                   {options.length === 0
-                    ? "No tags exist yet. Create some on the Tags page."
-                    : "No matches."}
+                    ? t("noneYet")
+                    : t("noMatches")}
                 </CommandEmpty>
                 <CommandGroup>
                   {options.map((o) => {

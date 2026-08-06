@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -37,8 +38,11 @@ export function CategoryCombobox({
   options,
   value,
   onChange,
-  placeholder = "Pick a category",
+  placeholder,
 }: Props) {
+  const t = useTranslations("dashboard.forms.category");
+  const tTag = useTranslations("dashboard.forms.tag");
+  const resolvedPlaceholder = placeholder ?? t("placeholder");
   const [open, setOpen] = useState(false);
   const current = options.find((o) => o.id === value);
 
@@ -53,7 +57,7 @@ export function CategoryCombobox({
           className="w-full justify-between"
         >
           <span className={cn(!current && "text-muted-foreground")}>
-            {current?.name ?? placeholder}
+            {current?.name ?? resolvedPlaceholder}
           </span>
           <ChevronsUpDown className="opacity-50" />
         </Button>
@@ -65,9 +69,9 @@ export function CategoryCombobox({
         align="start"
       >
         <Command>
-          <CommandInput placeholder="Search categories…" />
+          <CommandInput placeholder={t("searchPlaceholder")} />
           <CommandList>
-            <CommandEmpty>No matches.</CommandEmpty>
+            <CommandEmpty>{tTag("noMatches")}</CommandEmpty>
             <CommandGroup>
               <CommandItem
                 value="__none"

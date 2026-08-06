@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useTranslations } from "next-intl";
 import { CldImage } from "next-cloudinary";
 import { ImagePlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -45,8 +46,11 @@ export function MediaPicker({
   value,
   onChange,
   aspect = 1200 / 630,
-  label = "Pick or upload a cover",
+  label,
 }: Props) {
+  const t = useTranslations("dashboard.forms.media");
+  const tCommon = useTranslations("dashboard.forms.common");
+  const resolvedLabel = label ?? t("pickerLabel");
   const [open, setOpen] = useState(false);
   const [fresh, setFresh] = useState<MediaOption[]>([]);
   const merged = useMemo(() => [...fresh, ...options], [fresh, options]);
@@ -102,13 +106,13 @@ export function MediaPicker({
               variant="secondary"
               onClick={() => setOpen(true)}
             >
-              Change
+              {tCommon("change")}
             </Button>
             <Button
               type="button"
               size="icon"
               variant="secondary"
-              aria-label="Remove image"
+              aria-label={t("removeImage")}
               onClick={() => onChange(null)}
             >
               <X className="size-4" />
@@ -130,7 +134,7 @@ export function MediaPicker({
           }
         >
           <ImagePlus className="me-2 size-5" />
-          {label}
+          {resolvedLabel}
         </Button>
       )}
 
