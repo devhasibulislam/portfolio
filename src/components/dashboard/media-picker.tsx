@@ -126,14 +126,14 @@ export function MediaPicker({
           onClick={() => setOpen(true)}
           className={
             compact
-              ? "border-dashed inline-flex flex-col justify-center"
+              ? "border-dashed flex flex-col items-center justify-center gap-2 whitespace-normal text-center text-xs leading-tight px-2 py-3"
               : "h-32 w-full border-dashed"
           }
           style={
             compact ? { width: previewWidth, height: previewHeight } : undefined
           }
         >
-          <ImagePlus className="me-2 size-5" />
+          <ImagePlus className={compact ? "size-5" : "me-2 size-5"} />
           {resolvedLabel}
         </Button>
       )}
