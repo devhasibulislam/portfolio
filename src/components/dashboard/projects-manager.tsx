@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Pencil, Plus, Star, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -99,6 +100,7 @@ export function ProjectsManager({
   resolveFull: (id: string) => Promise<ProjectFull | null>;
 }) {
   const router = useRouter();
+  const t = useTranslations("actions.projects");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ProjectRow | null>(null);
   const [pending, startTransition] = useTransition();
@@ -110,7 +112,7 @@ export function ProjectsManager({
       const full = await resolveFull(row.id);
       setLoadingId(null);
       if (!full) {
-        toast.error("Project not found");
+        toast.error(t("notFound"));
         return;
       }
       setEditing({ mode: "edit", row, full });
@@ -125,7 +127,7 @@ export function ProjectsManager({
         return;
       }
       toast.success(
-        editing?.mode === "edit" ? "Project updated" : "Project created",
+        editing?.mode === "edit" ? t("updated") : t("saved"),
       );
       setEditing(null);
       router.refresh();
@@ -141,7 +143,7 @@ export function ProjectsManager({
         toast.error(res.error);
         return;
       }
-      toast.success(`Deleted "${row.title}"`);
+      toast.success(t("deleted", { title: row.title }));
       setConfirmDelete(null);
       router.refresh();
     });

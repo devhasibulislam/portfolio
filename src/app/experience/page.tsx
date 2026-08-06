@@ -160,7 +160,11 @@ export default async function ExperiencePage() {
                           {role.role}
                         </h3>
                         <p className="text-muted-foreground text-xs tabular-nums">
-                          {formatPeriod(role.periodStart, role.periodEnd, presentLabel)}
+                          {formatPeriod(
+                            role.periodStart,
+                            role.periodEnd,
+                            presentLabel,
+                          )}
                         </p>
                       </div>
                       {role.location || role.workType ? (

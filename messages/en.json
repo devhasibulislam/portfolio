@@ -148,5 +148,80 @@
     "blog": "Blog",
     "resume": "Resume",
     "links": "Links"
+  },
+  "actions": {
+    "auth": {
+      "invalid": "Invalid email or password.",
+      "accessDenied": "Access denied. Only the site owner can sign in.",
+      "missingFields": "Email and password are required."
+    },
+    "posts": {
+      "saved": "Post saved",
+      "deleted": "Post deleted",
+      "publishedToast": "Published",
+      "draftedToast": "Moved to draft",
+      "slugTaken": "Slug already in use.",
+      "invalidBody": "Body is not valid JSON."
+    },
+    "projects": {
+      "saved": "Project saved",
+      "updated": "Project updated",
+      "deleted": "Deleted \"{title}\"",
+      "notFound": "Project not found",
+      "slugTaken": "Slug already in use.",
+      "linkInvalid": "Link \"{label}\" is not a valid URL.",
+      "linkAppStoreWrong": "App Store link \"{label}\" doesn't point to apps.apple.com.",
+      "linkPlayStoreWrong": "Play Store link \"{label}\" doesn't point to play.google.com.",
+      "linkGithubWrong": "GitHub link \"{label}\" doesn't point to github.com."
+    },
+    "experience": {
+      "added": "Role added",
+      "updated": "Role updated",
+      "deleted": "Deleted {role} at {company}",
+      "notFound": "Experience not found",
+      "slugTaken": "Slug already in use.",
+      "startRequired": "Start date is required."
+    },
+    "skills": {
+      "added": "Skill added",
+      "updated": "Skill updated",
+      "deleted": "Deleted \"{name}\"",
+      "slugTaken": "Slug already in use."
+    },
+    "categories": {
+      "created": "Category created",
+      "updated": "Category updated",
+      "deleted": "Category deleted",
+      "slugTaken": "Slug already in use.",
+      "inUse": "In use by {count} {count, plural, one {post} other {posts}}."
+    },
+    "tags": {
+      "created": "Tag created",
+      "updated": "Tag updated",
+      "deleted": "Tag deleted",
+      "slugTaken": "Slug already in use.",
+      "inUse": "In use by {count} {count, plural, one {post} other {posts}}."
+    },
+    "media": {
+      "uploaded": "Uploaded",
+      "deleted": "Deleted",
+      "copyOk": "Copied {label}",
+      "copyFailed": "Copy failed",
+      "fileTooLarge": "File is {size} MB. Max is {max} MB.",
+      "unsupportedType": "Unsupported file type. Use PNG, JPEG, or WebP.",
+      "uploadFailed": "Upload failed",
+      "inUse": "In use by {count} {count, plural, one {post} other {posts}}."
+    },
+    "resume": {
+      "uploaded": "Resume uploaded",
+      "deleted": "Resume deleted",
+      "activated": "Active: {name}",
+      "pdfOnly": "Only PDF is allowed.",
+      "fileTooLarge": "File is {size} MB. Max is {max} MB.",
+      "uploadFailed": "Upload failed"
+    },
+    "neon": {
+      "refreshed": "Neon analytics refreshed"
+    }
   }
 }

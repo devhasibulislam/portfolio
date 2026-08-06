@@ -3,6 +3,7 @@
 import { updateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { and, eq, ne } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db/client";
 import { posts, postsTags } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
@@ -19,13 +20,14 @@ export async function savePost(
   _prev: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
+  const t = await getTranslations("actions.posts");
   const id = String(formData.get("id") ?? "").trim() || null;
 
   let body: unknown = {};
   try {
     body = JSON.parse(String(formData.get("body") ?? "{}"));
   } catch {
-    return { error: "Body is not valid JSON." };
+    return { error: t("invalidBody") };
   }
 
   const rawTagIds = formData.getAll("tagIds").map(String).filter(Boolean);
@@ -54,7 +56,7 @@ export async function savePost(
         : eq(posts.slug, parsed.data.slug),
     )
     .limit(1);
-  if (clash.length) return { error: "Slug already in use." };
+  if (clash.length) return { error: t("slugTaken") };
 
   const { tagIds, ...rest } = parsed.data;
 

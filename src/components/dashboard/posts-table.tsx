@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useOptimistic, useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,7 @@ import { deletePost, togglePostStatus } from "@/app/dashboard/posts/actions";
 
 export function PostsTable({ rows }: { rows: PostRow[] }) {
   const router = useRouter();
+  const t = useTranslations("actions.posts");
   const [confirmDelete, setConfirmDelete] = useState<PostRow | null>(null);
   const [pending, startTransition] = useTransition();
 
@@ -109,7 +111,7 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
               toast.error(res.error);
               return;
             }
-            toast.success("Post deleted");
+            toast.success(t("deleted"));
             setConfirmDelete(null);
             router.refresh();
           });
@@ -139,6 +141,7 @@ function StatusPill({ status }: { status: "draft" | "published" }) {
  */
 function StatusSwitch({ row }: { row: PostRow }) {
   const router = useRouter();
+  const t = useTranslations("actions.posts");
   const [optimisticStatus, setOptimisticStatus] = useOptimistic(row.status);
   const [pending, startTransition] = useTransition();
   const isPublished = optimisticStatus === "published";
@@ -163,7 +166,7 @@ function StatusSwitch({ row }: { row: PostRow }) {
                   return;
                 }
                 toast.success(
-                  next === "published" ? "Post published" : "Moved to draft",
+                  next === "published" ? t("publishedToast") : t("draftedToast"),
                 );
                 router.refresh();
               });

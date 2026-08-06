@@ -2,6 +2,7 @@
 
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { CheckCircle2, ExternalLink, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -22,6 +23,7 @@ import {
 
 export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
   const router = useRouter();
+  const t = useTranslations("actions.resume");
   const [confirmDelete, setConfirmDelete] = useState<ResumeRow | null>(null);
   const [pending, startTransition] = useTransition();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -33,13 +35,16 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
   const uploadPdf = (file: File) => {
     if (file.size > MAX_BYTES) {
       toast.error(
-        `File is ${(file.size / 1024 / 1024).toFixed(2)} MB. Max is ${MAX_BYTES / 1024 / 1024} MB.`,
+        t("fileTooLarge", {
+          size: (file.size / 1024 / 1024).toFixed(2),
+          max: MAX_BYTES / 1024 / 1024,
+        }),
       );
       return;
     }
     const ext = file.name.split(".").pop()?.toLowerCase();
     if (ext !== "pdf") {
-      toast.error("Only PDF is allowed.");
+      toast.error(t("pdfOnly"));
       return;
     }
 
@@ -93,10 +98,10 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
           toast.error(reg.error);
           return;
         }
-        toast.success("Resume uploaded");
+        toast.success(t("uploaded"));
         router.refresh();
       } catch (e) {
-        toast.error(e instanceof Error ? e.message : "Upload failed");
+        toast.error(e instanceof Error ? e.message : t("uploadFailed"));
       }
     });
   };
@@ -185,7 +190,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                               toast.error(res.error);
                               return;
                             }
-                            toast.success(`Active: ${r.originalName}`);
+                            toast.success(t("activated", { name: r.originalName }));
                             router.refresh();
                           });
                         }}
@@ -246,7 +251,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
               toast.error(res.error);
               return;
             }
-            toast.success("Resume deleted");
+            toast.success(t("deleted"));
             setConfirmDelete(null);
             router.refresh();
           });

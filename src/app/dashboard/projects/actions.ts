@@ -2,6 +2,7 @@
 
 import { updateTag } from "next/cache";
 import { and, eq, ne } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db/client";
 import { projectLinks, projects } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
@@ -34,21 +35,22 @@ function parseBodyJson(raw: string): Record<string, unknown> {
 // Best-effort host check for App Store / Play Store links so a mistyped
 // URL surfaces before it hits the public site. Soft errors only — Zod
 // still enforces valid URL shape.
-function validateLinkHosts(links: ProjectLinkInput[]): string | null {
+async function validateLinkHosts(links: ProjectLinkInput[]): Promise<string | null> {
+  const t = await getTranslations("actions.projects");
   for (const l of links) {
     try {
       const host = new URL(l.url).hostname;
       if (l.kind === "app_store" && !host.endsWith("apps.apple.com")) {
-        return `App Store link "${l.label}" doesn't point to apps.apple.com.`;
+        return t("linkAppStoreWrong", { label: l.label });
       }
       if (l.kind === "play_store" && !host.endsWith("play.google.com")) {
-        return `Play Store link "${l.label}" doesn't point to play.google.com.`;
+        return t("linkPlayStoreWrong", { label: l.label });
       }
       if (l.kind === "github" && !host.endsWith("github.com")) {
-        return `GitHub link "${l.label}" doesn't point to github.com.`;
+        return t("linkGithubWrong", { label: l.label });
       }
     } catch {
-      return `Link "${l.label}" is not a valid URL.`;
+      return t("linkInvalid", { label: l.label });
     }
   }
   return null;
@@ -112,7 +114,7 @@ export async function saveProject(
     return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
   }
 
-  const hostErr = validateLinkHosts(parsed.data.links);
+  const hostErr = await validateLinkHosts(parsed.data.links);
   if (hostErr) return { error: hostErr };
 
   // Slug uniqueness (skip current row on edit).
@@ -125,7 +127,7 @@ export async function saveProject(
         : eq(projects.slug, parsed.data.slug),
     )
     .limit(1);
-  if (clash.length) return { error: "Slug already in use." };
+  if (clash.length) return { error: (await getTranslations("actions.projects"))("slugTaken") };
 
   // MVP: tagIds is parsed for schema compat but not persisted yet — projects
   // tag picker will land with the tags.kind='tech' UI in a follow-up.

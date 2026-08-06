@@ -2,6 +2,7 @@
 
 import { updateTag } from "next/cache";
 import { and, eq, ne } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db/client";
 import { experiences } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
@@ -32,6 +33,7 @@ export async function saveExperience(
   _prev: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
+  const t = await getTranslations("actions.experience");
   const id = String(formData.get("id") ?? "").trim() || null;
 
   const periodStartRaw = String(formData.get("periodStart") ?? "").trim();
@@ -39,7 +41,7 @@ export async function saveExperience(
   const toIso = (s: string) =>
     s ? new Date(`${s}T00:00:00.000Z`).toISOString() : null;
   const startIso = toIso(periodStartRaw);
-  if (!startIso) return { error: "Start date is required." };
+  if (!startIso) return { error: t("startRequired") };
 
   const highlightsRaw = String(formData.get("highlights") ?? "");
 
@@ -85,7 +87,7 @@ export async function saveExperience(
         : eq(experiences.slug, parsed.data.slug),
     )
     .limit(1);
-  if (clash.length) return { error: "Slug already in use." };
+  if (clash.length) return { error: t("slugTaken") };
 
   // MVP: tagIds is parsed for schema compat but not persisted yet — the
   // experience tag picker will land alongside the projects one.

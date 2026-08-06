@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { auth } from "@/lib/auth/server";
 
 const ALLOWED_EMAIL = process.env.DASHBOARD_ALLOWED_EMAIL;
@@ -20,21 +21,22 @@ export async function signInAction(
   _prev: LoginState,
   formData: FormData,
 ): Promise<LoginState> {
+  const t = await getTranslations("actions.auth");
   const email = String(formData.get("email") ?? "").trim();
   const password = String(formData.get("password") ?? "");
 
   if (!email || !password) {
-    return { error: "Email and password are required." };
+    return { error: t("missingFields") };
   }
 
   // Belt-and-braces: reject non-owner emails before hitting the auth service.
   if (ALLOWED_EMAIL && email.toLowerCase() !== ALLOWED_EMAIL.toLowerCase()) {
-    return { error: "Access denied." };
+    return { error: t("accessDenied") };
   }
 
   const { error } = await auth.signIn.email({ email, password });
   if (error) {
-    return { error: error.message || "Invalid email or password." };
+    return { error: t("invalid") };
   }
 
   redirect("/dashboard");

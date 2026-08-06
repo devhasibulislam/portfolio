@@ -2,6 +2,7 @@
 
 import { updateTag } from "next/cache";
 import { and, eq, ne } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db/client";
 import { skills } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
@@ -52,7 +53,7 @@ export async function saveSkill(
         : eq(skills.slug, parsed.data.slug),
     )
     .limit(1);
-  if (clash.length) return { error: "Slug already in use." };
+  if (clash.length) return { error: (await getTranslations("actions.skills"))("slugTaken") };
 
   if (id) {
     await db

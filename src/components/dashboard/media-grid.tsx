@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { CldImage } from "next-cloudinary";
 import { Copy, Trash2, Upload } from "lucide-react";
 import { toast } from "sonner";
@@ -176,6 +177,7 @@ function DeleteDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   const router = useRouter();
+  const t = useTranslations("actions.media");
   const [pending, startTransition] = useTransition();
   if (!row) return null;
   return (
@@ -200,7 +202,7 @@ function DeleteDialog({
             toast.error(res.error);
             return;
           }
-          toast.success("Deleted");
+          toast.success(t("deleted"));
           onOpenChange(false);
           router.refresh();
         });
@@ -224,13 +226,14 @@ function PreviewDialog({
   row: MediaRow | null;
   onOpenChange: (open: boolean) => void;
 }) {
+  const t = useTranslations("actions.media");
   if (!row) return null;
   const copy = async (text: string, label: string) => {
     try {
       await navigator.clipboard.writeText(text);
-      toast.success(`Copied ${label}`);
+      toast.success(t("copyOk", { label }));
     } catch {
-      toast.error("Copy failed");
+      toast.error(t("copyFailed"));
     }
   };
   return (

@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -73,6 +74,7 @@ export function SkillsManager({
   mediaOptions: MediaOption[];
 }) {
   const router = useRouter();
+  const t = useTranslations("actions.skills");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<SkillRow | null>(null);
   const [pending, startTransition] = useTransition();
@@ -93,7 +95,7 @@ export function SkillsManager({
         toast.error(res.error);
         return;
       }
-      toast.success(editing?.mode === "edit" ? "Skill updated" : "Skill added");
+      toast.success(editing?.mode === "edit" ? t("updated") : t("added"));
       setEditing(null);
       router.refresh();
     });
@@ -108,7 +110,7 @@ export function SkillsManager({
         toast.error(res.error);
         return;
       }
-      toast.success(`Deleted "${row.name}"`);
+      toast.success(t("deleted", { name: row.name }));
       setConfirmDelete(null);
       router.refresh();
     });

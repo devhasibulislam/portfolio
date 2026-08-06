@@ -148,5 +148,80 @@
     "blog": "בלוג",
     "resume": "קורות חיים",
     "links": "קישורים"
+  },
+  "actions": {
+    "auth": {
+      "invalid": "אימייל או סיסמה שגויים.",
+      "accessDenied": "הגישה נדחתה. רק בעל האתר יכול להתחבר.",
+      "missingFields": "יש להזין אימייל וסיסמה."
+    },
+    "posts": {
+      "saved": "הפוסט נשמר",
+      "deleted": "הפוסט נמחק",
+      "publishedToast": "פורסם",
+      "draftedToast": "הועבר לטיוטה",
+      "slugTaken": "המזהה כבר בשימוש.",
+      "invalidBody": "גוף התוכן אינו JSON תקין."
+    },
+    "projects": {
+      "saved": "הפרויקט נשמר",
+      "updated": "הפרויקט עודכן",
+      "deleted": "\"{title}\" נמחק",
+      "notFound": "הפרויקט לא נמצא",
+      "slugTaken": "המזהה כבר בשימוש.",
+      "linkInvalid": "הקישור \"{label}\" אינו כתובת URL תקינה.",
+      "linkAppStoreWrong": "קישור App Store \"{label}\" אינו מפנה ל‑apps.apple.com.",
+      "linkPlayStoreWrong": "קישור Play Store \"{label}\" אינו מפנה ל‑play.google.com.",
+      "linkGithubWrong": "קישור GitHub \"{label}\" אינו מפנה ל‑github.com."
+    },
+    "experience": {
+      "added": "תפקיד נוסף",
+      "updated": "התפקיד עודכן",
+      "deleted": "{role} ב‑{company} נמחק",
+      "notFound": "הניסיון לא נמצא",
+      "slugTaken": "המזהה כבר בשימוש.",
+      "startRequired": "תאריך התחלה נדרש."
+    },
+    "skills": {
+      "added": "מיומנות נוספה",
+      "updated": "המיומנות עודכנה",
+      "deleted": "\"{name}\" נמחקה",
+      "slugTaken": "המזהה כבר בשימוש."
+    },
+    "categories": {
+      "created": "הקטגוריה נוצרה",
+      "updated": "הקטגוריה עודכנה",
+      "deleted": "הקטגוריה נמחקה",
+      "slugTaken": "המזהה כבר בשימוש.",
+      "inUse": "בשימוש ב‑{count} פוסטים."
+    },
+    "tags": {
+      "created": "התג נוצר",
+      "updated": "התג עודכן",
+      "deleted": "התג נמחק",
+      "slugTaken": "המזהה כבר בשימוש.",
+      "inUse": "בשימוש ב‑{count} פוסטים."
+    },
+    "media": {
+      "uploaded": "הועלה",
+      "deleted": "נמחק",
+      "copyOk": "{label} הועתק",
+      "copyFailed": "ההעתקה נכשלה",
+      "fileTooLarge": "הקובץ {size} MB. מקסימום {max} MB.",
+      "unsupportedType": "סוג לא נתמך. השתמש ב‑PNG, JPEG או WebP.",
+      "uploadFailed": "ההעלאה נכשלה",
+      "inUse": "בשימוש ב‑{count} פוסטים."
+    },
+    "resume": {
+      "uploaded": "קורות החיים הועלו",
+      "deleted": "קורות החיים נמחקו",
+      "activated": "פעיל: {name}",
+      "pdfOnly": "רק PDF מותר.",
+      "fileTooLarge": "הקובץ {size} MB. מקסימום {max} MB.",
+      "uploadFailed": "ההעלאה נכשלה"
+    },
+    "neon": {
+      "refreshed": "אנליטיקת Neon רועננה"
+    }
   }
 }

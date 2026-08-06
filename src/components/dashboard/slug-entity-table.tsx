@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -58,6 +59,8 @@ type Props = {
   slugMaxLen: number;
   saveAction: Action;
   deleteAction: Action;
+  /** i18n namespace with keys: created, updated, deleted (e.g. "actions.categories") */
+  toastNamespace: "actions.categories" | "actions.tags";
 };
 
 export function SlugEntityTable({
@@ -68,6 +71,7 @@ export function SlugEntityTable({
   slugMaxLen,
   saveAction,
   deleteAction,
+  toastNamespace,
 }: Props) {
   const [editing, setEditing] = useState<
     { mode: "new" } | { mode: "edit"; row: SlugRow } | null
@@ -181,6 +185,7 @@ export function SlugEntityTable({
         entity={entity}
         slugMaxLen={slugMaxLen}
         saveAction={saveAction}
+        toastNamespace={toastNamespace}
         onOpenChange={(open) => !open && setEditing(null)}
       />
 
@@ -188,6 +193,7 @@ export function SlugEntityTable({
         row={confirmDelete}
         entity={entity}
         deleteAction={deleteAction}
+        toastNamespace={toastNamespace}
         onOpenChange={(open) => !open && setConfirmDelete(null)}
       />
     </div>
@@ -201,12 +207,14 @@ function EditDialog({
   entity,
   slugMaxLen,
   saveAction,
+  toastNamespace,
   onOpenChange,
 }: {
   editing: { mode: "new" } | { mode: "edit"; row: SlugRow } | null;
   entity: string;
   slugMaxLen: number;
   saveAction: Action;
+  toastNamespace: "actions.categories" | "actions.tags";
   onOpenChange: (open: boolean) => void;
 }) {
   if (!editing) return null;
@@ -218,6 +226,7 @@ function EditDialog({
       entity={entity}
       slugMaxLen={slugMaxLen}
       saveAction={saveAction}
+      toastNamespace={toastNamespace}
       onOpenChange={onOpenChange}
     />
   );
@@ -228,15 +237,18 @@ function EditForm({
   entity,
   slugMaxLen,
   saveAction,
+  toastNamespace,
   onOpenChange,
 }: {
   row: SlugRow | null;
   entity: string;
   slugMaxLen: number;
   saveAction: Action;
+  toastNamespace: "actions.categories" | "actions.tags";
   onOpenChange: (open: boolean) => void;
 }) {
   const router = useRouter();
+  const t = useTranslations(toastNamespace);
   const isEdit = !!row;
   const [name, setName] = useState(row?.name ?? "");
   const [slug, setSlug] = useState(row?.slug ?? "");
@@ -273,7 +285,7 @@ function EditForm({
                 setError(res.error);
                 return;
               }
-              toast.success(`${entity} ${isEdit ? "updated" : "created"}`);
+              toast.success(isEdit ? t("updated") : t("created"));
               onOpenChange(false);
               router.refresh();
             });
@@ -343,14 +355,17 @@ function DeleteDialog({
   row,
   entity,
   deleteAction,
+  toastNamespace,
   onOpenChange,
 }: {
   row: SlugRow | null;
   entity: string;
   deleteAction: Action;
+  toastNamespace: "actions.categories" | "actions.tags";
   onOpenChange: (open: boolean) => void;
 }) {
   const router = useRouter();
+  const t = useTranslations(toastNamespace);
   const [pending, startTransition] = useTransition();
   if (!row) return null;
   return (
@@ -375,7 +390,7 @@ function DeleteDialog({
             toast.error(res.error);
             return;
           }
-          toast.success(`${entity} deleted`);
+          toast.success(t("deleted"));
           onOpenChange(false);
           router.refresh();
         });

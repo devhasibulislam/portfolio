@@ -3,6 +3,7 @@
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -41,6 +42,7 @@ type Props = {
 
 export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
   const router = useRouter();
+  const t = useTranslations("actions.posts");
   const [title, setTitle] = useState(post?.title ?? "");
   const [slug, setSlug] = useState(post?.slug ?? "");
   const [slugTouched, setSlugTouched] = useState(!!post);
@@ -61,8 +63,8 @@ export function PostForm({ post, categories, tags, media, savedFlash }: Props) {
   const [pending, startTransition] = useTransition();
 
   useEffect(() => {
-    if (savedFlash) toast.success("Post saved");
-  }, [savedFlash]);
+    if (savedFlash) toast.success(t("saved"));
+  }, [savedFlash, t]);
 
   const submit = (nextStatus: "draft" | "published") => {
     setError(null);

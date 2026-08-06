@@ -148,5 +148,80 @@
     "blog": "بلاگ",
     "resume": "ریزیومے",
     "links": "لنکس"
+  },
+  "actions": {
+    "auth": {
+      "invalid": "ای میل یا پاس ورڈ غلط ہے۔",
+      "accessDenied": "رسائی مسترد۔ صرف سائٹ کا مالک سائن اِن کر سکتا ہے۔",
+      "missingFields": "ای میل اور پاس ورڈ دونوں درکار ہیں۔"
+    },
+    "posts": {
+      "saved": "پوسٹ محفوظ ہو گئی",
+      "deleted": "پوسٹ حذف کر دی گئی",
+      "publishedToast": "شائع ہو گئی",
+      "draftedToast": "ڈرافٹ میں منتقل",
+      "slugTaken": "یہ سلگ پہلے سے استعمال میں ہے۔",
+      "invalidBody": "باڈی درست JSON نہیں ہے۔"
+    },
+    "projects": {
+      "saved": "پروجیکٹ محفوظ ہو گیا",
+      "updated": "پروجیکٹ اپ ڈیٹ ہو گیا",
+      "deleted": "\"{title}\" حذف کر دیا گیا",
+      "notFound": "پروجیکٹ نہیں ملا",
+      "slugTaken": "یہ سلگ پہلے سے استعمال میں ہے۔",
+      "linkInvalid": "لنک \"{label}\" درست URL نہیں ہے۔",
+      "linkAppStoreWrong": "App Store لنک \"{label}\" apps.apple.com کی طرف اشارہ نہیں کرتا۔",
+      "linkPlayStoreWrong": "Play Store لنک \"{label}\" play.google.com کی طرف اشارہ نہیں کرتا۔",
+      "linkGithubWrong": "GitHub لنک \"{label}\" github.com کی طرف اشارہ نہیں کرتا۔"
+    },
+    "experience": {
+      "added": "کردار شامل کر دیا گیا",
+      "updated": "کردار اپ ڈیٹ ہو گیا",
+      "deleted": "{company} پر {role} حذف کر دیا گیا",
+      "notFound": "تجربہ نہیں ملا",
+      "slugTaken": "یہ سلگ پہلے سے استعمال میں ہے۔",
+      "startRequired": "شروع کی تاریخ درکار ہے۔"
+    },
+    "skills": {
+      "added": "مہارت شامل کر دی گئی",
+      "updated": "مہارت اپ ڈیٹ ہو گئی",
+      "deleted": "\"{name}\" حذف کر دی گئی",
+      "slugTaken": "یہ سلگ پہلے سے استعمال میں ہے۔"
+    },
+    "categories": {
+      "created": "زمرہ تخلیق ہو گیا",
+      "updated": "زمرہ اپ ڈیٹ ہو گیا",
+      "deleted": "زمرہ حذف کر دیا گیا",
+      "slugTaken": "یہ سلگ پہلے سے استعمال میں ہے۔",
+      "inUse": "{count} پوسٹس میں استعمال ہو رہا ہے۔"
+    },
+    "tags": {
+      "created": "ٹیگ تخلیق ہو گیا",
+      "updated": "ٹیگ اپ ڈیٹ ہو گیا",
+      "deleted": "ٹیگ حذف کر دیا گیا",
+      "slugTaken": "یہ سلگ پہلے سے استعمال میں ہے۔",
+      "inUse": "{count} پوسٹس میں استعمال ہو رہا ہے۔"
+    },
+    "media": {
+      "uploaded": "اپ لوڈ ہو گیا",
+      "deleted": "حذف کر دیا گیا",
+      "copyOk": "{label} کاپی ہو گیا",
+      "copyFailed": "کاپی ناکام",
+      "fileTooLarge": "فائل {size} MB ہے۔ زیادہ سے زیادہ {max} MB۔",
+      "unsupportedType": "قسم غیر تعاون یافتہ۔ PNG، JPEG یا WebP استعمال کریں۔",
+      "uploadFailed": "اپ لوڈ ناکام",
+      "inUse": "{count} پوسٹس میں استعمال ہو رہا ہے۔"
+    },
+    "resume": {
+      "uploaded": "ریزیومے اپ لوڈ ہو گیا",
+      "deleted": "ریزیومے حذف کر دیا گیا",
+      "activated": "فعال: {name}",
+      "pdfOnly": "صرف PDF کی اجازت ہے۔",
+      "fileTooLarge": "فائل {size} MB ہے۔ زیادہ سے زیادہ {max} MB۔",
+      "uploadFailed": "اپ لوڈ ناکام"
+    },
+    "neon": {
+      "refreshed": "Neon تجزیات ریفریش ہو گئے"
+    }
   }
 }

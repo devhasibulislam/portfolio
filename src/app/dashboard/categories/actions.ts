@@ -2,6 +2,7 @@
 
 import { updateTag } from "next/cache";
 import { and, count, eq, ne } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db/client";
 import { categories, posts } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
@@ -33,7 +34,7 @@ export async function saveCategory(
         : eq(categories.slug, parsed.data.slug),
     )
     .limit(1);
-  if (existing.length) return { error: "Slug already in use." };
+  if (existing.length) return { error: (await getTranslations("actions.categories"))("slugTaken") };
 
   if (id) {
     await db
@@ -62,7 +63,8 @@ export async function deleteCategory(
     .from(posts)
     .where(eq(posts.categoryId, id));
   if (n > 0) {
-    return { error: `In use by ${n} post${n === 1 ? "" : "s"}.` };
+    const t = await getTranslations("actions.categories");
+    return { error: t("inUse", { count: n }) };
   }
 
   await db.delete(categories).where(eq(categories.id, id));

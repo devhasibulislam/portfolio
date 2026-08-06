@@ -21,7 +21,10 @@ async function firstPage() {
 }
 
 export default async function BlogPage() {
-  const [initial, t] = await Promise.all([firstPage(), getTranslations("blog")]);
+  const [initial, t] = await Promise.all([
+    firstPage(),
+    getTranslations("blog"),
+  ]);
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-24">
       <header className="mb-14 max-w-2xl">

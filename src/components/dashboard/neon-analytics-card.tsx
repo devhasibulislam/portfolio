@@ -2,6 +2,7 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   AlertCircle,
   ArrowDownToLine,
@@ -28,12 +29,13 @@ import { refreshNeonAnalytics } from "@/app/dashboard/neon-actions";
  */
 export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
   const router = useRouter();
+  const t = useTranslations("actions.neon");
   const [pending, startTransition] = useTransition();
 
   const onRefresh = () =>
     startTransition(async () => {
       await refreshNeonAnalytics();
-      toast.success("Neon analytics refreshed");
+      toast.success(t("refreshed"));
       router.refresh();
     });
 

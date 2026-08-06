@@ -2,6 +2,7 @@
 
 import { updateTag } from "next/cache";
 import { count, eq } from "drizzle-orm";
+import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db/client";
 import { media, posts } from "@/lib/db/schema";
 import { cloudinary } from "@/lib/cloudinary";
@@ -77,7 +78,8 @@ export async function deleteMedia(
     .from(posts)
     .where(eq(posts.coverMediaId, id));
   if (n > 0) {
-    return { error: `In use by ${n} post${n === 1 ? "" : "s"}.` };
+    const t = await getTranslations("actions.media");
+    return { error: t("inUse", { count: n }) };
   }
 
   try {

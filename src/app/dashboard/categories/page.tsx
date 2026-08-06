@@ -15,6 +15,7 @@ export default async function Page() {
       slugMaxLen={30}
       saveAction={saveCategory}
       deleteAction={deleteCategory}
+      toastNamespace="actions.categories"
     />
   );
 }

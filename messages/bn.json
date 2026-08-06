@@ -148,5 +148,80 @@
     "blog": "ব্লগ",
     "resume": "রেজিউমে",
     "links": "লিঙ্ক"
+  },
+  "actions": {
+    "auth": {
+      "invalid": "ইমেইল বা পাসওয়ার্ড ভুল।",
+      "accessDenied": "অ্যাক্সেস অস্বীকৃত। শুধু সাইট মালিক সাইন ইন করতে পারবেন।",
+      "missingFields": "ইমেইল এবং পাসওয়ার্ড দুটোই প্রয়োজন।"
+    },
+    "posts": {
+      "saved": "পোস্ট সংরক্ষিত হয়েছে",
+      "deleted": "পোস্ট মুছে ফেলা হয়েছে",
+      "publishedToast": "প্রকাশিত",
+      "draftedToast": "ড্রাফটে সরানো হয়েছে",
+      "slugTaken": "এই স্লাগ ইতিমধ্যে ব্যবহৃত।",
+      "invalidBody": "বডি বৈধ JSON নয়।"
+    },
+    "projects": {
+      "saved": "প্রকল্প সংরক্ষিত",
+      "updated": "প্রকল্প হালনাগাদ হয়েছে",
+      "deleted": "\"{title}\" মুছে ফেলা হয়েছে",
+      "notFound": "প্রকল্প পাওয়া যায়নি",
+      "slugTaken": "এই স্লাগ ইতিমধ্যে ব্যবহৃত।",
+      "linkInvalid": "লিংক \"{label}\" বৈধ URL নয়।",
+      "linkAppStoreWrong": "App Store লিংক \"{label}\" apps.apple.com নির্দেশ করে না।",
+      "linkPlayStoreWrong": "Play Store লিংক \"{label}\" play.google.com নির্দেশ করে না।",
+      "linkGithubWrong": "GitHub লিংক \"{label}\" github.com নির্দেশ করে না।"
+    },
+    "experience": {
+      "added": "ভূমিকা যোগ হয়েছে",
+      "updated": "ভূমিকা হালনাগাদ হয়েছে",
+      "deleted": "{company}-এর {role} মুছে ফেলা হয়েছে",
+      "notFound": "অভিজ্ঞতা পাওয়া যায়নি",
+      "slugTaken": "এই স্লাগ ইতিমধ্যে ব্যবহৃত।",
+      "startRequired": "শুরুর তারিখ প্রয়োজন।"
+    },
+    "skills": {
+      "added": "দক্ষতা যোগ হয়েছে",
+      "updated": "দক্ষতা হালনাগাদ হয়েছে",
+      "deleted": "\"{name}\" মুছে ফেলা হয়েছে",
+      "slugTaken": "এই স্লাগ ইতিমধ্যে ব্যবহৃত।"
+    },
+    "categories": {
+      "created": "ক্যাটাগরি তৈরি হয়েছে",
+      "updated": "ক্যাটাগরি হালনাগাদ হয়েছে",
+      "deleted": "ক্যাটাগরি মুছে ফেলা হয়েছে",
+      "slugTaken": "এই স্লাগ ইতিমধ্যে ব্যবহৃত।",
+      "inUse": "{count} পোস্টে ব্যবহৃত।"
+    },
+    "tags": {
+      "created": "ট্যাগ তৈরি হয়েছে",
+      "updated": "ট্যাগ হালনাগাদ হয়েছে",
+      "deleted": "ট্যাগ মুছে ফেলা হয়েছে",
+      "slugTaken": "এই স্লাগ ইতিমধ্যে ব্যবহৃত।",
+      "inUse": "{count} পোস্টে ব্যবহৃত।"
+    },
+    "media": {
+      "uploaded": "আপলোড হয়েছে",
+      "deleted": "মুছে ফেলা হয়েছে",
+      "copyOk": "{label} কপি হয়েছে",
+      "copyFailed": "কপি ব্যর্থ",
+      "fileTooLarge": "ফাইল {size} MB। সর্বোচ্চ {max} MB।",
+      "unsupportedType": "সমর্থিত নয়। PNG, JPEG বা WebP ব্যবহার করুন।",
+      "uploadFailed": "আপলোড ব্যর্থ",
+      "inUse": "{count} পোস্টে ব্যবহৃত।"
+    },
+    "resume": {
+      "uploaded": "রেজিউমে আপলোড হয়েছে",
+      "deleted": "রেজিউমে মুছে ফেলা হয়েছে",
+      "activated": "সক্রিয়: {name}",
+      "pdfOnly": "শুধু PDF অনুমোদিত।",
+      "fileTooLarge": "ফাইল {size} MB। সর্বোচ্চ {max} MB।",
+      "uploadFailed": "আপলোড ব্যর্থ"
+    },
+    "neon": {
+      "refreshed": "Neon অ্যানালিটিক্স রিফ্রেশ হয়েছে"
+    }
   }
 }

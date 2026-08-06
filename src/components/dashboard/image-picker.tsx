@@ -2,6 +2,7 @@
 
 import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { CldImage } from "next-cloudinary";
 import { Upload } from "lucide-react";
 import { toast } from "sonner";
@@ -179,6 +180,7 @@ function UploadTab({
   onUploaded: (media: PickedMedia) => void;
 }) {
   const router = useRouter();
+  const t = useTranslations("actions.media");
   const inputRef = useRef<HTMLInputElement>(null);
   const [pending, startTransition] = useTransition();
   const [dragging, setDragging] = useState(false);
@@ -193,17 +195,16 @@ function UploadTab({
   const handleFile = (file: File) => {
     if (file.size > maxFileSize) {
       toast.error(
-        `File is ${(file.size / 1024 / 1024).toFixed(2)} MB. Max is ${Math.round(
-          maxFileSize / 1024 / 1024,
-        )} MB.`,
+        t("fileTooLarge", {
+          size: (file.size / 1024 / 1024).toFixed(2),
+          max: Math.round(maxFileSize / 1024 / 1024),
+        }),
       );
       return;
     }
     const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
     if (!allowedFormats.includes(ext)) {
-      toast.error(
-        `Only ${allowedFormats.map((f) => f.toUpperCase()).join(", ")} allowed.`,
-      );
+      toast.error(t("unsupportedType"));
       return;
     }
     // GIF preserves animation only if we skip canvas rasterization.
@@ -274,7 +275,7 @@ function UploadTab({
           return;
         }
 
-        toast.success("Uploaded");
+        toast.success(t("uploaded"));
         setStagedFile(null);
         onUploaded({
           // Registered row id, so the caller can persist it as a FK
@@ -288,7 +289,7 @@ function UploadTab({
         });
         router.refresh();
       } catch (e) {
-        toast.error(e instanceof Error ? e.message : "Upload failed");
+        toast.error(e instanceof Error ? e.message : t("uploadFailed"));
       }
     });
   };

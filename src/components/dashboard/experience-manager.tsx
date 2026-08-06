@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -84,6 +85,7 @@ export function ExperienceManager({
   resolveFull: (id: string) => Promise<ExperienceFull | null>;
 }) {
   const router = useRouter();
+  const t = useTranslations("actions.experience");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ExperienceRow | null>(
     null,
@@ -97,7 +99,7 @@ export function ExperienceManager({
       const full = await resolveFull(row.id);
       setLoadingId(null);
       if (!full) {
-        toast.error("Experience not found");
+        toast.error(t("notFound"));
         return;
       }
       setEditing({ mode: "edit", row, full });
@@ -111,7 +113,7 @@ export function ExperienceManager({
         toast.error(res.error);
         return;
       }
-      toast.success(editing?.mode === "edit" ? "Role updated" : "Role added");
+      toast.success(editing?.mode === "edit" ? t("updated") : t("added"));
       setEditing(null);
       router.refresh();
     });
@@ -126,7 +128,7 @@ export function ExperienceManager({
         toast.error(res.error);
         return;
       }
-      toast.success(`Deleted ${row.role} at ${row.company}`);
+      toast.success(t("deleted", { role: row.role, company: row.company }));
       setConfirmDelete(null);
       router.refresh();
     });

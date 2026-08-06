@@ -148,5 +148,80 @@
     "blog": "المدونة",
     "resume": "السيرة الذاتية",
     "links": "الروابط"
+  },
+  "actions": {
+    "auth": {
+      "invalid": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+      "accessDenied": "تم رفض الوصول. فقط مالك الموقع يمكنه تسجيل الدخول.",
+      "missingFields": "البريد الإلكتروني وكلمة المرور مطلوبان."
+    },
+    "posts": {
+      "saved": "تم حفظ المنشور",
+      "deleted": "تم حذف المنشور",
+      "publishedToast": "منشور",
+      "draftedToast": "تم النقل إلى المسودة",
+      "slugTaken": "المُعرِّف مستخدم بالفعل.",
+      "invalidBody": "المحتوى ليس JSON صالحًا."
+    },
+    "projects": {
+      "saved": "تم حفظ المشروع",
+      "updated": "تم تحديث المشروع",
+      "deleted": "تم حذف «{title}»",
+      "notFound": "المشروع غير موجود",
+      "slugTaken": "المُعرِّف مستخدم بالفعل.",
+      "linkInvalid": "الرابط «{label}» ليس عنوان URL صالحًا.",
+      "linkAppStoreWrong": "رابط App Store «{label}» لا يشير إلى apps.apple.com.",
+      "linkPlayStoreWrong": "رابط Play Store «{label}» لا يشير إلى play.google.com.",
+      "linkGithubWrong": "رابط GitHub «{label}» لا يشير إلى github.com."
+    },
+    "experience": {
+      "added": "تمت إضافة الدور",
+      "updated": "تم تحديث الدور",
+      "deleted": "تم حذف {role} في {company}",
+      "notFound": "الخبرة غير موجودة",
+      "slugTaken": "المُعرِّف مستخدم بالفعل.",
+      "startRequired": "تاريخ البدء مطلوب."
+    },
+    "skills": {
+      "added": "تمت إضافة المهارة",
+      "updated": "تم تحديث المهارة",
+      "deleted": "تم حذف «{name}»",
+      "slugTaken": "المُعرِّف مستخدم بالفعل."
+    },
+    "categories": {
+      "created": "تم إنشاء التصنيف",
+      "updated": "تم تحديث التصنيف",
+      "deleted": "تم حذف التصنيف",
+      "slugTaken": "المُعرِّف مستخدم بالفعل.",
+      "inUse": "مستخدم في {count} منشور."
+    },
+    "tags": {
+      "created": "تم إنشاء الوسم",
+      "updated": "تم تحديث الوسم",
+      "deleted": "تم حذف الوسم",
+      "slugTaken": "المُعرِّف مستخدم بالفعل.",
+      "inUse": "مستخدم في {count} منشور."
+    },
+    "media": {
+      "uploaded": "تم الرفع",
+      "deleted": "تم الحذف",
+      "copyOk": "تم نسخ {label}",
+      "copyFailed": "فشل النسخ",
+      "fileTooLarge": "حجم الملف {size} MB. الحد الأقصى {max} MB.",
+      "unsupportedType": "نوع الملف غير مدعوم. استخدم PNG أو JPEG أو WebP.",
+      "uploadFailed": "فشل الرفع",
+      "inUse": "مستخدم في {count} منشور."
+    },
+    "resume": {
+      "uploaded": "تم رفع السيرة الذاتية",
+      "deleted": "تم حذف السيرة الذاتية",
+      "activated": "نشط: {name}",
+      "pdfOnly": "PDF فقط مسموح.",
+      "fileTooLarge": "حجم الملف {size} MB. الحد الأقصى {max} MB.",
+      "uploadFailed": "فشل الرفع"
+    },
+    "neon": {
+      "refreshed": "تم تحديث تحليلات Neon"
+    }
   }
 }
