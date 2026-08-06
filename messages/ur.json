@@ -355,7 +355,8 @@
         "slug": "سلگ",
         "name": "نام",
         "thisCantBeUndone": "اسے واپس نہیں کیا جا سکتا۔",
-        "change": "تبدیل"
+        "change": "تبدیل",
+        "optional": "(اختیاری)"
       },
       "post": {
         "title": "عنوان",
@@ -396,6 +397,28 @@
         "deleteNoUse": "اسے واپس نہیں کیا جا سکتا۔",
         "empty": "ابھی کوئی {entityPlural} نہیں۔ نیا پر کلک کریں۔",
         "create": "بنائیں"
+      },
+      "skill": {
+        "description": "عوامی صفحہ پر مہارتیں ریزیومے کے حصے کے حساب سے گروپ ہوتی ہیں۔",
+        "iconLabel": "آئیکن",
+        "iconHint": "مربع 1:1 لوگو (SVG یا PNG، مثالی 256×256+)۔ زیادہ سے زیادہ 5 MB۔",
+        "iconPickerLabel": "آئیکن منتخب کریں یا اپ لوڈ کریں",
+        "group": "گروپ",
+        "groupPlaceholder": "گروپ",
+        "proficiency": "مہارت کی سطح",
+        "proficiencyPlaceholder": "مہارت کی سطح",
+        "years": "سال",
+        "displayOrder": "ڈسپلے آرڈر",
+        "primary": "بنیادی مہارت",
+        "primaryHint": "ہیرو/خلاصہ سیاق میں ظاہر ہوتی ہے۔",
+        "status": "حیثیت",
+        "statusPlaceholder": "حیثیت",
+        "statusActive": "فعال",
+        "statusArchived": "محفوظ شدہ",
+        "cancel": "منسوخ",
+        "createButton": "مہارت بنائیں",
+        "required": "*",
+        "optional": "(اختیاری)"
       }
     }
   },

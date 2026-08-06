@@ -355,7 +355,8 @@
         "slug": "מזהה",
         "name": "שם",
         "thisCantBeUndone": "לא ניתן לבטל פעולה זו.",
-        "change": "החלף"
+        "change": "החלף",
+        "optional": "(אופציונלי)"
       },
       "post": {
         "title": "כותרת",
@@ -396,6 +397,28 @@
         "deleteNoUse": "לא ניתן לבטל פעולה זו.",
         "empty": "אין {entityPlural} עדיין. לחץ על חדש.",
         "create": "צור"
+      },
+      "skill": {
+        "description": "מיומנויות מקובצות לפי חלקי קורות החיים בעמוד הציבורי.",
+        "iconLabel": "אייקון",
+        "iconHint": "סמל מרובע 1:1 (SVG או PNG, אידיאלי 256×256+). עד 5 MB.",
+        "iconPickerLabel": "בחר או העלה אייקון",
+        "group": "קבוצה",
+        "groupPlaceholder": "קבוצה",
+        "proficiency": "רמת בקיאות",
+        "proficiencyPlaceholder": "רמת בקיאות",
+        "years": "שנים",
+        "displayOrder": "סדר תצוגה",
+        "primary": "מיומנות ראשית",
+        "primaryHint": "מוצגת בהקשרי הירו/סיכום.",
+        "status": "סטטוס",
+        "statusPlaceholder": "סטטוס",
+        "statusActive": "פעיל",
+        "statusArchived": "בארכיון",
+        "cancel": "ביטול",
+        "createButton": "צור מיומנות",
+        "required": "*",
+        "optional": "(אופציונלי)"
       }
     }
   },

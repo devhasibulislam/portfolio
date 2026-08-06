@@ -355,7 +355,8 @@
         "slug": "Slug",
         "name": "Name",
         "thisCantBeUndone": "This can't be undone.",
-        "change": "Change"
+        "change": "Change",
+        "optional": "(optional)"
       },
       "post": {
         "title": "Title",
@@ -396,6 +397,28 @@
         "deleteNoUse": "This can't be undone.",
         "empty": "No {entityPlural} yet. Click New.",
         "create": "Create"
+      },
+      "skill": {
+        "description": "Skills group by resume section on the public page.",
+        "iconLabel": "Icon",
+        "iconHint": "Square 1:1 logo (SVG or PNG, ideally 256×256+). Up to 5 MB.",
+        "iconPickerLabel": "Pick or upload icon",
+        "group": "Group",
+        "groupPlaceholder": "Group",
+        "proficiency": "Proficiency",
+        "proficiencyPlaceholder": "Proficiency",
+        "years": "Years",
+        "displayOrder": "Display order",
+        "primary": "Primary skill",
+        "primaryHint": "Surfaces in hero/summary contexts.",
+        "status": "Status",
+        "statusPlaceholder": "Status",
+        "statusActive": "Active",
+        "statusArchived": "Archived",
+        "cancel": "Cancel",
+        "createButton": "Create skill",
+        "required": "*",
+        "optional": "(optional)"
       }
     }
   },

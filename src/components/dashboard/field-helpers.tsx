@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
@@ -123,9 +124,10 @@ export function RequiredMark() {
  * left blank without hunting through validation errors.
  */
 export function OptionalMark() {
+  const t = useTranslations("dashboard.forms.common");
   return (
     <span className="text-muted-foreground ms-1 text-xs font-normal">
-      (optional)
+      {t("optional")}
     </span>
   );
 }

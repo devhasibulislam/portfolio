@@ -355,7 +355,8 @@
         "slug": "المُعرِّف",
         "name": "الاسم",
         "thisCantBeUndone": "لا يمكن التراجع عن هذا.",
-        "change": "تغيير"
+        "change": "تغيير",
+        "optional": "(اختياري)"
       },
       "post": {
         "title": "العنوان",
@@ -396,6 +397,28 @@
         "deleteNoUse": "لا يمكن التراجع عن هذا.",
         "empty": "لا توجد {entityPlural} بعد. انقر على جديد.",
         "create": "إنشاء"
+      },
+      "skill": {
+        "description": "تُجمَّع المهارات حسب أقسام السيرة الذاتية في الصفحة العامة.",
+        "iconLabel": "الأيقونة",
+        "iconHint": "شعار مربع 1:1 (SVG أو PNG، مثالي 256×256+). حتى 5 ميجابايت.",
+        "iconPickerLabel": "اختر أو ارفع أيقونة",
+        "group": "المجموعة",
+        "groupPlaceholder": "المجموعة",
+        "proficiency": "مستوى الإتقان",
+        "proficiencyPlaceholder": "مستوى الإتقان",
+        "years": "سنوات",
+        "displayOrder": "ترتيب العرض",
+        "primary": "مهارة رئيسية",
+        "primaryHint": "تظهر في سياقات الهيرو/الملخص.",
+        "status": "الحالة",
+        "statusPlaceholder": "الحالة",
+        "statusActive": "نشط",
+        "statusArchived": "مؤرشف",
+        "cancel": "إلغاء",
+        "createButton": "إنشاء مهارة",
+        "required": "*",
+        "optional": "(اختياري)"
       }
     }
   },

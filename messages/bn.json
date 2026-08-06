@@ -355,7 +355,8 @@
         "slug": "স্লাগ",
         "name": "নাম",
         "thisCantBeUndone": "এটি বাতিল করা যাবে না।",
-        "change": "বদলান"
+        "change": "বদলান",
+        "optional": "(ঐচ্ছিক)"
       },
       "post": {
         "title": "শিরোনাম",
@@ -396,6 +397,28 @@
         "deleteNoUse": "এটি বাতিল করা যাবে না।",
         "empty": "এখনও কোনো {entityPlural} নেই। নতুন ক্লিক করুন।",
         "create": "তৈরি করুন"
+      },
+      "skill": {
+        "description": "পাবলিক পেজে দক্ষতাগুলি রেজিউমে সেকশন অনুসারে গ্রুপ হয়।",
+        "iconLabel": "আইকন",
+        "iconHint": "বর্গাকার ১:১ লোগো (SVG বা PNG, আদর্শ ২৫৬×২৫৬+)। সর্বোচ্চ ৫ MB।",
+        "iconPickerLabel": "আইকন বাছুন বা আপলোড করুন",
+        "group": "গ্রুপ",
+        "groupPlaceholder": "গ্রুপ",
+        "proficiency": "দক্ষতার স্তর",
+        "proficiencyPlaceholder": "দক্ষতার স্তর",
+        "years": "বছর",
+        "displayOrder": "প্রদর্শন ক্রম",
+        "primary": "প্রাথমিক দক্ষতা",
+        "primaryHint": "হিরো/সারাংশ প্রসঙ্গে দেখায়।",
+        "status": "স্ট্যাটাস",
+        "statusPlaceholder": "স্ট্যাটাস",
+        "statusActive": "সক্রিয়",
+        "statusArchived": "সংরক্ষণাগারে",
+        "cancel": "বাতিল",
+        "createButton": "দক্ষতা তৈরি করুন",
+        "required": "*",
+        "optional": "(ঐচ্ছিক)"
       }
     }
   },

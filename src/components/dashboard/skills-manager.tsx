@@ -43,11 +43,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { slugify } from "@/lib/slug";
-import {
-  SKILL_GROUPS,
-  SKILL_GROUP_LABEL,
-  SKILL_PROFICIENCY_LABEL,
-} from "@/lib/skill-groups";
+import { SKILL_GROUPS } from "@/lib/skill-groups";
 import type { SkillRow } from "@/lib/db/queries/skills";
 import type { SkillInput } from "@/schemas/skill";
 import { deleteSkill, saveSkill } from "@/app/dashboard/skills/actions";
@@ -74,6 +70,8 @@ export function SkillsManager({
 }) {
   const t = useTranslations("actions.skills");
   const tPage = useTranslations("dashboard.pages.skills");
+  const tGroups = useTranslations("skills.groups");
+  const tProf = useTranslations("skills.proficiency");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<SkillRow | null>(null);
   const save = useAction(saveSkill);
@@ -128,7 +126,7 @@ export function SkillsManager({
           {grouped.map(({ group, items }) => (
             <section key={group}>
               <h2 className="text-muted-foreground mb-2 text-xs font-medium tracking-widest uppercase">
-                {SKILL_GROUP_LABEL[group]}
+                {tGroups(group)}
               </h2>
               <div className="rounded-lg border">
                 <Table>
@@ -157,7 +155,7 @@ export function SkillsManager({
                           </div>
                         </TableCell>
                         <TableCell>
-                          {SKILL_PROFICIENCY_LABEL[r.proficiency]}
+                          {tProf(r.proficiency)}
                         </TableCell>
                         <TableCell>{r.years ?? "-"}</TableCell>
                         <TableCell>{r.displayOrder}</TableCell>
@@ -279,6 +277,10 @@ function SkillDialogBody({
   pending: boolean;
 }) {
   const tPage = useTranslations("dashboard.pages.skills");
+  const tForm = useTranslations("dashboard.forms.skill");
+  const tCommon = useTranslations("dashboard.forms.common");
+  const tGroups = useTranslations("skills.groups");
+  const tProf = useTranslations("skills.proficiency");
   // Local state for auto-slug + icon picker. Initialised once per keyed
   // mount, so switching rows always re-reads defaults.
   const [name, setName] = useState(row?.name ?? "");
@@ -299,7 +301,7 @@ function SkillDialogBody({
           {row ? tPage("editDialogEdit") : tPage("editDialogNew")}
         </DialogTitle>
         <DialogDescription>
-          Skills group by resume section on the public page.
+          {tForm("description")}
         </DialogDescription>
       </DialogHeader>
 
@@ -307,7 +309,7 @@ function SkillDialogBody({
         <div className="grid grid-cols-2 gap-3">
           <div className="col-span-2 flex flex-col gap-1.5">
             <Label htmlFor="name">
-              Name
+              {tCommon("name")}
               <RequiredMark />
             </Label>
             <CountedInput
@@ -325,7 +327,7 @@ function SkillDialogBody({
 
           <div className="col-span-2 flex flex-col gap-1.5">
             <Label htmlFor="slug">
-              Slug
+              {tCommon("slug")}
               <RequiredMark />
             </Label>
             <CountedInput
@@ -343,24 +345,24 @@ function SkillDialogBody({
 
           <div className="col-span-2 flex flex-col gap-1.5">
             <Label>
-              Icon
+              {tForm("iconLabel")}
               <OptionalMark />
             </Label>
             <p className="text-muted-foreground text-xs">
-              Square 1:1 logo (SVG or PNG, ideally 256×256+). Up to 5 MB.
+              {tForm("iconHint")}
             </p>
             <MediaPicker
               options={mediaOptions}
               value={iconId}
               onChange={setIconId}
               aspect={1}
-              label="Pick or upload icon"
+              label={tForm("iconPickerLabel")}
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="group">
-              Group
+              {tForm("group")}
               <RequiredMark />
             </Label>
             <Select
@@ -369,12 +371,12 @@ function SkillDialogBody({
               required
             >
               <SelectTrigger id="group">
-                <SelectValue placeholder="Group" />
+                <SelectValue placeholder={tForm("groupPlaceholder")} />
               </SelectTrigger>
               <SelectContent>
                 {SKILL_GROUPS.map((g) => (
                   <SelectItem key={g.value} value={g.value}>
-                    {g.label}
+                    {tGroups(g.value)}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -383,7 +385,7 @@ function SkillDialogBody({
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="proficiency">
-              Proficiency
+              {tForm("proficiency")}
               <RequiredMark />
             </Label>
             <Select
@@ -392,12 +394,12 @@ function SkillDialogBody({
               required
             >
               <SelectTrigger id="proficiency">
-                <SelectValue placeholder="Proficiency" />
+                <SelectValue placeholder={tForm("proficiencyPlaceholder")} />
               </SelectTrigger>
               <SelectContent>
                 {PROFICIENCY_OPTIONS.map((p) => (
                   <SelectItem key={p} value={p}>
-                    {SKILL_PROFICIENCY_LABEL[p]}
+                    {tProf(p)}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -406,7 +408,7 @@ function SkillDialogBody({
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="years">
-              Years
+              {tForm("years")}
               <OptionalMark />
             </Label>
             <Input
@@ -422,7 +424,7 @@ function SkillDialogBody({
 
           <div className="flex flex-col gap-1.5">
             <Label htmlFor="displayOrder">
-              Display order
+              {tForm("displayOrder")}
               <RequiredMark />
             </Label>
             <Input
@@ -439,10 +441,10 @@ function SkillDialogBody({
           <div className="col-span-2 flex items-center justify-between rounded-md border p-3">
             <div>
               <Label htmlFor="isPrimary" className="cursor-pointer">
-                Primary skill
+                {tForm("primary")}
               </Label>
               <p className="text-muted-foreground text-xs">
-                Surfaces in hero/summary contexts.
+                {tForm("primaryHint")}
               </p>
             </div>
             <Switch
@@ -454,7 +456,7 @@ function SkillDialogBody({
 
           <div className="col-span-2 flex flex-col gap-1.5">
             <Label htmlFor="status">
-              Status
+              {tForm("status")}
               <RequiredMark />
             </Label>
             <Select
@@ -463,11 +465,11 @@ function SkillDialogBody({
               required
             >
               <SelectTrigger id="status">
-                <SelectValue placeholder="Status" />
+                <SelectValue placeholder={tForm("statusPlaceholder")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="active">Active</SelectItem>
-                <SelectItem value="archived">Archived</SelectItem>
+                <SelectItem value="active">{tForm("statusActive")}</SelectItem>
+                <SelectItem value="archived">{tForm("statusArchived")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -481,10 +483,10 @@ function SkillDialogBody({
           onClick={onClose}
           disabled={pending}
         >
-          Cancel
+          {tCommon("cancel")}
         </Button>
         <Button type="submit" disabled={pending}>
-          {pending ? "Saving…" : row ? "Save changes" : "Create skill"}
+          {pending ? tCommon("saving") : row ? tCommon("save") : tForm("createButton")}
         </Button>
       </DialogFooter>
     </form>
