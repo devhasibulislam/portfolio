@@ -201,9 +201,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
 
       <footer className="text-muted-foreground mt-4 text-[11px]">
         {tN("cachedUpdated", { when: relativeTime(data.fetchedAt) })}
-        {data.suspendTimeoutSeconds === 0
-          ? ` · ${tN("scalesToZero")}`
-          : null}
+        {data.suspendTimeoutSeconds === 0 ? ` · ${tN("scalesToZero")}` : null}
         {data.autoscalingMaxCu != null
           ? ` · ${tN("autoscale", { min: data.autoscalingMinCu ?? 0, max: data.autoscalingMaxCu })}`
           : null}
