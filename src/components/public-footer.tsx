@@ -1,14 +1,26 @@
 "use client";
 
+import { useTransition } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { Lock } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { LOCALES, type Locale } from "@/lib/i18n/config";
+import { setLocaleAction } from "@/lib/i18n/actions";
+import { useLocale } from "next-intl";
+
+const LOCALE_LABEL: Record<Locale, string> = {
+  en: "English",
+  bn: "বাংলা",
+  ar: "العربية",
+  ur: "اردو",
+  he: "עברית",
+};
 
 // Same contact endpoints as `public-floating-actions.tsx` (single-owner site,
 // per PROJECT_CONTEXT §2). Kept duplicated here rather than lifted into a
@@ -54,6 +66,8 @@ const SOCIALS = [
 export function PublicFooter() {
   const pathname = usePathname();
   const isPublic = pathname !== "/login" && !pathname.startsWith("/dashboard");
+  const locale = useLocale() as Locale;
+  const [switching, startSwitching] = useTransition();
   if (!isPublic) return null;
 
   const year = new Date().getFullYear();
@@ -102,19 +116,52 @@ export function PublicFooter() {
       </div>
 
       <div className="border-t">
-        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-2 px-6 py-4">
+        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
           <p className="text-muted-foreground text-xs">
             © {year} Hasibul Islam. Built with Next.js.
           </p>
-          <a
-            href="https://github.com/devhasibulislam/portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-xs underline-offset-4 hover:underline"
-          >
-            Source
-            <ArrowUpRight className="size-3.5" aria-hidden />
-          </a>
+          <div className="flex items-center gap-4">
+            {/* Native <select> keeps the switcher a zero-dep affair while
+                still triggering the server action + revalidate. */}
+            <label className="text-muted-foreground inline-flex items-center gap-1.5 text-xs">
+              <span className="sr-only">Language</span>
+              <select
+                aria-label="Language"
+                value={locale}
+                disabled={switching}
+                onChange={(e) =>
+                  startSwitching(async () => {
+                    await setLocaleAction(e.target.value as Locale);
+                  })
+                }
+                className="border-border bg-background text-foreground focus-visible:ring-ring rounded-md border px-2 py-1 text-xs focus-visible:outline-none focus-visible:ring-2"
+              >
+                {LOCALES.map((l) => (
+                  <option key={l} value={l}>
+                    {LOCALE_LABEL[l]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <TooltipProvider delayDuration={150}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    disabled
+                    aria-disabled="true"
+                    className="text-muted-foreground inline-flex cursor-not-allowed items-center gap-1 text-xs"
+                  >
+                    Source
+                    <Lock className="size-3.5" aria-hidden />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent side="top" sideOffset={6}>
+                  Coming soon, going open source
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         </div>
       </div>
     </footer>
