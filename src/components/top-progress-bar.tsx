@@ -85,7 +85,11 @@ export function TopProgressBar() {
       className={`pointer-events-none fixed inset-x-0 top-0 z-[100] h-[3px] transition-opacity duration-300 ${opacityClass}`}
     >
       <div
-        className={`bg-primary h-full shadow-[0_0_10px_var(--color-brand-highlight)] transition-[width] ${speedClass} ${widthClass}`}
+        className={`h-full transition-[width] ${speedClass} ${widthClass}`}
+        style={{
+          background: "var(--progress-bar-color)",
+          boxShadow: "var(--progress-bar-glow)",
+        }}
       />
     </div>
   );
