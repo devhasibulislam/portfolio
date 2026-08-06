@@ -79,14 +79,14 @@ export function PublicFooter() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={s.label}
-                      className="border-border bg-background hover:bg-muted focus-visible:ring-ring inline-flex size-9 items-center justify-center rounded-lg border transition-colors focus-visible:outline-none focus-visible:ring-2"
+                      className="focus-visible:ring-ring inline-flex rounded-lg transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2"
                     >
                       <Image
                         src={s.src}
                         alt=""
-                        width={20}
-                        height={20}
-                        className="size-5 rounded-sm"
+                        width={40}
+                        height={40}
+                        className="size-10 rounded-lg"
                       />
                     </a>
                   </TooltipTrigger>
