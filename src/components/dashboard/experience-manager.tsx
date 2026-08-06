@@ -344,9 +344,7 @@ function ExperienceDialogForm({
         <DialogTitle>
           {full ? tPage("editDialogEdit") : tPage("editDialogNew")}
         </DialogTitle>
-        <DialogDescription>
-          {tForm("description")}
-        </DialogDescription>
+        <DialogDescription>{tForm("description")}</DialogDescription>
       </DialogHeader>
 
       <div className="mt-4 flex flex-col gap-6">
@@ -561,7 +559,11 @@ function ExperienceDialogForm({
                 defaultValue={full?.metaDescription ?? ""}
               />
             </Field>
-            <Field htmlFor="displayOrder" label={tForm("displayOrder")} required>
+            <Field
+              htmlFor="displayOrder"
+              label={tForm("displayOrder")}
+              required
+            >
               <Input
                 id="displayOrder"
                 name="displayOrder"
@@ -582,7 +584,9 @@ function ExperienceDialogForm({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="draft">{tForm("draft")}</SelectItem>
-                  <SelectItem value="published">{tForm("published")}</SelectItem>
+                  <SelectItem value="published">
+                    {tForm("published")}
+                  </SelectItem>
                 </SelectContent>
               </Select>
             </Field>
@@ -606,7 +610,11 @@ function ExperienceDialogForm({
           {tCommon("cancel")}
         </Button>
         <Button type="submit" disabled={pending}>
-          {pending ? tCommon("saving") : full ? tCommon("save") : tForm("createButton")}
+          {pending
+            ? tCommon("saving")
+            : full
+              ? tCommon("save")
+              : tForm("createButton")}
         </Button>
       </DialogFooter>
     </form>
