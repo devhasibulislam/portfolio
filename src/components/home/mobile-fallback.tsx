@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { HOTSPOTS } from "./config";
 
@@ -8,7 +7,8 @@ import { HOTSPOTS } from "./config";
  * Non-R3F fallback. Served to touch devices, low-memory machines,
  * `prefers-reduced-motion` users, and software renderers. Same four
  * hotspot targets as the full experience, delivered as a stacked nav so
- * the intent survives without the scene. Framer + CSS only.
+ * the intent survives without the scene. Pure CSS animations — no JS
+ * animation runtime shipped for this reduced-motion-first page.
  */
 export default function MobileFallback({
   onSelect,
@@ -17,15 +17,13 @@ export default function MobileFallback({
 }) {
   return (
     <div className="relative flex min-h-[100svh] flex-col justify-end px-6 py-16">
-      <motion.div
+      <div
         aria-hidden
-        className="absolute inset-0 -z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
+        className="absolute inset-0 -z-10 motion-safe:animate-[fallback-fade_1.2s_ease-out_both] opacity-100 motion-safe:opacity-0"
         style={{
           background:
             "radial-gradient(60% 45% at 65% 30%, rgba(232,107,28,0.18), transparent 65%)",
+          animationFillMode: "forwards",
         }}
       />
       <p className="text-xs uppercase tracking-widest opacity-60">Portfolio</p>
@@ -40,11 +38,10 @@ export default function MobileFallback({
       <nav className="mt-10">
         <ul className="flex flex-col gap-2">
           {HOTSPOTS.map((h, i) => (
-            <motion.li
+            <li
               key={h.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 + i * 0.08, duration: 0.4 }}
+              className="motion-safe:animate-[fallback-rise_0.4s_ease-out_both] motion-reduce:opacity-100"
+              style={{ animationDelay: `${0.15 + i * 0.08}s` }}
             >
               <Button
                 variant="outline"
@@ -59,10 +56,21 @@ export default function MobileFallback({
                   →
                 </span>
               </Button>
-            </motion.li>
+            </li>
           ))}
         </ul>
       </nav>
+
+      <style>{`
+        @keyframes fallback-fade {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes fallback-rise {
+          from { opacity: 0; transform: translateY(12px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 }
