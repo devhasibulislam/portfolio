@@ -72,7 +72,7 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
         </div>
       ) : (
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {filtered.map((m) => (
+          {filtered.map((m, i) => (
             <li key={m.id} className="group relative">
               <button
                 type="button"
@@ -88,6 +88,9 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
                   gravity="auto"
                   alt={m.originalName}
                   className="h-auto w-full"
+                  // First row is the LCP candidate on the dashboard media
+                  // library grid; preload eagerly so Next.js stops nagging.
+                  priority={i < 4}
                 />
                 {m.inUse ? (
                   <span className="bg-primary text-primary-foreground absolute start-2 top-2 rounded-md px-2 py-0.5 text-xs font-medium">
