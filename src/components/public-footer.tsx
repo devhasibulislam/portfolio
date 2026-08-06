@@ -10,6 +10,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { LOCALES, type Locale } from "@/lib/i18n/config";
 import { setLocaleAction } from "@/lib/i18n/actions";
 import { useLocale } from "next-intl";
@@ -121,28 +128,30 @@ export function PublicFooter() {
             © {year} Hasibul Islam. Built with Next.js.
           </p>
           <div className="flex items-center gap-4">
-            {/* Native <select> keeps the switcher a zero-dep affair while
-                still triggering the server action + revalidate. */}
-            <label className="text-muted-foreground inline-flex items-center gap-1.5 text-xs">
-              <span className="sr-only">Language</span>
-              <select
+            <Select
+              value={locale}
+              disabled={switching}
+              onValueChange={(next) =>
+                startSwitching(async () => {
+                  await setLocaleAction(next as Locale);
+                })
+              }
+            >
+              <SelectTrigger
+                size="sm"
                 aria-label="Language"
-                value={locale}
-                disabled={switching}
-                onChange={(e) =>
-                  startSwitching(async () => {
-                    await setLocaleAction(e.target.value as Locale);
-                  })
-                }
-                className="border-border bg-background text-foreground focus-visible:ring-ring rounded-md border px-2 py-1 text-xs focus-visible:outline-none focus-visible:ring-2"
+                className="h-8 min-w-28 text-xs"
               >
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent align="end">
                 {LOCALES.map((l) => (
-                  <option key={l} value={l}>
+                  <SelectItem key={l} value={l} className="text-xs">
                     {LOCALE_LABEL[l]}
-                  </option>
+                  </SelectItem>
                 ))}
-              </select>
-            </label>
+              </SelectContent>
+            </Select>
             <TooltipProvider delayDuration={150}>
               <Tooltip>
                 <TooltipTrigger asChild>
