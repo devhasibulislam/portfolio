@@ -15,28 +15,20 @@ export type ActionState = { error?: string; ok?: true } | null;
 const EMPTY_DOC = { type: "doc", content: [] };
 
 /**
- * Convert a plain-text textarea value into a TipTap-compatible JSON doc.
- * Each blank-line block becomes a paragraph; single newlines stay inside
- * one paragraph as hard breaks. Round-trippable enough for MVP editing —
- * a full TipTap editor slot will replace this later without a data change.
+ * Parse a TipTap doc JSON blob posted from the client. Falls back to an
+ * empty doc so the jsonb NOT NULL column is always populated.
  */
-function textToDoc(text: string): Record<string, unknown> {
-  const t = text.trim();
-  if (!t) return EMPTY_DOC;
-  const paragraphs = t.split(/\n{2,}/);
-  return {
-    type: "doc",
-    content: paragraphs.map((p) => ({
-      type: "paragraph",
-      content: p
-        .split("\n")
-        .flatMap((line, i) =>
-          i === 0
-            ? [{ type: "text", text: line }]
-            : [{ type: "hardBreak" }, { type: "text", text: line }],
-        ),
-    })),
-  };
+function parseBodyJson(raw: string): Record<string, unknown> {
+  if (!raw.trim()) return EMPTY_DOC;
+  try {
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed === "object" && parsed.type === "doc") {
+      return parsed as Record<string, unknown>;
+    }
+  } catch {
+    // fall through
+  }
+  return EMPTY_DOC;
 }
 
 // Best-effort host check for App Store / Play Store links so a mistyped
@@ -68,7 +60,7 @@ export async function saveProject(
 ): Promise<ActionState> {
   const id = String(formData.get("id") ?? "").trim() || null;
 
-  const bodyText = String(formData.get("bodyText") ?? "");
+  const bodyRaw = String(formData.get("body") ?? "");
   const outcomeText = String(formData.get("outcome") ?? "").trim();
 
   const periodStartRaw = String(formData.get("periodStart") ?? "").trim();
@@ -101,7 +93,7 @@ export async function saveProject(
     role: String(formData.get("role") ?? "").trim() || null,
     periodStart: toIso(periodStartRaw),
     periodEnd: toIso(periodEndRaw),
-    body: textToDoc(bodyText),
+    body: parseBodyJson(bodyRaw),
     outcome: outcomeText || null,
     category: String(formData.get("category") ?? "enterprise"),
     coverMediaId: (formData.get("coverMediaId") as string) || null,

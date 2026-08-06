@@ -35,6 +35,7 @@ import {
   OptionalMark,
   RequiredMark,
 } from "@/components/dashboard/field-helpers";
+import { TiptapEditor } from "@/components/dashboard/tiptap-editor";
 import {
   Select,
   SelectContent,
@@ -51,7 +52,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Textarea } from "@/components/ui/textarea";
 import { slugify } from "@/lib/slug";
 import type {
   ExperienceFull,
@@ -284,31 +284,6 @@ function toDateInputValue(d: Date | string | null): string {
   return date.toISOString().slice(0, 10);
 }
 
-function bulletDocToText(doc: unknown): string {
-  if (!doc || typeof doc !== "object") return "";
-  const d = doc as { content?: Array<{ type: string; content?: unknown[] }> };
-  const items: string[] = [];
-  const walk = (nodes?: unknown[]) => {
-    if (!nodes) return;
-    for (const raw of nodes) {
-      const n = raw as { type: string; content?: unknown[]; text?: string };
-      if (n.type === "listItem") {
-        // Flatten first paragraph's text.
-        const p = n.content?.[0] as
-          { content?: Array<{ type: string; text?: string }> } | undefined;
-        const text = (p?.content ?? [])
-          .map((c) => (c.type === "text" ? (c.text ?? "") : ""))
-          .join("");
-        if (text) items.push(text);
-      } else if (n.content) {
-        walk(n.content);
-      }
-    }
-  };
-  walk(d.content);
-  return items.map((i) => `- ${i}`).join("\n");
-}
-
 function ExperienceDialog({
   editing,
   mediaOptions,
@@ -376,6 +351,10 @@ function ExperienceDialogForm({
     full?.companyLogoId ?? null,
   );
 
+  const [highlights, setHighlights] = useState<unknown>(
+    full?.highlights ?? { type: "doc", content: [] },
+  );
+
   // Auto-derive slug = {company-slug}-{role-slug} until the author edits it.
   const derivedSlug =
     companySlug && role ? `${companySlug}-${slugify(role)}` : "";
@@ -385,6 +364,10 @@ function ExperienceDialogForm({
       action={(fd) => {
         if (full) fd.set("id", full.id);
         if (logoId) fd.set("companyLogoId", logoId);
+        fd.set(
+          "highlights",
+          JSON.stringify(highlights ?? { type: "doc", content: [] }),
+        );
         onSave(fd);
       }}
     >
@@ -562,17 +545,14 @@ function ExperienceDialogForm({
             </Field>
             <Field
               className="col-span-2"
-              htmlFor="highlightsText"
               label="Highlights"
               optional
-              hint="One bullet per line. Blank lines OK — leading dashes ignored."
+              hint="Rich text — bullet lists, headings, links, code. Same editor as the blog."
             >
-              <Textarea
-                id="highlightsText"
-                name="highlightsText"
-                rows={8}
-                placeholder={`- Cut hot-path list API p95 from ~200 ms to ~20 ms\n- Standardised multi-tenant isolation with Postgres RLS`}
-                defaultValue={bulletDocToText(full?.highlights)}
+              <TiptapEditor
+                value={highlights}
+                onChange={setHighlights}
+                mediaOptions={mediaOptions}
               />
             </Field>
           </FieldGrid>

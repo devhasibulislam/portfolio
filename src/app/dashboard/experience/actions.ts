@@ -12,33 +12,20 @@ export type ActionState = { error?: string; ok?: true } | null;
 const EMPTY_DOC = { type: "doc", content: [] };
 
 /**
- * Bullet-list textarea → TipTap doc. Each non-blank line becomes one list
- * item; blank lines terminate the list. Round-trippable enough for MVP.
+ * Parse a TipTap doc JSON blob posted from the client. Falls back to an
+ * empty doc so the jsonb NOT NULL column is always populated.
  */
-function textToBulletDoc(text: string): Record<string, unknown> {
-  const t = text.trim();
-  if (!t) return EMPTY_DOC;
-  const lines = t
-    .split(/\n+/)
-    .map((s) => s.replace(/^[-•*]\s*/, "").trim())
-    .filter(Boolean);
-  return {
-    type: "doc",
-    content: [
-      {
-        type: "bulletList",
-        content: lines.map((line) => ({
-          type: "listItem",
-          content: [
-            {
-              type: "paragraph",
-              content: [{ type: "text", text: line }],
-            },
-          ],
-        })),
-      },
-    ],
-  };
+function parseDocJson(raw: string): Record<string, unknown> {
+  if (!raw.trim()) return EMPTY_DOC;
+  try {
+    const parsed = JSON.parse(raw);
+    if (parsed && typeof parsed === "object" && parsed.type === "doc") {
+      return parsed as Record<string, unknown>;
+    }
+  } catch {
+    // fall through
+  }
+  return EMPTY_DOC;
 }
 
 export async function saveExperience(
@@ -54,7 +41,7 @@ export async function saveExperience(
   const startIso = toIso(periodStartRaw);
   if (!startIso) return { error: "Start date is required." };
 
-  const highlightsText = String(formData.get("highlightsText") ?? "");
+  const highlightsRaw = String(formData.get("highlights") ?? "");
 
   const workTypeRaw = String(formData.get("workType") ?? "").trim();
   const workType =
@@ -72,7 +59,7 @@ export async function saveExperience(
     periodStart: startIso,
     periodEnd: toIso(periodEndRaw),
     summary: String(formData.get("summary") ?? "").trim(),
-    highlights: textToBulletDoc(highlightsText),
+    highlights: parseDocJson(highlightsRaw),
     companyUrl: String(formData.get("companyUrl") ?? "").trim() || null,
     companyLogoId: (formData.get("companyLogoId") as string) || null,
     metaTitle: String(formData.get("metaTitle") ?? "").trim() || null,

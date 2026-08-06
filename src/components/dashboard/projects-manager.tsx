@@ -35,6 +35,7 @@ import {
   OptionalMark,
   RequiredMark,
 } from "@/components/dashboard/field-helpers";
+import { TiptapEditor } from "@/components/dashboard/tiptap-editor";
 import {
   Select,
   SelectContent,
@@ -51,7 +52,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Textarea } from "@/components/ui/textarea";
 import { slugify } from "@/lib/slug";
 import type { ProjectFull, ProjectRow } from "@/lib/db/queries/projects";
 import type { ProjectLinkInput } from "@/schemas/project";
@@ -276,26 +276,6 @@ export function ProjectsManager({
   );
 }
 
-function docToText(doc: unknown): string {
-  // Reverse of textToDoc in the server action — pulls paragraph text back
-  // out so the textarea round-trips on edit. Best-effort; unknown nodes
-  // are ignored.
-  if (!doc || typeof doc !== "object") return "";
-  const d = doc as { content?: Array<{ type: string; content?: unknown[] }> };
-  const paragraphs = (d.content ?? []).map((p) => {
-    if (!p.content) return "";
-    return p.content
-      .map((c) => {
-        const node = c as { type: string; text?: string };
-        if (node.type === "text") return node.text ?? "";
-        if (node.type === "hardBreak") return "\n";
-        return "";
-      })
-      .join("");
-  });
-  return paragraphs.filter(Boolean).join("\n\n");
-}
-
 function toDateInputValue(d: Date | string | null): string {
   if (!d) return "";
   const date = typeof d === "string" ? new Date(d) : d;
@@ -365,6 +345,9 @@ function ProjectDialogForm({
   const [coverId, setCoverId] = useState<string | null>(
     full?.coverMediaId ?? null,
   );
+  const [body, setBody] = useState<unknown>(
+    full?.body ?? { type: "doc", content: [] },
+  );
   const [links, setLinks] = useState<ProjectLinkInput[]>(full?.links ?? []);
 
   const addLink = () =>
@@ -381,6 +364,7 @@ function ProjectDialogForm({
       action={(fd) => {
         if (full) fd.set("id", full.id);
         if (coverId) fd.set("coverMediaId", coverId);
+        fd.set("body", JSON.stringify(body ?? { type: "doc", content: [] }));
         // Links are serialized via parallel arrays so FormData handles them.
         for (const l of links) {
           fd.append("linkKind", l.kind);
@@ -519,16 +503,18 @@ function ProjectDialogForm({
         <Section title="Content">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="bodyText">
+              <Label>
                 Body
                 <OptionalMark />
               </Label>
-              <Textarea
-                id="bodyText"
-                name="bodyText"
-                rows={6}
-                placeholder="Paragraphs separated by blank lines. Rich formatting coming later."
-                defaultValue={docToText(full?.body)}
+              <p className="text-muted-foreground text-xs">
+                Rich text — headings, lists, links, code, images. Same editor
+                as the blog.
+              </p>
+              <TiptapEditor
+                value={body}
+                onChange={setBody}
+                mediaOptions={mediaOptions}
               />
             </div>
             <div className="flex flex-col gap-1.5">
