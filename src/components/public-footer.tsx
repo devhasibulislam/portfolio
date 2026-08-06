@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -109,9 +110,10 @@ export function PublicFooter() {
             href="https://github.com/devhasibulislam/portfolio"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground text-xs underline-offset-4 hover:underline"
+            className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 text-xs underline-offset-4 hover:underline"
           >
-            Source ↗
+            Source
+            <ArrowUpRight className="size-3.5" aria-hidden />
           </a>
         </div>
       </div>
