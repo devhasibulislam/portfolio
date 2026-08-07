@@ -545,29 +545,29 @@
     "semantic_hash": "28976f8a97483dae108e507dd132e98d"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/ar.json": {
-    "mtime": 1786093671.6384614,
-    "ast_hash": "db29522112be66fc43f874b50e4d496e",
-    "semantic_hash": "db29522112be66fc43f874b50e4d496e"
+    "mtime": 1786105283.6889992,
+    "ast_hash": "8ee41540e90fe80a198709cde9e014f8",
+    "semantic_hash": "8ee41540e90fe80a198709cde9e014f8"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/bn.json": {
-    "mtime": 1786093671.540308,
-    "ast_hash": "7ce956d222db268a1b567890a9422688",
-    "semantic_hash": "7ce956d222db268a1b567890a9422688"
+    "mtime": 1786105283.6819992,
+    "ast_hash": "22efb05968d5f573e405ee2fc542841e",
+    "semantic_hash": "22efb05968d5f573e405ee2fc542841e"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/en.json": {
-    "mtime": 1786093671.4203074,
-    "ast_hash": "734b797533567de79bfc047e07394761",
-    "semantic_hash": "734b797533567de79bfc047e07394761"
+    "mtime": 1786105283.5619974,
+    "ast_hash": "0dc654e6496ed0daace4aa84d0f27a5a",
+    "semantic_hash": "0dc654e6496ed0daace4aa84d0f27a5a"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/he.json": {
-    "mtime": 1786093671.8459468,
-    "ast_hash": "7880baf0b3cd71079f3f6f47eac1b9b7",
-    "semantic_hash": "7880baf0b3cd71079f3f6f47eac1b9b7"
+    "mtime": 1786105283.6979992,
+    "ast_hash": "75384235dbecd1e502be7b6ce8cc0f7c",
+    "semantic_hash": "75384235dbecd1e502be7b6ce8cc0f7c"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/ur.json": {
-    "mtime": 1786093671.7314625,
-    "ast_hash": "56f6b4024d3286d5fa9dce48ee31dc4f",
-    "semantic_hash": "56f6b4024d3286d5fa9dce48ee31dc4f"
+    "mtime": 1786105283.6939993,
+    "ast_hash": "8961fb895257eaa3f8f35565ca9df68d",
+    "semantic_hash": "8961fb895257eaa3f8f35565ca9df68d"
   },
   "/home/prokken-inc/Desktop/portfolio/next.config.ts": {
     "mtime": 1785658954.4228132,
@@ -575,9 +575,9 @@
     "semantic_hash": "516625a504dd1e3beae895f6c7beb15d"
   },
   "/home/prokken-inc/Desktop/portfolio/package.json": {
-    "mtime": 1786079674.3725562,
-    "ast_hash": "c5ec8c93b54f4995cc28aabdf3f4e4a4",
-    "semantic_hash": "c5ec8c93b54f4995cc28aabdf3f4e4a4"
+    "mtime": 1786099818.5028546,
+    "ast_hash": "db81557df2a01855659bc2e758c6f1c0",
+    "semantic_hash": "db81557df2a01855659bc2e758c6f1c0"
   },
   "/home/prokken-inc/Desktop/portfolio/postcss.config.mjs": {
     "mtime": 1785249276.2304854,
@@ -595,9 +595,9 @@
     "semantic_hash": "937706a67851dce06686d73c7de0a99a"
   },
   "/home/prokken-inc/Desktop/portfolio/skills-lock.json": {
-    "mtime": 1786078368.0417216,
-    "ast_hash": "d048499931534c2ddc7edad74b8f3741",
-    "semantic_hash": "d048499931534c2ddc7edad74b8f3741"
+    "mtime": 1786105312.3873968,
+    "ast_hash": "cbc1119a6de998744b10a31434312f3d",
+    "semantic_hash": "cbc1119a6de998744b10a31434312f3d"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/api/auth/[...path]/route.ts": {
     "mtime": 1785497892.2932146,
@@ -615,7 +615,7 @@
     "semantic_hash": "18dd8cbf8a0debf9331004b6baf2f08b"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/layout.tsx": {
-    "mtime": 1786033422.8725002,
+    "mtime": 1786109403.555014,
     "ast_hash": "c422ffb2f521d4f9a28e2bcb8f67dcaa",
     "semantic_hash": "c422ffb2f521d4f9a28e2bcb8f67dcaa"
   },
@@ -635,9 +635,9 @@
     "semantic_hash": "288c799a2b0e880f9909bc7a5c121153"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/page.tsx": {
-    "mtime": 1786085190.6900675,
-    "ast_hash": "d046a3f68cfa9c1ffd1c7176b38cccef",
-    "semantic_hash": "d046a3f68cfa9c1ffd1c7176b38cccef"
+    "mtime": 1786107720.825427,
+    "ast_hash": "3857bdf55472c5cde302e80273115486",
+    "semantic_hash": "3857bdf55472c5cde302e80273115486"
   },
   "/home/prokken-inc/Desktop/portfolio/src/lib/auth/client.ts": {
     "mtime": 1785250800.2631803,
@@ -645,9 +645,9 @@
     "semantic_hash": "db5e9c0352df4ab08ba1744e4ba9ea48"
   },
   "/home/prokken-inc/Desktop/portfolio/src/lib/auth/server.ts": {
-    "mtime": 1785251804.6792834,
-    "ast_hash": "ce7296adc1f91e97a45991d43a0d5eed",
-    "semantic_hash": "ce7296adc1f91e97a45991d43a0d5eed"
+    "mtime": 1786096313.9518144,
+    "ast_hash": "f0273ce99c3ed805e9f4c3350960accf",
+    "semantic_hash": "f0273ce99c3ed805e9f4c3350960accf"
   },
   "/home/prokken-inc/Desktop/portfolio/src/lib/db/client.ts": {
     "mtime": 1785500422.9746382,
@@ -670,7 +670,7 @@
     "semantic_hash": "73f4d74e52dcdda9643b6754849211a5"
   },
   "/home/prokken-inc/Desktop/portfolio/src/lib/i18n/cookies.ts": {
-    "mtime": 1785250799.2149682,
+    "mtime": 1786095958.1980042,
     "ast_hash": "380fb7db34b17674c2b8c8d142b194b6",
     "semantic_hash": "380fb7db34b17674c2b8c8d142b194b6"
   },
@@ -685,7 +685,7 @@
     "semantic_hash": "d9711adc2bd6db2498c4a71ac4b1e54a"
   },
   "/home/prokken-inc/Desktop/portfolio/src/lib/theme/cookies.ts": {
-    "mtime": 1785671367.885948,
+    "mtime": 1786095958.198142,
     "ast_hash": "0ffce95bc92e9b5179b5e2918a7cfed8",
     "semantic_hash": "0ffce95bc92e9b5179b5e2918a7cfed8"
   },
@@ -1368,56 +1368,6 @@
     "mtime": 1785252530.1201544,
     "ast_hash": "c72c761f221c340052013be59cd75784",
     "semantic_hash": "c72c761f221c340052013be59cd75784"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-animation/SKILL.md": {
-    "mtime": 1785253026.1124747,
-    "ast_hash": "889523a4b978de3a3b8c20028c9a87f4",
-    "semantic_hash": "889523a4b978de3a3b8c20028c9a87f4"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-fundamentals/SKILL.md": {
-    "mtime": 1785253026.1216176,
-    "ast_hash": "426f34a84e30434814b73b888677cd87",
-    "semantic_hash": "426f34a84e30434814b73b888677cd87"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-geometry/SKILL.md": {
-    "mtime": 1785253026.13023,
-    "ast_hash": "44f615adaf9af4da6200e2833088fc2b",
-    "semantic_hash": "44f615adaf9af4da6200e2833088fc2b"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-interaction/SKILL.md": {
-    "mtime": 1785253026.1388233,
-    "ast_hash": "f21d928de97c85b259a2441f600de054",
-    "semantic_hash": "f21d928de97c85b259a2441f600de054"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-lighting/SKILL.md": {
-    "mtime": 1785253026.1475337,
-    "ast_hash": "552d5331ad2f789fd75b98ac70b9f3d4",
-    "semantic_hash": "552d5331ad2f789fd75b98ac70b9f3d4"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-loaders/SKILL.md": {
-    "mtime": 1785253026.1569138,
-    "ast_hash": "de93ea2eca83756ca58c695121d3ccfe",
-    "semantic_hash": "de93ea2eca83756ca58c695121d3ccfe"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-materials/SKILL.md": {
-    "mtime": 1785253026.1653621,
-    "ast_hash": "ba143d4be6aa2d2534c90a81bff8fb82",
-    "semantic_hash": "ba143d4be6aa2d2534c90a81bff8fb82"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-postprocessing/SKILL.md": {
-    "mtime": 1785253026.1738465,
-    "ast_hash": "2b92954c287e43b638d55111179ac64b",
-    "semantic_hash": "2b92954c287e43b638d55111179ac64b"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-shaders/SKILL.md": {
-    "mtime": 1785253026.1823547,
-    "ast_hash": "fb7afc360f8f09f628f27bab103bc90f",
-    "semantic_hash": "fb7afc360f8f09f628f27bab103bc90f"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/threejs-textures/SKILL.md": {
-    "mtime": 1785253026.1913052,
-    "ast_hash": "a9f9e1949599617a5a803bcbc7afbad3",
-    "semantic_hash": "a9f9e1949599617a5a803bcbc7afbad3"
   },
   "/home/prokken-inc/Desktop/portfolio/.agents/skills/vercel-optimize/AGENTS.md": {
     "mtime": 1785253171.439698,
@@ -2120,9 +2070,9 @@
     "semantic_hash": "98087aedd18375666dbb093c859b2949"
   },
   "/home/prokken-inc/Desktop/portfolio/.github/copilot-instructions.md": {
-    "mtime": 1785481504.9906359,
-    "ast_hash": "b1b1ea3f0fe5f74dc91b34f8c56718ac",
-    "semantic_hash": "b1b1ea3f0fe5f74dc91b34f8c56718ac"
+    "mtime": 1786104546.7886634,
+    "ast_hash": "d6ae707d8073ae235f15af0ab3ddaf13",
+    "semantic_hash": "d6ae707d8073ae235f15af0ab3ddaf13"
   },
   "/home/prokken-inc/Desktop/portfolio/.github/instructions/blog-schemas.instructions.md": {
     "mtime": 1785251804.6763518,
@@ -2150,9 +2100,9 @@
     "semantic_hash": "cb66d817b73511ab0ee32cf53d5534b1"
   },
   "/home/prokken-inc/Desktop/portfolio/AGENTS.md": {
-    "mtime": 1785481504.9906359,
-    "ast_hash": "b1b1ea3f0fe5f74dc91b34f8c56718ac",
-    "semantic_hash": "b1b1ea3f0fe5f74dc91b34f8c56718ac"
+    "mtime": 1786104546.7886634,
+    "ast_hash": "d6ae707d8073ae235f15af0ab3ddaf13",
+    "semantic_hash": "d6ae707d8073ae235f15af0ab3ddaf13"
   },
   "/home/prokken-inc/Desktop/portfolio/HASIBUL_ISLAM_RESUME.md": {
     "mtime": 1785215034.0,
@@ -2160,9 +2110,9 @@
     "semantic_hash": "6fb7fef8e407dd591cfbe04649c3783a"
   },
   "/home/prokken-inc/Desktop/portfolio/PROJECT_CONTEXT.md": {
-    "mtime": 1785251896.8464649,
-    "ast_hash": "085dc2e17dbd1f501786a30690fe570f",
-    "semantic_hash": "085dc2e17dbd1f501786a30690fe570f"
+    "mtime": 1786104546.9766662,
+    "ast_hash": "d96732f48e23328e66e8cfcd0dd8658f",
+    "semantic_hash": "d96732f48e23328e66e8cfcd0dd8658f"
   },
   "/home/prokken-inc/Desktop/portfolio/README.md": {
     "mtime": 1786039474.781161,
@@ -2995,9 +2945,9 @@
     "semantic_hash": "7a01afa85cf919ea5ff355506cc339cb"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/blog/[slug]/page.tsx": {
-    "mtime": 1785665269.840579,
-    "ast_hash": "0e5ea406bcea6c7142d972793eeb8b22",
-    "semantic_hash": "0e5ea406bcea6c7142d972793eeb8b22"
+    "mtime": 1786110654.3749077,
+    "ast_hash": "e6ea2d108725a2f1e39838234b224a97",
+    "semantic_hash": "e6ea2d108725a2f1e39838234b224a97"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/blog/actions.ts": {
     "mtime": 1785650470.566757,
@@ -3005,9 +2955,9 @@
     "semantic_hash": "f0208f004b175129d63f8395a13b859a"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/blog/blog-infinite-list.tsx": {
-    "mtime": 1785656978.914944,
-    "ast_hash": "d0e438e5d7119bdb498de8efa5dcfca3",
-    "semantic_hash": "d0e438e5d7119bdb498de8efa5dcfca3"
+    "mtime": 1786109896.836653,
+    "ast_hash": "d77430a29d3efd49c875424555a9ec69",
+    "semantic_hash": "d77430a29d3efd49c875424555a9ec69"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/blog/category/[slug]/actions.ts": {
     "mtime": 1785652176.8332188,
@@ -3015,14 +2965,14 @@
     "semantic_hash": "1b12cd1815e1912495aa66ab1c7c1bf6"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/blog/category/[slug]/page.tsx": {
-    "mtime": 1785664273.2524338,
-    "ast_hash": "e039267b0776da3efa18746164084c73",
-    "semantic_hash": "e039267b0776da3efa18746164084c73"
+    "mtime": 1786107723.7344651,
+    "ast_hash": "5e97278af0500c43375f288589e745c3",
+    "semantic_hash": "5e97278af0500c43375f288589e745c3"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/blog/page.tsx": {
-    "mtime": 1786008802.5473392,
-    "ast_hash": "88f5227ffb14e517883e299039a604d2",
-    "semantic_hash": "88f5227ffb14e517883e299039a604d2"
+    "mtime": 1786107722.715452,
+    "ast_hash": "8b191baf5da11c5a6fe196d137db99d8",
+    "semantic_hash": "8b191baf5da11c5a6fe196d137db99d8"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/blog/tag/[slug]/actions.ts": {
     "mtime": 1785652176.8752196,
@@ -3030,9 +2980,9 @@
     "semantic_hash": "dae0cfa2e93c681b8c850cbc07439896"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/blog/tag/[slug]/page.tsx": {
-    "mtime": 1785664273.275752,
-    "ast_hash": "5e2b036ce3dad08eb68d2e42d05d28fa",
-    "semantic_hash": "5e2b036ce3dad08eb68d2e42d05d28fa"
+    "mtime": 1786107723.873467,
+    "ast_hash": "2868e7088fa33e02d9120dcec5a0a6b3",
+    "semantic_hash": "2868e7088fa33e02d9120dcec5a0a6b3"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/llms.txt/route.ts": {
     "mtime": 1785652523.3720694,
@@ -3040,9 +2990,9 @@
     "semantic_hash": "a052a275f6ec9202f95c19d6abc859bc"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/resume/page.tsx": {
-    "mtime": 1786008802.0966985,
-    "ast_hash": "26eb7ee0e25f25c84c8e84a81a80e5ba",
-    "semantic_hash": "26eb7ee0e25f25c84c8e84a81a80e5ba"
+    "mtime": 1786110654.3435638,
+    "ast_hash": "27f0de4a88f685505df21012a9080c7f",
+    "semantic_hash": "27f0de4a88f685505df21012a9080c7f"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/robots.ts": {
     "mtime": 1785652523.2535374,
@@ -3069,55 +3019,10 @@
     "ast_hash": "01bf368c4da07b5e1eb013e8a84b4ff5",
     "semantic_hash": "01bf368c4da07b5e1eb013e8a84b4ff5"
   },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/config.ts": {
-    "mtime": 1785994628.875539,
-    "ast_hash": "4405e62ee6be4daf9081fe9e4295d58a",
-    "semantic_hash": "4405e62ee6be4daf9081fe9e4295d58a"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/geometric-forms.tsx": {
-    "mtime": 1785657675.412355,
-    "ast_hash": "2e1b342cb86f8c49f8bbf1b7073c54bb",
-    "semantic_hash": "2e1b342cb86f8c49f8bbf1b7073c54bb"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/hero-scene.tsx": {
-    "mtime": 1785666907.5875525,
-    "ast_hash": "3b954ced67104371706127b0c3110c10",
-    "semantic_hash": "3b954ced67104371706127b0c3110c10"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/home-experience.tsx": {
-    "mtime": 1785672130.1497602,
-    "ast_hash": "b6752f728e51b8851083831f77a723e6",
-    "semantic_hash": "b6752f728e51b8851083831f77a723e6"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/hotspot-overlay.tsx": {
-    "mtime": 1785660578.4807594,
-    "ast_hash": "19c6134af526e7a57fc7aaac51aba9be",
-    "semantic_hash": "19c6134af526e7a57fc7aaac51aba9be"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/hotspot.tsx": {
-    "mtime": 1785657675.8160913,
-    "ast_hash": "448a0ccb35e46e3c57f89d4279f9a1cd",
-    "semantic_hash": "448a0ccb35e46e3c57f89d4279f9a1cd"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/mobile-fallback.tsx": {
-    "mtime": 1786024703.3010542,
-    "ast_hash": "0bdf51e65c4738976cd7ce3af55a60bf",
-    "semantic_hash": "0bdf51e65c4738976cd7ce3af55a60bf"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/particle-field.tsx": {
-    "mtime": 1785657675.396773,
-    "ast_hash": "aee62498582142e640760977938cac6f",
-    "semantic_hash": "aee62498582142e640760977938cac6f"
-  },
   "/home/prokken-inc/Desktop/portfolio/src/components/site-header.tsx": {
-    "mtime": 1786093672.3112767,
-    "ast_hash": "bd3207f90da41cc20b2ff192d1f8d685",
-    "semantic_hash": "bd3207f90da41cc20b2ff192d1f8d685"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/lib/capabilities.ts": {
-    "mtime": 1786025629.7105703,
-    "ast_hash": "01682177fb12ee39f0c97ff00f67a1a6",
-    "semantic_hash": "01682177fb12ee39f0c97ff00f67a1a6"
+    "mtime": 1786107723.632464,
+    "ast_hash": "a2d9e7136b8359b54540c89e1659b927",
+    "semantic_hash": "a2d9e7136b8359b54540c89e1659b927"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/brand-badge.tsx": {
     "mtime": 1786039474.902853,
@@ -3174,30 +3079,15 @@
     "ast_hash": "5b8fa3cbc632fcd685928c3e870a2d39",
     "semantic_hash": "5b8fa3cbc632fcd685928c3e870a2d39"
   },
-  "/home/prokken-inc/Desktop/portfolio/src/components/ambient-stars-canvas.tsx": {
-    "mtime": 1785675966.1665866,
-    "ast_hash": "87a96d45b1fcdb386432f0f673751003",
-    "semantic_hash": "87a96d45b1fcdb386432f0f673751003"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/ambient-stars.tsx": {
-    "mtime": 1785675966.2778842,
-    "ast_hash": "275e05966b1534eceb898b8afdda36ba",
-    "semantic_hash": "275e05966b1534eceb898b8afdda36ba"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/hero-loader.tsx": {
-    "mtime": 1785672130.1108897,
-    "ast_hash": "02ab7906b44df837e5f5b65bb47332e9",
-    "semantic_hash": "02ab7906b44df837e5f5b65bb47332e9"
-  },
   "/home/prokken-inc/Desktop/portfolio/src/components/resume-viewer-client.tsx": {
     "mtime": 1785665729.1780803,
     "ast_hash": "c2dcae8f48c9d72a9a930b8d10a69af1",
     "semantic_hash": "c2dcae8f48c9d72a9a930b8d10a69af1"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/resume-viewer.tsx": {
-    "mtime": 1785957277.109628,
-    "ast_hash": "dd75f9b4f8d25a2a9eff6226432edbae",
-    "semantic_hash": "dd75f9b4f8d25a2a9eff6226432edbae"
+    "mtime": 1786110892.6456375,
+    "ast_hash": "05b552e56d70b43962eda9ff178c04b7",
+    "semantic_hash": "05b552e56d70b43962eda9ff178c04b7"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/star-backdrop.tsx": {
     "mtime": 1786085190.683539,
@@ -3250,29 +3140,29 @@
     "semantic_hash": "3bd43ca343e27338d8aaafa64cc409d9"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/experience/[slug]/page.tsx": {
-    "mtime": 1785994628.7257211,
-    "ast_hash": "bc74e864d3c8cae714337e47f948f867",
-    "semantic_hash": "bc74e864d3c8cae714337e47f948f867"
+    "mtime": 1786110654.4320474,
+    "ast_hash": "c18cfa85a2326e80c18e559ee001c8c9",
+    "semantic_hash": "c18cfa85a2326e80c18e559ee001c8c9"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/experience/page.tsx": {
-    "mtime": 1786008802.3237023,
-    "ast_hash": "e729ac15a403b21d55ded145b1426f41",
-    "semantic_hash": "e729ac15a403b21d55ded145b1426f41"
+    "mtime": 1786107722.8204532,
+    "ast_hash": "2b7ddfabbfa397e12ca68a1f70c194ad",
+    "semantic_hash": "2b7ddfabbfa397e12ca68a1f70c194ad"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/projects/[slug]/page.tsx": {
-    "mtime": 1785994628.6797233,
-    "ast_hash": "356a1a4222b666fa0176017074cd92f1",
-    "semantic_hash": "356a1a4222b666fa0176017074cd92f1"
+    "mtime": 1786110654.3639073,
+    "ast_hash": "5bf6705d67fe891df63ce81dff51d127",
+    "semantic_hash": "5bf6705d67fe891df63ce81dff51d127"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/projects/page.tsx": {
-    "mtime": 1786008802.4764512,
-    "ast_hash": "7507978ec779999d870677fe12e134b4",
-    "semantic_hash": "7507978ec779999d870677fe12e134b4"
+    "mtime": 1786109896.5526493,
+    "ast_hash": "7914436e066de615d2e466a55d825818",
+    "semantic_hash": "7914436e066de615d2e466a55d825818"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/skills/page.tsx": {
-    "mtime": 1786008802.6604242,
-    "ast_hash": "7c52ca3f0ada0627ddeb0f4ff2746b84",
-    "semantic_hash": "7c52ca3f0ada0627ddeb0f4ff2746b84"
+    "mtime": 1786107723.4994621,
+    "ast_hash": "08da4a92749143b837d5d1b1e2261c4c",
+    "semantic_hash": "08da4a92749143b837d5d1b1e2261c4c"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/dashboard/experience-manager.tsx": {
     "mtime": 1786018036.1753924,
@@ -3300,9 +3190,9 @@
     "semantic_hash": "5422f86dae048ac5ddd4e5191e1aa2f2"
   },
   "/home/prokken-inc/Desktop/portfolio/src/lib/db/queries/experience.ts": {
-    "mtime": 1785957276.503331,
-    "ast_hash": "5ae06b3716febabc28a7a541fe24f585",
-    "semantic_hash": "5ae06b3716febabc28a7a541fe24f585"
+    "mtime": 1786104547.0176666,
+    "ast_hash": "55180d7967735b7a59da695a794c5a42",
+    "semantic_hash": "55180d7967735b7a59da695a794c5a42"
   },
   "/home/prokken-inc/Desktop/portfolio/src/lib/db/queries/projects.ts": {
     "mtime": 1785955490.8489864,
@@ -3444,16 +3334,6 @@
     "ast_hash": "d534200083050e4cb2144c44d9149528",
     "semantic_hash": "d534200083050e4cb2144c44d9149528"
   },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/scroll-world/references/knockout.py": {
-    "mtime": 1786078368.0336323,
-    "ast_hash": "b156ea96e4e61c25fec78d2cc36d4252",
-    "semantic_hash": "b156ea96e4e61c25fec78d2cc36d4252"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/scroll-world/references/scrub-engine.js": {
-    "mtime": 1786078368.0336654,
-    "ast_hash": "4007c855d1b2fb835d8dc9d3f4fff0ad",
-    "semantic_hash": "4007c855d1b2fb835d8dc9d3f4fff0ad"
-  },
   "/home/prokken-inc/Desktop/portfolio/scripts/scan-secrets.sh": {
     "mtime": 1786039474.467157,
     "ast_hash": "9897e425eb432dd3bf4e17e92d176f30",
@@ -3479,26 +3359,6 @@
     "ast_hash": "8e18611045b79519a606798804c36472",
     "semantic_hash": "8e18611045b79519a606798804c36472"
   },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/scroll-world/SKILL.md": {
-    "mtime": 1786078368.0334668,
-    "ast_hash": "efc0109c11f1940af8bf3d52513dc2bf",
-    "semantic_hash": "efc0109c11f1940af8bf3d52513dc2bf"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/scroll-world/references/index-template.html": {
-    "mtime": 1786078368.033611,
-    "ast_hash": "c11603666bf1d4edcde83885385a1158",
-    "semantic_hash": "c11603666bf1d4edcde83885385a1158"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/scroll-world/references/pipeline.md": {
-    "mtime": 1786078368.0336323,
-    "ast_hash": "103218dff7435a3f940f34ea99b71a18",
-    "semantic_hash": "103218dff7435a3f940f34ea99b71a18"
-  },
-  "/home/prokken-inc/Desktop/portfolio/.agents/skills/scroll-world/references/prompts.md": {
-    "mtime": 1786078368.0336323,
-    "ast_hash": "7a59d198f601208b7f6b48f87cca9f37",
-    "semantic_hash": "7a59d198f601208b7f6b48f87cca9f37"
-  },
   "/home/prokken-inc/Desktop/portfolio/public/brand/avatar.jpg": {
     "mtime": 1785497892.291559,
     "ast_hash": "910d8ca04f358d2fd121ba13cd1c9fca",
@@ -3509,25 +3369,15 @@
     "ast_hash": "559b717bc77b487d390caa8cac069f37",
     "semantic_hash": "559b717bc77b487d390caa8cac069f37"
   },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/hero-mesh-gate.tsx": {
-    "mtime": 1786085188.9167557,
-    "ast_hash": "a196f504d53e3487a116d38125c7abfa",
-    "semantic_hash": "a196f504d53e3487a116d38125c7abfa"
-  },
-  "/home/prokken-inc/Desktop/portfolio/src/components/home/hero-mesh.tsx": {
-    "mtime": 1786085188.8052876,
-    "ast_hash": "0b5762f48be38d3447a62eb3f2b14717",
-    "semantic_hash": "0b5762f48be38d3447a62eb3f2b14717"
-  },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/hero-reveal.tsx": {
     "mtime": 1786085189.0337396,
     "ast_hash": "eedfba7955ca3597654a97bcb38dc616",
     "semantic_hash": "eedfba7955ca3597654a97bcb38dc616"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/hero.tsx": {
-    "mtime": 1786093672.0684664,
-    "ast_hash": "b118a9930602647b8f18489ca5d95da9",
-    "semantic_hash": "b118a9930602647b8f18489ca5d95da9"
+    "mtime": 1786109895.9650009,
+    "ast_hash": "710a5ff05f734d434de40a4ef99971a5",
+    "semantic_hash": "710a5ff05f734d434de40a4ef99971a5"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/scroll-reveal.tsx": {
     "mtime": 1786085188.7557533,
@@ -3535,38 +3385,843 @@
     "semantic_hash": "06e8e10ba8ba15910b1d9d01477b2ff8"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-contact.tsx": {
-    "mtime": 1786095041.2552803,
-    "ast_hash": "7a64869b1766e85e787d6619080cfe2d",
-    "semantic_hash": "7a64869b1766e85e787d6619080cfe2d"
+    "mtime": 1786110247.7283313,
+    "ast_hash": "684d5f8889ce7d4b3acc604a7eb538f3",
+    "semantic_hash": "684d5f8889ce7d4b3acc604a7eb538f3"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-featured-projects.tsx": {
-    "mtime": 1786095040.7963123,
-    "ast_hash": "a0bf9dfb5272354575561e458f67941a",
-    "semantic_hash": "a0bf9dfb5272354575561e458f67941a"
+    "mtime": 1786107722.0914438,
+    "ast_hash": "818380b3ab0fd3fa14ec603d89548bab",
+    "semantic_hash": "818380b3ab0fd3fa14ec603d89548bab"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-featured-writing.tsx": {
-    "mtime": 1786095040.9101903,
-    "ast_hash": "5fcbb0a07617dc38e56f902d11241257",
-    "semantic_hash": "5fcbb0a07617dc38e56f902d11241257"
+    "mtime": 1786109896.4406478,
+    "ast_hash": "73ca580955b54afd66cf4b9cbfffaf37",
+    "semantic_hash": "73ca580955b54afd66cf4b9cbfffaf37"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-now.tsx": {
-    "mtime": 1786095041.198297,
-    "ast_hash": "1aeaff3a5878e4197d55fc374e97a39d",
-    "semantic_hash": "1aeaff3a5878e4197d55fc374e97a39d"
+    "mtime": 1786109896.447049,
+    "ast_hash": "c3064d27ac3f6b4d0f96e3bb9668744a",
+    "semantic_hash": "c3064d27ac3f6b4d0f96e3bb9668744a"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-receipts.tsx": {
-    "mtime": 1786095041.027048,
-    "ast_hash": "27284b91c50e1b635fa5549ed072c20c",
-    "semantic_hash": "27284b91c50e1b635fa5549ed072c20c"
+    "mtime": 1786107722.5476584,
+    "ast_hash": "563b2b0b52f7b25946a963479a733d0b",
+    "semantic_hash": "563b2b0b52f7b25946a963479a733d0b"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-track-record.tsx": {
-    "mtime": 1786093672.1834288,
-    "ast_hash": "ff49553ecd1257a926d7529f0c6627f8",
-    "semantic_hash": "ff49553ecd1257a926d7529f0c6627f8"
+    "mtime": 1786110044.7876263,
+    "ast_hash": "e2f86e66f6a128e0bdcea0b5301852b1",
+    "semantic_hash": "e2f86e66f6a128e0bdcea0b5301852b1"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/_shared.tsx": {
-    "mtime": 1786095040.7460608,
-    "ast_hash": "c7eb94836d0d0beec675ae6d0c0a9489",
-    "semantic_hash": "c7eb94836d0d0beec675ae6d0c0a9489"
+    "mtime": 1786110654.0690994,
+    "ast_hash": "e35ae8a885d06d6175540108c8241f82",
+    "semantic_hash": "e35ae8a885d06d6175540108c8241f82"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/command-metadata.json": {
+    "mtime": 1786105312.3521414,
+    "ast_hash": "86266801588636b11e00372754118529",
+    "semantic_hash": "86266801588636b11e00372754118529"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/concept-seed.mjs": {
+    "mtime": 1786105312.3521748,
+    "ast_hash": "e9299a6e96bd19fe6f3b1783fe7b3676",
+    "semantic_hash": "e9299a6e96bd19fe6f3b1783fe7b3676"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/context-signals.mjs": {
+    "mtime": 1786105312.3522005,
+    "ast_hash": "eea43de334579998b505bdf4b116996a",
+    "semantic_hash": "eea43de334579998b505bdf4b116996a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/context.mjs": {
+    "mtime": 1786105312.3522232,
+    "ast_hash": "3c10ba3d9477e80e990422152294034c",
+    "semantic_hash": "3c10ba3d9477e80e990422152294034c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/critique-storage.mjs": {
+    "mtime": 1786105312.3522232,
+    "ast_hash": "1e04e63603457bb5fc94cb96b02509a5",
+    "semantic_hash": "1e04e63603457bb5fc94cb96b02509a5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detect-csp.mjs": {
+    "mtime": 1786105312.352254,
+    "ast_hash": "02c5a9a8ad69f87d23af72bf580fd3f4",
+    "semantic_hash": "02c5a9a8ad69f87d23af72bf580fd3f4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detect.mjs": {
+    "mtime": 1786105312.3522787,
+    "ast_hash": "11dbeb9341477d06d1a24c3ad1f37ac9",
+    "semantic_hash": "11dbeb9341477d06d1a24c3ad1f37ac9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/browser/injected/index.mjs": {
+    "mtime": 1786105312.3622916,
+    "ast_hash": "980291f03de6cb1db37fa2a83f7b268f",
+    "semantic_hash": "980291f03de6cb1db37fa2a83f7b268f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/cli/main.mjs": {
+    "mtime": 1786105312.361048,
+    "ast_hash": "82d40e51a9848f7a77f5671cd13a324e",
+    "semantic_hash": "82d40e51a9848f7a77f5671cd13a324e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/design-system.mjs": {
+    "mtime": 1786105312.3538861,
+    "ast_hash": "465f1b73aecb252b9775d3bee35c9b58",
+    "semantic_hash": "465f1b73aecb252b9775d3bee35c9b58"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/detect-antipatterns-browser.js": {
+    "mtime": 1786105312.3540287,
+    "ast_hash": "9e4a6d17a7f4e2e7728a999e42485d42",
+    "semantic_hash": "9e4a6d17a7f4e2e7728a999e42485d42"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/detect-antipatterns.mjs": {
+    "mtime": 1786105312.3539033,
+    "ast_hash": "c461a90987605eceb0b76779340124ec",
+    "semantic_hash": "c461a90987605eceb0b76779340124ec"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/engines/browser/detect-url.mjs": {
+    "mtime": 1786105312.3622916,
+    "ast_hash": "a1fcdc9ee4b3ff3c21d93a249945a1bc",
+    "semantic_hash": "a1fcdc9ee4b3ff3c21d93a249945a1bc"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/engines/regex/detect-text.mjs": {
+    "mtime": 1786105312.3622916,
+    "ast_hash": "9b720739e344a26f4e6411b636924494",
+    "semantic_hash": "9b720739e344a26f4e6411b636924494"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/engines/static-html/css-cascade.mjs": {
+    "mtime": 1786105312.3623943,
+    "ast_hash": "f30d3f79fbc0303ed1c1ff6897f32f07",
+    "semantic_hash": "f30d3f79fbc0303ed1c1ff6897f32f07"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/engines/static-html/detect-html.mjs": {
+    "mtime": 1786105312.3622916,
+    "ast_hash": "8a9ba007c95896f03273c320156fd72e",
+    "semantic_hash": "8a9ba007c95896f03273c320156fd72e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/engines/visual/screenshot-contrast.mjs": {
+    "mtime": 1786105312.3623943,
+    "ast_hash": "6312c6dbc048c4445f50e69f167a297d",
+    "semantic_hash": "6312c6dbc048c4445f50e69f167a297d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/findings.mjs": {
+    "mtime": 1786105312.3539033,
+    "ast_hash": "b90605bc2e93b95e4b73c0ef89cd1b57",
+    "semantic_hash": "b90605bc2e93b95e4b73c0ef89cd1b57"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/node/file-system.mjs": {
+    "mtime": 1786105312.361122,
+    "ast_hash": "406a7f74de31be962d589e320c5bd2bd",
+    "semantic_hash": "406a7f74de31be962d589e320c5bd2bd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/profile/profiler.mjs": {
+    "mtime": 1786105312.361122,
+    "ast_hash": "88c5d2027852842be578edf349a0f9c8",
+    "semantic_hash": "88c5d2027852842be578edf349a0f9c8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/registry/antipatterns.mjs": {
+    "mtime": 1786105312.3611853,
+    "ast_hash": "ebed42aacb6ca0772ec7217e8eee4049",
+    "semantic_hash": "ebed42aacb6ca0772ec7217e8eee4049"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/rules/checks.mjs": {
+    "mtime": 1786105312.3613718,
+    "ast_hash": "86480275452e18a68cf434e36f735f51",
+    "semantic_hash": "86480275452e18a68cf434e36f735f51"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/shared/color.mjs": {
+    "mtime": 1786105312.361289,
+    "ast_hash": "2363d500ccf490f9ff285119b613276d",
+    "semantic_hash": "2363d500ccf490f9ff285119b613276d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/shared/constants.mjs": {
+    "mtime": 1786105312.361289,
+    "ast_hash": "0920d754084e96e7590afda3c0ac1a2c",
+    "semantic_hash": "0920d754084e96e7590afda3c0ac1a2c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/shared/fonts.mjs": {
+    "mtime": 1786105312.3613718,
+    "ast_hash": "5f06c512cc5316fb3f4f7116e33c7765",
+    "semantic_hash": "5f06c512cc5316fb3f4f7116e33c7765"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/shared/inline-ignores.mjs": {
+    "mtime": 1786105312.3613179,
+    "ast_hash": "6e3e7e639661186078ea93a849f57c64",
+    "semantic_hash": "6e3e7e639661186078ea93a849f57c64"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/detector/shared/page.mjs": {
+    "mtime": 1786105312.3613718,
+    "ast_hash": "ab3a243b690b4f70c4ef639cdf970d82",
+    "semantic_hash": "ab3a243b690b4f70c4ef639cdf970d82"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/doctor.mjs": {
+    "mtime": 1786105312.3523164,
+    "ast_hash": "7d6f1f53304ebb96294fd856a96212fa",
+    "semantic_hash": "7d6f1f53304ebb96294fd856a96212fa"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/embed-prompt.mjs": {
+    "mtime": 1786105312.3522995,
+    "ast_hash": "dc1922fa798c602c4452c731fbade4b0",
+    "semantic_hash": "dc1922fa798c602c4452c731fbade4b0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/generate-image.mjs": {
+    "mtime": 1786105312.3523164,
+    "ast_hash": "2afb6a7092f884ab3d138aca274c60f5",
+    "semantic_hash": "2afb6a7092f884ab3d138aca274c60f5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/hook-admin.mjs": {
+    "mtime": 1786105312.3523438,
+    "ast_hash": "e8da891d9c7962ff3355e9e9e1954ea2",
+    "semantic_hash": "e8da891d9c7962ff3355e9e9e1954ea2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/hook-before-edit.mjs": {
+    "mtime": 1786105312.3523757,
+    "ast_hash": "4e1cdc1219b5ac19c4c8a8a8c87694f9",
+    "semantic_hash": "4e1cdc1219b5ac19c4c8a8a8c87694f9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/hook-lib.mjs": {
+    "mtime": 1786105312.3523977,
+    "ast_hash": "07b14f4cc13e21e19f7d38c5df30fd18",
+    "semantic_hash": "07b14f4cc13e21e19f7d38c5df30fd18"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/hook.mjs": {
+    "mtime": 1786105312.3523977,
+    "ast_hash": "7cac30bc9f0f035b4d17a11635e990c6",
+    "semantic_hash": "7cac30bc9f0f035b4d17a11635e990c6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/artifact-schema.mjs": {
+    "mtime": 1786105312.353994,
+    "ast_hash": "0ba59a6644319eb1f742f9a5c4d82e0d",
+    "semantic_hash": "0ba59a6644319eb1f742f9a5c4d82e0d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/composition-catalog.mjs": {
+    "mtime": 1786105312.3539739,
+    "ast_hash": "2d2bad55657d9b362d1b19e4a94851c2",
+    "semantic_hash": "2d2bad55657d9b362d1b19e4a94851c2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/concept-catalog.mjs": {
+    "mtime": 1786105312.353994,
+    "ast_hash": "bd98e936ba15b93f5849a8a0821e50d4",
+    "semantic_hash": "bd98e936ba15b93f5849a8a0821e50d4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/design-parser.mjs": {
+    "mtime": 1786105312.3540287,
+    "ast_hash": "ee8d4fe6ab2228c3c84a7e27218c0b6d",
+    "semantic_hash": "ee8d4fe6ab2228c3c84a7e27218c0b6d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/impeccable-config.mjs": {
+    "mtime": 1786105312.3540547,
+    "ast_hash": "284390b7e542f779338ffc0a735ccc4d",
+    "semantic_hash": "284390b7e542f779338ffc0a735ccc4d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/impeccable-paths.mjs": {
+    "mtime": 1786105312.354121,
+    "ast_hash": "293c42942d0bb3de172bf8322cc41280",
+    "semantic_hash": "293c42942d0bb3de172bf8322cc41280"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/is-generated.mjs": {
+    "mtime": 1786105312.3540547,
+    "ast_hash": "edd718b1a4737edbf9631ff7f6f512ef",
+    "semantic_hash": "edd718b1a4737edbf9631ff7f6f512ef"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/open-system-browser.mjs": {
+    "mtime": 1786105312.3540947,
+    "ast_hash": "717c4771ca33eb62aa0aa14f0d99267a",
+    "semantic_hash": "717c4771ca33eb62aa0aa14f0d99267a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/provider.mjs": {
+    "mtime": 1786105312.3541417,
+    "ast_hash": "75465ff9e9c3a091317e2d78a6991083",
+    "semantic_hash": "75465ff9e9c3a091317e2d78a6991083"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/roll-selection.mjs": {
+    "mtime": 1786105312.354121,
+    "ast_hash": "ba0bd7ce84f190414659c7e17a98c4e1",
+    "semantic_hash": "ba0bd7ce84f190414659c7e17a98c4e1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/staleness-deep.mjs": {
+    "mtime": 1786105312.3542047,
+    "ast_hash": "f5b09efc05ab61b57aedd4adaaa5b7d1",
+    "semantic_hash": "f5b09efc05ab61b57aedd4adaaa5b7d1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/staleness-notice.mjs": {
+    "mtime": 1786105312.3541417,
+    "ast_hash": "7ed2e280a62c23321c06f9c65ef80dc2",
+    "semantic_hash": "7ed2e280a62c23321c06f9c65ef80dc2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/staleness.mjs": {
+    "mtime": 1786105312.3541853,
+    "ast_hash": "42129f04441247498af59cbcbdcac3c4",
+    "semantic_hash": "42129f04441247498af59cbcbdcac3c4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/surface-briefs.mjs": {
+    "mtime": 1786105312.3541853,
+    "ast_hash": "c543b9067f5aa418616a2ec5cc9b8835",
+    "semantic_hash": "c543b9067f5aa418616a2ec5cc9b8835"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/target-args.mjs": {
+    "mtime": 1786105312.3542647,
+    "ast_hash": "442e04a03b6ba43330a859a537a956b2",
+    "semantic_hash": "442e04a03b6ba43330a859a537a956b2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/target-slug.mjs": {
+    "mtime": 1786105312.3542047,
+    "ast_hash": "505068be5e3a4eac97b29e44f8eef611",
+    "semantic_hash": "505068be5e3a4eac97b29e44f8eef611"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/lib/template-extensions.mjs": {
+    "mtime": 1786105312.354248,
+    "ast_hash": "bc11a020a962f77681a365694adc5df5",
+    "semantic_hash": "bc11a020a962f77681a365694adc5df5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-accept.mjs": {
+    "mtime": 1786105312.3524854,
+    "ast_hash": "c199c44e707d26ea22eda07ce4985849",
+    "semantic_hash": "c199c44e707d26ea22eda07ce4985849"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-browser-dom.js": {
+    "mtime": 1786105312.3524349,
+    "ast_hash": "b96db5b10874366237a40305c5dc72a1",
+    "semantic_hash": "b96db5b10874366237a40305c5dc72a1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-browser-session.js": {
+    "mtime": 1786105312.3524854,
+    "ast_hash": "5dec3dae6158050d69762fb79facaf48",
+    "semantic_hash": "5dec3dae6158050d69762fb79facaf48"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-browser.js": {
+    "mtime": 1786105312.3527148,
+    "ast_hash": "bb17634a865ebc35e762c8dc17f64f25",
+    "semantic_hash": "bb17634a865ebc35e762c8dc17f64f25"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-commit-manual-edits.mjs": {
+    "mtime": 1786105312.352521,
+    "ast_hash": "49b8219699a31d6c1977aaea812d87ae",
+    "semantic_hash": "49b8219699a31d6c1977aaea812d87ae"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-complete.mjs": {
+    "mtime": 1786105312.3525734,
+    "ast_hash": "6246b42faf5f1f966550c9b2167c66a7",
+    "semantic_hash": "6246b42faf5f1f966550c9b2167c66a7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-copy-edit-agent.mjs": {
+    "mtime": 1786105312.3525484,
+    "ast_hash": "1c4926b56d5442775dab0138bf71a790",
+    "semantic_hash": "1c4926b56d5442775dab0138bf71a790"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-discard-manual-edits.mjs": {
+    "mtime": 1786105312.352614,
+    "ast_hash": "bbd49a16f77178fc8e778759653dd4c5",
+    "semantic_hash": "bbd49a16f77178fc8e778759653dd4c5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-inject.mjs": {
+    "mtime": 1786105312.3526363,
+    "ast_hash": "d9dd1e2e6c0de1837225cb93f270f116",
+    "semantic_hash": "d9dd1e2e6c0de1837225cb93f270f116"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-insert.mjs": {
+    "mtime": 1786105312.3526363,
+    "ast_hash": "b4cd69efe2020c85877b5b5b38e3f30b",
+    "semantic_hash": "b4cd69efe2020c85877b5b5b38e3f30b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-manual-edit-evidence.mjs": {
+    "mtime": 1786105312.3526642,
+    "ast_hash": "2279d4132eac2ee253829e333e313c6a",
+    "semantic_hash": "2279d4132eac2ee253829e333e313c6a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-poll.mjs": {
+    "mtime": 1786105312.3527334,
+    "ast_hash": "45385ff7dcbc2daffd9fd188ea760c41",
+    "semantic_hash": "45385ff7dcbc2daffd9fd188ea760c41"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-resume.mjs": {
+    "mtime": 1786105312.3527148,
+    "ast_hash": "ea1f0127ec7fcc8a1f108c31cb4797f9",
+    "semantic_hash": "ea1f0127ec7fcc8a1f108c31cb4797f9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-server.mjs": {
+    "mtime": 1786105312.3527334,
+    "ast_hash": "cddfd4de7e4f8a017207f1cc8f09c612",
+    "semantic_hash": "cddfd4de7e4f8a017207f1cc8f09c612"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-status.mjs": {
+    "mtime": 1786105312.3527973,
+    "ast_hash": "bcf7b5cf7e8a7ec0e8776595be37b5e7",
+    "semantic_hash": "bcf7b5cf7e8a7ec0e8776595be37b5e7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-target.mjs": {
+    "mtime": 1786105312.3527973,
+    "ast_hash": "7a25beda7cdc4c5a6eb2a7f135ec50fd",
+    "semantic_hash": "7a25beda7cdc4c5a6eb2a7f135ec50fd"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live-wrap.mjs": {
+    "mtime": 1786105312.3528416,
+    "ast_hash": "94ae6977e51e295d24b6b3c9cf8466cb",
+    "semantic_hash": "94ae6977e51e295d24b6b3c9cf8466cb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live.mjs": {
+    "mtime": 1786105312.3528416,
+    "ast_hash": "3be9d4a14da6dd0b0cdaec56fd6b3343",
+    "semantic_hash": "3be9d4a14da6dd0b0cdaec56fd6b3343"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/accept-css.mjs": {
+    "mtime": 1786105312.3542647,
+    "ast_hash": "efeaeeed9a42c9fc37673b8ab64328c6",
+    "semantic_hash": "efeaeeed9a42c9fc37673b8ab64328c6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/accept-verify.mjs": {
+    "mtime": 1786105312.3542647,
+    "ast_hash": "ebe18c2a8c13ef4e249d64553dbe02c4",
+    "semantic_hash": "ebe18c2a8c13ef4e249d64553dbe02c4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/browser-script-parts.mjs": {
+    "mtime": 1786105312.3542995,
+    "ast_hash": "78605faf7b38df497ab187c1e1139f3e",
+    "semantic_hash": "78605faf7b38df497ab187c1e1139f3e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/completion.mjs": {
+    "mtime": 1786105312.3543158,
+    "ast_hash": "8f22aa2c6e51f33aa445658462ff4bfb",
+    "semantic_hash": "8f22aa2c6e51f33aa445658462ff4bfb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/event-validation.mjs": {
+    "mtime": 1786105312.3543158,
+    "ast_hash": "2f21d11205a6d3df47181c68673b7b79",
+    "semantic_hash": "2f21d11205a6d3df47181c68673b7b79"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/astro.mjs": {
+    "mtime": 1786105312.3614483,
+    "ast_hash": "a653b6154999b2ae0d7862ca84c7694c",
+    "semantic_hash": "a653b6154999b2ae0d7862ca84c7694c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/detect-utils.mjs": {
+    "mtime": 1786105312.3614757,
+    "ast_hash": "47f463a20dab50f0eb32c5fa960a62b2",
+    "semantic_hash": "47f463a20dab50f0eb32c5fa960a62b2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/index.mjs": {
+    "mtime": 1786105312.3614483,
+    "ast_hash": "de225d7e3a49cca7e9670a18c658b198",
+    "semantic_hash": "de225d7e3a49cca7e9670a18c658b198"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/journal.mjs": {
+    "mtime": 1786105312.3615272,
+    "ast_hash": "5d56933db7b02ff211cfc2e96fc256cc",
+    "semantic_hash": "5d56933db7b02ff211cfc2e96fc256cc"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/nextjs.mjs": {
+    "mtime": 1786105312.3615499,
+    "ast_hash": "50f09c81e65d36ceaa1f7c32906332a3",
+    "semantic_hash": "50f09c81e65d36ceaa1f7c32906332a3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/nuxt.mjs": {
+    "mtime": 1786105312.3615499,
+    "ast_hash": "d934b76a7674870ecd6e31df0187fea9",
+    "semantic_hash": "d934b76a7674870ecd6e31df0187fea9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/script-src.mjs": {
+    "mtime": 1786105312.3615272,
+    "ast_hash": "f33803e736cddc2e6e775dda04eb9a09",
+    "semantic_hash": "f33803e736cddc2e6e775dda04eb9a09"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/static-html.mjs": {
+    "mtime": 1786105312.3616016,
+    "ast_hash": "14237b5b54b7d10808f443007e607cfa",
+    "semantic_hash": "14237b5b54b7d10808f443007e607cfa"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/sveltekit.mjs": {
+    "mtime": 1786105312.3616242,
+    "ast_hash": "e081819582e43bbece47a75558853636",
+    "semantic_hash": "e081819582e43bbece47a75558853636"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/tag-strategy.mjs": {
+    "mtime": 1786105312.3616242,
+    "ast_hash": "4fd13d488fa69ed28f9b4665682f3f4f",
+    "semantic_hash": "4fd13d488fa69ed28f9b4665682f3f4f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/tanstack-start.mjs": {
+    "mtime": 1786105312.3616242,
+    "ast_hash": "f6d6572bb85bf026d3629e54d9b8072e",
+    "semantic_hash": "f6d6572bb85bf026d3629e54d9b8072e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/frameworks/vite-generic.mjs": {
+    "mtime": 1786105312.3616664,
+    "ast_hash": "277fcfd789e8d8ea438e4697af88fa8d",
+    "semantic_hash": "277fcfd789e8d8ea438e4697af88fa8d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/generation-preflight.mjs": {
+    "mtime": 1786105312.3543758,
+    "ast_hash": "17ccaa20b79d36e3b6ae782ab6e937d6",
+    "semantic_hash": "17ccaa20b79d36e3b6ae782ab6e937d6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/insert-ui.mjs": {
+    "mtime": 1786105312.3543575,
+    "ast_hash": "b6c5c82e14218c0c1b1e66f0851bff3f",
+    "semantic_hash": "b6c5c82e14218c0c1b1e66f0851bff3f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/instructions.mjs": {
+    "mtime": 1786105312.3543978,
+    "ast_hash": "8f21641dcf8f1a9f86b545f20e69b496",
+    "semantic_hash": "8f21641dcf8f1a9f86b545f20e69b496"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/manual-apply.mjs": {
+    "mtime": 1786105312.3543758,
+    "ast_hash": "043d0a1a7a4a373178648502bbe7da81",
+    "semantic_hash": "043d0a1a7a4a373178648502bbe7da81"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/manual-edit-routes.mjs": {
+    "mtime": 1786105312.3544397,
+    "ast_hash": "5f801f9370461d1faa9ae4cde85a96be",
+    "semantic_hash": "5f801f9370461d1faa9ae4cde85a96be"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/manual-edits-buffer.mjs": {
+    "mtime": 1786105312.3544157,
+    "ast_hash": "a36834f2a77dd6a81ee324ef4f6f8baa",
+    "semantic_hash": "a36834f2a77dd6a81ee324ef4f6f8baa"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/poll-lanes.mjs": {
+    "mtime": 1786105312.3544397,
+    "ast_hash": "4005c93bf0be4681a805f70e19a9630d",
+    "semantic_hash": "4005c93bf0be4681a805f70e19a9630d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/roots.mjs": {
+    "mtime": 1786105312.3598015,
+    "ast_hash": "d4fd98561c64f1023eb222584a352d95",
+    "semantic_hash": "d4fd98561c64f1023eb222584a352d95"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/session-store.mjs": {
+    "mtime": 1786105312.354476,
+    "ast_hash": "cf715cc2406360c4b8303290a0a6b2c5",
+    "semantic_hash": "cf715cc2406360c4b8303290a0a6b2c5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/source-lock.mjs": {
+    "mtime": 1786105312.3598015,
+    "ast_hash": "8683d8ae7634519b542fde4c0fd64cb8",
+    "semantic_hash": "8683d8ae7634519b542fde4c0fd64cb8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/source-search.mjs": {
+    "mtime": 1786105312.3598015,
+    "ast_hash": "2cfa4372f6401aa0c367949c7944e389",
+    "semantic_hash": "2cfa4372f6401aa0c367949c7944e389"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/svelte-ast.mjs": {
+    "mtime": 1786105312.3598015,
+    "ast_hash": "471660a535258cb4a805bf704122d2b1",
+    "semantic_hash": "471660a535258cb4a805bf704122d2b1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/svelte-component.mjs": {
+    "mtime": 1786105312.3598735,
+    "ast_hash": "d46ca6f13e87bab0b7bcc55ab332f7a8",
+    "semantic_hash": "d46ca6f13e87bab0b7bcc55ab332f7a8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/sveltekit-adapter.mjs": {
+    "mtime": 1786105312.3599076,
+    "ast_hash": "60bc61e36542881d5b36b06415681f4e",
+    "semantic_hash": "60bc61e36542881d5b36b06415681f4e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/tanstack-adapter.mjs": {
+    "mtime": 1786105312.3599372,
+    "ast_hash": "f4e82c17541fea6a5e6ef35e7207c63a",
+    "semantic_hash": "f4e82c17541fea6a5e6ef35e7207c63a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/live/vocabulary.mjs": {
+    "mtime": 1786105312.3599372,
+    "ast_hash": "17d8876244a2d527c254030b3939078a",
+    "semantic_hash": "17d8876244a2d527c254030b3939078a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/modern-screenshot.umd.js": {
+    "mtime": 1786105312.352863,
+    "ast_hash": "4fe5f9e490ab4f107afc707d7eafc819",
+    "semantic_hash": "4fe5f9e490ab4f107afc707d7eafc819"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/palette.mjs": {
+    "mtime": 1786105312.352863,
+    "ast_hash": "a1811eb32e4c10858a39b0fa680189de",
+    "semantic_hash": "a1811eb32e4c10858a39b0fa680189de"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/pin.mjs": {
+    "mtime": 1786105312.3529105,
+    "ast_hash": "de98fe1680774eaeb8515443169398ad",
+    "semantic_hash": "de98fe1680774eaeb8515443169398ad"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/serve-question.mjs": {
+    "mtime": 1786105312.3529105,
+    "ast_hash": "78069f8d2e499631e5d2486cfc938efa",
+    "semantic_hash": "78069f8d2e499631e5d2486cfc938efa"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/scripts/surface-brief.mjs": {
+    "mtime": 1786105312.3529506,
+    "ast_hash": "bd262c22ff8818ae370bafcf99b2ad8a",
+    "semantic_hash": "bd262c22ff8818ae370bafcf99b2ad8a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/scripts/visual-check-scrolled.mjs": {
+    "mtime": 1786104547.5015464,
+    "ast_hash": "f165592ed71d4fadbdc06d8766fd9d62",
+    "semantic_hash": "f165592ed71d4fadbdc06d8766fd9d62"
+  },
+  "/home/prokken-inc/Desktop/portfolio/scripts/visual-check.mjs": {
+    "mtime": 1786104547.4198675,
+    "ast_hash": "bb46643915354f28dcc7f3b33da86b89",
+    "semantic_hash": "bb46643915354f28dcc7f3b33da86b89"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/contact-cta.tsx": {
+    "mtime": 1786110654.5109098,
+    "ast_hash": "e7e0b8363d1faac6df1a3a57c339a3d5",
+    "semantic_hash": "e7e0b8363d1faac6df1a3a57c339a3d5"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/cta-button.tsx": {
+    "mtime": 1786110654.4108844,
+    "ast_hash": "b092b86547f3d486284237cc1dba1f6d",
+    "semantic_hash": "b092b86547f3d486284237cc1dba1f6d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/home/section-core-skills.tsx": {
+    "mtime": 1786107721.110886,
+    "ast_hash": "ea4ccafe8dc8353e6420e97102d53bd4",
+    "semantic_hash": "ea4ccafe8dc8353e6420e97102d53bd4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/home/section-languages.tsx": {
+    "mtime": 1786108825.7538903,
+    "ast_hash": "975b05c26be6037744c3c621677bb257",
+    "semantic_hash": "975b05c26be6037744c3c621677bb257"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/home/section-selected-experience.tsx": {
+    "mtime": 1786107721.0576727,
+    "ast_hash": "bee84a11a59583800e6556e52d463cd9",
+    "semantic_hash": "bee84a11a59583800e6556e52d463cd9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/home/split-hero-metric.tsx": {
+    "mtime": 1786104547.2946706,
+    "ast_hash": "290e9942d6e9e7c99e509169cd4db995",
+    "semantic_hash": "290e9942d6e9e7c99e509169cd4db995"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/home/spotlight.tsx": {
+    "mtime": 1786108383.85621,
+    "ast_hash": "acc2d3cbbcbc5f0f45ebdd5fc94f31c9",
+    "semantic_hash": "acc2d3cbbcbc5f0f45ebdd5fc94f31c9"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/page-breadcrumb.tsx": {
+    "mtime": 1786107724.1664095,
+    "ast_hash": "754cae21a4b8a59ada55fdbae62542f1",
+    "semantic_hash": "754cae21a4b8a59ada55fdbae62542f1"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/SKILL.md": {
+    "mtime": 1786105312.3460886,
+    "ast_hash": "04a8ff73a578e34220bd2aeb99bdc72f",
+    "semantic_hash": "04a8ff73a578e34220bd2aeb99bdc72f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/agents/openai.yaml": {
+    "mtime": 1786105312.3514442,
+    "ast_hash": "f6a36117ebc5ff8f67efb518ad1fe775",
+    "semantic_hash": "f6a36117ebc5ff8f67efb518ad1fe775"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/adapt.md": {
+    "mtime": 1786105312.3515372,
+    "ast_hash": "7526208103aa6586a4c22639a97da724",
+    "semantic_hash": "7526208103aa6586a4c22639a97da724"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/adapt.native.md": {
+    "mtime": 1786105312.3515143,
+    "ast_hash": "d45a12935db7bf28b64dfeb46fca6ab6",
+    "semantic_hash": "d45a12935db7bf28b64dfeb46fca6ab6"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/android.md": {
+    "mtime": 1786105312.3515372,
+    "ast_hash": "ef4911df81f96b6556ebc1a7ac9c7ada",
+    "semantic_hash": "ef4911df81f96b6556ebc1a7ac9c7ada"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/animate.md": {
+    "mtime": 1786105312.3515372,
+    "ast_hash": "a27bcfbcc2ab99fbe8f97facbf3b1532",
+    "semantic_hash": "a27bcfbcc2ab99fbe8f97facbf3b1532"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/audit.md": {
+    "mtime": 1786105312.3515782,
+    "ast_hash": "c1d75edbf64f03959f2ea030cc282401",
+    "semantic_hash": "c1d75edbf64f03959f2ea030cc282401"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/audit.native.md": {
+    "mtime": 1786105312.3516028,
+    "ast_hash": "644e5acb6e5eaaac6be52c7989b4dc08",
+    "semantic_hash": "644e5acb6e5eaaac6be52c7989b4dc08"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/bolder.md": {
+    "mtime": 1786105312.3516028,
+    "ast_hash": "510ab7c177dbd2be4c96b9b4e6a24a02",
+    "semantic_hash": "510ab7c177dbd2be4c96b9b4e6a24a02"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/clarify.md": {
+    "mtime": 1786105312.351625,
+    "ast_hash": "413da6eb075a6c3ed05de43f760f3be8",
+    "semantic_hash": "413da6eb075a6c3ed05de43f760f3be8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/colorize.md": {
+    "mtime": 1786105312.3516476,
+    "ast_hash": "0bf2887698d75473acd5a5b0ccbe1d3e",
+    "semantic_hash": "0bf2887698d75473acd5a5b0ccbe1d3e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/craft-floor.md": {
+    "mtime": 1786105312.351677,
+    "ast_hash": "0a572d9ae02f63b1e36286b137185b2a",
+    "semantic_hash": "0a572d9ae02f63b1e36286b137185b2a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/craft.md": {
+    "mtime": 1786105312.3516989,
+    "ast_hash": "9075911f45c58c15a720f8188b2738f4",
+    "semantic_hash": "9075911f45c58c15a720f8188b2738f4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/critique.md": {
+    "mtime": 1786105312.3516989,
+    "ast_hash": "a8e98a418591fdf847f6d90b7be51b49",
+    "semantic_hash": "a8e98a418591fdf847f6d90b7be51b49"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/degraded/asset-producer.md": {
+    "mtime": 1786105312.3537667,
+    "ast_hash": "de7f797ae573f9c05cd3dc629f4705d4",
+    "semantic_hash": "de7f797ae573f9c05cd3dc629f4705d4"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/degraded/documenter.md": {
+    "mtime": 1786105312.3537407,
+    "ast_hash": "401d9dbbedc58caf4bfd1d160c0068a8",
+    "semantic_hash": "401d9dbbedc58caf4bfd1d160c0068a8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/degraded/finish-reviewer.md": {
+    "mtime": 1786105312.3537834,
+    "ast_hash": "36cb62c26d19fef7732635759563e815",
+    "semantic_hash": "36cb62c26d19fef7732635759563e815"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/degraded/manual-edit-applier.md": {
+    "mtime": 1786105312.3537667,
+    "ast_hash": "b614ab4f15050946af63a4eb6f507133",
+    "semantic_hash": "b614ab4f15050946af63a4eb6f507133"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/delight.md": {
+    "mtime": 1786105312.351747,
+    "ast_hash": "4a4fb8494ddda3d2b4687b938209eb32",
+    "semantic_hash": "4a4fb8494ddda3d2b4687b938209eb32"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/distill.md": {
+    "mtime": 1786105312.3517227,
+    "ast_hash": "9320b414b5183931ecf7fb680c0fb87d",
+    "semantic_hash": "9320b414b5183931ecf7fb680c0fb87d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/doctor.md": {
+    "mtime": 1786105312.351747,
+    "ast_hash": "4854a58b10217df9a63dda1b7badaad7",
+    "semantic_hash": "4854a58b10217df9a63dda1b7badaad7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/document.md": {
+    "mtime": 1786105312.351798,
+    "ast_hash": "064df7d8154131849e0e123e73119889",
+    "semantic_hash": "064df7d8154131849e0e123e73119889"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/extract.md": {
+    "mtime": 1786105312.351798,
+    "ast_hash": "6f3be96d7d72a8f99d3d7a8219710cc7",
+    "semantic_hash": "6f3be96d7d72a8f99d3d7a8219710cc7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/harden.md": {
+    "mtime": 1786105312.3518336,
+    "ast_hash": "2bb1578f38fee280620b14cf9371cadb",
+    "semantic_hash": "2bb1578f38fee280620b14cf9371cadb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/hooks.md": {
+    "mtime": 1786105312.3518567,
+    "ast_hash": "fa728a3d079fbd8e76ac1615e193a65e",
+    "semantic_hash": "fa728a3d079fbd8e76ac1615e193a65e"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/init.md": {
+    "mtime": 1786105312.3518567,
+    "ast_hash": "44d31e359d64fe443aeb4045f86599d7",
+    "semantic_hash": "44d31e359d64fe443aeb4045f86599d7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/ios.md": {
+    "mtime": 1786105312.3518956,
+    "ast_hash": "acb0cb16ded572058bd0ae5779cf4bf3",
+    "semantic_hash": "acb0cb16ded572058bd0ae5779cf4bf3"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/layout.md": {
+    "mtime": 1786105312.3519216,
+    "ast_hash": "bc247cd53f1d14fa1c77e78d567991f7",
+    "semantic_hash": "bc247cd53f1d14fa1c77e78d567991f7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/live-setup.md": {
+    "mtime": 1786105312.3519216,
+    "ast_hash": "d6e64fc5f6da5e510fdafcd2db7d6813",
+    "semantic_hash": "d6e64fc5f6da5e510fdafcd2db7d6813"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/live.md": {
+    "mtime": 1786105312.3519216,
+    "ast_hash": "ac965df8021ca8bc72dfaeb9ffb15496",
+    "semantic_hash": "ac965df8021ca8bc72dfaeb9ffb15496"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/new-work.md": {
+    "mtime": 1786105312.351962,
+    "ast_hash": "23d9368e7d5cdb54a2a064028a0d2df7",
+    "semantic_hash": "23d9368e7d5cdb54a2a064028a0d2df7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/onboard.md": {
+    "mtime": 1786105312.3519783,
+    "ast_hash": "e1439e7cb4d19ea29a8990f008aa60f2",
+    "semantic_hash": "e1439e7cb4d19ea29a8990f008aa60f2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/operate.md": {
+    "mtime": 1786105312.3520067,
+    "ast_hash": "53a569b985749058f7b178a32e0a157f",
+    "semantic_hash": "53a569b985749058f7b178a32e0a157f"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/optimize.md": {
+    "mtime": 1786105312.3520067,
+    "ast_hash": "69031dca2a97d199862bc514c68c115d",
+    "semantic_hash": "69031dca2a97d199862bc514c68c115d"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/overdrive.md": {
+    "mtime": 1786105312.3520458,
+    "ast_hash": "131cfcbfc211f091780f7e9329592afb",
+    "semantic_hash": "131cfcbfc211f091780f7e9329592afb"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/polish.md": {
+    "mtime": 1786105312.3520718,
+    "ast_hash": "ed085680138151dcaacb5ebf355dc4c2",
+    "semantic_hash": "ed085680138151dcaacb5ebf355dc4c2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/quieter.md": {
+    "mtime": 1786105312.3520718,
+    "ast_hash": "cdf7ca870509cd44781c9c27d434c84b",
+    "semantic_hash": "cdf7ca870509cd44781c9c27d434c84b"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/routing.md": {
+    "mtime": 1786105312.3520718,
+    "ast_hash": "4ce068d7f19d4f85c0de635056bfaa6c",
+    "semantic_hash": "4ce068d7f19d4f85c0de635056bfaa6c"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/shape.md": {
+    "mtime": 1786105312.3521156,
+    "ast_hash": "ecf5345d56452d10cd2c9203a7512704",
+    "semantic_hash": "ecf5345d56452d10cd2c9203a7512704"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/typeset.md": {
+    "mtime": 1786105312.3521414,
+    "ast_hash": "4af5657e0fa2c25b9ce28cb1eb854015",
+    "semantic_hash": "4af5657e0fa2c25b9ce28cb1eb854015"
+  },
+  "/home/prokken-inc/Desktop/portfolio/.agents/skills/impeccable/reference/visualize.md": {
+    "mtime": 1786105312.3521414,
+    "ast_hash": "90131b62b0905d478f46fea25734d572",
+    "semantic_hash": "90131b62b0905d478f46fea25734d572"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/company/messagemind.webp": {
+    "mtime": 1786096523.9575887,
+    "ast_hash": "2a92247491d4ab151e9e284ffe235b65",
+    "semantic_hash": "2a92247491d4ab151e9e284ffe235b65"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/company/wewise.webp": {
+    "mtime": 1786096602.407378,
+    "ast_hash": "b061cc7d4269063bf805b1bf4576f38a",
+    "semantic_hash": "b061cc7d4269063bf805b1bf4576f38a"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/company/zubion.webp": {
+    "mtime": 1786096471.699887,
+    "ast_hash": "0990b29f30d59f051037b9751a9c8cd0",
+    "semantic_hash": "0990b29f30d59f051037b9751a9c8cd0"
   }
 }

@@ -1,0 +1,16 @@
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-contact.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-core-skills.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-featured-projects.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-featured-writing.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-languages.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-now.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-receipts.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-selected-experience.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/section-track-record.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/split-hero-metric.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/home/spotlight.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/page-breadcrumb.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/resume-viewer.tsx
+/home/prokken-inc/Desktop/portfolio/src/components/site-header.tsx
+/home/prokken-inc/Desktop/portfolio/src/lib/auth/server.ts
+/home/prokken-inc/Desktop/portfolio/src/lib/db/queries/experience.ts
