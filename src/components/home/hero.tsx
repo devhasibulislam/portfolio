@@ -1,25 +1,15 @@
 import Link from "next/link";
 import { ArrowRight, FileText } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { HeroMeshGate } from "./hero-mesh-gate";
 import { HeroReveal } from "./hero-reveal";
+import { SplitHeroMetric } from "./split-hero-metric";
 import { Button } from "@/components/ui/button";
 
 /**
- * Home hero — metric-first. The first thing a visitor sees is a big
- * ~200 ms → ~20 ms hot-path rewrite receipt. Everything else on the page
- * hangs off that hook. Structure:
- *
- *   [ eyebrow "The receipts" ]
- *   [ 200 ms  →  20 ms ]          <- mono, giant, brand orange arrow
- *   [ caption ]
- *   [ title (sans, large, tight) ]
- *   [ role · stack ]
- *   [ location · availability ]
- *   [ CTA row: See the work | Read the resume ]
- *
- * Three.js drifting mesh sits behind the type on capable devices; the CSS
- * starfield behind that (rendered globally, see `page.tsx`).
+ * Home hero — metric-first. The p95 receipt is the hook; identity and
+ * CTAs sit under it. Backdrop is the shared CSS `<StarBackdrop>` painted
+ * globally from `page.tsx`. GSAP `<HeroReveal>` staggers `data-hero-line`
+ * children on mount.
  */
 export async function Hero() {
   const t = await getTranslations("home.hero2");
@@ -29,10 +19,6 @@ export async function Hero() {
       aria-labelledby="hero-title"
       className="relative isolate flex min-h-[100dvh] w-full flex-col items-start justify-center overflow-hidden px-6 pt-32 pb-16 sm:pt-40 sm:pb-24 md:pt-48"
     >
-      {/* Three.js sits behind the type on capable devices. Absolute-positioned,
-          zero pointer events — the CSS starfield paints under everything. */}
-      <HeroMeshGate />
-
       {/* Radial vignette to lift the type off the busy background */}
       <div
         aria-hidden
@@ -65,17 +51,19 @@ export async function Hero() {
           dir="ltr"
           className="font-mono text-[2.75rem] leading-none tracking-[-0.04em] whitespace-nowrap sm:text-6xl md:text-7xl lg:text-8xl xl:text-[8.5rem]"
         >
-          <span className="text-muted-foreground/60">{t("metricFrom")}</span>
-          <span
-            aria-hidden
-            className="mx-2 inline-block text-[var(--color-accent)] sm:mx-4 md:mx-5"
-            style={{
-              textShadow: "0 0 32px rgba(232,107,28,0.55)",
-            }}
-          >
-            →
-          </span>
-          <span className="text-[var(--color-fg)]">{t("metricTo")}</span>
+          <SplitHeroMetric>
+            <span className="text-muted-foreground/60">{t("metricFrom")}</span>
+            <span
+              aria-hidden
+              className="mx-2 inline-block text-[var(--color-accent)] sm:mx-4 md:mx-5"
+              style={{
+                textShadow: "0 0 32px rgba(232,107,28,0.55)",
+              }}
+            >
+              →
+            </span>
+            <span className="text-[var(--color-fg)]">{t("metricTo")}</span>
+          </SplitHeroMetric>
         </p>
 
         {/* Caption under the metric */}

@@ -122,7 +122,10 @@
     "trackRecord": {
       "eyebrow": "ট্র্যাক রেকর্ড",
       "title": "সাত বছর, ছয়টি দেশ, দুটি exit।",
-      "years": { "value": "৭+", "label": "বছর ধরে প্রোডাকশন Node শিপ করছি" },
+      "years": {
+        "value": "৭+",
+        "label": "বছর ধরে প্রোডাকশন Node শিপ করছি"
+      },
       "countries": {
         "value": "৬",
         "label": "দেশ: IL · IT · DZ · SA · BD · PK"
@@ -149,6 +152,17 @@
       "telegram": "Telegram",
       "email": "Email",
       "response": "সাধারণত ২৪ ঘণ্টার মধ্যে উত্তর দিই · GMT+6"
+    },
+    "selectedExperience": {
+      "eyebrow": "Career",
+      "title": "Recent roles.",
+      "seeAll": "See full career",
+      "cta": "Read role"
+    },
+    "coreSkills": {
+      "eyebrow": "Stack",
+      "title": "The stack I ship with.",
+      "seeAll": "See full stack"
     }
   },
   "blog": {

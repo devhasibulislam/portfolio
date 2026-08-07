@@ -6,8 +6,10 @@ import { Hero } from "@/components/home/hero";
 import { SectionReceipts } from "@/components/home/section-receipts";
 import { SectionNow } from "@/components/home/section-now";
 import { SectionFeaturedProjects } from "@/components/home/section-featured-projects";
-import { SectionTrackRecord } from "@/components/home/section-track-record";
+import { SectionSelectedExperience } from "@/components/home/section-selected-experience";
+import { SectionCoreSkills } from "@/components/home/section-core-skills";
 import { SectionFeaturedWriting } from "@/components/home/section-featured-writing";
+import { SectionTrackRecord } from "@/components/home/section-track-record";
 import { SectionContact } from "@/components/home/section-contact";
 
 /**
@@ -86,9 +88,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* CSS-only starfield — no JS, no WebGL — covers all locales, all
-          devices. The hero's Three.js mesh sits on top on capable devices;
-          the fallback path just sees the starfield. */}
+      {/* CSS-only starfield backdrop — no JS, no WebGL — theme-aware. */}
       <StarBackdrop />
 
       <script
@@ -102,8 +102,10 @@ export default function HomePage() {
         <SectionReceipts />
         <SectionNow />
         <SectionFeaturedProjects />
-        <SectionTrackRecord />
+        <SectionSelectedExperience />
+        <SectionCoreSkills />
         <SectionFeaturedWriting />
+        <SectionTrackRecord />
         <SectionContact />
       </main>
     </>

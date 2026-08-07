@@ -2,6 +2,8 @@
 
 This document is the single source of truth for this project. Use it as context for all further development decisions. Do not deviate from these decisions without explicit instruction.
 
+> **Pivot 2026-08-07 — §4 (3D scene) + §16 3D references are RETIRED.** Three.js / R3F / drei were ripped from the codebase and the skill packs uninstalled. The home page uses GSAP-only cinematic scroll (ScrollTrigger, SplitText, timeline, matchMedia) — no WebGL, no capability gate, no mobile fallback tree. Anywhere below still references "the 3D scene", "hotspots", "capability check", "MobileFallbackExperience", "R3F", "Three.js" — read as historical context, not current spec. See `docs/BUILD_PLAN.md` "Current focus" for the current home composition.
+
 ---
 
 ## 1. Overview

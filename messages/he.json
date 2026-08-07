@@ -122,7 +122,10 @@
     "trackRecord": {
       "eyebrow": "Track record",
       "title": "Seven years, six countries, two exits.",
-      "years": { "value": "7+", "label": "years shipping production Node" },
+      "years": {
+        "value": "7+",
+        "label": "years shipping production Node"
+      },
       "countries": {
         "value": "6",
         "label": "countries: IL · IT · DZ · SA · BD · PK"
@@ -149,6 +152,17 @@
       "telegram": "Telegram",
       "email": "Email",
       "response": "Usually replies within 24h · GMT+6"
+    },
+    "selectedExperience": {
+      "eyebrow": "Career",
+      "title": "Recent roles.",
+      "seeAll": "See full career",
+      "cta": "Read role"
+    },
+    "coreSkills": {
+      "eyebrow": "Stack",
+      "title": "The stack I ship with.",
+      "seeAll": "See full stack"
     }
   },
   "blog": {

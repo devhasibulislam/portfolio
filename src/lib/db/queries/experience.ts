@@ -243,3 +243,15 @@ export async function getPublishedExperienceBySlug(
     ogPublicId,
   };
 }
+
+/**
+ * Home-page projection: latest N published roles, ongoing first, then
+ * newest by periodStart. Consumed by `<SectionSelectedExperience>`.
+ */
+export async function listLatestExperience(
+  limit: number,
+): Promise<PublicExperienceCard[]> {
+  const rows = await listPublishedExperience();
+  return rows.slice(0, Math.max(1, limit));
+}
+
