@@ -175,10 +175,9 @@ section[id],
 }
 
 /* Image loading placeholder. Sits behind any `<img>` / `<CldImage>` in a
-   container — a subtle diagonal gradient reads as "loading" rather than
-   an empty muted rectangle. Once the image paints on top, the placeholder
-   is hidden. Kept fully static to avoid animation cost on off-screen
-   cards; the intent is a graceful stand-in, not a shimmer beacon. */
+   container so the empty space reads as an intentional tile while the
+   image decodes, not a broken/gray box. Once the image paints on top,
+   the placeholder is hidden. Fully static — no animation, no JS. */
 .img-skeleton {
   background-color: var(--muted);
   background-image:
@@ -188,24 +187,6 @@ section[id],
       var(--muted) 40%,
       color-mix(in oklab, var(--muted) 92%, var(--color-brand-highlight)) 100%
     );
-}
-
-/* Fade an <img> in over the skeleton once its bitmap is decoded. Uses
-   the `img:not([data-loaded="true"])` pattern: server-rendered <img>
-   stays at opacity 0 until the client marks it loaded via onLoad, then
-   it eases in over the placeholder. */
-img[data-loaded="false"] {
-  opacity: 0;
-}
-img[data-loaded="true"] {
-  opacity: 1;
-  transition: opacity 400ms ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  img[data-loaded="true"] {
-    transition: none;
-  }
 }
 
 /* ---break---*/

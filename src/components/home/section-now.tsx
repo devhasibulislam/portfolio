@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/utils";
+import { CtaButton } from "@/components/cta-button";
 import { ScrollReveal } from "./scroll-reveal";
 import { Spotlight } from "./spotlight";
 import { bezelInner, bezelOuter } from "./_shared";
@@ -50,13 +49,7 @@ export async function SectionNow() {
               </p>
 
               <div data-reveal className="mt-8">
-                <Link
-                  href="/experience"
-                  className="group inline-flex items-center gap-2 text-sm font-medium text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
-                >
-                  {t("cta")}
-                  <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                </Link>
+                <CtaButton href="/experience">{t("cta")}</CtaButton>
               </div>
             </div>
           </div>

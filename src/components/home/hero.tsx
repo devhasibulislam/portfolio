@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { ArrowRight, FileText } from "lucide-react";
+import { FileText } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { HeroReveal } from "./hero-reveal";
 import { SplitHeroMetric } from "./split-hero-metric";
-import { Button } from "@/components/ui/button";
+import { CtaButton } from "@/components/cta-button";
 
 /**
  * Home hero — metric-first. The p95 receipt is the hook; identity and
@@ -98,30 +97,14 @@ export async function Hero() {
 
         {/* CTA row */}
         <div data-hero-line className="mt-10 flex flex-wrap items-center gap-3">
-          <Button
-            asChild
-            size="lg"
-            className="group h-12 gap-3 rounded-full bg-[var(--color-accent)] pe-1.5 ps-6 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[0_0_0_1px_rgba(232,107,28,0.35),0_8px_28px_-6px_rgba(232,107,28,0.55)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[var(--color-accent-strong)] active:scale-[0.98]"
+          <CtaButton href="/projects">{t("primaryCta")}</CtaButton>
+          <CtaButton
+            href="/resume"
+            variant="secondary"
+            leadIcon={<FileText className="size-4" />}
           >
-            <Link href="/projects">
-              {t("primaryCta")}
-              <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-black/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
-                <ArrowRight className="size-4" />
-              </span>
-            </Link>
-          </Button>
-
-          <Button
-            asChild
-            variant="ghost"
-            size="lg"
-            className="h-12 gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
-          >
-            <Link href="/resume">
-              <FileText className="size-4" />
-              {t("secondaryCta")}
-            </Link>
-          </Button>
+            {t("secondaryCta")}
+          </CtaButton>
         </div>
       </HeroReveal>
     </section>
