@@ -110,7 +110,7 @@ export default async function ExperiencePage() {
               className="border-s-2 border-[var(--color-border)] ps-6"
             >
               {/* Company header */}
-              <div className="flex items-start gap-3">
+              <div className="flex items-center gap-3">
                 {group.logoPublicId ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
@@ -122,10 +122,10 @@ export default async function ExperiencePage() {
                     alt=""
                     width={40}
                     height={40}
-                    className="mt-1 h-10 w-10 shrink-0 rounded-md object-cover"
+                    className="h-10 w-10 shrink-0 rounded-md object-cover"
                   />
                 ) : (
-                  <div className="mt-1 h-10 w-10 shrink-0 rounded-md bg-[var(--color-accent)]/10" />
+                  <div className="h-10 w-10 shrink-0 rounded-md bg-[var(--color-accent)]/10" />
                 )}
                 <div className="min-w-0 flex-1">
                   <h2 className="flex items-center gap-2 text-xl font-semibold tracking-tight">

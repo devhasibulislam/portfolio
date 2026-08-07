@@ -3,6 +3,7 @@
 import Image from "next/image";
 
 const companies = [
+  { name: "FoorWeb", src: "/company/foorweb.webp" },
   { name: "Ithra", src: "/company/Ithra.webp" },
   { name: "MessageMind", src: "/company/messagemind.webp" },
   { name: "NadlanOne", src: "/company/nadlanone.webp" },

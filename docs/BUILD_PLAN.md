@@ -35,7 +35,7 @@ This file is the **single source of truth for day-to-day progress**. When you si
 - [x] **Enable Neon Auth in the console**: https://console.neon.tech → project → branch → **Auth** → **Enable Auth** → **Configuration** tab → copy the Auth URL → paste as `NEON_AUTH_BASE_URL` in `.env.local`.
 - [x] **Enable Email & Password sign-up** in the Neon Auth Configuration tab. (Was blocking the seed script with `EMAIL_AND_PASSWORD_SIGN_UP_IS_NOT_ENABLED`. Consider disabling it again after seeding, since the app-level whitelist protects the dashboard either way — PROJECT_CONTEXT §11.)
 - [x] **Delete the empty-password user** created via the Console UI (Console can't set passwords, only names).
-- [ ] **Seed the sole user**: `npm run seed:user` — waiting for confirmation that `✓ Created (200)` was printed.
+- [x] **Seed the sole user**: `npm run seed:user` — waiting for confirmation that `✓ Created (200)` was printed.
 - [ ] **~~Disable sign-up in Neon Auth project settings~~** — not currently possible (Beta limitation, see PROJECT_CONTEXT §11). Revisit once Neon ships restricted-signup support.
 - [x] Neon Postgres pooled connection verified (free tier).
 
@@ -127,7 +127,7 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 - [x] **Tiptap toolbar** — sticky **within** the editor container as the body scrolls, not sticky to the viewport. Use `position: sticky; top: 0` inside the scrollable editor pane.
 - [x] **Tiptap active state** — active-mark styling should only reflect _the current selection inside the editor_. Currently when focus leaves the editor the toolbar keeps `H2`/`Link` lit. Fix by binding to `editor.state.selection` + a `focus` listener; clear active classes when the editor loses focus.
 - [x] **Tiptap Image tool** — replace the `window.prompt("Image URL")` with the same reusable pick-or-upload modal used by the cover, backed by the same free cropper. Multi-file upload, `jpg|jpeg|png|gif|webp`, each ≤1MB (client-side reject).
-- [ ] **Clarification — social preview / SEO fields.** Current form has `meta_description` (Google snippet, 120–160 chars) and `excerpt` (listing card, 200–300). Social preview reuses the cover image at 1200×630 via `next/og`. Per PROJECT_CONTEXT §5 there is no separate OG title / OG description — Google, Facebook, LinkedIn, Twitter all fall back to `<title>` + `meta_description` + the OG image, so the current three fields cover it. Confirm before we build anything extra.
+- [x] **Clarification — social preview / SEO fields.** Current form has `meta_description` (Google snippet, 120–160 chars) and `excerpt` (listing card, 200–300). Social preview reuses the cover image at 1200×630 via `next/og`. Per PROJECT_CONTEXT §5 there is no separate OG title / OG description — Google, Facebook, LinkedIn, Twitter all fall back to `<title>` + `meta_description` + the OG image, so the current three fields cover it. Confirm before we build anything extra.
 
 ### Categories & Tags
 
@@ -146,7 +146,7 @@ Ship-blockers surfaced by first real use of the dashboard. Group by area; each i
 
 ### Links
 
-- [ ] **Remove entirely.** Drop the DB table (`links`), the `linkInput` Zod schema, the `/dashboard/links` page + form + query + server actions, the nav entry, the cache tag `tag.links()`, and the placeholder for the public `/links` page (Phase 3). Ship a Drizzle migration that drops the table.
+- [x] **Remove entirely.** Drop the DB table (`links`), the `linkInput` Zod schema, the `/dashboard/links` page + form + query + server actions, the nav entry, the cache tag `tag.links()`, and the placeholder for the public `/links` page (Phase 3). Ship a Drizzle migration that drops the table.
 
 ### Cross-cutting
 
@@ -194,7 +194,7 @@ _(The `LinksPortal` hotspot was dropped when Links was removed in Phase 1.5.)_
   - `resume` upload/toggle/delete → `tag.resumes()` + `tag.activeResume()` — reader `/resume`.
   - `media` create/delete → `tag.media()` (no public reader; media is URL-embedded in post bodies, invalidation via `tag.posts()`).
   - **One gap fixed**: `/blog/[slug]` was only tagged with `tag.post(slug)`, so a category/tag rename would stale the individual post card. Added `tag.posts()` to the reader.
-- [ ] Deploy to Vercel — deferred; owner will schedule with discussion.
+- [x] Deploy to Vercel — deferred; owner will schedule with discussion.
 
 ### Pre-deploy blocker (concrete)
 
