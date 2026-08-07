@@ -27,11 +27,6 @@ export async function SectionContact() {
                 bezelInner,
               )}
             >
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -end-24 -bottom-24 size-72 rounded-full bg-[var(--color-accent)]/20 blur-3xl"
-          />
-
           <div className="relative grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
             <div>
               <h2

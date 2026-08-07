@@ -5,6 +5,7 @@ import { CldImage } from "next-cloudinary";
 import { useEffect, useRef } from "react";
 import { useCursor } from "@/hooks/use-cursor";
 import { loadMoreBlogPosts } from "@/app/blog/actions";
+import { Spotlight } from "@/components/home/spotlight";
 import type { PostsPage, PublicPostCard } from "@/lib/db/queries/public-posts";
 
 /**
@@ -95,20 +96,22 @@ function PostCard({
       href={`/blog/${post.slug}`}
       className="group flex flex-col gap-4 focus-visible:outline-2"
     >
-      <div className="bg-muted relative aspect-[1200/630] overflow-hidden rounded-xl ring-1 ring-black/5 transition-shadow group-hover:ring-black/10">
-        {post.coverPublicId ? (
-          <CldImage
-            src={post.coverPublicId}
-            width={1200}
-            height={630}
-            crop="fill"
-            gravity="auto"
-            alt={post.title}
-            priority={priority}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          />
-        ) : null}
-      </div>
+      <Spotlight className="rounded-xl">
+        <div className="bg-muted relative aspect-[1200/630] overflow-hidden rounded-xl ring-1 ring-[var(--color-border)]/40 transition-shadow group-hover:ring-[var(--color-accent)]/25">
+          {post.coverPublicId ? (
+            <CldImage
+              src={post.coverPublicId}
+              width={1200}
+              height={630}
+              crop="fill"
+              gravity="auto"
+              alt={post.title}
+              priority={priority}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            />
+          ) : null}
+        </div>
+      </Spotlight>
       <div className="flex flex-col gap-2">
         {post.categoryName ? (
           <span className="text-sm font-medium text-[var(--color-accent)]">

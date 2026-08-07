@@ -11,17 +11,18 @@ import { Spotlight } from "./spotlight";
  * footer. One tweak to any of these now lives in one place.
  */
 
-// Card shell — transparent by default, brightens with the accent ring on
-// hover. No visible outer padding; the inner surface fills the shell.
+// Card shell — subtle static border by default, brightens softly to the
+// accent hue on hover. No visible outer padding; the inner surface fills
+// the shell so the Spotlight glow reads as ambient card lighting.
 export const bezelOuter =
-  "rounded-[2rem] ring-1 ring-transparent transition-[box-shadow,transform,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/spot:ring-[var(--color-accent)]/60";
+  "rounded-[2rem] ring-1 ring-[var(--color-border)]/40 transition-[box-shadow,transform,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/spot:ring-[var(--color-accent)]/25";
 
 export const bezelInner =
   "rounded-[2rem] bg-[var(--card)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
 
 // Extra lift for interactive (linked) cards on hover.
 const bezelHover =
-  "group-hover/spot:-translate-y-0.5 group-hover/spot:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.35)]";
+  "group-hover/spot:-translate-y-0.5 group-hover/spot:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.25)]";
 
 export function BezelLink({
   href,

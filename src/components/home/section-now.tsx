@@ -20,11 +20,6 @@ export async function SectionNow() {
             <div
               className={cn("relative px-8 py-10 sm:px-12 sm:py-14", bezelInner)}
             >
-          <span
-            aria-hidden
-            className="pointer-events-none absolute -end-16 -top-16 size-48 rounded-full bg-[var(--color-accent)]/15 blur-3xl"
-          />
-
           <div
             data-reveal
             className="flex items-center gap-3 text-[var(--color-accent)]"

@@ -4,6 +4,7 @@ import { cacheTag } from "next/cache";
 import { getCldImageUrl } from "next-cloudinary";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
+import { Spotlight } from "@/components/home/spotlight";
 import {
   listPublishedProjects,
   type PublicProjectCard,
@@ -85,20 +86,22 @@ function ProjectCard({
 
   return (
     <Link href={`/projects/${project.slug}`} className="group block">
-      <div className="bg-muted mb-4 aspect-[16/10] overflow-hidden rounded-lg">
-        {cover ? (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={cover}
-            alt={project.title}
-            width={project.coverWidth ?? 800}
-            height={project.coverHeight ?? 500}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-          />
-        ) : (
-          <div className="h-full w-full bg-gradient-to-br from-[var(--color-accent)]/10 to-transparent" />
-        )}
-      </div>
+      <Spotlight className="mb-4 rounded-lg">
+        <div className="bg-muted aspect-[16/10] overflow-hidden rounded-lg ring-1 ring-[var(--color-border)]/40 transition-shadow group-hover:ring-[var(--color-accent)]/25">
+          {cover ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={cover}
+              alt={project.title}
+              width={project.coverWidth ?? 800}
+              height={project.coverHeight ?? 500}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+          ) : (
+            <div className="h-full w-full bg-gradient-to-br from-[var(--color-accent)]/10 to-transparent" />
+          )}
+        </div>
+      </Spotlight>
       <div className="flex items-center gap-2 text-sm font-medium">
         <span className="text-[var(--color-accent)]">{categoryLabel}</span>
         {project.client ? (
