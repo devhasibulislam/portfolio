@@ -159,7 +159,7 @@ section[id],
   background:
     radial-gradient(
       480px circle at var(--spot-x) var(--spot-y),
-      color-mix(in oklab, var(--color-brand-highlight) 22%, transparent),
+      color-mix(in oklab, var(--color-brand-highlight) 12%, transparent),
       transparent 55%
     ),
     var(--card);
