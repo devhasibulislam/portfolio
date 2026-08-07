@@ -124,11 +124,11 @@ export function SeeAllLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--card)]/60 py-2.5 pe-2.5 ps-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[var(--color-accent)]/60 hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-accent)]"
+      className="group inline-flex h-12 items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 py-2.5 pe-1.5 ps-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
     >
       {label}
-      <span className="inline-flex size-7 items-center justify-center rounded-full bg-[var(--color-accent)]/15 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:bg-[var(--color-accent)]/30">
-        <ArrowRight className="size-3.5 text-[var(--color-accent)]" />
+      <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/15 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+        <ArrowRight className="size-4 text-[var(--color-accent)]" />
       </span>
     </Link>
   );
