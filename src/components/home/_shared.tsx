@@ -195,6 +195,56 @@ export function MediaCard({
   );
 }
 
+// Editorial "note" card for featured writing. Deliberately image-less so
+// it reads text-first at a glance, distinguishing it from the image-
+// forward MediaCard used by projects on the same page. Uses the glow
+// inner (spot-bg) since there's no cover image to fight it.
+export function ArticleCard({
+  href,
+  category,
+  title,
+  body,
+  date,
+}: {
+  href: string;
+  category: string;
+  title: string;
+  body: string;
+  date: string;
+}) {
+  return (
+    <BezelLink href={href} className="h-full">
+      <div className="flex h-full flex-col p-7 sm:p-8">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-3 py-1 text-xs font-medium tracking-wide text-[var(--color-fg)]/80 uppercase">
+            {category}
+          </span>
+          <span className="h-px flex-1 bg-[var(--color-border)]/40" />
+        </div>
+        <h3 className="mt-6 text-2xl font-semibold leading-tight tracking-tight text-balance sm:text-[1.65rem]">
+          {title}
+        </h3>
+        <p className="text-muted-foreground mt-4 line-clamp-4 text-base leading-relaxed">
+          {body}
+        </p>
+        <div className="mt-auto flex items-center justify-between pt-8">
+          <time
+            dateTime={date}
+            className="text-sm text-[var(--color-fg)]/60"
+          >
+            {new Date(date).toLocaleDateString(undefined, {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </time>
+          <ArrowPill size={7} />
+        </div>
+      </div>
+    </BezelLink>
+  );
+}
+
 // Grid column classes that adapt to row count so short lists don't strand
 // a lone card in the middle of a wide 3-column layout.
 export function featuredGridCols(count: number): string {
