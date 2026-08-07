@@ -25,9 +25,7 @@ export const bezelInner =
 export const bezelInnerPlain =
   "rounded-[2rem] bg-[var(--card)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
 
-// Extra lift for interactive (linked) cards on hover.
-const bezelHover =
-  "hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.25)]";
+const bezelHover = "";
 
 export function BezelLink({
   href,
