@@ -33,7 +33,7 @@ export function HeroLogoMarquee({ label }: { label: string }) {
           {[...companies, ...companies].map((c, i) => (
             <div
               key={`${c.name}-${i}`}
-              className="relative h-10 w-32 shrink-0 opacity-60 grayscale transition duration-500 ease-out hover:opacity-100 hover:grayscale-0"
+              className="relative h-10 w-32 shrink-0 opacity-70 grayscale [filter:grayscale(1)_contrast(1.05)]"
             >
               <Image
                 src={c.src}
