@@ -32,10 +32,7 @@ export async function SectionLanguages() {
       aria-labelledby="languages-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
-      <SectionHeader
-        title={t("title")}
-        id="languages-title"
-      />
+      <SectionHeader title={t("title")} id="languages-title" />
       <ScrollReveal
         as="ul"
         className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5"

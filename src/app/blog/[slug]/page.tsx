@@ -92,10 +92,7 @@ export default async function BlogPostPage({
       />
 
       <PageBreadcrumb
-        trail={[
-          { label: "Blog", href: "/blog" },
-          { label: post.title },
-        ]}
+        trail={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
       />
 
       <header className="mb-10 flex flex-col gap-4">

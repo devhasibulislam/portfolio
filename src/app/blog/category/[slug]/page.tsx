@@ -51,15 +51,10 @@ export default async function CategoryPage({
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
       <PageBreadcrumb
-        trail={[
-          { label: "Blog", href: "/blog" },
-          { label: category.name },
-        ]}
+        trail={[{ label: "Blog", href: "/blog" }, { label: category.name }]}
       />
       <header className="mb-10">
-        <p className="text-muted-foreground text-sm">
-          Category
-        </p>
+        <p className="text-muted-foreground text-sm">Category</p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight text-balance sm:text-5xl md:text-6xl">
           {category.name}
         </h1>

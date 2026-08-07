@@ -60,7 +60,11 @@ export async function SectionFeaturedWriting() {
                     dateTime={p.publishedAt}
                     className="text-sm text-[var(--color-fg)]/60"
                   >
-                    {new Date(p.publishedAt).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}
+                    {new Date(p.publishedAt).toLocaleDateString(undefined, {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
                   </time>
                 }
               />

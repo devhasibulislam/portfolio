@@ -24,10 +24,7 @@ export async function SectionReceipts() {
       aria-labelledby="receipts-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
-      <SectionHeader
-        title={t("title")}
-        id="receipts-title"
-      />
+      <SectionHeader title={t("title")} id="receipts-title" />
       <ScrollReveal
         as="ul"
         className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"

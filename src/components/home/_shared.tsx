@@ -164,7 +164,9 @@ export function MediaCard({
           />
         ) : (
           <div className="grid h-full w-full place-items-center bg-gradient-to-br from-[var(--color-brand-navy)] to-[var(--color-brand-ink)]">
-            <span className="text-sm text-[var(--color-fg)]/50">{category}</span>
+            <span className="text-sm text-[var(--color-fg)]/50">
+              {category}
+            </span>
           </div>
         )}
       </div>

@@ -27,47 +27,50 @@ export async function SectionContact() {
                 bezelInner,
               )}
             >
-          <div className="relative grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
-            <div>
-              <h2
-                data-reveal
-                id="contact-title"
-                className="max-w-3xl text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl"
-              >
-                {t("title")}
-              </h2>
-              <p
-                data-reveal
-                className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed sm:text-lg"
-              >
-                {t("body")}
-              </p>
-              <p
-                data-reveal
-                className="text-muted-foreground/70 mt-5 text-sm"
-              >
-                {t("response")}
-              </p>
-            </div>
+              <div className="relative grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
+                <div>
+                  <h2
+                    data-reveal
+                    id="contact-title"
+                    className="max-w-3xl text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl"
+                  >
+                    {t("title")}
+                  </h2>
+                  <p
+                    data-reveal
+                    className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed sm:text-lg"
+                  >
+                    {t("body")}
+                  </p>
+                  <p
+                    data-reveal
+                    className="text-muted-foreground/70 mt-5 text-sm"
+                  >
+                    {t("response")}
+                  </p>
+                </div>
 
-            <ul data-reveal className="flex flex-col gap-3 md:min-w-[16rem]">
-              <ContactRow
-                href={WHATSAPP_URL}
-                label={t("whatsapp")}
-                icon={<MessageCircle className="size-4" />}
-              />
-              <ContactRow
-                href={TELEGRAM_URL}
-                label={t("telegram")}
-                icon={<Send className="size-4" />}
-              />
-              <ContactRow
-                href={EMAIL_URL}
-                label={t("email")}
-                icon={<Mail className="size-4" />}
-              />
-            </ul>
-          </div>
+                <ul
+                  data-reveal
+                  className="flex flex-col gap-3 md:min-w-[16rem]"
+                >
+                  <ContactRow
+                    href={WHATSAPP_URL}
+                    label={t("whatsapp")}
+                    icon={<MessageCircle className="size-4" />}
+                  />
+                  <ContactRow
+                    href={TELEGRAM_URL}
+                    label={t("telegram")}
+                    icon={<Send className="size-4" />}
+                  />
+                  <ContactRow
+                    href={EMAIL_URL}
+                    label={t("email")}
+                    icon={<Mail className="size-4" />}
+                  />
+                </ul>
+              </div>
             </div>
           </div>
         </Spotlight>

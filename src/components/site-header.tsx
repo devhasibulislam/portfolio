@@ -153,9 +153,7 @@ function MoreMenu({
                 className="text-foreground hover:text-[var(--color-accent)] gap-1.5 rounded-full hover:bg-transparent focus-visible:ring-0"
               >
                 <MoreHorizontal className="size-4 shrink-0" />
-                <span className="text-sm">
-                  {t("nav.more")}
-                </span>
+                <span className="text-sm">{t("nav.more")}</span>
               </Button>
             </TooltipTrigger>
           </PopoverTrigger>
