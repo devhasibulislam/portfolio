@@ -33,14 +33,14 @@ export function HeroLogoMarquee({ label }: { label: string }) {
           {[...companies, ...companies].map((c, i) => (
             <div
               key={`${c.name}-${i}`}
-              className="relative h-10 w-32 shrink-0 opacity-70 grayscale mix-blend-multiply dark:mix-blend-normal dark:invert"
+              className="relative h-10 w-32 shrink-0 bg-[var(--color-bg)]"
             >
               <Image
                 src={c.src}
                 alt={c.name}
                 fill
                 sizes="128px"
-                className="object-contain"
+                className="object-contain opacity-70 grayscale mix-blend-multiply dark:mix-blend-normal dark:invert"
                 aria-hidden={i >= companies.length}
               />
             </div>

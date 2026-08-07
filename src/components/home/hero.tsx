@@ -17,7 +17,7 @@ export async function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="relative isolate flex min-h-[100dvh] w-full flex-col overflow-hidden px-6 pt-32 pb-12 sm:pt-40 sm:pb-16 md:pt-44"
+      className="relative flex min-h-[100dvh] w-full flex-col overflow-hidden px-6 pt-32 pb-12 sm:pt-40 sm:pb-16 md:pt-44"
     >
       {/* Soft radial vignette lifting type off the dotted backdrop */}
       <div
@@ -55,24 +55,24 @@ export async function Hero() {
           data-hero-line
           className="text-muted-foreground mt-8 flex max-w-2xl flex-wrap items-baseline justify-center gap-x-3 gap-y-1 text-sm sm:text-base"
         >
-          <span
-            dir="ltr"
-            className="inline-flex items-baseline gap-2 whitespace-nowrap"
-          >
-            <SplitHeroMetric>
+          <SplitHeroMetric>
+            <span
+              dir="ltr"
+              className="inline-flex items-center gap-2 whitespace-nowrap"
+            >
               <span className="font-mono text-lg tracking-[-0.03em] text-[var(--color-fg)] sm:text-xl">
                 {t("metricFrom")}
               </span>
               <MoveRight
                 aria-hidden
-                className="size-5 shrink-0 self-center text-[var(--color-accent)] drop-shadow-[0_0_10px_rgba(232,107,28,0.55)] sm:size-6"
+                className="size-5 shrink-0 text-[var(--color-accent)] drop-shadow-[0_0_10px_rgba(232,107,28,0.55)] sm:size-6"
                 strokeWidth={2.25}
               />
               <span className="font-mono text-lg tracking-[-0.03em] text-[var(--color-fg)] sm:text-xl">
                 {t("metricTo")}
               </span>
-            </SplitHeroMetric>
-          </span>
+            </span>
+          </SplitHeroMetric>
           <span>{t("metricCaption")}</span>
         </p>
 

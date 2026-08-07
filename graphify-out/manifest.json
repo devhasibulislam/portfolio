@@ -2990,9 +2990,9 @@
     "semantic_hash": "a052a275f6ec9202f95c19d6abc859bc"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/resume/page.tsx": {
-    "mtime": 1786110654.3435638,
-    "ast_hash": "27f0de4a88f685505df21012a9080c7f",
-    "semantic_hash": "27f0de4a88f685505df21012a9080c7f"
+    "mtime": 1786113771.7903023,
+    "ast_hash": "a7076d10349ddf9819c86e524fa6a00b",
+    "semantic_hash": "a7076d10349ddf9819c86e524fa6a00b"
   },
   "/home/prokken-inc/Desktop/portfolio/src/app/robots.ts": {
     "mtime": 1785652523.2535374,
@@ -3375,9 +3375,9 @@
     "semantic_hash": "eedfba7955ca3597654a97bcb38dc616"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/hero.tsx": {
-    "mtime": 1786109895.9650009,
-    "ast_hash": "710a5ff05f734d434de40a4ef99971a5",
-    "semantic_hash": "710a5ff05f734d434de40a4ef99971a5"
+    "mtime": 1786116736.3841195,
+    "ast_hash": "c861ea8324cdb63356ec66acc83f2edd",
+    "semantic_hash": "c861ea8324cdb63356ec66acc83f2edd"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/scroll-reveal.tsx": {
     "mtime": 1786085188.7557533,
@@ -3970,9 +3970,9 @@
     "semantic_hash": "e7e0b8363d1faac6df1a3a57c339a3d5"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/cta-button.tsx": {
-    "mtime": 1786110654.4108844,
-    "ast_hash": "b092b86547f3d486284237cc1dba1f6d",
-    "semantic_hash": "b092b86547f3d486284237cc1dba1f6d"
+    "mtime": 1786113491.661603,
+    "ast_hash": "3b0351740cf3bfe09930cbbaf1fe36de",
+    "semantic_hash": "3b0351740cf3bfe09930cbbaf1fe36de"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-core-skills.tsx": {
     "mtime": 1786107721.110886,
@@ -4215,13 +4215,38 @@
     "semantic_hash": "2a92247491d4ab151e9e284ffe235b65"
   },
   "/home/prokken-inc/Desktop/portfolio/public/company/wewise.webp": {
-    "mtime": 1786096602.407378,
-    "ast_hash": "b061cc7d4269063bf805b1bf4576f38a",
-    "semantic_hash": "b061cc7d4269063bf805b1bf4576f38a"
+    "mtime": 1786114106.4257658,
+    "ast_hash": "55737526a613c7d8e420c191c1788ead",
+    "semantic_hash": "55737526a613c7d8e420c191c1788ead"
   },
   "/home/prokken-inc/Desktop/portfolio/public/company/zubion.webp": {
     "mtime": 1786096471.699887,
     "ast_hash": "0990b29f30d59f051037b9751a9c8cd0",
     "semantic_hash": "0990b29f30d59f051037b9751a9c8cd0"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/home/hero-logo-marquee.tsx": {
+    "mtime": 1786117239.7786074,
+    "ast_hash": "d20a5480ec132869e100858a257e18f2",
+    "semantic_hash": "d20a5480ec132869e100858a257e18f2"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/company/Ithra.webp": {
+    "mtime": 1786115195.7916315,
+    "ast_hash": "7b24e41e3cc61baf1ff65afcca1224d8",
+    "semantic_hash": "7b24e41e3cc61baf1ff65afcca1224d8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/company/nadlanone.webp": {
+    "mtime": 1786114332.3547928,
+    "ast_hash": "3813ebea35379552de20a1d7133261f7",
+    "semantic_hash": "3813ebea35379552de20a1d7133261f7"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/company/offline-comics.webp": {
+    "mtime": 1786114489.2585812,
+    "ast_hash": "101d045dd23dcff96d6d778352649f87",
+    "semantic_hash": "101d045dd23dcff96d6d778352649f87"
+  },
+  "/home/prokken-inc/Desktop/portfolio/public/company/wiselead.webp": {
+    "mtime": 1786096602.407378,
+    "ast_hash": "b061cc7d4269063bf805b1bf4576f38a",
+    "semantic_hash": "b061cc7d4269063bf805b1bf4576f38a"
   }
 }
