@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { Bezel } from "./_shared";
 import { ScrollReveal } from "./scroll-reveal";
 
 /**
@@ -16,11 +17,11 @@ export async function SectionNow() {
       aria-labelledby="now-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-14 sm:py-16"
     >
-      <ScrollReveal
-        className="relative overflow-hidden rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)]"
-        stagger={0.08}
-      >
-        <div className="relative rounded-[calc(2rem-0.375rem)] bg-[var(--card)] px-8 py-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] sm:px-12 sm:py-14">
+      <ScrollReveal stagger={0.08}>
+        <Bezel
+          className="overflow-hidden"
+          innerClassName="px-8 py-10 sm:px-12 sm:py-14"
+        >
           {/* Corner accent glow */}
           <span
             aria-hidden
@@ -64,7 +65,7 @@ export async function SectionNow() {
               <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-        </div>
+        </Bezel>
       </ScrollReveal>
     </section>
   );
