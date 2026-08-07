@@ -152,8 +152,8 @@ function MoreMenu({
                 aria-label={t("nav.more")}
                 className="text-foreground hover:text-[var(--color-accent)] gap-1.5 rounded-full hover:bg-transparent focus-visible:ring-0"
               >
-                <MoreHorizontal className="size-4" />
-                <span className="hidden sm:inline text-xs uppercase tracking-widest">
+                <MoreHorizontal className="size-4 shrink-0" />
+                <span className="text-xs uppercase tracking-widest">
                   {t("nav.more")}
                 </span>
               </Button>

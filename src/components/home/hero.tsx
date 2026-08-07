@@ -109,6 +109,20 @@ export async function Hero() {
           {t("location")}
         </p>
 
+        {/* Availability badge — the single explicit signal that says
+            "I take work". Green pulse dot + one clear sentence. Recruiters
+            and hiring managers scan for this before reading the metric. */}
+        <p
+          data-hero-line
+          className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 py-1.5 pe-4 ps-3 text-xs font-medium text-emerald-600 backdrop-blur dark:text-emerald-300"
+        >
+          <span className="relative flex size-2 shrink-0">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-70" />
+            <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
+          </span>
+          {t("availability")}
+        </p>
+
         {/* CTA row — primary uses the "button-in-button" trailing-icon
             pattern per the high-end-visual-design skill. */}
         <div data-hero-line className="mt-10 flex flex-wrap items-center gap-3">
@@ -119,7 +133,7 @@ export async function Hero() {
           >
             <Link href="/projects">
               {t("primaryCta")}
-              <span className="inline-flex size-9 items-center justify-center rounded-full bg-black/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+              <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-black/20 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
                 <ArrowRight className="size-4" />
               </span>
             </Link>

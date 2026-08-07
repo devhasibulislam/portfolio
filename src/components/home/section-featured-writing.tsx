@@ -29,19 +29,20 @@ export async function SectionFeaturedWriting() {
 
   if (rows.length === 0) return null;
 
-  // Match the featured-projects behaviour: adapt the grid to the row
-  // count so single or double cards aren't stranded in wide 3-col layouts.
+  // Match the featured-projects behaviour: 1-item stays left-aligned, 2
+  // items get 2 columns from tablet up, 3 items get 2 columns on tablet and
+  // 3 columns on desktop. Never center a single card into the row.
   const gridCols =
     rows.length === 1
-      ? "grid-cols-1 max-w-md mx-auto"
+      ? "grid-cols-1 max-w-md"
       : rows.length === 2
-        ? "grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto"
-        : "grid-cols-1 md:grid-cols-3";
+        ? "grid-cols-1 sm:grid-cols-2"
+        : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3";
 
   return (
     <section
       aria-labelledby="featured-writing-title"
-      className="relative mx-auto w-full max-w-6xl px-6 py-24 sm:py-28 md:py-32"
+      className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <ScrollReveal
         className="mb-14 flex flex-wrap items-end justify-between gap-6"
@@ -91,7 +92,7 @@ function PostCard({ post }: { post: Card }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group block h-full rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:ring-[var(--color-accent)]/40"
+      className="group block h-full rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.25)] hover:ring-[var(--color-accent)]/50"
     >
       <div className="flex h-full flex-col overflow-hidden rounded-[calc(2rem-0.375rem)] bg-[var(--card)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
         <div className="bg-muted relative aspect-[16/10] w-full overflow-hidden">
@@ -120,14 +121,17 @@ function PostCard({ post }: { post: Card }) {
           <p className="text-muted-foreground mt-2 line-clamp-3 text-sm leading-relaxed">
             {post.excerpt}
           </p>
-          <div className="mt-6 flex items-center justify-between">
+          {/* mt-auto anchors the meta row to the bottom of the card
+              regardless of excerpt length. Row heights across the grid
+              stay aligned. */}
+          <div className="mt-auto flex items-center justify-between pt-6">
             <time
               dateTime={post.publishedAt}
               className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg)]/60"
             >
               {new Date(post.publishedAt).toISOString().slice(0, 10)}
             </time>
-            <span className="inline-flex size-7 items-center justify-center rounded-full bg-[var(--color-bg)]/60 ring-1 ring-[var(--color-border)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-[var(--color-bg)]/60 ring-1 ring-[var(--color-border)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:ring-[var(--color-accent)]/50">
               <ArrowUpRight className="size-3.5 text-[var(--color-fg)]/80 transition-colors group-hover:text-[var(--color-accent)]" />
             </span>
           </div>

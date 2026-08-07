@@ -119,6 +119,24 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
+/* Smooth scroll for anchor-jump navigation and any `window.scrollTo({behavior:"smooth"})`
+   calls. Native wheel/touch stays untouched. Also give anchored sections some
+   headroom under the fixed site header. */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+section[id],
+[id][aria-labelledby] {
+  scroll-margin-top: 5rem;
+}
+
 /* ---break---*/
 
 @theme inline {

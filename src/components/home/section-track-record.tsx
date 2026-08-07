@@ -18,7 +18,7 @@ export async function SectionTrackRecord() {
   return (
     <section
       aria-labelledby="track-record-title"
-      className="relative mx-auto w-full max-w-6xl px-6 py-24 sm:py-28 md:py-32"
+      className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <ScrollReveal className="mb-14 max-w-2xl" stagger={0.08}>
         <p

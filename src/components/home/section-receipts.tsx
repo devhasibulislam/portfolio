@@ -40,7 +40,7 @@ export async function SectionReceipts() {
   return (
     <section
       aria-labelledby="receipts-title"
-      className="relative mx-auto w-full max-w-6xl px-6 py-24 sm:py-28 md:py-32"
+      className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <ScrollReveal className="mb-14 max-w-2xl" stagger={0.08}>
         <p
@@ -60,7 +60,7 @@ export async function SectionReceipts() {
 
       <ScrollReveal
         as="ul"
-        className="grid grid-cols-1 gap-6 md:grid-cols-3"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         stagger={0.1}
       >
         {RECEIPTS.map((r) => (
@@ -103,9 +103,9 @@ function ReceiptCard({
     <Link
       href={href}
       {...linkProps}
-      className="group block h-full rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:ring-[var(--color-accent)]/40"
+      className="group block h-full rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.25)] hover:ring-[var(--color-accent)]/50"
     >
-      <div className="relative flex h-full flex-col rounded-[calc(2rem-0.375rem)] bg-[var(--card)] p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-0.5">
+      <div className="relative flex h-full flex-col rounded-[calc(2rem-0.375rem)] bg-[var(--card)] p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
           {metric}
         </p>
@@ -115,11 +115,14 @@ function ReceiptCard({
         <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
           {body}
         </p>
-        <div className="mt-8 flex items-center justify-between">
+        {/* mt-auto anchors the CTA to the card bottom so cards with short
+            copy don't leave a big gap under the body. Combined with
+            `h-full` + `flex-col` this keeps footers aligned across the row. */}
+        <div className="mt-auto flex items-center justify-between pt-8">
           <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-fg)]/70 transition-colors group-hover:text-[var(--color-accent)]">
             {cta}
           </span>
-          <span className="inline-flex size-8 items-center justify-center rounded-full bg-[var(--color-bg)]/60 ring-1 ring-[var(--color-border)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:ring-[var(--color-accent)]/50">
+          <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-bg)]/60 ring-1 ring-[var(--color-border)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:ring-[var(--color-accent)]/50">
             <ArrowUpRight className="size-4 text-[var(--color-fg)]/80 transition-colors group-hover:text-[var(--color-accent)]" />
           </span>
         </div>

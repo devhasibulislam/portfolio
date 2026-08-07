@@ -20,7 +20,7 @@ export async function SectionContact() {
   return (
     <section
       aria-labelledby="contact-title"
-      className="relative mx-auto w-full max-w-6xl px-6 py-24 sm:py-28 md:py-32"
+      className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <ScrollReveal
         className="relative overflow-hidden rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)]"
@@ -106,12 +106,12 @@ function ContactRow({
         className="group flex items-center justify-between gap-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/50 py-3 pe-2 ps-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/70"
       >
         <span className="flex items-center gap-3">
-          <span className="flex size-8 items-center justify-center rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
             {icon}
           </span>
           {label}
         </span>
-        <span className="inline-flex size-8 items-center justify-center rounded-full bg-[var(--color-bg)]/60 ring-1 ring-[var(--color-border)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+        <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-bg)]/60 ring-1 ring-[var(--color-border)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
           <ArrowUpRight className="size-4 text-[var(--color-fg)]/80 transition-colors group-hover:text-[var(--color-accent)]" />
         </span>
       </a>

@@ -14,7 +14,7 @@ export async function SectionNow() {
   return (
     <section
       aria-labelledby="now-title"
-      className="relative mx-auto w-full max-w-6xl px-6 py-20 sm:py-24"
+      className="relative mx-auto w-full max-w-6xl px-6 py-14 sm:py-16"
     >
       <ScrollReveal
         className="relative overflow-hidden rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)]"
