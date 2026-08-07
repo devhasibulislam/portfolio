@@ -9,6 +9,7 @@ import {
   listPublishedProjects,
   type PublicProjectCard,
 } from "@/lib/db/queries/projects";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -44,6 +45,7 @@ export default async function ProjectsPage() {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-24">
+      <PageBreadcrumb trail={[{ label: t("heading") }]} />
       <header className="mb-14 max-w-2xl">
         <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
           {t("heading")}

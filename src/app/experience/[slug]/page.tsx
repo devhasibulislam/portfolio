@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getCldImageUrl } from "next-cloudinary";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
 import { tag } from "@/lib/cache-tags";
 import { getPublishedExperienceBySlug } from "@/lib/db/queries/experience";
 import { renderTiptapToHtml } from "@/lib/tiptap-render";
 import type { ExperienceInput } from "@/schemas/experience";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -129,17 +128,12 @@ export default async function ExperienceDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Button
-        asChild
-        variant="ghost"
-        size="sm"
-        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-sm"
-      >
-        <Link href="/experience">
-          <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
-          All roles
-        </Link>
-      </Button>
+      <PageBreadcrumb
+        trail={[
+          { label: "Experience", href: "/experience" },
+          { label: role.role },
+        ]}
+      />
 
       <header className="mb-10 flex items-start gap-4">
         {logo ? (

@@ -3,11 +3,10 @@ import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getCldImageUrl } from "next-cloudinary";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { tag } from "@/lib/cache-tags";
 import { getPublishedPostBySlug } from "@/lib/db/queries/public-posts";
 import { coverOgUrl, renderTiptapToHtml } from "@/lib/tiptap-render";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -92,17 +91,12 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Button
-        asChild
-        variant="ghost"
-        size="sm"
-        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-sm"
-      >
-        <Link href="/blog">
-          <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
-          All posts
-        </Link>
-      </Button>
+      <PageBreadcrumb
+        trail={[
+          { label: "Blog", href: "/blog" },
+          { label: post.title },
+        ]}
+      />
 
       <header className="mb-10 flex flex-col gap-4">
         {post.categoryName && post.categorySlug ? (

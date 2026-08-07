@@ -8,6 +8,7 @@ import {
   listPublishedPostsCursor,
 } from "@/lib/db/queries/public-posts";
 import { loadMoreTagPosts } from "./actions";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 type Params = { slug: string };
 
@@ -45,6 +46,12 @@ export default async function TagPage({ params }: { params: Promise<Params> }) {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
+      <PageBreadcrumb
+        trail={[
+          { label: "Blog", href: "/blog" },
+          { label: `#${t.name}` },
+        ]}
+      />
       <header className="mb-10">
         <p className="text-muted-foreground text-sm">
           Tag

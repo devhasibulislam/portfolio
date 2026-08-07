@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getCldImageUrl } from "next-cloudinary";
 import {
   AppWindow,
-  ArrowLeft,
   BookOpen,
   Code2,
   Download,
@@ -16,11 +14,11 @@ import {
   PlayCircle,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { tag } from "@/lib/cache-tags";
 import { getPublishedProjectBySlug } from "@/lib/db/queries/projects";
 import { renderTiptapToHtml } from "@/lib/tiptap-render";
 import type { ProjectLinkInput } from "@/schemas/project";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -153,17 +151,12 @@ export default async function ProjectDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <Button
-        asChild
-        variant="ghost"
-        size="sm"
-        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-sm"
-      >
-        <Link href="/projects">
-          <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
-          All projects
-        </Link>
-      </Button>
+      <PageBreadcrumb
+        trail={[
+          { label: "Projects", href: "/projects" },
+          { label: project.title },
+        ]}
+      />
 
       <header className="mb-10 flex flex-col gap-4">
         <p className="text-sm font-medium text-[var(--color-accent)]">

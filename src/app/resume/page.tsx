@@ -7,6 +7,7 @@ import { tag } from "@/lib/cache-tags";
 import { getActiveResume } from "@/lib/db/queries/resumes";
 import { Button } from "@/components/ui/button";
 import { ResumeViewerClient } from "@/components/resume-viewer-client";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
   const m = await getTranslations("meta.resume");
@@ -24,9 +25,10 @@ async function loadActive() {
 }
 
 export default async function ResumePage() {
-  const [resume, t] = await Promise.all([
+  const [resume, t, tNav] = await Promise.all([
     loadActive(),
     getTranslations("resume"),
+    getTranslations("nav"),
   ]);
   if (!resume) notFound();
 
@@ -34,6 +36,7 @@ export default async function ResumePage() {
 
   return (
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-4 pt-20 pb-16 sm:px-6 sm:pt-24 sm:pb-24">
+      <PageBreadcrumb trail={[{ label: tNav("resume") }]} />
       <div className="flex items-end justify-between gap-4">
         <div className="min-w-0 flex-1">
           <h1 className="text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl">
