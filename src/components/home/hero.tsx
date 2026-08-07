@@ -1,4 +1,4 @@
-import { FileText } from "lucide-react";
+import { FileText, MoveRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { HeroReveal } from "./hero-reveal";
 import { SplitHeroMetric } from "./split-hero-metric";
@@ -63,13 +63,11 @@ export async function Hero() {
               <span className="font-mono text-lg tracking-[-0.03em] text-[var(--color-fg)] sm:text-xl">
                 {t("metricFrom")}
               </span>
-              <span
+              <MoveRight
                 aria-hidden
-                className="text-[var(--color-accent)]"
-                style={{ textShadow: "0 0 18px rgba(232,107,28,0.55)" }}
-              >
-                →
-              </span>
+                className="size-5 shrink-0 self-center text-[var(--color-accent)] drop-shadow-[0_0_10px_rgba(232,107,28,0.55)] sm:size-6"
+                strokeWidth={2.25}
+              />
               <span className="font-mono text-lg tracking-[-0.03em] text-[var(--color-fg)] sm:text-xl">
                 {t("metricTo")}
               </span>

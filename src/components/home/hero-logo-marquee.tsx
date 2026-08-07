@@ -26,14 +26,14 @@ export function HeroLogoMarquee({ label }: { label: string }) {
       </p>
 
       <div
-        className="group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+        className="group relative overflow-hidden"
         aria-label="Companies I've worked with"
       >
         <div className="animate-marquee flex w-max items-center gap-16 py-2 group-hover:[animation-play-state:paused]">
           {[...companies, ...companies].map((c, i) => (
             <div
               key={`${c.name}-${i}`}
-              className="relative h-10 w-32 shrink-0 opacity-70 grayscale [filter:grayscale(1)_contrast(1.05)]"
+              className="relative h-10 w-32 shrink-0 opacity-70 grayscale mix-blend-multiply dark:mix-blend-normal dark:invert"
             >
               <Image
                 src={c.src}
@@ -46,6 +46,16 @@ export function HeroLogoMarquee({ label }: { label: string }) {
             </div>
           ))}
         </div>
+
+        {/* Edge fades — replace mask-image so mix-blend can reach the page bg. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 start-0 w-20 bg-gradient-to-r from-[var(--color-bg)] to-transparent"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 end-0 w-20 bg-gradient-to-l from-[var(--color-bg)] to-transparent"
+        />
       </div>
     </div>
   );
