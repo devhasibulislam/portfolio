@@ -12,17 +12,18 @@ import { Spotlight } from "./spotlight";
  */
 
 // Card shell — subtle static border by default, brightens softly to the
-// accent hue on hover. No visible outer padding; the inner surface fills
-// the shell so the Spotlight glow reads as ambient card lighting.
+// accent hue on hover. `spot-bg` (see globals.css) paints a composite
+// background: a cursor-tracked radial gradient over the solid card
+// color, so the surface glows under the pointer without touching text.
 export const bezelOuter =
-  "rounded-[2rem] ring-1 ring-[var(--color-border)]/40 transition-[box-shadow,transform,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/spot:ring-[var(--color-accent)]/25";
+  "rounded-[2rem] ring-1 ring-[var(--color-border)]/40 transition-[box-shadow,transform,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:ring-[var(--color-accent)]/40";
 
 export const bezelInner =
-  "rounded-[2rem] bg-[var(--card)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
+  "rounded-[2rem] spot-bg shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
 
 // Extra lift for interactive (linked) cards on hover.
 const bezelHover =
-  "group-hover/spot:-translate-y-0.5 group-hover/spot:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.25)]";
+  "hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.25)]";
 
 export function BezelLink({
   href,

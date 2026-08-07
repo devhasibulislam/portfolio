@@ -137,6 +137,21 @@ section[id],
   scroll-margin-top: 5rem;
 }
 
+/* Cursor-following gradient background for cards. The parent (Spotlight)
+   sets --spot-x / --spot-y to the pointer position; the radial gradient
+   layer sits on top of the solid card color, so text remains readable
+   while the surface warms up near the cursor. Defaults to a subtle
+   glow in the top-right corner when the pointer is elsewhere. */
+.spot-bg {
+  background:
+    radial-gradient(
+      420px circle at var(--spot-x, 92%) var(--spot-y, 8%),
+      color-mix(in oklab, var(--color-brand-highlight) 40%, transparent),
+      transparent 55%
+    ),
+    var(--card);
+}
+
 /* ---break---*/
 
 @theme inline {
