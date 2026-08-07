@@ -97,7 +97,7 @@ function PostCard({
       className="group flex flex-col gap-4 focus-visible:outline-2"
     >
       <Spotlight className="rounded-xl">
-        <div className="bg-muted relative aspect-[1200/630] overflow-hidden rounded-xl ring-1 ring-[var(--color-border)]/40 transition-shadow group-hover:ring-[var(--color-accent)]/25">
+        <div className="img-skeleton relative aspect-[1200/630] overflow-hidden rounded-xl ring-1 ring-[var(--color-border)]/40 transition-shadow group-hover:ring-[var(--color-accent)]/25">
           {post.coverPublicId ? (
             <CldImage
               src={post.coverPublicId}

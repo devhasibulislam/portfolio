@@ -89,7 +89,7 @@ function ProjectCard({
   return (
     <Link href={`/projects/${project.slug}`} className="group block">
       <Spotlight className="mb-4 rounded-lg">
-        <div className="bg-muted aspect-[16/10] overflow-hidden rounded-lg ring-1 ring-[var(--color-border)]/40 transition-shadow group-hover:ring-[var(--color-accent)]/25">
+        <div className="img-skeleton aspect-[16/10] overflow-hidden rounded-lg ring-1 ring-[var(--color-border)]/40 transition-shadow group-hover:ring-[var(--color-accent)]/25">
           {cover ? (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img

@@ -179,6 +179,11 @@ export const viewport: Viewport = {
 const RTL_LOCALES = "ar,he,ur";
 const INIT_SCRIPT = `(function(){try{var d=document.documentElement;var c=document.cookie;var lm=c.match(/(?:^|; )locale=([^;]+)/);if(lm){var l=decodeURIComponent(lm[1]);d.setAttribute('lang',l);d.setAttribute('dir','${RTL_LOCALES}'.split(',').indexOf(l)>-1?'rtl':'ltr');}var tm=c.match(/(?:^|; )${THEME_COOKIE}=([^;]+)/);if(tm){d.setAttribute('data-theme',decodeURIComponent(tm[1]));}else{d.setAttribute('data-theme',window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}}catch(e){}})();`;
 
+// Marks every <img> with data-loaded so CSS can fade it in over the
+// .img-skeleton container once its bitmap is decoded. Also handles imgs
+// inserted after mount (blog infinite scroll, etc.) via MutationObserver.
+const IMG_LOAD_SCRIPT = `(function(){function m(i){if(i.dataset.loaded)return;if(i.complete&&i.naturalWidth>0){i.dataset.loaded='true';return;}i.dataset.loaded='false';i.addEventListener('load',function(){i.dataset.loaded='true';},{once:true});i.addEventListener('error',function(){i.dataset.loaded='true';},{once:true});}function s(){document.querySelectorAll('img').forEach(m);}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',s);}else{s();}try{new MutationObserver(function(ms){ms.forEach(function(x){x.addedNodes.forEach(function(n){if(n.nodeType!==1)return;if(n.tagName==='IMG')m(n);else n.querySelectorAll&&n.querySelectorAll('img').forEach(m);});});}).observe(document.body||document.documentElement,{childList:true,subtree:true});}catch(e){}})();`;
+
 export default function RootLayout({
   children,
 }: {
@@ -194,6 +199,7 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: INIT_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: IMG_LOAD_SCRIPT }} />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-fg)]">
         <Suspense fallback={null}>

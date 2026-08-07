@@ -123,7 +123,7 @@ export default async function BlogPostPage({
       </header>
 
       {post.coverPublicId ? (
-        <div className="bg-muted mb-10 overflow-hidden rounded-lg">
+        <div className="img-skeleton mb-10 overflow-hidden rounded-lg">
           {/* Cloudinary-transformed URL via `getCldImageUrl` — CldImage
               would require a client boundary because it uses hooks.
               next/image is redundant here: Cloudinary already delivers

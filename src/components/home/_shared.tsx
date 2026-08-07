@@ -160,7 +160,7 @@ export function MediaCard({
 }) {
   return (
     <BezelLink href={href} className="overflow-hidden" plain>
-      <div className="bg-muted relative aspect-[16/10] w-full overflow-hidden">
+      <div className="img-skeleton relative aspect-[16/10] w-full overflow-hidden">
         {cover ? (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img

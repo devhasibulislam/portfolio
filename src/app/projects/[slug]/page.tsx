@@ -179,7 +179,7 @@ export default async function ProjectDetailPage({
       </header>
 
       {cover ? (
-        <div className="bg-muted mb-10 overflow-hidden rounded-lg">
+        <div className="img-skeleton mb-10 overflow-hidden rounded-lg">
           {/* Cloudinary CDN handles f_auto/q_auto — plain <img> avoids
               pulling next/image runtime cost twice. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
