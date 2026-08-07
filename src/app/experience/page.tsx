@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { cacheTag } from "next/cache";
 import { getCldImageUrl } from "next-cloudinary";
 import { ArrowUpRight } from "lucide-react";
@@ -11,6 +10,7 @@ import {
   type PublicExperienceCard,
 } from "@/lib/db/queries/experience";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
+import { ArrowPill, BezelLink } from "@/components/home/_shared";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -88,7 +88,7 @@ export default async function ExperiencePage() {
   return (
     <main className="mx-auto w-full max-w-4xl px-6 pt-24 pb-24">
       <PageBreadcrumb trail={[{ label: t("heading") }]} />
-      <header className="mb-14 max-w-2xl">
+      <header className="mb-16 max-w-2xl">
         <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
           {t("heading")}
         </h1>
@@ -98,89 +98,113 @@ export default async function ExperiencePage() {
       </header>
 
       {groups.length === 0 ? (
-        <div className="rounded-md border border-dashed p-10 text-center">
+        <div className="rounded-[2rem] border border-dashed border-[var(--color-border)] p-12 text-center">
           <p className="text-muted-foreground text-sm">{t("empty")}</p>
         </div>
       ) : (
-        <ol className="flex flex-col gap-10">
+        <ol className="relative flex flex-col gap-16">
           {groups.map((group) => (
-            <li
-              key={group.companySlug}
-              className="border-s-2 border-[var(--color-border)] ps-6"
-            >
-              {/* Company header */}
-              <div className="flex items-center gap-3">
+            <li key={group.companySlug} className="relative">
+              {/* Company row — timeline anchor lives at start-6 so roles align. */}
+              <div className="relative flex items-center gap-4 ps-16">
+                <span
+                  aria-hidden
+                  className="absolute start-4 top-1/2 flex size-4 -translate-y-1/2 items-center justify-center"
+                >
+                  <span className="size-3 rounded-full bg-[var(--color-accent)] ring-4 ring-[var(--color-bg)]" />
+                </span>
                 {group.logoPublicId ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
                     src={getCldImageUrl({
                       src: group.logoPublicId,
-                      width: 80,
-                      height: 80,
+                      width: 96,
+                      height: 96,
                     })}
                     alt=""
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 shrink-0 rounded-md object-cover"
+                    width={48}
+                    height={48}
+                    className="size-12 shrink-0 rounded-xl bg-[var(--card)] object-contain p-1.5 ring-1 ring-[var(--color-border)]"
                   />
                 ) : (
-                  <div className="h-10 w-10 shrink-0 rounded-md bg-[var(--color-accent)]/10" />
+                  <div
+                    aria-hidden
+                    className="grid size-12 shrink-0 place-items-center rounded-xl bg-[var(--color-accent)]/10 ring-1 ring-[var(--color-border)]"
+                  >
+                    <span className="text-sm font-semibold text-[var(--color-accent)]">
+                      {group.company.slice(0, 1)}
+                    </span>
+                  </div>
                 )}
-                <div className="min-w-0 flex-1">
-                  <h2 className="flex items-center gap-2 text-xl font-semibold tracking-tight">
-                    {group.companyUrl ? (
-                      <a
-                        href={group.companyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-[var(--color-accent-strong)] inline-flex items-center gap-1.5 transition-colors"
-                      >
-                        {group.company}
-                        <ArrowUpRight className="size-4 opacity-60" />
-                      </a>
-                    ) : (
-                      group.company
-                    )}
-                  </h2>
-                </div>
+                <h2 className="min-w-0 truncate text-2xl font-semibold tracking-tight sm:text-3xl">
+                  {group.companyUrl ? (
+                    <a
+                      href={group.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-[var(--color-accent)] inline-flex items-center gap-2 transition-colors"
+                    >
+                      {group.company}
+                      <ArrowUpRight className="size-4 opacity-60" />
+                    </a>
+                  ) : (
+                    group.company
+                  )}
+                </h2>
               </div>
 
-              {/* Roles at this company */}
-              <ul className="mt-4 flex flex-col gap-4">
+              {/* Roles column — vertical rail runs down the ps-16 gutter. */}
+              <ul className="relative mt-6 flex flex-col gap-4 ps-16">
+                <span
+                  aria-hidden
+                  className="absolute start-[calc(1.5rem-0.5px)] top-2 bottom-2 w-px bg-[var(--color-border)]"
+                />
                 {group.roles.map((role) => (
-                  <li key={role.id}>
-                    <Link
+                  <li key={role.id} className="relative">
+                    <span
+                      aria-hidden
+                      className="absolute start-[calc(1.5rem-0.3125rem)] top-7 size-2.5 rounded-full bg-[var(--card)] ring-2 ring-[var(--color-border)]"
+                    />
+                    <BezelLink
                       href={`/experience/${role.slug}`}
-                      className="group block rounded-md border border-transparent bg-[var(--color-bg)]/40 p-4 transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-accent)]/5"
+                      className="overflow-hidden"
+                      plain
                     >
-                      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                        <h3 className="text-base font-semibold tracking-tight transition-colors group-hover:text-[var(--color-accent-strong)]">
-                          {role.role}
-                        </h3>
-                        <p className="text-muted-foreground text-xs tabular-nums">
-                          {formatPeriod(
-                            role.periodStart,
-                            role.periodEnd,
-                            presentLabel,
-                          )}
-                        </p>
-                      </div>
-                      {role.location || role.workType ? (
-                        <p className="text-muted-foreground/80 mt-1 text-xs">
-                          {[
-                            role.location,
-                            role.workType
-                              ? workTypeLabels(role.workType)
-                              : null,
-                          ]
-                            .filter(Boolean)
-                            .join(" · ")}
-                        </p>
-                      ) : null}
-                      <p className="text-muted-foreground mt-2 line-clamp-2 text-sm leading-relaxed">
-                        {role.summary}
-                      </p>
-                    </Link>
+                      <article className="flex items-start justify-between gap-5 p-6 sm:p-7">
+                        <div className="min-w-0 flex-1">
+                          <p className="text-[var(--color-accent)]/90 text-[11px] font-medium tracking-[0.08em] uppercase tabular-nums">
+                            {formatPeriod(
+                              role.periodStart,
+                              role.periodEnd,
+                              presentLabel,
+                            )}
+                          </p>
+                          <h3 className="mt-2 text-xl font-semibold tracking-tight text-balance transition-colors group-hover:text-[var(--color-accent)] sm:text-[1.375rem]">
+                            {role.role}
+                          </h3>
+                          {role.location || role.workType ? (
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {role.location ? (
+                                <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-2.5 py-1 text-xs text-[var(--color-fg)]/70">
+                                  {role.location}
+                                </span>
+                              ) : null}
+                              {role.workType ? (
+                                <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-2.5 py-1 text-xs text-[var(--color-fg)]/70">
+                                  {workTypeLabels(role.workType)}
+                                </span>
+                              ) : null}
+                            </div>
+                          ) : null}
+                          <p className="text-muted-foreground mt-4 line-clamp-2 text-sm leading-relaxed sm:text-base">
+                            {role.summary}
+                          </p>
+                        </div>
+                        <div className="mt-1 shrink-0">
+                          <ArrowPill size={7} />
+                        </div>
+                      </article>
+                    </BezelLink>
                   </li>
                 ))}
               </ul>
