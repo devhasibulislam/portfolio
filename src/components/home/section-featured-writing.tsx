@@ -68,11 +68,7 @@ export async function SectionFeaturedWriting() {
         </Link>
       </ScrollReveal>
 
-      <ScrollReveal
-        as="ul"
-        className={`grid gap-6 ${gridCols}`}
-        stagger={0.1}
-      >
+      <ScrollReveal as="ul" className={`grid gap-6 ${gridCols}`} stagger={0.1}>
         {rows.map((p) => (
           <li key={p.id} data-reveal>
             <PostCard post={p} />
@@ -83,7 +79,9 @@ export async function SectionFeaturedWriting() {
   );
 }
 
-type Card = Awaited<ReturnType<typeof listPublishedPostsCursor>>["items"][number];
+type Card = Awaited<
+  ReturnType<typeof listPublishedPostsCursor>
+>["items"][number];
 
 function PostCard({ post }: { post: Card }) {
   const cover = post.coverPublicId

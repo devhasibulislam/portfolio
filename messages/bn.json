@@ -122,9 +122,18 @@
       "eyebrow": "ট্র্যাক রেকর্ড",
       "title": "সাত বছর, ছয়টি দেশ, দুটি exit।",
       "years": { "value": "৭+", "label": "বছর ধরে প্রোডাকশন Node শিপ করছি" },
-      "countries": { "value": "৬", "label": "দেশ: IL · IT · DZ · SA · BD · PK" },
-      "exits": { "value": "২", "label": "SaaS প্রোডাক্ট acquire হয়েছে। NDA। Contract on request।" },
-      "remote": { "value": "১০০%", "label": "remote-contract, ইন্টারন্যাশনাল টিমের সাথে" }
+      "countries": {
+        "value": "৬",
+        "label": "দেশ: IL · IT · DZ · SA · BD · PK"
+      },
+      "exits": {
+        "value": "২",
+        "label": "SaaS প্রোডাক্ট acquire হয়েছে। NDA। Contract on request।"
+      },
+      "remote": {
+        "value": "১০০%",
+        "label": "remote-contract, ইন্টারন্যাশনাল টিমের সাথে"
+      }
     },
     "featuredWriting": {
       "eyebrow": "সাম্প্রতিক লেখা",

@@ -76,14 +76,13 @@ export async function SectionFeaturedProjects() {
         </Link>
       </ScrollReveal>
 
-      <ScrollReveal
-        as="ul"
-        className={`grid gap-6 ${gridCols}`}
-        stagger={0.1}
-      >
+      <ScrollReveal as="ul" className={`grid gap-6 ${gridCols}`} stagger={0.1}>
         {rows.map((p) => (
           <li key={p.id} data-reveal>
-            <ProjectCard project={p} categoryLabel={categoryLabels(p.category)} />
+            <ProjectCard
+              project={p}
+              categoryLabel={categoryLabels(p.category)}
+            />
           </li>
         ))}
       </ScrollReveal>

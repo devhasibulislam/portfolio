@@ -111,10 +111,7 @@ export async function Hero() {
 
         {/* CTA row — primary uses the "button-in-button" trailing-icon
             pattern per the high-end-visual-design skill. */}
-        <div
-          data-hero-line
-          className="mt-10 flex flex-wrap items-center gap-3"
-        >
+        <div data-hero-line className="mt-10 flex flex-wrap items-center gap-3">
           <Button
             asChild
             size="lg"

@@ -105,9 +105,7 @@ function ReceiptCard({
       {...linkProps}
       className="group block h-full rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:ring-[var(--color-accent)]/40"
     >
-      <div
-        className="relative flex h-full flex-col rounded-[calc(2rem-0.375rem)] bg-[var(--card)] p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-0.5"
-      >
+      <div className="relative flex h-full flex-col rounded-[calc(2rem-0.375rem)] bg-[var(--card)] p-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-0.5">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
           {metric}
         </p>

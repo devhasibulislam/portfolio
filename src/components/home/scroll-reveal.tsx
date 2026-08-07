@@ -47,9 +47,8 @@ export function ScrollReveal({
       // sit on the page while its `data-reveal` children are held at
       // opacity: 0. When `stagger` is set the wrapper leads the sequence
       // and each `[data-reveal]` follows in cadence.
-      const children = scope.current.querySelectorAll<HTMLElement>(
-        "[data-reveal]",
-      );
+      const children =
+        scope.current.querySelectorAll<HTMLElement>("[data-reveal]");
       const targets: HTMLElement[] = stagger
         ? [scope.current, ...Array.from(children)]
         : [scope.current];

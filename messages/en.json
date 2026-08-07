@@ -122,9 +122,18 @@
       "eyebrow": "Track record",
       "title": "Seven years, six countries, two exits.",
       "years": { "value": "7+", "label": "years shipping production Node" },
-      "countries": { "value": "6", "label": "countries: IL · IT · DZ · SA · BD · PK" },
-      "exits": { "value": "2", "label": "SaaS products acquired. NDA. Contract on request." },
-      "remote": { "value": "100%", "label": "remote-contract, international teams" }
+      "countries": {
+        "value": "6",
+        "label": "countries: IL · IT · DZ · SA · BD · PK"
+      },
+      "exits": {
+        "value": "2",
+        "label": "SaaS products acquired. NDA. Contract on request."
+      },
+      "remote": {
+        "value": "100%",
+        "label": "remote-contract, international teams"
+      }
     },
     "featuredWriting": {
       "eyebrow": "Recent writing",

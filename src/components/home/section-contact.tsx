@@ -62,10 +62,7 @@ export async function SectionContact() {
               </p>
             </div>
 
-            <ul
-              data-reveal
-              className="flex flex-col gap-3 md:min-w-[16rem]"
-            >
+            <ul data-reveal className="flex flex-col gap-3 md:min-w-[16rem]">
               <ContactRow
                 href={WHATSAPP_URL}
                 label={t("whatsapp")}
@@ -105,9 +102,7 @@ function ContactRow({
     <li>
       <a
         href={href}
-        {...(!isEmail
-          ? { target: "_blank", rel: "noopener noreferrer" }
-          : {})}
+        {...(!isEmail ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         className="group flex items-center justify-between gap-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/50 py-3 pe-2 ps-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/70"
       >
         <span className="flex items-center gap-3">
