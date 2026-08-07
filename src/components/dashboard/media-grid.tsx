@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CldImage } from "next-cloudinary";
 import { Copy, Trash2, Upload } from "lucide-react";
@@ -29,7 +28,6 @@ import { deleteMedia } from "@/app/dashboard/media/actions";
 type Filter = "all" | "in-use" | "unused";
 
 export function MediaGrid({ rows }: { rows: MediaRow[] }) {
-  const router = useRouter();
   const tPage = useTranslations("dashboard.pages.media");
   const [filter, setFilter] = useState<Filter>("all");
   const [confirmDelete, setConfirmDelete] = useState<MediaRow | null>(null);
@@ -166,7 +164,6 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
         options={[]}
         onSelect={() => {
           setUploadOpen(false);
-          router.refresh();
         }}
       />
     </div>

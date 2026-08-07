@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { CldImage } from "next-cloudinary";
 import { Upload } from "lucide-react";
@@ -182,7 +181,6 @@ function UploadTab({
   aspect?: number;
   onUploaded: (media: PickedMedia) => void;
 }) {
-  const router = useRouter();
   const t = useTranslations("actions.media");
   const tPicker = useTranslations("dashboard.imagePicker");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -291,7 +289,6 @@ function UploadTab({
           height: info.height,
           originalName: info.original_filename ?? originalName,
         });
-        router.refresh();
       } catch (e) {
         toast.error(e instanceof Error ? e.message : t("uploadFailed"));
       }
