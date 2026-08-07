@@ -32,7 +32,7 @@ export async function SectionTrackRecord() {
 
       <ScrollReveal
         as="ul"
-        className="grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] bg-[var(--color-border)] p-px ring-1 ring-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-4"
+        className="grid grid-cols-1 gap-px overflow-hidden bg-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-4"
         stagger={0.08}
       >
         {STATS.map((k) => (

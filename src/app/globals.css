@@ -180,13 +180,12 @@ section[id],
    the placeholder is hidden. Fully static — no animation, no JS. */
 .img-skeleton {
   background-color: var(--muted);
-  background-image:
-    linear-gradient(
-      135deg,
-      color-mix(in oklab, var(--muted) 88%, var(--foreground)) 0%,
-      var(--muted) 40%,
-      color-mix(in oklab, var(--muted) 92%, var(--color-brand-highlight)) 100%
-    );
+  background-image: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--muted) 88%, var(--foreground)) 0%,
+    var(--muted) 40%,
+    color-mix(in oklab, var(--muted) 92%, var(--color-brand-highlight)) 100%
+  );
 }
 
 /* ---break---*/

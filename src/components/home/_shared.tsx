@@ -228,10 +228,7 @@ export function ArticleCard({
           {body}
         </p>
         <div className="mt-auto flex items-center justify-between pt-8">
-          <time
-            dateTime={date}
-            className="text-sm text-[var(--color-fg)]/60"
-          >
+          <time dateTime={date} className="text-sm text-[var(--color-fg)]/60">
             {new Date(date).toLocaleDateString(undefined, {
               month: "short",
               day: "numeric",
