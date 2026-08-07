@@ -17,7 +17,7 @@ import { Spotlight } from "./spotlight";
 // surface for cards where a cover image is the main visual and the
 // glow would just fight it (media cards, stat cells, small chip cards).
 export const bezelOuter =
-  "rounded-[2rem] ring-1 ring-[var(--color-border)]/40 transition-[box-shadow,transform,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:ring-[var(--color-accent)]/40";
+  "rounded-[2rem] ring-1 ring-[var(--color-border)]/40 transition-[box-shadow,transform] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]";
 
 export const bezelInner =
   "rounded-[2rem] spot-bg shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
