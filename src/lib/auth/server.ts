@@ -42,4 +42,10 @@ export const auth = createNeonAuth({
   cookies: {
     secret: cookieSecret || "placeholder-not-configured-set-real-secret-please",
   },
+  // Silence the "[neon-auth] Cookie validation error before getSession
+  // upstream call" warn spam during Next 16 Cache Components shell prerender.
+  // Those rejections are the *expected* signal that the dashboard shell has
+  // no cookies yet — React catches them and falls back to dynamic rendering.
+  // Real auth errors still surface at "error" level.
+  logLevel: "error",
 });
