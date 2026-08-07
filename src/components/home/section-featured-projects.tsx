@@ -33,7 +33,6 @@ export async function SectionFeaturedProjects() {
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <SectionHeader
-        eyebrow={t("eyebrow")}
         title={t("title")}
         id="featured-projects-title"
         action={<SeeAllLink href="/projects" label={t("seeAll")} />}
@@ -60,7 +59,7 @@ export async function SectionFeaturedProjects() {
                 coverWidth={p.coverWidth}
                 coverHeight={p.coverHeight}
                 footerLeft={
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg)]/60 transition-colors group-hover:text-[var(--color-accent)]">
+                  <span className="text-sm text-[var(--color-fg)]/60 transition-colors group-hover:text-[var(--color-accent)]">
                     Case study
                   </span>
                 }

@@ -21,16 +21,10 @@ export async function SectionTrackRecord() {
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <ScrollReveal className="mb-14 max-w-2xl" stagger={0.08}>
-        <p
-          data-reveal
-          className="text-[var(--color-accent)] text-[10px] font-semibold uppercase tracking-[0.28em]"
-        >
-          {t("eyebrow")}
-        </p>
         <h2
           data-reveal
           id="track-record-title"
-          className="mt-4 text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl"
+          className="text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
           {t("title")}
         </h2>
@@ -47,10 +41,10 @@ export async function SectionTrackRecord() {
             data-reveal
             className="relative flex flex-col justify-between gap-8 bg-[var(--card)] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-10"
           >
-            <p className="font-mono text-5xl font-semibold leading-none tracking-tighter text-[var(--color-fg)] sm:text-6xl md:text-7xl">
+            <p className="text-5xl font-semibold leading-none tracking-tight tabular-nums text-[var(--color-fg)] sm:text-6xl md:text-7xl">
               <CountUp value={t(`${k}.value`)} />
             </p>
-            <p className="text-muted-foreground text-xs leading-relaxed sm:text-sm">
+            <p className="text-muted-foreground text-sm leading-relaxed sm:text-base">
               {t(`${k}.label`)}
             </p>
           </li>

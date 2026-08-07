@@ -46,10 +46,10 @@ export default async function TagPage({ params }: { params: Promise<Params> }) {
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
       <header className="mb-10">
-        <p className="text-muted-foreground text-sm uppercase tracking-wider">
+        <p className="text-muted-foreground text-sm">
           Tag
         </p>
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="mt-2 text-4xl font-semibold tracking-tight text-balance sm:text-5xl md:text-6xl">
           #{t.name}
         </h1>
       </header>

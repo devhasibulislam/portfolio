@@ -44,13 +44,10 @@ export default async function ProjectsPage() {
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-24">
       <header className="mb-14 max-w-2xl">
-        <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-4 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
+        <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
           {t("heading")}
         </h1>
-        <p className="text-muted-foreground mt-3 text-lg leading-relaxed">
+        <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
           {t("hero")}
         </p>
       </header>
@@ -102,7 +99,7 @@ function ProjectCard({
           <div className="h-full w-full bg-gradient-to-br from-[var(--color-accent)]/10 to-transparent" />
         )}
       </div>
-      <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em]">
+      <div className="flex items-center gap-2 text-sm font-medium">
         <span className="text-[var(--color-accent)]">{categoryLabel}</span>
         {project.client ? (
           <>
@@ -111,10 +108,10 @@ function ProjectCard({
           </>
         ) : null}
       </div>
-      <h2 className="mt-2 text-xl font-semibold leading-snug tracking-tight transition-colors group-hover:text-[var(--color-accent-strong)]">
+      <h2 className="mt-3 text-xl font-semibold leading-snug tracking-tight text-balance transition-colors group-hover:text-[var(--color-accent-strong)]">
         {project.title}
       </h2>
-      <p className="text-muted-foreground mt-2 line-clamp-3 text-sm leading-relaxed">
+      <p className="text-muted-foreground mt-3 line-clamp-3 text-base leading-relaxed">
         {project.tagline}
       </p>
     </Link>

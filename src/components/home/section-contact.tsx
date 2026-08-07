@@ -34,16 +34,10 @@ export async function SectionContact() {
 
           <div className="relative grid gap-10 md:grid-cols-[1fr_auto] md:items-end">
             <div>
-              <p
-                data-reveal
-                className="text-[var(--color-accent)] text-[10px] font-semibold uppercase tracking-[0.28em]"
-              >
-                {t("eyebrow")}
-              </p>
               <h2
                 data-reveal
                 id="contact-title"
-                className="mt-4 max-w-3xl text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl"
+                className="max-w-3xl text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl"
               >
                 {t("title")}
               </h2>
@@ -55,7 +49,7 @@ export async function SectionContact() {
               </p>
               <p
                 data-reveal
-                className="text-muted-foreground/70 mt-5 font-mono text-xs uppercase tracking-[0.18em]"
+                className="text-muted-foreground/70 mt-5 text-sm"
               >
                 {t("response")}
               </p>

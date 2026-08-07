@@ -111,7 +111,7 @@ function PostCard({
       </div>
       <div className="flex flex-col gap-2">
         {post.categoryName ? (
-          <span className="text-[var(--color-accent)] text-[0.7rem] font-semibold uppercase tracking-[0.16em]">
+          <span className="text-sm font-medium text-[var(--color-accent)]">
             {post.categoryName}
           </span>
         ) : null}

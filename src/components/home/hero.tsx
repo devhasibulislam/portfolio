@@ -30,22 +30,9 @@ export async function Hero() {
       />
 
       <HeroReveal className="relative z-10 mx-auto w-full max-w-6xl">
-        {/* Eyebrow pill */}
-        <p
-          data-hero-line
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)] backdrop-blur"
-        >
-          <span className="size-1.5 rounded-full bg-[var(--color-accent)] shadow-[0_0_10px_var(--color-accent)]" />
-          {t("eyebrow")}
-        </p>
-
-        {/* The metric — the hook. Mono, huge, arrow in brand orange.
-            `dir="ltr"` is critical: in RTL locales (ar/he/ur) the browser
-            would otherwise mirror the `200 ms → 20 ms` sequence into
-            `20 ms → 200 ms`, breaking the "before → after" reading.
-            `whitespace-nowrap` keeps the whole receipt on one line and the
-            size ramps up progressively so it never orphans "ms" on
-            tablet/mobile. */}
+        {/* The metric — the hook. Real measurement, so mono earns its
+            place here. `dir="ltr"` protects the before → after reading
+            direction in RTL locales. */}
         <p
           data-hero-line
           dir="ltr"
@@ -69,7 +56,7 @@ export async function Hero() {
         {/* Caption under the metric */}
         <p
           data-hero-line
-          className="text-muted-foreground mt-4 max-w-2xl font-mono text-xs uppercase tracking-[0.18em] sm:text-sm"
+          className="text-muted-foreground mt-5 max-w-2xl text-base leading-relaxed sm:text-lg"
         >
           {t("metricCaption")}
         </p>
@@ -78,31 +65,29 @@ export async function Hero() {
         <h1
           id="hero-title"
           data-hero-line
-          className="mt-10 max-w-4xl text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
+          className="mt-10 max-w-4xl text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl"
         >
           {t("title")}
         </h1>
 
-        {/* Role stack */}
+        {/* Role + location */}
         <p
           data-hero-line
-          className="text-muted-foreground mt-6 max-w-3xl font-mono text-xs sm:text-sm"
+          className="text-muted-foreground mt-6 max-w-3xl text-base leading-relaxed sm:text-lg"
         >
           {t("role")}
         </p>
         <p
           data-hero-line
-          className="text-muted-foreground/70 mt-1 max-w-3xl font-mono text-xs sm:text-sm"
+          className="text-muted-foreground/70 mt-1 max-w-3xl text-sm sm:text-base"
         >
           {t("location")}
         </p>
 
-        {/* Availability badge — the single explicit signal that says
-            "I take work". Green pulse dot + one clear sentence. Recruiters
-            and hiring managers scan for this before reading the metric. */}
+        {/* Availability badge */}
         <p
           data-hero-line
-          className="mt-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 py-1.5 pe-4 ps-3 text-xs font-medium text-emerald-600 backdrop-blur dark:text-emerald-300"
+          className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 py-1.5 pe-4 ps-3 text-sm font-medium text-emerald-600 backdrop-blur dark:text-emerald-300"
         >
           <span className="relative flex size-2 shrink-0">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-70" />
@@ -111,8 +96,7 @@ export async function Hero() {
           {t("availability")}
         </p>
 
-        {/* CTA row — primary uses the "button-in-button" trailing-icon
-            pattern per the high-end-visual-design skill. */}
+        {/* CTA row */}
         <div data-hero-line className="mt-10 flex flex-wrap items-center gap-3">
           <Button
             asChild

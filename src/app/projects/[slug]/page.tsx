@@ -157,7 +157,7 @@ export default async function ProjectDetailPage({
         asChild
         variant="ghost"
         size="sm"
-        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-xs uppercase tracking-widest"
+        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-sm"
       >
         <Link href="/projects">
           <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
@@ -166,11 +166,11 @@ export default async function ProjectDetailPage({
       </Button>
 
       <header className="mb-10 flex flex-col gap-4">
-        <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
+        <p className="text-sm font-medium text-[var(--color-accent)]">
           {CATEGORY_LABEL[project.category]}
           {project.client ? ` · ${project.client}` : ""}
         </p>
-        <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
+        <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
           {project.title}
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
@@ -209,7 +209,7 @@ export default async function ProjectDetailPage({
 
       {project.outcome ? (
         <aside className="mt-10 rounded-lg border-s-2 border-[var(--color-accent)] bg-[var(--color-accent)]/5 p-5">
-          <p className="text-[var(--color-accent)] mb-1 text-xs font-semibold uppercase tracking-widest">
+          <p className="text-[var(--color-accent)] mb-1 text-sm font-medium">
             Outcome
           </p>
           <p className="text-foreground leading-relaxed">{project.outcome}</p>
@@ -218,7 +218,7 @@ export default async function ProjectDetailPage({
 
       {project.links.length > 0 ? (
         <footer className="mt-12 border-t pt-8">
-          <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-widest">
+          <p className="text-muted-foreground mb-3 text-sm font-medium">
             Links
           </p>
           <ul className="flex flex-wrap gap-2">

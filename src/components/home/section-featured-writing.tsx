@@ -32,7 +32,6 @@ export async function SectionFeaturedWriting() {
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <SectionHeader
-        eyebrow={t("eyebrow")}
         title={t("title")}
         id="featured-writing-title"
         action={<SeeAllLink href="/blog" label={t("seeAll")} />}
@@ -59,9 +58,9 @@ export async function SectionFeaturedWriting() {
                 footerLeft={
                   <time
                     dateTime={p.publishedAt}
-                    className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg)]/60"
+                    className="text-sm text-[var(--color-fg)]/60"
                   >
-                    {new Date(p.publishedAt).toISOString().slice(0, 10)}
+                    {new Date(p.publishedAt).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" })}
                   </time>
                 }
               />

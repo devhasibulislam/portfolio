@@ -33,15 +33,13 @@ export async function SectionNow() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-[var(--color-accent)] opacity-70" />
               <span className="relative inline-flex size-2.5 rounded-full bg-[var(--color-accent)]" />
             </span>
-            <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.32em]">
-              {t("eyebrow")}
-            </p>
+            <span className="text-sm font-medium">{t("eyebrow")}</span>
           </div>
 
           <h2
             data-reveal
             id="now-title"
-            className="mt-5 max-w-4xl text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-4xl"
+            className="mt-5 max-w-4xl text-2xl font-semibold leading-tight tracking-tight text-balance sm:text-3xl md:text-4xl"
           >
             {t("title")}
           </h2>
@@ -56,7 +54,7 @@ export async function SectionNow() {
             <div data-reveal className="mt-8">
               <Link
                 href="/experience"
-                className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
               >
                 {t("cta")}
                 <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />

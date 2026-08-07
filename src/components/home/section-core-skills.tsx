@@ -42,7 +42,6 @@ export async function SectionCoreSkills() {
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <SectionHeader
-        eyebrow={t("eyebrow")}
         title={t("title")}
         id="core-skills-title"
         action={<SeeAllLink href="/skills" label={t("seeAll")} />}
@@ -62,15 +61,15 @@ export async function SectionCoreSkills() {
               <Spotlight>
                 <div className={cn(bezelOuter)}>
                   <div className={cn(bezelInner, "p-6")}>
-                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)]">
+                    <h3 className="text-lg font-semibold tracking-tight">
                       {tGroups(g.group)}
-                    </p>
+                    </h3>
                     <ul className="mt-4 flex flex-wrap gap-2">
                       {items.map((s) => (
                         <li
                           key={s.id}
                           className={cn(
-                            "rounded-full border px-3 py-1 text-xs",
+                            "rounded-full border px-3 py-1 text-sm",
                             s.isPrimary
                               ? "border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 text-[var(--color-fg)]"
                               : "border-[var(--color-border)] text-[var(--color-fg)]/80",

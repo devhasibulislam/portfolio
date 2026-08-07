@@ -33,7 +33,6 @@ export async function SectionLanguages() {
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <SectionHeader
-        eyebrow={t("eyebrow")}
         title={t("title")}
         id="languages-title"
       />
@@ -50,7 +49,7 @@ export async function SectionLanguages() {
                   <p className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
                     {tLangs(l.key as LangKey)}
                   </p>
-                  <p className="text-muted-foreground mt-3 font-mono text-[10px] uppercase tracking-[0.18em]">
+                  <p className="text-muted-foreground mt-3 text-sm">
                     {tLevels(l.level as LangLevel)}
                   </p>
                 </div>

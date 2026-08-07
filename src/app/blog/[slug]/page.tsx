@@ -96,7 +96,7 @@ export default async function BlogPostPage({
         asChild
         variant="ghost"
         size="sm"
-        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-xs uppercase tracking-widest"
+        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-sm"
       >
         <Link href="/blog">
           <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
@@ -108,12 +108,12 @@ export default async function BlogPostPage({
         {post.categoryName && post.categorySlug ? (
           <Link
             href={`/blog/category/${post.categorySlug}`}
-            className="text-[var(--color-accent)] hover:opacity-80 self-start text-xs font-semibold uppercase tracking-[0.2em] transition-opacity"
+            className="text-[var(--color-accent)] hover:opacity-80 self-start text-sm font-medium transition-opacity"
           >
             {post.categoryName}
           </Link>
         ) : null}
-        <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
+        <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
           {post.title}
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed">

@@ -36,13 +36,10 @@ export default async function ResumePage() {
     <main className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-4 pt-20 pb-16 sm:px-6 sm:pt-24 sm:pb-24">
       <div className="flex items-end justify-between gap-4">
         <div className="min-w-0 flex-1">
-          <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
-            {t("kicker")}
-          </p>
-          <h1 className="mt-3 text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
+          <h1 className="text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl">
             {t("heading")}
           </h1>
-          <p className="text-muted-foreground mt-2 text-sm sm:text-base">
+          <p className="text-muted-foreground mt-3 text-base sm:text-lg">
             {t("subtitle", { name: filename })}
           </p>
         </div>

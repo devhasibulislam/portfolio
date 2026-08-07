@@ -25,7 +25,6 @@ export async function SectionReceipts() {
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
       <SectionHeader
-        eyebrow={t("eyebrow")}
         title={t("title")}
         id="receipts-title"
       />
@@ -65,17 +64,17 @@ function ReceiptCard({
 }) {
   return (
     <BezelLink href={href} external innerClassName="p-7">
-      <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-[var(--color-accent)]">
+      <p className="font-mono text-sm font-medium tracking-tight text-[var(--color-accent)]">
         {metric}
       </p>
-      <h3 className="mt-5 text-xl font-semibold leading-tight tracking-tight sm:text-2xl">
+      <h3 className="mt-5 text-xl font-semibold leading-tight tracking-tight text-balance sm:text-2xl">
         {title}
       </h3>
-      <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
+      <p className="text-muted-foreground mt-3 text-base leading-relaxed">
         {body}
       </p>
       <div className="mt-auto flex items-center justify-between pt-8">
-        <span className="font-mono text-xs uppercase tracking-[0.18em] text-[var(--color-fg)]/70 transition-colors group-hover:text-[var(--color-accent)]">
+        <span className="text-sm text-[var(--color-fg)]/70 transition-colors group-hover:text-[var(--color-accent)]">
           {cta}
         </span>
         <ArrowPill size={8} />

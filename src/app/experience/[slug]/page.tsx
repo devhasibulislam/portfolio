@@ -133,7 +133,7 @@ export default async function ExperienceDetailPage({
         asChild
         variant="ghost"
         size="sm"
-        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-xs uppercase tracking-widest"
+        className="group text-muted-foreground hover:text-[var(--color-accent)] mb-8 -ms-3 h-8 gap-1.5 text-sm"
       >
         <Link href="/experience">
           <ArrowLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
@@ -155,7 +155,7 @@ export default async function ExperienceDetailPage({
           <div className="h-16 w-16 shrink-0 rounded-md bg-[var(--color-accent)]/10" />
         )}
         <div className="min-w-0 flex-1">
-          <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
+          <p className="text-sm font-medium text-[var(--color-accent)]">
             {role.companyUrl ? (
               <a
                 href={role.companyUrl}
@@ -170,7 +170,7 @@ export default async function ExperienceDetailPage({
               role.company
             )}
           </p>
-          <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
+          <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl md:text-5xl">
             {role.role}
           </h1>
           <p className="text-muted-foreground mt-2 text-sm tabular-nums">

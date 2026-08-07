@@ -76,15 +76,15 @@ export function ArrowPill({ size = 7 }: { size?: 7 | 8 }) {
 }
 
 export function SectionHeader({
-  eyebrow,
   title,
   id,
   action,
+  intro,
 }: {
-  eyebrow: string;
   title: string;
   id: string;
   action?: React.ReactNode;
+  intro?: string;
 }) {
   return (
     <ScrollReveal
@@ -96,21 +96,17 @@ export function SectionHeader({
       stagger={0.08}
     >
       <div data-reveal className="max-w-2xl">
-        <span className="inline-flex items-center gap-2 text-[var(--color-accent)]">
-          <span
-            aria-hidden
-            className="h-px w-8 bg-[var(--color-accent)]"
-          />
-          <span className="text-xs font-semibold uppercase tracking-[0.28em] sm:text-sm">
-            {eyebrow}
-          </span>
-        </span>
         <h2
           id={id}
-          className="mt-5 text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem]"
+          className="text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-[3.25rem]"
         >
           {title}
         </h2>
+        {intro ? (
+          <p className="text-muted-foreground mt-4 max-w-xl text-base leading-relaxed sm:text-lg">
+            {intro}
+          </p>
+        ) : null}
       </div>
       {action}
     </ScrollReveal>
@@ -167,20 +163,18 @@ export function MediaCard({
           />
         ) : (
           <div className="grid h-full w-full place-items-center bg-gradient-to-br from-[var(--color-brand-navy)] to-[var(--color-brand-ink)]">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-fg)]/40">
-              {category}
-            </span>
+            <span className="text-sm text-[var(--color-fg)]/50">{category}</span>
           </div>
         )}
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--color-accent)]">
+        <p className="text-sm font-medium text-[var(--color-accent)]">
           {category}
         </p>
-        <h3 className="mt-3 text-lg font-semibold leading-tight tracking-tight">
+        <h3 className="mt-3 text-xl font-semibold leading-tight tracking-tight text-balance">
           {title}
         </h3>
-        <p className="text-muted-foreground mt-2 line-clamp-3 text-sm leading-relaxed">
+        <p className="text-muted-foreground mt-3 line-clamp-3 text-base leading-relaxed">
           {body}
         </p>
         <div className="mt-auto flex items-center justify-between pt-6">
