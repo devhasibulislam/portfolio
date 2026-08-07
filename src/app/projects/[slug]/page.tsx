@@ -19,6 +19,7 @@ import { getPublishedProjectBySlug } from "@/lib/db/queries/projects";
 import { renderTiptapToHtml } from "@/lib/tiptap-render";
 import type { ProjectLinkInput } from "@/schemas/project";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
+import { ContactCTA } from "@/components/contact-cta";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -145,6 +146,7 @@ export default async function ProjectDetailPage({
   if (cover) jsonLd.image = cover;
 
   return (
+    <>
     <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
       <script
         type="application/ld+json"
@@ -238,5 +240,7 @@ export default async function ProjectDetailPage({
         </footer>
       ) : null}
     </main>
+    <ContactCTA />
+    </>
   );
 }

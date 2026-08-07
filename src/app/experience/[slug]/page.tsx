@@ -8,6 +8,7 @@ import { getPublishedExperienceBySlug } from "@/lib/db/queries/experience";
 import { renderTiptapToHtml } from "@/lib/tiptap-render";
 import type { ExperienceInput } from "@/schemas/experience";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
+import { ContactCTA } from "@/components/contact-cta";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -122,6 +123,7 @@ export default async function ExperienceDetailPage({
   };
 
   return (
+    <>
     <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
       <script
         type="application/ld+json"
@@ -186,5 +188,7 @@ export default async function ExperienceDetailPage({
         />
       ) : null}
     </main>
+    <ContactCTA />
+    </>
   );
 }

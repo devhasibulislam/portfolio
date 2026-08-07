@@ -7,6 +7,7 @@ import { tag } from "@/lib/cache-tags";
 import { getPublishedPostBySlug } from "@/lib/db/queries/public-posts";
 import { coverOgUrl, renderTiptapToHtml } from "@/lib/tiptap-render";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
+import { ContactCTA } from "@/components/contact-cta";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -83,6 +84,7 @@ export default async function BlogPostPage({
   };
 
   return (
+    <>
     <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
       <script
         type="application/ld+json"
@@ -162,5 +164,7 @@ export default async function BlogPostPage({
         </footer>
       ) : null}
     </main>
+    <ContactCTA />
+    </>
   );
 }
