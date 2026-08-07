@@ -226,7 +226,7 @@ export default async function ProjectDetailPage({
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:border-[var(--color-accent)] hover:text-[var(--color-accent-strong)] inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-sm transition-colors"
+                    className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-4 py-2 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
                     title={meta.hint}
                   >
                     <Icon className="size-3.5" />

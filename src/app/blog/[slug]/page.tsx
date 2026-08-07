@@ -156,7 +156,7 @@ export default async function BlogPostPage({
             <Link
               key={t.slug}
               href={`/blog/tag/${t.slug}`}
-              className="bg-muted hover:bg-primary/10 hover:text-primary rounded-md px-2 py-0.5 text-xs font-medium transition-colors"
+              className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-3 py-1 text-xs font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
             >
               {t.name}
             </Link>

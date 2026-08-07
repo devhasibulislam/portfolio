@@ -5,7 +5,7 @@ import { Download } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import { getActiveResume } from "@/lib/db/queries/resumes";
-import { Button } from "@/components/ui/button";
+import { CtaButton } from "@/components/cta-button";
 import { ResumeViewerClient } from "@/components/resume-viewer-client";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
@@ -46,27 +46,9 @@ export default async function ResumePage() {
             {t("subtitle", { name: filename })}
           </p>
         </div>
-        <Button
-          asChild
-          size="sm"
-          variant="outline"
-          className="shrink-0 sm:hidden"
-        >
-          <a
-            href={resume.url}
-            download={resume.originalName}
-            rel="noopener"
-            aria-label={t("download")}
-          >
-            <Download className="size-4" />
-          </a>
-        </Button>
-        <Button asChild size="lg" className="hidden shrink-0 sm:inline-flex">
-          <a href={resume.url} download={resume.originalName} rel="noopener">
-            <Download className="me-2 size-4" />
-            {t("download")}
-          </a>
-        </Button>
+        <CtaButton href={resume.url} download={resume.originalName}>
+          {t("download")}
+        </CtaButton>
       </div>
 
       <div className="w-full">

@@ -13,6 +13,7 @@ type CtaButtonProps = {
   variant?: "primary" | "secondary";
   href?: string;
   external?: boolean;
+  download?: string | boolean;
   leadIcon?: React.ReactNode;
   className?: string;
   children: React.ReactNode;
@@ -22,6 +23,7 @@ export function CtaButton({
   variant = "primary",
   href,
   external,
+  download,
   leadIcon,
   className,
   children,
@@ -62,9 +64,20 @@ export function CtaButton({
   return (
     <Button {...buttonProps}>
       {href ? (
-        <Link href={href} {...linkProps}>
-          {inner}
-        </Link>
+        download !== undefined ? (
+          <a
+            href={href}
+            download={download === true ? "" : download}
+            rel="noopener"
+            {...linkProps}
+          >
+            {inner}
+          </a>
+        ) : (
+          <Link href={href} {...linkProps}>
+            {inner}
+          </Link>
+        )
       ) : (
         <span>{inner}</span>
       )}
