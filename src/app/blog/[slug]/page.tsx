@@ -85,7 +85,7 @@ export default async function BlogPostPage({
 
   return (
     <>
-      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
+      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-8">
         <script
           type="application/ld+json"
           // Next 16 requires this to be inline for the crawler; safe because

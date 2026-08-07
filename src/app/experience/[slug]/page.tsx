@@ -124,7 +124,7 @@ export default async function ExperienceDetailPage({
 
   return (
     <>
-      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
+      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-8">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
