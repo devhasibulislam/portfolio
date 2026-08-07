@@ -18,10 +18,7 @@ export async function SectionNow() {
         stagger={0.08}
       >
         <div
-          className={cn(
-            "relative px-8 py-10 sm:px-12 sm:py-14",
-            bezelInner,
-          )}
+          className={cn("relative px-8 py-10 sm:px-12 sm:py-14", bezelInner)}
         >
           <span
             aria-hidden

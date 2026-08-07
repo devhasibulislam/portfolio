@@ -545,27 +545,27 @@
     "semantic_hash": "28976f8a97483dae108e507dd132e98d"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/ar.json": {
-    "mtime": 1786085706.7238708,
+    "mtime": 1786093671.6384614,
     "ast_hash": "db29522112be66fc43f874b50e4d496e",
     "semantic_hash": "db29522112be66fc43f874b50e4d496e"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/bn.json": {
-    "mtime": 1786085683.8487303,
+    "mtime": 1786093671.540308,
     "ast_hash": "7ce956d222db268a1b567890a9422688",
     "semantic_hash": "7ce956d222db268a1b567890a9422688"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/en.json": {
-    "mtime": 1786085673.2814171,
+    "mtime": 1786093671.4203074,
     "ast_hash": "734b797533567de79bfc047e07394761",
     "semantic_hash": "734b797533567de79bfc047e07394761"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/he.json": {
-    "mtime": 1786085706.72687,
+    "mtime": 1786093671.8459468,
     "ast_hash": "7880baf0b3cd71079f3f6f47eac1b9b7",
     "semantic_hash": "7880baf0b3cd71079f3f6f47eac1b9b7"
   },
   "/home/prokken-inc/Desktop/portfolio/messages/ur.json": {
-    "mtime": 1786085706.7265368,
+    "mtime": 1786093671.7314625,
     "ast_hash": "56f6b4024d3286d5fa9dce48ee31dc4f",
     "semantic_hash": "56f6b4024d3286d5fa9dce48ee31dc4f"
   },
@@ -3110,7 +3110,7 @@
     "semantic_hash": "aee62498582142e640760977938cac6f"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/site-header.tsx": {
-    "mtime": 1786085663.0430832,
+    "mtime": 1786093672.3112767,
     "ast_hash": "bd3207f90da41cc20b2ff192d1f8d685",
     "semantic_hash": "bd3207f90da41cc20b2ff192d1f8d685"
   },
@@ -3525,7 +3525,7 @@
     "semantic_hash": "eedfba7955ca3597654a97bcb38dc616"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/hero.tsx": {
-    "mtime": 1786085730.482632,
+    "mtime": 1786093672.0684664,
     "ast_hash": "b118a9930602647b8f18489ca5d95da9",
     "semantic_hash": "b118a9930602647b8f18489ca5d95da9"
   },
@@ -3535,33 +3535,38 @@
     "semantic_hash": "06e8e10ba8ba15910b1d9d01477b2ff8"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-contact.tsx": {
-    "mtime": 1786085890.0332615,
-    "ast_hash": "212ac284cb2731a84599c002c69f5344",
-    "semantic_hash": "212ac284cb2731a84599c002c69f5344"
+    "mtime": 1786095041.2552803,
+    "ast_hash": "7a64869b1766e85e787d6619080cfe2d",
+    "semantic_hash": "7a64869b1766e85e787d6619080cfe2d"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-featured-projects.tsx": {
-    "mtime": 1786085813.3129268,
-    "ast_hash": "6704971a1f22ca05647a5dcc6033f38f",
-    "semantic_hash": "6704971a1f22ca05647a5dcc6033f38f"
+    "mtime": 1786095040.7963123,
+    "ast_hash": "a0bf9dfb5272354575561e458f67941a",
+    "semantic_hash": "a0bf9dfb5272354575561e458f67941a"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-featured-writing.tsx": {
-    "mtime": 1786085856.5318575,
-    "ast_hash": "cbed1d9dfc4a5a72833260a98febaf55",
-    "semantic_hash": "cbed1d9dfc4a5a72833260a98febaf55"
+    "mtime": 1786095040.9101903,
+    "ast_hash": "5fcbb0a07617dc38e56f902d11241257",
+    "semantic_hash": "5fcbb0a07617dc38e56f902d11241257"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-now.tsx": {
-    "mtime": 1786085870.4914315,
-    "ast_hash": "28dc11c2ff49eb6fb059134465acbde5",
-    "semantic_hash": "28dc11c2ff49eb6fb059134465acbde5"
+    "mtime": 1786095041.198297,
+    "ast_hash": "1aeaff3a5878e4197d55fc374e97a39d",
+    "semantic_hash": "1aeaff3a5878e4197d55fc374e97a39d"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-receipts.tsx": {
-    "mtime": 1786085765.6030052,
-    "ast_hash": "3f82106fbae9f44bd4dec46958711321",
-    "semantic_hash": "3f82106fbae9f44bd4dec46958711321"
+    "mtime": 1786095041.027048,
+    "ast_hash": "27284b91c50e1b635fa5549ed072c20c",
+    "semantic_hash": "27284b91c50e1b635fa5549ed072c20c"
   },
   "/home/prokken-inc/Desktop/portfolio/src/components/home/section-track-record.tsx": {
-    "mtime": 1786085870.497194,
+    "mtime": 1786093672.1834288,
     "ast_hash": "ff49553ecd1257a926d7529f0c6627f8",
     "semantic_hash": "ff49553ecd1257a926d7529f0c6627f8"
+  },
+  "/home/prokken-inc/Desktop/portfolio/src/components/home/_shared.tsx": {
+    "mtime": 1786095040.7460608,
+    "ast_hash": "c7eb94836d0d0beec675ae6d0c0a9489",
+    "semantic_hash": "c7eb94836d0d0beec675ae6d0c0a9489"
   }
 }
