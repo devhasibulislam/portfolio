@@ -73,7 +73,73 @@
   "home": {
     "kicker": "معرض الأعمال",
     "heading": "حسيب الإسلام",
-    "hero": "مهندس برمجيات كامل. هندسة الخلفية وأنظمة LLM/RAG وإنتاج Node.js."
+    "hero": "مهندس برمجيات كامل. هندسة الخلفية وأنظمة LLM/RAG وإنتاج Node.js.",
+    "hero2": {
+      "eyebrow": "The receipts",
+      "metricFrom": "200 ms",
+      "metricTo": "20 ms",
+      "metricCaption": "hot-path list API rewrite. p95, prod.",
+      "title": "Backends that stay fast when the load doesn't.",
+      "role": "Sr. Backend Architect · Node.js · NestJS · PostgreSQL · LLM/RAG",
+      "location": "الدوحة · Remote-contract · متاح للتعاون",
+      "primaryCta": "See the work",
+      "secondaryCta": "Read the resume"
+    },
+    "receipts": {
+      "eyebrow": "Signature receipts",
+      "title": "Three shipped things you can inspect right now.",
+      "latency": {
+        "metric": "~200 ms → ~20 ms",
+        "title": "Hot-path list API rewrite",
+        "body": "Compound indexing, single-join query rewrites, cache-aside, DTO projection. Autocannon benchmarks and green CI on GitHub.",
+        "cta": "Read the case study"
+      },
+      "rls": {
+        "metric": "Zero cross-tenant leaks",
+        "title": "Multi-tenant Row-Level Security starter",
+        "body": "Postgres RLS with 8 integration tests that actively try to leak data across tenants.",
+        "cta": "View on GitHub"
+      },
+      "pipeline": {
+        "metric": "5,000+ companies served",
+        "title": "Message pipeline at MessageMind",
+        "body": "WhatsApp, Messenger, Instagram and web-chat over NestJS microservices with Kafka and BullMQ. GDPR-hosted in Frankfurt.",
+        "cta": "See the product"
+      }
+    },
+    "now": {
+      "eyebrow": "Now",
+      "title": "Sr. Backend Architect at ZMC Technologies.",
+      "body": "Owning backend architecture across a three-product PropTech roadmap: ERP, CRM, and a trading platform.",
+      "cta": "See the role"
+    },
+    "featuredProjects": {
+      "eyebrow": "Recent work",
+      "title": "Latest projects.",
+      "seeAll": "See all projects"
+    },
+    "trackRecord": {
+      "eyebrow": "Track record",
+      "title": "Seven years, six countries, two exits.",
+      "years": { "value": "7+", "label": "years shipping production Node" },
+      "countries": { "value": "6", "label": "countries: IL · IT · DZ · SA · BD · PK" },
+      "exits": { "value": "2", "label": "SaaS products acquired. NDA. Contract on request." },
+      "remote": { "value": "100%", "label": "remote-contract, international teams" }
+    },
+    "featuredWriting": {
+      "eyebrow": "Recent writing",
+      "title": "Latest posts.",
+      "seeAll": "See all posts"
+    },
+    "contact": {
+      "eyebrow": "Let's build",
+      "title": "Building something that needs a backend that scales?",
+      "body": "I take a small number of contract engagements each year. Let's talk.",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "email": "Email",
+      "response": "Usually replies within 24h · GMT+6"
+    }
   },
   "blog": {
     "kicker": "الكتابة",

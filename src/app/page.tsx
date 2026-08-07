@@ -1,32 +1,111 @@
-/**
- * Home page — themed shell aligned with /skills, /blog, /resume, and the
- * dashboard so the site reads as one visual system. The R3F hero
- * (previously mounted here) has been retired; the component tree still
- * lives under `src/components/home/*` in case any of it gets salvaged in
- * the upcoming home rework.
- */
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import { StarBackdrop } from "@/components/star-backdrop";
+import { SITE_CONFIG } from "@/config/site";
+import { Hero } from "@/components/home/hero";
+import { SectionReceipts } from "@/components/home/section-receipts";
+import { SectionNow } from "@/components/home/section-now";
+import { SectionFeaturedProjects } from "@/components/home/section-featured-projects";
+import { SectionTrackRecord } from "@/components/home/section-track-record";
+import { SectionFeaturedWriting } from "@/components/home/section-featured-writing";
+import { SectionContact } from "@/components/home/section-contact";
 
-export default async function HomePage() {
-  const t = await getTranslations("home");
+/**
+ * Home page — the "highlight reel + archive" pattern. Every section on
+ * this page is either a hardcoded fact (hero, receipts, now, track record,
+ * contact) or a top-3 preview into a dedicated archive page (projects,
+ * blog). Sections backed by the dashboard auto-hide when empty so the
+ * page collapses gracefully on day one and grows itself as content lands.
+ *
+ * Order is chosen so that the visitor's trust rises before the ask:
+ *
+ *   1. Hero — one bold metric hooks the eye (~200 ms → ~20 ms)
+ *   2. Signature receipts — three inspectable proof points
+ *   3. Now — what he is currently doing (recency signal)
+ *   4. Featured projects — DB-driven, hides when empty
+ *   5. Track record — the numbers strip (7+ years · 6 countries · 2 exits)
+ *   6. Featured writing — DB-driven, hides when empty
+ *   7. Contact — closes the story
+ *
+ * Motion policy per §16 + design-taste-frontend: hero mesh on capable
+ * devices only, GSAP ScrollTrigger reveals (one-shot, never scrubbed),
+ * count-up on the numbers. `prefers-reduced-motion` disables all of it.
+ */
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const m = await getTranslations("meta.home");
+  const title = m("title");
+  const description = m("description");
+  return {
+    title,
+    description,
+    alternates: { canonical: "/" },
+    openGraph: {
+      type: "website",
+      title: `${title} · Hasibul Islam`,
+      description,
+      url: SITE_URL,
+    },
+  };
+}
+
+export default function HomePage() {
+  // JSON-LD Person schema so search engines and AI crawlers get structured
+  // identity + expertise data — feeds `/llms.txt` consumers too.
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE_CONFIG.name,
+    url: SITE_URL,
+    image: `${SITE_URL}${SITE_CONFIG.brand.avatar}`,
+    email: SITE_CONFIG.email,
+    jobTitle: "Sr. Backend Architect",
+    worksFor: {
+      "@type": "Organization",
+      name: "ZMC Technologies Limited",
+      url: "https://zmctechnologies.com/",
+    },
+    sameAs: Object.values(SITE_CONFIG.socials).filter(Boolean),
+    knowsAbout: [
+      "Node.js",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "Row-Level Security",
+      "Kafka",
+      "BullMQ",
+      "AWS",
+      "LLM",
+      "RAG",
+      "Model Context Protocol",
+      "Backend architecture",
+    ],
+  };
+
   return (
-    <main className="mx-auto w-full max-w-5xl px-6 pt-24 pb-24">
-      <header className="mb-12 max-w-2xl">
-        <p className="text-[var(--color-accent)] text-xs font-semibold uppercase tracking-[0.24em]">
-          {t("kicker")}
-        </p>
-        <h1 className="mt-4 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
-          {t("heading")}
-        </h1>
-        <p className="text-muted-foreground mt-3 text-lg leading-relaxed">
-          {t("hero")}
-        </p>
-      </header>
+    <>
+      {/* CSS-only starfield — no JS, no WebGL — covers all locales, all
+          devices. The hero's Three.js mesh sits on top on capable devices;
+          the fallback path just sees the starfield. */}
+      <StarBackdrop />
 
-      {/*
-        Body slot — the redesign lands here. Left intentionally empty so
-        the visual rhythm from /skills carries over unchanged.
-      */}
-    </main>
+      <script
+        type="application/ld+json"
+        // JSON.stringify escapes </script> tags safely; no user input here.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
+
+      <main className="relative w-full">
+        <Hero />
+        <SectionReceipts />
+        <SectionNow />
+        <SectionFeaturedProjects />
+        <SectionTrackRecord />
+        <SectionFeaturedWriting />
+        <SectionContact />
+      </main>
+    </>
   );
 }

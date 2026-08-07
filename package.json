@@ -19,6 +19,7 @@
     "*.{ts,tsx}": "eslint --fix"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@neondatabase/auth": "^0.4.2-beta",
     "@neondatabase/serverless": "^1.1.0",
     "@react-three/drei": "^10.7.7",

@@ -73,7 +73,73 @@
   "home": {
     "kicker": "পোর্টফোলিও",
     "heading": "হাসিবুল ইসলাম",
-    "hero": "সিনিয়র ফুল-স্ট্যাক ইঞ্জিনিয়ার। ব্যাকএন্ড আর্কিটেকচার, LLM/RAG সিস্টেম এবং প্রোডাকশন Node.js।"
+    "hero": "সিনিয়র ফুল-স্ট্যাক ইঞ্জিনিয়ার। ব্যাকএন্ড আর্কিটেকচার, LLM/RAG সিস্টেম এবং প্রোডাকশন Node.js।",
+    "hero2": {
+      "eyebrow": "রিসিপ্ট",
+      "metricFrom": "২০০ ms",
+      "metricTo": "২০ ms",
+      "metricCaption": "hot-path list API rewrite। p95, প্রোডাকশন।",
+      "title": "লোড বাড়লেও যেসব ব্যাকএন্ড ধীর হয় না।",
+      "role": "Sr. Backend Architect · Node.js · NestJS · PostgreSQL · LLM/RAG",
+      "location": "ঢাকা · Remote-contract · কোলাবোরেশনের জন্য উন্মুক্ত",
+      "primaryCta": "কাজ দেখুন",
+      "secondaryCta": "রেজিউমে পড়ুন"
+    },
+    "receipts": {
+      "eyebrow": "সিগনেচার রিসিপ্ট",
+      "title": "যে তিনটি কাজ এখনই যাচাই করতে পারবেন।",
+      "latency": {
+        "metric": "~২০০ ms → ~২০ ms",
+        "title": "Hot-path list API rewrite",
+        "body": "(tenant_id, created_at)-এ কম্পাউন্ড ইনডেক্স, N+1 populate সরিয়ে single-join rewrite, hot pages-এ cache-aside, DTO projection। Autocannon বেঞ্চমার্ক এবং GitHub-এ green CI।",
+        "cta": "কেস স্টাডি পড়ুন"
+      },
+      "rls": {
+        "metric": "কোনো cross-tenant leak নেই",
+        "title": "Multi-tenant Row-Level Security starter",
+        "body": "Postgres RLS-এর সাথে ৮টি integration test — যেগুলো সক্রিয়ভাবে tenant-এর মধ্যে data leak করার চেষ্টা করে। বাউন্ডারি অ্যাপ্লিকেশন কোড থেকে ডাটাবেসে সরানো হয়েছে।",
+        "cta": "GitHub-এ দেখুন"
+      },
+      "pipeline": {
+        "metric": "৫,০০০+ কোম্পানির সেবা",
+        "title": "MessageMind-এর message pipeline",
+        "body": "WhatsApp, Messenger, Instagram এবং web-chat — NestJS microservices, Kafka এবং BullMQ দিয়ে। Meta Business Partner, GDPR-hosted (Frankfurt)।",
+        "cta": "প্রোডাক্ট দেখুন"
+      }
+    },
+    "now": {
+      "eyebrow": "এখন",
+      "title": "ZMC Technologies-এ Sr. Backend Architect।",
+      "body": "তিনটি PropTech প্রোডাক্ট: ERP, CRM এবং trading platform — এগুলোর ব্যাকএন্ড আর্কিটেকচার আমার হাতে। প্যারালাল contract কোলাবোরেশনের জন্য উন্মুক্ত।",
+      "cta": "রোল দেখুন"
+    },
+    "featuredProjects": {
+      "eyebrow": "সাম্প্রতিক কাজ",
+      "title": "সর্বশেষ প্রজেক্ট।",
+      "seeAll": "সব প্রজেক্ট দেখুন"
+    },
+    "trackRecord": {
+      "eyebrow": "ট্র্যাক রেকর্ড",
+      "title": "সাত বছর, ছয়টি দেশ, দুটি exit।",
+      "years": { "value": "৭+", "label": "বছর ধরে প্রোডাকশন Node শিপ করছি" },
+      "countries": { "value": "৬", "label": "দেশ: IL · IT · DZ · SA · BD · PK" },
+      "exits": { "value": "২", "label": "SaaS প্রোডাক্ট acquire হয়েছে। NDA। Contract on request।" },
+      "remote": { "value": "১০০%", "label": "remote-contract, ইন্টারন্যাশনাল টিমের সাথে" }
+    },
+    "featuredWriting": {
+      "eyebrow": "সাম্প্রতিক লেখা",
+      "title": "সর্বশেষ পোস্ট।",
+      "seeAll": "সব পোস্ট দেখুন"
+    },
+    "contact": {
+      "eyebrow": "চলুন কাজ করি",
+      "title": "এমন কিছু বানাচ্ছেন যেটার ব্যাকএন্ড scale করতে হবে?",
+      "body": "প্রতি বছর অল্প কিছু contract engagement নিই। যদি আপনার ব্যাকএন্ড লোডে ভেঙে পড়ছে, বা নতুন কিছু scope করছেন যেটা v1-এই ঠিক হতে হবে — তাহলে কথা বলি।",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "email": "Email",
+      "response": "সাধারণত ২৪ ঘণ্টার মধ্যে উত্তর দিই · GMT+6"
+    }
   },
   "blog": {
     "kicker": "লেখালেখি",
