@@ -36,3 +36,10 @@ export function parseTiptapDoc(raw: string): Record<string, unknown> {
 export function toIso(s: string): string | null {
   return s ? new Date(`${s}T00:00:00.000Z`).toISOString() : null;
 }
+
+/** First zod issue message, or a generic fallback. Used by every save action. */
+export function zodErr(
+  parsed: { success: false; error: { issues: { message: string }[] } },
+): string {
+  return parsed.error.issues[0]?.message ?? "Invalid input";
+}

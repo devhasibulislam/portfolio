@@ -7,7 +7,7 @@ import { db } from "@/lib/db/client";
 import { tags, postsTags } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { tagInput } from "@/schemas/tag";
-import type { ActionState } from "@/lib/action-helpers";
+import { zodErr, type ActionState } from "@/lib/action-helpers";
 
 export async function saveTag(
   _prev: ActionState,
@@ -19,7 +19,7 @@ export async function saveTag(
     slug: String(formData.get("slug") ?? "").trim(),
   });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+    return { error: zodErr(parsed) };
   }
 
   const existing = await db

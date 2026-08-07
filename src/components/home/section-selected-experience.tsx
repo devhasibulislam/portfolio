@@ -1,6 +1,7 @@
 import { cacheTag } from "next/cache";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
+import { formatMonthYear } from "@/lib/dates";
 import { listLatestExperience } from "@/lib/db/queries/experience";
 import { ScrollReveal } from "./scroll-reveal";
 import { ArrowPill, BezelLink, SectionHeader, SeeAllLink } from "./_shared";
@@ -16,9 +17,7 @@ function formatPeriod(
   end: Date | null,
   presentLabel: string,
 ): string {
-  const fmt = (d: Date) =>
-    d.toLocaleDateString(undefined, { month: "short", year: "numeric" });
-  return `${fmt(start)} – ${end ? fmt(end) : presentLabel}`;
+  return `${formatMonthYear(start)} – ${end ? formatMonthYear(end) : presentLabel}`;
 }
 
 export async function SectionSelectedExperience() {

@@ -8,7 +8,7 @@ import { projectLinks, projects } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { projectInput } from "@/schemas/project";
 import type { ProjectLinkInput } from "@/schemas/project";
-import { parseTiptapDoc, toIso, type ActionState } from "@/lib/action-helpers";
+import { parseTiptapDoc, toIso, zodErr, type ActionState } from "@/lib/action-helpers";
 
 // Best-effort host check for App Store / Play Store links so a mistyped
 // URL surfaces before it hits the public site. Soft errors only — Zod
@@ -87,7 +87,7 @@ export async function saveProject(
     links,
   });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+    return { error: zodErr(parsed) };
   }
 
   const hostErr = await validateLinkHosts(parsed.data.links);

@@ -7,7 +7,7 @@ import {
   getCategoryBySlug,
   listPublishedPostsCursor,
 } from "@/lib/db/queries/public-posts";
-import { loadMoreCategoryPosts } from "./actions";
+import { loadMorePublishedPosts } from "@/app/blog/actions";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 type Params = { slug: string };
@@ -46,7 +46,9 @@ export default async function CategoryPage({
   const { category, page } = await loadPage(slug);
   if (!category) notFound();
 
-  const boundLoader = loadMoreCategoryPosts.bind(null, category.slug);
+  const boundLoader = loadMorePublishedPosts.bind(null, {
+    categorySlug: category.slug,
+  });
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">

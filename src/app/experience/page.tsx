@@ -5,6 +5,7 @@ import { getCldImageUrl } from "next-cloudinary";
 import { ArrowUpRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
+import { formatMonthYear } from "@/lib/dates";
 import {
   listPublishedExperience,
   type PublicExperienceCard,
@@ -72,9 +73,7 @@ function formatPeriod(
   end: Date | null,
   presentLabel: string,
 ): string {
-  const fmt = (d: Date) =>
-    d.toLocaleDateString(undefined, { month: "short", year: "numeric" });
-  return `${fmt(start)} to ${end ? fmt(end) : presentLabel}`;
+  return `${formatMonthYear(start)} to ${end ? formatMonthYear(end) : presentLabel}`;
 }
 
 export default async function ExperiencePage() {

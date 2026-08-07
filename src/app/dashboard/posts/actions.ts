@@ -8,7 +8,7 @@ import { db } from "@/lib/db/client";
 import { posts, postsTags } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { postInput } from "@/schemas/post";
-import type { ActionState } from "@/lib/action-helpers";
+import { zodErr, type ActionState } from "@/lib/action-helpers";
 
 /**
  * Create or update a post. On success, redirects to the edit page (so the
@@ -42,7 +42,7 @@ export async function savePost(
     status: (formData.get("status") as "draft" | "published") ?? "draft",
   });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+    return { error: zodErr(parsed) };
   }
 
   // Slug uniqueness (skip current row on edit).

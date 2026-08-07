@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ScrollReveal } from "./scroll-reveal";
 import { CountUp } from "./count-up";
 
@@ -11,9 +11,14 @@ import { CountUp } from "./count-up";
 
 type StatKey = "years" | "countries" | "exits" | "remote";
 const STATS: StatKey[] = ["years", "countries", "exits", "remote"];
+const COUNTRY_CODES = ["IL", "IT", "DZ", "SA", "BD", "PK"] as const;
 
 export async function SectionTrackRecord() {
-  const t = await getTranslations("home.trackRecord");
+  const [t, locale] = await Promise.all([
+    getTranslations("home.trackRecord"),
+    getLocale(),
+  ]);
+  const regionNames = new Intl.DisplayNames([locale], { type: "region" });
 
   return (
     <section
@@ -45,7 +50,24 @@ export async function SectionTrackRecord() {
               <CountUp value={t(`${k}.value`)} />
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed sm:text-base">
-              {t(`${k}.label`)}
+              {k === "countries" ? (
+                <>
+                  {t(`${k}.label`)}:{" "}
+                  {COUNTRY_CODES.map((code, i) => (
+                    <span key={code}>
+                      {i > 0 ? " · " : null}
+                      <abbr
+                        title={regionNames.of(code) ?? code}
+                        className="cursor-help no-underline decoration-dotted underline-offset-4 hover:underline"
+                      >
+                        {code}
+                      </abbr>
+                    </span>
+                  ))}
+                </>
+              ) : (
+                t(`${k}.label`)
+              )}
             </p>
           </li>
         ))}

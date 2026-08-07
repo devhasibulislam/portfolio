@@ -7,7 +7,7 @@ import { db } from "@/lib/db/client";
 import { skills } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { skillInput } from "@/schemas/skill";
-import type { ActionState } from "@/lib/action-helpers";
+import { zodErr, type ActionState } from "@/lib/action-helpers";
 
 /**
  * Create or update a skill. Slug uniqueness is enforced explicitly so we
@@ -39,7 +39,7 @@ export async function saveSkill(
     status: (formData.get("status") as "active" | "archived") ?? "active",
   });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+    return { error: zodErr(parsed) };
   }
 
   // Slug uniqueness (skip current row on edit).

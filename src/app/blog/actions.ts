@@ -5,11 +5,15 @@ import {
   type PostsPage,
 } from "@/lib/db/queries/public-posts";
 
+type Filter = { categorySlug?: string; tagSlug?: string };
+
 /**
- * Server action for `useCursor` on /blog. Kept single-arg so extending the
- * hook to /blog/category/[slug] later is one wrapper action, not a signature
- * change. No `"use cache"` — this is on-demand and small.
+ * Single cursor loader for /blog, /blog/category/[slug], and /blog/tag/[slug].
+ * Pages pass an empty filter or `.bind(null, { categorySlug })` / `.bind(null, { tagSlug })`.
  */
-export async function loadMoreBlogPosts(cursor: string): Promise<PostsPage> {
-  return listPublishedPostsCursor({ cursor, limit: 12 });
+export async function loadMorePublishedPosts(
+  filter: Filter,
+  cursor: string,
+): Promise<PostsPage> {
+  return listPublishedPostsCursor({ cursor, limit: 12, ...filter });
 }

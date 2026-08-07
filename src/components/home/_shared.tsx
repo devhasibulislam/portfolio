@@ -25,8 +25,6 @@ export const bezelInner =
 export const bezelInnerPlain =
   "rounded-[2rem] bg-[var(--card)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
 
-const bezelHover = "";
-
 export function BezelLink({
   href,
   external,
@@ -51,7 +49,7 @@ export function BezelLink({
     <Link
       href={href}
       {...linkProps}
-      className={cn("group block h-full", bezelOuter, bezelHover, className)}
+      className={cn("group block h-full", bezelOuter, className)}
     >
       <div className={cn("flex h-full flex-col", inner, innerClassName)}>
         {children}

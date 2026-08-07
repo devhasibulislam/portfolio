@@ -7,7 +7,7 @@ import { db } from "@/lib/db/client";
 import { experiences } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { experienceInput } from "@/schemas/experience";
-import { parseTiptapDoc, toIso, type ActionState } from "@/lib/action-helpers";
+import { parseTiptapDoc, toIso, zodErr, type ActionState } from "@/lib/action-helpers";
 
 export async function saveExperience(
   _prev: ActionState,
@@ -52,7 +52,7 @@ export async function saveExperience(
     tagIds: [],
   });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+    return { error: zodErr(parsed) };
   }
 
   // Slug uniqueness (skip current row on edit).

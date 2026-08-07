@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { tag } from "@/lib/cache-tags";
+import { formatMonthYear } from "@/lib/dates";
 import { getPublishedProjectBySlug } from "@/lib/db/queries/projects";
 import { renderTiptapToHtml } from "@/lib/tiptap-render";
 import type { ProjectLinkInput } from "@/schemas/project";
@@ -100,9 +101,7 @@ const CATEGORY_LABEL: Record<
 
 function formatPeriod(start: Date | null, end: Date | null): string | null {
   if (!start) return null;
-  const fmt = (d: Date) =>
-    d.toLocaleDateString(undefined, { month: "short", year: "numeric" });
-  return `${fmt(start)} to ${end ? fmt(end) : "Present"}`;
+  return `${formatMonthYear(start)} to ${end ? formatMonthYear(end) : "Present"}`;
 }
 
 export default async function ProjectDetailPage({

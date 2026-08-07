@@ -8,6 +8,7 @@ import { media, posts } from "@/lib/db/schema";
 import { cloudinary } from "@/lib/cloudinary";
 import { tag } from "@/lib/cache-tags";
 import { mediaInput } from "@/schemas/media";
+import { zodErr } from "@/lib/action-helpers";
 
 type ActionState = { error?: string; ok?: true; id?: string } | null;
 
@@ -33,7 +34,7 @@ export async function registerMedia(
     folder: String(formData.get("folder") ?? ""),
   });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+    return { error: zodErr(parsed) };
   }
 
   const [inserted] = await db

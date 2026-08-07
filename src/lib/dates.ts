@@ -9,3 +9,15 @@ export function toDateInputValue(d: Date | string | null): string {
   if (Number.isNaN(date.getTime())) return "";
   return date.toISOString().slice(0, 10);
 }
+
+/** e.g. "Aug 2026" (short) or "August 2026" (long). Used by period ranges. */
+export function formatMonthYear(
+  d: Date | string,
+  opts: { long?: boolean } = {},
+): string {
+  const date = typeof d === "string" ? new Date(d) : d;
+  return date.toLocaleDateString(undefined, {
+    month: opts.long ? "long" : "short",
+    year: "numeric",
+  });
+}

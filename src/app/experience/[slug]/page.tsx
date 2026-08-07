@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getCldImageUrl } from "next-cloudinary";
 import { ArrowUpRight } from "lucide-react";
 import { tag } from "@/lib/cache-tags";
+import { formatMonthYear } from "@/lib/dates";
 import { getPublishedExperienceBySlug } from "@/lib/db/queries/experience";
 import { renderTiptapToHtml } from "@/lib/tiptap-render";
 import type { ExperienceInput } from "@/schemas/experience";
@@ -69,8 +70,7 @@ export async function generateMetadata({
 }
 
 function formatPeriod(start: Date, end: Date | null): string {
-  const fmt = (d: Date) =>
-    d.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+  const fmt = (d: Date) => formatMonthYear(d, { long: true });
   return `${fmt(start)} to ${end ? fmt(end) : "Present"}`;
 }
 

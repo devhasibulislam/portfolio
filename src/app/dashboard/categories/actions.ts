@@ -7,7 +7,7 @@ import { db } from "@/lib/db/client";
 import { categories, posts } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { categoryInput } from "@/schemas/category";
-import type { ActionState } from "@/lib/action-helpers";
+import { zodErr, type ActionState } from "@/lib/action-helpers";
 
 /** Create or update a category (single action, id absent = create). */
 export async function saveCategory(
@@ -20,7 +20,7 @@ export async function saveCategory(
     slug: String(formData.get("slug") ?? "").trim(),
   });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+    return { error: zodErr(parsed) };
   }
 
   // Slug uniqueness (skip current row on edit).

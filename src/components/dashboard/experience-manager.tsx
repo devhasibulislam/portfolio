@@ -48,7 +48,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { slugify } from "@/lib/slug";
-import { toDateInputValue } from "@/lib/dates";
+import { toDateInputValue, formatMonthYear } from "@/lib/dates";
 import type {
   ExperienceFull,
   ExperienceRow,
@@ -240,12 +240,8 @@ export function ExperienceManager({
 // ---------- helpers ------------------------------------------------------
 
 function formatPeriod(start: Date, end: Date | null): string {
-  const fmt = (d: Date) =>
-    d.toLocaleDateString(undefined, { month: "short", year: "numeric" });
-  const s = fmt(typeof start === "string" ? new Date(start) : start);
-  const e = end
-    ? fmt(typeof end === "string" ? new Date(end) : end)
-    : "Present";
+  const s = formatMonthYear(start);
+  const e = end ? formatMonthYear(end) : "Present";
   return `${s} to ${e}`;
 }
 

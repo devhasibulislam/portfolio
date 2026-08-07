@@ -248,3 +248,9 @@ html.no-scrollbar::-webkit-scrollbar,
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee { animation: none; }
 }
+
+/* Native date input icon inherits color-scheme; without this it renders
+   black-on-black in dark mode. Fixes the invisible calendar icon. */
+input[type="date"] {
+  color-scheme: light dark;
+}

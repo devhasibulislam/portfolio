@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import { useEffect, useRef } from "react";
 import { useCursor } from "@/hooks/use-cursor";
-import { loadMoreBlogPosts } from "@/app/blog/actions";
+import { loadMorePublishedPosts } from "@/app/blog/actions";
 import { Spotlight } from "@/components/home/spotlight";
 import type { PostsPage, PublicPostCard } from "@/lib/db/queries/public-posts";
 
@@ -16,9 +16,11 @@ import type { PostsPage, PublicPostCard } from "@/lib/db/queries/public-posts";
  * `loader` defaults to the unfiltered posts action so the base `/blog`
  * page stays a one-arg call; category/tag pages pass their own action.
  */
+const defaultLoader = loadMorePublishedPosts.bind(null, {});
+
 export function BlogInfiniteList({
   initial,
-  loader = loadMoreBlogPosts,
+  loader = defaultLoader,
 }: {
   initial: PostsPage;
   loader?: (cursor: string) => Promise<PostsPage>;

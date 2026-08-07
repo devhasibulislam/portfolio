@@ -8,7 +8,7 @@ import { cloudinary } from "@/lib/cloudinary";
 import { tag } from "@/lib/cache-tags";
 import { resumeInput } from "@/schemas/resume";
 
-import type { ActionState } from "@/lib/action-helpers";
+import { zodErr, type ActionState } from "@/lib/action-helpers";
 
 /** Register a resume after Cloudinary upload. First one uploaded is auto-active. */
 export async function registerResume(
@@ -22,7 +22,7 @@ export async function registerResume(
     bytes: Number(formData.get("bytes") ?? 0),
   });
   if (!parsed.success) {
-    return { error: parsed.error.issues[0]?.message ?? "Invalid input" };
+    return { error: zodErr(parsed) };
   }
 
   const existing = await db.select({ id: resumes.id }).from(resumes).limit(1);
