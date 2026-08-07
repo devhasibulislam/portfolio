@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { ScrollReveal } from "./scroll-reveal";
 import { CountUp } from "./count-up";
-import { Spotlight } from "./spotlight";
 
 /**
  * Track record strip — four hardcoded numbers that anchor the "senior
@@ -37,17 +36,17 @@ export async function SectionTrackRecord() {
         stagger={0.08}
       >
         {STATS.map((k) => (
-          <li key={k} data-reveal className="relative">
-            <Spotlight className="h-full">
-              <div className="spot-bg relative flex h-full flex-col justify-between gap-8 p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-10">
-                <p className="text-5xl font-semibold leading-none tracking-tight tabular-nums text-[var(--color-fg)] sm:text-6xl md:text-7xl">
-                  <CountUp value={t(`${k}.value`)} />
-                </p>
-                <p className="text-muted-foreground text-sm leading-relaxed sm:text-base">
-                  {t(`${k}.label`)}
-                </p>
-              </div>
-            </Spotlight>
+          <li
+            key={k}
+            data-reveal
+            className="relative flex flex-col justify-between gap-8 bg-[var(--card)] p-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] sm:p-10"
+          >
+            <p className="text-5xl font-semibold leading-none tracking-tight tabular-nums text-[var(--color-fg)] sm:text-6xl md:text-7xl">
+              <CountUp value={t(`${k}.value`)} />
+            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed sm:text-base">
+              {t(`${k}.label`)}
+            </p>
           </li>
         ))}
       </ScrollReveal>

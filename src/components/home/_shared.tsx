@@ -12,14 +12,18 @@ import { Spotlight } from "./spotlight";
  */
 
 // Card shell — subtle static border by default, brightens softly to the
-// accent hue on hover. `spot-bg` (see globals.css) paints a composite
-// background: a cursor-tracked radial gradient over the solid card
-// color, so the surface glows under the pointer without touching text.
+// accent hue on hover. Two inner variants: `bezelInner` gets the
+// cursor-tracked `spot-bg` glow; `bezelInnerPlain` uses a flat card
+// surface for cards where a cover image is the main visual and the
+// glow would just fight it (media cards, stat cells, small chip cards).
 export const bezelOuter =
   "rounded-[2rem] ring-1 ring-[var(--color-border)]/40 transition-[box-shadow,transform,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:ring-[var(--color-accent)]/40";
 
 export const bezelInner =
   "rounded-[2rem] spot-bg shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
+
+export const bezelInnerPlain =
+  "rounded-[2rem] bg-[var(--card)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
 
 // Extra lift for interactive (linked) cards on hover.
 const bezelHover =
@@ -30,30 +34,33 @@ export function BezelLink({
   external,
   className,
   innerClassName,
+  plain,
   children,
 }: {
   href: string;
   external?: boolean;
   className?: string;
   innerClassName?: string;
+  /** Skip the cursor-following glow (image-heavy cards). */
+  plain?: boolean;
   children: React.ReactNode;
 }) {
   const linkProps = external
     ? { target: "_blank" as const, rel: "noopener noreferrer" }
     : {};
-  return (
-    <Spotlight className="h-full">
-      <Link
-        href={href}
-        {...linkProps}
-        className={cn("group block h-full", bezelOuter, bezelHover, className)}
-      >
-        <div className={cn("flex h-full flex-col", bezelInner, innerClassName)}>
-          {children}
-        </div>
-      </Link>
-    </Spotlight>
+  const inner = plain ? bezelInnerPlain : bezelInner;
+  const shell = (
+    <Link
+      href={href}
+      {...linkProps}
+      className={cn("group block h-full", bezelOuter, bezelHover, className)}
+    >
+      <div className={cn("flex h-full flex-col", inner, innerClassName)}>
+        {children}
+      </div>
+    </Link>
   );
+  return plain ? shell : <Spotlight className="h-full">{shell}</Spotlight>;
 }
 
 // Trailing arrow-in-circle. `size` is the Tailwind size-N number.
@@ -152,7 +159,7 @@ export function MediaCard({
   footerLeft: React.ReactNode;
 }) {
   return (
-    <BezelLink href={href} className="overflow-hidden">
+    <BezelLink href={href} className="overflow-hidden" plain>
       <div className="bg-muted relative aspect-[16/10] w-full overflow-hidden">
         {cover ? (
           /* eslint-disable-next-line @next/next/no-img-element */

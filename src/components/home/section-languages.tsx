@@ -1,8 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "./scroll-reveal";
-import { Spotlight } from "./spotlight";
-import { SectionHeader, bezelInner, bezelOuter } from "./_shared";
+import { SectionHeader, bezelInnerPlain, bezelOuter } from "./_shared";
 
 /**
  * Languages Hasibul speaks. Config-driven (from the resume) — not tied to
@@ -40,18 +39,16 @@ export async function SectionLanguages() {
       >
         {LANGUAGES.map((l) => (
           <li key={l.key} data-reveal>
-            <Spotlight>
-              <div className={cn(bezelOuter)}>
-                <div className={cn(bezelInner, "px-5 py-6 text-center")}>
-                  <p className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
-                    {tLangs(l.key as LangKey)}
-                  </p>
-                  <p className="text-muted-foreground mt-3 text-sm">
-                    {tLevels(l.level as LangLevel)}
-                  </p>
-                </div>
+            <div className={cn(bezelOuter)}>
+              <div className={cn(bezelInnerPlain, "px-5 py-6 text-center")}>
+                <p className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
+                  {tLangs(l.key as LangKey)}
+                </p>
+                <p className="text-muted-foreground mt-3 text-sm">
+                  {tLevels(l.level as LangLevel)}
+                </p>
               </div>
-            </Spotlight>
+            </div>
           </li>
         ))}
       </ScrollReveal>
