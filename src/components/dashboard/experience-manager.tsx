@@ -148,6 +148,7 @@ export function ExperienceManager({
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="w-16">Order</TableHead>
                 <TableHead>Role</TableHead>
                 <TableHead className="w-48">Company</TableHead>
                 <TableHead className="w-40">Period</TableHead>
@@ -158,6 +159,9 @@ export function ExperienceManager({
             <TableBody>
               {rows.map((r) => (
                 <TableRow key={r.id}>
+                  <TableCell className="text-muted-foreground tabular-nums">
+                    #{r.displayOrder}
+                  </TableCell>
                   <TableCell className="font-medium">
                     {r.role}
                     <div className="text-muted-foreground text-xs">
