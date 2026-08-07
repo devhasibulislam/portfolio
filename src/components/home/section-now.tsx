@@ -1,14 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { Bezel } from "./_shared";
+import { cn } from "@/lib/utils";
 import { ScrollReveal } from "./scroll-reveal";
+import { bezelInner, bezelOuter } from "./_shared";
 
-/**
- * "Now" strip — a single-line, high-signal statement of what the owner
- * is currently doing. Sits between the receipts and the featured work so
- * the visitor knows he isn't just resting on past wins.
- */
 export async function SectionNow() {
   const t = await getTranslations("home.now");
 
@@ -17,12 +13,16 @@ export async function SectionNow() {
       aria-labelledby="now-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-14 sm:py-16"
     >
-      <ScrollReveal stagger={0.08}>
-        <Bezel
-          className="overflow-hidden"
-          innerClassName="px-8 py-10 sm:px-12 sm:py-14"
+      <ScrollReveal
+        className={cn("relative overflow-hidden", bezelOuter)}
+        stagger={0.08}
+      >
+        <div
+          className={cn(
+            "relative px-8 py-10 sm:px-12 sm:py-14",
+            bezelInner,
+          )}
         >
-          {/* Corner accent glow */}
           <span
             aria-hidden
             className="pointer-events-none absolute -end-16 -top-16 size-48 rounded-full bg-[var(--color-accent)]/15 blur-3xl"
@@ -65,7 +65,7 @@ export async function SectionNow() {
               <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
-        </Bezel>
+        </div>
       </ScrollReveal>
     </section>
   );

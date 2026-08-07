@@ -1,33 +1,13 @@
-import { Mail, MessageCircle, Send } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle, Send } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { cn } from "@/lib/utils";
 import { SITE_CONFIG } from "@/config/site";
-import { ArrowPill, Bezel } from "./_shared";
 import { ScrollReveal } from "./scroll-reveal";
+import { bezelInner, bezelOuter } from "./_shared";
 
-/**
- * Contact strip — closes the home page. Duplicates the floating-action
- * targets (WhatsApp / Telegram / Email) as an anchored panel so a visitor
- * who scrolled to the bottom has a clear next step without scanning back
- * up for the floating button.
- */
-
-const CONTACTS = [
-  {
-    key: "whatsapp",
-    href: `https://wa.me/${SITE_CONFIG.phone}`,
-    icon: <MessageCircle className="size-4" />,
-  },
-  {
-    key: "telegram",
-    href: `https://t.me/${SITE_CONFIG.username}`,
-    icon: <Send className="size-4" />,
-  },
-  {
-    key: "email",
-    href: `mailto:${SITE_CONFIG.email}`,
-    icon: <Mail className="size-4" />,
-  },
-] as const;
+const WHATSAPP_URL = `https://wa.me/${SITE_CONFIG.phone}`;
+const TELEGRAM_URL = `https://t.me/${SITE_CONFIG.username}`;
+const EMAIL_URL = `mailto:${SITE_CONFIG.email}`;
 
 export async function SectionContact() {
   const t = await getTranslations("home.contact");
@@ -37,10 +17,15 @@ export async function SectionContact() {
       aria-labelledby="contact-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
-      <ScrollReveal stagger={0.08}>
-        <Bezel
-          className="overflow-hidden"
-          innerClassName="overflow-hidden px-8 py-12 sm:px-12 sm:py-16 md:px-16"
+      <ScrollReveal
+        className={cn("relative overflow-hidden", bezelOuter)}
+        stagger={0.08}
+      >
+        <div
+          className={cn(
+            "relative overflow-hidden px-8 py-12 sm:px-12 sm:py-16 md:px-16",
+            bezelInner,
+          )}
         >
           <span
             aria-hidden
@@ -77,14 +62,24 @@ export async function SectionContact() {
             </div>
 
             <ul data-reveal className="flex flex-col gap-3 md:min-w-[16rem]">
-              {CONTACTS.map((c) => (
-                <li key={c.key}>
-                  <ContactRow href={c.href} label={t(c.key)} icon={c.icon} />
-                </li>
-              ))}
+              <ContactRow
+                href={WHATSAPP_URL}
+                label={t("whatsapp")}
+                icon={<MessageCircle className="size-4" />}
+              />
+              <ContactRow
+                href={TELEGRAM_URL}
+                label={t("telegram")}
+                icon={<Send className="size-4" />}
+              />
+              <ContactRow
+                href={EMAIL_URL}
+                label={t("email")}
+                icon={<Mail className="size-4" />}
+              />
             </ul>
           </div>
-        </Bezel>
+        </div>
       </ScrollReveal>
     </section>
   );
@@ -99,22 +94,26 @@ function ContactRow({
   label: string;
   icon: React.ReactNode;
 }) {
-  // Derive external-ness from the href scheme — no need for a separate
-  // `isEmail` prop when the URL scheme carries the same information.
+  // mailto: opens the mail client without a new tab; every other channel
+  // gets target=_blank so we don't drop the visitor's scroll position.
   const external = !href.startsWith("mailto:");
   return (
-    <a
-      href={href}
-      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="group flex items-center justify-between gap-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/50 py-3 pe-2 ps-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/70"
-    >
-      <span className="flex items-center gap-3">
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-          {icon}
+    <li>
+      <a
+        href={href}
+        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="group flex items-center justify-between gap-4 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/50 py-3 pe-2 ps-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/70"
+      >
+        <span className="flex items-center gap-3">
+          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+            {icon}
+          </span>
+          {label}
         </span>
-        {label}
-      </span>
-      <ArrowPill size={8} />
-    </a>
+        <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-bg)]/60 ring-1 ring-[var(--color-border)] transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+          <ArrowUpRight className="size-4 text-[var(--color-fg)]/80 transition-colors group-hover:text-[var(--color-accent)]" />
+        </span>
+      </a>
+    </li>
   );
 }

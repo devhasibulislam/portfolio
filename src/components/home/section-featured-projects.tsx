@@ -1,22 +1,15 @@
-import { getCldImageUrl } from "next-cloudinary";
 import { cacheTag } from "next/cache";
+import { getCldImageUrl } from "next-cloudinary";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
+import { listPublishedProjects } from "@/lib/db/queries/projects";
+import { ScrollReveal } from "./scroll-reveal";
 import {
-  listPublishedProjects,
-  type PublicProjectCard,
-} from "@/lib/db/queries/projects";
-import { FeaturedGrid, MediaCard } from "./_shared";
-
-/**
- * Featured projects — home page teaser for `/projects`. Reads the same
- * `listPublishedProjects` query the full grid uses, but slices to 3.
- * Returns `null` when the dashboard has no published projects yet so the
- * home page collapses gracefully on day one.
- *
- * Cached under `tag.projects()` so dashboard mutations bust it instantly
- * per §13. No time-based revalidation.
- */
+  MediaCard,
+  SectionHeader,
+  SeeAllLink,
+  featuredGridCols,
+} from "./_shared";
 
 async function loadTop3() {
   "use cache";
@@ -31,6 +24,7 @@ export async function SectionFeaturedProjects() {
     getTranslations("home.featuredProjects"),
     getTranslations("projects.categories"),
   ]);
+
   if (rows.length === 0) return null;
 
   return (
@@ -38,37 +32,43 @@ export async function SectionFeaturedProjects() {
       aria-labelledby="featured-projects-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
-      <FeaturedGrid<PublicProjectCard>
+      <SectionHeader
         eyebrow={t("eyebrow")}
         title={t("title")}
-        titleId="featured-projects-title"
-        seeAllHref="/projects"
-        seeAllLabel={t("seeAll")}
-        items={rows}
-        keyOf={(p) => p.id}
-        renderCard={(p) => (
-          <MediaCard
-            href={`/projects/${p.slug}`}
-            coverUrl={
-              p.coverPublicId
-                ? getCldImageUrl({ src: p.coverPublicId, width: 900 })
-                : null
-            }
-            coverWidth={p.coverWidth}
-            coverHeight={p.coverHeight}
-            coverAlt={p.title}
-            categoryLabel={categoryLabels(p.category)}
-            fallbackLabel={categoryLabels(p.category)}
-            title={p.title}
-            excerpt={p.tagline}
-            footerLeft={
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg)]/60 transition-colors group-hover:text-[var(--color-accent)]">
-                Case study
-              </span>
-            }
-          />
-        )}
+        id="featured-projects-title"
+        action={<SeeAllLink href="/projects" label={t("seeAll")} />}
       />
+      <ScrollReveal
+        as="ul"
+        className={`grid gap-6 ${featuredGridCols(rows.length)}`}
+        stagger={0.1}
+      >
+        {rows.map((p) => {
+          const category = categoryLabels(p.category);
+          return (
+            <li key={p.id} data-reveal>
+              <MediaCard
+                href={`/projects/${p.slug}`}
+                category={category}
+                title={p.title}
+                body={p.tagline}
+                cover={
+                  p.coverPublicId
+                    ? getCldImageUrl({ src: p.coverPublicId, width: 900 })
+                    : null
+                }
+                coverWidth={p.coverWidth}
+                coverHeight={p.coverHeight}
+                footerLeft={
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--color-fg)]/60 transition-colors group-hover:text-[var(--color-accent)]">
+                    Case study
+                  </span>
+                }
+              />
+            </li>
+          );
+        })}
+      </ScrollReveal>
     </section>
   );
 }
