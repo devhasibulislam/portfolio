@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { SITE_CONFIG } from "@/config/site";
 import { ScrollReveal } from "./scroll-reveal";
+import { Spotlight } from "./spotlight";
 import { bezelInner, bezelOuter } from "./_shared";
 
 const WHATSAPP_URL = `https://wa.me/${SITE_CONFIG.phone}`;
@@ -17,16 +18,15 @@ export async function SectionContact() {
       aria-labelledby="contact-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
-      <ScrollReveal
-        className={cn("relative overflow-hidden", bezelOuter)}
-        stagger={0.08}
-      >
-        <div
-          className={cn(
-            "relative overflow-hidden px-8 py-12 sm:px-12 sm:py-16 md:px-16",
-            bezelInner,
-          )}
-        >
+      <ScrollReveal className="h-full" stagger={0.08}>
+        <Spotlight>
+          <div className={cn("relative overflow-hidden", bezelOuter)}>
+            <div
+              className={cn(
+                "relative overflow-hidden px-8 py-12 sm:px-12 sm:py-16 md:px-16",
+                bezelInner,
+              )}
+            >
           <span
             aria-hidden
             className="pointer-events-none absolute -end-24 -bottom-24 size-72 rounded-full bg-[var(--color-accent)]/20 blur-3xl"
@@ -79,7 +79,9 @@ export async function SectionContact() {
               />
             </ul>
           </div>
-        </div>
+            </div>
+          </div>
+        </Spotlight>
       </ScrollReveal>
     </section>
   );

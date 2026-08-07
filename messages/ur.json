@@ -163,6 +163,23 @@
       "eyebrow": "Stack",
       "title": "The stack I ship with.",
       "seeAll": "See full stack"
+    },
+    "languages": {
+      "eyebrow": "زبانیں",
+      "title": "پانچ زبانیں، پانچ مارکیٹس۔",
+      "names": {
+        "bn": "بنگالی",
+        "en": "انگریزی",
+        "hi": "ہندی",
+        "he": "عبرانی",
+        "ar": "عربی"
+      },
+      "levels": {
+        "native": "مادری زبان",
+        "professional": "مکمل پیشہ ورانہ",
+        "working": "پیشہ ورانہ کاری",
+        "elementary": "ابتدائی"
+      }
     }
   },
   "blog": {

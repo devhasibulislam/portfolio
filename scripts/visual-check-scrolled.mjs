@@ -3,7 +3,9 @@ import { chromium } from "playwright";
 
 const BASE = "http://localhost:3000";
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+const ctx = await browser.newContext({
+  viewport: { width: 1440, height: 900 },
+});
 await ctx.addCookies([
   { name: "locale", value: "en", url: BASE },
   { name: "theme", value: "dark", url: BASE },
@@ -30,5 +32,8 @@ const sections = await page.$$eval("section[aria-labelledby]", (els) =>
 console.log("Sections rendered:", sections.length);
 for (const s of sections) console.log(" -", s.id, `[${s.text}]`);
 
-await page.screenshot({ path: "scripts/.visual-check/desktop_en_home_scrolled.png", fullPage: true });
+await page.screenshot({
+  path: "scripts/.visual-check/desktop_en_home_scrolled.png",
+  fullPage: true,
+});
 await browser.close();

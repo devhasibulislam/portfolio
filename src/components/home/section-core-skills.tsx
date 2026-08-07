@@ -5,6 +5,7 @@ import { listPublicSkillsGrouped } from "@/lib/db/queries/skills";
 import { SKILL_GROUPS } from "@/lib/skill-groups";
 import { ScrollReveal } from "./scroll-reveal";
 import { SectionHeader, SeeAllLink, bezelInner, bezelOuter } from "./_shared";
+import { Spotlight } from "./spotlight";
 import { cn } from "@/lib/utils";
 
 async function loadGrouped() {
@@ -29,7 +30,10 @@ export async function SectionCoreSkills() {
   // cap to a reasonable home-page density (full list lives at /skills).
   const orderIndex = new Map(SKILL_GROUPS.map((g, i) => [g.value, i]));
   const ordered = [...groups]
-    .sort((a, b) => (orderIndex.get(a.group) ?? 99) - (orderIndex.get(b.group) ?? 99))
+    .sort(
+      (a, b) =>
+        (orderIndex.get(a.group) ?? 99) - (orderIndex.get(b.group) ?? 99),
+    )
     .slice(0, MAX_GROUPS_ON_HOME);
 
   return (
@@ -54,27 +58,31 @@ export async function SectionCoreSkills() {
             .sort((a, b) => Number(b.isPrimary) - Number(a.isPrimary))
             .slice(0, MAX_ITEMS_PER_GROUP);
           return (
-            <li key={g.group} data-reveal className={cn(bezelOuter)}>
-              <div className={cn(bezelInner, "p-6")}>
-                <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)]">
-                  {tGroups(g.group)}
-                </p>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {items.map((s) => (
-                    <li
-                      key={s.id}
-                      className={cn(
-                        "rounded-full border px-3 py-1 text-xs",
-                        s.isPrimary
-                          ? "border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 text-[var(--color-fg)]"
-                          : "border-[var(--color-border)] text-[var(--color-fg)]/80",
-                      )}
-                    >
-                      {s.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <li key={g.group} data-reveal>
+              <Spotlight>
+                <div className={cn(bezelOuter)}>
+                  <div className={cn(bezelInner, "p-6")}>
+                    <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[var(--color-accent)]">
+                      {tGroups(g.group)}
+                    </p>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {items.map((s) => (
+                        <li
+                          key={s.id}
+                          className={cn(
+                            "rounded-full border px-3 py-1 text-xs",
+                            s.isPrimary
+                              ? "border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 text-[var(--color-fg)]"
+                              : "border-[var(--color-border)] text-[var(--color-fg)]/80",
+                          )}
+                        >
+                          {s.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Spotlight>
             </li>
           );
         })}

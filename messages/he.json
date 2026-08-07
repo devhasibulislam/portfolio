@@ -163,6 +163,23 @@
       "eyebrow": "Stack",
       "title": "The stack I ship with.",
       "seeAll": "See full stack"
+    },
+    "languages": {
+      "eyebrow": "שפות",
+      "title": "חמש שפות, חמישה שווקים.",
+      "names": {
+        "bn": "בנגלית",
+        "en": "אנגלית",
+        "hi": "הינדי",
+        "he": "עברית",
+        "ar": "ערבית"
+      },
+      "levels": {
+        "native": "שפת אם",
+        "professional": "מקצועית מלאה",
+        "working": "מקצועית עובדת",
+        "elementary": "יסודית"
+      }
     }
   },
   "blog": {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "./scroll-reveal";
+import { Spotlight } from "./spotlight";
 
 /**
  * Shared building blocks for the home page sections. Extracted after a
@@ -10,16 +11,17 @@ import { ScrollReveal } from "./scroll-reveal";
  * footer. One tweak to any of these now lives in one place.
  */
 
-// Double-bezel outer + inner class strings. Reuse via `cn(bezelOuter, extra)`.
+// Card shell — transparent by default, brightens with the accent ring on
+// hover. No visible outer padding; the inner surface fills the shell.
 export const bezelOuter =
-  "rounded-[2rem] bg-[var(--color-bg)]/40 p-1.5 ring-1 ring-[var(--color-border)]";
+  "rounded-[2rem] ring-1 ring-transparent transition-[box-shadow,transform,border-color] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/spot:ring-[var(--color-accent)]/60";
 
 export const bezelInner =
-  "rounded-[calc(2rem-0.375rem)] bg-[var(--card)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]";
+  "rounded-[2rem] bg-[var(--card)] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]";
 
-// Hover behaviour for clickable card outers.
+// Extra lift for interactive (linked) cards on hover.
 const bezelHover =
-  "transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.25)] hover:ring-[var(--color-accent)]/50";
+  "group-hover/spot:-translate-y-0.5 group-hover/spot:shadow-[0_20px_50px_-15px_rgba(232,107,28,0.35)]";
 
 export function BezelLink({
   href,
@@ -38,15 +40,17 @@ export function BezelLink({
     ? { target: "_blank" as const, rel: "noopener noreferrer" }
     : {};
   return (
-    <Link
-      href={href}
-      {...linkProps}
-      className={cn("group block h-full", bezelOuter, bezelHover, className)}
-    >
-      <div className={cn("flex h-full flex-col", bezelInner, innerClassName)}>
-        {children}
-      </div>
-    </Link>
+    <Spotlight className="h-full">
+      <Link
+        href={href}
+        {...linkProps}
+        className={cn("group block h-full", bezelOuter, bezelHover, className)}
+      >
+        <div className={cn("flex h-full flex-col", bezelInner, innerClassName)}>
+          {children}
+        </div>
+      </Link>
+    </Spotlight>
   );
 }
 
@@ -92,12 +96,18 @@ export function SectionHeader({
       stagger={0.08}
     >
       <div data-reveal className="max-w-2xl">
-        <p className="text-[var(--color-accent)] text-[10px] font-semibold uppercase tracking-[0.28em]">
-          {eyebrow}
-        </p>
+        <span className="inline-flex items-center gap-2 text-[var(--color-accent)]">
+          <span
+            aria-hidden
+            className="h-px w-8 bg-[var(--color-accent)]"
+          />
+          <span className="text-xs font-semibold uppercase tracking-[0.28em] sm:text-sm">
+            {eyebrow}
+          </span>
+        </span>
         <h2
           id={id}
-          className="mt-4 text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl"
+          className="mt-5 text-3xl font-semibold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.5rem]"
         >
           {title}
         </h2>
@@ -110,12 +120,13 @@ export function SectionHeader({
 export function SeeAllLink({ href, label }: { href: string; label: string }) {
   return (
     <Link
-      data-reveal
       href={href}
-      className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
+      className="group inline-flex items-center gap-3 rounded-full border border-[var(--color-border)] bg-[var(--card)]/60 py-2.5 pe-2.5 ps-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[var(--color-accent)]/60 hover:bg-[var(--color-accent)]/10 hover:text-[var(--color-accent)]"
     >
       {label}
-      <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+      <span className="inline-flex size-7 items-center justify-center rounded-full bg-[var(--color-accent)]/15 transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:bg-[var(--color-accent)]/30">
+        <ArrowRight className="size-3.5 text-[var(--color-accent)]" />
+      </span>
     </Link>
   );
 }

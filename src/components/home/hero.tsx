@@ -140,17 +140,6 @@ export async function Hero() {
           </Button>
         </div>
       </HeroReveal>
-
-      {/* Subtle "scroll to explore" hint at the bottom-center */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-8 z-10 flex justify-center"
-      >
-        <span className="text-muted-foreground/50 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em]">
-          <span className="h-8 w-px animate-pulse bg-current" />
-          scroll
-        </span>
-      </div>
     </section>
   );
 }

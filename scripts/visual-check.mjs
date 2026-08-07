@@ -55,7 +55,8 @@ for (const vp of VIEWPORTS) {
         const htmlLang = await page.evaluate(
           () => document.documentElement.getAttribute("lang") ?? "",
         );
-        const slug = route === "/" ? "home" : route.replace(/\//g, "_").replace(/^_/, "");
+        const slug =
+          route === "/" ? "home" : route.replace(/\//g, "_").replace(/^_/, "");
         const file = `${OUT}/${vp.name}_${loc.code}_${slug}.png`;
         await page.screenshot({ path: file, fullPage: true });
         console.log(

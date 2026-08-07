@@ -163,6 +163,23 @@
       "eyebrow": "Stack",
       "title": "The stack I ship with.",
       "seeAll": "See full stack"
+    },
+    "languages": {
+      "eyebrow": "ভাষা",
+      "title": "পাঁচ ভাষা, পাঁচ বাজার।",
+      "names": {
+        "bn": "বাংলা",
+        "en": "ইংরেজি",
+        "hi": "হিন্দি",
+        "he": "হিব্রু",
+        "ar": "আরবি"
+      },
+      "levels": {
+        "native": "মাতৃভাষা",
+        "professional": "পেশাদার পূর্ণ",
+        "working": "পেশাদার কাজের",
+        "elementary": "প্রাথমিক"
+      }
     }
   },
   "blog": {

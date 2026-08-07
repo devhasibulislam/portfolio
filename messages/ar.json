@@ -163,6 +163,23 @@
       "eyebrow": "Stack",
       "title": "The stack I ship with.",
       "seeAll": "See full stack"
+    },
+    "languages": {
+      "eyebrow": "اللغات",
+      "title": "خمس لغات، خمس أسواق.",
+      "names": {
+        "bn": "البنغالية",
+        "en": "الإنجليزية",
+        "hi": "الهندية",
+        "he": "العبرية",
+        "ar": "العربية"
+      },
+      "levels": {
+        "native": "اللغة الأم",
+        "professional": "كفاءة مهنية كاملة",
+        "working": "كفاءة عمل مهنية",
+        "elementary": "ابتدائي"
+      }
     }
   },
   "blog": {

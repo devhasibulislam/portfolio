@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { ScrollReveal } from "./scroll-reveal";
+import { Spotlight } from "./spotlight";
 import { bezelInner, bezelOuter } from "./_shared";
 
 export async function SectionNow() {
@@ -13,13 +14,12 @@ export async function SectionNow() {
       aria-labelledby="now-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-14 sm:py-16"
     >
-      <ScrollReveal
-        className={cn("relative overflow-hidden", bezelOuter)}
-        stagger={0.08}
-      >
-        <div
-          className={cn("relative px-8 py-10 sm:px-12 sm:py-14", bezelInner)}
-        >
+      <ScrollReveal className="h-full" stagger={0.08}>
+        <Spotlight>
+          <div className={cn("relative overflow-hidden", bezelOuter)}>
+            <div
+              className={cn("relative px-8 py-10 sm:px-12 sm:py-14", bezelInner)}
+            >
           <span
             aria-hidden
             className="pointer-events-none absolute -end-16 -top-16 size-48 rounded-full bg-[var(--color-accent)]/15 blur-3xl"
@@ -53,16 +53,18 @@ export async function SectionNow() {
             {t("body")}
           </p>
 
-          <div data-reveal className="mt-8">
-            <Link
-              href="/experience"
-              className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
-            >
-              {t("cta")}
-              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
+            <div data-reveal className="mt-8">
+              <Link
+                href="/experience"
+                className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
+              >
+                {t("cta")}
+                <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+            </div>
           </div>
-        </div>
+        </Spotlight>
       </ScrollReveal>
     </section>
   );

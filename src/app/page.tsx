@@ -10,6 +10,7 @@ import { SectionSelectedExperience } from "@/components/home/section-selected-ex
 import { SectionCoreSkills } from "@/components/home/section-core-skills";
 import { SectionFeaturedWriting } from "@/components/home/section-featured-writing";
 import { SectionTrackRecord } from "@/components/home/section-track-record";
+import { SectionLanguages } from "@/components/home/section-languages";
 import { SectionContact } from "@/components/home/section-contact";
 
 /**
@@ -106,6 +107,7 @@ export default function HomePage() {
         <SectionCoreSkills />
         <SectionFeaturedWriting />
         <SectionTrackRecord />
+        <SectionLanguages />
         <SectionContact />
       </main>
     </>
