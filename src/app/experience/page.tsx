@@ -103,16 +103,20 @@ export default async function ExperiencePage() {
         </div>
       ) : (
         <ol className="relative flex flex-col gap-16">
+          {/* One continuous rail runs the full column so company + role dots
+              sit on the same vertical line. */}
+          <span
+            aria-hidden
+            className="absolute start-6 top-6 bottom-6 w-px bg-[var(--color-border)]"
+          />
           {groups.map((group) => (
             <li key={group.companySlug} className="relative">
-              {/* Company row — timeline anchor lives at start-6 so roles align. */}
+              {/* Company row */}
               <div className="relative flex items-center gap-4 ps-16">
                 <span
                   aria-hidden
-                  className="absolute start-4 top-1/2 flex size-4 -translate-y-1/2 items-center justify-center"
-                >
-                  <span className="size-3 rounded-full bg-[var(--color-accent)] ring-4 ring-[var(--color-bg)]" />
-                </span>
+                  className="absolute start-[calc(1.5rem-6px)] top-1/2 size-3 -translate-y-1/2 rounded-full bg-[var(--color-accent)] ring-4 ring-[var(--color-bg)]"
+                />
                 {group.logoPublicId ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
@@ -124,12 +128,12 @@ export default async function ExperiencePage() {
                     alt=""
                     width={48}
                     height={48}
-                    className="size-12 shrink-0 rounded-xl bg-[var(--card)] object-contain p-1.5 ring-1 ring-[var(--color-border)]"
+                    className="size-12 shrink-0 rounded-xl object-cover"
                   />
                 ) : (
                   <div
                     aria-hidden
-                    className="grid size-12 shrink-0 place-items-center rounded-xl bg-[var(--color-accent)]/10 ring-1 ring-[var(--color-border)]"
+                    className="grid size-12 shrink-0 place-items-center rounded-xl bg-[var(--color-accent)]/10"
                   >
                     <span className="text-sm font-semibold text-[var(--color-accent)]">
                       {group.company.slice(0, 1)}
@@ -153,17 +157,13 @@ export default async function ExperiencePage() {
                 </h2>
               </div>
 
-              {/* Roles column — vertical rail runs down the ps-16 gutter. */}
-              <ul className="relative mt-6 flex flex-col gap-4 ps-16">
-                <span
-                  aria-hidden
-                  className="absolute start-[calc(1.5rem-0.5px)] top-2 bottom-2 w-px bg-[var(--color-border)]"
-                />
+              {/* Roles — dots sit on the same shared rail as the company. */}
+              <ul className="mt-6 flex flex-col gap-4">
                 {group.roles.map((role) => (
-                  <li key={role.id} className="relative">
+                  <li key={role.id} className="relative ps-16">
                     <span
                       aria-hidden
-                      className="absolute start-[calc(1.5rem-0.3125rem)] top-7 size-2.5 rounded-full bg-[var(--card)] ring-2 ring-[var(--color-border)]"
+                      className="absolute start-[calc(1.5rem-5px)] top-7 size-2.5 rounded-full bg-[var(--color-bg)] ring-2 ring-[var(--color-border)]"
                     />
                     <BezelLink
                       href={`/experience/${role.slug}`}
