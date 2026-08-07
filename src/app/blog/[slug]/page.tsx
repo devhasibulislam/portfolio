@@ -85,86 +85,86 @@ export default async function BlogPostPage({
 
   return (
     <>
-    <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
-      <script
-        type="application/ld+json"
-        // Next 16 requires this to be inline for the crawler; safe because
-        // the object is server-built from typed fields, no user HTML.
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
+        <script
+          type="application/ld+json"
+          // Next 16 requires this to be inline for the crawler; safe because
+          // the object is server-built from typed fields, no user HTML.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
 
-      <PageBreadcrumb
-        trail={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
-      />
+        <PageBreadcrumb
+          trail={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
+        />
 
-      <header className="mb-10 flex flex-col gap-4">
-        {post.categoryName && post.categorySlug ? (
-          <Link
-            href={`/blog/category/${post.categorySlug}`}
-            className="text-[var(--color-accent)] hover:opacity-80 self-start text-sm font-medium transition-opacity"
+        <header className="mb-10 flex flex-col gap-4">
+          {post.categoryName && post.categorySlug ? (
+            <Link
+              href={`/blog/category/${post.categorySlug}`}
+              className="text-[var(--color-accent)] hover:opacity-80 self-start text-sm font-medium transition-opacity"
+            >
+              {post.categoryName}
+            </Link>
+          ) : null}
+          <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
+            {post.title}
+          </h1>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            {post.excerpt}
+          </p>
+          <time
+            dateTime={post.publishedAt}
+            className="text-muted-foreground/80 mt-1 text-sm tabular-nums"
           >
-            {post.categoryName}
-          </Link>
-        ) : null}
-        <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
-          {post.title}
-        </h1>
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          {post.excerpt}
-        </p>
-        <time
-          dateTime={post.publishedAt}
-          className="text-muted-foreground/80 mt-1 text-sm tabular-nums"
-        >
-          {new Date(post.publishedAt).toLocaleDateString(undefined, {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
-      </header>
+            {new Date(post.publishedAt).toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+        </header>
 
-      {post.coverPublicId ? (
-        <div className="img-skeleton mb-10 overflow-hidden rounded-lg">
-          {/* Cloudinary-transformed URL via `getCldImageUrl` — CldImage
+        {post.coverPublicId ? (
+          <div className="img-skeleton mb-10 overflow-hidden rounded-lg">
+            {/* Cloudinary-transformed URL via `getCldImageUrl` — CldImage
               would require a client boundary because it uses hooks.
               next/image is redundant here: Cloudinary already delivers
               via `f_auto/q_auto` from its CDN. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={getCldImageUrl({
-              src: post.coverPublicId,
-              width: 1200,
-            })}
-            width={post.coverWidth ?? 1200}
-            height={post.coverHeight ?? 630}
-            alt={post.title}
-            className="h-auto w-full"
-          />
-        </div>
-      ) : null}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={getCldImageUrl({
+                src: post.coverPublicId,
+                width: 1200,
+              })}
+              width={post.coverWidth ?? 1200}
+              height={post.coverHeight ?? 630}
+              alt={post.title}
+              className="h-auto w-full"
+            />
+          </div>
+        ) : null}
 
-      <article
-        className="prose dark:prose-invert prose-lg max-w-none"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+        <article
+          className="prose dark:prose-invert prose-lg max-w-none"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
 
-      {post.tags.length > 0 ? (
-        <footer className="mt-12 flex flex-wrap items-center gap-2 border-t pt-6">
-          <span className="text-muted-foreground text-sm">Tags:</span>
-          {post.tags.map((t) => (
-            <Link
-              key={t.slug}
-              href={`/blog/tag/${t.slug}`}
-              className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-3 py-1 text-xs font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
-            >
-              {t.name}
-            </Link>
-          ))}
-        </footer>
-      ) : null}
-    </main>
-    <ContactCTA />
+        {post.tags.length > 0 ? (
+          <footer className="mt-12 flex flex-wrap items-center gap-2 border-t pt-6">
+            <span className="text-muted-foreground text-sm">Tags:</span>
+            {post.tags.map((t) => (
+              <Link
+                key={t.slug}
+                href={`/blog/tag/${t.slug}`}
+                className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-3 py-1 text-xs font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
+              >
+                {t.name}
+              </Link>
+            ))}
+          </footer>
+        ) : null}
+      </main>
+      <ContactCTA />
     </>
   );
 }

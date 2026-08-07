@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/Page/AnnotationLayer.css";
-import "react-pdf/dist/Page/TextLayer.css";
 import { Loader2 } from "lucide-react";
 
 // Point pdfjs at the worker shipped by pdfjs-dist. Version-pinned by the
@@ -56,6 +54,8 @@ export function ResumeViewer({ url }: { url: string }) {
             key={i + 1}
             pageNumber={i + 1}
             width={width ? Math.min(width, 900) : undefined}
+            renderTextLayer={false}
+            renderAnnotationLayer={false}
             className="!bg-transparent overflow-hidden rounded-lg shadow-md"
           />
         ))}

@@ -124,71 +124,71 @@ export default async function ExperienceDetailPage({
 
   return (
     <>
-    <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-      <PageBreadcrumb
-        trail={[
-          { label: "Experience", href: "/experience" },
-          { label: role.role },
-        ]}
-      />
-
-      <header className="mb-10 flex items-start gap-4">
-        {logo ? (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={logo}
-            alt=""
-            width={64}
-            height={64}
-            className="h-16 w-16 shrink-0 rounded-md object-cover"
-          />
-        ) : (
-          <div className="h-16 w-16 shrink-0 rounded-md bg-[var(--color-accent)]/10" />
-        )}
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-[var(--color-accent)]">
-            {role.companyUrl ? (
-              <a
-                href={role.companyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 hover:opacity-80"
-              >
-                {role.company}
-                <ArrowUpRight className="size-3" />
-              </a>
-            ) : (
-              role.company
-            )}
-          </p>
-          <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl md:text-5xl">
-            {role.role}
-          </h1>
-          <p className="text-muted-foreground mt-2 text-sm tabular-nums">
-            {period}
-            {role.location ? ` · ${role.location}` : ""}
-            {role.workType ? ` · ${WORK_TYPE_LABEL[role.workType]}` : ""}
-          </p>
-        </div>
-      </header>
-
-      <p className="text-foreground mb-10 text-lg leading-relaxed">
-        {role.summary}
-      </p>
-
-      {highlightsHtml ? (
-        <article
-          className="prose dark:prose-invert prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: highlightsHtml }}
+      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      ) : null}
-    </main>
-    <ContactCTA />
+
+        <PageBreadcrumb
+          trail={[
+            { label: "Experience", href: "/experience" },
+            { label: role.role },
+          ]}
+        />
+
+        <header className="mb-10 flex items-start gap-4">
+          {logo ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={logo}
+              alt=""
+              width={64}
+              height={64}
+              className="h-16 w-16 shrink-0 rounded-md object-cover"
+            />
+          ) : (
+            <div className="h-16 w-16 shrink-0 rounded-md bg-[var(--color-accent)]/10" />
+          )}
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-medium text-[var(--color-accent)]">
+              {role.companyUrl ? (
+                <a
+                  href={role.companyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:opacity-80"
+                >
+                  {role.company}
+                  <ArrowUpRight className="size-3" />
+                </a>
+              ) : (
+                role.company
+              )}
+            </p>
+            <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl md:text-5xl">
+              {role.role}
+            </h1>
+            <p className="text-muted-foreground mt-2 text-sm tabular-nums">
+              {period}
+              {role.location ? ` · ${role.location}` : ""}
+              {role.workType ? ` · ${WORK_TYPE_LABEL[role.workType]}` : ""}
+            </p>
+          </div>
+        </header>
+
+        <p className="text-foreground mb-10 text-lg leading-relaxed">
+          {role.summary}
+        </p>
+
+        {highlightsHtml ? (
+          <article
+            className="prose dark:prose-invert prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: highlightsHtml }}
+          />
+        ) : null}
+      </main>
+      <ContactCTA />
     </>
   );
 }

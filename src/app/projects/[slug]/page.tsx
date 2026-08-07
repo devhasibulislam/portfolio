@@ -147,100 +147,100 @@ export default async function ProjectDetailPage({
 
   return (
     <>
-    <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-      <PageBreadcrumb
-        trail={[
-          { label: "Projects", href: "/projects" },
-          { label: project.title },
-        ]}
-      />
-
-      <header className="mb-10 flex flex-col gap-4">
-        <p className="text-sm font-medium text-[var(--color-accent)]">
-          {CATEGORY_LABEL[project.category]}
-          {project.client ? ` · ${project.client}` : ""}
-        </p>
-        <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
-          {project.title}
-        </h1>
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          {project.tagline}
-        </p>
-        {period || project.location || project.role ? (
-          <p className="text-muted-foreground/80 text-sm">
-            {[project.role, project.location, period]
-              .filter(Boolean)
-              .join(" · ")}
-          </p>
-        ) : null}
-      </header>
-
-      {cover ? (
-        <div className="img-skeleton mb-10 overflow-hidden rounded-lg">
-          {/* Cloudinary CDN handles f_auto/q_auto — plain <img> avoids
-              pulling next/image runtime cost twice. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={cover}
-            alt={project.title}
-            width={project.coverWidth ?? 1600}
-            height={project.coverHeight ?? 900}
-            className="h-auto w-full"
-          />
-        </div>
-      ) : null}
-
-      {bodyHtml ? (
-        <article
-          className="prose dark:prose-invert prose-lg max-w-none"
-          dangerouslySetInnerHTML={{ __html: bodyHtml }}
+      <main className="mx-auto w-full max-w-3xl px-6 pt-24 pb-24">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      ) : null}
 
-      {project.outcome ? (
-        <aside className="mt-10 rounded-lg border-s-2 border-[var(--color-accent)] bg-[var(--color-accent)]/5 p-5">
-          <p className="text-[var(--color-accent)] mb-1 text-sm font-medium">
-            Outcome
-          </p>
-          <p className="text-foreground leading-relaxed">{project.outcome}</p>
-        </aside>
-      ) : null}
+        <PageBreadcrumb
+          trail={[
+            { label: "Projects", href: "/projects" },
+            { label: project.title },
+          ]}
+        />
 
-      {project.links.length > 0 ? (
-        <footer className="mt-12 border-t pt-8">
-          <p className="text-muted-foreground mb-3 text-sm font-medium">
-            Links
+        <header className="mb-10 flex flex-col gap-4">
+          <p className="text-sm font-medium text-[var(--color-accent)]">
+            {CATEGORY_LABEL[project.category]}
+            {project.client ? ` · ${project.client}` : ""}
           </p>
-          <ul className="flex flex-wrap gap-2">
-            {project.links.map((link) => {
-              const meta = LINK_META[link.kind];
-              const Icon = meta.icon;
-              return (
-                <li key={`${link.kind}-${link.url}`}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-4 py-2 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
-                    title={meta.hint}
-                  >
-                    <Icon className="size-3.5" />
-                    <span>{link.label}</span>
-                    <ExternalLink className="size-3 opacity-50" />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </footer>
-      ) : null}
-    </main>
-    <ContactCTA />
+          <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
+            {project.title}
+          </h1>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            {project.tagline}
+          </p>
+          {period || project.location || project.role ? (
+            <p className="text-muted-foreground/80 text-sm">
+              {[project.role, project.location, period]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          ) : null}
+        </header>
+
+        {cover ? (
+          <div className="img-skeleton mb-10 overflow-hidden rounded-lg">
+            {/* Cloudinary CDN handles f_auto/q_auto — plain <img> avoids
+              pulling next/image runtime cost twice. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={cover}
+              alt={project.title}
+              width={project.coverWidth ?? 1600}
+              height={project.coverHeight ?? 900}
+              className="h-auto w-full"
+            />
+          </div>
+        ) : null}
+
+        {bodyHtml ? (
+          <article
+            className="prose dark:prose-invert prose-lg max-w-none"
+            dangerouslySetInnerHTML={{ __html: bodyHtml }}
+          />
+        ) : null}
+
+        {project.outcome ? (
+          <aside className="mt-10 rounded-lg border-s-2 border-[var(--color-accent)] bg-[var(--color-accent)]/5 p-5">
+            <p className="text-[var(--color-accent)] mb-1 text-sm font-medium">
+              Outcome
+            </p>
+            <p className="text-foreground leading-relaxed">{project.outcome}</p>
+          </aside>
+        ) : null}
+
+        {project.links.length > 0 ? (
+          <footer className="mt-12 border-t pt-8">
+            <p className="text-muted-foreground mb-3 text-sm font-medium">
+              Links
+            </p>
+            <ul className="flex flex-wrap gap-2">
+              {project.links.map((link) => {
+                const meta = LINK_META[link.kind];
+                const Icon = meta.icon;
+                return (
+                  <li key={`${link.kind}-${link.url}`}>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-4 py-2 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
+                      title={meta.hint}
+                    >
+                      <Icon className="size-3.5" />
+                      <span>{link.label}</span>
+                      <ExternalLink className="size-3 opacity-50" />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </footer>
+        ) : null}
+      </main>
+      <ContactCTA />
     </>
   );
 }
