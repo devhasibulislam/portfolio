@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
-import { Download } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import { getActiveResume } from "@/lib/db/queries/resumes";

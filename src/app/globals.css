@@ -234,3 +234,17 @@ html.no-scrollbar::-webkit-scrollbar,
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chromium, Safari */
 }
+
+/* Trust-strip logo marquee (used by <HeroLogoMarquee>). Duplicated track
+   translates -50% for a seamless loop. Pauses under prefers-reduced-motion. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+}
