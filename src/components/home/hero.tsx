@@ -1,4 +1,4 @@
-import { FileText, MoveRight } from "lucide-react";
+import { CalendarClock, MoveRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { ScrollReveal } from "./scroll-reveal";
 import { SplitHeroMetric } from "./split-hero-metric";
@@ -88,9 +88,10 @@ export async function Hero() {
         >
           <CtaButton href="/projects">{t("primaryCta")}</CtaButton>
           <CtaButton
-            href="/resume"
+            href="https://calendly.com/devhasibulislam/30min"
             variant="secondary"
-            leadIcon={<FileText className="size-4" />}
+            external
+            leadIcon={<CalendarClock className="size-4" />}
           >
             {t("secondaryCta")}
           </CtaButton>
