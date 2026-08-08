@@ -838,6 +838,8 @@
     "system": "النظام"
   },
   "common": {
-    "notFoundTitle": "غير موجود"
+    "notFoundTitle": "غير موجود",
+    "prev": "السابق",
+    "next": "التالي"
   }
 }

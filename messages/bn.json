@@ -838,6 +838,8 @@
     "system": "সিস্টেম"
   },
   "common": {
-    "notFoundTitle": "পাওয়া যায়নি"
+    "notFoundTitle": "পাওয়া যায়নি",
+    "prev": "আগের",
+    "next": "পরের"
   }
 }

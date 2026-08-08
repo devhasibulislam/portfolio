@@ -838,6 +838,8 @@
     "system": "System"
   },
   "common": {
-    "notFoundTitle": "Not found"
+    "notFoundTitle": "Not found",
+    "prev": "Previous",
+    "next": "Next"
   }
 }

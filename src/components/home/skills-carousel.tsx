@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { SkillPill, type SkillPillLabels } from "@/components/skill-pill";
 import {
   Carousel,
@@ -8,6 +9,11 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export type SkillPillItem = {
   id: string;
@@ -29,6 +35,9 @@ export function SkillsCarousel({
   items: SkillPillItem[];
   labels: SkillPillLabels;
 }) {
+  const tCommon = useTranslations("common");
+  const prev = tCommon("prev");
+  const next = tCommon("next");
   return (
     <Carousel
       opts={{ align: "start", dragFree: true, containScroll: "trimSnaps" }}
@@ -52,8 +61,24 @@ export function SkillsCarousel({
         ))}
       </CarouselContent>
       <div className="mt-3 flex justify-end gap-2">
-        <CarouselPrevious className="static translate-y-0 size-8" />
-        <CarouselNext className="static translate-y-0 size-8" />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <CarouselPrevious
+              aria-label={prev}
+              className="static size-8 translate-y-0"
+            />
+          </TooltipTrigger>
+          <TooltipContent>{prev}</TooltipContent>
+        </Tooltip>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <CarouselNext
+              aria-label={next}
+              className="static size-8 translate-y-0"
+            />
+          </TooltipTrigger>
+          <TooltipContent>{next}</TooltipContent>
+        </Tooltip>
       </div>
     </Carousel>
   );

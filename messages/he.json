@@ -838,6 +838,8 @@
     "system": "מערכת"
   },
   "common": {
-    "notFoundTitle": "לא נמצא"
+    "notFoundTitle": "לא נמצא",
+    "prev": "הקודם",
+    "next": "הבא"
   }
 }

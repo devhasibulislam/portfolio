@@ -838,6 +838,8 @@
     "system": "سسٹم"
   },
   "common": {
-    "notFoundTitle": "نہیں ملا"
+    "notFoundTitle": "نہیں ملا",
+    "prev": "پچھلا",
+    "next": "اگلا"
   }
 }
