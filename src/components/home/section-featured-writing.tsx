@@ -1,10 +1,11 @@
 import { cacheTag } from "next/cache";
+import { getCldImageUrl } from "next-cloudinary";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import { listPublishedPostsCursor } from "@/lib/db/queries/public-posts";
 import { ScrollReveal } from "./scroll-reveal";
 import {
-  ArticleCard,
+  MediaCard,
   SectionHeader,
   SeeAllLink,
   featuredGridCols,
@@ -44,12 +45,28 @@ export async function SectionFeaturedWriting() {
           const category = p.categoryName ?? "Note";
           return (
             <li key={p.id} data-reveal>
-              <ArticleCard
+              <MediaCard
                 href={`/blog/${p.slug}`}
                 category={category}
                 title={p.title}
                 body={p.excerpt}
-                date={p.publishedAt}
+                cover={
+                  p.coverPublicId
+                    ? getCldImageUrl({ src: p.coverPublicId, width: 900 })
+                    : null
+                }
+                footerLeft={
+                  <time
+                    dateTime={p.publishedAt}
+                    className="text-sm text-[var(--color-fg)]/60 transition-colors group-hover:text-[var(--color-accent)]"
+                  >
+                    {new Date(p.publishedAt).toLocaleDateString(undefined, {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </time>
+                }
               />
             </li>
           );
