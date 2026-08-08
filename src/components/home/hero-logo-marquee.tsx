@@ -5,7 +5,7 @@ import Image from "next/image";
 const companies = [
   { name: "FoorWeb", src: "/company/foorweb.webp" },
   { name: "Ithra", src: "/company/Ithra.webp" },
-  { name: "MessageMind", src: "/company/messagemind.webp" },
+  { name: "MessageMind", src: "/company/messagemind.webp", scale: 1.35 },
   { name: "NadlanOne", src: "/company/nadlanone.webp" },
   { name: "Offline Comics", src: "/company/offline-comics.webp" },
   { name: "WeWise", src: "/company/wewise.webp" },
@@ -41,6 +41,9 @@ export function HeroLogoMarquee({ label }: { label: string }) {
                 alt={c.name}
                 fill
                 sizes="128px"
+                style={
+                  "scale" in c ? { transform: `scale(${c.scale})` } : undefined
+                }
                 className="object-contain opacity-70 grayscale mix-blend-multiply dark:mix-blend-normal dark:invert"
                 aria-hidden={i >= companies.length}
               />
