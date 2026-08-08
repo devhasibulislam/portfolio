@@ -88,7 +88,9 @@ export async function Hero() {
           data-hero-line
           className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
-          <CtaButton href="/projects">{t("primaryCta")}</CtaButton>
+          <CtaButton href="/projects" className="w-48 justify-between">
+            {t("primaryCta")}
+          </CtaButton>
           <SlideToOpenCta
             href="https://calendly.com/devhasibulislam/30min"
             tooltip={t("slideTooltip")}
