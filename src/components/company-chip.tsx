@@ -1,4 +1,4 @@
-import { CldImage } from "next-cloudinary";
+import { getCldImageUrl } from "next-cloudinary";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +18,15 @@ export function CompanyChip({
   const textSize = size === "md" ? "text-sm" : "text-xs";
   const px = size === "md" ? 56 : 40;
   const initial = name.trim().charAt(0).toUpperCase() || "?";
+  const src = logoPublicId
+    ? getCldImageUrl({
+        src: logoPublicId,
+        width: px,
+        height: px,
+        crop: "fill",
+        gravity: "auto",
+      })
+    : null;
   return (
     <span
       className={cn(
@@ -26,14 +35,13 @@ export function CompanyChip({
       )}
     >
       <Avatar className={avatarSize}>
-        {logoPublicId ? (
-          <CldImage
-            src={logoPublicId}
+        {src ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={src}
             alt=""
             width={px}
             height={px}
-            crop="fill"
-            gravity="auto"
             className="size-full object-cover"
           />
         ) : null}
