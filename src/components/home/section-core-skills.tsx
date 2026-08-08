@@ -66,7 +66,7 @@ export async function SectionCoreSkills() {
       />
       <ScrollReveal
         as="ul"
-        className="grid grid-cols-1 gap-4 md:grid-cols-2"
+        className="scrollbar-thin -mx-6 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-px-6 px-6 pb-4"
         stagger={0.06}
       >
         {ordered.map((g) => {
@@ -75,10 +75,14 @@ export async function SectionCoreSkills() {
             .sort((a, b) => Number(b.isPrimary) - Number(a.isPrimary))
             .slice(0, MAX_ITEMS_PER_GROUP);
           return (
-            <li key={g.group} data-reveal>
+            <li
+              key={g.group}
+              data-reveal
+              className="w-[85%] shrink-0 snap-start sm:w-[60%] md:w-105"
+            >
               <Spotlight>
-                <div className={cn(bezelOuter)}>
-                  <div className={cn(bezelInner, "p-6")}>
+                <div className={cn(bezelOuter, "h-full")}>
+                  <div className={cn(bezelInner, "flex h-full flex-col p-6")}>
                     <h3 className="text-lg font-semibold tracking-tight">
                       {tGroups(g.group)}
                     </h3>
