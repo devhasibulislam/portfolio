@@ -134,7 +134,7 @@ export function SlideToOpenCta({
                 openLink();
               }
             }}
-            className="group relative isolate inline-flex h-12 w-48 cursor-grab touch-none items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 p-2 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] active:cursor-grabbing"
+            className="group relative isolate inline-flex h-12 w-48 cursor-grab touch-none items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 p-1.5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] active:cursor-grabbing"
           >
             <div
               ref={thumbRef}
@@ -148,11 +148,13 @@ export function SlideToOpenCta({
               {leadIcon}
             </div>
             <span
-              className="relative z-0 flex-1 whitespace-nowrap pe-3 transition-opacity"
+              className="relative z-0 flex-1 whitespace-nowrap text-center transition-opacity"
               style={{ opacity: 1 - progress * 0.6 }}
             >
               {children}
             </span>
+            {/* Trailing spacer mirrors the thumb so the label centers in-flow. */}
+            <div aria-hidden className="size-9 shrink-0" />
           </div>
         </TooltipTrigger>
         <TooltipContent>{tooltip}</TooltipContent>
