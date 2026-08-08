@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { ScrollReveal } from "./scroll-reveal";
 import { SplitHeroMetric } from "./split-hero-metric";
 import { HeroLogoMarquee } from "./hero-logo-marquee";
+import { SlideToOpenCta } from "./slide-to-open-cta";
 import { CtaButton } from "@/components/cta-button";
 
 /**
@@ -88,10 +89,9 @@ export async function Hero() {
           className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
           <CtaButton href="/projects">{t("primaryCta")}</CtaButton>
-          <CtaButton
+          <SlideToOpenCta
             href="https://calendly.com/devhasibulislam/30min"
-            variant="secondary"
-            external
+            tooltip={t("slideTooltip")}
             leadIcon={
               <Image
                 src="/social/google-meet.webp"
@@ -104,7 +104,7 @@ export async function Hero() {
             }
           >
             {t("secondaryCta")}
-          </CtaButton>
+          </SlideToOpenCta>
         </div>
 
         {/* Availability — demoted to a quiet signal beneath the CTAs. */}

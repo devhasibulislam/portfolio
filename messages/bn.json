@@ -86,7 +86,8 @@
       "primaryCta": "কাজ দেখুন",
       "secondaryCta": "কল বুক করুন",
       "marqueeLabel": "যেখানে কাজ করেছি।",
-      "marqueeAriaLabel": "যেসব কোম্পানির সাথে কাজ করেছি"
+      "marqueeAriaLabel": "যেসব কোম্পানির সাথে কাজ করেছি",
+      "slideTooltip": "স্লাইড বা ক্লিক করে বুক করুন"
     },
     "receipts": {
       "eyebrow": "সিগনেচার প্রমাণ",

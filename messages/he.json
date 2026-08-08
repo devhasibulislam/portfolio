@@ -86,7 +86,8 @@
       "primaryCta": "לצפייה בעבודות",
       "secondaryCta": "קבע שיחה",
       "marqueeLabel": "היכן שעבדתי.",
-      "marqueeAriaLabel": "חברות שעבדתי איתן"
+      "marqueeAriaLabel": "חברות שעבדתי איתן",
+      "slideTooltip": "החלק או לחץ להזמנה"
     },
     "receipts": {
       "eyebrow": "הוכחות מרכזיות",
