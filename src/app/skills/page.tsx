@@ -7,6 +7,7 @@ import {
   type PublicSkillGroup,
 } from "@/lib/db/queries/skills";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
+import { SkillPill } from "@/components/skill-pill";
 
 export async function generateMetadata(): Promise<Metadata> {
   const m = await getTranslations("meta.skills");
@@ -22,14 +23,6 @@ async function loadGroups(): Promise<PublicSkillGroup[]> {
   cacheTag(tag.skills());
   return listPublicSkillsGrouped();
 }
-
-// Proficiency-tinted classes; the label text itself comes from i18n.
-const PROFICIENCY_TONE = {
-  working: "text-muted-foreground border-border",
-  proficient: "text-foreground border-foreground/40",
-  expert:
-    "text-[var(--color-accent-strong)] border-[var(--color-accent)]/50 bg-[var(--color-accent)]/10",
-} as const;
 
 export default async function SkillsPage() {
   const [groups, t, groupLabels, profLabels] = await Promise.all([
@@ -64,21 +57,16 @@ export default async function SkillsPage() {
               </h2>
               <ul className="flex flex-wrap gap-2">
                 {items.map((s) => (
-                  <li
-                    key={s.id}
-                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm ${PROFICIENCY_TONE[s.proficiency]}`}
-                    title={`${profLabels(s.proficiency)}${
-                      s.years
-                        ? ` · ${s.years} yr${s.years === 1 ? "" : "s"}`
-                        : ""
-                    }`}
-                  >
-                    <span className="font-medium">{s.name}</span>
-                    {s.years ? (
-                      <span className="text-muted-foreground text-xs tabular-nums">
-                        {s.years}y
-                      </span>
-                    ) : null}
+                  <li key={s.id}>
+                    <SkillPill
+                      name={s.name}
+                      iconUrl={s.iconUrl}
+                      proficiency={s.proficiency}
+                      years={s.years}
+                      isPrimary={s.isPrimary}
+                      groupLabel={groupLabels(group)}
+                      proficiencyLabel={profLabels(s.proficiency)}
+                    />
                   </li>
                 ))}
               </ul>

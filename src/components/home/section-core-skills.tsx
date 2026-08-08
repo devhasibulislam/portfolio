@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import { listPublicSkillsGrouped } from "@/lib/db/queries/skills";
 import { SKILL_GROUPS } from "@/lib/skill-groups";
+import { SkillPill } from "@/components/skill-pill";
 import { ScrollReveal } from "./scroll-reveal";
 import { SectionHeader, SeeAllLink, bezelInner, bezelOuter } from "./_shared";
 import { Spotlight } from "./spotlight";
@@ -18,10 +19,11 @@ const MAX_GROUPS_ON_HOME = 6;
 const MAX_ITEMS_PER_GROUP = 8;
 
 export async function SectionCoreSkills() {
-  const [groups, t, tGroups] = await Promise.all([
+  const [groups, t, tGroups, tProf] = await Promise.all([
     loadGrouped(),
     getTranslations("home.coreSkills"),
     getTranslations("skills.groups"),
+    getTranslations("skills.proficiency"),
   ]);
 
   if (groups.length === 0) return null;
@@ -66,16 +68,16 @@ export async function SectionCoreSkills() {
                     </h3>
                     <ul className="mt-4 flex flex-wrap gap-2">
                       {items.map((s) => (
-                        <li
-                          key={s.id}
-                          className={cn(
-                            "rounded-full border px-3 py-1 text-sm",
-                            s.isPrimary
-                              ? "border-[var(--color-accent)]/40 bg-[var(--color-accent)]/10 text-[var(--color-fg)]"
-                              : "border-[var(--color-border)] text-[var(--color-fg)]/80",
-                          )}
-                        >
-                          {s.name}
+                        <li key={s.id}>
+                          <SkillPill
+                            name={s.name}
+                            iconUrl={s.iconUrl}
+                            proficiency={s.proficiency}
+                            years={s.years}
+                            isPrimary={s.isPrimary}
+                            groupLabel={tGroups(g.group)}
+                            proficiencyLabel={tProf(s.proficiency)}
+                          />
                         </li>
                       ))}
                     </ul>

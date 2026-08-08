@@ -1,21 +1,42 @@
-"use client"
+"use client";
 
+import * as React from "react";
 import {
   CircleCheckIcon,
   InfoIcon,
   Loader2Icon,
   OctagonXIcon,
   TriangleAlertIcon,
-} from "lucide-react"
-import { useTheme } from "next-themes"
-import { Toaster as Sonner, type ToasterProps } from "sonner"
+} from "lucide-react";
+import { Toaster as Sonner, type ToasterProps } from "sonner";
+
+/**
+ * This project drives theming via a cookie -> `data-theme` on <html>
+ * (see src/app/layout.tsx). next-themes is not wired up, so we read the
+ * attribute directly and follow mutations.
+ */
+function useHtmlTheme(): "light" | "dark" {
+  const [theme, setTheme] = React.useState<"light" | "dark">("dark");
+  React.useEffect(() => {
+    const html = document.documentElement;
+    const read = () =>
+      setTheme(
+        (html.getAttribute("data-theme") as "light" | "dark" | null) ?? "dark",
+      );
+    read();
+    const obs = new MutationObserver(read);
+    obs.observe(html, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => obs.disconnect();
+  }, []);
+  return theme;
+}
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const theme = useHtmlTheme();
 
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme={theme}
       className="toaster group"
       icons={{
         success: <CircleCheckIcon className="size-4" />,
@@ -34,7 +55,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
       }
       {...props}
     />
-  )
-}
+  );
+};
 
-export { Toaster }
+export { Toaster };

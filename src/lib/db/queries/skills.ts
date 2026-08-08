@@ -1,6 +1,6 @@
 import { asc, eq } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import { skills } from "@/lib/db/schema";
+import { media, skills } from "@/lib/db/schema";
 import type { SkillInput } from "@/schemas/skill";
 
 export type SkillRow = {
@@ -71,6 +71,7 @@ export type PublicSkill = {
   proficiency: SkillInput["proficiency"];
   years: number | null;
   isPrimary: boolean;
+  iconUrl: string | null;
 };
 
 export type PublicSkillGroup = {
@@ -88,8 +89,10 @@ export async function listPublicSkillsGrouped(): Promise<PublicSkillGroup[]> {
       years: skills.years,
       isPrimary: skills.isPrimary,
       displayOrder: skills.displayOrder,
+      iconUrl: media.url,
     })
     .from(skills)
+    .leftJoin(media, eq(skills.iconMediaId, media.id))
     .where(eq(skills.status, "active"))
     .orderBy(asc(skills.group), asc(skills.displayOrder), asc(skills.name));
 
@@ -102,6 +105,7 @@ export async function listPublicSkillsGrouped(): Promise<PublicSkillGroup[]> {
       proficiency: r.proficiency,
       years: r.years,
       isPrimary: r.isPrimary,
+      iconUrl: r.iconUrl,
     });
     map.set(r.group, bucket);
   }
