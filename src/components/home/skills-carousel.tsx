@@ -12,6 +12,7 @@ import {
 import {
   Tooltip,
   TooltipContent,
+  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
@@ -61,24 +62,26 @@ export function SkillsCarousel({
         ))}
       </CarouselContent>
       <div className="mt-3 flex justify-end gap-2">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <CarouselPrevious
-              aria-label={prev}
-              className="static size-8 translate-y-0"
-            />
-          </TooltipTrigger>
-          <TooltipContent>{prev}</TooltipContent>
-        </Tooltip>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <CarouselNext
-              aria-label={next}
-              className="static size-8 translate-y-0"
-            />
-          </TooltipTrigger>
-          <TooltipContent>{next}</TooltipContent>
-        </Tooltip>
+        <TooltipProvider delayDuration={120}>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <CarouselPrevious
+                aria-label={prev}
+                className="static size-8 translate-y-0"
+              />
+            </TooltipTrigger>
+            <TooltipContent>{prev}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <CarouselNext
+                aria-label={next}
+                className="static size-8 translate-y-0"
+              />
+            </TooltipTrigger>
+            <TooltipContent>{next}</TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </Carousel>
   );
