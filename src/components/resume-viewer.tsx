@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Document, Page, pdfjs } from "react-pdf";
 import { Loader2 } from "lucide-react";
 
@@ -15,6 +16,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@$
  * and every desktop browser — no native PDF viewer, all canvas.
  */
 export function ResumeViewer({ url }: { url: string }) {
+  const t = useTranslations("resume.viewer");
+  const loadingLabel = t("loading");
+  const errorLabel = t("loadError");
   const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<number>();
   const [pageCount, setPageCount] = useState<number>(0);
@@ -39,12 +43,12 @@ export function ResumeViewer({ url }: { url: string }) {
         loading={
           <div className="text-muted-foreground flex items-center justify-center gap-2 p-8 text-sm">
             <Loader2 className="size-4 animate-spin" />
-            Loading resume…
+            {loadingLabel}
           </div>
         }
         error={
           <div className="text-muted-foreground p-8 text-center text-sm">
-            Couldn&apos;t load the PDF.
+            {errorLabel}
           </div>
         }
         className="flex flex-col items-center gap-4"

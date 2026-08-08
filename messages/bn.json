@@ -85,7 +85,8 @@
       "availability": "Remote, On-site এবং Contract — যেকোনো ধরনের কাজের জন্য উন্মুক্ত",
       "primaryCta": "কাজ দেখুন",
       "secondaryCta": "কল বুক করুন",
-      "marqueeLabel": "যেখানে কাজ করেছি।"
+      "marqueeLabel": "যেখানে কাজ করেছি।",
+      "marqueeAriaLabel": "যেসব কোম্পানির সাথে কাজ করেছি"
     },
     "receipts": {
       "eyebrow": "সিগনেচার রিসিপ্ট",
@@ -143,7 +144,8 @@
     "featuredWriting": {
       "eyebrow": "সাম্প্রতিক লেখা",
       "title": "সর্বশেষ পোস্ট।",
-      "seeAll": "সব পোস্ট দেখুন"
+      "seeAll": "সব পোস্ট দেখুন",
+      "fallbackCategory": "নোট"
     },
     "contact": {
       "eyebrow": "চলুন কাজ করি",
@@ -195,7 +197,8 @@
     "tagEyebrow": "ট্যাগ",
     "loadError": "আরও পোস্ট লোড করা যায়নি। আবার চেষ্টা করুন।",
     "categoryMetaDescription": "{name} বিভাগের পোস্ট।",
-    "tagMetaDescription": "{name} ট্যাগের পোস্ট।"
+    "tagMetaDescription": "{name} ট্যাগের পোস্ট।",
+    "tagsLabel": "ট্যাগ:"
   },
   "projects": {
     "kicker": "কাজ",
@@ -264,7 +267,11 @@
     "heading": "হাসিবুল ইসলাম",
     "subtitle": "{name} · নিচে প্রিভিউ, ডাউনলোড করে রাখতে পারেন।",
     "download": "PDF ডাউনলোড",
-    "downloadShort": "PDF ডাউনলোড"
+    "downloadShort": "PDF ডাউনলোড",
+    "viewer": {
+      "loading": "রেজিউমে লোড হচ্ছে…",
+      "loadError": "পিডিএফ লোড করা যায়নি।"
+    }
   },
   "auth": {
     "signIn": "সাইন ইন",
@@ -357,7 +364,8 @@
     }
   },
   "brand": {
-    "name": "হাসিবুল ইসলাম"
+    "name": "হাসিবুল ইসলাম",
+    "homeAriaLabel": "{name}, হোম"
   },
   "dashboard": {
     "signOut": "সাইন আউট",

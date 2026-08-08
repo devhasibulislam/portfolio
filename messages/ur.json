@@ -85,7 +85,8 @@
       "availability": "Available for remote, on-site and contract engagements",
       "primaryCta": "See the work",
       "secondaryCta": "کال بک کریں",
-      "marqueeLabel": "جہاں میں نے کام کیا۔"
+      "marqueeLabel": "جہاں میں نے کام کیا۔",
+      "marqueeAriaLabel": "کمپنیاں جن کے ساتھ کام کیا"
     },
     "receipts": {
       "eyebrow": "Signature receipts",
@@ -143,7 +144,8 @@
     "featuredWriting": {
       "eyebrow": "Recent writing",
       "title": "Latest posts.",
-      "seeAll": "See all posts"
+      "seeAll": "See all posts",
+      "fallbackCategory": "نوٹ"
     },
     "contact": {
       "eyebrow": "Let's build",
@@ -195,7 +197,8 @@
     "tagEyebrow": "ٹیگ",
     "loadError": "مزید پوسٹس لوڈ نہیں ہو سکیں۔ دوبارہ کوشش کریں۔",
     "categoryMetaDescription": "{name} میں پوسٹس۔",
-    "tagMetaDescription": "{name} ٹیگ والی پوسٹس۔"
+    "tagMetaDescription": "{name} ٹیگ والی پوسٹس۔",
+    "tagsLabel": "ٹیگز:"
   },
   "projects": {
     "kicker": "کام",
@@ -264,7 +267,11 @@
     "heading": "حسیب الاسلام",
     "subtitle": "{name} · نیچے پیش نظر، ڈاؤن لوڈ کریں۔",
     "download": "PDF ڈاؤن لوڈ",
-    "downloadShort": "PDF ڈاؤن لوڈ"
+    "downloadShort": "PDF ڈاؤن لوڈ",
+    "viewer": {
+      "loading": "ریزیومے لوڈ ہو رہا ہے…",
+      "loadError": "پی ڈی ایف لوڈ نہیں ہو سکی۔"
+    }
   },
   "auth": {
     "signIn": "سائن ان",
@@ -357,7 +364,8 @@
     }
   },
   "brand": {
-    "name": "حسیب الاسلام"
+    "name": "حسیب الاسلام",
+    "homeAriaLabel": "{name}، ہوم"
   },
   "dashboard": {
     "signOut": "سائن آؤٹ",

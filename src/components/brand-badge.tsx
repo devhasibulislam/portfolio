@@ -47,7 +47,7 @@ export function BrandBadge({
   return (
     <Link
       href="/"
-      aria-label={`${name}, home`}
+      aria-label={t("homeAriaLabel", { name })}
       className="focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] rounded-full"
     >
       {inner}

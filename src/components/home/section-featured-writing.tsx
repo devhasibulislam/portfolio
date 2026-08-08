@@ -42,7 +42,7 @@ export async function SectionFeaturedWriting() {
         stagger={0.1}
       >
         {rows.map((p) => {
-          const category = p.categoryName ?? "Note";
+          const category = p.categoryName ?? t("fallbackCategory");
           return (
             <li key={p.id} data-reveal>
               <MediaCard

@@ -85,7 +85,8 @@
       "availability": "Available for remote, on-site and contract engagements",
       "primaryCta": "See the work",
       "secondaryCta": "Book a call",
-      "marqueeLabel": "Where I've shipped."
+      "marqueeLabel": "Where I've shipped.",
+      "marqueeAriaLabel": "Companies I've worked with"
     },
     "receipts": {
       "eyebrow": "Signature receipts",
@@ -143,7 +144,8 @@
     "featuredWriting": {
       "eyebrow": "Recent writing",
       "title": "Latest posts.",
-      "seeAll": "See all posts"
+      "seeAll": "See all posts",
+      "fallbackCategory": "Note"
     },
     "contact": {
       "eyebrow": "Let's build",
@@ -195,7 +197,8 @@
     "tagEyebrow": "Tag",
     "loadError": "Couldn't load more posts. Try again.",
     "categoryMetaDescription": "Posts in {name}.",
-    "tagMetaDescription": "Posts tagged {name}."
+    "tagMetaDescription": "Posts tagged {name}.",
+    "tagsLabel": "Tags:"
   },
   "projects": {
     "kicker": "Work",
@@ -264,7 +267,11 @@
     "heading": "Hasibul Islam",
     "subtitle": "{name} · preview below, download to keep.",
     "download": "Download PDF",
-    "downloadShort": "Download PDF"
+    "downloadShort": "Download PDF",
+    "viewer": {
+      "loading": "Loading resume…",
+      "loadError": "Couldn't load the PDF."
+    }
   },
   "auth": {
     "signIn": "Sign in",
@@ -357,7 +364,8 @@
     }
   },
   "brand": {
-    "name": "Hasibul Islam"
+    "name": "Hasibul Islam",
+    "homeAriaLabel": "{name}, home"
   },
   "dashboard": {
     "signOut": "Sign out",

@@ -85,7 +85,8 @@
       "availability": "Available for remote, on-site and contract engagements",
       "primaryCta": "See the work",
       "secondaryCta": "קבע שיחה",
-      "marqueeLabel": "היכן שעבדתי."
+      "marqueeLabel": "היכן שעבדתי.",
+      "marqueeAriaLabel": "חברות שעבדתי איתן"
     },
     "receipts": {
       "eyebrow": "Signature receipts",
@@ -143,7 +144,8 @@
     "featuredWriting": {
       "eyebrow": "Recent writing",
       "title": "Latest posts.",
-      "seeAll": "See all posts"
+      "seeAll": "See all posts",
+      "fallbackCategory": "הערה"
     },
     "contact": {
       "eyebrow": "Let's build",
@@ -195,7 +197,8 @@
     "tagEyebrow": "תגית",
     "loadError": "לא ניתן היה לטעון עוד פוסטים. נסה שוב.",
     "categoryMetaDescription": "פוסטים בקטגוריה {name}.",
-    "tagMetaDescription": "פוסטים עם התגית {name}."
+    "tagMetaDescription": "פוסטים עם התגית {name}.",
+    "tagsLabel": "תגיות:"
   },
   "projects": {
     "kicker": "עבודה",
@@ -264,7 +267,11 @@
     "heading": "חסיבול איסלאם",
     "subtitle": "{name} · תצוגה מקדימה למטה, הורידו לשמירה.",
     "download": "הורד PDF",
-    "downloadShort": "הורד PDF"
+    "downloadShort": "הורד PDF",
+    "viewer": {
+      "loading": "טוען קורות חיים…",
+      "loadError": "לא ניתן היה לטעון את קובץ ה-PDF."
+    }
   },
   "auth": {
     "signIn": "התחברות",
@@ -357,7 +364,8 @@
     }
   },
   "brand": {
-    "name": "חסיבול איסלאם"
+    "name": "חסיבול איסלאם",
+    "homeAriaLabel": "{name}, דף הבית"
   },
   "dashboard": {
     "signOut": "התנתקות",

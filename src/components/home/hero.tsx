@@ -112,7 +112,10 @@ export async function Hero() {
 
       {/* Trust strip — anchors the bottom of the fold */}
       <div className="relative z-10 mx-auto mt-16 w-full max-w-6xl">
-        <HeroLogoMarquee label={t("marqueeLabel")} />
+        <HeroLogoMarquee
+          label={t("marqueeLabel")}
+          ariaLabel={t("marqueeAriaLabel")}
+        />
       </div>
     </section>
   );
