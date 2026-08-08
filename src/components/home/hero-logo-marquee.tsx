@@ -10,6 +10,7 @@ const companies = [
   { name: "Offline Comics", src: "/company/offline-comics.webp" },
   { name: "WeWise", src: "/company/wewise.webp" },
   { name: "WiseLead", src: "/company/wiselead.webp" },
+  { name: "ZMC Technologies", src: "/company/zmc-technologies.webp" },
   { name: "Zubion", src: "/company/zubion.webp" },
 ] as const;
 

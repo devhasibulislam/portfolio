@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import { listPublicSkillsGrouped } from "@/lib/db/queries/skills";
 import { SKILL_GROUPS } from "@/lib/skill-groups";
-import { SkillPill } from "@/components/skill-pill";
+import { SkillPill, type SkillPillLabels } from "@/components/skill-pill";
 import { ScrollReveal } from "./scroll-reveal";
 import { SectionHeader, SeeAllLink, bezelInner, bezelOuter } from "./_shared";
 import { Spotlight } from "./spotlight";
@@ -19,14 +19,30 @@ const MAX_GROUPS_ON_HOME = 6;
 const MAX_ITEMS_PER_GROUP = 8;
 
 export async function SectionCoreSkills() {
-  const [groups, t, tGroups, tProf] = await Promise.all([
+  const [groups, t, tGroups, tProf, tPill] = await Promise.all([
     loadGrouped(),
     getTranslations("home.coreSkills"),
     getTranslations("skills.groups"),
     getTranslations("skills.proficiency"),
+    getTranslations("skills.pill"),
   ]);
 
   if (groups.length === 0) return null;
+
+  const pillLabels: SkillPillLabels = {
+    proficiency: tPill("proficiency"),
+    experience: tPill("experience"),
+    group: tPill("group"),
+    primary: tPill("primary"),
+    yes: tPill("yes"),
+    no: tPill("no"),
+  };
+  const yearsText = (n: number | null): string =>
+    n == null
+      ? tPill("emDash")
+      : n === 1
+        ? tPill("yearShort")
+        : tPill("yearsShort", { n });
 
   // Preserve the canonical group order from skill-groups.ts, drop empties,
   // cap to a reasonable home-page density (full list lives at /skills).
@@ -77,6 +93,8 @@ export async function SectionCoreSkills() {
                             isPrimary={s.isPrimary}
                             groupLabel={tGroups(g.group)}
                             proficiencyLabel={tProf(s.proficiency)}
+                            yearsText={yearsText(s.years)}
+                            labels={pillLabels}
                           />
                         </li>
                       ))}

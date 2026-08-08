@@ -190,7 +190,9 @@
     "empty": "لا توجد مقالات بعد.",
     "loadingMore": "جارٍ تحميل المزيد…",
     "scrollForMore": "مرّر للمزيد",
-    "listEnd": "لقد وصلت إلى النهاية."
+    "listEnd": "لقد وصلت إلى النهاية.",
+    "categoryEyebrow": "التصنيف",
+    "tagEyebrow": "وسم"
   },
   "projects": {
     "kicker": "الأعمال",
@@ -202,7 +204,9 @@
       "product": "منتج",
       "open_source": "مفتوح المصدر",
       "nda": "تحت NDA"
-    }
+    },
+    "outcomeSectionLabel": "النتيجة",
+    "linksSectionLabel": "روابط"
   },
   "experience": {
     "kicker": "المسيرة المهنية",
@@ -214,7 +218,8 @@
       "on_site": "في الموقع",
       "remote": "عن بُعد",
       "hybrid": "هجين"
-    }
+    },
+    "periodSeparator": "حتى"
   },
   "skills": {
     "kicker": "الحزمة",
@@ -238,6 +243,17 @@
       "security_practice": "الأمن والممارسة",
       "frontend": "الواجهة",
       "working_knowledge": "معرفة عملية"
+    },
+    "pill": {
+      "proficiency": "المستوى",
+      "experience": "الخبرة",
+      "group": "المجموعة",
+      "primary": "أساسي",
+      "yes": "نعم",
+      "no": "لا",
+      "yearShort": "سنة واحدة",
+      "yearsShort": "{n} سنوات",
+      "emDash": "—"
     }
   },
   "resume": {

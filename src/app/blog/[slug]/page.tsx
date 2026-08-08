@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getCldImageUrl } from "next-cloudinary";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { tag } from "@/lib/cache-tags";
 import { getPublishedPostBySlug } from "@/lib/db/queries/public-posts";
@@ -61,7 +62,10 @@ export default async function BlogPostPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const post = await loadPost(slug);
+  const [post, tBlog] = await Promise.all([
+    loadPost(slug),
+    getTranslations("blog"),
+  ]);
   if (!post) notFound();
 
   const html = renderTiptapToHtml(post.body);
@@ -94,7 +98,7 @@ export default async function BlogPostPage({
         />
 
         <PageBreadcrumb
-          trail={[{ label: "Blog", href: "/blog" }, { label: post.title }]}
+          trail={[{ label: tBlog("heading"), href: "/blog" }, { label: post.title }]}
         />
 
         <header className="mb-10 flex flex-col gap-4">

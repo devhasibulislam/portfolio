@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { BlogInfiniteList } from "@/app/blog/blog-infinite-list";
 import { tag } from "@/lib/cache-tags";
 import {
@@ -15,11 +16,11 @@ type Params = { slug: string };
 async function loadPage(slug: string) {
   "use cache";
   cacheTag(tag.posts(), tag.tags());
-  const [t, page] = await Promise.all([
+  const [tagRow, page] = await Promise.all([
     getTagBySlug(slug),
     listPublishedPostsCursor({ limit: 12, tagSlug: slug }),
   ]);
-  return { t, page };
+  return { tagRow, page };
 }
 
 export async function generateMetadata({
@@ -28,31 +29,34 @@ export async function generateMetadata({
   params: Promise<Params>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const { t } = await loadPage(slug);
-  if (!t) return { title: "Not found" };
+  const { tagRow } = await loadPage(slug);
+  if (!tagRow) return { title: "Not found" };
   return {
-    title: `#${t.name}`,
-    description: `Posts tagged ${t.name}.`,
-    alternates: { canonical: `/blog/tag/${t.slug}` },
+    title: `#${tagRow.name}`,
+    description: `Posts tagged ${tagRow.name}.`,
+    alternates: { canonical: `/blog/tag/${tagRow.slug}` },
   };
 }
 
 export default async function TagPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const { t, page } = await loadPage(slug);
-  if (!t) notFound();
+  const [{ tagRow, page }, t] = await Promise.all([
+    loadPage(slug),
+    getTranslations("blog"),
+  ]);
+  if (!tagRow) notFound();
 
-  const boundLoader = loadMorePublishedPosts.bind(null, { tagSlug: t.slug });
+  const boundLoader = loadMorePublishedPosts.bind(null, { tagSlug: tagRow.slug });
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
       <PageBreadcrumb
-        trail={[{ label: "Blog", href: "/blog" }, { label: `#${t.name}` }]}
+        trail={[{ label: t("heading"), href: "/blog" }, { label: `#${tagRow.name}` }]}
       />
       <header className="mb-10">
-        <p className="text-muted-foreground text-sm">Tag</p>
+        <p className="text-muted-foreground text-sm">{t("tagEyebrow")}</p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight text-balance sm:text-5xl md:text-6xl">
-          #{t.name}
+          #{tagRow.name}
         </h1>
       </header>
       <BlogInfiniteList initial={page} loader={boundLoader} />

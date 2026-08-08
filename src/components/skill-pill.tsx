@@ -8,6 +8,15 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
+export type SkillPillLabels = {
+  proficiency: string;
+  experience: string;
+  group: string;
+  primary: string;
+  yes: string;
+  no: string;
+};
+
 export type SkillPillProps = {
   name: string;
   iconUrl: string | null;
@@ -17,6 +26,9 @@ export type SkillPillProps = {
   /** Pre-translated labels — kept as props so this component stays i18n-agnostic. */
   groupLabel: string;
   proficiencyLabel: string;
+  /** Pre-formatted years string, e.g. "5 years" / "1 year" / "—". */
+  yearsText: string;
+  labels: SkillPillLabels;
   className?: string;
 };
 
@@ -28,12 +40,15 @@ export type SkillPillProps = {
 export function SkillPill({
   name,
   iconUrl,
-  years,
+  years: _years,
   isPrimary,
   groupLabel,
   proficiencyLabel,
+  yearsText,
+  labels,
   className,
 }: SkillPillProps) {
+  void _years;
   return (
     <TooltipProvider delayDuration={120}>
       <Tooltip>
@@ -68,22 +83,22 @@ export function SkillPill({
         <TooltipContent side="top" className="max-w-xs">
           <ul className="flex flex-col gap-1 text-xs">
             <li>
-              <span className="opacity-70">Proficiency:</span>{" "}
+              <span className="opacity-70">{labels.proficiency}:</span>{" "}
               <span className="font-medium">{proficiencyLabel}</span>
             </li>
             <li>
-              <span className="opacity-70">Experience:</span>{" "}
-              <span className="font-medium">
-                {years ? `${years} year${years === 1 ? "" : "s"}` : "—"}
-              </span>
+              <span className="opacity-70">{labels.experience}:</span>{" "}
+              <span className="font-medium">{yearsText}</span>
             </li>
             <li>
-              <span className="opacity-70">Group:</span>{" "}
+              <span className="opacity-70">{labels.group}:</span>{" "}
               <span className="font-medium">{groupLabel}</span>
             </li>
             <li>
-              <span className="opacity-70">Primary:</span>{" "}
-              <span className="font-medium">{isPrimary ? "Yes" : "No"}</span>
+              <span className="opacity-70">{labels.primary}:</span>{" "}
+              <span className="font-medium">
+                {isPrimary ? labels.yes : labels.no}
+              </span>
             </li>
           </ul>
         </TooltipContent>

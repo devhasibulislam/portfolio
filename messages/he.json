@@ -190,7 +190,9 @@
     "empty": "אין עדיין פוסטים.",
     "loadingMore": "טוען עוד…",
     "scrollForMore": "גלול לעוד",
-    "listEnd": "הגעת לסוף."
+    "listEnd": "הגעת לסוף.",
+    "categoryEyebrow": "קטגוריה",
+    "tagEyebrow": "תגית"
   },
   "projects": {
     "kicker": "עבודה",
@@ -202,7 +204,9 @@
       "product": "מוצר",
       "open_source": "קוד פתוח",
       "nda": "תחת NDA"
-    }
+    },
+    "outcomeSectionLabel": "תוצאה",
+    "linksSectionLabel": "קישורים"
   },
   "experience": {
     "kicker": "קריירה",
@@ -214,7 +218,8 @@
       "on_site": "במשרד",
       "remote": "מרחוק",
       "hybrid": "היברידי"
-    }
+    },
+    "periodSeparator": "עד"
   },
   "skills": {
     "kicker": "סטאק",
@@ -238,6 +243,17 @@
       "security_practice": "אבטחה ומנהג",
       "frontend": "פרונטאנד",
       "working_knowledge": "ידע עבודה"
+    },
+    "pill": {
+      "proficiency": "רמת מיומנות",
+      "experience": "ניסיון",
+      "group": "קבוצה",
+      "primary": "עיקרי",
+      "yes": "כן",
+      "no": "לא",
+      "yearShort": "שנה אחת",
+      "yearsShort": "{n} שנים",
+      "emDash": "—"
     }
   },
   "resume": {

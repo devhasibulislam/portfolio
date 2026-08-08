@@ -190,7 +190,9 @@
     "empty": "এখনও কোনো পোস্ট নেই।",
     "loadingMore": "আরও লোড হচ্ছে…",
     "scrollForMore": "আরও দেখতে স্ক্রল করুন",
-    "listEnd": "শেষ পর্যন্ত পৌঁছে গেছেন।"
+    "listEnd": "শেষ পর্যন্ত পৌঁছে গেছেন।",
+    "categoryEyebrow": "ক্যাটাগরি",
+    "tagEyebrow": "ট্যাগ"
   },
   "projects": {
     "kicker": "কাজ",
@@ -202,7 +204,9 @@
       "product": "প্রোডাক্ট",
       "open_source": "ওপেন সোর্স",
       "nda": "NDA অধীনে"
-    }
+    },
+    "outcomeSectionLabel": "ফলাফল",
+    "linksSectionLabel": "লিংক"
   },
   "experience": {
     "kicker": "ক্যারিয়ার",
@@ -214,7 +218,8 @@
       "on_site": "অফিসে",
       "remote": "রিমোট",
       "hybrid": "হাইব্রিড"
-    }
+    },
+    "periodSeparator": "থেকে"
   },
   "skills": {
     "kicker": "স্ট্যাক",
@@ -238,6 +243,17 @@
       "security_practice": "সিকিউরিটি ও প্র্যাকটিস",
       "frontend": "ফ্রন্টএন্ড",
       "working_knowledge": "কাজ চালানোর মতো জ্ঞান"
+    },
+    "pill": {
+      "proficiency": "দক্ষতা",
+      "experience": "অভিজ্ঞতা",
+      "group": "গ্রুপ",
+      "primary": "প্রাইমারি",
+      "yes": "হ্যাঁ",
+      "no": "না",
+      "yearShort": "১ বছর",
+      "yearsShort": "{n} বছর",
+      "emDash": "—"
     }
   },
   "resume": {

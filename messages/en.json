@@ -190,7 +190,9 @@
     "empty": "No posts yet.",
     "loadingMore": "Loading more…",
     "scrollForMore": "Scroll for more",
-    "listEnd": "You've reached the end."
+    "listEnd": "You've reached the end.",
+    "categoryEyebrow": "Category",
+    "tagEyebrow": "Tag"
   },
   "projects": {
     "kicker": "Work",
@@ -202,7 +204,9 @@
       "product": "Product",
       "open_source": "Open source",
       "nda": "Under NDA"
-    }
+    },
+    "outcomeSectionLabel": "Outcome",
+    "linksSectionLabel": "Links"
   },
   "experience": {
     "kicker": "Career",
@@ -214,7 +218,8 @@
       "on_site": "On-site",
       "remote": "Remote",
       "hybrid": "Hybrid"
-    }
+    },
+    "periodSeparator": "to"
   },
   "skills": {
     "kicker": "Stack",
@@ -238,6 +243,17 @@
       "security_practice": "Security & practice",
       "frontend": "Frontend",
       "working_knowledge": "Working knowledge"
+    },
+    "pill": {
+      "proficiency": "Proficiency",
+      "experience": "Experience",
+      "group": "Group",
+      "primary": "Primary",
+      "yes": "Yes",
+      "no": "No",
+      "yearShort": "1 year",
+      "yearsShort": "{n} years",
+      "emDash": "—"
     }
   },
   "resume": {

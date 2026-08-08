@@ -190,7 +190,9 @@
     "empty": "ابھی تک کوئی پوسٹ نہیں۔",
     "loadingMore": "مزید لوڈ ہو رہا ہے…",
     "scrollForMore": "مزید کے لیے سکرول کریں",
-    "listEnd": "آپ آخر تک پہنچ گئے ہیں۔"
+    "listEnd": "آپ آخر تک پہنچ گئے ہیں۔",
+    "categoryEyebrow": "زمرہ",
+    "tagEyebrow": "ٹیگ"
   },
   "projects": {
     "kicker": "کام",
@@ -202,7 +204,9 @@
       "product": "پروڈکٹ",
       "open_source": "اوپن سورس",
       "nda": "NDA کے تحت"
-    }
+    },
+    "outcomeSectionLabel": "نتیجہ",
+    "linksSectionLabel": "لنکس"
   },
   "experience": {
     "kicker": "کیریئر",
@@ -214,7 +218,8 @@
       "on_site": "دفتر میں",
       "remote": "ریموٹ",
       "hybrid": "ہائبرڈ"
-    }
+    },
+    "periodSeparator": "تک"
   },
   "skills": {
     "kicker": "اسٹیک",
@@ -238,6 +243,17 @@
       "security_practice": "سیکورٹی اور مشق",
       "frontend": "فرنٹ اینڈ",
       "working_knowledge": "کاری علم"
+    },
+    "pill": {
+      "proficiency": "مہارت",
+      "experience": "تجربہ",
+      "group": "گروپ",
+      "primary": "بنیادی",
+      "yes": "ہاں",
+      "no": "نہیں",
+      "yearShort": "1 سال",
+      "yearsShort": "{n} سال",
+      "emDash": "—"
     }
   },
   "resume": {

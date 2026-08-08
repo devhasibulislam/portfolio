@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getCldImageUrl } from "next-cloudinary";
+import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { tag } from "@/lib/cache-tags";
 import { formatMonthYear } from "@/lib/dates";
@@ -20,15 +21,6 @@ async function loadRole(slug: string) {
   cacheTag(tag.experience(slug), tag.experiences());
   return getPublishedExperienceBySlug(slug);
 }
-
-const WORK_TYPE_LABEL: Record<
-  NonNullable<ExperienceInput["workType"]>,
-  string
-> = {
-  on_site: "On-site",
-  remote: "Remote",
-  hybrid: "Hybrid",
-};
 
 export async function generateMetadata({
   params,
@@ -69,9 +61,13 @@ export async function generateMetadata({
   };
 }
 
-function formatPeriod(start: Date, end: Date | null): string {
+function formatPeriod(
+  start: Date,
+  end: Date | null,
+  labels: { to: string; present: string },
+): string {
   const fmt = (d: Date) => formatMonthYear(d, { long: true });
-  return `${fmt(start)} to ${end ? fmt(end) : "Present"}`;
+  return `${fmt(start)} ${labels.to} ${end ? fmt(end) : labels.present}`;
 }
 
 export default async function ExperienceDetailPage({
@@ -83,8 +79,16 @@ export default async function ExperienceDetailPage({
   const role = await loadRole(slug);
   if (!role) notFound();
 
+  const [t, tWorkTypes] = await Promise.all([
+    getTranslations("experience"),
+    getTranslations("experience.workTypes"),
+  ]);
+
   const highlightsHtml = renderTiptapToHtml(role.highlights);
-  const period = formatPeriod(role.periodStart, role.periodEnd);
+  const period = formatPeriod(role.periodStart, role.periodEnd, {
+    to: t("periodSeparator"),
+    present: t("present"),
+  });
   const logo = role.logoPublicId
     ? getCldImageUrl({
         src: role.logoPublicId,
@@ -132,7 +136,7 @@ export default async function ExperienceDetailPage({
 
         <PageBreadcrumb
           trail={[
-            { label: "Experience", href: "/experience" },
+            { label: t("heading"), href: "/experience" },
             { label: role.role },
           ]}
         />
@@ -172,7 +176,7 @@ export default async function ExperienceDetailPage({
             <p className="text-muted-foreground mt-2 text-sm tabular-nums">
               {period}
               {role.location ? ` · ${role.location}` : ""}
-              {role.workType ? ` · ${WORK_TYPE_LABEL[role.workType]}` : ""}
+              {role.workType ? ` · ${tWorkTypes(role.workType)}` : ""}
             </p>
           </div>
         </header>

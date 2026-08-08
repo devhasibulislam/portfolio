@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { BlogInfiniteList } from "@/app/blog/blog-infinite-list";
 import { tag } from "@/lib/cache-tags";
 import {
@@ -43,7 +44,10 @@ export default async function CategoryPage({
   params: Promise<Params>;
 }) {
   const { slug } = await params;
-  const { category, page } = await loadPage(slug);
+  const [{ category, page }, t] = await Promise.all([
+    loadPage(slug),
+    getTranslations("blog"),
+  ]);
   if (!category) notFound();
 
   const boundLoader = loadMorePublishedPosts.bind(null, {
@@ -53,10 +57,10 @@ export default async function CategoryPage({
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
       <PageBreadcrumb
-        trail={[{ label: "Blog", href: "/blog" }, { label: category.name }]}
+        trail={[{ label: t("heading"), href: "/blog" }, { label: category.name }]}
       />
       <header className="mb-10">
-        <p className="text-muted-foreground text-sm">Category</p>
+        <p className="text-muted-foreground text-sm">{t("categoryEyebrow")}</p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight text-balance sm:text-5xl md:text-6xl">
           {category.name}
         </h1>

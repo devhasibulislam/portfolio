@@ -83,9 +83,13 @@ const LINK_META: Record<ProjectLinkInput["kind"], { icon: LucideIcon }> = {
   video: { icon: PlayCircle },
 };
 
-function formatPeriod(start: Date | null, end: Date | null): string | null {
+function formatPeriod(
+  start: Date | null,
+  end: Date | null,
+  labels: { to: string; present: string },
+): string | null {
   if (!start) return null;
-  return `${formatMonthYear(start)} to ${end ? formatMonthYear(end) : "Present"}`;
+  return `${formatMonthYear(start)} ${labels.to} ${end ? formatMonthYear(end) : labels.present}`;
 }
 
 export default async function ProjectDetailPage({
@@ -97,13 +101,18 @@ export default async function ProjectDetailPage({
   const project = await loadProject(slug);
   if (!project) notFound();
 
-  const [tCategories, tLinkKinds] = await Promise.all([
+  const [tCategories, tLinkKinds, tProjects, tExp] = await Promise.all([
     getTranslations("projects.categories"),
     getTranslations("dashboard.forms.project.linkKinds"),
+    getTranslations("projects"),
+    getTranslations("experience"),
   ]);
 
   const bodyHtml = renderTiptapToHtml(project.body);
-  const period = formatPeriod(project.periodStart, project.periodEnd);
+  const period = formatPeriod(project.periodStart, project.periodEnd, {
+    to: tExp("periodSeparator"),
+    present: tExp("present"),
+  });
   const cover = project.coverPublicId
     ? getCldImageUrl({ src: project.coverPublicId, width: 1600 })
     : null;
@@ -143,7 +152,7 @@ export default async function ProjectDetailPage({
 
         <PageBreadcrumb
           trail={[
-            { label: "Projects", href: "/projects" },
+            { label: tProjects("heading"), href: "/projects" },
             { label: project.title },
           ]}
         />
@@ -193,7 +202,7 @@ export default async function ProjectDetailPage({
         {project.outcome ? (
           <aside className="mt-10 rounded-lg border-s-2 border-[var(--color-accent)] bg-[var(--color-accent)]/5 p-5">
             <p className="text-[var(--color-accent)] mb-1 text-sm font-medium">
-              Outcome
+              {tProjects("outcomeSectionLabel")}
             </p>
             <p className="text-foreground leading-relaxed">{project.outcome}</p>
           </aside>
@@ -202,7 +211,7 @@ export default async function ProjectDetailPage({
         {project.links.length > 0 ? (
           <footer className="mt-12 border-t pt-8">
             <p className="text-muted-foreground mb-3 text-sm font-medium">
-              Links
+              {tProjects("linksSectionLabel")}
             </p>
             <ul className="flex flex-wrap gap-2">
               {project.links.map((link) => {
