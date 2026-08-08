@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { useCursor } from "@/hooks/use-cursor";
 import { loadMorePublishedPosts } from "@/app/blog/actions";
 import { Spotlight } from "@/components/home/spotlight";
@@ -27,6 +28,7 @@ export function BlogInfiniteList({
 }) {
   const { items, hasMore, loading, error, loadMore } =
     useCursor<PublicPostCard>(initial, loader);
+  const t = useTranslations("blog");
   const sentinel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,7 +46,7 @@ export function BlogInfiniteList({
 
   if (items.length === 0) {
     return (
-      <p className="text-muted-foreground py-16 text-center">No posts yet.</p>
+      <p className="text-muted-foreground py-16 text-center">{t("empty")}</p>
     );
   }
 
@@ -66,14 +68,12 @@ export function BlogInfiniteList({
             aria-live="polite"
             aria-busy={loading}
           >
-            {loading ? "Loading more…" : "Scroll for more"}
+            {loading ? t("loadingMore") : t("scrollForMore")}
           </span>
         </div>
       ) : (
         <p className="text-muted-foreground py-10 text-center text-sm">
-          {items.length > (initial.items.length || 0)
-            ? "You've reached the end."
-            : ""}
+          {items.length > (initial.items.length || 0) ? t("listEnd") : ""}
         </p>
       )}
 

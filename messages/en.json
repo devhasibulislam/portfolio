@@ -187,7 +187,10 @@
     "kicker": "Writing",
     "heading": "Blog",
     "hero": "Field notes on shipping: TypeScript, Node, databases, and the occasional design detour.",
-    "empty": "No posts yet."
+    "empty": "No posts yet.",
+    "loadingMore": "Loading more…",
+    "scrollForMore": "Scroll for more",
+    "listEnd": "You've reached the end."
   },
   "projects": {
     "kicker": "Work",

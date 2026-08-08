@@ -187,7 +187,10 @@
     "kicker": "כתיבה",
     "heading": "בלוג",
     "hero": "הערות שדה על השקה: TypeScript, Node, בסיסי נתונים ולעיתים פנייה לעיצוב.",
-    "empty": "אין עדיין פוסטים."
+    "empty": "אין עדיין פוסטים.",
+    "loadingMore": "טוען עוד…",
+    "scrollForMore": "גלול לעוד",
+    "listEnd": "הגעת לסוף."
   },
   "projects": {
     "kicker": "עבודה",

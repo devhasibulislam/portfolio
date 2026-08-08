@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getCldImageUrl } from "next-cloudinary";
+import { getTranslations } from "next-intl/server";
 import {
   AppWindow,
   BookOpen,
@@ -71,32 +72,15 @@ export async function generateMetadata({
   };
 }
 
-const LINK_META: Record<
-  ProjectLinkInput["kind"],
-  { icon: LucideIcon; hint: string }
-> = {
-  website: { icon: Globe, hint: "Website" },
-  case_study: { icon: BookOpen, hint: "Case study" },
-  github: { icon: Code2, hint: "GitHub" },
-  demo: { icon: MonitorPlay, hint: "Demo" },
-  app_store: { icon: AppWindow, hint: "App Store" },
-  play_store: { icon: Download, hint: "Play Store" },
-  docs: { icon: FileText, hint: "Docs" },
-  video: { icon: PlayCircle, hint: "Video" },
-};
-
-const CATEGORY_LABEL: Record<
-  Awaited<ReturnType<typeof getPublishedProjectBySlug>> extends infer T
-    ? T extends { category: infer C }
-      ? C
-      : never
-    : never,
-  string
-> = {
-  enterprise: "Client engagement",
-  product: "Product",
-  open_source: "Open source",
-  nda: "Under NDA",
+const LINK_META: Record<ProjectLinkInput["kind"], { icon: LucideIcon }> = {
+  website: { icon: Globe },
+  case_study: { icon: BookOpen },
+  github: { icon: Code2 },
+  demo: { icon: MonitorPlay },
+  app_store: { icon: AppWindow },
+  play_store: { icon: Download },
+  docs: { icon: FileText },
+  video: { icon: PlayCircle },
 };
 
 function formatPeriod(start: Date | null, end: Date | null): string | null {
@@ -112,6 +96,11 @@ export default async function ProjectDetailPage({
   const { slug } = await params;
   const project = await loadProject(slug);
   if (!project) notFound();
+
+  const [tCategories, tLinkKinds] = await Promise.all([
+    getTranslations("projects.categories"),
+    getTranslations("dashboard.forms.project.linkKinds"),
+  ]);
 
   const bodyHtml = renderTiptapToHtml(project.body);
   const period = formatPeriod(project.periodStart, project.periodEnd);
@@ -161,7 +150,7 @@ export default async function ProjectDetailPage({
 
         <header className="mb-10 flex flex-col gap-4">
           <p className="text-sm font-medium text-[var(--color-accent)]">
-            {CATEGORY_LABEL[project.category]}
+            {tCategories(project.category)}
             {project.client ? ` · ${project.client}` : ""}
           </p>
           <h1 className="text-4xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
@@ -219,6 +208,7 @@ export default async function ProjectDetailPage({
               {project.links.map((link) => {
                 const meta = LINK_META[link.kind];
                 const Icon = meta.icon;
+                const hint = tLinkKinds(link.kind);
                 return (
                   <li key={`${link.kind}-${link.url}`}>
                     <a
@@ -226,7 +216,7 @@ export default async function ProjectDetailPage({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-4 py-2 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
-                      title={meta.hint}
+                      title={hint}
                     >
                       <Icon className="size-3.5" />
                       <span>{link.label}</span>
