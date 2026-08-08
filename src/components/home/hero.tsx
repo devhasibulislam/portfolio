@@ -1,4 +1,5 @@
-import { CalendarClock, MoveRight } from "lucide-react";
+import Image from "next/image";
+import { MoveRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { ScrollReveal } from "./scroll-reveal";
 import { SplitHeroMetric } from "./split-hero-metric";
@@ -91,7 +92,16 @@ export async function Hero() {
             href="https://calendly.com/devhasibulislam/30min"
             variant="secondary"
             external
-            leadIcon={<CalendarClock className="size-4" />}
+            leadIcon={
+              <Image
+                src="/social/google-meet.webp"
+                alt=""
+                width={16}
+                height={16}
+                className="size-4 object-contain"
+                unoptimized
+              />
+            }
           >
             {t("secondaryCta")}
           </CtaButton>
