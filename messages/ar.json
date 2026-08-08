@@ -84,7 +84,8 @@
       "location": "داكا · GMT+6",
       "availability": "Available for remote, on-site and contract engagements",
       "primaryCta": "See the work",
-      "secondaryCta": "Read the resume"
+      "secondaryCta": "Read the resume",
+      "marqueeLabel": "أماكن عملت فيها."
     },
     "receipts": {
       "eyebrow": "Signature receipts",
