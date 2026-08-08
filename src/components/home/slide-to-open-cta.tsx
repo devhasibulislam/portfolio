@@ -134,11 +134,6 @@ export function SlideToOpenCta({
             }}
             className="group relative isolate inline-flex h-12 cursor-grab touch-none items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 p-1 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] active:cursor-grabbing"
           >
-            <span
-              aria-hidden
-              className="pointer-events-none absolute inset-y-0 start-0 rounded-full bg-[var(--color-accent)]/10 transition-[width] duration-100"
-              style={{ width: `calc(48px + ${progress * 100}%)` }}
-            />
             <div
               ref={thumbRef}
               aria-hidden
