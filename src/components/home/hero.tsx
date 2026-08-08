@@ -98,7 +98,8 @@ export async function Hero() {
                 alt=""
                 width={24}
                 height={24}
-                className="size-6 object-contain"
+                className="pointer-events-none size-6 object-contain select-none"
+                draggable={false}
                 unoptimized
               />
             }
