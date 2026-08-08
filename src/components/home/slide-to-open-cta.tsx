@@ -138,7 +138,7 @@ export function SlideToOpenCta({
               ref={thumbRef}
               aria-hidden
               className={cn(
-                "relative z-10 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-surface)] text-[var(--color-fg)] shadow-sm ring-1 ring-inset ring-[var(--color-accent)]",
+                "relative z-10 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-surface)] text-[var(--color-fg)] shadow-sm ring-1 ring-inset ring-[var(--color-border)] transition-colors group-hover:ring-[var(--color-accent)]",
                 dragging ? "" : "transition-transform duration-200 ease-out",
               )}
               style={{ transform: translate }}
