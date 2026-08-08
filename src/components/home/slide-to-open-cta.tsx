@@ -128,7 +128,7 @@ export function SlideToOpenCta({
                 openLink();
               }
             }}
-            className="group relative isolate inline-flex h-12 min-w-56 cursor-pointer items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 ps-1.5 pe-6 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
+            className="group relative isolate inline-flex h-12 cursor-pointer items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 ps-1.5 pe-6 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
           >
             <span
               aria-hidden
