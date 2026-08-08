@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-
 /**
  * Standard dashboard page header. Row 1 = title + primary action button
  * (kept together at every viewport width); row 2 = description underneath,
@@ -33,6 +31,3 @@ export function PageHeader({
     </div>
   );
 }
-
-// Re-export Button so consumers can `import { PageHeader, Button }` from one place.
-export { Button };

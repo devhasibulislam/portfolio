@@ -30,6 +30,8 @@ export function ScrollReveal({
   stagger = 0,
   y = 32,
   delay = 0,
+  trigger = "scroll",
+  selector = "[data-reveal]",
 }: {
   children: React.ReactNode;
   as?: "div" | "section" | "ul" | "ol";
@@ -37,21 +39,27 @@ export function ScrollReveal({
   stagger?: number;
   y?: number;
   delay?: number;
+  /** "mount" fires immediately on hydrate (hero). "scroll" waits for viewport entry. */
+  trigger?: "scroll" | "mount";
+  /** Data attribute selector for staggered children. */
+  selector?: string;
 }) {
   const scope = useRef<HTMLElement | null>(null);
 
   useGSAP(
     () => {
       if (!scope.current) return;
-      // Always animate the wrapper itself so a visible card shell doesn't
-      // sit on the page while its `data-reveal` children are held at
-      // opacity: 0. When `stagger` is set the wrapper leads the sequence
-      // and each `[data-reveal]` follows in cadence.
-      const children =
-        scope.current.querySelectorAll<HTMLElement>("[data-reveal]");
-      const targets: HTMLElement[] = stagger
-        ? [scope.current, ...Array.from(children)]
-        : [scope.current];
+      const children = scope.current.querySelectorAll<HTMLElement>(selector);
+      // On mount reveals (hero), only the marked children animate — the
+      // wrapper stays put. On scroll reveals we lead with the wrapper so
+      // a bare card shell doesn't sit visible before its children fade in.
+      const targets: HTMLElement[] =
+        trigger === "mount"
+          ? Array.from(children)
+          : stagger
+            ? [scope.current, ...Array.from(children)]
+            : [scope.current];
+      if (!targets.length) return;
 
       const mm = gsap.matchMedia();
       mm.add(
@@ -69,11 +77,10 @@ export function ScrollReveal({
             ease: "power3.out",
             stagger: stagger || 0,
             delay,
-            scrollTrigger: {
-              trigger: scope.current!,
-              start: "top 82%",
-              once: true,
-            },
+            scrollTrigger:
+              trigger === "scroll"
+                ? { trigger: scope.current!, start: "top 82%", once: true }
+                : undefined,
           });
         },
       );

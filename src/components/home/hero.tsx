@@ -1,6 +1,6 @@
 import { FileText, MoveRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
-import { HeroReveal } from "./hero-reveal";
+import { ScrollReveal } from "./scroll-reveal";
 import { SplitHeroMetric } from "./split-hero-metric";
 import { HeroLogoMarquee } from "./hero-logo-marquee";
 import { CtaButton } from "@/components/cta-button";
@@ -8,8 +8,8 @@ import { CtaButton } from "@/components/cta-button";
 /**
  * Home hero — centered display, prose-first. No eyebrow chip, no
  * receipt pill: the metric sits inside body prose so numbers read as
- * evidence rather than as a "technical" costume. `<HeroReveal>` staggers
- * `data-hero-line` children; `<SplitHeroMetric>` char-splits the metric.
+ * evidence rather than as a "technical" costume. `<ScrollReveal trigger="mount">`
+ * staggers `data-hero-line` children; `<SplitHeroMetric>` char-splits the metric.
  */
 export async function Hero() {
   const t = await getTranslations("home.hero2");
@@ -29,7 +29,13 @@ export async function Hero() {
         }}
       />
 
-      <HeroReveal className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center text-center">
+      <ScrollReveal
+        trigger="mount"
+        selector="[data-hero-line]"
+        y={42}
+        stagger={0.12}
+        className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center text-center"
+      >
         {/* Title — carries its own weight, no eyebrow. */}
         <h1
           id="hero-title"
@@ -102,7 +108,7 @@ export async function Hero() {
           </span>
           {t("availability")}
         </p>
-      </HeroReveal>
+      </ScrollReveal>
 
       {/* Trust strip — anchors the bottom of the fold */}
       <div className="relative z-10 mx-auto mt-16 w-full max-w-6xl">

@@ -1,1 +1,0 @@
-{"nodes": [{"id": "llms_txt_route", "label": "llms.txt Route GET", "file_type": "code", "source_file": "src/app/llms.txt/route.ts", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}
