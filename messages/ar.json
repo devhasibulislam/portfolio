@@ -87,7 +87,7 @@
       "secondaryCta": "احجز مكالمة",
       "marqueeLabel": "أماكن عملت فيها.",
       "marqueeAriaLabel": "شركات عملت معها",
-      "slideTooltip": "اسحب أو انقر للحجز"
+      "slideTooltip": "اسحب للحجز"
     },
     "receipts": {
       "eyebrow": "إثباتات مميزة",

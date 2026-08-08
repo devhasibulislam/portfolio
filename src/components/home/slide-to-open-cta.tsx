@@ -115,7 +115,7 @@ export function SlideToOpenCta({
 
   return (
     <TooltipProvider delayDuration={120}>
-      <Tooltip>
+      <Tooltip open>
         <TooltipTrigger asChild>
           <div
             ref={trackRef}

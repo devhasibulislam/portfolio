@@ -87,7 +87,7 @@
       "secondaryCta": "Book a call",
       "marqueeLabel": "Where I've shipped.",
       "marqueeAriaLabel": "Companies I've worked with",
-      "slideTooltip": "Slide or click to book"
+      "slideTooltip": "Slide to book"
     },
     "receipts": {
       "eyebrow": "Signature receipts",
