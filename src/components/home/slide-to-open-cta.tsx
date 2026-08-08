@@ -102,14 +102,6 @@ export function SlideToOpenCta({
     }
   };
 
-  const onTrackClick = (e: React.MouseEvent<HTMLElement>) => {
-    if (progressRef.current > 0.02) {
-      e.preventDefault();
-      return;
-    }
-    openLink();
-  };
-
   const translate = `translate3d(${progress * travel * dir}px, 0, 0)`;
 
   return (
@@ -118,10 +110,9 @@ export function SlideToOpenCta({
         <TooltipTrigger asChild>
           <div
             ref={trackRef}
-            role="link"
+            role="button"
             tabIndex={0}
             aria-label={tooltip}
-            onClick={onTrackClick}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
