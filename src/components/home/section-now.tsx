@@ -1,12 +1,26 @@
+import { cacheTag } from "next/cache";
 import { getTranslations } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { CtaButton } from "@/components/cta-button";
+import { CompanyChip } from "@/components/company-chip";
+import { tag } from "@/lib/cache-tags";
+import { listLatestExperience } from "@/lib/db/queries/experience";
 import { ScrollReveal } from "./scroll-reveal";
 import { Spotlight } from "./spotlight";
 import { bezelInner, bezelOuter } from "./_shared";
 
+async function loadCurrentRole() {
+  "use cache";
+  cacheTag(tag.experiences());
+  const rows = await listLatestExperience(1);
+  return rows[0] ?? null;
+}
+
 export async function SectionNow() {
-  const t = await getTranslations("home.now");
+  const [t, role] = await Promise.all([
+    getTranslations("home.now"),
+    loadCurrentRole(),
+  ]);
 
   return (
     <section
@@ -40,6 +54,16 @@ export async function SectionNow() {
               >
                 {t("title")}
               </h2>
+
+              {role ? (
+                <div data-reveal className="mt-5">
+                  <CompanyChip
+                    name={role.company}
+                    logoPublicId={role.logoPublicId}
+                    size="md"
+                  />
+                </div>
+              ) : null}
 
               <p
                 data-reveal

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import { formatMonthYear } from "@/lib/dates";
 import { listLatestExperience } from "@/lib/db/queries/experience";
+import { CompanyChip } from "@/components/company-chip";
 import { ScrollReveal } from "./scroll-reveal";
 import { ArrowPill, BezelLink, SectionHeader, SeeAllLink } from "./_shared";
 
@@ -54,9 +55,7 @@ export async function SectionSelectedExperience() {
               innerClassName="p-7 flex-1"
             >
               <div className="flex items-center justify-between gap-3">
-                <p className="text-sm font-medium text-[var(--color-accent)]">
-                  {r.company}
-                </p>
+                <CompanyChip name={r.company} logoPublicId={r.logoPublicId} />
                 {r.workType ? (
                   <span className="rounded-full border border-[var(--color-border)] px-3 py-0.5 text-xs text-[var(--color-fg)]/70">
                     {tWork(r.workType)}
