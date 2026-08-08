@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { SkillPill, type SkillPillLabels } from "@/components/skill-pill";
 import {
   Carousel,
@@ -37,11 +37,18 @@ export function SkillsCarousel({
   labels: SkillPillLabels;
 }) {
   const tCommon = useTranslations("common");
+  const locale = useLocale();
+  const isRtl = locale === "ar" || locale === "he" || locale === "ur";
   const prev = tCommon("prev");
   const next = tCommon("next");
   return (
     <Carousel
-      opts={{ align: "start", dragFree: true, containScroll: "trimSnaps" }}
+      opts={{
+        align: "start",
+        dragFree: true,
+        containScroll: "trimSnaps",
+        direction: isRtl ? "rtl" : "ltr",
+      }}
       className="mt-4"
     >
       <CarouselContent className="-ms-2">
