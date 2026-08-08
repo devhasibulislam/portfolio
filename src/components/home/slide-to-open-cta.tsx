@@ -27,6 +27,7 @@ export function SlideToOpenCta({
   const [dragging, setDragging] = useState(false);
   const [dir, setDir] = useState<1 | -1>(1);
   const [travel, setTravel] = useState(0);
+  const [tooltipOpen, setTooltipOpen] = useState(true);
   const draggingRef = useRef(false);
   const dirRef = useRef<1 | -1>(1);
   const travelRef = useRef(0);
@@ -81,6 +82,7 @@ export function SlideToOpenCta({
     startProgressRef.current = progressRef.current;
     draggingRef.current = true;
     setDragging(true);
+    setTooltipOpen(false);
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -115,7 +117,7 @@ export function SlideToOpenCta({
 
   return (
     <TooltipProvider delayDuration={120}>
-      <Tooltip open>
+      <Tooltip open={tooltipOpen} onOpenChange={setTooltipOpen}>
         <TooltipTrigger asChild>
           <div
             ref={trackRef}
