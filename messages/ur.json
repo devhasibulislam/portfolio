@@ -328,9 +328,9 @@
       "uploadFailed": "اپ لوڈ ناکام"
     },
     "receipts": {
-      "added": "Receipt added",
-      "updated": "Receipt updated",
-      "deleted": "Deleted \"{title}\""
+      "added": "رسید شامل کر دی گئی",
+      "updated": "رسید اپڈیٹ ہو گئی",
+      "deleted": "\"{title}\" حذف کر دی گئی"
     }
   },
   "brand": {
@@ -364,7 +364,7 @@
         "categories": "زمرے",
         "tags": "ٹیگز",
         "media": "میڈیا",
-        "receipts": "Receipts"
+        "receipts": "رسیدیں"
       },
       "descriptions": {
         "posts": "بلاگ پوسٹس لکھیں اور شائع کریں۔",
@@ -375,7 +375,7 @@
         "categories": "ہر پوسٹ کے لیے ایک زمرہ۔",
         "tags": "پوسٹس کو موضوع کے حساب سے گروپ کریں (فی پوسٹ زیادہ سے زیادہ 8)۔",
         "media": "پوسٹس میں دوبارہ استعمال ہونے والی Cloudinary اپ لوڈز۔",
-        "receipts": "Signature cards on the home page. Max 3 active."
+        "receipts": "ہوم پیج پر سگنیچر کارڈز۔ زیادہ سے زیادہ 3 فعال۔"
       }
     },
     "neonRefreshed": "Neon تجزیات ریفریش ہو گئے",
@@ -450,21 +450,21 @@
         "inUseBadge": "استعمال میں"
       },
       "receipts": {
-        "title": "Receipts",
-        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show. Order controls left-to-right.",
-        "newButton": "New receipt",
-        "empty": "No receipts yet. Click {newButton} to add.",
-        "newTitle": "New receipt",
-        "editTitle": "Edit receipt",
-        "dialogDescription": "Kicker + title + body render on the card. CTA opens in a new tab.",
-        "deleteTitle": "Delete receipt?",
-        "deleteConfirm": "Deletes \"{title}\" permanently. This can't be undone.",
-        "actions": "Actions",
-        "cancel": "Cancel",
-        "save": "Save",
-        "saving": "Saving…",
-        "editAria": "Edit {title}",
-        "deleteAria": "Delete {title}"
+        "title": "رسیدیں",
+        "description": "ہوم پیج پر سگنیچر کارڈز۔ {active, plural, =0 {ابھی کوئی فعال کارڈ نہیں۔} one {# فعال کارڈ۔} other {# فعال کارڈز۔}} صرف پہلے 3 فعال دکھائے جاتے ہیں۔ ترتیب بائیں سے دائیں کنٹرول کرتی ہے۔",
+        "newButton": "نئی رسید",
+        "empty": "ابھی کوئی رسید نہیں۔ شامل کرنے کے لیے {newButton} پر کلک کریں۔",
+        "newTitle": "نئی رسید",
+        "editTitle": "رسید میں ترمیم",
+        "dialogDescription": "کِکر، عنوان اور متن کارڈ پر رینڈر ہوتے ہیں۔ CTA نئے ٹیب میں کھلتا ہے۔",
+        "deleteTitle": "رسید حذف کریں؟",
+        "deleteConfirm": "\"{title}\" مستقل طور پر حذف ہو جائے گی۔ اس کو واپس نہیں لایا جا سکتا۔",
+        "actions": "اعمال",
+        "cancel": "منسوخ",
+        "save": "محفوظ کریں",
+        "saving": "محفوظ ہو رہا ہے…",
+        "editAria": "{title} میں ترمیم",
+        "deleteAria": "{title} حذف کریں"
       }
     },
     "forms": {
@@ -645,17 +645,17 @@
         "createButton": "پروجیکٹ بنائیں"
       },
       "receipts": {
-        "kicker": "Kicker",
-        "kickerHint": "The orange top line: a metric, count, or short claim.",
-        "title": "Title",
-        "body": "Body",
-        "ctaLabel": "CTA label",
-        "ctaHref": "CTA link",
-        "displayOrder": "Order",
-        "status": "Status",
+        "kicker": "کِکر",
+        "kickerHint": "اوپر والی نارنجی لائن: میٹرک، تعداد، یا مختصر دعویٰ۔",
+        "title": "عنوان",
+        "body": "متن",
+        "ctaLabel": "CTA لیبل",
+        "ctaHref": "CTA لنک",
+        "displayOrder": "ترتیب",
+        "status": "حالت",
         "statusLabels": {
-          "active": "Active",
-          "archived": "Archived"
+          "active": "فعال",
+          "archived": "آرکائیوڈ"
         }
       }
     },

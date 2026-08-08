@@ -328,9 +328,9 @@
       "uploadFailed": "فشل الرفع"
     },
     "receipts": {
-      "added": "Receipt added",
-      "updated": "Receipt updated",
-      "deleted": "Deleted \"{title}\""
+      "added": "تمت إضافة الإيصال",
+      "updated": "تم تحديث الإيصال",
+      "deleted": "تم حذف \"{title}\""
     }
   },
   "brand": {
@@ -364,7 +364,7 @@
         "categories": "التصنيفات",
         "tags": "الوسوم",
         "media": "الوسائط",
-        "receipts": "Receipts"
+        "receipts": "الإيصالات"
       },
       "descriptions": {
         "posts": "اكتب المنشورات وانشرها.",
@@ -375,7 +375,7 @@
         "categories": "تصنيف واحد لكل منشور.",
         "tags": "جمّع المنشورات حسب الموضوع (الحد الأقصى 8 لكل منشور).",
         "media": "رفعات Cloudinary مُعاد استخدامها بين المنشورات.",
-        "receipts": "Signature cards on the home page. Max 3 active."
+        "receipts": "بطاقات مميزة في الصفحة الرئيسية. حد أقصى 3 نشطة."
       }
     },
     "neonRefreshed": "تم تحديث تحليلات Neon",
@@ -450,21 +450,21 @@
         "inUseBadge": "مستخدم"
       },
       "receipts": {
-        "title": "Receipts",
-        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show. Order controls left-to-right.",
-        "newButton": "New receipt",
-        "empty": "No receipts yet. Click {newButton} to add.",
-        "newTitle": "New receipt",
-        "editTitle": "Edit receipt",
-        "dialogDescription": "Kicker + title + body render on the card. CTA opens in a new tab.",
-        "deleteTitle": "Delete receipt?",
-        "deleteConfirm": "Deletes \"{title}\" permanently. This can't be undone.",
-        "actions": "Actions",
-        "cancel": "Cancel",
-        "save": "Save",
-        "saving": "Saving…",
-        "editAria": "Edit {title}",
-        "deleteAria": "Delete {title}"
+        "title": "الإيصالات",
+        "description": "بطاقات مميزة في الصفحة الرئيسية. {active, plural, =0 {لا توجد بطاقات نشطة بعد.} other {# بطاقات نشطة.}} تظهر أول 3 بطاقات نشطة فقط. الترتيب يتحكم من اليسار إلى اليمين.",
+        "newButton": "إيصال جديد",
+        "empty": "لا توجد إيصالات بعد. اضغط {newButton} لإضافة واحد.",
+        "newTitle": "إيصال جديد",
+        "editTitle": "تعديل الإيصال",
+        "dialogDescription": "يظهر العنوان التمهيدي والعنوان والمحتوى في البطاقة. يفتح رابط الإجراء في تبويب جديد.",
+        "deleteTitle": "حذف الإيصال؟",
+        "deleteConfirm": "سيتم حذف \"{title}\" بشكل دائم. لا يمكن التراجع عن هذا الإجراء.",
+        "actions": "إجراءات",
+        "cancel": "إلغاء",
+        "save": "حفظ",
+        "saving": "جارٍ الحفظ…",
+        "editAria": "تعديل {title}",
+        "deleteAria": "حذف {title}"
       }
     },
     "forms": {
@@ -645,17 +645,17 @@
         "createButton": "إنشاء مشروع"
       },
       "receipts": {
-        "kicker": "Kicker",
-        "kickerHint": "The orange top line: a metric, count, or short claim.",
-        "title": "Title",
-        "body": "Body",
-        "ctaLabel": "CTA label",
-        "ctaHref": "CTA link",
-        "displayOrder": "Order",
-        "status": "Status",
+        "kicker": "العنوان التمهيدي",
+        "kickerHint": "السطر البرتقالي في الأعلى: مقياس، عدد، أو ادعاء قصير.",
+        "title": "العنوان",
+        "body": "المحتوى",
+        "ctaLabel": "نص الإجراء",
+        "ctaHref": "رابط الإجراء",
+        "displayOrder": "الترتيب",
+        "status": "الحالة",
         "statusLabels": {
-          "active": "Active",
-          "archived": "Archived"
+          "active": "نشط",
+          "archived": "مؤرشف"
         }
       }
     },

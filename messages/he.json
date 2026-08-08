@@ -328,9 +328,9 @@
       "uploadFailed": "ההעלאה נכשלה"
     },
     "receipts": {
-      "added": "Receipt added",
-      "updated": "Receipt updated",
-      "deleted": "Deleted \"{title}\""
+      "added": "קבלה נוספה",
+      "updated": "הקבלה עודכנה",
+      "deleted": "\"{title}\" נמחקה"
     }
   },
   "brand": {
@@ -364,7 +364,7 @@
         "categories": "קטגוריות",
         "tags": "תגיות",
         "media": "מדיה",
-        "receipts": "Receipts"
+        "receipts": "קבלות"
       },
       "descriptions": {
         "posts": "כתוב ופרסם פוסטים בבלוג.",
@@ -375,7 +375,7 @@
         "categories": "קטגוריה אחת לכל פוסט.",
         "tags": "קבץ פוסטים לפי נושא (עד 8 לפוסט).",
         "media": "העלאות Cloudinary לשימוש חוזר בפוסטים.",
-        "receipts": "Signature cards on the home page. Max 3 active."
+        "receipts": "כרטיסי חתימה בעמוד הבית. עד 3 פעילים."
       }
     },
     "neonRefreshed": "אנליטיקת Neon רועננה",
@@ -450,21 +450,21 @@
         "inUseBadge": "בשימוש"
       },
       "receipts": {
-        "title": "Receipts",
-        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show. Order controls left-to-right.",
-        "newButton": "New receipt",
-        "empty": "No receipts yet. Click {newButton} to add.",
-        "newTitle": "New receipt",
-        "editTitle": "Edit receipt",
-        "dialogDescription": "Kicker + title + body render on the card. CTA opens in a new tab.",
-        "deleteTitle": "Delete receipt?",
-        "deleteConfirm": "Deletes \"{title}\" permanently. This can't be undone.",
-        "actions": "Actions",
-        "cancel": "Cancel",
-        "save": "Save",
-        "saving": "Saving…",
-        "editAria": "Edit {title}",
-        "deleteAria": "Delete {title}"
+        "title": "קבלות",
+        "description": "כרטיסי חתימה בעמוד הבית. {active, plural, =0 {אין כרטיסים פעילים עדיין.} one {# כרטיס פעיל.} other {# כרטיסים פעילים.}} רק שלושת הראשונים הפעילים מוצגים. הסדר קובע משמאל לימין.",
+        "newButton": "קבלה חדשה",
+        "empty": "אין קבלות עדיין. לחץ {newButton} כדי להוסיף.",
+        "newTitle": "קבלה חדשה",
+        "editTitle": "עריכת קבלה",
+        "dialogDescription": "הכותרת הפותחת, הכותרת והתוכן מוצגים בכרטיס. קישור הפעולה נפתח בלשונית חדשה.",
+        "deleteTitle": "למחוק את הקבלה?",
+        "deleteConfirm": "\"{title}\" תימחק לצמיתות. לא ניתן לבטל.",
+        "actions": "פעולות",
+        "cancel": "ביטול",
+        "save": "שמור",
+        "saving": "שומר…",
+        "editAria": "ערוך את {title}",
+        "deleteAria": "מחק את {title}"
       }
     },
     "forms": {
@@ -645,17 +645,17 @@
         "createButton": "צור פרויקט"
       },
       "receipts": {
-        "kicker": "Kicker",
-        "kickerHint": "The orange top line: a metric, count, or short claim.",
-        "title": "Title",
-        "body": "Body",
-        "ctaLabel": "CTA label",
-        "ctaHref": "CTA link",
-        "displayOrder": "Order",
-        "status": "Status",
+        "kicker": "כותרת פותחת",
+        "kickerHint": "השורה הכתומה למעלה: מדד, מספר, או טענה קצרה.",
+        "title": "כותרת",
+        "body": "תוכן",
+        "ctaLabel": "טקסט הפעולה",
+        "ctaHref": "קישור הפעולה",
+        "displayOrder": "סדר",
+        "status": "סטטוס",
         "statusLabels": {
-          "active": "Active",
-          "archived": "Archived"
+          "active": "פעיל",
+          "archived": "בארכיון"
         }
       }
     },
