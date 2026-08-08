@@ -22,6 +22,7 @@ export function SlideToOpenCta({
   children: React.ReactNode;
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
+  const thumbRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [dir, setDir] = useState<1 | -1>(1);
@@ -34,16 +35,21 @@ export function SlideToOpenCta({
   const progressRef = useRef(0);
 
   useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
+    const track = trackRef.current;
+    const thumb = thumbRef.current;
+    if (!track || !thumb) return;
     const measure = () => {
-      const t = Math.max(0, el.clientWidth - 48 - 12);
+      const cs = window.getComputedStyle(track);
+      const padL = parseFloat(cs.paddingLeft) || 0;
+      const padR = parseFloat(cs.paddingRight) || 0;
+      const t = Math.max(0, track.clientWidth - thumb.offsetWidth - padL - padR);
       travelRef.current = t;
       setTravel(t);
     };
     measure();
     const ro = new ResizeObserver(measure);
-    ro.observe(el);
+    ro.observe(track);
+    ro.observe(thumb);
     return () => ro.disconnect();
   }, []);
 
@@ -58,7 +64,7 @@ export function SlideToOpenCta({
     setProgress(p);
   };
 
-  const onPointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType === "mouse" && e.button !== 0) return;
     try {
       e.currentTarget.setPointerCapture(e.pointerId);
@@ -74,7 +80,7 @@ export function SlideToOpenCta({
     setDragging(true);
   };
 
-  const onPointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!draggingRef.current) return;
     const dx = (e.clientX - startXRef.current) * dirRef.current;
     const max = travelPx();
@@ -83,7 +89,7 @@ export function SlideToOpenCta({
     updateProgress(next);
   };
 
-  const onPointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!draggingRef.current) return;
     try {
       if (e.currentTarget.hasPointerCapture(e.pointerId))
@@ -113,38 +119,36 @@ export function SlideToOpenCta({
             role="button"
             tabIndex={0}
             aria-label={tooltip}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={onPointerUp}
             onKeyDown={(e) => {
               if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 openLink();
               }
             }}
-            className="group relative isolate inline-flex h-12 cursor-pointer items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 ps-1.5 pe-6 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)]"
+            className="group relative isolate inline-flex h-12 cursor-grab touch-none items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 ps-1.5 pe-1.5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] active:cursor-grabbing"
           >
             <span
               aria-hidden
               className="pointer-events-none absolute inset-y-0 start-0 rounded-full bg-[var(--color-accent)]/10 transition-[width] duration-100"
               style={{ width: `calc(48px + ${progress * 100}%)` }}
             />
-            <button
-              type="button"
+            <div
+              ref={thumbRef}
               aria-hidden
-              tabIndex={-1}
-              onPointerDown={onPointerDown}
-              onPointerMove={onPointerMove}
-              onPointerUp={onPointerUp}
-              onPointerCancel={onPointerUp}
-              onClick={(e) => e.stopPropagation()}
               className={cn(
-                "relative z-10 inline-flex size-9 shrink-0 cursor-grab items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/90 text-[var(--color-fg)] shadow-sm touch-none group-hover:border-[var(--color-accent)]/40 group-hover:text-[var(--color-accent)] active:cursor-grabbing",
+                "relative z-10 inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/90 text-[var(--color-fg)] shadow-sm group-hover:border-[var(--color-accent)]/40 group-hover:text-[var(--color-accent)]",
                 dragging ? "" : "transition-transform duration-200 ease-out",
               )}
               style={{ transform: translate }}
             >
               {leadIcon}
-            </button>
+            </div>
             <span
-              className="relative z-0 flex-1 whitespace-nowrap transition-opacity"
+              className="relative z-0 flex-1 whitespace-nowrap pe-4 transition-opacity"
               style={{ opacity: 1 - progress * 0.6 }}
             >
               {children}
