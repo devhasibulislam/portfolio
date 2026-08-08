@@ -129,7 +129,7 @@ export function SlideToOpenCta({
                 openLink();
               }
             }}
-            className="group relative isolate inline-flex h-12 cursor-grab touch-none items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 ps-1.5 pe-1.5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] active:cursor-grabbing"
+            className="group relative isolate inline-flex h-12 cursor-grab touch-none items-center gap-3 overflow-hidden rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 p-1 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors select-none hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 focus-visible:outline-2 focus-visible:outline-[var(--color-accent)] active:cursor-grabbing"
           >
             <span
               aria-hidden
@@ -140,7 +140,7 @@ export function SlideToOpenCta({
               ref={thumbRef}
               aria-hidden
               className={cn(
-                "relative z-10 inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/90 text-[var(--color-fg)] shadow-sm group-hover:border-[var(--color-accent)]/40 group-hover:text-[var(--color-accent)]",
+                "relative z-10 inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/90 text-[var(--color-fg)] shadow-sm group-hover:border-[var(--color-accent)]/40 group-hover:text-[var(--color-accent)]",
                 dragging ? "" : "transition-transform duration-200 ease-out",
               )}
               style={{ transform: translate }}
@@ -148,7 +148,7 @@ export function SlideToOpenCta({
               {leadIcon}
             </div>
             <span
-              className="relative z-0 flex-1 whitespace-nowrap pe-4 transition-opacity"
+              className="relative z-0 flex-1 whitespace-nowrap pe-3 transition-opacity"
               style={{ opacity: 1 - progress * 0.6 }}
             >
               {children}
