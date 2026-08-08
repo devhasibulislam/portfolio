@@ -42,7 +42,10 @@ export function SlideToOpenCta({
       const cs = window.getComputedStyle(track);
       const padL = parseFloat(cs.paddingLeft) || 0;
       const padR = parseFloat(cs.paddingRight) || 0;
-      const t = Math.max(0, track.clientWidth - thumb.offsetWidth - padL - padR);
+      const t = Math.max(
+        0,
+        track.clientWidth - thumb.offsetWidth - padL - padR,
+      );
       travelRef.current = t;
       setTravel(t);
     };
@@ -140,7 +143,7 @@ export function SlideToOpenCta({
               ref={thumbRef}
               aria-hidden
               className={cn(
-                "relative z-10 inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/90 text-[var(--color-fg)] shadow-sm group-hover:border-[var(--color-accent)]/40 group-hover:text-[var(--color-accent)]",
+                "relative z-10 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-[var(--color-surface)] text-[var(--color-fg)] shadow-sm ring-1 ring-inset ring-[var(--color-border)] group-hover:ring-[var(--color-accent)]/40",
                 dragging ? "" : "transition-transform duration-200 ease-out",
               )}
               style={{ transform: translate }}
