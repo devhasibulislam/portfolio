@@ -75,58 +75,58 @@
     "heading": "حسیب الاسلام",
     "hero": "سینئر فل-اسٹیک انجینئر۔ بیک اینڈ آرکیٹیکچر، LLM/RAG سسٹمز اور پروڈکشن Node.js۔",
     "hero2": {
-      "eyebrow": "The receipts",
+      "eyebrow": "ثبوت",
       "metricFrom": "200 ms",
       "metricTo": "20 ms",
-      "metricCaption": "hot-path list API rewrite. p95, prod.",
-      "title": "Backends that stay fast when the load doesn't.",
-      "role": "Sr. Backend Architect · Node.js · NestJS · PostgreSQL · LLM/RAG",
+      "metricCaption": "ہاٹ-پاتھ لسٹ API کی دوبارہ تحریر۔ p95، پروڈکشن۔",
+      "title": "بیک اینڈز جو رفتار برقرار رکھتے ہیں جب لوڈ نہیں رکھتا۔",
+      "role": "سینئر بیک اینڈ آرکیٹیکٹ · Node.js · NestJS · PostgreSQL · LLM/RAG",
       "location": "ڈھاکہ · GMT+6",
-      "availability": "Available for remote, on-site and contract engagements",
-      "primaryCta": "See the work",
+      "availability": "ریموٹ، آن سائٹ اور کنٹریکٹ کاموں کے لیے دستیاب",
+      "primaryCta": "کام دیکھیں",
       "secondaryCta": "کال بک کریں",
       "marqueeLabel": "جہاں میں نے کام کیا۔",
       "marqueeAriaLabel": "کمپنیاں جن کے ساتھ کام کیا"
     },
     "receipts": {
-      "eyebrow": "Signature receipts",
-      "title": "Three shipped things you can inspect right now.",
+      "eyebrow": "دستخطی ثبوت",
+      "title": "تین چیزیں جو شپ ہو چکی ہیں اور آپ ابھی جانچ سکتے ہیں۔",
       "latency": {
         "metric": "~200 ms → ~20 ms",
-        "title": "Hot-path list API rewrite",
+        "title": "ہاٹ-پاتھ لسٹ API کی دوبارہ تحریر",
         "body": "Compound indexing, single-join rewrites, cache-aside, DTO projection. Autocannon benchmarks and green CI on GitHub.",
-        "cta": "Read the case study"
+        "cta": "کیس اسٹڈی پڑھیں"
       },
       "rls": {
-        "metric": "Zero cross-tenant leaks",
-        "title": "Multi-tenant Row-Level Security starter",
+        "metric": "کراس ٹیننٹ لیکس صفر",
+        "title": "ملٹی ٹیننٹ Row-Level Security اسٹارٹر",
         "body": "Postgres RLS with 8 integration tests that actively try to leak data across tenants.",
-        "cta": "View on GitHub"
+        "cta": "GitHub پر دیکھیں"
       },
       "pipeline": {
-        "metric": "5,000+ companies served",
-        "title": "Message pipeline at MessageMind",
+        "metric": "5,000+ کمپنیوں نے خدمات لیں",
+        "title": "MessageMind میں میسج پائپ لائن",
         "body": "WhatsApp, Messenger, Instagram and web-chat over NestJS microservices with Kafka and BullMQ. GDPR-hosted in Frankfurt.",
-        "cta": "See the product"
+        "cta": "پروڈکٹ دیکھیں"
       }
     },
     "now": {
-      "eyebrow": "Now",
-      "title": "Sr. Backend Architect at ZMC Technologies.",
+      "eyebrow": "اب",
+      "title": "ZMC Technologies میں سینئر بیک اینڈ آرکیٹیکٹ۔",
       "body": "Owning backend architecture across a three-product PropTech roadmap: ERP, CRM, and a trading platform.",
-      "cta": "See the role"
+      "cta": "کردار دیکھیں"
     },
     "featuredProjects": {
-      "eyebrow": "Recent work",
-      "title": "Latest projects.",
-      "seeAll": "See all projects"
+      "eyebrow": "حالیہ کام",
+      "title": "تازہ ترین پراجیکٹس۔",
+      "seeAll": "تمام پراجیکٹس دیکھیں"
     },
     "trackRecord": {
-      "eyebrow": "Track record",
-      "title": "Seven years, six countries, two exits.",
+      "eyebrow": "کارکردگی",
+      "title": "سات سال، چھ ممالک، دو ایگزٹس۔",
       "years": {
         "value": "7+",
-        "label": "years shipping production Node"
+        "label": "پروڈکشن Node شپ کرنے کے سال"
       },
       "countries": {
         "value": "6",
@@ -134,38 +134,38 @@
       },
       "exits": {
         "value": "2",
-        "label": "SaaS products acquired. NDA. Contract on request."
+        "label": "SaaS پروڈکٹس حاصل کیے گئے۔ NDA۔ درخواست پر معاہدہ۔"
       },
       "remote": {
         "value": "100%",
-        "label": "remote-contract, international teams"
+        "label": "ریموٹ کنٹریکٹ، بین الاقوامی ٹیمیں"
       }
     },
     "featuredWriting": {
-      "eyebrow": "Recent writing",
-      "title": "Latest posts.",
-      "seeAll": "See all posts",
+      "eyebrow": "حالیہ تحریر",
+      "title": "تازہ ترین پوسٹس۔",
+      "seeAll": "تمام پوسٹس دیکھیں",
       "fallbackCategory": "نوٹ"
     },
     "contact": {
-      "eyebrow": "Let's build",
-      "title": "Building something that needs a backend that scales?",
+      "eyebrow": "آئیں بنائیں",
+      "title": "کچھ ایسا بنا رہے ہیں جسے اسکیل ہونے والے بیک اینڈ کی ضرورت ہے؟",
       "body": "I take a small number of contract engagements each year. Let's talk.",
       "whatsapp": "WhatsApp",
       "telegram": "Telegram",
       "email": "Email",
-      "response": "Usually replies within 24h · GMT+6"
+      "response": "عام طور پر 24 گھنٹوں میں جواب · GMT+6"
     },
     "selectedExperience": {
-      "eyebrow": "Career",
-      "title": "Recent roles.",
-      "seeAll": "See full career",
-      "cta": "Read role"
+      "eyebrow": "کیریئر",
+      "title": "حالیہ کردار۔",
+      "seeAll": "مکمل کیریئر دیکھیں",
+      "cta": "کردار پڑھیں"
     },
     "coreSkills": {
-      "eyebrow": "Stack",
-      "title": "The stack I ship with.",
-      "seeAll": "See full stack"
+      "eyebrow": "اسٹیک",
+      "title": "وہ اسٹیک جس سے میں شپ کرتا ہوں۔",
+      "seeAll": "مکمل اسٹیک دیکھیں"
     },
     "languages": {
       "eyebrow": "زبانیں",
@@ -799,26 +799,26 @@
     "requiredMark": "درکار",
     "vercel": {
       "title": "Vercel analytics",
-      "refresh": "Refresh",
-      "refreshing": "Refreshing…",
-      "retry": "Retry",
-      "refreshAria": "Refresh Vercel analytics",
-      "notConfigured": "Set <code>VERCEL_TOKEN</code>, <code>VERCEL_TEAM_ID</code>, and <code>VERCEL_PROJECT_ID</code> in <code>.env.local</code> to enable the live deployment stats widget.",
-      "deploysReady": "Ready",
-      "deploysError": "Failed",
-      "nBuilding": "{n} building",
-      "last10": "of last 10",
+      "refresh": "ریفریش",
+      "refreshing": "ریفریش ہو رہا…",
+      "retry": "دوبارہ کوشش",
+      "refreshAria": "Vercel analytics ریفریش کریں",
+      "notConfigured": "یہ ویجٹ دکھانے کے لیے <code>.env.local</code> میں <code>VERCEL_TOKEN</code>، <code>VERCEL_TEAM_ID</code> اور <code>VERCEL_PROJECT_ID</code> سیٹ کریں۔",
+      "deploysReady": "تیار",
+      "deploysError": "ناکام",
+      "nBuilding": "{n} تعمیر جاری",
+      "last10": "پچھلے 10 میں سے",
       "speedInsights": "Speed Insights",
       "webAnalytics": "Web Analytics",
-      "enabled": "Enabled",
-      "off": "Off",
-      "collecting": "Live",
+      "enabled": "فعال",
+      "off": "بند",
+      "collecting": "لائیو",
       "coreWebVitals": "LCP · INP · CLS",
-      "visitorsPageviews": "visitors · pageviews",
-      "latestDeployment": "Latest deployment",
-      "recentDeployments": "{n} more recent deployments",
-      "cachedUpdated": "Cached · updated {when}",
-      "nDomains": "{n} domain(s)"
+      "visitorsPageviews": "وزیٹرز · پیج ویوز",
+      "latestDeployment": "تازہ ترین ڈپلائے",
+      "recentDeployments": "{n} مزید حالیہ ڈپلائیز",
+      "cachedUpdated": "کیشڈ · اپڈیٹ {when}",
+      "nDomains": "{n} ڈومین"
     },
     "vercelRefreshed": "Neon تجزیات ریفریش ہو گئے",
     "relativeTime": {

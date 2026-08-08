@@ -75,58 +75,58 @@
     "heading": "হাসিবুল ইসলাম",
     "hero": "সিনিয়র ফুল-স্ট্যাক ইঞ্জিনিয়ার। ব্যাকএন্ড আর্কিটেকচার, LLM/RAG সিস্টেম এবং প্রোডাকশন Node.js।",
     "hero2": {
-      "eyebrow": "রিসিপ্ট",
+      "eyebrow": "প্রমাণ",
       "metricFrom": "২০০ ms",
       "metricTo": "২০ ms",
-      "metricCaption": "hot-path list API rewrite। p95, প্রোডাকশন।",
+      "metricCaption": "হট-পাথ লিস্ট API রি-রাইট। p95, প্রোডাকশন।",
       "title": "লোড বাড়লেও যেসব ব্যাকএন্ড ধীর হয় না।",
-      "role": "Sr. Backend Architect · Node.js · NestJS · PostgreSQL · LLM/RAG",
+      "role": "সিনিয়র ব্যাকএন্ড আর্কিটেক্ট · Node.js · NestJS · PostgreSQL · LLM/RAG",
       "location": "ঢাকা, বাংলাদেশ · GMT+6",
-      "availability": "Remote, On-site এবং Contract — যেকোনো ধরনের কাজের জন্য উন্মুক্ত",
+      "availability": "রিমোট, অন-সাইট এবং কন্ট্রাক্ট কাজের জন্য প্রাপ্ত",
       "primaryCta": "কাজ দেখুন",
       "secondaryCta": "কল বুক করুন",
       "marqueeLabel": "যেখানে কাজ করেছি।",
       "marqueeAriaLabel": "যেসব কোম্পানির সাথে কাজ করেছি"
     },
     "receipts": {
-      "eyebrow": "সিগনেচার রিসিপ্ট",
-      "title": "যে তিনটি কাজ এখনই যাচাই করতে পারবেন।",
+      "eyebrow": "সিগনেচার প্রমাণ",
+      "title": "তিনটি শিপ করা কাজ যা এখনই যাচাই করতে পারেন।",
       "latency": {
         "metric": "~২০০ ms → ~২০ ms",
-        "title": "Hot-path list API rewrite",
+        "title": "হট-পাথ লিস্ট API রি-রাইট",
         "body": "(tenant_id, created_at)-এ কম্পাউন্ড ইনডেক্স, N+1 populate সরিয়ে single-join rewrite, hot pages-এ cache-aside, DTO projection। Autocannon বেঞ্চমার্ক এবং GitHub-এ green CI।",
         "cta": "কেস স্টাডি পড়ুন"
       },
       "rls": {
-        "metric": "কোনো cross-tenant leak নেই",
-        "title": "Multi-tenant Row-Level Security starter",
+        "metric": "কোন ক্রস-টেন্যান্ট লিক নেই",
+        "title": "মাল্টি-টেন্যান্ট Row-Level Security স্টার্টার",
         "body": "Postgres RLS-এর সাথে ৮টি integration test — যেগুলো সক্রিয়ভাবে tenant-এর মধ্যে data leak করার চেষ্টা করে। বাউন্ডারি অ্যাপ্লিকেশন কোড থেকে ডাটাবেসে সরানো হয়েছে।",
         "cta": "GitHub-এ দেখুন"
       },
       "pipeline": {
-        "metric": "৫,০০০+ কোম্পানির সেবা",
-        "title": "MessageMind-এর message pipeline",
+        "metric": "৫,০০০+ কোম্পানি সেবা নিয়েছে",
+        "title": "MessageMind-এ মেসেজ পাইপলাইন",
         "body": "WhatsApp, Messenger, Instagram এবং web-chat — NestJS microservices, Kafka এবং BullMQ দিয়ে। Meta Business Partner, GDPR-hosted (Frankfurt)।",
         "cta": "প্রোডাক্ট দেখুন"
       }
     },
     "now": {
       "eyebrow": "এখন",
-      "title": "ZMC Technologies-এ Sr. Backend Architect।",
+      "title": "ZMC Technologies-এ সিনিয়র ব্যাকএন্ড আর্কিটেক্ট।",
       "body": "তিনটি PropTech প্রোডাক্ট: ERP, CRM এবং trading platform — এগুলোর ব্যাকএন্ড আর্কিটেকচার আমার হাতে। প্যারালাল contract কোলাবোরেশনের জন্য উন্মুক্ত।",
-      "cta": "রোল দেখুন"
+      "cta": "ভূমিকা দেখুন"
     },
     "featuredProjects": {
       "eyebrow": "সাম্প্রতিক কাজ",
-      "title": "সর্বশেষ প্রজেক্ট।",
-      "seeAll": "সব প্রজেক্ট দেখুন"
+      "title": "সর্বশেষ প্রকল্প।",
+      "seeAll": "সব প্রকল্প দেখুন"
     },
     "trackRecord": {
       "eyebrow": "ট্র্যাক রেকর্ড",
-      "title": "সাত বছর, ছয়টি দেশ, দুটি exit।",
+      "title": "সাত বছর, ছয়টি দেশ, দুটি এক্সিট।",
       "years": {
         "value": "৭+",
-        "label": "বছর ধরে প্রোডাকশন Node শিপ করছি"
+        "label": "প্রোডাকশন Node শিপ করার বছর"
       },
       "countries": {
         "value": "৬",
@@ -134,11 +134,11 @@
       },
       "exits": {
         "value": "২",
-        "label": "SaaS প্রোডাক্ট acquire হয়েছে। NDA। Contract on request।"
+        "label": "SaaS পণ্য অধিগ্রহণ। NDA। অনুরোধে কন্ট্রাক্ট।"
       },
       "remote": {
         "value": "১০০%",
-        "label": "remote-contract, ইন্টারন্যাশনাল টিমের সাথে"
+        "label": "রিমোট কন্ট্রাক্ট, আন্তর্জাতিক দল"
       }
     },
     "featuredWriting": {
@@ -148,8 +148,8 @@
       "fallbackCategory": "নোট"
     },
     "contact": {
-      "eyebrow": "চলুন কাজ করি",
-      "title": "এমন কিছু বানাচ্ছেন যেটার ব্যাকএন্ড scale করতে হবে?",
+      "eyebrow": "চলুন বানাই",
+      "title": "এমন কিছু বানাচ্ছেন যার জন্য স্কেল করে এমন ব্যাকএন্ড দরকার?",
       "body": "প্রতি বছর অল্প কিছু contract engagement নিই। যদি আপনার ব্যাকএন্ড লোডে ভেঙে পড়ছে, বা নতুন কিছু scope করছেন যেটা v1-এই ঠিক হতে হবে — তাহলে কথা বলি।",
       "whatsapp": "WhatsApp",
       "telegram": "Telegram",
@@ -157,15 +157,15 @@
       "response": "সাধারণত ২৪ ঘণ্টার মধ্যে উত্তর দিই · GMT+6"
     },
     "selectedExperience": {
-      "eyebrow": "Career",
-      "title": "Recent roles.",
-      "seeAll": "See full career",
-      "cta": "Read role"
+      "eyebrow": "ক্যারিয়ার",
+      "title": "সাম্প্রতিক ভূমিকা।",
+      "seeAll": "পুরো ক্যারিয়ার দেখুন",
+      "cta": "ভূমিকা পড়ুন"
     },
     "coreSkills": {
-      "eyebrow": "Stack",
-      "title": "The stack I ship with.",
-      "seeAll": "See full stack"
+      "eyebrow": "স্ট্যাক",
+      "title": "যে স্ট্যাক দিয়ে আমি শিপ করি।",
+      "seeAll": "সম্পূর্ণ স্ট্যাক দেখুন"
     },
     "languages": {
       "eyebrow": "ভাষা",
@@ -799,26 +799,26 @@
     "requiredMark": "প্রয়োজন",
     "vercel": {
       "title": "Vercel analytics",
-      "refresh": "Refresh",
-      "refreshing": "Refreshing…",
-      "retry": "Retry",
-      "refreshAria": "Refresh Vercel analytics",
-      "notConfigured": "Set <code>VERCEL_TOKEN</code>, <code>VERCEL_TEAM_ID</code>, and <code>VERCEL_PROJECT_ID</code> in <code>.env.local</code> to enable the live deployment stats widget.",
-      "deploysReady": "Ready",
-      "deploysError": "Failed",
-      "nBuilding": "{n} building",
-      "last10": "of last 10",
+      "refresh": "রিফ্রেশ",
+      "refreshing": "রিফ্রেশ হচ্ছে…",
+      "retry": "আবার চেষ্টা",
+      "refreshAria": "Vercel analytics রিফ্রেশ করুন",
+      "notConfigured": "এই উইজেট দেখাতে <code>.env.local</code>-এ <code>VERCEL_TOKEN</code>, <code>VERCEL_TEAM_ID</code> এবং <code>VERCEL_PROJECT_ID</code> সেট করুন।",
+      "deploysReady": "প্রস্তুত",
+      "deploysError": "ব্যর্থ",
+      "nBuilding": "{n} বিল্ড হচ্ছে",
+      "last10": "সর্বশেষ ১০-এর মধ্যে",
       "speedInsights": "Speed Insights",
       "webAnalytics": "Web Analytics",
-      "enabled": "Enabled",
-      "off": "Off",
-      "collecting": "Live",
+      "enabled": "সক্রিয়",
+      "off": "বন্ধ",
+      "collecting": "লাইভ",
       "coreWebVitals": "LCP · INP · CLS",
-      "visitorsPageviews": "visitors · pageviews",
-      "latestDeployment": "Latest deployment",
-      "recentDeployments": "{n} more recent deployments",
-      "cachedUpdated": "Cached · updated {when}",
-      "nDomains": "{n} domain(s)"
+      "visitorsPageviews": "ভিজিটর · পেজভিউ",
+      "latestDeployment": "সর্বশেষ ডিপ্লয়",
+      "recentDeployments": "আরও {n}টি সাম্প্রতিক ডিপ্লয়",
+      "cachedUpdated": "ক্যাশড · আপডেট {when}",
+      "nDomains": "{n}টি ডোমেইন"
     },
     "vercelRefreshed": "Neon অ্যানালিটিক্স রিফ্রেশ হয়েছে",
     "relativeTime": {

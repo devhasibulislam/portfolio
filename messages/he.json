@@ -75,58 +75,58 @@
     "heading": "חסיבול איסלאם",
     "hero": "מהנדס פול-סטאק בכיר. ארכיטקטורת בקאנד, מערכות LLM/RAG ופרודקשן Node.js.",
     "hero2": {
-      "eyebrow": "The receipts",
+      "eyebrow": "ההוכחות",
       "metricFrom": "200 ms",
       "metricTo": "20 ms",
-      "metricCaption": "hot-path list API rewrite. p95, prod.",
-      "title": "Backends that stay fast when the load doesn't.",
-      "role": "Sr. Backend Architect · Node.js · NestJS · PostgreSQL · LLM/RAG",
+      "metricCaption": "כתיבה מחדש של API רשימה בנתיב חם. p95, פרוד.",
+      "title": "בקאנדים שנשארים מהירים כשהעומס לא נשאר.",
+      "role": "אדריכל בקאנד בכיר · Node.js · NestJS · PostgreSQL · LLM/RAG",
       "location": "דאקה · GMT+6",
-      "availability": "Available for remote, on-site and contract engagements",
-      "primaryCta": "See the work",
+      "availability": "זמין להעסקה מרחוק, במקום, וחוזים",
+      "primaryCta": "לצפייה בעבודות",
       "secondaryCta": "קבע שיחה",
       "marqueeLabel": "היכן שעבדתי.",
       "marqueeAriaLabel": "חברות שעבדתי איתן"
     },
     "receipts": {
-      "eyebrow": "Signature receipts",
-      "title": "Three shipped things you can inspect right now.",
+      "eyebrow": "הוכחות מרכזיות",
+      "title": "שלושה דברים שנשלחו ואפשר לבחון עכשיו.",
       "latency": {
         "metric": "~200 ms → ~20 ms",
-        "title": "Hot-path list API rewrite",
+        "title": "כתיבה מחדש של API רשימה בנתיב חם",
         "body": "Compound indexing, single-join rewrites, cache-aside, DTO projection. Autocannon benchmarks and green CI on GitHub.",
-        "cta": "Read the case study"
+        "cta": "לקריאת המקרה"
       },
       "rls": {
-        "metric": "Zero cross-tenant leaks",
-        "title": "Multi-tenant Row-Level Security starter",
+        "metric": "אפס דליפות בין דיירים",
+        "title": "מתנע Row-Level Security רב-דיירי",
         "body": "Postgres RLS with 8 integration tests that actively try to leak data across tenants.",
-        "cta": "View on GitHub"
+        "cta": "צפייה ב-GitHub"
       },
       "pipeline": {
-        "metric": "5,000+ companies served",
-        "title": "Message pipeline at MessageMind",
+        "metric": "+5,000 חברות שרתו",
+        "title": "צינור ההודעות ב-MessageMind",
         "body": "WhatsApp, Messenger, Instagram and web-chat over NestJS microservices with Kafka and BullMQ. GDPR-hosted in Frankfurt.",
-        "cta": "See the product"
+        "cta": "לצפייה במוצר"
       }
     },
     "now": {
-      "eyebrow": "Now",
-      "title": "Sr. Backend Architect at ZMC Technologies.",
+      "eyebrow": "עכשיו",
+      "title": "אדריכל בקאנד בכיר ב-ZMC Technologies.",
       "body": "Owning backend architecture across a three-product PropTech roadmap: ERP, CRM, and a trading platform.",
-      "cta": "See the role"
+      "cta": "לצפייה בתפקיד"
     },
     "featuredProjects": {
-      "eyebrow": "Recent work",
-      "title": "Latest projects.",
-      "seeAll": "See all projects"
+      "eyebrow": "עבודה אחרונה",
+      "title": "פרויקטים אחרונים.",
+      "seeAll": "כל הפרויקטים"
     },
     "trackRecord": {
-      "eyebrow": "Track record",
-      "title": "Seven years, six countries, two exits.",
+      "eyebrow": "רקורד",
+      "title": "שבע שנים, שש מדינות, שני exits.",
       "years": {
         "value": "7+",
-        "label": "years shipping production Node"
+        "label": "שנות שיפינג Node בפרודקשן"
       },
       "countries": {
         "value": "6",
@@ -134,38 +134,38 @@
       },
       "exits": {
         "value": "2",
-        "label": "SaaS products acquired. NDA. Contract on request."
+        "label": "מוצרי SaaS שנרכשו. NDA. חוזה לפי בקשה."
       },
       "remote": {
         "value": "100%",
-        "label": "remote-contract, international teams"
+        "label": "חוזי מרחוק, צוותים בינלאומיים"
       }
     },
     "featuredWriting": {
-      "eyebrow": "Recent writing",
-      "title": "Latest posts.",
-      "seeAll": "See all posts",
+      "eyebrow": "כתיבה אחרונה",
+      "title": "פוסטים אחרונים.",
+      "seeAll": "כל הפוסטים",
       "fallbackCategory": "הערה"
     },
     "contact": {
-      "eyebrow": "Let's build",
-      "title": "Building something that needs a backend that scales?",
+      "eyebrow": "בואו נבנה",
+      "title": "בונים משהו שצריך בקאנד שמסתדר עם קנה מידה?",
       "body": "I take a small number of contract engagements each year. Let's talk.",
       "whatsapp": "WhatsApp",
       "telegram": "Telegram",
       "email": "Email",
-      "response": "Usually replies within 24h · GMT+6"
+      "response": "בדרך כלל עונה תוך 24 שעות · GMT+6"
     },
     "selectedExperience": {
-      "eyebrow": "Career",
-      "title": "Recent roles.",
-      "seeAll": "See full career",
-      "cta": "Read role"
+      "eyebrow": "קריירה",
+      "title": "תפקידים אחרונים.",
+      "seeAll": "כל הקריירה",
+      "cta": "לקריאת התפקיד"
     },
     "coreSkills": {
-      "eyebrow": "Stack",
-      "title": "The stack I ship with.",
-      "seeAll": "See full stack"
+      "eyebrow": "סטאק",
+      "title": "הסטאק שאיתו אני משגר.",
+      "seeAll": "הסטאק המלא"
     },
     "languages": {
       "eyebrow": "שפות",
@@ -799,26 +799,26 @@
     "requiredMark": "חובה",
     "vercel": {
       "title": "Vercel analytics",
-      "refresh": "Refresh",
-      "refreshing": "Refreshing…",
-      "retry": "Retry",
-      "refreshAria": "Refresh Vercel analytics",
-      "notConfigured": "Set <code>VERCEL_TOKEN</code>, <code>VERCEL_TEAM_ID</code>, and <code>VERCEL_PROJECT_ID</code> in <code>.env.local</code> to enable the live deployment stats widget.",
-      "deploysReady": "Ready",
-      "deploysError": "Failed",
-      "nBuilding": "{n} building",
-      "last10": "of last 10",
+      "refresh": "רענון",
+      "refreshing": "מרענן…",
+      "retry": "נסה שוב",
+      "refreshAria": "רענון Vercel analytics",
+      "notConfigured": "הגדר <code>VERCEL_TOKEN</code>, <code>VERCEL_TEAM_ID</code> ו-<code>VERCEL_PROJECT_ID</code> ב-<code>.env.local</code> כדי להציג את הווידג׳ט הזה.",
+      "deploysReady": "מוכן",
+      "deploysError": "נכשל",
+      "nBuilding": "{n} בבנייה",
+      "last10": "מתוך 10 האחרונים",
       "speedInsights": "Speed Insights",
       "webAnalytics": "Web Analytics",
-      "enabled": "Enabled",
-      "off": "Off",
-      "collecting": "Live",
+      "enabled": "פעיל",
+      "off": "כבוי",
+      "collecting": "חי",
       "coreWebVitals": "LCP · INP · CLS",
-      "visitorsPageviews": "visitors · pageviews",
-      "latestDeployment": "Latest deployment",
-      "recentDeployments": "{n} more recent deployments",
-      "cachedUpdated": "Cached · updated {when}",
-      "nDomains": "{n} domain(s)"
+      "visitorsPageviews": "מבקרים · צפיות",
+      "latestDeployment": "פריסה אחרונה",
+      "recentDeployments": "{n} פריסות אחרונות נוספות",
+      "cachedUpdated": "מטמון · עודכן {when}",
+      "nDomains": "{n} דומיין(ים)"
     },
     "vercelRefreshed": "אנליטיקת Neon רועננה",
     "relativeTime": {
