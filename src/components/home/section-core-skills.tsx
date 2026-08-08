@@ -3,8 +3,9 @@ import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
 import { listPublicSkillsGrouped } from "@/lib/db/queries/skills";
 import { SKILL_GROUPS } from "@/lib/skill-groups";
-import { SkillPill, type SkillPillLabels } from "@/components/skill-pill";
-import { DragScrollStrip } from "./drag-scroll-strip";
+import { type SkillPillLabels } from "@/components/skill-pill";
+import { SkillsCarousel, type SkillPillItem } from "./skills-carousel";
+import { ScrollReveal } from "./scroll-reveal";
 import { SectionHeader, SeeAllLink, bezelInner, bezelOuter } from "./_shared";
 import { Spotlight } from "./spotlight";
 import { cn } from "@/lib/utils";
@@ -64,47 +65,44 @@ export async function SectionCoreSkills() {
         id="core-skills-title"
         action={<SeeAllLink href="/skills" label={t("seeAll")} />}
       />
-      <DragScrollStrip className="scrollbar-thin -mx-6 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-px-6 px-6 pb-4">
+      <ScrollReveal
+        as="ul"
+        className="grid grid-cols-1 gap-4 md:grid-cols-2"
+        stagger={0.06}
+      >
         {ordered.map((g) => {
-          const items = g.items
+          const groupLabel = tGroups(g.group);
+          const items: SkillPillItem[] = g.items
             .slice()
             .sort((a, b) => Number(b.isPrimary) - Number(a.isPrimary))
-            .slice(0, MAX_ITEMS_PER_GROUP);
+            .slice(0, MAX_ITEMS_PER_GROUP)
+            .map((s) => ({
+              id: s.id,
+              name: s.name,
+              iconUrl: s.iconUrl,
+              proficiency: s.proficiency,
+              years: s.years,
+              isPrimary: s.isPrimary,
+              groupLabel,
+              proficiencyLabel: tProf(s.proficiency),
+              yearsText: yearsText(s.years),
+            }));
           return (
-            <li
-              key={g.group}
-              className="w-[85%] shrink-0 snap-start sm:w-[60%] md:w-105"
-            >
+            <li key={g.group} data-reveal>
               <Spotlight>
                 <div className={cn(bezelOuter, "h-full")}>
                   <div className={cn(bezelInner, "flex h-full flex-col p-6")}>
                     <h3 className="text-lg font-semibold tracking-tight">
-                      {tGroups(g.group)}
+                      {groupLabel}
                     </h3>
-                    <ul className="mt-4 flex flex-wrap gap-2">
-                      {items.map((s) => (
-                        <li key={s.id}>
-                          <SkillPill
-                            name={s.name}
-                            iconUrl={s.iconUrl}
-                            proficiency={s.proficiency}
-                            years={s.years}
-                            isPrimary={s.isPrimary}
-                            groupLabel={tGroups(g.group)}
-                            proficiencyLabel={tProf(s.proficiency)}
-                            yearsText={yearsText(s.years)}
-                            labels={pillLabels}
-                          />
-                        </li>
-                      ))}
-                    </ul>
+                    <SkillsCarousel items={items} labels={pillLabels} />
                   </div>
                 </div>
               </Spotlight>
             </li>
           );
         })}
-      </DragScrollStrip>
+      </ScrollReveal>
     </section>
   );
 }
