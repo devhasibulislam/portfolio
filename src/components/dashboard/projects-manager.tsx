@@ -64,12 +64,6 @@ const CATEGORIES: {
   { value: "nda", label: "Under NDA" },
 ];
 
-const CATEGORY_LABEL: Record<ProjectRow["category"], string> =
-  Object.fromEntries(CATEGORIES.map((c) => [c.value, c.label])) as Record<
-    ProjectRow["category"],
-    string
-  >;
-
 const LINK_KINDS: { value: ProjectLinkInput["kind"]; label: string }[] = [
   { value: "website", label: "Website" },
   { value: "case_study", label: "Case study" },
@@ -101,6 +95,8 @@ export function ProjectsManager({
 }) {
   const t = useTranslations("actions.projects");
   const tPage = useTranslations("dashboard.pages.projects");
+  const tCats = useTranslations("projects.categories");
+  const tCommon = useTranslations("dashboard.forms.common");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ProjectRow | null>(null);
   const [fetching, startFetch] = useTransition();
@@ -161,11 +157,11 @@ export function ProjectsManager({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Project</TableHead>
-                <TableHead className="w-40">Category</TableHead>
-                <TableHead className="w-24">Order</TableHead>
-                <TableHead className="w-28">Status</TableHead>
-                <TableHead className="w-24 text-end">Actions</TableHead>
+                <TableHead>{tPage("colProject")}</TableHead>
+                <TableHead className="w-40">{tPage("colCategory")}</TableHead>
+                <TableHead className="w-24">{tPage("colOrder")}</TableHead>
+                <TableHead className="w-28">{tPage("colStatus")}</TableHead>
+                <TableHead className="w-24 text-end">{tPage("colActions")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -183,7 +179,7 @@ export function ProjectsManager({
                       {r.slug}
                     </div>
                   </TableCell>
-                  <TableCell>{CATEGORY_LABEL[r.category]}</TableCell>
+                  <TableCell>{tCats(r.category)}</TableCell>
                   <TableCell>{r.displayOrder}</TableCell>
                   <TableCell>
                     <span
@@ -193,7 +189,7 @@ export function ProjectsManager({
                           : "bg-muted text-muted-foreground"
                       }`}
                     >
-                      {r.status}
+                      {r.status === "published" ? tCommon("published") : tCommon("draft")}
                     </span>
                   </TableCell>
                   <TableCell className="text-end">
@@ -202,7 +198,7 @@ export function ProjectsManager({
                       size="icon"
                       onClick={() => onEdit(r)}
                       disabled={pending && loadingId === r.id}
-                      aria-label={`Edit ${r.title}`}
+                      aria-label={tPage("editAria", { title: r.title })}
                     >
                       <Pencil className="size-4" />
                     </Button>
@@ -210,7 +206,7 @@ export function ProjectsManager({
                       variant="ghost"
                       size="icon"
                       onClick={() => setConfirmDelete(r)}
-                      aria-label={`Delete ${r.title}`}
+                      aria-label={tPage("deleteAria", { title: r.title })}
                     >
                       <Trash2 className="size-4" />
                     </Button>
@@ -235,10 +231,7 @@ export function ProjectsManager({
         onOpenChange={(open) => !open && setConfirmDelete(null)}
         title={tPage("deleteDialogTitle")}
         description={
-          <>
-            &quot;{confirmDelete?.title}&quot; will be permanently removed.
-            Cached public pages get busted automatically.
-          </>
+          <>{tPage("deleteConfirm", { title: confirmDelete?.title ?? "" })}</>
         }
         pending={pending}
         onConfirm={() => confirmDelete && onDelete(confirmDelete)}

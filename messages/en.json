@@ -415,7 +415,14 @@
         "newButton": "New post",
         "empty": "No posts yet. Click {newButton}.",
         "deleteDialogTitle": "Delete \"{title}\"?",
-        "deleteDialogDescription": "This deletes the post and its tag links. Cover image stays in the media library."
+        "deleteDialogDescription": "This deletes the post and its tag links. Cover image stays in the media library.",
+        "colTitle": "Title",
+        "colCategory": "Category",
+        "colStatus": "Status",
+        "colUpdated": "Updated",
+        "deleteAria": "Delete {title}",
+        "moveToDraftAria": "Move to draft",
+        "publishAria": "Publish this post"
       },
       "projects": {
         "title": "Projects",
@@ -425,7 +432,15 @@
         "editDialogNew": "New project",
         "editDialogEdit": "Edit project",
         "deleteDialogTitle": "Delete project?",
-        "linksEmpty": "No links yet. Add website, case study, GitHub, or store links."
+        "linksEmpty": "No links yet. Add website, case study, GitHub, or store links.",
+        "colProject": "Project",
+        "colCategory": "Category",
+        "colOrder": "Order",
+        "colStatus": "Status",
+        "colActions": "Actions",
+        "editAria": "Edit {title}",
+        "deleteAria": "Delete {title}",
+        "deleteConfirm": "\"{title}\" will be permanently removed. Cached public pages get busted automatically."
       },
       "experience": {
         "title": "Experience",
@@ -434,7 +449,16 @@
         "empty": "No roles yet. Click {newButton} to add.",
         "editDialogNew": "New role",
         "editDialogEdit": "Edit role",
-        "deleteDialogTitle": "Delete role?"
+        "deleteDialogTitle": "Delete role?",
+        "colOrder": "Order",
+        "colRole": "Role",
+        "colCompany": "Company",
+        "colPeriod": "Period",
+        "colStatus": "Status",
+        "colActions": "Actions",
+        "editAria": "Edit {role} at {company}",
+        "deleteAria": "Delete {role} at {company}",
+        "deleteConfirm": "{role} at {company} will be permanently removed."
       },
       "skills": {
         "title": "Skills",
@@ -443,7 +467,16 @@
         "empty": "No skills yet. Click {newButton} to add.",
         "editDialogNew": "New skill",
         "editDialogEdit": "Edit skill",
-        "deleteDialogTitle": "Delete skill?"
+        "deleteDialogTitle": "Delete skill?",
+        "colName": "Name",
+        "colProficiency": "Proficiency",
+        "colYears": "Years",
+        "colOrder": "Order",
+        "colStatus": "Status",
+        "colActions": "Actions",
+        "editAria": "Edit {name}",
+        "deleteAria": "Delete {name}",
+        "deleteConfirm": "\"{name}\" will be permanently removed."
       },
       "receipts": {
         "title": "Receipts",
@@ -467,7 +500,17 @@
         "description": "Upload a new PDF; pick the one served at /resume.",
         "uploadButton": "Upload PDF",
         "uploading": "Uploading…",
-        "empty": "No resumes yet. Click {uploadButton}."
+        "empty": "No resumes yet. Click {uploadButton}.",
+        "activeBadge": "Active",
+        "isActiveTooltip": "This is the active resume",
+        "setActiveTooltip": "Set as active",
+        "openAria": "Open {name}",
+        "deleteAria": "Delete {name}",
+        "setActiveAria": "Set {name} active",
+        "isActiveAria": "{name} is active",
+        "deleteTitle": "Delete \"{name}\"?",
+        "deleteActiveDesc": "This is the active resume. Deleting it leaves /resume with nothing to serve until you activate another one. It also removes the file from Cloudinary. This can't be undone.",
+        "deleteDesc": "Removes the file from Cloudinary and this list. This can't be undone."
       },
       "categories": {
         "subtitle": "One per post. Deleting one used by a post is blocked."
@@ -484,7 +527,18 @@
         "filterUnused": "Unused",
         "empty": "No media yet. Click {uploadButton}.",
         "noneMatch": "Nothing matches this filter.",
-        "inUseBadge": "In use"
+        "inUseBadge": "In use",
+        "previewAria": "Preview {name}",
+        "deleteAria": "Delete {name}",
+        "deleteInUseAria": "Delete {name} (in use)",
+        "inUseTooltip": "In use as a post cover",
+        "deleteTitle": "Delete \"{name}\"?",
+        "deleteBlockedDesc": "Blocked: this image is set as a post cover. Reassign it first.",
+        "deleteConfirmDesc": "Removes the file from Cloudinary and this list. Can't be undone.",
+        "copyPublicId": "Public ID",
+        "copyUrl": "URL",
+        "copyPublicIdLabel": "public ID",
+        "copyUrlLabel": "URL"
       }
     },
     "forms": {
@@ -548,7 +602,15 @@
         "deleteInUse": "Blocked: {count} {count, plural, one {post} other {posts}} still use this {entity}. Reassign them first.",
         "deleteNoUse": "This can't be undone.",
         "empty": "No {entityPlural} yet. Click New.",
-        "create": "Create"
+        "create": "Create",
+        "colName": "Name",
+        "colSlug": "Slug",
+        "colPosts": "Posts",
+        "editAria": "Edit {name}",
+        "deleteAria": "Delete {name}",
+        "deleteInUseAria": "Delete {name} (in use)",
+        "inUseTooltip": "In use by {count, plural, one {# post} other {# posts}}",
+        "newButton": "New"
       },
       "skill": {
         "description": "Skills group by resume section on the public page.",
@@ -747,7 +809,13 @@
       "cachedUpdated": "Cached · updated {when}",
       "nDomains": "{n} domain(s)"
     },
-    "vercelRefreshed": "Neon analytics refreshed"
+    "vercelRefreshed": "Neon analytics refreshed",
+    "relativeTime": {
+      "justNow": "just now",
+      "minutesAgo": "{n}m ago",
+      "hoursAgo": "{n}h ago",
+      "daysAgo": "{n}d ago"
+    }
   },
   "login": {
     "title": "Sign in",

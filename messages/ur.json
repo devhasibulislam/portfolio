@@ -415,7 +415,14 @@
         "newButton": "نئی پوسٹ",
         "empty": "ابھی کوئی پوسٹ نہیں۔ {newButton} پر کلک کریں۔",
         "deleteDialogTitle": "\"{title}\" حذف کریں؟",
-        "deleteDialogDescription": "یہ پوسٹ اور اس کے ٹیگ لنکس حذف کر دیتا ہے۔ کور تصویر میڈیا لائبریری میں رہتی ہے۔"
+        "deleteDialogDescription": "یہ پوسٹ اور اس کے ٹیگ لنکس حذف کر دیتا ہے۔ کور تصویر میڈیا لائبریری میں رہتی ہے۔",
+        "colTitle": "عنوان",
+        "colCategory": "زمرہ",
+        "colStatus": "حالت",
+        "colUpdated": "اپڈیٹ",
+        "deleteAria": "{title} حذف کریں",
+        "moveToDraftAria": "ڈرافٹ میں منتقل کریں",
+        "publishAria": "یہ پوسٹ شائع کریں"
       },
       "projects": {
         "title": "پروجیکٹس",
@@ -425,7 +432,15 @@
         "editDialogNew": "نیا پروجیکٹ",
         "editDialogEdit": "پروجیکٹ ترمیم",
         "deleteDialogTitle": "پروجیکٹ حذف کریں؟",
-        "linksEmpty": "ابھی کوئی لنک نہیں۔ ویب سائٹ، کیس اسٹڈی، GitHub، یا اسٹور لنکس شامل کریں۔"
+        "linksEmpty": "ابھی کوئی لنک نہیں۔ ویب سائٹ، کیس اسٹڈی، GitHub، یا اسٹور لنکس شامل کریں۔",
+        "colProject": "پراجیکٹ",
+        "colCategory": "زمرہ",
+        "colOrder": "ترتیب",
+        "colStatus": "حالت",
+        "colActions": "اعمال",
+        "editAria": "{title} میں ترمیم",
+        "deleteAria": "{title} حذف کریں",
+        "deleteConfirm": "\"{title}\" مستقل طور پر حذف ہو جائے گا۔ کیش شدہ عوامی صفحات خود بخود کالعدم ہوں گے۔"
       },
       "experience": {
         "title": "تجربہ",
@@ -434,7 +449,16 @@
         "empty": "ابھی کوئی کردار نہیں۔ اضافہ کرنے کے لیے {newButton} پر کلک کریں۔",
         "editDialogNew": "نیا کردار",
         "editDialogEdit": "کردار ترمیم",
-        "deleteDialogTitle": "کردار حذف کریں؟"
+        "deleteDialogTitle": "کردار حذف کریں؟",
+        "colOrder": "ترتیب",
+        "colRole": "کردار",
+        "colCompany": "کمپنی",
+        "colPeriod": "عرصہ",
+        "colStatus": "حالت",
+        "colActions": "اعمال",
+        "editAria": "{company} میں {role} پر ترمیم",
+        "deleteAria": "{company} میں {role} حذف کریں",
+        "deleteConfirm": "{company} میں {role} مستقل طور پر حذف ہو جائے گا۔"
       },
       "skills": {
         "title": "مہارتیں",
@@ -443,14 +467,33 @@
         "empty": "ابھی کوئی مہارت نہیں۔ اضافہ کرنے کے لیے {newButton} پر کلک کریں۔",
         "editDialogNew": "نئی مہارت",
         "editDialogEdit": "مہارت ترمیم",
-        "deleteDialogTitle": "مہارت حذف کریں؟"
+        "deleteDialogTitle": "مہارت حذف کریں؟",
+        "colName": "نام",
+        "colProficiency": "مہارت",
+        "colYears": "سال",
+        "colOrder": "ترتیب",
+        "colStatus": "حالت",
+        "colActions": "اعمال",
+        "editAria": "{name} میں ترمیم",
+        "deleteAria": "{name} حذف کریں",
+        "deleteConfirm": "\"{name}\" مستقل طور پر حذف ہو جائے گا۔"
       },
       "resume": {
         "title": "ریزیومے",
         "description": "نیا PDF اپ لوڈ کریں؛ /resume پر پیش کیا جانے والا منتخب کریں۔",
         "uploadButton": "PDF اپ لوڈ",
         "uploading": "اپ لوڈ ہو رہا ہے…",
-        "empty": "ابھی کوئی ریزیومے نہیں۔ {uploadButton} پر کلک کریں۔"
+        "empty": "ابھی کوئی ریزیومے نہیں۔ {uploadButton} پر کلک کریں۔",
+        "activeBadge": "فعال",
+        "isActiveTooltip": "یہ فعال ریزیومے ہے",
+        "setActiveTooltip": "فعال کریں",
+        "openAria": "{name} کھولیں",
+        "deleteAria": "{name} حذف کریں",
+        "setActiveAria": "{name} کو فعال کریں",
+        "isActiveAria": "{name} فعال ہے",
+        "deleteTitle": "\"{name}\" حذف کریں؟",
+        "deleteActiveDesc": "یہ فعال ریزیومے ہے۔ اسے حذف کرنے سے /resume خالی رہ جائے گا جب تک آپ دوسرا فعال نہ کریں۔ Cloudinary سے بھی فائل ہٹا دی جاتی ہے۔ واپس نہیں لایا جا سکتا۔",
+        "deleteDesc": "Cloudinary اور اس فہرست سے فائل ہٹا دیتا ہے۔ واپس نہیں لایا جا سکتا۔"
       },
       "categories": {
         "subtitle": "فی پوسٹ ایک۔ پوسٹ میں استعمال ہونے والا زمرہ حذف کرنا بلاک ہے۔"
@@ -467,7 +510,18 @@
         "filterUnused": "غیر استعمال",
         "empty": "ابھی کوئی میڈیا نہیں۔ {uploadButton} پر کلک کریں۔",
         "noneMatch": "اس فلٹر سے کچھ نہیں ملتا۔",
-        "inUseBadge": "استعمال میں"
+        "inUseBadge": "استعمال میں",
+        "previewAria": "{name} کا پیش نظارہ",
+        "deleteAria": "{name} حذف کریں",
+        "deleteInUseAria": "{name} حذف کریں (زیر استعمال)",
+        "inUseTooltip": "پوسٹ کور کے طور پر استعمال میں",
+        "deleteTitle": "\"{name}\" حذف کریں؟",
+        "deleteBlockedDesc": "مسدود: یہ تصویر پوسٹ کور کے طور پر سیٹ ہے۔ پہلے اسے دوبارہ تفویض کریں۔",
+        "deleteConfirmDesc": "Cloudinary اور اس فہرست سے فائل ہٹا دیتا ہے۔ واپس نہیں لایا جا سکتا۔",
+        "copyPublicId": "Public ID",
+        "copyUrl": "URL",
+        "copyPublicIdLabel": "public ID",
+        "copyUrlLabel": "URL"
       },
       "receipts": {
         "title": "رسیدیں",
@@ -548,7 +602,15 @@
         "deleteInUse": "بلاک: {count} پوسٹس ابھی بھی یہ {entity} استعمال کر رہی ہیں۔ پہلے دوبارہ تفویض کریں۔",
         "deleteNoUse": "اسے واپس نہیں کیا جا سکتا۔",
         "empty": "ابھی کوئی {entityPlural} نہیں۔ نیا پر کلک کریں۔",
-        "create": "بنائیں"
+        "create": "بنائیں",
+        "colName": "نام",
+        "colSlug": "سلگ",
+        "colPosts": "پوسٹس",
+        "editAria": "{name} میں ترمیم",
+        "deleteAria": "{name} حذف کریں",
+        "deleteInUseAria": "{name} حذف کریں (زیر استعمال)",
+        "inUseTooltip": "{count, plural, one {# پوسٹ میں استعمال} other {# پوسٹس میں استعمال}}",
+        "newButton": "نیا"
       },
       "skill": {
         "description": "عوامی صفحہ پر مہارتیں ریزیومے کے حصے کے حساب سے گروپ ہوتی ہیں۔",
@@ -747,7 +809,13 @@
       "cachedUpdated": "Cached · updated {when}",
       "nDomains": "{n} domain(s)"
     },
-    "vercelRefreshed": "Neon تجزیات ریفریش ہو گئے"
+    "vercelRefreshed": "Neon تجزیات ریفریش ہو گئے",
+    "relativeTime": {
+      "justNow": "ابھی ابھی",
+      "minutesAgo": "{n} منٹ پہلے",
+      "hoursAgo": "{n} گھنٹے پہلے",
+      "daysAgo": "{n} دن پہلے"
+    }
   },
   "login": {
     "title": "سائن اِن",

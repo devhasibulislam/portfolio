@@ -86,6 +86,8 @@ export function ExperienceManager({
 }) {
   const t = useTranslations("actions.experience");
   const tPage = useTranslations("dashboard.pages.experience");
+  const tExp = useTranslations("experience");
+  const tCommon = useTranslations("dashboard.forms.common");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ExperienceRow | null>(
     null,
@@ -148,12 +150,12 @@ export function ExperienceManager({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-16">Order</TableHead>
-                <TableHead>Role</TableHead>
-                <TableHead className="w-48">Company</TableHead>
-                <TableHead className="w-40">Period</TableHead>
-                <TableHead className="w-28">Status</TableHead>
-                <TableHead className="w-24 text-end">Actions</TableHead>
+                <TableHead className="w-16">{tPage("colOrder")}</TableHead>
+                <TableHead>{tPage("colRole")}</TableHead>
+                <TableHead className="w-48">{tPage("colCompany")}</TableHead>
+                <TableHead className="w-40">{tPage("colPeriod")}</TableHead>
+                <TableHead className="w-28">{tPage("colStatus")}</TableHead>
+                <TableHead className="w-24 text-end">{tPage("colActions")}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -177,7 +179,7 @@ export function ExperienceManager({
                     ) : null}
                   </TableCell>
                   <TableCell className="text-sm">
-                    {formatPeriod(r.periodStart, r.periodEnd)}
+                    {formatPeriod(r.periodStart, r.periodEnd, tExp)}
                   </TableCell>
                   <TableCell>
                     <span
@@ -187,7 +189,7 @@ export function ExperienceManager({
                           : "bg-muted text-muted-foreground"
                       }`}
                     >
-                      {r.status}
+                      {r.status === "published" ? tCommon("published") : tCommon("draft")}
                     </span>
                   </TableCell>
                   <TableCell className="text-end">
@@ -196,7 +198,7 @@ export function ExperienceManager({
                       size="icon"
                       onClick={() => onEdit(r)}
                       disabled={pending && loadingId === r.id}
-                      aria-label={`Edit ${r.role} at ${r.company}`}
+                      aria-label={tPage("editAria", { role: r.role, company: r.company })}
                     >
                       <Pencil className="size-4" />
                     </Button>
@@ -204,7 +206,7 @@ export function ExperienceManager({
                       variant="ghost"
                       size="icon"
                       onClick={() => setConfirmDelete(r)}
-                      aria-label={`Delete ${r.role} at ${r.company}`}
+                      aria-label={tPage("deleteAria", { role: r.role, company: r.company })}
                     >
                       <Trash2 className="size-4" />
                     </Button>
@@ -230,8 +232,10 @@ export function ExperienceManager({
         title={tPage("deleteDialogTitle")}
         description={
           <>
-            {confirmDelete?.role} at {confirmDelete?.company} will be
-            permanently removed.
+            {tPage("deleteConfirm", {
+              role: confirmDelete?.role ?? "",
+              company: confirmDelete?.company ?? "",
+            })}
           </>
         }
         pending={pending}
@@ -243,10 +247,14 @@ export function ExperienceManager({
 
 // ---------- helpers ------------------------------------------------------
 
-function formatPeriod(start: Date, end: Date | null): string {
+function formatPeriod(
+  start: Date,
+  end: Date | null,
+  tExp: (key: string) => string,
+): string {
   const s = formatMonthYear(start);
-  const e = end ? formatMonthYear(end) : "Present";
-  return `${s} to ${e}`;
+  const e = end ? formatMonthYear(end) : tExp("present");
+  return `${s} ${tExp("periodSeparator")} ${e}`;
 }
 
 function ExperienceDialog({

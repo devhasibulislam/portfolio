@@ -80,7 +80,7 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
               <button
                 type="button"
                 onClick={() => setPreview(m)}
-                aria-label={`Preview ${m.originalName}`}
+                aria-label={tPage("previewAria", { name: m.originalName })}
                 className="bg-muted relative block w-full overflow-hidden rounded-lg border transition-transform hover:scale-[1.01] focus-visible:outline-2"
               >
                 <CldImage
@@ -109,20 +109,20 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
                         size="icon"
                         variant="secondary"
                         disabled
-                        aria-label={`Delete ${m.originalName} (in use)`}
+                        aria-label={tPage("deleteInUseAria", { name: m.originalName })}
                         className="opacity-70 shadow-md"
                       >
                         <Trash2 className="size-4" />
                       </Button>
                     </span>
                   </TooltipTrigger>
-                  <TooltipContent>In use as a post cover</TooltipContent>
+                  <TooltipContent>{tPage("inUseTooltip")}</TooltipContent>
                 </Tooltip>
               ) : (
                 <Button
                   size="icon"
                   variant="secondary"
-                  aria-label={`Delete ${m.originalName}`}
+                  aria-label={tPage("deleteAria", { name: m.originalName })}
                   // Hover-reveal on desktop; always visible on touch/mobile
                   // (no hover state → the delete button would be unreachable).
                   className="absolute end-2 top-2 opacity-100 shadow-md transition-opacity md:opacity-0 md:group-hover:opacity-100 focus-visible:opacity-100"
@@ -178,17 +178,18 @@ function DeleteDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   const t = useTranslations("actions.media");
+  const tPage = useTranslations("dashboard.pages.media");
   const del = useAction(deleteMedia);
   if (!row) return null;
   return (
     <ConfirmDeleteDialog
       open
       onOpenChange={onOpenChange}
-      title={<>Delete &quot;{row.originalName}&quot;?</>}
+      title={<>{tPage("deleteTitle", { name: row.originalName })}</>}
       description={
         row.inUse
-          ? "Blocked: this image is set as a post cover. Reassign it first."
-          : "Removes the file from Cloudinary and this list. Can't be undone."
+          ? tPage("deleteBlockedDesc")
+          : tPage("deleteConfirmDesc")
       }
       pending={del.pending}
       disabled={row.inUse}
@@ -221,6 +222,7 @@ function PreviewDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   const t = useTranslations("actions.media");
+  const tPage = useTranslations("dashboard.pages.media");
   if (!row) return null;
   const copy = async (text: string, label: string) => {
     try {
@@ -253,16 +255,16 @@ function PreviewDialog({
           <Button
             variant="outline"
             size="sm"
-            onClick={() => copy(row.publicId, "public ID")}
+            onClick={() => copy(row.publicId, tPage("copyPublicIdLabel"))}
           >
-            <Copy className="me-1.5 size-3.5" /> Public ID
+            <Copy className="me-1.5 size-3.5" /> {tPage("copyPublicId")}
           </Button>
           <Button
             variant="outline"
             size="sm"
-            onClick={() => copy(row.url, "URL")}
+            onClick={() => copy(row.url, tPage("copyUrlLabel"))}
           >
-            <Copy className="me-1.5 size-3.5" /> URL
+            <Copy className="me-1.5 size-3.5" /> {tPage("copyUrl")}
           </Button>
         </div>
       </DialogContent>

@@ -415,7 +415,14 @@
         "newButton": "منشور جديد",
         "empty": "لا توجد منشورات بعد. انقر على {newButton}.",
         "deleteDialogTitle": "حذف «{title}»؟",
-        "deleteDialogDescription": "هذا يحذف المنشور وروابط الوسوم. صورة الغلاف تبقى في مكتبة الوسائط."
+        "deleteDialogDescription": "هذا يحذف المنشور وروابط الوسوم. صورة الغلاف تبقى في مكتبة الوسائط.",
+        "colTitle": "العنوان",
+        "colCategory": "التصنيف",
+        "colStatus": "الحالة",
+        "colUpdated": "آخر تحديث",
+        "deleteAria": "حذف {title}",
+        "moveToDraftAria": "نقل إلى المسودة",
+        "publishAria": "نشر هذه المقالة"
       },
       "projects": {
         "title": "المشاريع",
@@ -425,7 +432,15 @@
         "editDialogNew": "مشروع جديد",
         "editDialogEdit": "تعديل المشروع",
         "deleteDialogTitle": "حذف المشروع؟",
-        "linksEmpty": "لا توجد روابط بعد. أضف موقعًا أو دراسة حالة أو GitHub أو روابط المتاجر."
+        "linksEmpty": "لا توجد روابط بعد. أضف موقعًا أو دراسة حالة أو GitHub أو روابط المتاجر.",
+        "colProject": "المشروع",
+        "colCategory": "التصنيف",
+        "colOrder": "الترتيب",
+        "colStatus": "الحالة",
+        "colActions": "إجراءات",
+        "editAria": "تعديل {title}",
+        "deleteAria": "حذف {title}",
+        "deleteConfirm": "سيتم حذف \"{title}\" بشكل دائم. سيتم إلغاء صلاحية الصفحات العامة المخزنة تلقائيًا."
       },
       "experience": {
         "title": "الخبرات",
@@ -434,7 +449,16 @@
         "empty": "لا توجد أدوار بعد. انقر على {newButton} للإضافة.",
         "editDialogNew": "دور جديد",
         "editDialogEdit": "تعديل الدور",
-        "deleteDialogTitle": "حذف الدور؟"
+        "deleteDialogTitle": "حذف الدور؟",
+        "colOrder": "الترتيب",
+        "colRole": "الدور",
+        "colCompany": "الشركة",
+        "colPeriod": "الفترة",
+        "colStatus": "الحالة",
+        "colActions": "إجراءات",
+        "editAria": "تعديل {role} في {company}",
+        "deleteAria": "حذف {role} في {company}",
+        "deleteConfirm": "سيتم حذف {role} في {company} بشكل دائم."
       },
       "skills": {
         "title": "المهارات",
@@ -443,14 +467,33 @@
         "empty": "لا توجد مهارات بعد. انقر على {newButton} للإضافة.",
         "editDialogNew": "مهارة جديدة",
         "editDialogEdit": "تعديل المهارة",
-        "deleteDialogTitle": "حذف المهارة؟"
+        "deleteDialogTitle": "حذف المهارة؟",
+        "colName": "الاسم",
+        "colProficiency": "المستوى",
+        "colYears": "سنوات",
+        "colOrder": "الترتيب",
+        "colStatus": "الحالة",
+        "colActions": "إجراءات",
+        "editAria": "تعديل {name}",
+        "deleteAria": "حذف {name}",
+        "deleteConfirm": "سيتم حذف \"{name}\" بشكل دائم."
       },
       "resume": {
         "title": "السيرة الذاتية",
         "description": "ارفع ملف PDF جديد؛ اختر الملف المقدَّم في /resume.",
         "uploadButton": "رفع PDF",
         "uploading": "جارٍ الرفع…",
-        "empty": "لا توجد سير ذاتية بعد. انقر على {uploadButton}."
+        "empty": "لا توجد سير ذاتية بعد. انقر على {uploadButton}.",
+        "activeBadge": "نشطة",
+        "isActiveTooltip": "هذه هي السيرة الذاتية النشطة",
+        "setActiveTooltip": "تعيين كنشطة",
+        "openAria": "فتح {name}",
+        "deleteAria": "حذف {name}",
+        "setActiveAria": "تعيين {name} كنشطة",
+        "isActiveAria": "{name} نشطة",
+        "deleteTitle": "حذف \"{name}\"؟",
+        "deleteActiveDesc": "هذه هي السيرة الذاتية النشطة. حذفها يترك /resume دون شيء يقدم حتى تنشط سيرة أخرى. كما يزيل الملف من Cloudinary. لا يمكن التراجع.",
+        "deleteDesc": "يزيل الملف من Cloudinary ومن هذه القائمة. لا يمكن التراجع."
       },
       "categories": {
         "subtitle": "واحدة لكل منشور. حذف تصنيف مستخدم في منشور غير مسموح."
@@ -467,7 +510,18 @@
         "filterUnused": "غير مستخدم",
         "empty": "لا توجد وسائط بعد. انقر على {uploadButton}.",
         "noneMatch": "لا شيء يطابق هذا الفلتر.",
-        "inUseBadge": "مستخدم"
+        "inUseBadge": "مستخدم",
+        "previewAria": "معاينة {name}",
+        "deleteAria": "حذف {name}",
+        "deleteInUseAria": "حذف {name} (قيد الاستخدام)",
+        "inUseTooltip": "مستخدم كغلاف لمقالة",
+        "deleteTitle": "حذف \"{name}\"؟",
+        "deleteBlockedDesc": "مقفل: هذه الصورة معينة كغلاف لمقالة. أعد تعيينها أولاً.",
+        "deleteConfirmDesc": "يزيل الملف من Cloudinary ومن هذه القائمة. لا يمكن التراجع.",
+        "copyPublicId": "Public ID",
+        "copyUrl": "URL",
+        "copyPublicIdLabel": "public ID",
+        "copyUrlLabel": "URL"
       },
       "receipts": {
         "title": "الإيصالات",
@@ -548,7 +602,15 @@
         "deleteInUse": "محظور: {count} منشور لا يزال يستخدم هذا {entity}. أعد تعيينها أولاً.",
         "deleteNoUse": "لا يمكن التراجع عن هذا.",
         "empty": "لا توجد {entityPlural} بعد. انقر على جديد.",
-        "create": "إنشاء"
+        "create": "إنشاء",
+        "colName": "الاسم",
+        "colSlug": "المعرف",
+        "colPosts": "مقالات",
+        "editAria": "تعديل {name}",
+        "deleteAria": "حذف {name}",
+        "deleteInUseAria": "حذف {name} (قيد الاستخدام)",
+        "inUseTooltip": "{count, plural, one {مستخدم في مقالة #} other {مستخدم في # مقالات}}",
+        "newButton": "جديد"
       },
       "skill": {
         "description": "تُجمَّع المهارات حسب أقسام السيرة الذاتية في الصفحة العامة.",
@@ -747,7 +809,13 @@
       "cachedUpdated": "Cached · updated {when}",
       "nDomains": "{n} domain(s)"
     },
-    "vercelRefreshed": "تم تحديث تحليلات Neon"
+    "vercelRefreshed": "تم تحديث تحليلات Neon",
+    "relativeTime": {
+      "justNow": "للتو",
+      "minutesAgo": "قبل {n} د",
+      "hoursAgo": "قبل {n} س",
+      "daysAgo": "قبل {n} يوم"
+    }
   },
   "login": {
     "title": "تسجيل الدخول",

@@ -86,7 +86,7 @@ export function SlugEntityTable({
         description={subtitle}
         action={
           <Button onClick={() => setEditing({ mode: "new" })}>
-            <Plus className="me-1 size-4" /> New
+            <Plus className="me-1 size-4" /> {tSlug("newButton")}
           </Button>
         }
       />
@@ -95,9 +95,9 @@ export function SlugEntityTable({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead className="hidden md:table-cell">Slug</TableHead>
-              <TableHead className="text-end">Posts</TableHead>
+              <TableHead>{tSlug("colName")}</TableHead>
+              <TableHead className="hidden md:table-cell">{tSlug("colSlug")}</TableHead>
+              <TableHead className="text-end">{tSlug("colPosts")}</TableHead>
               <TableHead className="w-1" />
             </TableRow>
           </TableHeader>
@@ -134,8 +134,8 @@ export function SlugEntityTable({
                         size="icon"
                         variant="ghost"
                         onClick={() => setEditing({ mode: "edit", row: r })}
-                        aria-label={`Edit ${r.name}`}
-                        title={`Edit ${r.name}`}
+                        aria-label={tSlug("editAria", { name: r.name })}
+                        title={tSlug("editAria", { name: r.name })}
                       >
                         <Pencil className="size-4" />
                       </Button>
@@ -149,7 +149,7 @@ export function SlugEntityTable({
                                 size="icon"
                                 variant="ghost"
                                 disabled
-                                aria-label={`Delete ${r.name} (in use)`}
+                                aria-label={tSlug("deleteInUseAria", { name: r.name })}
                                 className="opacity-50"
                               >
                                 <Trash2 className="size-4" />
@@ -157,8 +157,7 @@ export function SlugEntityTable({
                             </span>
                           </TooltipTrigger>
                           <TooltipContent>
-                            In use by {r.postCount} post
-                            {r.postCount === 1 ? "" : "s"}
+                            {tSlug("inUseTooltip", { count: r.postCount })}
                           </TooltipContent>
                         </Tooltip>
                       ) : (
@@ -166,7 +165,7 @@ export function SlugEntityTable({
                           size="icon"
                           variant="ghost"
                           onClick={() => setConfirmDelete(r)}
-                          aria-label={`Delete ${r.name}`}
+                          aria-label={tSlug("deleteAria", { name: r.name })}
                         >
                           <Trash2 className="size-4" />
                         </Button>

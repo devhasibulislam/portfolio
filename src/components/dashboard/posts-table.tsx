@@ -29,6 +29,7 @@ import { deletePost, togglePostStatus } from "@/app/dashboard/posts/actions";
 export function PostsTable({ rows }: { rows: PostRow[] }) {
   const t = useTranslations("actions.posts");
   const tPage = useTranslations("dashboard.pages.posts");
+  const tRel = useTranslations("dashboard.relativeTime");
   const [confirmDelete, setConfirmDelete] = useState<PostRow | null>(null);
   const del = useAction(deletePost);
   const pending = del.pending;
@@ -38,10 +39,10 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Title</TableHead>
-            <TableHead className="hidden md:table-cell">Category</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="hidden md:table-cell">Updated</TableHead>
+            <TableHead>{tPage("colTitle")}</TableHead>
+            <TableHead className="hidden md:table-cell">{tPage("colCategory")}</TableHead>
+            <TableHead>{tPage("colStatus")}</TableHead>
+            <TableHead className="hidden md:table-cell">{tPage("colUpdated")}</TableHead>
             <TableHead className="w-1" />
           </TableRow>
         </TableHeader>
@@ -78,13 +79,13 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
                   <StatusSwitch row={r} />
                 </TableCell>
                 <TableCell className="text-muted-foreground hidden text-sm md:table-cell">
-                  {formatRelative(r.updatedAt)}
+                  {formatRelative(r.updatedAt, tRel)}
                 </TableCell>
                 <TableCell className="text-end">
                   <Button
                     size="icon"
                     variant="ghost"
-                    aria-label={`Delete ${r.title}`}
+                    aria-label={tPage("deleteAria", { title: r.title })}
                     onClick={() => setConfirmDelete(r)}
                   >
                     <Trash2 className="size-4" />
@@ -120,15 +121,16 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
 }
 
 function StatusPill({ status }: { status: "draft" | "published" }) {
+  const tCommon = useTranslations("dashboard.forms.common");
   return status === "published" ? (
     <span className="inline-flex items-center gap-1 rounded-md bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-700 dark:text-green-400">
       <span className="size-1.5 rounded-full bg-current" />
-      Published
+      {tCommon("published")}
     </span>
   ) : (
     <span className="text-muted-foreground bg-muted inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs">
       <span className="size-1.5 rounded-full bg-current" />
-      Draft
+      {tCommon("draft")}
     </span>
   );
 }
@@ -140,6 +142,7 @@ function StatusPill({ status }: { status: "draft" | "published" }) {
 function StatusSwitch({ row }: { row: PostRow }) {
   const router = useRouter();
   const t = useTranslations("actions.posts");
+  const tCommon = useTranslations("dashboard.forms.common");
   const [optimisticStatus, setOptimisticStatus] = useOptimistic(row.status);
   const [pending, startTransition] = useTransition();
   const isPublished = optimisticStatus === "published";
@@ -171,28 +174,31 @@ function StatusSwitch({ row }: { row: PostRow }) {
                 router.refresh();
               });
             }}
-            aria-label={isPublished ? "Move to draft" : "Publish this post"}
+            aria-label={isPublished ? tCommon("moveToDraft") : tCommon("publish")}
           />
           <StatusPill status={optimisticStatus} />
         </span>
       </TooltipTrigger>
       <TooltipContent>
-        {isPublished ? "Move to draft" : "Publish this post"}
+        {isPublished ? tCommon("moveToDraft") : tCommon("publish")}
       </TooltipContent>
     </Tooltip>
   );
 }
 
-function formatRelative(d: Date): string {
+function formatRelative(
+  d: Date,
+  tRel: (key: string, values?: Record<string, string | number>) => string,
+): string {
   const now = Date.now();
   const t = new Date(d).getTime();
   const diffMs = now - t;
   const min = Math.round(diffMs / 60_000);
-  if (min < 1) return "just now";
-  if (min < 60) return `${min}m ago`;
+  if (min < 1) return tRel("justNow");
+  if (min < 60) return tRel("minutesAgo", { n: min });
   const hr = Math.round(min / 60);
-  if (hr < 24) return `${hr}h ago`;
+  if (hr < 24) return tRel("hoursAgo", { n: hr });
   const day = Math.round(hr / 24);
-  if (day < 30) return `${day}d ago`;
+  if (day < 30) return tRel("daysAgo", { n: day });
   return new Date(d).toLocaleDateString();
 }

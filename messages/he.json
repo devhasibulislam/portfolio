@@ -415,7 +415,14 @@
         "newButton": "פוסט חדש",
         "empty": "אין פוסטים עדיין. לחץ על {newButton}.",
         "deleteDialogTitle": "למחוק את \"{title}\"?",
-        "deleteDialogDescription": "פעולה זו מוחקת את הפוסט ואת קישורי התגיות. תמונת השער נשארת בספריית המדיה."
+        "deleteDialogDescription": "פעולה זו מוחקת את הפוסט ואת קישורי התגיות. תמונת השער נשארת בספריית המדיה.",
+        "colTitle": "כותרת",
+        "colCategory": "קטגוריה",
+        "colStatus": "סטטוס",
+        "colUpdated": "עודכן",
+        "deleteAria": "מחק את {title}",
+        "moveToDraftAria": "העבר לטיוטה",
+        "publishAria": "פרסם פוסט זה"
       },
       "projects": {
         "title": "פרויקטים",
@@ -425,7 +432,15 @@
         "editDialogNew": "פרויקט חדש",
         "editDialogEdit": "עריכת פרויקט",
         "deleteDialogTitle": "למחוק את הפרויקט?",
-        "linksEmpty": "אין קישורים עדיין. הוסף אתר, מחקר מקרה, GitHub או קישורי חנות."
+        "linksEmpty": "אין קישורים עדיין. הוסף אתר, מחקר מקרה, GitHub או קישורי חנות.",
+        "colProject": "פרויקט",
+        "colCategory": "קטגוריה",
+        "colOrder": "סדר",
+        "colStatus": "סטטוס",
+        "colActions": "פעולות",
+        "editAria": "ערוך את {title}",
+        "deleteAria": "מחק את {title}",
+        "deleteConfirm": "\"{title}\" יימחק לצמיתות. הדפים הציבוריים במטמון יתעדכנו אוטומטית."
       },
       "experience": {
         "title": "ניסיון",
@@ -434,7 +449,16 @@
         "empty": "אין תפקידים עדיין. לחץ על {newButton} כדי להוסיף.",
         "editDialogNew": "תפקיד חדש",
         "editDialogEdit": "עריכת תפקיד",
-        "deleteDialogTitle": "למחוק את התפקיד?"
+        "deleteDialogTitle": "למחוק את התפקיד?",
+        "colOrder": "סדר",
+        "colRole": "תפקיד",
+        "colCompany": "חברה",
+        "colPeriod": "תקופה",
+        "colStatus": "סטטוס",
+        "colActions": "פעולות",
+        "editAria": "ערוך את {role} ב-{company}",
+        "deleteAria": "מחק את {role} ב-{company}",
+        "deleteConfirm": "{role} ב-{company} יימחק לצמיתות."
       },
       "skills": {
         "title": "מיומנויות",
@@ -443,14 +467,33 @@
         "empty": "אין מיומנויות עדיין. לחץ על {newButton} כדי להוסיף.",
         "editDialogNew": "מיומנות חדשה",
         "editDialogEdit": "עריכת מיומנות",
-        "deleteDialogTitle": "למחוק את המיומנות?"
+        "deleteDialogTitle": "למחוק את המיומנות?",
+        "colName": "שם",
+        "colProficiency": "רמת מיומנות",
+        "colYears": "שנים",
+        "colOrder": "סדר",
+        "colStatus": "סטטוס",
+        "colActions": "פעולות",
+        "editAria": "ערוך את {name}",
+        "deleteAria": "מחק את {name}",
+        "deleteConfirm": "\"{name}\" יימחק לצמיתות."
       },
       "resume": {
         "title": "קורות חיים",
         "description": "העלה PDF חדש; בחר את זה שיוגש ב‑/resume.",
         "uploadButton": "העלאת PDF",
         "uploading": "מעלה…",
-        "empty": "אין קורות חיים עדיין. לחץ על {uploadButton}."
+        "empty": "אין קורות חיים עדיין. לחץ על {uploadButton}.",
+        "activeBadge": "פעיל",
+        "isActiveTooltip": "זה קורות החיים הפעילים",
+        "setActiveTooltip": "הפוך לפעיל",
+        "openAria": "פתח את {name}",
+        "deleteAria": "מחק את {name}",
+        "setActiveAria": "הפוך את {name} לפעיל",
+        "isActiveAria": "{name} פעיל",
+        "deleteTitle": "מחק את \"{name}\"?",
+        "deleteActiveDesc": "אלה קורות החיים הפעילים. מחיקתם משאירה את /resume ריק עד שתפעיל אחרים. גם מוסר את הקובץ מ-Cloudinary. לא ניתן לבטל.",
+        "deleteDesc": "מסיר את הקובץ מ-Cloudinary ומהרשימה. לא ניתן לבטל."
       },
       "categories": {
         "subtitle": "אחת לכל פוסט. מחיקת קטגוריה שנעשה בה שימוש בפוסט חסומה."
@@ -467,7 +510,18 @@
         "filterUnused": "לא בשימוש",
         "empty": "אין מדיה עדיין. לחץ על {uploadButton}.",
         "noneMatch": "שום דבר לא תואם את המסנן.",
-        "inUseBadge": "בשימוש"
+        "inUseBadge": "בשימוש",
+        "previewAria": "תצוגה מקדימה של {name}",
+        "deleteAria": "מחק את {name}",
+        "deleteInUseAria": "מחק את {name} (בשימוש)",
+        "inUseTooltip": "בשימוש כשער פוסט",
+        "deleteTitle": "מחק את \"{name}\"?",
+        "deleteBlockedDesc": "חסום: התמונה מוגדרת כשער פוסט. הקצה אותה מחדש קודם.",
+        "deleteConfirmDesc": "מסיר את הקובץ מ-Cloudinary ומהרשימה. לא ניתן לבטל.",
+        "copyPublicId": "Public ID",
+        "copyUrl": "URL",
+        "copyPublicIdLabel": "public ID",
+        "copyUrlLabel": "URL"
       },
       "receipts": {
         "title": "קבלות",
@@ -548,7 +602,15 @@
         "deleteInUse": "חסום: {count} פוסטים עדיין משתמשים ב‑{entity} הזה. יש להקצות אותם מחדש קודם.",
         "deleteNoUse": "לא ניתן לבטל פעולה זו.",
         "empty": "אין {entityPlural} עדיין. לחץ על חדש.",
-        "create": "צור"
+        "create": "צור",
+        "colName": "שם",
+        "colSlug": "מזהה",
+        "colPosts": "פוסטים",
+        "editAria": "ערוך את {name}",
+        "deleteAria": "מחק את {name}",
+        "deleteInUseAria": "מחק את {name} (בשימוש)",
+        "inUseTooltip": "{count, plural, one {בשימוש בפוסט אחד} other {בשימוש ב-# פוסטים}}",
+        "newButton": "חדש"
       },
       "skill": {
         "description": "מיומנויות מקובצות לפי חלקי קורות החיים בעמוד הציבורי.",
@@ -747,7 +809,13 @@
       "cachedUpdated": "Cached · updated {when}",
       "nDomains": "{n} domain(s)"
     },
-    "vercelRefreshed": "אנליטיקת Neon רועננה"
+    "vercelRefreshed": "אנליטיקת Neon רועננה",
+    "relativeTime": {
+      "justNow": "עכשיו",
+      "minutesAgo": "לפני {n} דק'",
+      "hoursAgo": "לפני {n} שע'",
+      "daysAgo": "לפני {n} ימים"
+    }
   },
   "login": {
     "title": "התחברות",

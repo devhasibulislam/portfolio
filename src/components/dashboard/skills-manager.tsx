@@ -72,6 +72,7 @@ export function SkillsManager({
   const tPage = useTranslations("dashboard.pages.skills");
   const tGroups = useTranslations("skills.groups");
   const tProf = useTranslations("skills.proficiency");
+  const tSkillForm = useTranslations("dashboard.forms.skill");
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<SkillRow | null>(null);
   const save = useAction(saveSkill);
@@ -132,12 +133,12 @@ export function SkillsManager({
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Name</TableHead>
-                      <TableHead className="w-40">Proficiency</TableHead>
-                      <TableHead className="w-20">Years</TableHead>
-                      <TableHead className="w-24">Order</TableHead>
-                      <TableHead className="w-24">Status</TableHead>
-                      <TableHead className="w-24 text-end">Actions</TableHead>
+                      <TableHead>{tPage("colName")}</TableHead>
+                      <TableHead className="w-40">{tPage("colProficiency")}</TableHead>
+                      <TableHead className="w-20">{tPage("colYears")}</TableHead>
+                      <TableHead className="w-24">{tPage("colOrder")}</TableHead>
+                      <TableHead className="w-24">{tPage("colStatus")}</TableHead>
+                      <TableHead className="w-24 text-end">{tPage("colActions")}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -165,7 +166,7 @@ export function SkillsManager({
                                 : "bg-muted text-muted-foreground"
                             }`}
                           >
-                            {r.status}
+                            {r.status === "active" ? tSkillForm("statusActive") : tSkillForm("statusArchived")}
                           </span>
                         </TableCell>
                         <TableCell className="text-end">
@@ -173,7 +174,7 @@ export function SkillsManager({
                             variant="ghost"
                             size="icon"
                             onClick={() => setEditing({ mode: "edit", row: r })}
-                            aria-label={`Edit ${r.name}`}
+                            aria-label={tPage("editAria", { name: r.name })}
                           >
                             <Pencil className="size-4" />
                           </Button>
@@ -181,7 +182,7 @@ export function SkillsManager({
                             variant="ghost"
                             size="icon"
                             onClick={() => setConfirmDelete(r)}
-                            aria-label={`Delete ${r.name}`}
+                            aria-label={tPage("deleteAria", { name: r.name })}
                           >
                             <Trash2 className="size-4" />
                           </Button>
@@ -209,7 +210,7 @@ export function SkillsManager({
         onOpenChange={(open) => !open && setConfirmDelete(null)}
         title={tPage("deleteDialogTitle")}
         description={
-          <>&quot;{confirmDelete?.name}&quot; will be permanently removed.</>
+          <>{tPage("deleteConfirm", { name: confirmDelete?.name ?? "" })}</>
         }
         pending={pending}
         onConfirm={() => confirmDelete && onDelete(confirmDelete)}

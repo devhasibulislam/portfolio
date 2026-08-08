@@ -161,7 +161,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                   {r.isActive ? (
                     <span className="text-primary inline-flex shrink-0 items-center gap-1 text-xs">
                       <CheckCircle2 className="size-3.5" />
-                      Active
+                      {tPage("activeBadge")}
                     </span>
                   ) : null}
                 </div>
@@ -193,14 +193,14 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                         }}
                         aria-label={
                           r.isActive
-                            ? `${r.originalName} is active`
-                            : `Set ${r.originalName} active`
+                            ? tPage("isActiveAria", { name: r.originalName })
+                            : tPage("setActiveAria", { name: r.originalName })
                         }
                       />
                     </span>
                   </TooltipTrigger>
                   <TooltipContent>
-                    {r.isActive ? "This is the active resume" : "Set as active"}
+                    {r.isActive ? tPage("isActiveTooltip") : tPage("setActiveTooltip")}
                   </TooltipContent>
                 </Tooltip>
                 <Button size="icon" variant="ghost" asChild>
@@ -208,7 +208,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                     href={r.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Open ${r.originalName}`}
+                    aria-label={tPage("openAria", { name: r.originalName })}
                   >
                     <ExternalLink className="size-4" />
                   </a>
@@ -216,7 +216,7 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                 <Button
                   size="icon"
                   variant="ghost"
-                  aria-label={`Delete ${r.originalName}`}
+                  aria-label={tPage("deleteAria", { name: r.originalName })}
                   onClick={() => setConfirmDelete(r)}
                 >
                   <Trash2 className="size-4" />
@@ -230,11 +230,11 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
       <ConfirmDeleteDialog
         open={!!confirmDelete}
         onOpenChange={(o) => !o && setConfirmDelete(null)}
-        title={<>Delete &quot;{confirmDelete?.originalName}&quot;?</>}
+        title={<>{tPage("deleteTitle", { name: confirmDelete?.originalName ?? "" })}</>}
         description={
           confirmDelete?.isActive
-            ? "This is the active resume. Deleting it leaves /resume with nothing to serve until you activate another one. It also removes the file from Cloudinary. This can't be undone."
-            : "Removes the file from Cloudinary and this list. This can't be undone."
+            ? tPage("deleteActiveDesc")
+            : tPage("deleteDesc")
         }
         pending={pending}
         destructive
