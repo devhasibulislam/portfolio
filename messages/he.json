@@ -192,7 +192,10 @@
     "scrollForMore": "גלול לעוד",
     "listEnd": "הגעת לסוף.",
     "categoryEyebrow": "קטגוריה",
-    "tagEyebrow": "תגית"
+    "tagEyebrow": "תגית",
+    "loadError": "לא ניתן היה לטעון עוד פוסטים. נסה שוב.",
+    "categoryMetaDescription": "פוסטים בקטגוריה {name}.",
+    "tagMetaDescription": "פוסטים עם התגית {name}."
   },
   "projects": {
     "kicker": "עבודה",
@@ -833,5 +836,8 @@
     "light": "בהיר",
     "dark": "כהה",
     "system": "מערכת"
+  },
+  "common": {
+    "notFoundTitle": "לא נמצא"
   }
 }

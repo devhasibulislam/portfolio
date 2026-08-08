@@ -29,7 +29,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const role = await loadRole(slug);
-  if (!role) return { title: "Not found" };
+  const tCommon = await getTranslations("common");
+  if (!role) return { title: tCommon("notFoundTitle") };
 
   const title = role.metaTitle ?? `${role.role} · ${role.company}`;
   const description = role.metaDescription ?? role.summary;

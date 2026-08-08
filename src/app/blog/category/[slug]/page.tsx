@@ -30,10 +30,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const { category } = await loadPage(slug);
-  if (!category) return { title: "Not found" };
+  const [tCommon, tBlog] = await Promise.all([
+    getTranslations("common"),
+    getTranslations("blog"),
+  ]);
+  if (!category) return { title: tCommon("notFoundTitle") };
   return {
     title: category.name,
-    description: `Posts in ${category.name}.`,
+    description: tBlog("categoryMetaDescription", { name: category.name }),
     alternates: { canonical: `/blog/category/${category.slug}` },
   };
 }
@@ -57,7 +61,10 @@ export default async function CategoryPage({
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
       <PageBreadcrumb
-        trail={[{ label: t("heading"), href: "/blog" }, { label: category.name }]}
+        trail={[
+          { label: t("heading"), href: "/blog" },
+          { label: category.name },
+        ]}
       />
       <header className="mb-10">
         <p className="text-muted-foreground text-sm">{t("categoryEyebrow")}</p>

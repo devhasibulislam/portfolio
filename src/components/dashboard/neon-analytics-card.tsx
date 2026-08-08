@@ -31,6 +31,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
   const router = useRouter();
   const t = useTranslations("dashboard");
   const tN = useTranslations("dashboard.neon");
+  const tRel = useTranslations("dashboard.relativeTime");
   const [pending, startTransition] = useTransition();
 
   const onRefresh = () =>
@@ -200,7 +201,7 @@ export function NeonAnalyticsCard({ data }: { data: NeonAnalytics }) {
       </div>
 
       <footer className="text-muted-foreground mt-4 text-[11px]">
-        {tN("cachedUpdated", { when: relativeTime(data.fetchedAt) })}
+        {tN("cachedUpdated", { when: relativeTime(data.fetchedAt, tRel) })}
         {data.suspendTimeoutSeconds === 0 ? ` · ${tN("scalesToZero")}` : null}
         {data.autoscalingMaxCu != null
           ? ` · ${tN("autoscale", { min: data.autoscalingMinCu ?? 0, max: data.autoscalingMaxCu })}`
@@ -280,9 +281,12 @@ function formatCountdown(iso: string | null): string {
   return `${hours}h`;
 }
 
-function relativeTime(iso: string): string {
+function relativeTime(
+  iso: string,
+  tRel: (key: string, values?: Record<string, string | number>) => string,
+): string {
   const s = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1000);
-  if (s < 60) return "just now";
-  if (s < 3600) return `${Math.floor(s / 60)} min ago`;
-  return `${Math.floor(s / 3600)} hr ago`;
+  if (s < 60) return tRel("justNow");
+  if (s < 3600) return tRel("minutesAgo", { n: Math.floor(s / 60) });
+  return tRel("hoursAgo", { n: Math.floor(s / 3600) });
 }

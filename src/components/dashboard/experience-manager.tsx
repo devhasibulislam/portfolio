@@ -155,7 +155,9 @@ export function ExperienceManager({
                 <TableHead className="w-48">{tPage("colCompany")}</TableHead>
                 <TableHead className="w-40">{tPage("colPeriod")}</TableHead>
                 <TableHead className="w-28">{tPage("colStatus")}</TableHead>
-                <TableHead className="w-24 text-end">{tPage("colActions")}</TableHead>
+                <TableHead className="w-24 text-end">
+                  {tPage("colActions")}
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -189,7 +191,9 @@ export function ExperienceManager({
                           : "bg-muted text-muted-foreground"
                       }`}
                     >
-                      {r.status === "published" ? tCommon("published") : tCommon("draft")}
+                      {r.status === "published"
+                        ? tCommon("published")
+                        : tCommon("draft")}
                     </span>
                   </TableCell>
                   <TableCell className="text-end">
@@ -198,7 +202,10 @@ export function ExperienceManager({
                       size="icon"
                       onClick={() => onEdit(r)}
                       disabled={pending && loadingId === r.id}
-                      aria-label={tPage("editAria", { role: r.role, company: r.company })}
+                      aria-label={tPage("editAria", {
+                        role: r.role,
+                        company: r.company,
+                      })}
                     >
                       <Pencil className="size-4" />
                     </Button>
@@ -206,7 +213,10 @@ export function ExperienceManager({
                       variant="ghost"
                       size="icon"
                       onClick={() => setConfirmDelete(r)}
-                      aria-label={tPage("deleteAria", { role: r.role, company: r.company })}
+                      aria-label={tPage("deleteAria", {
+                        role: r.role,
+                        company: r.company,
+                      })}
                     >
                       <Trash2 className="size-4" />
                     </Button>

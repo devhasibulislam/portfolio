@@ -161,7 +161,9 @@ export function ProjectsManager({
                 <TableHead className="w-40">{tPage("colCategory")}</TableHead>
                 <TableHead className="w-24">{tPage("colOrder")}</TableHead>
                 <TableHead className="w-28">{tPage("colStatus")}</TableHead>
-                <TableHead className="w-24 text-end">{tPage("colActions")}</TableHead>
+                <TableHead className="w-24 text-end">
+                  {tPage("colActions")}
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -189,7 +191,9 @@ export function ProjectsManager({
                           : "bg-muted text-muted-foreground"
                       }`}
                     >
-                      {r.status === "published" ? tCommon("published") : tCommon("draft")}
+                      {r.status === "published"
+                        ? tCommon("published")
+                        : tCommon("draft")}
                     </span>
                   </TableCell>
                   <TableCell className="text-end">

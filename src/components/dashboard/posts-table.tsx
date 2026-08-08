@@ -40,9 +40,13 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
         <TableHeader>
           <TableRow>
             <TableHead>{tPage("colTitle")}</TableHead>
-            <TableHead className="hidden md:table-cell">{tPage("colCategory")}</TableHead>
+            <TableHead className="hidden md:table-cell">
+              {tPage("colCategory")}
+            </TableHead>
             <TableHead>{tPage("colStatus")}</TableHead>
-            <TableHead className="hidden md:table-cell">{tPage("colUpdated")}</TableHead>
+            <TableHead className="hidden md:table-cell">
+              {tPage("colUpdated")}
+            </TableHead>
             <TableHead className="w-1" />
           </TableRow>
         </TableHeader>
@@ -174,7 +178,9 @@ function StatusSwitch({ row }: { row: PostRow }) {
                 router.refresh();
               });
             }}
-            aria-label={isPublished ? tCommon("moveToDraft") : tCommon("publish")}
+            aria-label={
+              isPublished ? tCommon("moveToDraft") : tCommon("publish")
+            }
           />
           <StatusPill status={optimisticStatus} />
         </span>

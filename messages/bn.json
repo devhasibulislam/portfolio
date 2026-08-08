@@ -192,7 +192,10 @@
     "scrollForMore": "আরও দেখতে স্ক্রল করুন",
     "listEnd": "শেষ পর্যন্ত পৌঁছে গেছেন।",
     "categoryEyebrow": "ক্যাটাগরি",
-    "tagEyebrow": "ট্যাগ"
+    "tagEyebrow": "ট্যাগ",
+    "loadError": "আরও পোস্ট লোড করা যায়নি। আবার চেষ্টা করুন।",
+    "categoryMetaDescription": "{name} বিভাগের পোস্ট।",
+    "tagMetaDescription": "{name} ট্যাগের পোস্ট।"
   },
   "projects": {
     "kicker": "কাজ",
@@ -833,5 +836,8 @@
     "light": "হালকা",
     "dark": "গাঢ়",
     "system": "সিস্টেম"
+  },
+  "common": {
+    "notFoundTitle": "পাওয়া যায়নি"
   }
 }

@@ -30,10 +30,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const { tagRow } = await loadPage(slug);
-  if (!tagRow) return { title: "Not found" };
+  const [tCommon, tBlog] = await Promise.all([
+    getTranslations("common"),
+    getTranslations("blog"),
+  ]);
+  if (!tagRow) return { title: tCommon("notFoundTitle") };
   return {
     title: `#${tagRow.name}`,
-    description: `Posts tagged ${tagRow.name}.`,
+    description: tBlog("tagMetaDescription", { name: tagRow.name }),
     alternates: { canonical: `/blog/tag/${tagRow.slug}` },
   };
 }
@@ -46,12 +50,17 @@ export default async function TagPage({ params }: { params: Promise<Params> }) {
   ]);
   if (!tagRow) notFound();
 
-  const boundLoader = loadMorePublishedPosts.bind(null, { tagSlug: tagRow.slug });
+  const boundLoader = loadMorePublishedPosts.bind(null, {
+    tagSlug: tagRow.slug,
+  });
 
   return (
     <main className="mx-auto w-full max-w-6xl px-6 pt-24 pb-12">
       <PageBreadcrumb
-        trail={[{ label: t("heading"), href: "/blog" }, { label: `#${tagRow.name}` }]}
+        trail={[
+          { label: t("heading"), href: "/blog" },
+          { label: `#${tagRow.name}` },
+        ]}
       />
       <header className="mb-10">
         <p className="text-muted-foreground text-sm">{t("tagEyebrow")}</p>

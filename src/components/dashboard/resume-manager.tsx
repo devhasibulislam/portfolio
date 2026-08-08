@@ -200,7 +200,9 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
                     </span>
                   </TooltipTrigger>
                   <TooltipContent>
-                    {r.isActive ? tPage("isActiveTooltip") : tPage("setActiveTooltip")}
+                    {r.isActive
+                      ? tPage("isActiveTooltip")
+                      : tPage("setActiveTooltip")}
                   </TooltipContent>
                 </Tooltip>
                 <Button size="icon" variant="ghost" asChild>
@@ -230,7 +232,11 @@ export function ResumeManager({ rows }: { rows: ResumeRow[] }) {
       <ConfirmDeleteDialog
         open={!!confirmDelete}
         onOpenChange={(o) => !o && setConfirmDelete(null)}
-        title={<>{tPage("deleteTitle", { name: confirmDelete?.originalName ?? "" })}</>}
+        title={
+          <>
+            {tPage("deleteTitle", { name: confirmDelete?.originalName ?? "" })}
+          </>
+        }
         description={
           confirmDelete?.isActive
             ? tPage("deleteActiveDesc")

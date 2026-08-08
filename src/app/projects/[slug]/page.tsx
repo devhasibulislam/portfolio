@@ -40,7 +40,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = await loadProject(slug);
-  if (!project) return { title: "Not found" };
+  const tCommon = await getTranslations("common");
+  if (!project) return { title: tCommon("notFoundTitle") };
 
   const title = project.metaTitle ?? project.title;
   const description = project.metaDescription ?? project.tagline;

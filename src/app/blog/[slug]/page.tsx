@@ -29,7 +29,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = await loadPost(slug);
-  if (!post) return { title: "Not found" };
+  const tCommon = await getTranslations("common");
+  if (!post) return { title: tCommon("notFoundTitle") };
 
   const url = `${SITE_URL}/blog/${post.slug}`;
   const og = coverOgUrl(post.coverPublicId);
@@ -98,7 +99,10 @@ export default async function BlogPostPage({
         />
 
         <PageBreadcrumb
-          trail={[{ label: tBlog("heading"), href: "/blog" }, { label: post.title }]}
+          trail={[
+            { label: tBlog("heading"), href: "/blog" },
+            { label: post.title },
+          ]}
         />
 
         <header className="mb-10 flex flex-col gap-4">

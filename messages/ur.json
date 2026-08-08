@@ -192,7 +192,10 @@
     "scrollForMore": "مزید کے لیے سکرول کریں",
     "listEnd": "آپ آخر تک پہنچ گئے ہیں۔",
     "categoryEyebrow": "زمرہ",
-    "tagEyebrow": "ٹیگ"
+    "tagEyebrow": "ٹیگ",
+    "loadError": "مزید پوسٹس لوڈ نہیں ہو سکیں۔ دوبارہ کوشش کریں۔",
+    "categoryMetaDescription": "{name} میں پوسٹس۔",
+    "tagMetaDescription": "{name} ٹیگ والی پوسٹس۔"
   },
   "projects": {
     "kicker": "کام",
@@ -833,5 +836,8 @@
     "light": "روشن",
     "dark": "گہرا",
     "system": "سسٹم"
+  },
+  "common": {
+    "notFoundTitle": "نہیں ملا"
   }
 }

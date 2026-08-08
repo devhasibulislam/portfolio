@@ -96,7 +96,9 @@ export function SlugEntityTable({
           <TableHeader>
             <TableRow>
               <TableHead>{tSlug("colName")}</TableHead>
-              <TableHead className="hidden md:table-cell">{tSlug("colSlug")}</TableHead>
+              <TableHead className="hidden md:table-cell">
+                {tSlug("colSlug")}
+              </TableHead>
               <TableHead className="text-end">{tSlug("colPosts")}</TableHead>
               <TableHead className="w-1" />
             </TableRow>
@@ -149,7 +151,9 @@ export function SlugEntityTable({
                                 size="icon"
                                 variant="ghost"
                                 disabled
-                                aria-label={tSlug("deleteInUseAria", { name: r.name })}
+                                aria-label={tSlug("deleteInUseAria", {
+                                  name: r.name,
+                                })}
                                 className="opacity-50"
                               >
                                 <Trash2 className="size-4" />

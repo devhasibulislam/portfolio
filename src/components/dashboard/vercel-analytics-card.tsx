@@ -33,6 +33,7 @@ export function VercelAnalyticsCard({ data }: { data: VercelAnalytics }) {
   const router = useRouter();
   const t = useTranslations("dashboard");
   const tV = useTranslations("dashboard.vercel");
+  const tRel = useTranslations("dashboard.relativeTime");
   const [pending, startTransition] = useTransition();
 
   const onRefresh = () =>
@@ -201,7 +202,7 @@ export function VercelAnalyticsCard({ data }: { data: VercelAnalytics }) {
       ) : null}
 
       <footer className="text-muted-foreground mt-4 text-[11px]">
-        {tV("cachedUpdated", { when: relativeTime(data.fetchedAt) })}
+        {tV("cachedUpdated", { when: relativeTime(data.fetchedAt, tRel) })}
         {data.domains.length > 0
           ? ` · ${tV("nDomains", { n: data.domains.length })}`
           : null}
@@ -217,6 +218,7 @@ function DeploymentRow({
   d: VercelDeployment;
   compact?: boolean;
 }) {
+  const tRel = useTranslations("dashboard.relativeTime");
   const stateColor =
     d.state === "READY"
       ? "text-emerald-600 dark:text-emerald-400"
@@ -260,7 +262,7 @@ function DeploymentRow({
       </span>
       <span className="text-muted-foreground inline-flex items-center gap-1 text-xs">
         <Clock className="size-3" />
-        {relativeTime(new Date(d.createdAt).toISOString())}
+        {relativeTime(new Date(d.createdAt).toISOString(), tRel)}
       </span>
     </a>
   );
@@ -301,10 +303,13 @@ function Stat({
   );
 }
 
-function relativeTime(iso: string): string {
+function relativeTime(
+  iso: string,
+  tRel: (key: string, values?: Record<string, string | number>) => string,
+): string {
   const s = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1000);
-  if (s < 60) return "just now";
-  if (s < 3600) return `${Math.floor(s / 60)} min ago`;
-  if (s < 86400) return `${Math.floor(s / 3600)} hr ago`;
-  return `${Math.floor(s / 86400)} d ago`;
+  if (s < 60) return tRel("justNow");
+  if (s < 3600) return tRel("minutesAgo", { n: Math.floor(s / 60) });
+  if (s < 86400) return tRel("hoursAgo", { n: Math.floor(s / 3600) });
+  return tRel("daysAgo", { n: Math.floor(s / 86400) });
 }

@@ -134,11 +134,21 @@ export function SkillsManager({
                   <TableHeader>
                     <TableRow>
                       <TableHead>{tPage("colName")}</TableHead>
-                      <TableHead className="w-40">{tPage("colProficiency")}</TableHead>
-                      <TableHead className="w-20">{tPage("colYears")}</TableHead>
-                      <TableHead className="w-24">{tPage("colOrder")}</TableHead>
-                      <TableHead className="w-24">{tPage("colStatus")}</TableHead>
-                      <TableHead className="w-24 text-end">{tPage("colActions")}</TableHead>
+                      <TableHead className="w-40">
+                        {tPage("colProficiency")}
+                      </TableHead>
+                      <TableHead className="w-20">
+                        {tPage("colYears")}
+                      </TableHead>
+                      <TableHead className="w-24">
+                        {tPage("colOrder")}
+                      </TableHead>
+                      <TableHead className="w-24">
+                        {tPage("colStatus")}
+                      </TableHead>
+                      <TableHead className="w-24 text-end">
+                        {tPage("colActions")}
+                      </TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -166,7 +176,9 @@ export function SkillsManager({
                                 : "bg-muted text-muted-foreground"
                             }`}
                           >
-                            {r.status === "active" ? tSkillForm("statusActive") : tSkillForm("statusArchived")}
+                            {r.status === "active"
+                              ? tSkillForm("statusActive")
+                              : tSkillForm("statusArchived")}
                           </span>
                         </TableCell>
                         <TableCell className="text-end">

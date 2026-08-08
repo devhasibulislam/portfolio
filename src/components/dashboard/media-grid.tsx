@@ -109,7 +109,9 @@ export function MediaGrid({ rows }: { rows: MediaRow[] }) {
                         size="icon"
                         variant="secondary"
                         disabled
-                        aria-label={tPage("deleteInUseAria", { name: m.originalName })}
+                        aria-label={tPage("deleteInUseAria", {
+                          name: m.originalName,
+                        })}
                         className="opacity-70 shadow-md"
                       >
                         <Trash2 className="size-4" />
@@ -187,9 +189,7 @@ function DeleteDialog({
       onOpenChange={onOpenChange}
       title={<>{tPage("deleteTitle", { name: row.originalName })}</>}
       description={
-        row.inUse
-          ? tPage("deleteBlockedDesc")
-          : tPage("deleteConfirmDesc")
+        row.inUse ? tPage("deleteBlockedDesc") : tPage("deleteConfirmDesc")
       }
       pending={del.pending}
       disabled={row.inUse}

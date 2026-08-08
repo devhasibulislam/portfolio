@@ -79,7 +79,7 @@ export function BlogInfiniteList({
 
       {error ? (
         <p role="alert" className="text-destructive py-4 text-center text-sm">
-          {error}
+          {t("loadError")}
         </p>
       ) : null}
     </>

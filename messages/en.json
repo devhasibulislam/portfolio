@@ -192,7 +192,10 @@
     "scrollForMore": "Scroll for more",
     "listEnd": "You've reached the end.",
     "categoryEyebrow": "Category",
-    "tagEyebrow": "Tag"
+    "tagEyebrow": "Tag",
+    "loadError": "Couldn't load more posts. Try again.",
+    "categoryMetaDescription": "Posts in {name}.",
+    "tagMetaDescription": "Posts tagged {name}."
   },
   "projects": {
     "kicker": "Work",
@@ -833,5 +836,8 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System"
+  },
+  "common": {
+    "notFoundTitle": "Not found"
   }
 }
