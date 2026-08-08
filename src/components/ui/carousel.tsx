@@ -195,14 +195,14 @@ function CarouselPrevious({
       disabled={!canScrollPrev}
       {...props}
       onClick={(e) => {
-        props.onClick?.(e)
-        if (!e.defaultPrevented) scrollPrev()
+        props.onClick?.(e);
+        if (!e.defaultPrevented) scrollPrev();
       }}
     >
       <ArrowLeft />
       <span className="sr-only">Previous slide</span>
     </Button>
-  )
+  );
 }
 
 function CarouselNext({
@@ -228,14 +228,14 @@ function CarouselNext({
       disabled={!canScrollNext}
       {...props}
       onClick={(e) => {
-        props.onClick?.(e)
-        if (!e.defaultPrevented) scrollNext()
+        props.onClick?.(e);
+        if (!e.defaultPrevented) scrollNext();
       }}
     >
       <ArrowRight />
       <span className="sr-only">Next slide</span>
     </Button>
-  )
+  );
 }
 
 export {

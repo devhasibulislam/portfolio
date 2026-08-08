@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
 import { ScrollReveal } from "./scroll-reveal";
 import { CountUp } from "./count-up";
+import { CountryCodeTooltip } from "./country-code-tooltip";
 
 /**
  * Track record strip — four hardcoded numbers that anchor the "senior
@@ -56,12 +57,10 @@ export async function SectionTrackRecord() {
                   {COUNTRY_CODES.map((code, i) => (
                     <span key={code}>
                       {i > 0 ? " · " : null}
-                      <abbr
-                        title={regionNames.of(code) ?? code}
-                        className="cursor-help no-underline decoration-dotted underline-offset-4 hover:underline"
-                      >
-                        {code}
-                      </abbr>
+                      <CountryCodeTooltip
+                        code={code}
+                        name={regionNames.of(code) ?? code}
+                      />
                     </span>
                   ))}
                 </>

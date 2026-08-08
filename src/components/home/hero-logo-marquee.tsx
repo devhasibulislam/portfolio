@@ -33,10 +33,7 @@ export function HeroLogoMarquee({
         {label}
       </p>
 
-      <div
-        className="group relative overflow-hidden"
-        aria-label={ariaLabel}
-      >
+      <div className="group relative overflow-hidden" aria-label={ariaLabel}>
         <div className="animate-marquee flex w-max items-center gap-16 py-2 group-hover:[animation-play-state:paused]">
           {[...companies, ...companies].map((c, i) => (
             <div

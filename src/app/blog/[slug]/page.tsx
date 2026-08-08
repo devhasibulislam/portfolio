@@ -159,7 +159,9 @@ export default async function BlogPostPage({
 
         {post.tags.length > 0 ? (
           <footer className="mt-12 flex flex-wrap items-center gap-2 border-t pt-6">
-            <span className="text-muted-foreground text-sm">{tBlog("tagsLabel")}</span>
+            <span className="text-muted-foreground text-sm">
+              {tBlog("tagsLabel")}
+            </span>
             {post.tags.map((t) => (
               <Link
                 key={t.slug}
