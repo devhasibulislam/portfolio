@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -33,13 +32,14 @@ import {
 } from "@/components/ui/table";
 import { PageHeader } from "@/components/dashboard/page-header";
 import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
-import { RequiredMark } from "@/components/dashboard/field-helpers";
+import {
+  CountedInput,
+  CountedTextarea,
+  RequiredMark,
+} from "@/components/dashboard/field-helpers";
 import type { ReceiptRow } from "@/lib/db/queries/receipts";
 import type { ReceiptInput } from "@/schemas/receipt";
-import {
-  deleteReceipt,
-  saveReceipt,
-} from "@/app/dashboard/receipts/actions";
+import { deleteReceipt, saveReceipt } from "@/app/dashboard/receipts/actions";
 
 type EditingState = { mode: "new" } | { mode: "edit"; row: ReceiptRow } | null;
 
@@ -181,19 +181,15 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
               name="kicker"
               label={tForm("kicker")}
               hint={tForm("kickerHint")}
-              defaultValue={
-                editing?.mode === "edit" ? editing.row.kicker : ""
-              }
-              maxLength={60}
+              defaultValue={editing?.mode === "edit" ? editing.row.kicker : ""}
+              max={60}
               required
             />
             <Field
               name="title"
               label={tForm("title")}
-              defaultValue={
-                editing?.mode === "edit" ? editing.row.title : ""
-              }
-              maxLength={120}
+              defaultValue={editing?.mode === "edit" ? editing.row.title : ""}
+              max={120}
               required
             />
 
@@ -201,14 +197,12 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
               <Label htmlFor="body">
                 {tForm("body")} <RequiredMark />
               </Label>
-              <Textarea
+              <CountedTextarea
                 id="body"
                 name="body"
                 rows={4}
-                maxLength={400}
-                defaultValue={
-                  editing?.mode === "edit" ? editing.row.body : ""
-                }
+                max={400}
+                defaultValue={editing?.mode === "edit" ? editing.row.body : ""}
                 required
               />
             </div>
@@ -220,19 +214,25 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
                 defaultValue={
                   editing?.mode === "edit" ? editing.row.ctaLabel : ""
                 }
-                maxLength={40}
+                max={40}
                 required
               />
-              <Field
-                name="ctaHref"
-                label={tForm("ctaHref")}
-                type="url"
-                placeholder="https://…"
-                defaultValue={
-                  editing?.mode === "edit" ? editing.row.ctaHref : ""
-                }
-                required
-              />
+              <div className="grid gap-2">
+                <Label htmlFor="ctaHref">
+                  {tForm("ctaHref")} <RequiredMark />
+                </Label>
+                <Input
+                  id="ctaHref"
+                  name="ctaHref"
+                  type="url"
+                  placeholder="https://…"
+                  maxLength={2048}
+                  defaultValue={
+                    editing?.mode === "edit" ? editing.row.ctaHref : ""
+                  }
+                  required
+                />
+              </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -317,8 +317,9 @@ function Field({
   label,
   hint,
   required,
+  max,
   ...rest
-}: React.ComponentProps<typeof Input> & {
+}: React.ComponentProps<typeof CountedInput> & {
   name: string;
   label: string;
   hint?: string;
@@ -329,10 +330,8 @@ function Field({
       <Label htmlFor={name}>
         {label} {required ? <RequiredMark /> : null}
       </Label>
-      <Input id={name} name={name} required={required} {...rest} />
-      {hint ? (
-        <p className="text-muted-foreground text-xs">{hint}</p>
-      ) : null}
+      <CountedInput id={name} name={name} required={required} max={max} {...rest} />
+      {hint ? <p className="text-muted-foreground text-xs">{hint}</p> : null}
     </div>
   );
 }

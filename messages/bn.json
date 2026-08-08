@@ -451,7 +451,7 @@
       },
       "receipts": {
         "title": "Receipts",
-        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show — order controls left-to-right.",
+        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show. Order controls left-to-right.",
         "newButton": "New receipt",
         "empty": "No receipts yet. Click {newButton} to add.",
         "newTitle": "New receipt",
@@ -646,7 +646,7 @@
       },
       "receipts": {
         "kicker": "Kicker",
-        "kickerHint": "The orange top line — a metric, count, or short claim.",
+        "kickerHint": "The orange top line: a metric, count, or short claim.",
         "title": "Title",
         "body": "Body",
         "ctaLabel": "CTA label",
