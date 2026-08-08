@@ -4,7 +4,7 @@ import { tag } from "@/lib/cache-tags";
 import { listPublicSkillsGrouped } from "@/lib/db/queries/skills";
 import { SKILL_GROUPS } from "@/lib/skill-groups";
 import { SkillPill, type SkillPillLabels } from "@/components/skill-pill";
-import { ScrollReveal } from "./scroll-reveal";
+import { DragScrollStrip } from "./drag-scroll-strip";
 import { SectionHeader, SeeAllLink, bezelInner, bezelOuter } from "./_shared";
 import { Spotlight } from "./spotlight";
 import { cn } from "@/lib/utils";
@@ -64,10 +64,8 @@ export async function SectionCoreSkills() {
         id="core-skills-title"
         action={<SeeAllLink href="/skills" label={t("seeAll")} />}
       />
-      <ScrollReveal
-        as="ul"
+      <DragScrollStrip
         className="scrollbar-thin -mx-6 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-px-6 px-6 pb-4"
-        stagger={0.06}
       >
         {ordered.map((g) => {
           const items = g.items
@@ -77,7 +75,6 @@ export async function SectionCoreSkills() {
           return (
             <li
               key={g.group}
-              data-reveal
               className="w-[85%] shrink-0 snap-start sm:w-[60%] md:w-105"
             >
               <Spotlight>
@@ -109,7 +106,7 @@ export async function SectionCoreSkills() {
             </li>
           );
         })}
-      </ScrollReveal>
+      </DragScrollStrip>
     </section>
   );
 }
