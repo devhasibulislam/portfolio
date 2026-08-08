@@ -96,9 +96,9 @@ export async function Hero() {
               <Image
                 src="/social/google-meet.webp"
                 alt=""
-                width={16}
-                height={16}
-                className="size-4 object-contain"
+                width={24}
+                height={24}
+                className="size-6 object-contain"
                 unoptimized
               />
             }
