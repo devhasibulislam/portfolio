@@ -207,32 +207,30 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
               />
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Field
-                name="ctaLabel"
-                label={tForm("ctaLabel")}
+            <Field
+              name="ctaLabel"
+              label={tForm("ctaLabel")}
+              defaultValue={
+                editing?.mode === "edit" ? editing.row.ctaLabel : ""
+              }
+              max={40}
+              required
+            />
+            <div className="grid gap-2">
+              <Label htmlFor="ctaHref">
+                {tForm("ctaHref")} <RequiredMark />
+              </Label>
+              <Input
+                id="ctaHref"
+                name="ctaHref"
+                type="url"
+                placeholder="https://…"
+                maxLength={2048}
                 defaultValue={
-                  editing?.mode === "edit" ? editing.row.ctaLabel : ""
+                  editing?.mode === "edit" ? editing.row.ctaHref : ""
                 }
-                max={40}
                 required
               />
-              <div className="grid gap-2">
-                <Label htmlFor="ctaHref">
-                  {tForm("ctaHref")} <RequiredMark />
-                </Label>
-                <Input
-                  id="ctaHref"
-                  name="ctaHref"
-                  type="url"
-                  placeholder="https://…"
-                  maxLength={2048}
-                  defaultValue={
-                    editing?.mode === "edit" ? editing.row.ctaHref : ""
-                  }
-                  required
-                />
-              </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -330,7 +328,13 @@ function Field({
       <Label htmlFor={name}>
         {label} {required ? <RequiredMark /> : null}
       </Label>
-      <CountedInput id={name} name={name} required={required} max={max} {...rest} />
+      <CountedInput
+        id={name}
+        name={name}
+        required={required}
+        max={max}
+        {...rest}
+      />
       {hint ? <p className="text-muted-foreground text-xs">{hint}</p> : null}
     </div>
   );
