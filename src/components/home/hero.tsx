@@ -45,13 +45,12 @@ export async function Hero() {
           {t("title")}
         </h1>
 
-        {/* Role + location — one voice, not a chip stack. */}
+        {/* Role — one voice, not a chip stack. */}
         <p
           data-hero-line
           className="text-muted-foreground mt-6 max-w-2xl text-base leading-relaxed text-balance sm:text-lg"
         >
           {t("role")}
-          <span className="text-muted-foreground/70"> · {t("location")}</span>
         </p>
 
         {/* Metric line — prose, not a pill. Numbers in mono because

@@ -64,9 +64,7 @@ export async function SectionCoreSkills() {
         id="core-skills-title"
         action={<SeeAllLink href="/skills" label={t("seeAll")} />}
       />
-      <DragScrollStrip
-        className="scrollbar-thin -mx-6 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-px-6 px-6 pb-4"
-      >
+      <DragScrollStrip className="scrollbar-thin -mx-6 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto scroll-px-6 px-6 pb-4">
         {ordered.map((g) => {
           const items = g.items
             .slice()

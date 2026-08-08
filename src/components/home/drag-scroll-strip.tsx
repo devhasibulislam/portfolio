@@ -70,7 +70,10 @@ export function DragScrollStrip({
   return (
     <ul
       ref={ref}
-      className={cn("cursor-grab select-none active:cursor-grabbing", className)}
+      className={cn(
+        "cursor-grab select-none active:cursor-grabbing",
+        className,
+      )}
     >
       {children}
     </ul>
