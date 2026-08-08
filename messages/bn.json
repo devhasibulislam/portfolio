@@ -328,9 +328,9 @@
       "uploadFailed": "আপলোড ব্যর্থ"
     },
     "receipts": {
-      "added": "Receipt added",
-      "updated": "Receipt updated",
-      "deleted": "Deleted \"{title}\""
+      "added": "রিসিপ্ট যোগ করা হয়েছে",
+      "updated": "রিসিপ্ট আপডেট করা হয়েছে",
+      "deleted": "\"{title}\" মুছে ফেলা হয়েছে"
     }
   },
   "brand": {
@@ -364,7 +364,7 @@
         "categories": "ক্যাটাগরি",
         "tags": "ট্যাগ",
         "media": "মিডিয়া",
-        "receipts": "Receipts"
+        "receipts": "রিসিপ্ট"
       },
       "descriptions": {
         "posts": "ব্লগ পোস্ট লিখুন এবং প্রকাশ করুন।",
@@ -375,7 +375,7 @@
         "categories": "প্রতি পোস্টে একটি ক্যাটাগরি।",
         "tags": "টপিক অনুসারে পোস্ট গ্রুপ করুন (সর্বোচ্চ ৮টি)।",
         "media": "পোস্টে পুনঃব্যবহারযোগ্য Cloudinary আপলোড।",
-        "receipts": "Signature cards on the home page. Max 3 active."
+        "receipts": "হোম পেজের সিগনেচার কার্ড। সর্বোচ্চ ৩টি সক্রিয়।"
       }
     },
     "neonRefreshed": "Neon অ্যানালিটিক্স রিফ্রেশ হয়েছে",
@@ -450,21 +450,21 @@
         "inUseBadge": "ব্যবহৃত"
       },
       "receipts": {
-        "title": "Receipts",
-        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show. Order controls left-to-right.",
-        "newButton": "New receipt",
-        "empty": "No receipts yet. Click {newButton} to add.",
-        "newTitle": "New receipt",
-        "editTitle": "Edit receipt",
-        "dialogDescription": "Kicker + title + body render on the card. CTA opens in a new tab.",
-        "deleteTitle": "Delete receipt?",
-        "deleteConfirm": "Deletes \"{title}\" permanently. This can't be undone.",
-        "actions": "Actions",
-        "cancel": "Cancel",
-        "save": "Save",
-        "saving": "Saving…",
-        "editAria": "Edit {title}",
-        "deleteAria": "Delete {title}"
+        "title": "রিসিপ্ট",
+        "description": "হোম পেজের সিগনেচার কার্ড। {active, plural, =0 {এখনো কোনো সক্রিয় কার্ড নেই।} other {# টি সক্রিয় কার্ড।}} শুধু প্রথম ৩টি সক্রিয় দেখানো হয়। অর্ডার বাম থেকে ডানের ক্রম নিয়ন্ত্রণ করে।",
+        "newButton": "নতুন রিসিপ্ট",
+        "empty": "এখনো কোনো রিসিপ্ট নেই। যোগ করতে {newButton} ক্লিক করুন।",
+        "newTitle": "নতুন রিসিপ্ট",
+        "editTitle": "রিসিপ্ট সম্পাদনা",
+        "dialogDescription": "কার্ডে কিকার, শিরোনাম এবং বডি রেন্ডার হয়। CTA নতুন ট্যাবে খোলে।",
+        "deleteTitle": "রিসিপ্ট মুছবেন?",
+        "deleteConfirm": "\"{title}\" স্থায়ীভাবে মুছে যাবে। এটি আর ফেরানো যাবে না।",
+        "actions": "অ্যাকশন",
+        "cancel": "বাতিল",
+        "save": "সংরক্ষণ",
+        "saving": "সংরক্ষণ হচ্ছে…",
+        "editAria": "{title} সম্পাদনা",
+        "deleteAria": "{title} মুছুন"
       }
     },
     "forms": {
@@ -645,17 +645,17 @@
         "createButton": "প্রকল্প তৈরি করুন"
       },
       "receipts": {
-        "kicker": "Kicker",
-        "kickerHint": "The orange top line: a metric, count, or short claim.",
-        "title": "Title",
-        "body": "Body",
-        "ctaLabel": "CTA label",
-        "ctaHref": "CTA link",
-        "displayOrder": "Order",
-        "status": "Status",
+        "kicker": "কিকার",
+        "kickerHint": "কমলা রঙের উপরের লাইন: একটি মেট্রিক, সংখ্যা বা ছোট দাবি।",
+        "title": "শিরোনাম",
+        "body": "বডি",
+        "ctaLabel": "CTA লেবেল",
+        "ctaHref": "CTA লিংক",
+        "displayOrder": "অর্ডার",
+        "status": "স্ট্যাটাস",
         "statusLabels": {
-          "active": "Active",
-          "archived": "Archived"
+          "active": "সক্রিয়",
+          "archived": "আর্কাইভড"
         }
       }
     },
