@@ -31,7 +31,7 @@ export function CtaButton({
   const primary =
     "group h-12 gap-3 rounded-full bg-[var(--color-accent)] pe-1.5 ps-6 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[0_0_0_1px_rgba(232,107,28,0.35),0_8px_28px_-6px_rgba(232,107,28,0.55)] transition-[background-color,transform,box-shadow] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-[var(--color-accent-strong)] hover:shadow-[0_0_0_1px_rgba(232,107,28,0.5),0_10px_32px_-6px_rgba(232,107,28,0.7)] active:scale-[0.98]";
   const secondary =
-    "h-12 gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-5 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]";
+    "group h-12 gap-3 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 ps-1.5 pe-6 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]";
 
   const cls = cn(variant === "primary" ? primary : secondary, className);
 
@@ -45,7 +45,11 @@ export function CtaButton({
       </>
     ) : (
       <>
-        {leadIcon}
+        {leadIcon ? (
+          <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)]/80 text-[var(--color-fg)] transition-colors group-hover:border-[var(--color-accent)]/40 group-hover:text-[var(--color-accent)]">
+            {leadIcon}
+          </span>
+        ) : null}
         {children}
       </>
     );
