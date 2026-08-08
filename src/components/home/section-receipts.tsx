@@ -1,23 +1,25 @@
+import { cacheTag } from "next/cache";
 import { getTranslations } from "next-intl/server";
+import { tag } from "@/lib/cache-tags";
+import { listActiveReceipts } from "@/lib/db/queries/receipts";
 import { ScrollReveal } from "./scroll-reveal";
 import { ArrowPill, BezelLink, SectionHeader } from "./_shared";
 
-type Receipt = { key: "latency" | "rls" | "pipeline"; href: string };
-
-const RECEIPTS: Receipt[] = [
-  {
-    key: "latency",
-    href: "https://github.com/devhasibulislam/api-latency-case-study",
-  },
-  {
-    key: "rls",
-    href: "https://github.com/devhasibulislam/nestjs-multitenant-starter",
-  },
-  { key: "pipeline", href: "https://messagemind.ai/" },
-];
+async function loadReceipts() {
+  "use cache";
+  cacheTag(tag.receipts());
+  return listActiveReceipts();
+}
 
 export async function SectionReceipts() {
-  const t = await getTranslations("home.receipts");
+  const [rows, t] = await Promise.all([
+    loadReceipts(),
+    getTranslations("home.receipts"),
+  ]);
+
+  // Hide the section entirely if the curator hasn't seeded it — better an
+  // absent block than a lonely one or two cards.
+  if (rows.length === 0) return null;
 
   return (
     <section
@@ -30,14 +32,14 @@ export async function SectionReceipts() {
         className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         stagger={0.1}
       >
-        {RECEIPTS.map((r) => (
-          <li key={r.key} data-reveal>
+        {rows.map((r) => (
+          <li key={r.id} data-reveal>
             <ReceiptCard
-              href={r.href}
-              metric={t(`${r.key}.metric`)}
-              title={t(`${r.key}.title`)}
-              body={t(`${r.key}.body`)}
-              cta={t(`${r.key}.cta`)}
+              href={r.ctaHref}
+              metric={r.kicker}
+              title={r.title}
+              body={r.body}
+              cta={r.ctaLabel}
             />
           </li>
         ))}

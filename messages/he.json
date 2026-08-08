@@ -326,6 +326,11 @@
       "pdfOnly": "רק PDF מותר.",
       "fileTooLarge": "הקובץ {size} MB. מקסימום {max} MB.",
       "uploadFailed": "ההעלאה נכשלה"
+    },
+    "receipts": {
+      "added": "Receipt added",
+      "updated": "Receipt updated",
+      "deleted": "Deleted \"{title}\""
     }
   },
   "brand": {
@@ -358,7 +363,8 @@
         "resume": "קורות חיים",
         "categories": "קטגוריות",
         "tags": "תגיות",
-        "media": "מדיה"
+        "media": "מדיה",
+        "receipts": "Receipts"
       },
       "descriptions": {
         "posts": "כתוב ופרסם פוסטים בבלוג.",
@@ -368,7 +374,8 @@
         "resume": "PDF פעיל אחד המוגש ב‑/resume.",
         "categories": "קטגוריה אחת לכל פוסט.",
         "tags": "קבץ פוסטים לפי נושא (עד 8 לפוסט).",
-        "media": "העלאות Cloudinary לשימוש חוזר בפוסטים."
+        "media": "העלאות Cloudinary לשימוש חוזר בפוסטים.",
+        "receipts": "Signature cards on the home page. Max 3 active."
       }
     },
     "neonRefreshed": "אנליטיקת Neon רועננה",
@@ -441,6 +448,23 @@
         "empty": "אין מדיה עדיין. לחץ על {uploadButton}.",
         "noneMatch": "שום דבר לא תואם את המסנן.",
         "inUseBadge": "בשימוש"
+      },
+      "receipts": {
+        "title": "Receipts",
+        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show — order controls left-to-right.",
+        "newButton": "New receipt",
+        "empty": "No receipts yet. Click {newButton} to add.",
+        "newTitle": "New receipt",
+        "editTitle": "Edit receipt",
+        "dialogDescription": "Kicker + title + body render on the card. CTA opens in a new tab.",
+        "deleteTitle": "Delete receipt?",
+        "deleteConfirm": "Deletes \"{title}\" permanently. This can't be undone.",
+        "actions": "Actions",
+        "cancel": "Cancel",
+        "save": "Save",
+        "saving": "Saving…",
+        "editAria": "Edit {title}",
+        "deleteAria": "Delete {title}"
       }
     },
     "forms": {
@@ -619,6 +643,20 @@
         "noindexHint": "הסתר ממנועי חיפוש.",
         "cancel": "ביטול",
         "createButton": "צור פרויקט"
+      },
+      "receipts": {
+        "kicker": "Kicker",
+        "kickerHint": "The orange top line — a metric, count, or short claim.",
+        "title": "Title",
+        "body": "Body",
+        "ctaLabel": "CTA label",
+        "ctaHref": "CTA link",
+        "displayOrder": "Order",
+        "status": "Status",
+        "statusLabels": {
+          "active": "Active",
+          "archived": "Archived"
+        }
       }
     },
     "imagePicker": {

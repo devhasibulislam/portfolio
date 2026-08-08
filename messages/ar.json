@@ -326,6 +326,11 @@
       "pdfOnly": "PDF فقط مسموح.",
       "fileTooLarge": "حجم الملف {size} MB. الحد الأقصى {max} MB.",
       "uploadFailed": "فشل الرفع"
+    },
+    "receipts": {
+      "added": "Receipt added",
+      "updated": "Receipt updated",
+      "deleted": "Deleted \"{title}\""
     }
   },
   "brand": {
@@ -358,7 +363,8 @@
         "resume": "السيرة الذاتية",
         "categories": "التصنيفات",
         "tags": "الوسوم",
-        "media": "الوسائط"
+        "media": "الوسائط",
+        "receipts": "Receipts"
       },
       "descriptions": {
         "posts": "اكتب المنشورات وانشرها.",
@@ -368,7 +374,8 @@
         "resume": "ملف PDF نشط واحد يُقدَّم في /resume.",
         "categories": "تصنيف واحد لكل منشور.",
         "tags": "جمّع المنشورات حسب الموضوع (الحد الأقصى 8 لكل منشور).",
-        "media": "رفعات Cloudinary مُعاد استخدامها بين المنشورات."
+        "media": "رفعات Cloudinary مُعاد استخدامها بين المنشورات.",
+        "receipts": "Signature cards on the home page. Max 3 active."
       }
     },
     "neonRefreshed": "تم تحديث تحليلات Neon",
@@ -441,6 +448,23 @@
         "empty": "لا توجد وسائط بعد. انقر على {uploadButton}.",
         "noneMatch": "لا شيء يطابق هذا الفلتر.",
         "inUseBadge": "مستخدم"
+      },
+      "receipts": {
+        "title": "Receipts",
+        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show — order controls left-to-right.",
+        "newButton": "New receipt",
+        "empty": "No receipts yet. Click {newButton} to add.",
+        "newTitle": "New receipt",
+        "editTitle": "Edit receipt",
+        "dialogDescription": "Kicker + title + body render on the card. CTA opens in a new tab.",
+        "deleteTitle": "Delete receipt?",
+        "deleteConfirm": "Deletes \"{title}\" permanently. This can't be undone.",
+        "actions": "Actions",
+        "cancel": "Cancel",
+        "save": "Save",
+        "saving": "Saving…",
+        "editAria": "Edit {title}",
+        "deleteAria": "Delete {title}"
       }
     },
     "forms": {
@@ -619,6 +643,20 @@
         "noindexHint": "إخفاء من محركات البحث.",
         "cancel": "إلغاء",
         "createButton": "إنشاء مشروع"
+      },
+      "receipts": {
+        "kicker": "Kicker",
+        "kickerHint": "The orange top line — a metric, count, or short claim.",
+        "title": "Title",
+        "body": "Body",
+        "ctaLabel": "CTA label",
+        "ctaHref": "CTA link",
+        "displayOrder": "Order",
+        "status": "Status",
+        "statusLabels": {
+          "active": "Active",
+          "archived": "Archived"
+        }
       }
     },
     "imagePicker": {

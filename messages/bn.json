@@ -326,6 +326,11 @@
       "pdfOnly": "শুধু PDF অনুমোদিত।",
       "fileTooLarge": "ফাইল {size} MB। সর্বোচ্চ {max} MB।",
       "uploadFailed": "আপলোড ব্যর্থ"
+    },
+    "receipts": {
+      "added": "Receipt added",
+      "updated": "Receipt updated",
+      "deleted": "Deleted \"{title}\""
     }
   },
   "brand": {
@@ -358,7 +363,8 @@
         "resume": "রেজিউমে",
         "categories": "ক্যাটাগরি",
         "tags": "ট্যাগ",
-        "media": "মিডিয়া"
+        "media": "মিডিয়া",
+        "receipts": "Receipts"
       },
       "descriptions": {
         "posts": "ব্লগ পোস্ট লিখুন এবং প্রকাশ করুন।",
@@ -368,7 +374,8 @@
         "resume": "/resume-এ পরিবেশিত একটি সক্রিয় PDF।",
         "categories": "প্রতি পোস্টে একটি ক্যাটাগরি।",
         "tags": "টপিক অনুসারে পোস্ট গ্রুপ করুন (সর্বোচ্চ ৮টি)।",
-        "media": "পোস্টে পুনঃব্যবহারযোগ্য Cloudinary আপলোড।"
+        "media": "পোস্টে পুনঃব্যবহারযোগ্য Cloudinary আপলোড।",
+        "receipts": "Signature cards on the home page. Max 3 active."
       }
     },
     "neonRefreshed": "Neon অ্যানালিটিক্স রিফ্রেশ হয়েছে",
@@ -441,6 +448,23 @@
         "empty": "এখনও কোনো মিডিয়া নেই। {uploadButton} ক্লিক করুন।",
         "noneMatch": "এই ফিল্টারে কিছু মেলে না।",
         "inUseBadge": "ব্যবহৃত"
+      },
+      "receipts": {
+        "title": "Receipts",
+        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show — order controls left-to-right.",
+        "newButton": "New receipt",
+        "empty": "No receipts yet. Click {newButton} to add.",
+        "newTitle": "New receipt",
+        "editTitle": "Edit receipt",
+        "dialogDescription": "Kicker + title + body render on the card. CTA opens in a new tab.",
+        "deleteTitle": "Delete receipt?",
+        "deleteConfirm": "Deletes \"{title}\" permanently. This can't be undone.",
+        "actions": "Actions",
+        "cancel": "Cancel",
+        "save": "Save",
+        "saving": "Saving…",
+        "editAria": "Edit {title}",
+        "deleteAria": "Delete {title}"
       }
     },
     "forms": {
@@ -619,6 +643,20 @@
         "noindexHint": "সার্চ ইঞ্জিন থেকে লুকান।",
         "cancel": "বাতিল",
         "createButton": "প্রকল্প তৈরি করুন"
+      },
+      "receipts": {
+        "kicker": "Kicker",
+        "kickerHint": "The orange top line — a metric, count, or short claim.",
+        "title": "Title",
+        "body": "Body",
+        "ctaLabel": "CTA label",
+        "ctaHref": "CTA link",
+        "displayOrder": "Order",
+        "status": "Status",
+        "statusLabels": {
+          "active": "Active",
+          "archived": "Archived"
+        }
       }
     },
     "imagePicker": {

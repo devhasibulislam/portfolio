@@ -6,6 +6,7 @@ import {
   FolderTree,
   Images,
   LayoutDashboard,
+  Receipt,
   ScrollText,
   Sparkles,
   Tags,
@@ -25,6 +26,7 @@ export type NavItemKey =
   | "projects"
   | "experience"
   | "skills"
+  | "receipts"
   | "resume"
   | "categories"
   | "tags"
@@ -55,6 +57,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { key: "projects", href: "/dashboard/projects", icon: FolderKanban },
       { key: "experience", href: "/dashboard/experience", icon: Briefcase },
       { key: "skills", href: "/dashboard/skills", icon: Sparkles },
+      { key: "receipts", href: "/dashboard/receipts", icon: Receipt },
       { key: "resume", href: "/dashboard/resume", icon: ScrollText },
     ],
   },

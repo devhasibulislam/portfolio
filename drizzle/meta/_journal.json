@@ -22,6 +22,13 @@
       "when": 1785941826767,
       "tag": "0002_mushy_kang",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1786167335295,
+      "tag": "0003_ordinary_black_crow",
+      "breakpoints": true
     }
   ]
 }

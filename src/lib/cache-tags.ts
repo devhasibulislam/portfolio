@@ -19,6 +19,8 @@ export const tag = {
   experiences: () => "experiences",
   experience: (slug: string) => `experience:${slug}`,
   skills: () => "skills",
+  // Curated home-page cards.
+  receipts: () => "receipts",
   // Neon Management API aggregate for the dashboard analytics widget.
   // Separate namespace so DB writes don't invalidate it — only the manual
   // refresh action does.

@@ -295,6 +295,11 @@
       "deleted": "Deleted \"{name}\"",
       "slugTaken": "Slug already in use."
     },
+    "receipts": {
+      "added": "Receipt added",
+      "updated": "Receipt updated",
+      "deleted": "Deleted \"{title}\""
+    },
     "categories": {
       "created": "Category created",
       "updated": "Category updated",
@@ -355,6 +360,7 @@
         "projects": "Projects",
         "experience": "Experience",
         "skills": "Skills",
+        "receipts": "Receipts",
         "resume": "Resume",
         "categories": "Categories",
         "tags": "Tags",
@@ -365,6 +371,7 @@
         "projects": "Client engagements, products, OSS references.",
         "experience": "Roles + bullet-point highlights per company.",
         "skills": "Grouped stack list surfaced across the site.",
+        "receipts": "Signature cards on the home page. Max 3 active.",
         "resume": "One active PDF served at /resume.",
         "categories": "One category per post.",
         "tags": "Group posts by topic (max 8 per post).",
@@ -417,6 +424,23 @@
         "editDialogNew": "New skill",
         "editDialogEdit": "Edit skill",
         "deleteDialogTitle": "Delete skill?"
+      },
+      "receipts": {
+        "title": "Receipts",
+        "description": "Signature cards on the home page. {active, plural, =0 {No active cards yet.} one {# active card.} other {# active cards.}} Only the first 3 active show — order controls left-to-right.",
+        "newButton": "New receipt",
+        "empty": "No receipts yet. Click {newButton} to add.",
+        "newTitle": "New receipt",
+        "editTitle": "Edit receipt",
+        "dialogDescription": "Kicker + title + body render on the card. CTA opens in a new tab.",
+        "deleteTitle": "Delete receipt?",
+        "deleteConfirm": "Deletes \"{title}\" permanently. This can't be undone.",
+        "actions": "Actions",
+        "cancel": "Cancel",
+        "save": "Save",
+        "saving": "Saving…",
+        "editAria": "Edit {title}",
+        "deleteAria": "Delete {title}"
       },
       "resume": {
         "title": "Resume",
@@ -527,6 +551,20 @@
         "createButton": "Create skill",
         "required": "*",
         "optional": "(optional)"
+      },
+      "receipts": {
+        "kicker": "Kicker",
+        "kickerHint": "The orange top line — a metric, count, or short claim.",
+        "title": "Title",
+        "body": "Body",
+        "ctaLabel": "CTA label",
+        "ctaHref": "CTA link",
+        "displayOrder": "Order",
+        "status": "Status",
+        "statusLabels": {
+          "active": "Active",
+          "archived": "Archived"
+        }
       },
       "experience": {
         "description": "One row per role. A promotion at the same company shares a company slug so the public page groups them.",

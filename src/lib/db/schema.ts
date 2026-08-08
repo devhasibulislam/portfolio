@@ -434,3 +434,28 @@ export const skillsRelations = relations(skills, ({ one }) => ({
     references: [media.id],
   }),
 }));
+
+// ---------- receipts ------------------------------------------------------
+
+export const receiptStatus = pgEnum("receipt_status", ["active", "archived"]);
+
+/**
+ * Home-page "signature receipts" — one row per card in the
+ * `SectionReceipts` block. Small, curator-controlled, decoupled from
+ * posts/projects so the kicker copy can be tailored for the home surface.
+ */
+export const receipts = pgTable(
+  "receipts",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    kicker: varchar("kicker", { length: 60 }).notNull(),
+    title: varchar("title", { length: 120 }).notNull(),
+    body: varchar("body", { length: 400 }).notNull(),
+    ctaLabel: varchar("cta_label", { length: 40 }).notNull(),
+    ctaHref: text("cta_href").notNull(),
+    displayOrder: integer("display_order").notNull().default(0),
+    status: receiptStatus("status").notNull().default("active"),
+    ...timestamps,
+  },
+  (t) => [index("receipts_status_order_idx").on(t.status, t.displayOrder)],
+);
