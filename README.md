@@ -10,16 +10,16 @@ Next 16 (App Router, Turbopack, Cache Components) · React 19 · TypeScript stri
 
 ## Public routes
 
-| Route                                       | What                                                                                              |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `/`                                         | Landing page — hero (prose-first, one metric, GSAP mount reveal), signature receipts, *now*, featured projects, track record, featured writing, contact. DB-driven sections auto-hide when empty. |
-| `/blog`, `/blog/[slug]`                     | Long-form posts with TipTap-rendered bodies and cursor pagination.                                |
-| `/blog/category/[slug]`, `/blog/tag/[slug]` | Post lists scoped to a category or tag.                                                           |
-| `/projects`, `/projects/[slug]`             | Case studies, product work, open-source references.                                               |
-| `/experience`, `/experience/[slug]`         | Roles grouped by company with promotions stacked under one card.                                  |
-| `/skills`                                   | Grouped stack list, matching the resume sections.                                                 |
-| `/resume`                                   | Full PDF preview (rendered via pdf.js) + download.                                                |
-| `/sitemap.xml`, `/robots.txt`, `/llms.txt`  | SEO surface.                                                                                      |
+| Route                                       | What                                                                                                                                                                                              |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`                                         | Landing page — hero (prose-first, one metric, GSAP mount reveal), signature receipts, _now_, featured projects, track record, featured writing, contact. DB-driven sections auto-hide when empty. |
+| `/blog`, `/blog/[slug]`                     | Long-form posts with TipTap-rendered bodies and cursor pagination.                                                                                                                                |
+| `/blog/category/[slug]`, `/blog/tag/[slug]` | Post lists scoped to a category or tag.                                                                                                                                                           |
+| `/projects`, `/projects/[slug]`             | Case studies, product work, open-source references.                                                                                                                                               |
+| `/experience`, `/experience/[slug]`         | Roles grouped by company with promotions stacked under one card.                                                                                                                                  |
+| `/skills`                                   | Grouped stack list, matching the resume sections.                                                                                                                                                 |
+| `/resume`                                   | Full PDF preview (rendered via pdf.js) + download.                                                                                                                                                |
+| `/sitemap.xml`, `/robots.txt`, `/llms.txt`  | SEO surface.                                                                                                                                                                                      |
 
 Every public route is served through `"use cache"` with tag-based invalidation from the dashboard; short pages render a matching skeleton via `loading.tsx`.
 
