@@ -8,7 +8,6 @@ import { tag } from "@/lib/cache-tags";
 import { formatMonthYear } from "@/lib/dates";
 import { getPublishedExperienceBySlug } from "@/lib/db/queries/experience";
 import { renderTiptapToHtml } from "@/lib/tiptap-render";
-import type { ExperienceInput } from "@/schemas/experience";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
 import { ContactCTA } from "@/components/contact-cta";
 

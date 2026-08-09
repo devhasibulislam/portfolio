@@ -96,9 +96,9 @@ export async function Hero() {
               <Image
                 src="/social/google-meet.webp"
                 alt=""
-                width={20}
-                height={20}
-                className="pointer-events-none size-5 rounded-full object-cover select-none"
+                width={28}
+                height={28}
+                className="pointer-events-none size-7 object-contain select-none"
                 draggable={false}
                 unoptimized
               />
