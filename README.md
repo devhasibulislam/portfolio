@@ -6,13 +6,13 @@ Open-source under the MIT License — fork it, brand it, ship your own version. 
 
 ## Stack
 
-Next 16 (App Router, Turbopack, Cache Components) · React 19 · TypeScript strict · Tailwind v4 · shadcn/ui · Drizzle + Neon Postgres (pooled) · Neon Auth (Managed Better Auth) · Cloudinary · next-intl (5 locales, RTL) · TipTap · GSAP + Framer Motion + Three.js/R3F (Phase 4).
+Next 16 (App Router, Turbopack, Cache Components) · React 19 · TypeScript strict · Tailwind v4 · shadcn/ui · Drizzle + Neon Postgres (pooled) · Neon Auth (Managed Better Auth) · Cloudinary · next-intl (5 locales, RTL) · TipTap · GSAP (ScrollTrigger + SplitText) · Vercel Analytics + Speed Insights.
 
 ## Public routes
 
 | Route                                       | What                                                                                              |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `/`                                         | Landing page. Phase 4 lands a 3D hero on capable devices with a Framer Motion fallback on mobile. |
+| `/`                                         | Landing page — hero (prose-first, one metric, GSAP mount reveal), signature receipts, *now*, featured projects, track record, featured writing, contact. DB-driven sections auto-hide when empty. |
 | `/blog`, `/blog/[slug]`                     | Long-form posts with TipTap-rendered bodies and cursor pagination.                                |
 | `/blog/category/[slug]`, `/blog/tag/[slug]` | Post lists scoped to a category or tag.                                                           |
 | `/projects`, `/projects/[slug]`             | Case studies, product work, open-source references.                                               |
@@ -70,7 +70,6 @@ npm run dev                  # http://localhost:3000
 proxy.ts                     Next 16 auth middleware (NOT middleware.ts)
 drizzle.config.ts            Drizzle Kit config
 components.json              shadcn config
-.vscode/mcp.json             Project-scoped MCPs (shadcn, Next.js, Cloudinary, Vercel, Playwright, Chrome DevTools)
 .github/instructions/        Repo-scoped Copilot skills (Drizzle, blog schemas, RTL)
 messages/                    next-intl catalogs (en, bn, ar, ur, he)
 public/social/               Social icons served by the footer
@@ -79,7 +78,7 @@ src/
   app/                       App Router routes (public + /dashboard + /login + /api/auth/[...path])
   components/
     dashboard/               Manager UIs, shared PageHeader / ConfirmDeleteDialog / field helpers
-    home/                    Phase 4 hero (R3F + Framer Motion fallback)
+    home/                    Hero + section components (server-rendered, GSAP-reveal on mount/scroll)
     public-footer.tsx        Flat footer with socials + language switcher
     public-floating-actions.tsx  Contact + theme picker (bottom-end column)
     site-header.tsx          Sticky top nav
@@ -138,7 +137,7 @@ Rebrand everything a visitor sees without touching any component code:
    messages/en.json + friends  — every translated string (name lives in `brand.name`, tagline in `meta.siteDescription`)
    ```
 
-4. **Own the content** — the home page hero copy + featured GitHub repos live in `src/components/home/config.ts`. Blog posts, projects, experience, skills, resume PDFs are all created inside `/dashboard` after you sign in — the DB starts empty for you.
+4. **Own the content** — home page copy (hero, receipts, now, track record, contact) lives in the `messages/*.json` translation catalogs under keys like `home.hero2`, `home.receipts`, `home.now`. Blog posts, projects, experience, skills, resume PDFs are all created inside `/dashboard` after you sign in — the DB starts empty for you.
 
 5. **Boot the DB + first user**:
 
