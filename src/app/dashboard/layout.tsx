@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
+import { RevalidateButton } from "@/components/dashboard/revalidate-button";
 import { DashboardBreadcrumb } from "@/components/dashboard/breadcrumb";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Separator } from "@/components/ui/separator";
@@ -51,7 +52,8 @@ export default async function DashboardLayout({
           <SidebarTrigger className="-ms-1" />
           <Separator orientation="vertical" className="me-2 h-4" />
           <DashboardBreadcrumb />
-          <div className="ms-auto">
+          <div className="ms-auto flex items-center gap-1">
+            <RevalidateButton />
             <ThemeToggle current={themeChoice} />
           </div>
         </header>
