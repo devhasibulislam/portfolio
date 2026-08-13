@@ -370,6 +370,11 @@
   },
   "dashboard": {
     "signOut": "Sign out",
+    "revalidate": {
+      "tooltip": "Revalidate public cache",
+      "success": "Revalidated {count} tags",
+      "error": "Revalidate failed"
+    },
     "breadcrumb": {
       "root": "Dashboard",
       "overview": "Overview",

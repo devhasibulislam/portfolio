@@ -22,6 +22,11 @@ import { renderTiptapToHtml } from "@/lib/tiptap-render";
 import type { ProjectLinkInput } from "@/schemas/project";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
 import { ContactCTA } from "@/components/contact-cta";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -221,17 +226,22 @@ export default async function ProjectDetailPage({
                 const hint = tLinkKinds(link.kind);
                 return (
                   <li key={`${link.kind}-${link.url}`}>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-4 py-2 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
-                      title={hint}
-                    >
-                      <Icon className="size-3.5" />
-                      <span>{link.label}</span>
-                      <ExternalLink className="size-3 opacity-50" />
-                    </a>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)]/40 px-4 py-2 text-sm font-medium text-[var(--color-fg)] backdrop-blur transition-colors hover:border-[var(--color-accent)]/40 hover:bg-[var(--color-bg)]/60 hover:text-[var(--color-accent)]"
+                          aria-label={hint}
+                        >
+                          <Icon className="size-3.5" />
+                          <span>{link.label}</span>
+                          <ExternalLink className="size-3 opacity-50" />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>{hint}</TooltipContent>
+                    </Tooltip>
                   </li>
                 );
               })}

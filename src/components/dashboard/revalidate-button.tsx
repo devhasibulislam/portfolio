@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { RefreshCw } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -12,13 +13,14 @@ import {
 
 export function RevalidateButton() {
   const [busy, setBusy] = useState(false);
+  const t = useTranslations("dashboard.revalidate");
   return (
     <Tooltip>
       <TooltipTrigger asChild>
         <Button
           variant="ghost"
           size="icon"
-          aria-label="Revalidate public cache"
+          aria-label={t("tooltip")}
           disabled={busy}
           onClick={async () => {
             setBusy(true);
@@ -32,13 +34,13 @@ export function RevalidateButton() {
               };
               if (res.ok && data.ok) {
                 toast.success(
-                  `Revalidated ${data.revalidated?.length ?? 0} tags`,
+                  t("success", { count: data.revalidated?.length ?? 0 }),
                 );
               } else {
-                toast.error("Revalidate failed");
+                toast.error(t("error"));
               }
             } catch (e) {
-              toast.error(e instanceof Error ? e.message : "Revalidate failed");
+              toast.error(e instanceof Error ? e.message : t("error"));
             } finally {
               setBusy(false);
             }
@@ -47,7 +49,7 @@ export function RevalidateButton() {
           <RefreshCw className={busy ? "size-4 animate-spin" : "size-4"} />
         </Button>
       </TooltipTrigger>
-      <TooltipContent>Revalidate public cache</TooltipContent>
+      <TooltipContent>{t("tooltip")}</TooltipContent>
     </Tooltip>
   );
 }

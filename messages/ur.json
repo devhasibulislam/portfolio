@@ -370,6 +370,11 @@
   },
   "dashboard": {
     "signOut": "سائن آؤٹ",
+    "revalidate": {
+      "tooltip": "پبلک کیش کو ری ویلیڈیٹ کریں",
+      "success": "{count} ٹیگز ری ویلیڈیٹ ہو گئے",
+      "error": "ری ویلیڈیٹ ناکام ہو گیا"
+    },
     "breadcrumb": {
       "root": "ڈیش بورڈ",
       "overview": "جائزہ",

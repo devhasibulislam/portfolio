@@ -370,6 +370,11 @@
   },
   "dashboard": {
     "signOut": "התנתקות",
+    "revalidate": {
+      "tooltip": "רענון מטמון ציבורי",
+      "success": "{count} תגיות רועננו",
+      "error": "הרענון נכשל"
+    },
     "breadcrumb": {
       "root": "לוח בקרה",
       "overview": "סקירה",
