@@ -1,12 +1,6 @@
 import { count, desc, eq, isNotNull } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import {
-  experiences,
-  media,
-  posts,
-  projects,
-  skills,
-} from "@/lib/db/schema";
+import { experiences, media, posts, projects, skills } from "@/lib/db/schema";
 
 export type MediaRow = {
   id: string;
@@ -81,12 +75,30 @@ async function loadUsedMediaIds(): Promise<Set<string>> {
  */
 export async function countMediaConsumers(mediaId: string): Promise<number> {
   const [p, pc, po, el, eo, si] = await Promise.all([
-    db.select({ n: count() }).from(posts).where(eq(posts.coverMediaId, mediaId)),
-    db.select({ n: count() }).from(projects).where(eq(projects.coverMediaId, mediaId)),
-    db.select({ n: count() }).from(projects).where(eq(projects.ogImageId, mediaId)),
-    db.select({ n: count() }).from(experiences).where(eq(experiences.companyLogoId, mediaId)),
-    db.select({ n: count() }).from(experiences).where(eq(experiences.ogImageId, mediaId)),
-    db.select({ n: count() }).from(skills).where(eq(skills.iconMediaId, mediaId)),
+    db
+      .select({ n: count() })
+      .from(posts)
+      .where(eq(posts.coverMediaId, mediaId)),
+    db
+      .select({ n: count() })
+      .from(projects)
+      .where(eq(projects.coverMediaId, mediaId)),
+    db
+      .select({ n: count() })
+      .from(projects)
+      .where(eq(projects.ogImageId, mediaId)),
+    db
+      .select({ n: count() })
+      .from(experiences)
+      .where(eq(experiences.companyLogoId, mediaId)),
+    db
+      .select({ n: count() })
+      .from(experiences)
+      .where(eq(experiences.ogImageId, mediaId)),
+    db
+      .select({ n: count() })
+      .from(skills)
+      .where(eq(skills.iconMediaId, mediaId)),
   ]);
   return (
     (p[0]?.n ?? 0) +
@@ -119,5 +131,3 @@ export async function listMedia(): Promise<MediaRow[]> {
   ]);
   return rows.map((r) => ({ ...r, inUse: used.has(r.id) }));
 }
-
-
