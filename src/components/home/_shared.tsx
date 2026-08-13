@@ -95,7 +95,7 @@ export function SectionHeader({
     <ScrollReveal
       className={
         action
-          ? "mb-14 flex flex-wrap items-end justify-between gap-6"
+          ? "mb-14 flex flex-wrap items-center justify-between gap-6"
           : "mb-14 max-w-2xl"
       }
       stagger={0.08}
