@@ -78,3 +78,30 @@ export async function deleteSkill(
   updateTag(tag.skills());
   return { ok: true };
 }
+
+/**
+ * Flip a single skill's `isPrimary` flag from the dashboard table.
+ * Reuses the `featured` FormData key so the shared FeatureSwitch works.
+ */
+export async function toggleSkillPrimary(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const id = String(formData.get("id") ?? "").trim();
+  const next = formData.get("featured") === "true";
+  if (!id) return { error: "Missing id" };
+
+  const [prev] = await db
+    .select({ id: skills.id })
+    .from(skills)
+    .where(eq(skills.id, id));
+  if (!prev) return { error: "Not found" };
+
+  await db
+    .update(skills)
+    .set({ isPrimary: next, updatedAt: new Date() })
+    .where(eq(skills.id, id));
+
+  updateTag(tag.skills());
+  return { ok: true };
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Pencil, Plus, Star, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -46,7 +47,8 @@ import { slugify } from "@/lib/slug";
 import { SKILL_GROUPS } from "@/lib/skill-groups";
 import type { SkillRow } from "@/lib/db/queries/skills";
 import type { SkillInput } from "@/schemas/skill";
-import { deleteSkill, saveSkill } from "@/app/dashboard/skills/actions";
+import { deleteSkill, saveSkill, toggleSkillPrimary } from "@/app/dashboard/skills/actions";
+import { FeatureSwitch } from "@/components/dashboard/feature-switch";
 
 const PROFICIENCY_OPTIONS: SkillInput["proficiency"][] = [
   "working",
@@ -73,6 +75,8 @@ export function SkillsManager({
   const tGroups = useTranslations("skills.groups");
   const tProf = useTranslations("skills.proficiency");
   const tSkillForm = useTranslations("dashboard.forms.skill");
+  const tCommon = useTranslations("dashboard.forms.common");
+  const router = useRouter();
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<SkillRow | null>(null);
   const save = useAction(saveSkill);
@@ -146,6 +150,9 @@ export function SkillsManager({
                       <TableHead className="w-24">
                         {tPage("colStatus")}
                       </TableHead>
+                      <TableHead className="w-24">
+                        {tPage("colPrimary")}
+                      </TableHead>
                       <TableHead className="w-24 text-end">
                         {tPage("colActions")}
                       </TableHead>
@@ -180,6 +187,18 @@ export function SkillsManager({
                               ? tSkillForm("statusActive")
                               : tSkillForm("statusArchived")}
                           </span>
+                        </TableCell>
+                        <TableCell>
+                          <FeatureSwitch
+                            id={r.id}
+                            featured={r.isPrimary}
+                            action={toggleSkillPrimary}
+                            labels={{
+                              feature: tCommon("markPrimary"),
+                              unfeature: tCommon("unmarkPrimary"),
+                            }}
+                            onDone={() => router.refresh()}
+                          />
                         </TableCell>
                         <TableCell className="text-end">
                           <Button
