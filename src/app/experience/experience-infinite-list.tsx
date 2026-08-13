@@ -72,7 +72,7 @@ export function ExperienceInfiniteList({
       (entries) => {
         if (entries[0]?.isIntersecting) loadMore();
       },
-      { rootMargin: "400px 0px" },
+      { rootMargin: "0px 0px 120px 0px" },
     );
     io.observe(el);
     return () => io.disconnect();
