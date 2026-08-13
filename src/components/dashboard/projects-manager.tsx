@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Pencil, Plus, Star, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
@@ -52,7 +53,12 @@ import { slugify } from "@/lib/slug";
 import { toDateInputValue } from "@/lib/dates";
 import type { ProjectFull, ProjectRow } from "@/lib/db/queries/projects";
 import type { ProjectLinkInput } from "@/schemas/project";
-import { deleteProject, saveProject } from "@/app/dashboard/projects/actions";
+import {
+  deleteProject,
+  saveProject,
+  toggleProjectFeatured,
+} from "@/app/dashboard/projects/actions";
+import { FeatureSwitch } from "@/components/dashboard/feature-switch";
 
 const CATEGORIES: {
   value: ProjectRow["category"];
@@ -97,6 +103,7 @@ export function ProjectsManager({
   const tPage = useTranslations("dashboard.pages.projects");
   const tCats = useTranslations("projects.categories");
   const tCommon = useTranslations("dashboard.forms.common");
+  const router = useRouter();
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ProjectRow | null>(null);
   const [fetching, startFetch] = useTransition();
@@ -161,6 +168,7 @@ export function ProjectsManager({
                 <TableHead className="w-40">{tPage("colCategory")}</TableHead>
                 <TableHead className="w-24">{tPage("colOrder")}</TableHead>
                 <TableHead className="w-28">{tPage("colStatus")}</TableHead>
+                <TableHead className="w-24">{tPage("colFeatured")}</TableHead>
                 <TableHead className="w-24 text-end">
                   {tPage("colActions")}
                 </TableHead>
@@ -195,6 +203,18 @@ export function ProjectsManager({
                         ? tCommon("published")
                         : tCommon("draft")}
                     </span>
+                  </TableCell>
+                  <TableCell>
+                    <FeatureSwitch
+                      id={r.id}
+                      featured={r.featured}
+                      action={toggleProjectFeatured}
+                      labels={{
+                        feature: tCommon("feature"),
+                        unfeature: tCommon("unfeature"),
+                      }}
+                      onDone={() => router.refresh()}
+                    />
                   </TableCell>
                   <TableCell className="text-end">
                     <Button

@@ -2,7 +2,7 @@ import { cacheTag } from "next/cache";
 import { getCldImageUrl } from "next-cloudinary";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
-import { listPublishedPostsCursor } from "@/lib/db/queries/public-posts";
+import { listFeaturedPosts } from "@/lib/db/queries/public-posts";
 import { ScrollReveal } from "./scroll-reveal";
 import {
   MediaCard,
@@ -14,8 +14,7 @@ import {
 async function loadTop3() {
   "use cache";
   cacheTag(tag.posts());
-  const page = await listPublishedPostsCursor({ limit: 3 });
-  return page.items;
+  return listFeaturedPosts();
 }
 
 export async function SectionFeaturedWriting() {

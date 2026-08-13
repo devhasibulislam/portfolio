@@ -8,6 +8,7 @@ import { db } from "@/lib/db/client";
 import { posts, postsTags } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { postInput } from "@/schemas/post";
+import { wouldExceedFeaturedLimit } from "@/lib/db/feature-limit";
 import { zodErr, type ActionState } from "@/lib/action-helpers";
 
 /**
@@ -157,6 +158,38 @@ export async function togglePostStatus(
   await db
     .update(posts)
     .set({ status, publishedAt, updatedAt: new Date() })
+    .where(eq(posts.id, id));
+
+  updateTag(tag.posts());
+  updateTag(tag.post(prev.slug));
+  return { ok: true };
+}
+
+/**
+ * Flip a single post's `featured` flag. Refuses to raise a 4th flag.
+ */
+export async function togglePostFeatured(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const t = await getTranslations("actions.posts");
+  const id = String(formData.get("id") ?? "").trim();
+  const next = formData.get("featured") === "true";
+  if (!id) return { error: "Missing id" };
+
+  const [prev] = await db
+    .select({ slug: posts.slug, featured: posts.featured })
+    .from(posts)
+    .where(eq(posts.id, id));
+  if (!prev) return { error: "Not found" };
+
+  if (next && (await wouldExceedFeaturedLimit("posts", id))) {
+    return { error: t("featureLimitReached") };
+  }
+
+  await db
+    .update(posts)
+    .set({ featured: next, updatedAt: new Date() })
     .where(eq(posts.id, id));
 
   updateTag(tag.posts());

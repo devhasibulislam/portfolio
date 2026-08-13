@@ -12,13 +12,12 @@ async function loadReceipts() {
 }
 
 export async function SectionReceipts() {
-  const [{ items, hasMore }, t] = await Promise.all([
+  const [items, t] = await Promise.all([
     loadReceipts(),
     getTranslations("home.receipts"),
   ]);
 
-  // Hide the section entirely if the curator hasn't seeded it — better an
-  // absent block than a lonely one or two cards.
+  // Nothing to show until the curator flips a receipt on.
   if (items.length === 0) return null;
 
   return (
@@ -29,11 +28,7 @@ export async function SectionReceipts() {
       <SectionHeader
         title={t("title")}
         id="receipts-title"
-        action={
-          hasMore ? (
-            <SeeAllLink href="/receipts" label={t("seeAll")} />
-          ) : undefined
-        }
+        action={<SeeAllLink href="/receipts" label={t("seeAll")} />}
       />
       <ScrollReveal
         as="ul"

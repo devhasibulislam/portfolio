@@ -10,6 +10,7 @@ export type PostRow = {
   publishedAt: Date | null;
   updatedAt: Date;
   categoryName: string | null;
+  featured: boolean;
 };
 
 /** All posts, newest updated first, with category name flattened. */
@@ -23,6 +24,7 @@ export async function listPosts(): Promise<PostRow[]> {
       publishedAt: posts.publishedAt,
       updatedAt: posts.updatedAt,
       categoryName: categories.name,
+      featured: posts.featured,
     })
     .from(posts)
     .leftJoin(categories, eq(categories.id, posts.categoryId))
@@ -39,6 +41,7 @@ export type PostFull = {
   coverMediaId: string | null;
   categoryId: string | null;
   status: "draft" | "published";
+  featured: boolean;
   tagIds: string[];
 };
 
@@ -60,6 +63,7 @@ export async function getPostForEdit(id: string): Promise<PostFull | null> {
     coverMediaId: row.coverMediaId,
     categoryId: row.categoryId,
     status: row.status,
+    featured: row.featured,
     tagIds: tagRows.map((t) => t.tagId),
   };
 }

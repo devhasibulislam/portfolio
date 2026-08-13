@@ -123,6 +123,42 @@ export async function listPublishedPostsCursor(input: {
   return { items, nextCursor };
 }
 
+/**
+ * Curator-flagged posts for the home strip. Hard-capped at 3 because the
+ * save action refuses to flip a 4th to featured.
+ */
+export async function listFeaturedPosts(): Promise<PublicPostCard[]> {
+  const rows = await db
+    .select({
+      id: posts.id,
+      title: posts.title,
+      slug: posts.slug,
+      excerpt: posts.excerpt,
+      publishedAt: sql<Date>`${posts.publishedAt}`.as("published_at"),
+      categoryName: categories.name,
+      categorySlug: categories.slug,
+      coverPublicId: media.publicId,
+    })
+    .from(posts)
+    .leftJoin(categories, eq(categories.id, posts.categoryId))
+    .leftJoin(media, eq(media.id, posts.coverMediaId))
+    .where(
+      and(
+        eq(posts.status, "published"),
+        isNotNull(posts.publishedAt),
+        eq(posts.featured, true),
+      ),
+    )
+    .orderBy(desc(posts.publishedAt), desc(posts.id))
+    .limit(3);
+  return rows.map((r) => ({
+    ...r,
+    publishedAt: new Date(
+      r.publishedAt as unknown as string | Date,
+    ).toISOString(),
+  }));
+}
+
 export type PublicPostDetail = {
   id: string;
   title: string;

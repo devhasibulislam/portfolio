@@ -5,14 +5,13 @@ import { useTranslations } from "next-intl";
 import { useCursor } from "@/hooks/use-cursor";
 import { loadMoreActiveReceipts } from "@/app/receipts/list-actions";
 import { ArrowPill, BezelLink } from "@/components/home/_shared";
-import type {
-  PublicReceipt,
-  ReceiptsPage,
-} from "@/lib/db/queries/receipts";
+import type { PublicReceipt, ReceiptsPage } from "@/lib/db/queries/receipts";
 
 export function ReceiptsInfiniteList({ initial }: { initial: ReceiptsPage }) {
-  const { items, hasMore, loading, error, loadMore } =
-    useCursor<PublicReceipt>(initial, loadMoreActiveReceipts);
+  const { items, hasMore, loading, error, loadMore } = useCursor<PublicReceipt>(
+    initial,
+    loadMoreActiveReceipts,
+  );
   const t = useTranslations("receipts");
   const sentinel = useRef<HTMLDivElement>(null);
 

@@ -23,13 +23,20 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ConfirmDeleteDialog } from "@/components/dashboard/confirm-delete-dialog";
+import { FeatureSwitch } from "@/components/dashboard/feature-switch";
 import type { PostRow } from "@/lib/db/queries/posts";
-import { deletePost, togglePostStatus } from "@/app/dashboard/posts/actions";
+import {
+  deletePost,
+  togglePostFeatured,
+  togglePostStatus,
+} from "@/app/dashboard/posts/actions";
 
 export function PostsTable({ rows }: { rows: PostRow[] }) {
   const t = useTranslations("actions.posts");
   const tPage = useTranslations("dashboard.pages.posts");
+  const tCommon = useTranslations("dashboard.forms.common");
   const tRel = useTranslations("dashboard.relativeTime");
+  const router = useRouter();
   const [confirmDelete, setConfirmDelete] = useState<PostRow | null>(null);
   const del = useAction(deletePost);
   const pending = del.pending;
@@ -44,6 +51,7 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
               {tPage("colCategory")}
             </TableHead>
             <TableHead>{tPage("colStatus")}</TableHead>
+            <TableHead className="w-24">{tPage("colFeatured")}</TableHead>
             <TableHead className="hidden md:table-cell">
               {tPage("colUpdated")}
             </TableHead>
@@ -54,7 +62,7 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
           {rows.length === 0 ? (
             <TableRow>
               <TableCell
-                colSpan={5}
+                colSpan={6}
                 className="text-muted-foreground py-8 text-center"
               >
                 {tPage("empty", { newButton: tPage("newButton") })}
@@ -81,6 +89,18 @@ export function PostsTable({ rows }: { rows: PostRow[] }) {
                 </TableCell>
                 <TableCell>
                   <StatusSwitch row={r} />
+                </TableCell>
+                <TableCell>
+                  <FeatureSwitch
+                    id={r.id}
+                    featured={r.featured}
+                    action={togglePostFeatured}
+                    labels={{
+                      feature: tCommon("feature"),
+                      unfeature: tCommon("unfeature"),
+                    }}
+                    onDone={() => router.refresh()}
+                  />
                 </TableCell>
                 <TableCell className="text-muted-foreground hidden text-sm md:table-cell">
                   {formatRelative(r.updatedAt, tRel)}

@@ -7,6 +7,7 @@ import { db } from "@/lib/db/client";
 import { projectLinks, projects } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { projectInput } from "@/schemas/project";
+import { wouldExceedFeaturedLimit } from "@/lib/db/feature-limit";
 import type { ProjectLinkInput } from "@/schemas/project";
 import {
   parseTiptapDoc,
@@ -111,6 +112,12 @@ export async function saveProject(
   if (clash.length)
     return { error: (await getTranslations("actions.projects"))("slugTaken") };
 
+  if (parsed.data.featured && (await wouldExceedFeaturedLimit("projects", id))) {
+    return {
+      error: (await getTranslations("actions.projects"))("featureLimitReached"),
+    };
+  }
+
   // MVP: tagIds is parsed for schema compat but not persisted yet — projects
   // tag picker will land with the tags.kind='tech' UI in a follow-up.
   const { links: linkRows, tagIds: _unusedTagIds, ...rest } = parsed.data;
@@ -197,5 +204,37 @@ export async function deleteProject(
   await db.delete(projects).where(eq(projects.id, id));
   updateTag(tag.projects());
   if (prev) updateTag(tag.project(prev.slug));
+  return { ok: true };
+}
+
+/**
+ * Flip a single project's `featured` flag. Refuses to raise a 4th flag.
+ */
+export async function toggleProjectFeatured(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const t = await getTranslations("actions.projects");
+  const id = String(formData.get("id") ?? "").trim();
+  const next = formData.get("featured") === "true";
+  if (!id) return { error: "Missing id" };
+
+  const [prev] = await db
+    .select({ slug: projects.slug, featured: projects.featured })
+    .from(projects)
+    .where(eq(projects.id, id));
+  if (!prev) return { error: "Not found" };
+
+  if (next && (await wouldExceedFeaturedLimit("projects", id))) {
+    return { error: t("featureLimitReached") };
+  }
+
+  await db
+    .update(projects)
+    .set({ featured: next, updatedAt: new Date() })
+    .where(eq(projects.id, id));
+
+  updateTag(tag.projects());
+  updateTag(tag.project(prev.slug));
   return { ok: true };
 }

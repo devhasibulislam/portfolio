@@ -11,6 +11,7 @@ export type ReceiptRow = {
   ctaHref: string;
   displayOrder: number;
   status: "active" | "archived";
+  featured: boolean;
   updatedAt: Date;
 };
 
@@ -25,6 +26,7 @@ export async function listReceiptsForDashboard(): Promise<ReceiptRow[]> {
       ctaHref: receipts.ctaHref,
       displayOrder: receipts.displayOrder,
       status: receipts.status,
+      featured: receipts.featured,
       updatedAt: receipts.updatedAt,
     })
     .from(receipts)
@@ -37,14 +39,11 @@ export type PublicReceipt = Pick<
 >;
 
 /**
- * Home strip: first three active receipts and whether more exist.
- * Peek at limit+1 so the "See all" button can decide whether to render.
+ * Home strip: up to 3 active, curator-featured receipts. Full list lives at
+ * /receipts. Section hides itself when this returns zero rows.
  */
-export async function listReceiptsForHome(): Promise<{
-  items: PublicReceipt[];
-  hasMore: boolean;
-}> {
-  const rows = await db
+export async function listReceiptsForHome(): Promise<PublicReceipt[]> {
+  return db
     .select({
       id: receipts.id,
       kicker: receipts.kicker,
@@ -54,18 +53,16 @@ export async function listReceiptsForHome(): Promise<{
       ctaHref: receipts.ctaHref,
     })
     .from(receipts)
-    .where(eq(receipts.status, "active"))
+    .where(and(eq(receipts.status, "active"), eq(receipts.featured, true)))
     .orderBy(asc(receipts.displayOrder), asc(receipts.createdAt))
-    .limit(4);
-  return { items: rows.slice(0, 3), hasMore: rows.length > 3 };
+    .limit(3);
 }
 
 /**
- * Legacy home-section fetch. Kept for callers that still want the fixed
- * three-card slice without the hasMore probe. Prefer `listReceiptsForHome`.
+ * Legacy alias retained for any older callers. Prefer `listReceiptsForHome`.
  */
 export async function listActiveReceipts(): Promise<PublicReceipt[]> {
-  return (await listReceiptsForHome()).items;
+  return listReceiptsForHome();
 }
 
 /**

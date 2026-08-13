@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -39,7 +40,12 @@ import {
 } from "@/components/dashboard/field-helpers";
 import type { ReceiptRow } from "@/lib/db/queries/receipts";
 import type { ReceiptInput } from "@/schemas/receipt";
-import { deleteReceipt, saveReceipt } from "@/app/dashboard/receipts/actions";
+import {
+  deleteReceipt,
+  saveReceipt,
+  toggleReceiptFeatured,
+} from "@/app/dashboard/receipts/actions";
+import { FeatureSwitch } from "@/components/dashboard/feature-switch";
 
 type EditingState = { mode: "new" } | { mode: "edit"; row: ReceiptRow } | null;
 
@@ -50,6 +56,8 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
   const tPage = useTranslations("dashboard.pages.receipts");
   const tForm = useTranslations("dashboard.forms.receipts");
   const tStatus = useTranslations("dashboard.forms.receipts.statusLabels");
+  const tCommon = useTranslations("dashboard.forms.common");
+  const router = useRouter();
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ReceiptRow | null>(null);
   const save = useAction(saveReceipt);
@@ -101,6 +109,7 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
                   {tForm("displayOrder")}
                 </TableHead>
                 <TableHead className="w-28">{tForm("status")}</TableHead>
+                <TableHead className="w-24">{tCommon("featured")}</TableHead>
                 <TableHead className="w-24 text-end">
                   {tPage("actions")}
                 </TableHead>
@@ -130,6 +139,18 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
                     >
                       {tStatus(r.status)}
                     </span>
+                  </TableCell>
+                  <TableCell onClick={(e) => e.stopPropagation()}>
+                    <FeatureSwitch
+                      id={r.id}
+                      featured={r.featured}
+                      action={toggleReceiptFeatured}
+                      labels={{
+                        feature: tCommon("feature"),
+                        unfeature: tCommon("unfeature"),
+                      }}
+                      onDone={() => router.refresh()}
+                    />
                   </TableCell>
                   <TableCell
                     className="text-end"

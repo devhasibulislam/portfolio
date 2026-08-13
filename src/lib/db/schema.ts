@@ -88,11 +88,13 @@ export const posts = pgTable(
     }),
     status: postStatus("status").notNull().default("draft"),
     publishedAt: timestamp("published_at", { withTimezone: true }),
+    featured: boolean("featured").notNull().default(false),
     ...timestamps,
   },
   (t) => [
     index("posts_status_published_at_idx").on(t.status, t.publishedAt),
     index("posts_category_idx").on(t.categoryId),
+    index("posts_featured_idx").on(t.featured, t.publishedAt),
   ],
 );
 
@@ -455,7 +457,11 @@ export const receipts = pgTable(
     ctaHref: text("cta_href").notNull(),
     displayOrder: integer("display_order").notNull().default(0),
     status: receiptStatus("status").notNull().default("active"),
+    featured: boolean("featured").notNull().default(false),
     ...timestamps,
   },
-  (t) => [index("receipts_status_order_idx").on(t.status, t.displayOrder)],
+  (t) => [
+    index("receipts_status_order_idx").on(t.status, t.displayOrder),
+    index("receipts_featured_order_idx").on(t.featured, t.displayOrder),
+  ],
 );

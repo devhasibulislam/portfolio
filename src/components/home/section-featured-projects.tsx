@@ -15,7 +15,7 @@ async function loadTop3() {
   "use cache";
   cacheTag(tag.projects());
   const rows = await listPublishedProjects();
-  return rows.slice(0, 3);
+  return rows.filter((r) => r.featured).slice(0, 3);
 }
 
 export async function SectionFeaturedProjects() {

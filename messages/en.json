@@ -314,6 +314,9 @@
       "deleted": "Post deleted",
       "publishedToast": "Published",
       "draftedToast": "Moved to draft",
+      "featuredToast": "Featured on home",
+      "unfeaturedToast": "Removed from home",
+      "featureLimitReached": "Only 3 posts can be featured on home. Unfeature one first.",
       "slugTaken": "Slug already in use.",
       "invalidBody": "Body is not valid JSON."
     },
@@ -322,6 +325,9 @@
       "updated": "Project updated",
       "deleted": "Deleted \"{title}\"",
       "notFound": "Project not found",
+      "featuredToast": "Featured on home",
+      "unfeaturedToast": "Removed from home",
+      "featureLimitReached": "Only 3 projects can be featured on home. Unfeature one first.",
       "slugTaken": "Slug already in use.",
       "linkInvalid": "Link \"{label}\" is not a valid URL.",
       "linkAppStoreWrong": "App Store link \"{label}\" doesn't point to apps.apple.com.",
@@ -345,7 +351,10 @@
     "receipts": {
       "added": "Receipt added",
       "updated": "Receipt updated",
-      "deleted": "Deleted \"{title}\""
+      "deleted": "Deleted \"{title}\"",
+      "featuredToast": "Featured on home",
+      "unfeaturedToast": "Removed from home",
+      "featureLimitReached": "Only 3 receipts can be featured on home. Unfeature one first."
     },
     "categories": {
       "created": "Category created",
@@ -452,6 +461,7 @@
         "colTitle": "Title",
         "colCategory": "Category",
         "colStatus": "Status",
+        "colFeatured": "Featured",
         "colUpdated": "Updated",
         "deleteAria": "Delete {title}",
         "moveToDraftAria": "Move to draft",
@@ -470,6 +480,7 @@
         "colCategory": "Category",
         "colOrder": "Order",
         "colStatus": "Status",
+        "colFeatured": "Featured",
         "colActions": "Actions",
         "editAria": "Edit {title}",
         "deleteAria": "Delete {title}",
@@ -586,6 +597,9 @@
         "publish": "Publish",
         "publishing": "Publishing…",
         "moveToDraft": "Move to draft",
+        "feature": "Feature on home",
+        "unfeature": "Remove from home",
+        "featured": "Featured",
         "published": "Published",
         "draft": "Draft",
         "live": "● live",
