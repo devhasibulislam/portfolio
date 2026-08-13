@@ -1,8 +1,6 @@
 import { revalidateTag } from "next/cache";
 import { tag } from "@/lib/cache-tags";
 
-export const dynamic = "force-dynamic";
-
 /**
  * Dashboard-only cache buster. Auto-protected by proxy.ts (matches
  * /dashboard/:path*). Revalidates every public cache tag, then returns
