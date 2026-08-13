@@ -301,11 +301,13 @@ export const experiences = pgTable(
     displayOrder: integer("display_order").notNull().default(0),
     status: experienceStatus("status").notNull().default("draft"),
     publishedAt: timestamp("published_at", { withTimezone: true }),
+    featured: boolean("featured").notNull().default(false),
     ...timestamps,
   },
   (t) => [
     index("experiences_status_period_idx").on(t.status, t.periodStart),
     index("experiences_company_slug_idx").on(t.companySlug),
+    index("experiences_featured_idx").on(t.featured, t.periodStart),
   ],
 );
 

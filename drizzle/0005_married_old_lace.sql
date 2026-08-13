@@ -1,0 +1,2 @@
+ALTER TABLE "experiences" ADD COLUMN "featured" boolean DEFAULT false NOT NULL;--> statement-breakpoint
+CREATE INDEX "experiences_featured_idx" ON "experiences" USING btree ("featured","period_start");

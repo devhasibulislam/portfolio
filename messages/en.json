@@ -340,7 +340,8 @@
       "deleted": "Deleted {role} at {company}",
       "notFound": "Experience not found",
       "slugTaken": "Slug already in use.",
-      "startRequired": "Start date is required."
+      "startRequired": "Start date is required.",
+      "featureLimitReached": "Only 4 roles can be featured on home. Unfeature one first."
     },
     "skills": {
       "added": "Skill added",
@@ -499,6 +500,7 @@
         "colCompany": "Company",
         "colPeriod": "Period",
         "colStatus": "Status",
+        "colFeatured": "Featured",
         "colActions": "Actions",
         "editAria": "Edit {role} at {company}",
         "deleteAria": "Delete {role} at {company}",

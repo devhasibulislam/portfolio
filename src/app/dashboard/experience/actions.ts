@@ -7,6 +7,7 @@ import { db } from "@/lib/db/client";
 import { experiences } from "@/lib/db/schema";
 import { tag } from "@/lib/cache-tags";
 import { experienceInput } from "@/schemas/experience";
+import { wouldExceedFeaturedLimit } from "@/lib/db/feature-limit";
 import {
   parseTiptapDoc,
   toIso,
@@ -141,5 +142,37 @@ export async function deleteExperience(
   await db.delete(experiences).where(eq(experiences.id, id));
   updateTag(tag.experiences());
   if (prev) updateTag(tag.experience(prev.slug));
+  return { ok: true };
+}
+
+/**
+ * Flip a single experience row's `featured` flag. Cap is 4 (home shows 4).
+ */
+export async function toggleExperienceFeatured(
+  _prev: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const t = await getTranslations("actions.experience");
+  const id = String(formData.get("id") ?? "").trim();
+  const next = formData.get("featured") === "true";
+  if (!id) return { error: "Missing id" };
+
+  const [prev] = await db
+    .select({ slug: experiences.slug })
+    .from(experiences)
+    .where(eq(experiences.id, id));
+  if (!prev) return { error: "Not found" };
+
+  if (next && (await wouldExceedFeaturedLimit("experiences", id))) {
+    return { error: t("featureLimitReached") };
+  }
+
+  await db
+    .update(experiences)
+    .set({ featured: next, updatedAt: new Date() })
+    .where(eq(experiences.id, id));
+
+  updateTag(tag.experiences());
+  updateTag(tag.experience(prev.slug));
   return { ok: true };
 }

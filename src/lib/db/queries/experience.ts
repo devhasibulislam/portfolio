@@ -15,6 +15,7 @@ export type ExperienceRow = {
   periodEnd: Date | null;
   displayOrder: number;
   status: "draft" | "published";
+  featured: boolean;
   updatedAt: Date;
 };
 
@@ -37,6 +38,7 @@ export async function listExperienceForDashboard(): Promise<ExperienceRow[]> {
       periodEnd: experiences.periodEnd,
       displayOrder: experiences.displayOrder,
       status: experiences.status,
+      featured: experiences.featured,
       updatedAt: experiences.updatedAt,
     })
     .from(experiences)
@@ -111,6 +113,7 @@ export type PublicExperienceCard = {
   summary: string;
   companyUrl: string | null;
   logoPublicId: string | null;
+  featured: boolean;
 };
 
 /**
@@ -135,6 +138,7 @@ export async function listPublishedExperience(): Promise<
       summary: experiences.summary,
       companyUrl: experiences.companyUrl,
       logoPublicId: media.publicId,
+      featured: experiences.featured,
     })
     .from(experiences)
     .leftJoin(media, eq(media.id, experiences.companyLogoId))
@@ -245,12 +249,15 @@ export async function getPublishedExperienceBySlug(
 }
 
 /**
- * Home-page projection: latest N published roles, ongoing first, then
- * newest by periodStart. Consumed by `<SectionSelectedExperience>`.
+ * Home-page projection: curator-featured roles first (up to `limit`).
+ * Falls back to newest published roles when nothing is featured, so the
+ * section still has something to show on a fresh deploy.
  */
 export async function listLatestExperience(
   limit: number,
 ): Promise<PublicExperienceCard[]> {
   const rows = await listPublishedExperience();
-  return rows.slice(0, Math.max(1, limit));
+  const featuredRows = rows.filter((r) => r.featured);
+  const picked = featuredRows.length > 0 ? featuredRows : rows;
+  return picked.slice(0, Math.max(1, limit));
 }

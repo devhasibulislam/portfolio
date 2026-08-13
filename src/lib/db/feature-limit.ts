@@ -1,12 +1,18 @@
 import "server-only";
 import { and, count, eq, ne } from "drizzle-orm";
 import { db } from "@/lib/db/client";
-import { posts, projects, receipts } from "@/lib/db/schema";
+import { experiences, posts, projects, receipts } from "@/lib/db/schema";
 
-export const MAX_FEATURED = 3;
+const CONFIG = {
+  projects: { table: projects, max: 3 },
+  posts: { table: posts, max: 3 },
+  receipts: { table: receipts, max: 3 },
+  experiences: { table: experiences, max: 4 },
+} as const;
 
-const TABLES = { projects, posts, receipts } as const;
-export type FeaturedKind = keyof typeof TABLES;
+export type FeaturedKind = keyof typeof CONFIG;
+
+export const featuredLimit = (kind: FeaturedKind) => CONFIG[kind].max;
 
 /**
  * Returns true if flipping this row to `featured=true` would exceed the cap.
@@ -17,12 +23,13 @@ export async function wouldExceedFeaturedLimit(
   kind: FeaturedKind,
   excludeId: string | null,
 ): Promise<boolean> {
-  const t = TABLES[kind];
-  const conds = [eq(t.featured, true)];
-  if (excludeId) conds.push(ne(t.id, excludeId));
+  const { table, max } = CONFIG[kind];
+  const conds = [eq(table.featured, true)];
+  if (excludeId) conds.push(ne(table.id, excludeId));
   const [row] = await db
     .select({ n: count() })
-    .from(t)
+    .from(table)
     .where(and(...conds));
-  return (row?.n ?? 0) >= MAX_FEATURED;
+  return (row?.n ?? 0) >= max;
 }
+

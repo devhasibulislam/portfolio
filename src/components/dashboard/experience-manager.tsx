@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Pencil, Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
@@ -56,7 +57,9 @@ import type {
 import {
   deleteExperience,
   saveExperience,
+  toggleExperienceFeatured,
 } from "@/app/dashboard/experience/actions";
+import { FeatureSwitch } from "@/components/dashboard/feature-switch";
 
 const WORK_TYPES: { value: "on_site" | "remote" | "hybrid"; label: string }[] =
   [
@@ -88,6 +91,7 @@ export function ExperienceManager({
   const tPage = useTranslations("dashboard.pages.experience");
   const tExp = useTranslations("experience");
   const tCommon = useTranslations("dashboard.forms.common");
+  const router = useRouter();
   const [editing, setEditing] = useState<EditingState>(null);
   const [confirmDelete, setConfirmDelete] = useState<ExperienceRow | null>(
     null,
@@ -155,6 +159,7 @@ export function ExperienceManager({
                 <TableHead className="w-48">{tPage("colCompany")}</TableHead>
                 <TableHead className="w-40">{tPage("colPeriod")}</TableHead>
                 <TableHead className="w-28">{tPage("colStatus")}</TableHead>
+                <TableHead className="w-24">{tPage("colFeatured")}</TableHead>
                 <TableHead className="w-24 text-end">
                   {tPage("colActions")}
                 </TableHead>
@@ -195,6 +200,18 @@ export function ExperienceManager({
                         ? tCommon("published")
                         : tCommon("draft")}
                     </span>
+                  </TableCell>
+                  <TableCell>
+                    <FeatureSwitch
+                      id={r.id}
+                      featured={r.featured}
+                      action={toggleExperienceFeatured}
+                      labels={{
+                        feature: tCommon("feature"),
+                        unfeature: tCommon("unfeature"),
+                      }}
+                      onDone={() => router.refresh()}
+                    />
                   </TableCell>
                   <TableCell className="text-end">
                     <Button
