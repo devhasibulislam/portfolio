@@ -203,10 +203,7 @@ export async function listPublishedProjectsCursor(input: {
   const limit = Math.min(Math.max(input.limit ?? 6, 1), 24);
   const cur = decodeProjectCursor(input.cursor ?? null);
 
-  const conds = [
-    eq(projects.status, "published"),
-    eq(projects.noindex, false),
-  ];
+  const conds = [eq(projects.status, "published"), eq(projects.noindex, false)];
   if (cur) {
     // Featured group is denser than unfeatured group. Compare the tuple
     // (featured DESC, displayOrder ASC, id ASC) against the cursor:
@@ -250,7 +247,11 @@ export async function listPublishedProjectsCursor(input: {
     .from(projects)
     .leftJoin(media, eq(media.id, projects.coverMediaId))
     .where(and(...conds))
-    .orderBy(desc(projects.featured), asc(projects.displayOrder), asc(projects.id))
+    .orderBy(
+      desc(projects.featured),
+      asc(projects.displayOrder),
+      asc(projects.id),
+    )
     .limit(limit + 1);
 
   const hasMore = rows.length > limit;

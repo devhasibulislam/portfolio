@@ -14,6 +14,10 @@
       "title": "Projects",
       "description": "Client engagements, products, and open-source references: backend, LLM/RAG, and infrastructure work I've shipped."
     },
+    "receipts": {
+      "title": "Receipts",
+      "description": "Signed proof of work. Public case-study cards you can inspect right now."
+    },
     "experience": {
       "title": "Experience",
       "description": "Roles I've held (ZMC, Zubion, WeWise, MessageMind, FoorWeb, Prokken) and what I built in each."
@@ -92,6 +96,8 @@
     "receipts": {
       "eyebrow": "Signature receipts",
       "title": "Three shipped things you can inspect right now.",
+      "seeAll": "See all receipts",
+
       "latency": {
         "metric": "~200 ms → ~20 ms",
         "title": "Hot-path list API rewrite",
@@ -216,6 +222,14 @@
     "linksSectionLabel": "Links",
     "loadingMore": "Loading more projects…",
     "loadError": "Could not load more projects."
+  },
+  "receipts": {
+    "kicker": "Proof",
+    "heading": "Receipts",
+    "hero": "Signed proof of work. Real numbers, real repos, real launches. Public case-study cards you can inspect right now.",
+    "empty": "Receipts will appear here once added from the dashboard.",
+    "loadingMore": "Loading more receipts…",
+    "loadError": "Could not load more receipts."
   },
   "experience": {
     "kicker": "Career",

@@ -1,38 +1,46 @@
 import { cacheTag } from "next/cache";
 import { getTranslations } from "next-intl/server";
 import { tag } from "@/lib/cache-tags";
-import { listActiveReceipts } from "@/lib/db/queries/receipts";
+import { listReceiptsForHome } from "@/lib/db/queries/receipts";
 import { ScrollReveal } from "./scroll-reveal";
-import { ArrowPill, BezelLink, SectionHeader } from "./_shared";
+import { ArrowPill, BezelLink, SectionHeader, SeeAllLink } from "./_shared";
 
 async function loadReceipts() {
   "use cache";
   cacheTag(tag.receipts());
-  return listActiveReceipts();
+  return listReceiptsForHome();
 }
 
 export async function SectionReceipts() {
-  const [rows, t] = await Promise.all([
+  const [{ items, hasMore }, t] = await Promise.all([
     loadReceipts(),
     getTranslations("home.receipts"),
   ]);
 
   // Hide the section entirely if the curator hasn't seeded it — better an
   // absent block than a lonely one or two cards.
-  if (rows.length === 0) return null;
+  if (items.length === 0) return null;
 
   return (
     <section
       aria-labelledby="receipts-title"
       className="relative mx-auto w-full max-w-6xl px-6 py-16 sm:py-20 md:py-24"
     >
-      <SectionHeader title={t("title")} id="receipts-title" />
+      <SectionHeader
+        title={t("title")}
+        id="receipts-title"
+        action={
+          hasMore ? (
+            <SeeAllLink href="/receipts" label={t("seeAll")} />
+          ) : undefined
+        }
+      />
       <ScrollReveal
         as="ul"
         className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         stagger={0.1}
       >
-        {rows.map((r) => (
+        {items.map((r) => (
           <li key={r.id} data-reveal>
             <ReceiptCard
               href={r.ctaHref}

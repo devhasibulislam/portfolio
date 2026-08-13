@@ -13,10 +13,8 @@ import type {
 } from "@/lib/db/queries/projects";
 
 export function ProjectsInfiniteList({ initial }: { initial: ProjectsPage }) {
-  const { items, hasMore, loading, error, loadMore } = useCursor<PublicProjectCard>(
-    initial,
-    loadMorePublishedProjects,
-  );
+  const { items, hasMore, loading, error, loadMore } =
+    useCursor<PublicProjectCard>(initial, loadMorePublishedProjects);
   const t = useTranslations("projects");
   const labels = useTranslations("projects.categories");
   const sentinel = useRef<HTMLDivElement>(null);
