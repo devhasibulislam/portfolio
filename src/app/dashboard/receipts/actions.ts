@@ -85,4 +85,3 @@ export async function toggleReceiptFeatured(
   updateTag(tag.receipts());
   return { ok: true };
 }
-

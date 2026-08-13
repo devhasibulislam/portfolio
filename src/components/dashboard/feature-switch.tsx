@@ -10,10 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import type { ActionState } from "@/lib/action-helpers";
 
-type ToggleAction = (
-  prev: ActionState,
-  fd: FormData,
-) => Promise<ActionState>;
+type ToggleAction = (prev: ActionState, fd: FormData) => Promise<ActionState>;
 
 /**
  * Row-level "feature on home" Switch. Optimistically flips, rolls back on

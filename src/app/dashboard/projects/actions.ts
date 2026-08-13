@@ -112,7 +112,10 @@ export async function saveProject(
   if (clash.length)
     return { error: (await getTranslations("actions.projects"))("slugTaken") };
 
-  if (parsed.data.featured && (await wouldExceedFeaturedLimit("projects", id))) {
+  if (
+    parsed.data.featured &&
+    (await wouldExceedFeaturedLimit("projects", id))
+  ) {
     return {
       error: (await getTranslations("actions.projects"))("featureLimitReached"),
     };
