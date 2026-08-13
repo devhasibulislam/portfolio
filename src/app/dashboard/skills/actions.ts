@@ -65,6 +65,7 @@ export async function saveSkill(
   }
 
   updateTag(tag.skills());
+  updateTag(tag.media());
   return { ok: true };
 }
 
@@ -76,6 +77,7 @@ export async function deleteSkill(
   if (!id) return { error: "Missing id" };
   await db.delete(skills).where(eq(skills.id, id));
   updateTag(tag.skills());
+  updateTag(tag.media());
   return { ok: true };
 }
 

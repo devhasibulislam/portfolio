@@ -105,6 +105,7 @@ export async function savePost(
 
   updateTag(tag.posts());
   updateTag(tag.post(parsed.data.slug));
+  updateTag(tag.media());
 
   redirect(`/dashboard/posts/${savedId}/edit?saved=1`);
 }
@@ -117,6 +118,7 @@ export async function deletePost(
   if (!id) return { error: "Missing id" };
   await db.delete(posts).where(eq(posts.id, id));
   updateTag(tag.posts());
+  updateTag(tag.media());
   return { ok: true };
 }
 

@@ -186,6 +186,7 @@ export async function saveProject(
 
   updateTag(tag.projects());
   updateTag(tag.project(parsed.data.slug));
+  updateTag(tag.media());
   // If the slug changed, bust the old detail cache too so the moved page
   // renders 404 on next visit instead of serving stale content.
   if (prevSlug && prevSlug !== parsed.data.slug) {
@@ -206,6 +207,7 @@ export async function deleteProject(
     .where(eq(projects.id, id));
   await db.delete(projects).where(eq(projects.id, id));
   updateTag(tag.projects());
+  updateTag(tag.media());
   if (prev) updateTag(tag.project(prev.slug));
   return { ok: true };
 }

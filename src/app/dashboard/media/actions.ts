@@ -1,13 +1,14 @@
 "use server";
 
 import { updateTag } from "next/cache";
-import { count, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { db } from "@/lib/db/client";
-import { media, posts } from "@/lib/db/schema";
+import { media } from "@/lib/db/schema";
 import { cloudinary } from "@/lib/cloudinary";
 import { tag } from "@/lib/cache-tags";
 import { mediaInput } from "@/schemas/media";
+import { countMediaConsumers } from "@/lib/db/queries/media";
 import { zodErr } from "@/lib/action-helpers";
 
 type ActionState = { error?: string; ok?: true; id?: string } | null;
@@ -74,10 +75,7 @@ export async function deleteMedia(
   const [row] = await db.select().from(media).where(eq(media.id, id));
   if (!row) return { error: "Not found" };
 
-  const [{ n }] = await db
-    .select({ n: count() })
-    .from(posts)
-    .where(eq(posts.coverMediaId, id));
+  const n = await countMediaConsumers(id);
   if (n > 0) {
     const t = await getTranslations("actions.media");
     return { error: t("inUse", { count: n }) };

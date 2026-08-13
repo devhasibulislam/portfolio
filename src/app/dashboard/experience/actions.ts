@@ -123,6 +123,7 @@ export async function saveExperience(
 
   updateTag(tag.experiences());
   updateTag(tag.experience(parsed.data.slug));
+  updateTag(tag.media());
   if (prevSlug && prevSlug !== parsed.data.slug) {
     updateTag(tag.experience(prevSlug));
   }
@@ -141,6 +142,7 @@ export async function deleteExperience(
     .where(eq(experiences.id, id));
   await db.delete(experiences).where(eq(experiences.id, id));
   updateTag(tag.experiences());
+  updateTag(tag.media());
   if (prev) updateTag(tag.experience(prev.slug));
   return { ok: true };
 }
