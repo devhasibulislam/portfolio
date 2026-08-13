@@ -1,4 +1,4 @@
-import { and, asc, desc, eq } from "drizzle-orm";
+import { and, asc, desc, eq, or, sql } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { media, projectLinks, projects } from "@/lib/db/schema";
 import type { ProjectInput, ProjectLinkInput } from "@/schemas/project";
@@ -158,6 +158,116 @@ export async function listPublishedProjects(): Promise<PublicProjectCard[]> {
     // nullable — narrow it here so consumers don't have to.
     publishedAt: r.publishedAt as Date,
   }));
+}
+
+/**
+ * Cursor tuple over `(displayOrder ASC, id ASC)`. Featured is not part of
+ * the cursor: it only decides the primary sort branch, and every project
+ * with `featured=true` lands ahead of every unfeatured one. That means
+ * within a given branch we can page by (displayOrder, id) safely.
+ */
+export type ProjectCursor = { f: 0 | 1; o: number; id: string };
+
+export function encodeProjectCursor(c: ProjectCursor | null): string | null {
+  if (!c) return null;
+  return Buffer.from(JSON.stringify(c), "utf8").toString("base64url");
+}
+
+export function decodeProjectCursor(s: string | null): ProjectCursor | null {
+  if (!s) return null;
+  try {
+    const parsed = JSON.parse(
+      Buffer.from(s, "base64url").toString("utf8"),
+    ) as ProjectCursor;
+    if (
+      (parsed.f !== 0 && parsed.f !== 1) ||
+      typeof parsed.o !== "number" ||
+      typeof parsed.id !== "string"
+    )
+      return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+export type ProjectsPage = {
+  items: PublicProjectCard[];
+  nextCursor: string | null;
+};
+
+export async function listPublishedProjectsCursor(input: {
+  cursor?: string | null;
+  limit?: number;
+}): Promise<ProjectsPage> {
+  const limit = Math.min(Math.max(input.limit ?? 6, 1), 24);
+  const cur = decodeProjectCursor(input.cursor ?? null);
+
+  const conds = [
+    eq(projects.status, "published"),
+    eq(projects.noindex, false),
+  ];
+  if (cur) {
+    // Featured group is denser than unfeatured group. Compare the tuple
+    // (featured DESC, displayOrder ASC, id ASC) against the cursor:
+    //   next row is either
+    //     - same feature bucket AND (order,id) > (cur.o, cur.id), OR
+    //     - later feature bucket (only unfeatured after featured).
+    const sameFeat = eq(projects.featured, cur.f === 1);
+    const laterFeat = eq(projects.featured, false);
+    conds.push(
+      or(
+        and(
+          sameFeat,
+          or(
+            sql`${projects.displayOrder} > ${cur.o}`,
+            and(
+              sql`${projects.displayOrder} = ${cur.o}`,
+              sql`${projects.id} > ${cur.id}`,
+            ),
+          )!,
+        )!,
+        cur.f === 1 ? laterFeat : sql`false`,
+      )!,
+    );
+  }
+
+  const rows = await db
+    .select({
+      id: projects.id,
+      title: projects.title,
+      slug: projects.slug,
+      tagline: projects.tagline,
+      client: projects.client,
+      category: projects.category,
+      featured: projects.featured,
+      displayOrder: projects.displayOrder,
+      publishedAt: projects.publishedAt,
+      coverPublicId: media.publicId,
+      coverWidth: media.width,
+      coverHeight: media.height,
+    })
+    .from(projects)
+    .leftJoin(media, eq(media.id, projects.coverMediaId))
+    .where(and(...conds))
+    .orderBy(desc(projects.featured), asc(projects.displayOrder), asc(projects.id))
+    .limit(limit + 1);
+
+  const hasMore = rows.length > limit;
+  const items: PublicProjectCard[] = rows.slice(0, limit).map((r) => ({
+    ...r,
+    publishedAt: r.publishedAt as Date,
+  }));
+  const last = items[items.length - 1];
+  const nextCursor =
+    hasMore && last
+      ? encodeProjectCursor({
+          f: last.featured ? 1 : 0,
+          o: (last as unknown as { displayOrder: number }).displayOrder,
+          id: last.id,
+        })
+      : null;
+  return { items, nextCursor };
 }
 
 export type PublicProject = {

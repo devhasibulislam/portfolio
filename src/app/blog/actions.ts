@@ -4,6 +4,7 @@ import {
   listPublishedPostsCursor,
   type PostsPage,
 } from "@/lib/db/queries/public-posts";
+import { PAGE_NEXT } from "@/lib/pagination";
 
 type Filter = { categorySlug?: string; tagSlug?: string };
 
@@ -15,5 +16,5 @@ export async function loadMorePublishedPosts(
   filter: Filter,
   cursor: string,
 ): Promise<PostsPage> {
-  return listPublishedPostsCursor({ cursor, limit: 12, ...filter });
+  return listPublishedPostsCursor({ cursor, limit: PAGE_NEXT, ...filter });
 }

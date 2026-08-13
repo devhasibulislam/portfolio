@@ -213,7 +213,9 @@
       "nda": "تحت NDA"
     },
     "outcomeSectionLabel": "النتيجة",
-    "linksSectionLabel": "روابط"
+    "linksSectionLabel": "الروابط",
+    "loadingMore": "جارٍ تحميل المزيد…",
+    "loadError": "تعذّر تحميل المزيد من المشاريع."
   },
   "experience": {
     "kicker": "المسيرة المهنية",

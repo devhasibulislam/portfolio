@@ -213,7 +213,9 @@
       "nda": "Under NDA"
     },
     "outcomeSectionLabel": "Outcome",
-    "linksSectionLabel": "Links"
+    "linksSectionLabel": "Links",
+    "loadingMore": "Loading more projects…",
+    "loadError": "Could not load more projects."
   },
   "experience": {
     "kicker": "Career",

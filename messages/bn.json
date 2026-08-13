@@ -213,7 +213,9 @@
       "nda": "NDA অধীনে"
     },
     "outcomeSectionLabel": "ফলাফল",
-    "linksSectionLabel": "লিংক"
+    "linksSectionLabel": "লিঙ্ক",
+    "loadingMore": "আরও প্রজেক্ট লোড হচ্ছে…",
+    "loadError": "আরও প্রজেক্ট লোড করা গেল না।"
   },
   "experience": {
     "kicker": "ক্যারিয়ার",

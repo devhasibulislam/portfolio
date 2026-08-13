@@ -213,7 +213,9 @@
       "nda": "NDA کے تحت"
     },
     "outcomeSectionLabel": "نتیجہ",
-    "linksSectionLabel": "لنکس"
+    "linksSectionLabel": "لنکس",
+    "loadingMore": "مزید لوڈ ہو رہا ہے…",
+    "loadError": "مزید پروجیکٹس لوڈ نہیں ہو سکے۔"
   },
   "experience": {
     "kicker": "کیریئر",

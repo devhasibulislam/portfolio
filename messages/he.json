@@ -213,7 +213,9 @@
       "nda": "תחת NDA"
     },
     "outcomeSectionLabel": "תוצאה",
-    "linksSectionLabel": "קישורים"
+    "linksSectionLabel": "קישורים",
+    "loadingMore": "טוען עוד…",
+    "loadError": "לא הצליח לטעון עוד פרויקטים."
   },
   "experience": {
     "kicker": "קריירה",

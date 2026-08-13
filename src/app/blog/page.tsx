@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { BlogInfiniteList } from "./blog-infinite-list";
 import { tag } from "@/lib/cache-tags";
 import { listPublishedPostsCursor } from "@/lib/db/queries/public-posts";
+import { PAGE_INITIAL } from "@/lib/pagination";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function firstPage() {
   "use cache";
   cacheTag(tag.posts());
-  return listPublishedPostsCursor({ limit: 12 });
+  return listPublishedPostsCursor({ limit: PAGE_INITIAL });
 }
 
 export default async function BlogPage() {

@@ -9,6 +9,7 @@ import {
   listPublishedPostsCursor,
 } from "@/lib/db/queries/public-posts";
 import { loadMorePublishedPosts } from "@/app/blog/actions";
+import { PAGE_INITIAL } from "@/lib/pagination";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 type Params = { slug: string };
@@ -18,7 +19,7 @@ async function loadPage(slug: string) {
   cacheTag(tag.posts(), tag.tags());
   const [tagRow, page] = await Promise.all([
     getTagBySlug(slug),
-    listPublishedPostsCursor({ limit: 12, tagSlug: slug }),
+    listPublishedPostsCursor({ limit: PAGE_INITIAL, tagSlug: slug }),
   ]);
   return { tagRow, page };
 }
