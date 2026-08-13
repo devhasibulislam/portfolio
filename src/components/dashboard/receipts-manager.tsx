@@ -103,11 +103,9 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="w-16">{tForm("displayOrder")}</TableHead>
                 <TableHead>{tForm("kicker")}</TableHead>
                 <TableHead>{tForm("title")}</TableHead>
-                <TableHead className="w-24 text-end">
-                  {tForm("displayOrder")}
-                </TableHead>
                 <TableHead className="w-28">{tForm("status")}</TableHead>
                 <TableHead className="w-24">{tCommon("featured")}</TableHead>
                 <TableHead className="w-24 text-end">
@@ -122,13 +120,13 @@ export function ReceiptsManager({ rows }: { rows: ReceiptRow[] }) {
                   className="cursor-pointer"
                   onClick={() => setEditing({ mode: "edit", row: r })}
                 >
+                  <TableCell className="text-muted-foreground tabular-nums">
+                    #{r.displayOrder}
+                  </TableCell>
                   <TableCell className="font-mono text-xs text-[var(--color-accent)]">
                     {r.kicker}
                   </TableCell>
                   <TableCell className="font-medium">{r.title}</TableCell>
-                  <TableCell className="text-end tabular-nums">
-                    {r.displayOrder}
-                  </TableCell>
                   <TableCell>
                     <span
                       className={

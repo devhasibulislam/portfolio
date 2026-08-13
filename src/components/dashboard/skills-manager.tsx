@@ -137,15 +137,15 @@ export function SkillsManager({
                 <Table>
                   <TableHeader>
                     <TableRow>
+                      <TableHead className="w-16">
+                        {tPage("colOrder")}
+                      </TableHead>
                       <TableHead>{tPage("colName")}</TableHead>
                       <TableHead className="w-40">
                         {tPage("colProficiency")}
                       </TableHead>
                       <TableHead className="w-20">
                         {tPage("colYears")}
-                      </TableHead>
-                      <TableHead className="w-24">
-                        {tPage("colOrder")}
                       </TableHead>
                       <TableHead className="w-24">
                         {tPage("colStatus")}
@@ -161,6 +161,9 @@ export function SkillsManager({
                   <TableBody>
                     {items.map((r) => (
                       <TableRow key={r.id}>
+                        <TableCell className="text-muted-foreground tabular-nums">
+                          #{r.displayOrder}
+                        </TableCell>
                         <TableCell className="font-medium">
                           <span className="inline-flex items-center gap-1.5">
                             {r.name}
@@ -174,7 +177,6 @@ export function SkillsManager({
                         </TableCell>
                         <TableCell>{tProf(r.proficiency)}</TableCell>
                         <TableCell>{r.years ?? "-"}</TableCell>
-                        <TableCell>{r.displayOrder}</TableCell>
                         <TableCell>
                           <span
                             className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${

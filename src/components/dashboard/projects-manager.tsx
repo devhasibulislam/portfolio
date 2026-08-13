@@ -164,9 +164,9 @@ export function ProjectsManager({
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="w-16">{tPage("colOrder")}</TableHead>
                 <TableHead>{tPage("colProject")}</TableHead>
                 <TableHead className="w-40">{tPage("colCategory")}</TableHead>
-                <TableHead className="w-24">{tPage("colOrder")}</TableHead>
                 <TableHead className="w-28">{tPage("colStatus")}</TableHead>
                 <TableHead className="w-24">{tPage("colFeatured")}</TableHead>
                 <TableHead className="w-24 text-end">
@@ -177,6 +177,9 @@ export function ProjectsManager({
             <TableBody>
               {rows.map((r) => (
                 <TableRow key={r.id}>
+                  <TableCell className="text-muted-foreground tabular-nums">
+                    #{r.displayOrder}
+                  </TableCell>
                   <TableCell className="font-medium">
                     <span className="inline-flex items-center gap-1.5">
                       {r.title}
@@ -190,7 +193,6 @@ export function ProjectsManager({
                     </div>
                   </TableCell>
                   <TableCell>{tCats(r.category)}</TableCell>
-                  <TableCell>{r.displayOrder}</TableCell>
                   <TableCell>
                     <span
                       className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
