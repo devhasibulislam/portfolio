@@ -222,14 +222,14 @@ async function LocalizedShell({ children }: { children: React.ReactNode }) {
     <NextIntlClientProvider locale={locale} messages={messages}>
       <TooltipProvider delayDuration={0}>
         <TopProgressBar />
-      {/* Sticky-footer shell: min-h-svh flex column keeps the footer glued to
+        {/* Sticky-footer shell: min-h-svh flex column keeps the footer glued to
           the viewport bottom when the page content is shorter than the
           viewport, and lets it flow naturally below content when longer. */}
-      <div className="flex min-h-svh flex-col">
-        <SiteHeader />
-        <div className="flex-1">{children}</div>
-        <PublicFooter />
-      </div>
+        <div className="flex min-h-svh flex-col">
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+          <PublicFooter />
+        </div>
         <PublicFloatingActions />
       </TooltipProvider>
     </NextIntlClientProvider>
