@@ -1,5 +1,7 @@
-import { updateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { tag } from "@/lib/cache-tags";
+
+export const dynamic = "force-dynamic";
 
 /**
  * Dashboard-only cache buster. Auto-protected by proxy.ts (matches
@@ -22,6 +24,10 @@ export async function GET() {
     tag.activeResume(),
     tag.media(),
   ];
-  for (const t of tags) updateTag(t);
-  return Response.json({ ok: true, revalidated: tags, at: new Date().toISOString() });
+  for (const t of tags) revalidateTag(t, "max");
+  return Response.json({
+    ok: true,
+    revalidated: tags,
+    at: new Date().toISOString(),
+  });
 }
