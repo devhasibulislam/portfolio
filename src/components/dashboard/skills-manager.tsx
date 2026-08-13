@@ -47,7 +47,11 @@ import { slugify } from "@/lib/slug";
 import { SKILL_GROUPS } from "@/lib/skill-groups";
 import type { SkillRow } from "@/lib/db/queries/skills";
 import type { SkillInput } from "@/schemas/skill";
-import { deleteSkill, saveSkill, toggleSkillPrimary } from "@/app/dashboard/skills/actions";
+import {
+  deleteSkill,
+  saveSkill,
+  toggleSkillPrimary,
+} from "@/app/dashboard/skills/actions";
 import { FeatureSwitch } from "@/components/dashboard/feature-switch";
 
 const PROFICIENCY_OPTIONS: SkillInput["proficiency"][] = [
