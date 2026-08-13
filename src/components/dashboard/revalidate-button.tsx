@@ -17,8 +17,13 @@ export function RevalidateButton() {
       onClick={async () => {
         setBusy(true);
         try {
-          const res = await fetch("/dashboard/revalidate", { cache: "no-store" });
-          const data = (await res.json()) as { ok?: boolean; revalidated?: string[] };
+          const res = await fetch("/dashboard/revalidate", {
+            cache: "no-store",
+          });
+          const data = (await res.json()) as {
+            ok?: boolean;
+            revalidated?: string[];
+          };
           if (res.ok && data.ok) {
             toast.success(`Revalidated ${data.revalidated?.length ?? 0} tags`);
           } else {
