@@ -242,7 +242,9 @@
       "remote": "Remote",
       "hybrid": "Hybrid"
     },
-    "periodSeparator": "to"
+    "periodSeparator": "to",
+    "loadingMore": "Loading more roles…",
+    "loadError": "Could not load more roles."
   },
   "skills": {
     "kicker": "Stack",

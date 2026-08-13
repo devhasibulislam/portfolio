@@ -261,3 +261,129 @@ export async function listLatestExperience(
   const picked = featuredRows.length > 0 ? featuredRows : rows;
   return picked.slice(0, Math.max(1, limit));
 }
+
+/**
+ * Cursor over `(periodEnd DESC NULLS FIRST, periodStart DESC, id ASC)`.
+ * `e = null` marks rows in the "still ongoing" bucket; `e = ISO` is a
+ * finished role. The cursor stores the last row's shape so the next page
+ * skips everything sorted before or equal to it.
+ */
+export type ExperienceCursor = {
+  e: string | null;
+  s: string;
+  id: string;
+};
+
+export function encodeExperienceCursor(
+  c: ExperienceCursor | null,
+): string | null {
+  if (!c) return null;
+  return Buffer.from(JSON.stringify(c), "utf8").toString("base64url");
+}
+
+export function decodeExperienceCursor(
+  s: string | null,
+): ExperienceCursor | null {
+  if (!s) return null;
+  try {
+    const parsed = JSON.parse(
+      Buffer.from(s, "base64url").toString("utf8"),
+    ) as ExperienceCursor;
+    if (
+      typeof parsed.s !== "string" ||
+      typeof parsed.id !== "string" ||
+      (parsed.e !== null && typeof parsed.e !== "string")
+    )
+      return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+export type ExperiencePage = {
+  items: PublicExperienceCard[];
+  nextCursor: string | null;
+};
+
+export async function listPublishedExperienceCursor(input: {
+  cursor?: string | null;
+  limit?: number;
+}): Promise<ExperiencePage> {
+  const limit = Math.min(Math.max(input.limit ?? 6, 1), 24);
+  const cur = decodeExperienceCursor(input.cursor ?? null);
+
+  const conds = [
+    eq(experiences.status, "published"),
+    eq(experiences.noindex, false),
+  ];
+  if (cur) {
+    if (cur.e === null) {
+      // Cursor sits in the ongoing-role bucket. Next rows are either later
+      // in the same bucket (smaller periodStart, or same periodStart w/
+      // larger id), or in the finished bucket (periodEnd IS NOT NULL).
+      conds.push(
+        sql`(
+          (${experiences.periodEnd} IS NULL AND (
+            ${experiences.periodStart} < ${new Date(cur.s)}
+            OR (${experiences.periodStart} = ${new Date(cur.s)} AND ${experiences.id} > ${cur.id})
+          ))
+          OR ${experiences.periodEnd} IS NOT NULL
+        )`,
+      );
+    } else {
+      // Cursor is in the finished bucket. Only finished rows sort after it.
+      conds.push(
+        sql`(
+          ${experiences.periodEnd} IS NOT NULL AND (
+            ${experiences.periodEnd} < ${new Date(cur.e)}
+            OR (${experiences.periodEnd} = ${new Date(cur.e)} AND (
+              ${experiences.periodStart} < ${new Date(cur.s)}
+              OR (${experiences.periodStart} = ${new Date(cur.s)} AND ${experiences.id} > ${cur.id})
+            ))
+          )
+        )`,
+      );
+    }
+  }
+
+  const rows = await db
+    .select({
+      id: experiences.id,
+      company: experiences.company,
+      companySlug: experiences.companySlug,
+      role: experiences.role,
+      slug: experiences.slug,
+      location: experiences.location,
+      workType: experiences.workType,
+      periodStart: experiences.periodStart,
+      periodEnd: experiences.periodEnd,
+      summary: experiences.summary,
+      companyUrl: experiences.companyUrl,
+      logoPublicId: media.publicId,
+      featured: experiences.featured,
+    })
+    .from(experiences)
+    .leftJoin(media, eq(media.id, experiences.companyLogoId))
+    .where(and(...conds))
+    .orderBy(
+      sql`${experiences.periodEnd} DESC NULLS FIRST`,
+      desc(experiences.periodStart),
+      asc(experiences.id),
+    )
+    .limit(limit + 1);
+
+  const hasMore = rows.length > limit;
+  const items = rows.slice(0, limit);
+  const last = items[items.length - 1];
+  const nextCursor =
+    hasMore && last
+      ? encodeExperienceCursor({
+          e: last.periodEnd ? last.periodEnd.toISOString() : null,
+          s: last.periodStart.toISOString(),
+          id: last.id,
+        })
+      : null;
+
+  return { items, nextCursor };
+}
