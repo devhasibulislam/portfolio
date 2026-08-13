@@ -104,12 +104,16 @@ function ProjectCard({
           )}
         </div>
       </Spotlight>
-      <div className="flex items-center gap-2 text-sm font-medium">
-        <span className="text-[var(--color-accent)]">{categoryLabel}</span>
+      <div className="mt-4 flex min-w-0 items-center gap-2 text-sm font-medium">
+        <span className="shrink-0 text-[var(--color-accent)]">
+          {categoryLabel}
+        </span>
         {project.client ? (
           <>
-            <span className="text-muted-foreground/50">·</span>
-            <span className="text-muted-foreground">{project.client}</span>
+            <span className="shrink-0 text-muted-foreground/50">·</span>
+            <span className="truncate text-muted-foreground">
+              {project.client}
+            </span>
           </>
         ) : null}
       </div>
