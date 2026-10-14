@@ -133,7 +133,14 @@ export async function listActiveReceiptsCursor(input: {
   const hasMore = rows.length > limit;
   const items: PublicReceipt[] = rows
     .slice(0, limit)
-    .map(({ displayOrder: _o, ...r }) => r);
+    .map(({ id, kicker, title, body, ctaLabel, ctaHref }) => ({
+      id,
+      kicker,
+      title,
+      body,
+      ctaLabel,
+      ctaHref,
+    }));
   const last = rows[items.length - 1];
   const nextCursor =
     hasMore && last

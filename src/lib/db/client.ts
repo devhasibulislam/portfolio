@@ -1,4 +1,4 @@
-import { execSync } from "node:child_process";
+import { setDefaultResultOrder } from "node:dns";
 import { neon } from "@neondatabase/serverless";
 import { drizzle as drizzleHttp } from "drizzle-orm/neon-http";
 import { drizzle as drizzleNode } from "drizzle-orm/node-postgres";
@@ -32,13 +32,10 @@ export const db = useHttp
   ? drizzleHttp(neon(url), { schema })
   : (() => {
       const u = new URL(url);
-      const ipv4Host = execSync(`getent ahostsv4 ${u.hostname}`, {
-        encoding: "utf8",
-      })
-        .split("\n")[0]!
-        .split(/\s+/)[0]!;
+      // Prefer IPv4 locally without depending on a platform-specific command.
+      setDefaultResultOrder("ipv4first");
       const pool = new Pool({
-        host: ipv4Host,
+        host: u.hostname,
         port: Number(u.port || 5432),
         user: decodeURIComponent(u.username),
         password: decodeURIComponent(u.password),

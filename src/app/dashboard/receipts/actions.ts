@@ -14,7 +14,6 @@ export async function saveReceipt(
   _prev: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
-  const t = await getTranslations("actions.receipts");
   const id = String(formData.get("id") ?? "").trim() || null;
 
   const displayOrderRaw = String(formData.get("displayOrder") ?? "0").trim();
